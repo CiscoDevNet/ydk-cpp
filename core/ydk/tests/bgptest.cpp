@@ -25,6 +25,7 @@
 #include "../src/path_api.hpp"
 #include "config.hpp"
 #include "catch.hpp"
+#include "mock_data.hpp"
 
 const char* m = "\
 <bgp xmlns=\"http://openconfig.net/yang/bgp\">\
@@ -149,9 +150,9 @@ const char* expected_bgp_peer_json = "{\"openconfig-bgp:bgp\":{\"global\":{\"con
 TEST_CASE( "bgp" )
 {
     ydk::path::Repository repo{TEST_HOME};
-    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
-    auto & schema = session.get_root_schema();
+    auto & schema = sp.get_root_schema();
 
     auto & bgp = schema.create_datanode("openconfig-bgp:bgp", "");
 
@@ -222,7 +223,7 @@ TEST_CASE( "bgp" )
     create_rpc->get_input_node().create_datanode("entity", xml);
 
     //call create
-    (*create_rpc)(session);
+    (*create_rpc)(sp);
 
 }
 
@@ -230,9 +231,9 @@ TEST_CASE( "bgp_validation" )
 {
     ydk::path::Repository repo{TEST_HOME};
 
-    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
-    auto & schema = session.get_root_schema();
+    auto & schema = sp.get_root_schema();
 
     auto & bgp = schema.create_datanode("openconfig-bgp:bgp", "");
 
@@ -276,9 +277,9 @@ TEST_CASE( "decode_remove_as" )
 {
     ydk::path::Repository repo{TEST_HOME};
 
-    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
-    auto & schema = session.get_root_schema();
+    auto & schema = sp.get_root_schema();
 
     ydk::path::Codec s{};
 
@@ -301,9 +302,9 @@ TEST_CASE( "bits_order" )
 
     ydk::path::Codec s{};
 
-    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
-    auto & schema = session.get_root_schema();
+    auto & schema = sp.get_root_schema();
 
     auto & runner = schema.create_datanode("ydktest-sanity:runner", "");
 
@@ -322,9 +323,9 @@ TEST_CASE("rpc_output")
 
     ydk::path::Codec s{};
 
-    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
-    auto & schema = session.get_root_schema();
+    auto & schema = sp.get_root_schema();
 
     auto getc = schema.create_rpc("ietf-netconf:get-config");
     REQUIRE(getc->has_output_node() == true);
