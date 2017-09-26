@@ -10,35 +10,7 @@
 namespace cisco_ios_xe {
 namespace MPLS_TC_STD_MIB {
 
-class Tehopaddresstype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf asnumber;
-        static const ydk::Enum::YLeaf unnum;
-        static const ydk::Enum::YLeaf lspid;
-
-};
-
-class Mplslabeldistributionmethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstreamOnDemand;
-        static const ydk::Enum::YLeaf downstreamUnsolicited;
-
-};
-
-class Mplsretentionmode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf conservative;
-        static const ydk::Enum::YLeaf liberal;
-
-};
-
-class Mplsowner : public ydk::Enum
+class MplsOwner : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -51,22 +23,50 @@ class Mplsowner : public ydk::Enum
 
 };
 
-class Mplsldplabeltype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf generic;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf frameRelay;
-
-};
-
-class Mplslsptype : public ydk::Enum
+class MplsLspType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf terminatingLsp;
         static const ydk::Enum::YLeaf originatingLsp;
         static const ydk::Enum::YLeaf crossConnectingLsp;
+
+};
+
+class TeHopAddressType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf asnumber;
+        static const ydk::Enum::YLeaf unnum;
+        static const ydk::Enum::YLeaf lspid;
+
+};
+
+class MplsRetentionMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf conservative;
+        static const ydk::Enum::YLeaf liberal;
+
+};
+
+class MplsLabelDistributionMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstreamOnDemand;
+        static const ydk::Enum::YLeaf downstreamUnsolicited;
+
+};
+
+class MplsLdpLabelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf generic;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf frameRelay;
 
 };
 

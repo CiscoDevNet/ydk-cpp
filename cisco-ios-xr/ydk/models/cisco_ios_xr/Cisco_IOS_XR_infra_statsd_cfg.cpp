@@ -17,7 +17,7 @@ Statistics::Statistics()
 {
     period->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-cfg";
+    yang_name = "statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Statistics::~Statistics()
@@ -39,26 +39,15 @@ std::string Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-statsd-cfg:statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,7 @@ Statistics::Period::Period()
 {
     service_accounting->parent = this;
 
-    yang_name = "period"; yang_parent_name = "statistics";
+    yang_name = "period"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Statistics::Period::~Period()
@@ -151,33 +140,26 @@ bool Statistics::Period::has_operation() const
 	|| (service_accounting !=  nullptr && service_accounting->has_operation());
 }
 
+std::string Statistics::Period::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-statsd-cfg:statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Statistics::Period::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "period";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Statistics::Period::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Statistics::Period::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-statsd-cfg:statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -226,7 +208,8 @@ Statistics::Period::ServiceAccounting::ServiceAccounting()
     polling_disable{YType::empty, "polling-disable"},
     polling_period{YType::uint32, "polling-period"}
 {
-    yang_name = "service-accounting"; yang_parent_name = "period";
+
+    yang_name = "service-accounting"; yang_parent_name = "period"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Statistics::Period::ServiceAccounting::~ServiceAccounting()
@@ -246,35 +229,28 @@ bool Statistics::Period::ServiceAccounting::has_operation() const
 	|| ydk::is_set(polling_period.yfilter);
 }
 
+std::string Statistics::Period::ServiceAccounting::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-statsd-cfg:statistics/period/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Statistics::Period::ServiceAccounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service-accounting";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Statistics::Period::ServiceAccounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Statistics::Period::ServiceAccounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-statsd-cfg:statistics/period/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (polling_disable.is_set || is_set(polling_disable.yfilter)) leaf_name_data.push_back(polling_disable.get_name_leafdata());
     if (polling_period.is_set || is_set(polling_period.yfilter)) leaf_name_data.push_back(polling_period.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

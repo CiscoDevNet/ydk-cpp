@@ -11,18 +11,10 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace nvo {
 
-OverlayEncapType::OverlayEncapType()
-     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:overlay-encap-type")
-{
-}
-
-OverlayEncapType::~OverlayEncapType()
-{
-}
-
 NvoInstances::NvoInstances()
 {
-    yang_name = "nvo-instances"; yang_parent_name = "nvo";
+
+    yang_name = "nvo-instances"; yang_parent_name = "nvo"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 NvoInstances::~NvoInstances()
@@ -53,26 +45,15 @@ std::string NvoInstances::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nvo:nvo-instances";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvoInstances::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvoInstances::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -154,7 +135,8 @@ NvoInstances::NvoInstance::NvoInstance()
     overlay_encapsulation{YType::identityref, "overlay-encapsulation"},
     source_interface{YType::str, "source-interface"}
 {
-    yang_name = "nvo-instance"; yang_parent_name = "nvo-instances";
+
+    yang_name = "nvo-instance"; yang_parent_name = "nvo-instances"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NvoInstances::NvoInstance::~NvoInstance()
@@ -186,36 +168,29 @@ bool NvoInstances::NvoInstance::has_operation() const
 	|| ydk::is_set(source_interface.yfilter);
 }
 
+std::string NvoInstances::NvoInstance::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nvo:nvo-instances/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NvoInstances::NvoInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nvo-instance" <<"[nvo-id='" <<nvo_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvoInstances::NvoInstance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "nvo:nvo-instances/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nvo_id.is_set || is_set(nvo_id.yfilter)) leaf_name_data.push_back(nvo_id.get_name_leafdata());
     if (overlay_encapsulation.is_set || is_set(overlay_encapsulation.yfilter)) leaf_name_data.push_back(overlay_encapsulation.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -309,7 +284,7 @@ NvoInstances::NvoInstance::VirtualNetwork::VirtualNetwork()
 {
     multicast->parent = this;
 
-    yang_name = "virtual-network"; yang_parent_name = "nvo-instance";
+    yang_name = "virtual-network"; yang_parent_name = "nvo-instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NvoInstances::NvoInstance::VirtualNetwork::~VirtualNetwork()
@@ -353,23 +328,11 @@ std::string NvoInstances::NvoInstance::VirtualNetwork::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "virtual-network" <<"[vni-start='" <<vni_start <<"']" <<"[vni-end='" <<vni_end <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvoInstances::NvoInstance::VirtualNetwork::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::VirtualNetwork::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VirtualNetwork' in nvo cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vni_start.is_set || is_set(vni_start.yfilter)) leaf_name_data.push_back(vni_start.get_name_leafdata());
@@ -379,9 +342,7 @@ const EntityPath NvoInstances::NvoInstance::VirtualNetwork::get_entity_path(Enti
     if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
     if (suppress_arp.is_set || is_set(suppress_arp.yfilter)) leaf_name_data.push_back(suppress_arp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -506,101 +467,13 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_leaf_or_child_of_name(const 
     return false;
 }
 
-NvoInstances::NvoInstance::VirtualNetwork::Peers::Peers()
-    :
-    peer_ip{YType::str, "peer-ip"}
-{
-    yang_name = "peers"; yang_parent_name = "virtual-network";
-}
-
-NvoInstances::NvoInstance::VirtualNetwork::Peers::~Peers()
-{
-}
-
-bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_data() const
-{
-    return peer_ip.is_set;
-}
-
-bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(peer_ip.yfilter);
-}
-
-std::string NvoInstances::NvoInstance::VirtualNetwork::Peers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peers" <<"[peer-ip='" <<peer_ip <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NvoInstances::NvoInstance::VirtualNetwork::Peers::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Peers' in nvo cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (peer_ip.is_set || is_set(peer_ip.yfilter)) leaf_name_data.push_back(peer_ip.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "peer-ip")
-    {
-        peer_ip = value;
-        peer_ip.value_namespace = name_space;
-        peer_ip.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "peer-ip")
-    {
-        peer_ip.yfilter = yfilter;
-    }
-}
-
-bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-ip")
-        return true;
-    return false;
-}
-
 NvoInstances::NvoInstance::VirtualNetwork::Multicast::Multicast()
     :
     multicast_group_max{YType::str, "multicast-group-max"},
     multicast_group_min{YType::str, "multicast-group-min"}
 {
-    yang_name = "multicast"; yang_parent_name = "virtual-network";
+
+    yang_name = "multicast"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NvoInstances::NvoInstance::VirtualNetwork::Multicast::~Multicast()
@@ -624,31 +497,17 @@ std::string NvoInstances::NvoInstance::VirtualNetwork::Multicast::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvoInstances::NvoInstance::VirtualNetwork::Multicast::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::VirtualNetwork::Multicast::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Multicast' in nvo cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (multicast_group_max.is_set || is_set(multicast_group_max.yfilter)) leaf_name_data.push_back(multicast_group_max.get_name_leafdata());
     if (multicast_group_min.is_set || is_set(multicast_group_min.yfilter)) leaf_name_data.push_back(multicast_group_min.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -698,21 +557,109 @@ bool NvoInstances::NvoInstance::VirtualNetwork::Multicast::has_leaf_or_child_of_
     return false;
 }
 
-VxlanType::VxlanType()
-     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:vxlan-type")
+NvoInstances::NvoInstance::VirtualNetwork::Peers::Peers()
+    :
+    peer_ip{YType::str, "peer-ip"}
+{
+
+    yang_name = "peers"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NvoInstances::NvoInstance::VirtualNetwork::Peers::~Peers()
 {
 }
 
-VxlanType::~VxlanType()
+bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_data() const
+{
+    return peer_ip.is_set;
+}
+
+bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(peer_ip.yfilter);
+}
+
+std::string NvoInstances::NvoInstance::VirtualNetwork::Peers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peers" <<"[peer-ip='" <<peer_ip <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::VirtualNetwork::Peers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (peer_ip.is_set || is_set(peer_ip.yfilter)) leaf_name_data.push_back(peer_ip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "peer-ip")
+    {
+        peer_ip = value;
+        peer_ip.value_namespace = name_space;
+        peer_ip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-ip")
+    {
+        peer_ip.yfilter = yfilter;
+    }
+}
+
+bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-ip")
+        return true;
+    return false;
+}
+
+OverlayEncapType::OverlayEncapType()
+     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:overlay-encap-type")
+{
+
+}
+
+OverlayEncapType::~OverlayEncapType()
 {
 }
 
 NvgreType::NvgreType()
      : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:nvgre-type")
 {
+
 }
 
 NvgreType::~NvgreType()
+{
+}
+
+VxlanType::VxlanType()
+     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:vxlan-type")
+{
+
+}
+
+VxlanType::~VxlanType()
 {
 }
 

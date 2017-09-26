@@ -14,63 +14,70 @@ namespace cisco_ethernet {
 EthIfSpeed::EthIfSpeed()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed")
 {
+
 }
 
 EthIfSpeed::~EthIfSpeed()
 {
 }
 
-EthIfSpeed40Gb::EthIfSpeed40Gb()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-40gb")
-{
-}
-
-EthIfSpeed40Gb::~EthIfSpeed40Gb()
-{
-}
-
-EthIfSpeed100Gb::EthIfSpeed100Gb()
+EthIfSpeed100gb::EthIfSpeed100gb()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100gb")
 {
+
 }
 
-EthIfSpeed100Gb::~EthIfSpeed100Gb()
+EthIfSpeed100gb::~EthIfSpeed100gb()
 {
 }
 
-EthIfSpeed100Mb::EthIfSpeed100Mb()
+EthIfSpeed100mb::EthIfSpeed100mb()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100mb")
 {
+
 }
 
-EthIfSpeed100Mb::~EthIfSpeed100Mb()
+EthIfSpeed100mb::~EthIfSpeed100mb()
 {
 }
 
-EthIfSpeed1Gb::EthIfSpeed1Gb()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-1gb")
-{
-}
-
-EthIfSpeed1Gb::~EthIfSpeed1Gb()
-{
-}
-
-EthIfSpeed10Gb::EthIfSpeed10Gb()
+EthIfSpeed10gb::EthIfSpeed10gb()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10gb")
 {
+
 }
 
-EthIfSpeed10Gb::~EthIfSpeed10Gb()
+EthIfSpeed10gb::~EthIfSpeed10gb()
 {
 }
 
-EthIfSpeed10Mb::EthIfSpeed10Mb()
+EthIfSpeed10mb::EthIfSpeed10mb()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10mb")
 {
+
 }
 
-EthIfSpeed10Mb::~EthIfSpeed10Mb()
+EthIfSpeed10mb::~EthIfSpeed10mb()
+{
+}
+
+EthIfSpeed1gb::EthIfSpeed1gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-1gb")
+{
+
+}
+
+EthIfSpeed1gb::~EthIfSpeed1gb()
+{
+}
+
+EthIfSpeed40gb::EthIfSpeed40gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-40gb")
+{
+
+}
+
+EthIfSpeed40gb::~EthIfSpeed40gb()
 {
 }
 

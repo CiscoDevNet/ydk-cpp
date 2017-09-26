@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_IP_URPF_MIB {
 
-class CiscoIpUrpfMib : public ydk::Entity
+class CISCOIPURPFMIB : public ydk::Entity
 {
     public:
-        CiscoIpUrpfMib();
-        ~CiscoIpUrpfMib();
+        CISCOIPURPFMIB();
+        ~CISCOIPURPFMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,92 +31,22 @@ class CiscoIpUrpfMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipurpfscalar; //type: CiscoIpUrpfMib::Cipurpfscalar
-        class Cipurpftable; //type: CiscoIpUrpfMib::Cipurpftable
-        class Cipurpfifmontable; //type: CiscoIpUrpfMib::Cipurpfifmontable
-        class Cipurpfvrfiftable; //type: CiscoIpUrpfMib::Cipurpfvrfiftable
-        class Cipurpfvrftable; //type: CiscoIpUrpfMib::Cipurpfvrftable
+        class Cipurpfscalar; //type: CISCOIPURPFMIB::Cipurpfscalar
+        class Cipurpftable; //type: CISCOIPURPFMIB::Cipurpftable
+        class Cipurpfifmontable; //type: CISCOIPURPFMIB::Cipurpfifmontable
+        class Cipurpfvrfiftable; //type: CISCOIPURPFMIB::Cipurpfvrfiftable
+        class Cipurpfvrftable; //type: CISCOIPURPFMIB::Cipurpfvrftable
 
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfifmontable> cipurpfifmontable;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfscalar> cipurpfscalar;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpftable> cipurpftable;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrfiftable> cipurpfvrfiftable;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable> cipurpfvrftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfifmontable> cipurpfifmontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfscalar> cipurpfscalar;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpftable> cipurpftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrfiftable> cipurpfvrfiftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrftable> cipurpfvrftable;
         
-}; // CiscoIpUrpfMib
+}; // CISCOIPURPFMIB
 
 
-class CiscoIpUrpfMib::Cipurpfscalar : public ydk::Entity
-{
-    public:
-        Cipurpfscalar();
-        ~Cipurpfscalar();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cipurpfdropratewindow; //type: int32
-        ydk::YLeaf cipurpfcomputeinterval; //type: int32
-        ydk::YLeaf cipurpfdropnotifyholddowntime; //type: int32
-
-}; // CiscoIpUrpfMib::Cipurpfscalar
-
-
-class CiscoIpUrpfMib::Cipurpftable : public ydk::Entity
-{
-    public:
-        Cipurpftable();
-        ~Cipurpftable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cipurpfentry; //type: CiscoIpUrpfMib::Cipurpftable::Cipurpfentry
-
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpftable::Cipurpfentry> > cipurpfentry;
-        
-}; // CiscoIpUrpfMib::Cipurpftable
-
-
-class CiscoIpUrpfMib::Cipurpftable::Cipurpfentry : public ydk::Entity
-{
-    public:
-        Cipurpfentry();
-        ~Cipurpfentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cipurpfipversion; //type: Cipurpfipversion
-        ydk::YLeaf cipurpfdrops; //type: uint32
-        ydk::YLeaf cipurpfdroprate; //type: uint32
-        class Cipurpfipversion;
-
-}; // CiscoIpUrpfMib::Cipurpftable::Cipurpfentry
-
-
-class CiscoIpUrpfMib::Cipurpfifmontable : public ydk::Entity
+class CISCOIPURPFMIB::Cipurpfifmontable : public ydk::Entity
 {
     public:
         Cipurpfifmontable();
@@ -124,22 +54,23 @@ class CiscoIpUrpfMib::Cipurpfifmontable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cipurpfifmonentry; //type: CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry
+        class Cipurpfifmonentry; //type: CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry> > cipurpfifmonentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry> > cipurpfifmonentry;
         
-}; // CiscoIpUrpfMib::Cipurpfifmontable
+}; // CISCOIPURPFMIB::Cipurpfifmontable
 
 
-class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
+class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
 {
     public:
         Cipurpfifmonentry();
@@ -147,15 +78,16 @@ class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cipurpfifipversion; //type: Cipurpfifipversion
         ydk::YLeaf cipurpfifdrops; //type: uint32
@@ -172,10 +104,83 @@ class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
         class Cipurpfifcheckstrict;
         class Cipurpfifwhichroutetableid;
 
-}; // CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry
+}; // CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry
 
 
-class CiscoIpUrpfMib::Cipurpfvrfiftable : public ydk::Entity
+class CISCOIPURPFMIB::Cipurpfscalar : public ydk::Entity
+{
+    public:
+        Cipurpfscalar();
+        ~Cipurpfscalar();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cipurpfdropratewindow; //type: int32
+        ydk::YLeaf cipurpfcomputeinterval; //type: int32
+        ydk::YLeaf cipurpfdropnotifyholddowntime; //type: int32
+
+}; // CISCOIPURPFMIB::Cipurpfscalar
+
+
+class CISCOIPURPFMIB::Cipurpftable : public ydk::Entity
+{
+    public:
+        Cipurpftable();
+        ~Cipurpftable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cipurpfentry; //type: CISCOIPURPFMIB::Cipurpftable::Cipurpfentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpftable::Cipurpfentry> > cipurpfentry;
+        
+}; // CISCOIPURPFMIB::Cipurpftable
+
+
+class CISCOIPURPFMIB::Cipurpftable::Cipurpfentry : public ydk::Entity
+{
+    public:
+        Cipurpfentry();
+        ~Cipurpfentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cipurpfipversion; //type: Cipurpfipversion
+        ydk::YLeaf cipurpfdrops; //type: uint32
+        ydk::YLeaf cipurpfdroprate; //type: uint32
+        class Cipurpfipversion;
+
+}; // CISCOIPURPFMIB::Cipurpftable::Cipurpfentry
+
+
+class CISCOIPURPFMIB::Cipurpfvrfiftable : public ydk::Entity
 {
     public:
         Cipurpfvrfiftable();
@@ -183,22 +188,23 @@ class CiscoIpUrpfMib::Cipurpfvrfiftable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cipurpfvrfifentry; //type: CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry
+        class Cipurpfvrfifentry; //type: CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry> > cipurpfvrfifentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry> > cipurpfvrfifentry;
         
-}; // CiscoIpUrpfMib::Cipurpfvrfiftable
+}; // CISCOIPURPFMIB::Cipurpfvrfiftable
 
 
-class CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry : public ydk::Entity
+class CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry : public ydk::Entity
 {
     public:
         Cipurpfvrfifentry();
@@ -206,25 +212,26 @@ class CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::cipurpfvrfname)
+        //type: string (refers to cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::cipurpfvrfname)
         ydk::YLeaf cipurpfvrfname;
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cipurpfvrfifdrops; //type: uint32
         ydk::YLeaf cipurpfvrfifdiscontinuitytime; //type: uint32
 
-}; // CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry
+}; // CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry
 
 
-class CiscoIpUrpfMib::Cipurpfvrftable : public ydk::Entity
+class CISCOIPURPFMIB::Cipurpfvrftable : public ydk::Entity
 {
     public:
         Cipurpfvrftable();
@@ -232,22 +239,23 @@ class CiscoIpUrpfMib::Cipurpfvrftable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cipurpfvrfentry; //type: CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry
+        class Cipurpfvrfentry; //type: CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry> > cipurpfvrfentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry> > cipurpfvrfentry;
         
-}; // CiscoIpUrpfMib::Cipurpfvrftable
+}; // CISCOIPURPFMIB::Cipurpfvrftable
 
 
-class CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry : public ydk::Entity
+class CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry : public ydk::Entity
 {
     public:
         Cipurpfvrfentry();
@@ -255,19 +263,20 @@ class CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cipurpfvrfname; //type: string
 
-}; // CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry
+}; // CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry
 
-class Unicastrpftype : public ydk::Enum
+class UnicastRpfType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf strict;
@@ -276,7 +285,7 @@ class Unicastrpftype : public ydk::Enum
 
 };
 
-class CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::Cipurpfipversion : public ydk::Enum
+class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
@@ -284,15 +293,7 @@ class CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::Cipurpfipversion : public ydk:
 
 };
 
-class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict : public ydk::Enum
+class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf strict;
@@ -300,11 +301,19 @@ class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict
 
 };
 
-class CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid : public ydk::Enum
+class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf vrf;
+
+};
+
+class CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::Cipurpfipversion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

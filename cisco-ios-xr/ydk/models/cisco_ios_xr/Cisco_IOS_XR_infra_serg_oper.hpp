@@ -10,177 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_serg_oper {
 
-class SessionRedundancyManager : public ydk::Entity
-{
-    public:
-        SessionRedundancyManager();
-        ~SessionRedundancyManager();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        class Interfaces; //type: SessionRedundancyManager::Interfaces
-        class Groups; //type: SessionRedundancyManager::Groups
-        class Summary; //type: SessionRedundancyManager::Summary
-
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Groups> groups;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Interfaces> interfaces;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Summary> summary;
-        
-}; // SessionRedundancyManager
-
-
-class SessionRedundancyManager::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: SessionRedundancyManager::Interfaces::Interface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Interfaces::Interface> > interface;
-        
-}; // SessionRedundancyManager::Interfaces
-
-
-class SessionRedundancyManager::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_mapping_id; //type: uint32
-        ydk::YLeaf forward_referenced; //type: boolean
-        ydk::YLeaf group_id; //type: uint32
-        ydk::YLeaf role; //type: SergShowImRole
-
-}; // SessionRedundancyManager::Interfaces::Interface
-
-
-class SessionRedundancyManager::Groups : public ydk::Entity
-{
-    public:
-        Groups();
-        ~Groups();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Group; //type: SessionRedundancyManager::Groups::Group
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Groups::Group> > group;
-        
-}; // SessionRedundancyManager::Groups
-
-
-class SessionRedundancyManager::Groups::Group : public ydk::Entity
-{
-    public:
-        Group();
-        ~Group();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf group; //type: string
-        ydk::YLeaf group_id; //type: uint32
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf disabled; //type: boolean
-        ydk::YLeaf role; //type: SergShowImRole
-        ydk::YLeaf peer_ipv4_address; //type: string
-        ydk::YLeaf peer_ipv6_address; //type: string
-        ydk::YLeaf interface_count; //type: uint32
-        ydk::YLeaf preferred_role; //type: SergShowRole
-        ydk::YLeaf slave_mode; //type: SergShowSlaveMode
-        ydk::YLeaf object_tracking_status; //type: boolean
-        ydk::YLeaf node_name; //type: string
-
-}; // SessionRedundancyManager::Groups::Group
-
-
-class SessionRedundancyManager::Summary : public ydk::Entity
-{
-    public:
-        Summary();
-        ~Summary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disabled; //type: boolean
-        ydk::YLeaf active_state; //type: boolean
-        ydk::YLeaf preferred_role; //type: SergShowRole
-        ydk::YLeaf slave_mode; //type: SergShowSlaveMode
-        ydk::YLeaf hold_timer; //type: uint32
-        ydk::YLeaf source_interface_name; //type: string
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf source_interface_ipv4_address; //type: string
-        ydk::YLeaf source_interface_ipv6_address; //type: string
-        ydk::YLeaf group_count; //type: uint32
-        ydk::YLeaf disabled_group_count; //type: uint32
-        ydk::YLeaf master_group_count; //type: uint32
-        ydk::YLeaf slave_group_count; //type: uint32
-        ydk::YLeaf interface_count; //type: uint32
-        ydk::YLeaf master_interface_count; //type: uint32
-        ydk::YLeaf slave_interface_count; //type: uint32
-
-}; // SessionRedundancyManager::Summary
-
 class SessionRedundancyAgent : public ydk::Entity
 {
     public:
@@ -189,7 +18,7 @@ class SessionRedundancyAgent : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -204,7 +33,7 @@ class SessionRedundancyAgent : public ydk::Entity
 
         class Nodes; //type: SessionRedundancyAgent::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes> nodes;
         
 }; // SessionRedundancyAgent
 
@@ -217,17 +46,18 @@ class SessionRedundancyAgent::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: SessionRedundancyAgent::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node> > node;
         
 }; // SessionRedundancyAgent::Nodes
 
@@ -240,13 +70,14 @@ class SessionRedundancyAgent::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
         class GroupIdXr; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr
@@ -257,117 +88,15 @@ class SessionRedundancyAgent::Nodes::Node : public ydk::Entity
         class StatsGlobal; //type: SessionRedundancyAgent::Nodes::Node::StatsGlobal
         class GroupSummaries; //type: SessionRedundancyAgent::Nodes::Node::GroupSummaries
 
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::ClientIds> client_ids;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr> group_id_xr;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds> group_ids;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupSummaries> group_summaries;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces> interfaces;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory> memory;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal> stats_global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::ClientIds> client_ids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr> group_id_xr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds> group_ids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupSummaries> group_summaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory> memory;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal> stats_global;
         
 }; // SessionRedundancyAgent::Nodes::Node
-
-
-class SessionRedundancyAgent::Nodes::Node::GroupIdXr : public ydk::Entity
-{
-    public:
-        GroupIdXr();
-        ~GroupIdXr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class GroupId; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId> > group_id;
-        
-}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr
-
-
-class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public ydk::Entity
-{
-    public:
-        GroupId();
-        ~GroupId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf group_id; //type: string
-        ydk::YLeaf group_id_xr; //type: uint32
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf key_index; //type: string
-        ydk::YLeaf role_master; //type: boolean
-        ydk::YLeaf negative_acknowledgement_update_all; //type: boolean
-        class SessionDetailedInformation; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
-        class SessionSyncErrorInformation; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation> > session_detailed_information;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation> > session_sync_error_information;
-        
-}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
-
-
-class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation : public ydk::Entity
-{
-    public:
-        SessionDetailedInformation();
-        ~SessionDetailedInformation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf component; //type: SergShowComp
-        ydk::YLeaf operation_; //type: SergShowSessionOperation
-        ydk::YLeaf tx_list_queue_fail; //type: boolean
-        ydk::YLeaf marked_for_sweeping; //type: boolean
-        ydk::YLeaf marked_for_cleanup; //type: boolean
-
-}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
-
-
-class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation : public ydk::Entity
-{
-    public:
-        SessionSyncErrorInformation();
-        ~SessionSyncErrorInformation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sync_error_count; //type: uint16
-        ydk::YLeaf last_error_code; //type: uint32
-        ydk::YLeaf last_error_type; //type: SergShowSessionError
-
-}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
 
 class SessionRedundancyAgent::Nodes::Node::ClientIds : public ydk::Entity
@@ -378,7 +107,7 @@ class SessionRedundancyAgent::Nodes::Node::ClientIds : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -388,7 +117,7 @@ class SessionRedundancyAgent::Nodes::Node::ClientIds : public ydk::Entity
 
         class ClientId; //type: SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId> > client_id;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId> > client_id;
         
 }; // SessionRedundancyAgent::Nodes::Node::ClientIds
 
@@ -401,7 +130,7 @@ class SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -461,15 +190,15 @@ class SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId : public ydk::Ent
 }; // SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId
 
 
-class SessionRedundancyAgent::Nodes::Node::Memory : public ydk::Entity
+class SessionRedundancyAgent::Nodes::Node::GroupIdXr : public ydk::Entity
 {
     public:
-        Memory();
-        ~Memory();
+        GroupIdXr();
+        ~GroupIdXr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -477,26 +206,22 @@ class SessionRedundancyAgent::Nodes::Node::Memory : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MemoryInfo; //type: SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo
-        class EdmMemoryInfo; //type: SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo
-        class StringMemoryInfo; //type: SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo
+        class GroupId; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo> > edm_memory_info;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo> > memory_info;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo> > string_memory_info;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId> > group_id;
         
-}; // SessionRedundancyAgent::Nodes::Node::Memory
+}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr
 
 
-class SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo : public ydk::Entity
+class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public ydk::Entity
 {
     public:
-        MemoryInfo();
-        ~MemoryInfo();
+        GroupId();
+        ~GroupId();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -504,26 +229,30 @@ class SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf structure_name; //type: string
-        ydk::YLeaf size; //type: uint32
-        ydk::YLeaf current_count; //type: uint32
-        ydk::YLeaf alloc_fails; //type: uint32
-        ydk::YLeaf alloc_count; //type: uint32
-        ydk::YLeaf freed_count; //type: uint32
-        ydk::YLeaf memory_type; //type: SergShowMem
+        ydk::YLeaf group_id; //type: string
+        ydk::YLeaf group_id_xr; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf key_index; //type: string
+        ydk::YLeaf role_master; //type: boolean
+        ydk::YLeaf negative_acknowledgement_update_all; //type: boolean
+        class SessionDetailedInformation; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
+        class SessionSyncErrorInformation; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
-}; // SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation> > session_detailed_information;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation> > session_sync_error_information;
+        
+}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
 
 
-class SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo : public ydk::Entity
+class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation : public ydk::Entity
 {
     public:
-        EdmMemoryInfo();
-        ~EdmMemoryInfo();
+        SessionDetailedInformation();
+        ~SessionDetailedInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -531,23 +260,24 @@ class SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf size; //type: uint32
-        ydk::YLeaf total; //type: uint32
-        ydk::YLeaf success; //type: uint32
-        ydk::YLeaf failure; //type: uint32
+        ydk::YLeaf component; //type: SergShowComp
+        ydk::YLeaf operation_; //type: SergShowSessionOperation
+        ydk::YLeaf tx_list_queue_fail; //type: boolean
+        ydk::YLeaf marked_for_sweeping; //type: boolean
+        ydk::YLeaf marked_for_cleanup; //type: boolean
 
-}; // SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo
+}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
 
 
-class SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo : public ydk::Entity
+class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation : public ydk::Entity
 {
     public:
-        StringMemoryInfo();
-        ~StringMemoryInfo();
+        SessionSyncErrorInformation();
+        ~SessionSyncErrorInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -555,12 +285,11 @@ class SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf size; //type: uint32
-        ydk::YLeaf total; //type: uint32
-        ydk::YLeaf success; //type: uint32
-        ydk::YLeaf failure; //type: uint32
+        ydk::YLeaf sync_error_count; //type: uint16
+        ydk::YLeaf last_error_code; //type: uint32
+        ydk::YLeaf last_error_type; //type: SergShowSessionError
 
-}; // SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo
+}; // SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
 
 class SessionRedundancyAgent::Nodes::Node::GroupIds : public ydk::Entity
@@ -571,7 +300,7 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -581,7 +310,7 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds : public ydk::Entity
 
         class GroupId; //type: SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId> > group_id;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId> > group_id;
         
 }; // SessionRedundancyAgent::Nodes::Node::GroupIds
 
@@ -594,7 +323,7 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -640,8 +369,8 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::Entit
         class ClientSessionCount; //type: SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount
         class Interface; //type: SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount> > client_session_count;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount> > client_session_count;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface> > interface;
         
 }; // SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
@@ -654,7 +383,7 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -676,7 +405,7 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -692,6 +421,62 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : public
 }; // SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
 
+class SessionRedundancyAgent::Nodes::Node::GroupSummaries : public ydk::Entity
+{
+    public:
+        GroupSummaries();
+        ~GroupSummaries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class GroupSummary; //type: SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary> > group_summary;
+        
+}; // SessionRedundancyAgent::Nodes::Node::GroupSummaries
+
+
+class SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary : public ydk::Entity
+{
+    public:
+        GroupSummary();
+        ~GroupSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf group_id; //type: string
+        ydk::YLeaf group_id_xr; //type: uint32
+        ydk::YLeaf role; //type: SergShowImRole
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf peer_ipv4_address; //type: string
+        ydk::YLeaf peer_ipv6_address; //type: string
+        ydk::YLeaf peer_status; //type: SergPeerStatus
+        ydk::YLeaf preferred_role; //type: SergShowRole
+        ydk::YLeaf slave_mode; //type: SergShowSlaveMode
+        ydk::YLeaf object_tracking_status; //type: boolean
+        ydk::YLeaf interface_count; //type: uint32
+        ydk::YLeaf session_count; //type: uint32
+        ydk::YLeaf pending_add_session_count; //type: uint32
+
+}; // SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
+
+
 class SessionRedundancyAgent::Nodes::Node::Interfaces : public ydk::Entity
 {
     public:
@@ -700,7 +485,7 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -710,7 +495,7 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: SessionRedundancyAgent::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface> > interface;
         
 }; // SessionRedundancyAgent::Nodes::Node::Interfaces
 
@@ -723,7 +508,7 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -747,11 +532,35 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface : public ydk::E
         class InterfaceStatus; //type: SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus
         class ClientStatus; //type: SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus> > client_status;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper> interface_oper;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus> interface_status;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus> > client_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper> interface_oper;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus> interface_status;
         
 }; // SessionRedundancyAgent::Nodes::Node::Interfaces::Interface
+
+
+class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus : public ydk::Entity
+{
+    public:
+        ClientStatus();
+        ~ClientStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf component; //type: SergShowComp
+        ydk::YLeaf serg_show_idb_client_eoms_pending; //type: boolean
+        ydk::YLeaf serg_show_idb_client_sync_eod_pending; //type: boolean
+        ydk::YLeaf session_count; //type: uint32
+
+}; // SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus
 
 
 class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper : public ydk::Entity
@@ -762,7 +571,7 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -787,7 +596,7 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -807,15 +616,15 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatu
 }; // SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus
 
 
-class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus : public ydk::Entity
+class SessionRedundancyAgent::Nodes::Node::Memory : public ydk::Entity
 {
     public:
-        ClientStatus();
-        ~ClientStatus();
+        Memory();
+        ~Memory();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -823,12 +632,90 @@ class SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf component; //type: SergShowComp
-        ydk::YLeaf serg_show_idb_client_eoms_pending; //type: boolean
-        ydk::YLeaf serg_show_idb_client_sync_eod_pending; //type: boolean
-        ydk::YLeaf session_count; //type: uint32
+        class MemoryInfo; //type: SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo
+        class EdmMemoryInfo; //type: SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo
+        class StringMemoryInfo; //type: SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo
 
-}; // SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo> > edm_memory_info;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo> > memory_info;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo> > string_memory_info;
+        
+}; // SessionRedundancyAgent::Nodes::Node::Memory
+
+
+class SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo : public ydk::Entity
+{
+    public:
+        EdmMemoryInfo();
+        ~EdmMemoryInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf size; //type: uint32
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf success; //type: uint32
+        ydk::YLeaf failure; //type: uint32
+
+}; // SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo
+
+
+class SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo : public ydk::Entity
+{
+    public:
+        MemoryInfo();
+        ~MemoryInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf structure_name; //type: string
+        ydk::YLeaf size; //type: uint32
+        ydk::YLeaf current_count; //type: uint32
+        ydk::YLeaf alloc_fails; //type: uint32
+        ydk::YLeaf alloc_count; //type: uint32
+        ydk::YLeaf freed_count; //type: uint32
+        ydk::YLeaf memory_type; //type: SergShowMem
+
+}; // SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo
+
+
+class SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo : public ydk::Entity
+{
+    public:
+        StringMemoryInfo();
+        ~StringMemoryInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf size; //type: uint32
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf success; //type: uint32
+        ydk::YLeaf failure; //type: uint32
+
+}; // SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo
 
 
 class SessionRedundancyAgent::Nodes::Node::StatsGlobal : public ydk::Entity
@@ -839,7 +726,7 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -887,67 +774,13 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal : public ydk::Entity
         class OpaqueMemoryStatus; //type: SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus
         class TxListOverTcpStatus; //type: SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus> > client_status;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics> intf_status_statistics;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus> > opaque_memory_status;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus> > tx_list_over_tcp_status;
-        std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics> tx_list_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus> > client_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics> intf_status_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus> > opaque_memory_status;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus> > tx_list_over_tcp_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics> tx_list_statistics;
         
 }; // SessionRedundancyAgent::Nodes::Node::StatsGlobal
-
-
-class SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics : public ydk::Entity
-{
-    public:
-        IntfStatusStatistics();
-        ~IntfStatusStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pend_caps_rem_cnt; //type: uint32
-        ydk::YLeaf pend_reg_disable_cnt; //type: uint32
-        ydk::YLeaf pend_other_batch_oper_cnt; //type: uint32
-        ydk::YLeaf non_stale_cnt; //type: uint32
-        ydk::YLeaf grp_bound_cnt; //type: uint32
-
-}; // SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics
-
-
-class SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics : public ydk::Entity
-{
-    public:
-        TxListStatistics();
-        ~TxListStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tx_list_encode_marker_ok; //type: uint32
-        ydk::YLeaf tx_list_encode_marker_partial_write; //type: uint32
-        ydk::YLeaf tx_list_clean_marker; //type: uint32
-        ydk::YLeaf tx_list_encode_command_ok; //type: uint32
-        ydk::YLeaf tx_list_encode_command_partial_write; //type: uint32
-        ydk::YLeaf tx_list_clean_command; //type: uint32
-        ydk::YLeaf tx_list_encode_negotiation_ok; //type: uint32
-        ydk::YLeaf tx_list_encode_negotiation_partial_write; //type: uint32
-        ydk::YLeaf tx_list_clean_negotiation; //type: uint32
-
-}; // SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics
 
 
 class SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus : public ydk::Entity
@@ -958,7 +791,7 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -977,6 +810,31 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus : public yd
 }; // SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus
 
 
+class SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics : public ydk::Entity
+{
+    public:
+        IntfStatusStatistics();
+        ~IntfStatusStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pend_caps_rem_cnt; //type: uint32
+        ydk::YLeaf pend_reg_disable_cnt; //type: uint32
+        ydk::YLeaf pend_other_batch_oper_cnt; //type: uint32
+        ydk::YLeaf non_stale_cnt; //type: uint32
+        ydk::YLeaf grp_bound_cnt; //type: uint32
+
+}; // SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics
+
+
 class SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus : public ydk::Entity
 {
     public:
@@ -985,7 +843,7 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1010,7 +868,7 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1044,15 +902,15 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus : pu
 }; // SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus
 
 
-class SessionRedundancyAgent::Nodes::Node::GroupSummaries : public ydk::Entity
+class SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics : public ydk::Entity
 {
     public:
-        GroupSummaries();
-        ~GroupSummaries();
+        TxListStatistics();
+        ~TxListStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1060,56 +918,193 @@ class SessionRedundancyAgent::Nodes::Node::GroupSummaries : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class GroupSummary; //type: SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
+        ydk::YLeaf tx_list_encode_marker_ok; //type: uint32
+        ydk::YLeaf tx_list_encode_marker_partial_write; //type: uint32
+        ydk::YLeaf tx_list_clean_marker; //type: uint32
+        ydk::YLeaf tx_list_encode_command_ok; //type: uint32
+        ydk::YLeaf tx_list_encode_command_partial_write; //type: uint32
+        ydk::YLeaf tx_list_clean_command; //type: uint32
+        ydk::YLeaf tx_list_encode_negotiation_ok; //type: uint32
+        ydk::YLeaf tx_list_encode_negotiation_partial_write; //type: uint32
+        ydk::YLeaf tx_list_clean_negotiation; //type: uint32
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_serg_oper::SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary> > group_summary;
+}; // SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics
+
+class SessionRedundancyManager : public ydk::Entity
+{
+    public:
+        SessionRedundancyManager();
+        ~SessionRedundancyManager();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Interfaces; //type: SessionRedundancyManager::Interfaces
+        class Groups; //type: SessionRedundancyManager::Groups
+        class Summary; //type: SessionRedundancyManager::Summary
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Groups> groups;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Summary> summary;
         
-}; // SessionRedundancyAgent::Nodes::Node::GroupSummaries
+}; // SessionRedundancyManager
 
 
-class SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary : public ydk::Entity
+class SessionRedundancyManager::Groups : public ydk::Entity
 {
     public:
-        GroupSummary();
-        ~GroupSummary();
+        Groups();
+        ~Groups();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf group_id; //type: string
-        ydk::YLeaf group_id_xr; //type: uint32
-        ydk::YLeaf role; //type: SergShowImRole
+        class Group; //type: SessionRedundancyManager::Groups::Group
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Groups::Group> > group;
+        
+}; // SessionRedundancyManager::Groups
+
+
+class SessionRedundancyManager::Groups::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf description; //type: string
         ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf role; //type: SergShowImRole
         ydk::YLeaf peer_ipv4_address; //type: string
         ydk::YLeaf peer_ipv6_address; //type: string
-        ydk::YLeaf peer_status; //type: SergPeerStatus
+        ydk::YLeaf interface_count; //type: uint32
         ydk::YLeaf preferred_role; //type: SergShowRole
         ydk::YLeaf slave_mode; //type: SergShowSlaveMode
         ydk::YLeaf object_tracking_status; //type: boolean
-        ydk::YLeaf interface_count; //type: uint32
-        ydk::YLeaf session_count; //type: uint32
-        ydk::YLeaf pending_add_session_count; //type: uint32
+        ydk::YLeaf node_name; //type: string
 
-}; // SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
+}; // SessionRedundancyManager::Groups::Group
 
-class SergShowMem : public ydk::Enum
+
+class SessionRedundancyManager::Interfaces : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf chunk;
-        static const ydk::Enum::YLeaf edm;
-        static const ydk::Enum::YLeaf string;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf unknown;
+        Interfaces();
+        ~Interfaces();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Interface; //type: SessionRedundancyManager::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_oper::SessionRedundancyManager::Interfaces::Interface> > interface;
+        
+}; // SessionRedundancyManager::Interfaces
+
+
+class SessionRedundancyManager::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_mapping_id; //type: uint32
+        ydk::YLeaf forward_referenced; //type: boolean
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf role; //type: SergShowImRole
+
+}; // SessionRedundancyManager::Interfaces::Interface
+
+
+class SessionRedundancyManager::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf active_state; //type: boolean
+        ydk::YLeaf preferred_role; //type: SergShowRole
+        ydk::YLeaf slave_mode; //type: SergShowSlaveMode
+        ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf source_interface_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf source_interface_ipv4_address; //type: string
+        ydk::YLeaf source_interface_ipv6_address; //type: string
+        ydk::YLeaf group_count; //type: uint32
+        ydk::YLeaf disabled_group_count; //type: uint32
+        ydk::YLeaf master_group_count; //type: uint32
+        ydk::YLeaf slave_group_count; //type: uint32
+        ydk::YLeaf interface_count; //type: uint32
+        ydk::YLeaf master_interface_count; //type: uint32
+        ydk::YLeaf slave_interface_count; //type: uint32
+
+}; // SessionRedundancyManager::Summary
 
 class SergShowRole : public ydk::Enum
 {
@@ -1120,52 +1115,15 @@ class SergShowRole : public ydk::Enum
 
 };
 
-class SergShowComp : public ydk::Enum
+class SergShowMem : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf serga;
-        static const ydk::Enum::YLeaf ipv6nd;
-        static const ydk::Enum::YLeaf dhcpv6;
-
-};
-
-class SergShowSessionOperation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf update;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf in_sync;
-
-};
-
-class SergShowSoReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf admin;
-        static const ydk::Enum::YLeaf peer_up;
-        static const ydk::Enum::YLeaf peer_down;
-        static const ydk::Enum::YLeaf object_tracking_status_change;
-        static const ydk::Enum::YLeaf serg_show_so_reason_max;
-
-};
-
-class SergShowSlaveMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf warm;
-        static const ydk::Enum::YLeaf hot;
-
-};
-
-class SergShowImRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf chunk;
+        static const ydk::Enum::YLeaf edm;
+        static const ydk::Enum::YLeaf string;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -1184,12 +1142,61 @@ class SergPeerStatus : public ydk::Enum
 
 };
 
+class SergShowSessionOperation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf update;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf in_sync;
+
+};
+
+class SergShowComp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf serga;
+        static const ydk::Enum::YLeaf ipv6nd;
+        static const ydk::Enum::YLeaf dhcpv6;
+
+};
+
+class SergShowSlaveMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf warm;
+        static const ydk::Enum::YLeaf hot;
+
+};
+
+class SergShowSoReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf admin;
+        static const ydk::Enum::YLeaf peer_up;
+        static const ydk::Enum::YLeaf peer_down;
+        static const ydk::Enum::YLeaf object_tracking_status_change;
+        static const ydk::Enum::YLeaf serg_show_so_reason_max;
+
+};
+
 class SergShowSessionError : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf hard;
         static const ydk::Enum::YLeaf soft;
+
+};
+
+class SergShowImRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 

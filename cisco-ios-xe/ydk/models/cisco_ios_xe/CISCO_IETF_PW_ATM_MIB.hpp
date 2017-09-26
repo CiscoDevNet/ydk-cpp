@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_ATM_MIB {
 
-class CiscoIetfPwAtmMib : public ydk::Entity
+class CISCOIETFPWATMMIB : public ydk::Entity
 {
     public:
-        CiscoIetfPwAtmMib();
-        ~CiscoIetfPwAtmMib();
+        CISCOIETFPWATMMIB();
+        ~CISCOIETFPWATMMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,14 +32,14 @@ class CiscoIetfPwAtmMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpwvcatmtable; //type: CiscoIetfPwAtmMib::Cpwvcatmtable
+        class Cpwvcatmtable; //type: CISCOIETFPWATMMIB::Cpwvcatmtable
 
-        std::shared_ptr<CISCO_IETF_PW_ATM_MIB::CiscoIetfPwAtmMib::Cpwvcatmtable> cpwvcatmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ATM_MIB::CISCOIETFPWATMMIB::Cpwvcatmtable> cpwvcatmtable;
         
-}; // CiscoIetfPwAtmMib
+}; // CISCOIETFPWATMMIB
 
 
-class CiscoIetfPwAtmMib::Cpwvcatmtable : public ydk::Entity
+class CISCOIETFPWATMMIB::Cpwvcatmtable : public ydk::Entity
 {
     public:
         Cpwvcatmtable();
@@ -47,22 +47,23 @@ class CiscoIetfPwAtmMib::Cpwvcatmtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cpwvcatmentry; //type: CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry
+        class Cpwvcatmentry; //type: CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_ATM_MIB::CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry> > cpwvcatmentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ATM_MIB::CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry> > cpwvcatmentry;
         
-}; // CiscoIetfPwAtmMib::Cpwvcatmtable
+}; // CISCOIETFPWATMMIB::Cpwvcatmtable
 
 
-class CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry : public ydk::Entity
+class CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry : public ydk::Entity
 {
     public:
         Cpwvcatmentry();
@@ -70,21 +71,22 @@ class CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwatmif; //type: int32
         ydk::YLeaf cpwatmvpi; //type: int32
         ydk::YLeaf cpwatmvci; //type: int32
         ydk::YLeaf cpwatmclpqosmapping; //type: boolean
-        ydk::YLeaf cpwatmrowstatus; //type: Rowstatus
+        ydk::YLeaf cpwatmrowstatus; //type: RowStatus
         ydk::YLeaf cpwatmoamcellsupported; //type: boolean
         ydk::YLeaf cpwatmqosscalingfactor; //type: int32
         ydk::YLeaf cpwatmcellpacking; //type: boolean
@@ -105,9 +107,9 @@ class CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry : public ydk::Entity
         ydk::YLeaf cpwatmpktsrejected; //type: uint32
         class Cpwatmencap;
 
-}; // CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry
+}; // CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry
 
-class CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap : public ydk::Enum
+class CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf mpls;

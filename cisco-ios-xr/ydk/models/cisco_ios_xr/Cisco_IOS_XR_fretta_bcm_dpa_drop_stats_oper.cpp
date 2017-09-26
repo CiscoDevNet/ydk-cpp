@@ -17,7 +17,7 @@ Drop::Drop()
 {
     nodes->parent = this;
 
-    yang_name = "drop"; yang_parent_name = "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper";
+    yang_name = "drop"; yang_parent_name = "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Drop::~Drop()
@@ -39,26 +39,15 @@ std::string Drop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper:drop";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Drop::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Drop::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Drop::has_leaf_or_child_of_name(const std::string & name) const
 
 Drop::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "drop";
+
+    yang_name = "nodes"; yang_parent_name = "drop"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Drop::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Drop::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Drop::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper:drop/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Drop::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Drop::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Drop::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper:drop/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ Drop::Nodes::Node::Node()
 {
     npu_number_for_drop_stats->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Drop::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool Drop::Nodes::Node::has_operation() const
 	|| (npu_number_for_drop_stats !=  nullptr && npu_number_for_drop_stats->has_operation());
 }
 
+std::string Drop::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper:drop/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Drop::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Drop::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Drop::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fretta-bcm-dpa-drop-stats-oper:drop/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool Drop::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 
 Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStats()
 {
-    yang_name = "npu-number-for-drop-stats"; yang_parent_name = "node";
+
+    yang_name = "npu-number-for-drop-stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Drop::Nodes::Node::NpuNumberForDropStats::~NpuNumberForDropStats()
@@ -375,29 +352,15 @@ std::string Drop::Nodes::Node::NpuNumberForDropStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-number-for-drop-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Drop::Nodes::Node::NpuNumberForDropStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Drop::Nodes::Node::NpuNumberForDropStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForDropStats' in Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -452,7 +415,8 @@ Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::NpuNumberForDrop
     :
     npu_id{YType::int32, "npu-id"}
 {
-    yang_name = "npu-number-for-drop-stat"; yang_parent_name = "npu-number-for-drop-stats";
+
+    yang_name = "npu-number-for-drop-stat"; yang_parent_name = "npu-number-for-drop-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::~NpuNumberForDropStat()
@@ -484,30 +448,16 @@ std::string Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-number-for-drop-stat" <<"[npu-id='" <<npu_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForDropStat' in Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -575,7 +525,8 @@ Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStat
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "drop-specific-stats-data"; yang_parent_name = "npu-number-for-drop-stat";
+
+    yang_name = "drop-specific-stats-data"; yang_parent_name = "npu-number-for-drop-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::~DropSpecificStatsData()
@@ -603,23 +554,11 @@ std::string Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::Drop
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-specific-stats-data" <<"[drop-data='" <<drop_data <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DropSpecificStatsData' in Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (drop_data.is_set || is_set(drop_data.yfilter)) leaf_name_data.push_back(drop_data.get_name_leafdata());
@@ -627,9 +566,7 @@ const EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat:
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

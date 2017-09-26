@@ -14,126 +14,140 @@ namespace cisco_odm {
 Parsername::Parsername()
      : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:parsername")
 {
+
 }
 
 Parsername::~Parsername()
 {
 }
 
-Mplsstaticbinding::Mplsstaticbinding()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSStaticBinding")
-{
-}
-
-Mplsstaticbinding::~Mplsstaticbinding()
-{
-}
-
-Mplsforwardingtable::Mplsforwardingtable()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSForwardingTable")
-{
-}
-
-Mplsforwardingtable::~Mplsforwardingtable()
-{
-}
-
-Bridgedomain::Bridgedomain()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BridgeDomain")
-{
-}
-
-Bridgedomain::~Bridgedomain()
-{
-}
-
-Platformsoftware::Platformsoftware()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:PlatformSoftware")
-{
-}
-
-Platformsoftware::~Platformsoftware()
-{
-}
-
-Virtualservice::Virtualservice()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:VirtualService")
-{
-}
-
-Virtualservice::~Virtualservice()
-{
-}
-
-Ospf::Ospf()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:OSPF")
-{
-}
-
-Ospf::~Ospf()
-{
-}
-
-Bfdneighbors::Bfdneighbors()
+BFDNeighbors::BFDNeighbors()
      : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BFDNeighbors")
 {
+
 }
 
-Bfdneighbors::~Bfdneighbors()
+BFDNeighbors::~BFDNeighbors()
 {
 }
 
-Flowmonitor::Flowmonitor()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:FlowMonitor")
-{
-}
-
-Flowmonitor::~Flowmonitor()
-{
-}
-
-Ethernetcfmstats::Ethernetcfmstats()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:EthernetCFMStats")
-{
-}
-
-Ethernetcfmstats::~Ethernetcfmstats()
-{
-}
-
-Bgp::Bgp()
+BGP::BGP()
      : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BGP")
 {
+
 }
 
-Bgp::~Bgp()
+BGP::~BGP()
 {
 }
 
-Mplsldpneighbors::Mplsldpneighbors()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSLDPNeighbors")
+BridgeDomain::BridgeDomain()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BridgeDomain")
 {
+
 }
 
-Mplsldpneighbors::~Mplsldpneighbors()
+BridgeDomain::~BridgeDomain()
 {
 }
 
 Diffserv::Diffserv()
      : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:Diffserv")
 {
+
 }
 
 Diffserv::~Diffserv()
 {
 }
 
-Iproute::Iproute()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:IPRoute")
+EthernetCFMStats::EthernetCFMStats()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:EthernetCFMStats")
+{
+
+}
+
+EthernetCFMStats::~EthernetCFMStats()
 {
 }
 
-Iproute::~Iproute()
+FlowMonitor::FlowMonitor()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:FlowMonitor")
+{
+
+}
+
+FlowMonitor::~FlowMonitor()
+{
+}
+
+IPRoute::IPRoute()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:IPRoute")
+{
+
+}
+
+IPRoute::~IPRoute()
+{
+}
+
+MPLSForwardingTable::MPLSForwardingTable()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSForwardingTable")
+{
+
+}
+
+MPLSForwardingTable::~MPLSForwardingTable()
+{
+}
+
+MPLSLDPNeighbors::MPLSLDPNeighbors()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSLDPNeighbors")
+{
+
+}
+
+MPLSLDPNeighbors::~MPLSLDPNeighbors()
+{
+}
+
+MPLSStaticBinding::MPLSStaticBinding()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSStaticBinding")
+{
+
+}
+
+MPLSStaticBinding::~MPLSStaticBinding()
+{
+}
+
+OSPF::OSPF()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:OSPF")
+{
+
+}
+
+OSPF::~OSPF()
+{
+}
+
+PlatformSoftware::PlatformSoftware()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:PlatformSoftware")
+{
+
+}
+
+PlatformSoftware::~PlatformSoftware()
+{
+}
+
+VirtualService::VirtualService()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:VirtualService")
+{
+
+}
+
+VirtualService::~VirtualService()
 {
 }
 

@@ -11,101 +11,62 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_SIP_UA_MIB {
 
-Ciscosipuamibnotificationprefix::Ciscosipuamibnotificationprefix()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB:ciscoSipUaMIBNotificationPrefix")
-{
-}
-
-Ciscosipuamibnotificationprefix::~Ciscosipuamibnotificationprefix()
-{
-}
-
-Ciscosipuamibnotifications::Ciscosipuamibnotifications()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB:ciscoSipUaMIBNotifications")
-{
-}
-
-Ciscosipuamibnotifications::~Ciscosipuamibnotifications()
-{
-}
-
-CiscoSipUaMib::CiscoSipUaMib()
+CISCOSIPUAMIB::CISCOSIPUAMIB()
     :
-    csipcfgaaa(std::make_shared<CiscoSipUaMib::Csipcfgaaa>())
-	,csipcfgbase(std::make_shared<CiscoSipUaMib::Csipcfgbase>())
-	,csipcfgbindsourceaddrtable(std::make_shared<CiscoSipUaMib::Csipcfgbindsourceaddrtable>())
-	,csipcfgcausestatustable(std::make_shared<CiscoSipUaMib::Csipcfgcausestatustable>())
-	,csipcfgearlymediatable(std::make_shared<CiscoSipUaMib::Csipcfgearlymediatable>())
-	,csipcfgpeer(std::make_shared<CiscoSipUaMib::Csipcfgpeer>())
-	,csipcfgpeertable(std::make_shared<CiscoSipUaMib::Csipcfgpeertable>())
-	,csipcfgretry(std::make_shared<CiscoSipUaMib::Csipcfgretry>())
-	,csipcfgstatuscausetable(std::make_shared<CiscoSipUaMib::Csipcfgstatuscausetable>())
-	,csipcfgtimer(std::make_shared<CiscoSipUaMib::Csipcfgtimer>())
-	,csipcfgvoiceservicevoip(std::make_shared<CiscoSipUaMib::Csipcfgvoiceservicevoip>())
-	,csipstatsconnection(std::make_shared<CiscoSipUaMib::Csipstatsconnection>())
-	,csipstatserrclient(std::make_shared<CiscoSipUaMib::Csipstatserrclient>())
-	,csipstatserrserver(std::make_shared<CiscoSipUaMib::Csipstatserrserver>())
-	,csipstatsglobalfail(std::make_shared<CiscoSipUaMib::Csipstatsglobalfail>())
-	,csipstatsinfo(std::make_shared<CiscoSipUaMib::Csipstatsinfo>())
-	,csipstatsmisc(std::make_shared<CiscoSipUaMib::Csipstatsmisc>())
-	,csipstatsredirect(std::make_shared<CiscoSipUaMib::Csipstatsredirect>())
-	,csipstatsretry(std::make_shared<CiscoSipUaMib::Csipstatsretry>())
-	,csipstatssuccess(std::make_shared<CiscoSipUaMib::Csipstatssuccess>())
-	,csipstatssuccessoktable(std::make_shared<CiscoSipUaMib::Csipstatssuccessoktable>())
-	,csipstatstraffic(std::make_shared<CiscoSipUaMib::Csipstatstraffic>())
+    csipcfgaaa(std::make_shared<CISCOSIPUAMIB::Csipcfgaaa>())
+	,csipcfgbase(std::make_shared<CISCOSIPUAMIB::Csipcfgbase>())
+	,csipcfgbindsourceaddrtable(std::make_shared<CISCOSIPUAMIB::Csipcfgbindsourceaddrtable>())
+	,csipcfgcausestatustable(std::make_shared<CISCOSIPUAMIB::Csipcfgcausestatustable>())
+	,csipcfgearlymediatable(std::make_shared<CISCOSIPUAMIB::Csipcfgearlymediatable>())
+	,csipcfgpeer(std::make_shared<CISCOSIPUAMIB::Csipcfgpeer>())
+	,csipcfgpeertable(std::make_shared<CISCOSIPUAMIB::Csipcfgpeertable>())
+	,csipcfgretry(std::make_shared<CISCOSIPUAMIB::Csipcfgretry>())
+	,csipcfgstatuscausetable(std::make_shared<CISCOSIPUAMIB::Csipcfgstatuscausetable>())
+	,csipcfgtimer(std::make_shared<CISCOSIPUAMIB::Csipcfgtimer>())
+	,csipcfgvoiceservicevoip(std::make_shared<CISCOSIPUAMIB::Csipcfgvoiceservicevoip>())
+	,csipstatsconnection(std::make_shared<CISCOSIPUAMIB::Csipstatsconnection>())
+	,csipstatserrclient(std::make_shared<CISCOSIPUAMIB::Csipstatserrclient>())
+	,csipstatserrserver(std::make_shared<CISCOSIPUAMIB::Csipstatserrserver>())
+	,csipstatsglobalfail(std::make_shared<CISCOSIPUAMIB::Csipstatsglobalfail>())
+	,csipstatsinfo(std::make_shared<CISCOSIPUAMIB::Csipstatsinfo>())
+	,csipstatsmisc(std::make_shared<CISCOSIPUAMIB::Csipstatsmisc>())
+	,csipstatsredirect(std::make_shared<CISCOSIPUAMIB::Csipstatsredirect>())
+	,csipstatsretry(std::make_shared<CISCOSIPUAMIB::Csipstatsretry>())
+	,csipstatssuccess(std::make_shared<CISCOSIPUAMIB::Csipstatssuccess>())
+	,csipstatssuccessoktable(std::make_shared<CISCOSIPUAMIB::Csipstatssuccessoktable>())
+	,csipstatstraffic(std::make_shared<CISCOSIPUAMIB::Csipstatstraffic>())
 {
     csipcfgaaa->parent = this;
-
     csipcfgbase->parent = this;
-
     csipcfgbindsourceaddrtable->parent = this;
-
     csipcfgcausestatustable->parent = this;
-
     csipcfgearlymediatable->parent = this;
-
     csipcfgpeer->parent = this;
-
     csipcfgpeertable->parent = this;
-
     csipcfgretry->parent = this;
-
     csipcfgstatuscausetable->parent = this;
-
     csipcfgtimer->parent = this;
-
     csipcfgvoiceservicevoip->parent = this;
-
     csipstatsconnection->parent = this;
-
     csipstatserrclient->parent = this;
-
     csipstatserrserver->parent = this;
-
     csipstatsglobalfail->parent = this;
-
     csipstatsinfo->parent = this;
-
     csipstatsmisc->parent = this;
-
     csipstatsredirect->parent = this;
-
     csipstatsretry->parent = this;
-
     csipstatssuccess->parent = this;
-
     csipstatssuccessoktable->parent = this;
-
     csipstatstraffic->parent = this;
 
-    yang_name = "CISCO-SIP-UA-MIB"; yang_parent_name = "CISCO-SIP-UA-MIB";
+    yang_name = "CISCO-SIP-UA-MIB"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::~CiscoSipUaMib()
+CISCOSIPUAMIB::~CISCOSIPUAMIB()
 {
 }
 
-bool CiscoSipUaMib::has_data() const
+bool CISCOSIPUAMIB::has_data() const
 {
     return (csipcfgaaa !=  nullptr && csipcfgaaa->has_data())
 	|| (csipcfgbase !=  nullptr && csipcfgbase->has_data())
@@ -131,7 +92,7 @@ bool CiscoSipUaMib::has_data() const
 	|| (csipstatstraffic !=  nullptr && csipstatstraffic->has_data());
 }
 
-bool CiscoSipUaMib::has_operation() const
+bool CISCOSIPUAMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (csipcfgaaa !=  nullptr && csipcfgaaa->has_operation())
@@ -158,40 +119,29 @@ bool CiscoSipUaMib::has_operation() const
 	|| (csipstatstraffic !=  nullptr && csipstatstraffic->has_operation());
 }
 
-std::string CiscoSipUaMib::get_segment_path() const
+std::string CISCOSIPUAMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgAaa")
     {
         if(csipcfgaaa == nullptr)
         {
-            csipcfgaaa = std::make_shared<CiscoSipUaMib::Csipcfgaaa>();
+            csipcfgaaa = std::make_shared<CISCOSIPUAMIB::Csipcfgaaa>();
         }
         return csipcfgaaa;
     }
@@ -200,7 +150,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgbase == nullptr)
         {
-            csipcfgbase = std::make_shared<CiscoSipUaMib::Csipcfgbase>();
+            csipcfgbase = std::make_shared<CISCOSIPUAMIB::Csipcfgbase>();
         }
         return csipcfgbase;
     }
@@ -209,7 +159,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgbindsourceaddrtable == nullptr)
         {
-            csipcfgbindsourceaddrtable = std::make_shared<CiscoSipUaMib::Csipcfgbindsourceaddrtable>();
+            csipcfgbindsourceaddrtable = std::make_shared<CISCOSIPUAMIB::Csipcfgbindsourceaddrtable>();
         }
         return csipcfgbindsourceaddrtable;
     }
@@ -218,7 +168,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgcausestatustable == nullptr)
         {
-            csipcfgcausestatustable = std::make_shared<CiscoSipUaMib::Csipcfgcausestatustable>();
+            csipcfgcausestatustable = std::make_shared<CISCOSIPUAMIB::Csipcfgcausestatustable>();
         }
         return csipcfgcausestatustable;
     }
@@ -227,7 +177,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgearlymediatable == nullptr)
         {
-            csipcfgearlymediatable = std::make_shared<CiscoSipUaMib::Csipcfgearlymediatable>();
+            csipcfgearlymediatable = std::make_shared<CISCOSIPUAMIB::Csipcfgearlymediatable>();
         }
         return csipcfgearlymediatable;
     }
@@ -236,7 +186,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgpeer == nullptr)
         {
-            csipcfgpeer = std::make_shared<CiscoSipUaMib::Csipcfgpeer>();
+            csipcfgpeer = std::make_shared<CISCOSIPUAMIB::Csipcfgpeer>();
         }
         return csipcfgpeer;
     }
@@ -245,7 +195,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgpeertable == nullptr)
         {
-            csipcfgpeertable = std::make_shared<CiscoSipUaMib::Csipcfgpeertable>();
+            csipcfgpeertable = std::make_shared<CISCOSIPUAMIB::Csipcfgpeertable>();
         }
         return csipcfgpeertable;
     }
@@ -254,7 +204,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgretry == nullptr)
         {
-            csipcfgretry = std::make_shared<CiscoSipUaMib::Csipcfgretry>();
+            csipcfgretry = std::make_shared<CISCOSIPUAMIB::Csipcfgretry>();
         }
         return csipcfgretry;
     }
@@ -263,7 +213,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgstatuscausetable == nullptr)
         {
-            csipcfgstatuscausetable = std::make_shared<CiscoSipUaMib::Csipcfgstatuscausetable>();
+            csipcfgstatuscausetable = std::make_shared<CISCOSIPUAMIB::Csipcfgstatuscausetable>();
         }
         return csipcfgstatuscausetable;
     }
@@ -272,7 +222,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgtimer == nullptr)
         {
-            csipcfgtimer = std::make_shared<CiscoSipUaMib::Csipcfgtimer>();
+            csipcfgtimer = std::make_shared<CISCOSIPUAMIB::Csipcfgtimer>();
         }
         return csipcfgtimer;
     }
@@ -281,7 +231,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipcfgvoiceservicevoip == nullptr)
         {
-            csipcfgvoiceservicevoip = std::make_shared<CiscoSipUaMib::Csipcfgvoiceservicevoip>();
+            csipcfgvoiceservicevoip = std::make_shared<CISCOSIPUAMIB::Csipcfgvoiceservicevoip>();
         }
         return csipcfgvoiceservicevoip;
     }
@@ -290,7 +240,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatsconnection == nullptr)
         {
-            csipstatsconnection = std::make_shared<CiscoSipUaMib::Csipstatsconnection>();
+            csipstatsconnection = std::make_shared<CISCOSIPUAMIB::Csipstatsconnection>();
         }
         return csipstatsconnection;
     }
@@ -299,7 +249,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatserrclient == nullptr)
         {
-            csipstatserrclient = std::make_shared<CiscoSipUaMib::Csipstatserrclient>();
+            csipstatserrclient = std::make_shared<CISCOSIPUAMIB::Csipstatserrclient>();
         }
         return csipstatserrclient;
     }
@@ -308,7 +258,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatserrserver == nullptr)
         {
-            csipstatserrserver = std::make_shared<CiscoSipUaMib::Csipstatserrserver>();
+            csipstatserrserver = std::make_shared<CISCOSIPUAMIB::Csipstatserrserver>();
         }
         return csipstatserrserver;
     }
@@ -317,7 +267,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatsglobalfail == nullptr)
         {
-            csipstatsglobalfail = std::make_shared<CiscoSipUaMib::Csipstatsglobalfail>();
+            csipstatsglobalfail = std::make_shared<CISCOSIPUAMIB::Csipstatsglobalfail>();
         }
         return csipstatsglobalfail;
     }
@@ -326,7 +276,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatsinfo == nullptr)
         {
-            csipstatsinfo = std::make_shared<CiscoSipUaMib::Csipstatsinfo>();
+            csipstatsinfo = std::make_shared<CISCOSIPUAMIB::Csipstatsinfo>();
         }
         return csipstatsinfo;
     }
@@ -335,7 +285,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatsmisc == nullptr)
         {
-            csipstatsmisc = std::make_shared<CiscoSipUaMib::Csipstatsmisc>();
+            csipstatsmisc = std::make_shared<CISCOSIPUAMIB::Csipstatsmisc>();
         }
         return csipstatsmisc;
     }
@@ -344,7 +294,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatsredirect == nullptr)
         {
-            csipstatsredirect = std::make_shared<CiscoSipUaMib::Csipstatsredirect>();
+            csipstatsredirect = std::make_shared<CISCOSIPUAMIB::Csipstatsredirect>();
         }
         return csipstatsredirect;
     }
@@ -353,7 +303,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatsretry == nullptr)
         {
-            csipstatsretry = std::make_shared<CiscoSipUaMib::Csipstatsretry>();
+            csipstatsretry = std::make_shared<CISCOSIPUAMIB::Csipstatsretry>();
         }
         return csipstatsretry;
     }
@@ -362,7 +312,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatssuccess == nullptr)
         {
-            csipstatssuccess = std::make_shared<CiscoSipUaMib::Csipstatssuccess>();
+            csipstatssuccess = std::make_shared<CISCOSIPUAMIB::Csipstatssuccess>();
         }
         return csipstatssuccess;
     }
@@ -371,7 +321,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatssuccessoktable == nullptr)
         {
-            csipstatssuccessoktable = std::make_shared<CiscoSipUaMib::Csipstatssuccessoktable>();
+            csipstatssuccessoktable = std::make_shared<CISCOSIPUAMIB::Csipstatssuccessoktable>();
         }
         return csipstatssuccessoktable;
     }
@@ -380,7 +330,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     {
         if(csipstatstraffic == nullptr)
         {
-            csipstatstraffic = std::make_shared<CiscoSipUaMib::Csipstatstraffic>();
+            csipstatstraffic = std::make_shared<CISCOSIPUAMIB::Csipstatstraffic>();
         }
         return csipstatstraffic;
     }
@@ -388,7 +338,7 @@ std::shared_ptr<Entity> CiscoSipUaMib::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(csipcfgaaa != nullptr)
@@ -504,47 +454,130 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::get_children() con
     return children;
 }
 
-void CiscoSipUaMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoSipUaMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOSIPUAMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoSipUaMib>();
+    return std::make_shared<CISCOSIPUAMIB>();
 }
 
-std::string CiscoSipUaMib::get_bundle_yang_models_location() const
+std::string CISCOSIPUAMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoSipUaMib::get_bundle_name() const
+std::string CISCOSIPUAMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoSipUaMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOSIPUAMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoSipUaMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOSIPUAMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoSipUaMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipCfgAaa" || name == "cSipCfgBase" || name == "cSipCfgBindSourceAddrTable" || name == "cSipCfgCauseStatusTable" || name == "cSipCfgEarlyMediaTable" || name == "cSipCfgPeer" || name == "cSipCfgPeerTable" || name == "cSipCfgRetry" || name == "cSipCfgStatusCauseTable" || name == "cSipCfgTimer" || name == "cSipCfgVoiceServiceVoip" || name == "cSipStatsConnection" || name == "cSipStatsErrClient" || name == "cSipStatsErrServer" || name == "cSipStatsGlobalFail" || name == "cSipStatsInfo" || name == "cSipStatsMisc" || name == "cSipStatsRedirect" || name == "cSipStatsRetry" || name == "cSipStatsSuccess" || name == "cSipStatsSuccessOkTable" || name == "cSipStatsTraffic")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipcfgbase::Csipcfgbase()
+CISCOSIPUAMIB::Csipcfgaaa::Csipcfgaaa()
+    :
+    csipcfgaaausername{YType::enumeration, "cSipCfgAaaUsername"}
+{
+
+    yang_name = "cSipCfgAaa"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgaaa::~Csipcfgaaa()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgaaa::has_data() const
+{
+    return csipcfgaaausername.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgaaa::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgaaausername.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgaaa::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgaaa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgAaa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgaaa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgaaausername.is_set || is_set(csipcfgaaausername.yfilter)) leaf_name_data.push_back(csipcfgaaausername.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgaaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgaaa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgaaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgAaaUsername")
+    {
+        csipcfgaaausername = value;
+        csipcfgaaausername.value_namespace = name_space;
+        csipcfgaaausername.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgaaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgAaaUsername")
+    {
+        csipcfgaaausername.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgaaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgAaaUsername")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgbase::Csipcfgbase()
     :
     csipcfgbindsrcaddrinterface{YType::int32, "cSipCfgBindSrcAddrInterface"},
     csipcfgbindsrcaddrscope{YType::enumeration, "cSipCfgBindSrcAddrScope"},
@@ -561,14 +594,15 @@ CiscoSipUaMib::Csipcfgbase::Csipcfgbase()
     csipcfguserlocationserveraddr{YType::str, "cSipCfgUserLocationServerAddr"},
     csipcfgversion{YType::str, "cSipCfgVersion"}
 {
-    yang_name = "cSipCfgBase"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipCfgBase"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipcfgbase::~Csipcfgbase()
+CISCOSIPUAMIB::Csipcfgbase::~Csipcfgbase()
 {
 }
 
-bool CiscoSipUaMib::Csipcfgbase::has_data() const
+bool CISCOSIPUAMIB::Csipcfgbase::has_data() const
 {
     return csipcfgbindsrcaddrinterface.is_set
 	|| csipcfgbindsrcaddrscope.is_set
@@ -586,7 +620,7 @@ bool CiscoSipUaMib::Csipcfgbase::has_data() const
 	|| csipcfgversion.is_set;
 }
 
-bool CiscoSipUaMib::Csipcfgbase::has_operation() const
+bool CISCOSIPUAMIB::Csipcfgbase::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipcfgbindsrcaddrinterface.yfilter)
@@ -605,27 +639,22 @@ bool CiscoSipUaMib::Csipcfgbase::has_operation() const
 	|| ydk::is_set(csipcfgversion.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipcfgbase::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipcfgbase::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgbase::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipCfgBase";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipcfgbase::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgbase::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipcfgbindsrcaddrinterface.is_set || is_set(csipcfgbindsrcaddrinterface.yfilter)) leaf_name_data.push_back(csipcfgbindsrcaddrinterface.get_name_leafdata());
@@ -643,24 +672,22 @@ const EntityPath CiscoSipUaMib::Csipcfgbase::get_entity_path(Entity* ancestor) c
     if (csipcfguserlocationserveraddr.is_set || is_set(csipcfguserlocationserveraddr.yfilter)) leaf_name_data.push_back(csipcfguserlocationserveraddr.get_name_leafdata());
     if (csipcfgversion.is_set || is_set(csipcfgversion.yfilter)) leaf_name_data.push_back(csipcfgversion.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgbase::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgbase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipcfgbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipcfgbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipCfgBindSrcAddrInterface")
     {
@@ -748,7 +775,7 @@ void CiscoSipUaMib::Csipcfgbase::set_value(const std::string & value_path, const
     }
 }
 
-void CiscoSipUaMib::Csipcfgbase::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipcfgbase::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipCfgBindSrcAddrInterface")
     {
@@ -808,14 +835,1445 @@ void CiscoSipUaMib::Csipcfgbase::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool CiscoSipUaMib::Csipcfgbase::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipcfgbase::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipCfgBindSrcAddrInterface" || name == "cSipCfgBindSrcAddrScope" || name == "cSipCfgDnsSrvQueryStringFormat" || name == "cSipCfgMaxForwards" || name == "cSipCfgMaximumForwards" || name == "cSipCfgOfferCallHold" || name == "cSipCfgReasonHeaderOveride" || name == "cSipCfgRedirectionDisabled" || name == "cSipCfgSuspendResumeEnabled" || name == "cSipCfgSymNatDirectionRole" || name == "cSipCfgSymNatEnabled" || name == "cSipCfgTransport" || name == "cSipCfgUserLocationServerAddr" || name == "cSipCfgVersion")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipcfgtimer::Csipcfgtimer()
+CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrtable()
+{
+
+    yang_name = "cSipCfgBindSourceAddrTable"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::~Csipcfgbindsourceaddrtable()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::has_data() const
+{
+    for (std::size_t index=0; index<csipcfgbindsourceaddrentry.size(); index++)
+    {
+        if(csipcfgbindsourceaddrentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::has_operation() const
+{
+    for (std::size_t index=0; index<csipcfgbindsourceaddrentry.size(); index++)
+    {
+        if(csipcfgbindsourceaddrentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgBindSourceAddrTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cSipCfgBindSourceAddrEntry")
+    {
+        for(auto const & c : csipcfgbindsourceaddrentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry>();
+        c->parent = this;
+        csipcfgbindsourceaddrentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : csipcfgbindsourceaddrentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgBindSourceAddrEntry")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrentry()
+    :
+    csipcfgbindsourceaddrscope{YType::enumeration, "cSipCfgBindSourceAddrScope"},
+    csipcfgbindsourceaddrinterface{YType::int32, "cSipCfgBindSourceAddrInterface"}
+{
+
+    yang_name = "cSipCfgBindSourceAddrEntry"; yang_parent_name = "cSipCfgBindSourceAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::~Csipcfgbindsourceaddrentry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::has_data() const
+{
+    return csipcfgbindsourceaddrscope.is_set
+	|| csipcfgbindsourceaddrinterface.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgbindsourceaddrscope.yfilter)
+	|| ydk::is_set(csipcfgbindsourceaddrinterface.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgBindSourceAddrTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgBindSourceAddrEntry" <<"[cSipCfgBindSourceAddrScope='" <<csipcfgbindsourceaddrscope <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgbindsourceaddrscope.is_set || is_set(csipcfgbindsourceaddrscope.yfilter)) leaf_name_data.push_back(csipcfgbindsourceaddrscope.get_name_leafdata());
+    if (csipcfgbindsourceaddrinterface.is_set || is_set(csipcfgbindsourceaddrinterface.yfilter)) leaf_name_data.push_back(csipcfgbindsourceaddrinterface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgBindSourceAddrScope")
+    {
+        csipcfgbindsourceaddrscope = value;
+        csipcfgbindsourceaddrscope.value_namespace = name_space;
+        csipcfgbindsourceaddrscope.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgBindSourceAddrInterface")
+    {
+        csipcfgbindsourceaddrinterface = value;
+        csipcfgbindsourceaddrinterface.value_namespace = name_space;
+        csipcfgbindsourceaddrinterface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgBindSourceAddrScope")
+    {
+        csipcfgbindsourceaddrscope.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgBindSourceAddrInterface")
+    {
+        csipcfgbindsourceaddrinterface.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgBindSourceAddrScope" || name == "cSipCfgBindSourceAddrInterface")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatustable()
+{
+
+    yang_name = "cSipCfgCauseStatusTable"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgcausestatustable::~Csipcfgcausestatustable()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgcausestatustable::has_data() const
+{
+    for (std::size_t index=0; index<csipcfgcausestatusentry.size(); index++)
+    {
+        if(csipcfgcausestatusentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOSIPUAMIB::Csipcfgcausestatustable::has_operation() const
+{
+    for (std::size_t index=0; index<csipcfgcausestatusentry.size(); index++)
+    {
+        if(csipcfgcausestatusentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgcausestatustable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgcausestatustable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgCauseStatusTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgcausestatustable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgcausestatustable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cSipCfgCauseStatusEntry")
+    {
+        for(auto const & c : csipcfgcausestatusentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry>();
+        c->parent = this;
+        csipcfgcausestatusentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgcausestatustable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : csipcfgcausestatusentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgcausestatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOSIPUAMIB::Csipcfgcausestatustable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgcausestatustable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgCauseStatusEntry")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::Csipcfgcausestatusentry()
+    :
+    csipcfgpstncauseindex{YType::int32, "cSipCfgPstnCauseIndex"},
+    csipcfgcausestatusstorestatus{YType::enumeration, "cSipCfgCauseStatusStoreStatus"},
+    csipcfgstatuscode{YType::int32, "cSipCfgStatusCode"}
+{
+
+    yang_name = "cSipCfgCauseStatusEntry"; yang_parent_name = "cSipCfgCauseStatusTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::~Csipcfgcausestatusentry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::has_data() const
+{
+    return csipcfgpstncauseindex.is_set
+	|| csipcfgcausestatusstorestatus.is_set
+	|| csipcfgstatuscode.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgpstncauseindex.yfilter)
+	|| ydk::is_set(csipcfgcausestatusstorestatus.yfilter)
+	|| ydk::is_set(csipcfgstatuscode.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgCauseStatusTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgCauseStatusEntry" <<"[cSipCfgPstnCauseIndex='" <<csipcfgpstncauseindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgpstncauseindex.is_set || is_set(csipcfgpstncauseindex.yfilter)) leaf_name_data.push_back(csipcfgpstncauseindex.get_name_leafdata());
+    if (csipcfgcausestatusstorestatus.is_set || is_set(csipcfgcausestatusstorestatus.yfilter)) leaf_name_data.push_back(csipcfgcausestatusstorestatus.get_name_leafdata());
+    if (csipcfgstatuscode.is_set || is_set(csipcfgstatuscode.yfilter)) leaf_name_data.push_back(csipcfgstatuscode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgPstnCauseIndex")
+    {
+        csipcfgpstncauseindex = value;
+        csipcfgpstncauseindex.value_namespace = name_space;
+        csipcfgpstncauseindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgCauseStatusStoreStatus")
+    {
+        csipcfgcausestatusstorestatus = value;
+        csipcfgcausestatusstorestatus.value_namespace = name_space;
+        csipcfgcausestatusstorestatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgStatusCode")
+    {
+        csipcfgstatuscode = value;
+        csipcfgstatuscode.value_namespace = name_space;
+        csipcfgstatuscode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgPstnCauseIndex")
+    {
+        csipcfgpstncauseindex.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgCauseStatusStoreStatus")
+    {
+        csipcfgcausestatusstorestatus.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgStatusCode")
+    {
+        csipcfgstatuscode.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgPstnCauseIndex" || name == "cSipCfgCauseStatusStoreStatus" || name == "cSipCfgStatusCode")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediatable()
+{
+
+    yang_name = "cSipCfgEarlyMediaTable"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgearlymediatable::~Csipcfgearlymediatable()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgearlymediatable::has_data() const
+{
+    for (std::size_t index=0; index<csipcfgearlymediaentry.size(); index++)
+    {
+        if(csipcfgearlymediaentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOSIPUAMIB::Csipcfgearlymediatable::has_operation() const
+{
+    for (std::size_t index=0; index<csipcfgearlymediaentry.size(); index++)
+    {
+        if(csipcfgearlymediaentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgearlymediatable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgearlymediatable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgEarlyMediaTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgearlymediatable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgearlymediatable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cSipCfgEarlyMediaEntry")
+    {
+        for(auto const & c : csipcfgearlymediaentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry>();
+        c->parent = this;
+        csipcfgearlymediaentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgearlymediatable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : csipcfgearlymediaentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgearlymediatable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOSIPUAMIB::Csipcfgearlymediatable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgearlymediatable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgEarlyMediaEntry")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::Csipcfgearlymediaentry()
+    :
+    csipcfgearlymediastatuscodeindex{YType::int32, "cSipCfgEarlyMediaStatusCodeIndex"},
+    csipcfgearlymediacutthrudisabled{YType::boolean, "cSipCfgEarlyMediaCutThruDisabled"}
+{
+
+    yang_name = "cSipCfgEarlyMediaEntry"; yang_parent_name = "cSipCfgEarlyMediaTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::~Csipcfgearlymediaentry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::has_data() const
+{
+    return csipcfgearlymediastatuscodeindex.is_set
+	|| csipcfgearlymediacutthrudisabled.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgearlymediastatuscodeindex.yfilter)
+	|| ydk::is_set(csipcfgearlymediacutthrudisabled.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgEarlyMediaTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgEarlyMediaEntry" <<"[cSipCfgEarlyMediaStatusCodeIndex='" <<csipcfgearlymediastatuscodeindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgearlymediastatuscodeindex.is_set || is_set(csipcfgearlymediastatuscodeindex.yfilter)) leaf_name_data.push_back(csipcfgearlymediastatuscodeindex.get_name_leafdata());
+    if (csipcfgearlymediacutthrudisabled.is_set || is_set(csipcfgearlymediacutthrudisabled.yfilter)) leaf_name_data.push_back(csipcfgearlymediacutthrudisabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgEarlyMediaStatusCodeIndex")
+    {
+        csipcfgearlymediastatuscodeindex = value;
+        csipcfgearlymediastatuscodeindex.value_namespace = name_space;
+        csipcfgearlymediastatuscodeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgEarlyMediaCutThruDisabled")
+    {
+        csipcfgearlymediacutthrudisabled = value;
+        csipcfgearlymediacutthrudisabled.value_namespace = name_space;
+        csipcfgearlymediacutthrudisabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgEarlyMediaStatusCodeIndex")
+    {
+        csipcfgearlymediastatuscodeindex.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgEarlyMediaCutThruDisabled")
+    {
+        csipcfgearlymediacutthrudisabled.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgEarlyMediaStatusCodeIndex" || name == "cSipCfgEarlyMediaCutThruDisabled")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgpeer::Csipcfgpeer()
+    :
+    csipcfgoutsessiontransport{YType::enumeration, "cSipCfgOutSessionTransport"},
+    csipcfgreliable1xxrsphdr{YType::enumeration, "cSipCfgReliable1xxRspHdr"},
+    csipcfgreliable1xxrspstr{YType::str, "cSipCfgReliable1xxRspStr"},
+    csipcfgurltype{YType::enumeration, "cSipCfgUrlType"}
+{
+
+    yang_name = "cSipCfgPeer"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgpeer::~Csipcfgpeer()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeer::has_data() const
+{
+    return csipcfgoutsessiontransport.is_set
+	|| csipcfgreliable1xxrsphdr.is_set
+	|| csipcfgreliable1xxrspstr.is_set
+	|| csipcfgurltype.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgoutsessiontransport.yfilter)
+	|| ydk::is_set(csipcfgreliable1xxrsphdr.yfilter)
+	|| ydk::is_set(csipcfgreliable1xxrspstr.yfilter)
+	|| ydk::is_set(csipcfgurltype.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgpeer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgpeer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgPeer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgpeer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgoutsessiontransport.is_set || is_set(csipcfgoutsessiontransport.yfilter)) leaf_name_data.push_back(csipcfgoutsessiontransport.get_name_leafdata());
+    if (csipcfgreliable1xxrsphdr.is_set || is_set(csipcfgreliable1xxrsphdr.yfilter)) leaf_name_data.push_back(csipcfgreliable1xxrsphdr.get_name_leafdata());
+    if (csipcfgreliable1xxrspstr.is_set || is_set(csipcfgreliable1xxrspstr.yfilter)) leaf_name_data.push_back(csipcfgreliable1xxrspstr.get_name_leafdata());
+    if (csipcfgurltype.is_set || is_set(csipcfgurltype.yfilter)) leaf_name_data.push_back(csipcfgurltype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgpeer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgpeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgOutSessionTransport")
+    {
+        csipcfgoutsessiontransport = value;
+        csipcfgoutsessiontransport.value_namespace = name_space;
+        csipcfgoutsessiontransport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgReliable1xxRspHdr")
+    {
+        csipcfgreliable1xxrsphdr = value;
+        csipcfgreliable1xxrsphdr.value_namespace = name_space;
+        csipcfgreliable1xxrsphdr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgReliable1xxRspStr")
+    {
+        csipcfgreliable1xxrspstr = value;
+        csipcfgreliable1xxrspstr.value_namespace = name_space;
+        csipcfgreliable1xxrspstr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgUrlType")
+    {
+        csipcfgurltype = value;
+        csipcfgurltype.value_namespace = name_space;
+        csipcfgurltype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgpeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgOutSessionTransport")
+    {
+        csipcfgoutsessiontransport.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgReliable1xxRspHdr")
+    {
+        csipcfgreliable1xxrsphdr.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgReliable1xxRspStr")
+    {
+        csipcfgreliable1xxrspstr.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgUrlType")
+    {
+        csipcfgurltype.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgOutSessionTransport" || name == "cSipCfgReliable1xxRspHdr" || name == "cSipCfgReliable1xxRspStr" || name == "cSipCfgUrlType")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeertable()
+{
+
+    yang_name = "cSipCfgPeerTable"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgpeertable::~Csipcfgpeertable()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeertable::has_data() const
+{
+    for (std::size_t index=0; index<csipcfgpeerentry.size(); index++)
+    {
+        if(csipcfgpeerentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeertable::has_operation() const
+{
+    for (std::size_t index=0; index<csipcfgpeerentry.size(); index++)
+    {
+        if(csipcfgpeerentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgpeertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgpeertable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgPeerTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgpeertable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cSipCfgPeerEntry")
+    {
+        for(auto const & c : csipcfgpeerentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry>();
+        c->parent = this;
+        csipcfgpeerentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgpeertable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : csipcfgpeerentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgpeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOSIPUAMIB::Csipcfgpeertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgPeerEntry")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerentry()
+    :
+    csipcfgpeerindex{YType::int32, "cSipCfgPeerIndex"},
+    csipcfgpeeroutsessiontransport{YType::enumeration, "cSipCfgPeerOutSessionTransport"},
+    csipcfgpeerreliable1xxrsphdr{YType::enumeration, "cSipCfgPeerReliable1xxRspHdr"},
+    csipcfgpeerreliable1xxrspstr{YType::str, "cSipCfgPeerReliable1xxRspStr"},
+    csipcfgpeerswitchtransenabled{YType::boolean, "cSipCfgPeerSwitchTransEnabled"},
+    csipcfgpeerurltype{YType::enumeration, "cSipCfgPeerUrlType"}
+{
+
+    yang_name = "cSipCfgPeerEntry"; yang_parent_name = "cSipCfgPeerTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::~Csipcfgpeerentry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::has_data() const
+{
+    return csipcfgpeerindex.is_set
+	|| csipcfgpeeroutsessiontransport.is_set
+	|| csipcfgpeerreliable1xxrsphdr.is_set
+	|| csipcfgpeerreliable1xxrspstr.is_set
+	|| csipcfgpeerswitchtransenabled.is_set
+	|| csipcfgpeerurltype.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgpeerindex.yfilter)
+	|| ydk::is_set(csipcfgpeeroutsessiontransport.yfilter)
+	|| ydk::is_set(csipcfgpeerreliable1xxrsphdr.yfilter)
+	|| ydk::is_set(csipcfgpeerreliable1xxrspstr.yfilter)
+	|| ydk::is_set(csipcfgpeerswitchtransenabled.yfilter)
+	|| ydk::is_set(csipcfgpeerurltype.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgPeerTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgPeerEntry" <<"[cSipCfgPeerIndex='" <<csipcfgpeerindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgpeerindex.is_set || is_set(csipcfgpeerindex.yfilter)) leaf_name_data.push_back(csipcfgpeerindex.get_name_leafdata());
+    if (csipcfgpeeroutsessiontransport.is_set || is_set(csipcfgpeeroutsessiontransport.yfilter)) leaf_name_data.push_back(csipcfgpeeroutsessiontransport.get_name_leafdata());
+    if (csipcfgpeerreliable1xxrsphdr.is_set || is_set(csipcfgpeerreliable1xxrsphdr.yfilter)) leaf_name_data.push_back(csipcfgpeerreliable1xxrsphdr.get_name_leafdata());
+    if (csipcfgpeerreliable1xxrspstr.is_set || is_set(csipcfgpeerreliable1xxrspstr.yfilter)) leaf_name_data.push_back(csipcfgpeerreliable1xxrspstr.get_name_leafdata());
+    if (csipcfgpeerswitchtransenabled.is_set || is_set(csipcfgpeerswitchtransenabled.yfilter)) leaf_name_data.push_back(csipcfgpeerswitchtransenabled.get_name_leafdata());
+    if (csipcfgpeerurltype.is_set || is_set(csipcfgpeerurltype.yfilter)) leaf_name_data.push_back(csipcfgpeerurltype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgPeerIndex")
+    {
+        csipcfgpeerindex = value;
+        csipcfgpeerindex.value_namespace = name_space;
+        csipcfgpeerindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgPeerOutSessionTransport")
+    {
+        csipcfgpeeroutsessiontransport = value;
+        csipcfgpeeroutsessiontransport.value_namespace = name_space;
+        csipcfgpeeroutsessiontransport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgPeerReliable1xxRspHdr")
+    {
+        csipcfgpeerreliable1xxrsphdr = value;
+        csipcfgpeerreliable1xxrsphdr.value_namespace = name_space;
+        csipcfgpeerreliable1xxrsphdr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgPeerReliable1xxRspStr")
+    {
+        csipcfgpeerreliable1xxrspstr = value;
+        csipcfgpeerreliable1xxrspstr.value_namespace = name_space;
+        csipcfgpeerreliable1xxrspstr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgPeerSwitchTransEnabled")
+    {
+        csipcfgpeerswitchtransenabled = value;
+        csipcfgpeerswitchtransenabled.value_namespace = name_space;
+        csipcfgpeerswitchtransenabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgPeerUrlType")
+    {
+        csipcfgpeerurltype = value;
+        csipcfgpeerurltype.value_namespace = name_space;
+        csipcfgpeerurltype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgPeerIndex")
+    {
+        csipcfgpeerindex.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgPeerOutSessionTransport")
+    {
+        csipcfgpeeroutsessiontransport.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgPeerReliable1xxRspHdr")
+    {
+        csipcfgpeerreliable1xxrsphdr.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgPeerReliable1xxRspStr")
+    {
+        csipcfgpeerreliable1xxrspstr.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgPeerSwitchTransEnabled")
+    {
+        csipcfgpeerswitchtransenabled.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgPeerUrlType")
+    {
+        csipcfgpeerurltype.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgPeerIndex" || name == "cSipCfgPeerOutSessionTransport" || name == "cSipCfgPeerReliable1xxRspHdr" || name == "cSipCfgPeerReliable1xxRspStr" || name == "cSipCfgPeerSwitchTransEnabled" || name == "cSipCfgPeerUrlType")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgretry::Csipcfgretry()
+    :
+    csipcfgretrybye{YType::int32, "cSipCfgRetryBye"},
+    csipcfgretrycancel{YType::int32, "cSipCfgRetryCancel"},
+    csipcfgretrycomet{YType::int32, "cSipCfgRetryComet"},
+    csipcfgretryinfo{YType::int32, "cSipCfgRetryInfo"},
+    csipcfgretryinvite{YType::int32, "cSipCfgRetryInvite"},
+    csipcfgretrynotify{YType::int32, "cSipCfgRetryNotify"},
+    csipcfgretryprack{YType::int32, "cSipCfgRetryPrack"},
+    csipcfgretryrefer{YType::int32, "cSipCfgRetryRefer"},
+    csipcfgretryregister{YType::int32, "cSipCfgRetryRegister"},
+    csipcfgretryreliablersp{YType::int32, "cSipCfgRetryReliableRsp"},
+    csipcfgretryresponse{YType::int32, "cSipCfgRetryResponse"},
+    csipcfgretrysubscribe{YType::int32, "cSipCfgRetrySubscribe"}
+{
+
+    yang_name = "cSipCfgRetry"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgretry::~Csipcfgretry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgretry::has_data() const
+{
+    return csipcfgretrybye.is_set
+	|| csipcfgretrycancel.is_set
+	|| csipcfgretrycomet.is_set
+	|| csipcfgretryinfo.is_set
+	|| csipcfgretryinvite.is_set
+	|| csipcfgretrynotify.is_set
+	|| csipcfgretryprack.is_set
+	|| csipcfgretryrefer.is_set
+	|| csipcfgretryregister.is_set
+	|| csipcfgretryreliablersp.is_set
+	|| csipcfgretryresponse.is_set
+	|| csipcfgretrysubscribe.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgretry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgretrybye.yfilter)
+	|| ydk::is_set(csipcfgretrycancel.yfilter)
+	|| ydk::is_set(csipcfgretrycomet.yfilter)
+	|| ydk::is_set(csipcfgretryinfo.yfilter)
+	|| ydk::is_set(csipcfgretryinvite.yfilter)
+	|| ydk::is_set(csipcfgretrynotify.yfilter)
+	|| ydk::is_set(csipcfgretryprack.yfilter)
+	|| ydk::is_set(csipcfgretryrefer.yfilter)
+	|| ydk::is_set(csipcfgretryregister.yfilter)
+	|| ydk::is_set(csipcfgretryreliablersp.yfilter)
+	|| ydk::is_set(csipcfgretryresponse.yfilter)
+	|| ydk::is_set(csipcfgretrysubscribe.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgretry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgretry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgRetry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgretry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgretrybye.is_set || is_set(csipcfgretrybye.yfilter)) leaf_name_data.push_back(csipcfgretrybye.get_name_leafdata());
+    if (csipcfgretrycancel.is_set || is_set(csipcfgretrycancel.yfilter)) leaf_name_data.push_back(csipcfgretrycancel.get_name_leafdata());
+    if (csipcfgretrycomet.is_set || is_set(csipcfgretrycomet.yfilter)) leaf_name_data.push_back(csipcfgretrycomet.get_name_leafdata());
+    if (csipcfgretryinfo.is_set || is_set(csipcfgretryinfo.yfilter)) leaf_name_data.push_back(csipcfgretryinfo.get_name_leafdata());
+    if (csipcfgretryinvite.is_set || is_set(csipcfgretryinvite.yfilter)) leaf_name_data.push_back(csipcfgretryinvite.get_name_leafdata());
+    if (csipcfgretrynotify.is_set || is_set(csipcfgretrynotify.yfilter)) leaf_name_data.push_back(csipcfgretrynotify.get_name_leafdata());
+    if (csipcfgretryprack.is_set || is_set(csipcfgretryprack.yfilter)) leaf_name_data.push_back(csipcfgretryprack.get_name_leafdata());
+    if (csipcfgretryrefer.is_set || is_set(csipcfgretryrefer.yfilter)) leaf_name_data.push_back(csipcfgretryrefer.get_name_leafdata());
+    if (csipcfgretryregister.is_set || is_set(csipcfgretryregister.yfilter)) leaf_name_data.push_back(csipcfgretryregister.get_name_leafdata());
+    if (csipcfgretryreliablersp.is_set || is_set(csipcfgretryreliablersp.yfilter)) leaf_name_data.push_back(csipcfgretryreliablersp.get_name_leafdata());
+    if (csipcfgretryresponse.is_set || is_set(csipcfgretryresponse.yfilter)) leaf_name_data.push_back(csipcfgretryresponse.get_name_leafdata());
+    if (csipcfgretrysubscribe.is_set || is_set(csipcfgretrysubscribe.yfilter)) leaf_name_data.push_back(csipcfgretrysubscribe.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgretry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgretry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgretry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgRetryBye")
+    {
+        csipcfgretrybye = value;
+        csipcfgretrybye.value_namespace = name_space;
+        csipcfgretrybye.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryCancel")
+    {
+        csipcfgretrycancel = value;
+        csipcfgretrycancel.value_namespace = name_space;
+        csipcfgretrycancel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryComet")
+    {
+        csipcfgretrycomet = value;
+        csipcfgretrycomet.value_namespace = name_space;
+        csipcfgretrycomet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryInfo")
+    {
+        csipcfgretryinfo = value;
+        csipcfgretryinfo.value_namespace = name_space;
+        csipcfgretryinfo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryInvite")
+    {
+        csipcfgretryinvite = value;
+        csipcfgretryinvite.value_namespace = name_space;
+        csipcfgretryinvite.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryNotify")
+    {
+        csipcfgretrynotify = value;
+        csipcfgretrynotify.value_namespace = name_space;
+        csipcfgretrynotify.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryPrack")
+    {
+        csipcfgretryprack = value;
+        csipcfgretryprack.value_namespace = name_space;
+        csipcfgretryprack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryRefer")
+    {
+        csipcfgretryrefer = value;
+        csipcfgretryrefer.value_namespace = name_space;
+        csipcfgretryrefer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryRegister")
+    {
+        csipcfgretryregister = value;
+        csipcfgretryregister.value_namespace = name_space;
+        csipcfgretryregister.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryReliableRsp")
+    {
+        csipcfgretryreliablersp = value;
+        csipcfgretryreliablersp.value_namespace = name_space;
+        csipcfgretryreliablersp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetryResponse")
+    {
+        csipcfgretryresponse = value;
+        csipcfgretryresponse.value_namespace = name_space;
+        csipcfgretryresponse.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgRetrySubscribe")
+    {
+        csipcfgretrysubscribe = value;
+        csipcfgretrysubscribe.value_namespace = name_space;
+        csipcfgretrysubscribe.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgretry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgRetryBye")
+    {
+        csipcfgretrybye.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryCancel")
+    {
+        csipcfgretrycancel.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryComet")
+    {
+        csipcfgretrycomet.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryInfo")
+    {
+        csipcfgretryinfo.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryInvite")
+    {
+        csipcfgretryinvite.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryNotify")
+    {
+        csipcfgretrynotify.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryPrack")
+    {
+        csipcfgretryprack.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryRefer")
+    {
+        csipcfgretryrefer.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryRegister")
+    {
+        csipcfgretryregister.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryReliableRsp")
+    {
+        csipcfgretryreliablersp.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetryResponse")
+    {
+        csipcfgretryresponse.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgRetrySubscribe")
+    {
+        csipcfgretrysubscribe.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgretry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgRetryBye" || name == "cSipCfgRetryCancel" || name == "cSipCfgRetryComet" || name == "cSipCfgRetryInfo" || name == "cSipCfgRetryInvite" || name == "cSipCfgRetryNotify" || name == "cSipCfgRetryPrack" || name == "cSipCfgRetryRefer" || name == "cSipCfgRetryRegister" || name == "cSipCfgRetryReliableRsp" || name == "cSipCfgRetryResponse" || name == "cSipCfgRetrySubscribe")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscausetable()
+{
+
+    yang_name = "cSipCfgStatusCauseTable"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgstatuscausetable::~Csipcfgstatuscausetable()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgstatuscausetable::has_data() const
+{
+    for (std::size_t index=0; index<csipcfgstatuscauseentry.size(); index++)
+    {
+        if(csipcfgstatuscauseentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOSIPUAMIB::Csipcfgstatuscausetable::has_operation() const
+{
+    for (std::size_t index=0; index<csipcfgstatuscauseentry.size(); index++)
+    {
+        if(csipcfgstatuscauseentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgstatuscausetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgstatuscausetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgStatusCauseTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgstatuscausetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgstatuscausetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cSipCfgStatusCauseEntry")
+    {
+        for(auto const & c : csipcfgstatuscauseentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry>();
+        c->parent = this;
+        csipcfgstatuscauseentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgstatuscausetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : csipcfgstatuscauseentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgstatuscausetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOSIPUAMIB::Csipcfgstatuscausetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgstatuscausetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgStatusCauseEntry")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::Csipcfgstatuscauseentry()
+    :
+    csipcfgstatuscodeindex{YType::int32, "cSipCfgStatusCodeIndex"},
+    csipcfgpstncause{YType::int32, "cSipCfgPstnCause"},
+    csipcfgstatuscausestorestatus{YType::enumeration, "cSipCfgStatusCauseStoreStatus"}
+{
+
+    yang_name = "cSipCfgStatusCauseEntry"; yang_parent_name = "cSipCfgStatusCauseTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::~Csipcfgstatuscauseentry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::has_data() const
+{
+    return csipcfgstatuscodeindex.is_set
+	|| csipcfgpstncause.is_set
+	|| csipcfgstatuscausestorestatus.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipcfgstatuscodeindex.yfilter)
+	|| ydk::is_set(csipcfgpstncause.yfilter)
+	|| ydk::is_set(csipcfgstatuscausestorestatus.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgStatusCauseTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipCfgStatusCauseEntry" <<"[cSipCfgStatusCodeIndex='" <<csipcfgstatuscodeindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipcfgstatuscodeindex.is_set || is_set(csipcfgstatuscodeindex.yfilter)) leaf_name_data.push_back(csipcfgstatuscodeindex.get_name_leafdata());
+    if (csipcfgpstncause.is_set || is_set(csipcfgpstncause.yfilter)) leaf_name_data.push_back(csipcfgpstncause.get_name_leafdata());
+    if (csipcfgstatuscausestorestatus.is_set || is_set(csipcfgstatuscausestorestatus.yfilter)) leaf_name_data.push_back(csipcfgstatuscausestorestatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipCfgStatusCodeIndex")
+    {
+        csipcfgstatuscodeindex = value;
+        csipcfgstatuscodeindex.value_namespace = name_space;
+        csipcfgstatuscodeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgPstnCause")
+    {
+        csipcfgpstncause = value;
+        csipcfgpstncause.value_namespace = name_space;
+        csipcfgpstncause.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipCfgStatusCauseStoreStatus")
+    {
+        csipcfgstatuscausestorestatus = value;
+        csipcfgstatuscausestorestatus.value_namespace = name_space;
+        csipcfgstatuscausestorestatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipCfgStatusCodeIndex")
+    {
+        csipcfgstatuscodeindex.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgPstnCause")
+    {
+        csipcfgpstncause.yfilter = yfilter;
+    }
+    if(value_path == "cSipCfgStatusCauseStoreStatus")
+    {
+        csipcfgstatuscausestorestatus.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipCfgStatusCodeIndex" || name == "cSipCfgPstnCause" || name == "cSipCfgStatusCauseStoreStatus")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipcfgtimer::Csipcfgtimer()
     :
     csipcfgtimerbufferinvite{YType::int32, "cSipCfgTimerBufferInvite"},
     csipcfgtimercomet{YType::int32, "cSipCfgTimerComet"},
@@ -832,14 +2290,15 @@ CiscoSipUaMib::Csipcfgtimer::Csipcfgtimer()
     csipcfgtimersessiontimer{YType::int32, "cSipCfgTimerSessionTimer"},
     csipcfgtimertrying{YType::int32, "cSipCfgTimerTrying"}
 {
-    yang_name = "cSipCfgTimer"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipCfgTimer"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipcfgtimer::~Csipcfgtimer()
+CISCOSIPUAMIB::Csipcfgtimer::~Csipcfgtimer()
 {
 }
 
-bool CiscoSipUaMib::Csipcfgtimer::has_data() const
+bool CISCOSIPUAMIB::Csipcfgtimer::has_data() const
 {
     return csipcfgtimerbufferinvite.is_set
 	|| csipcfgtimercomet.is_set
@@ -857,7 +2316,7 @@ bool CiscoSipUaMib::Csipcfgtimer::has_data() const
 	|| csipcfgtimertrying.is_set;
 }
 
-bool CiscoSipUaMib::Csipcfgtimer::has_operation() const
+bool CISCOSIPUAMIB::Csipcfgtimer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipcfgtimerbufferinvite.yfilter)
@@ -876,27 +2335,22 @@ bool CiscoSipUaMib::Csipcfgtimer::has_operation() const
 	|| ydk::is_set(csipcfgtimertrying.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipcfgtimer::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipcfgtimer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgtimer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipCfgTimer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipcfgtimer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgtimer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipcfgtimerbufferinvite.is_set || is_set(csipcfgtimerbufferinvite.yfilter)) leaf_name_data.push_back(csipcfgtimerbufferinvite.get_name_leafdata());
@@ -914,24 +2368,22 @@ const EntityPath CiscoSipUaMib::Csipcfgtimer::get_entity_path(Entity* ancestor) 
     if (csipcfgtimersessiontimer.is_set || is_set(csipcfgtimersessiontimer.yfilter)) leaf_name_data.push_back(csipcfgtimersessiontimer.get_name_leafdata());
     if (csipcfgtimertrying.is_set || is_set(csipcfgtimertrying.yfilter)) leaf_name_data.push_back(csipcfgtimertrying.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgtimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgtimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgtimer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgtimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipcfgtimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipcfgtimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipCfgTimerBufferInvite")
     {
@@ -1019,7 +2471,7 @@ void CiscoSipUaMib::Csipcfgtimer::set_value(const std::string & value_path, cons
     }
 }
 
-void CiscoSipUaMib::Csipcfgtimer::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipcfgtimer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipCfgTimerBufferInvite")
     {
@@ -1079,491 +2531,29 @@ void CiscoSipUaMib::Csipcfgtimer::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool CiscoSipUaMib::Csipcfgtimer::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipcfgtimer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipCfgTimerBufferInvite" || name == "cSipCfgTimerComet" || name == "cSipCfgTimerConnect" || name == "cSipCfgTimerConnectionAging" || name == "cSipCfgTimerDisconnect" || name == "cSipCfgTimerExpires" || name == "cSipCfgTimerHold" || name == "cSipCfgTimerInfo" || name == "cSipCfgTimerNotify" || name == "cSipCfgTimerPrack" || name == "cSipCfgTimerRefer" || name == "cSipCfgTimerReliableRsp" || name == "cSipCfgTimerSessionTimer" || name == "cSipCfgTimerTrying")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipcfgretry::Csipcfgretry()
-    :
-    csipcfgretrybye{YType::int32, "cSipCfgRetryBye"},
-    csipcfgretrycancel{YType::int32, "cSipCfgRetryCancel"},
-    csipcfgretrycomet{YType::int32, "cSipCfgRetryComet"},
-    csipcfgretryinfo{YType::int32, "cSipCfgRetryInfo"},
-    csipcfgretryinvite{YType::int32, "cSipCfgRetryInvite"},
-    csipcfgretrynotify{YType::int32, "cSipCfgRetryNotify"},
-    csipcfgretryprack{YType::int32, "cSipCfgRetryPrack"},
-    csipcfgretryrefer{YType::int32, "cSipCfgRetryRefer"},
-    csipcfgretryregister{YType::int32, "cSipCfgRetryRegister"},
-    csipcfgretryreliablersp{YType::int32, "cSipCfgRetryReliableRsp"},
-    csipcfgretryresponse{YType::int32, "cSipCfgRetryResponse"},
-    csipcfgretrysubscribe{YType::int32, "cSipCfgRetrySubscribe"}
-{
-    yang_name = "cSipCfgRetry"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgretry::~Csipcfgretry()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgretry::has_data() const
-{
-    return csipcfgretrybye.is_set
-	|| csipcfgretrycancel.is_set
-	|| csipcfgretrycomet.is_set
-	|| csipcfgretryinfo.is_set
-	|| csipcfgretryinvite.is_set
-	|| csipcfgretrynotify.is_set
-	|| csipcfgretryprack.is_set
-	|| csipcfgretryrefer.is_set
-	|| csipcfgretryregister.is_set
-	|| csipcfgretryreliablersp.is_set
-	|| csipcfgretryresponse.is_set
-	|| csipcfgretrysubscribe.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgretry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgretrybye.yfilter)
-	|| ydk::is_set(csipcfgretrycancel.yfilter)
-	|| ydk::is_set(csipcfgretrycomet.yfilter)
-	|| ydk::is_set(csipcfgretryinfo.yfilter)
-	|| ydk::is_set(csipcfgretryinvite.yfilter)
-	|| ydk::is_set(csipcfgretrynotify.yfilter)
-	|| ydk::is_set(csipcfgretryprack.yfilter)
-	|| ydk::is_set(csipcfgretryrefer.yfilter)
-	|| ydk::is_set(csipcfgretryregister.yfilter)
-	|| ydk::is_set(csipcfgretryreliablersp.yfilter)
-	|| ydk::is_set(csipcfgretryresponse.yfilter)
-	|| ydk::is_set(csipcfgretrysubscribe.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgretry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgRetry";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgretry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgretrybye.is_set || is_set(csipcfgretrybye.yfilter)) leaf_name_data.push_back(csipcfgretrybye.get_name_leafdata());
-    if (csipcfgretrycancel.is_set || is_set(csipcfgretrycancel.yfilter)) leaf_name_data.push_back(csipcfgretrycancel.get_name_leafdata());
-    if (csipcfgretrycomet.is_set || is_set(csipcfgretrycomet.yfilter)) leaf_name_data.push_back(csipcfgretrycomet.get_name_leafdata());
-    if (csipcfgretryinfo.is_set || is_set(csipcfgretryinfo.yfilter)) leaf_name_data.push_back(csipcfgretryinfo.get_name_leafdata());
-    if (csipcfgretryinvite.is_set || is_set(csipcfgretryinvite.yfilter)) leaf_name_data.push_back(csipcfgretryinvite.get_name_leafdata());
-    if (csipcfgretrynotify.is_set || is_set(csipcfgretrynotify.yfilter)) leaf_name_data.push_back(csipcfgretrynotify.get_name_leafdata());
-    if (csipcfgretryprack.is_set || is_set(csipcfgretryprack.yfilter)) leaf_name_data.push_back(csipcfgretryprack.get_name_leafdata());
-    if (csipcfgretryrefer.is_set || is_set(csipcfgretryrefer.yfilter)) leaf_name_data.push_back(csipcfgretryrefer.get_name_leafdata());
-    if (csipcfgretryregister.is_set || is_set(csipcfgretryregister.yfilter)) leaf_name_data.push_back(csipcfgretryregister.get_name_leafdata());
-    if (csipcfgretryreliablersp.is_set || is_set(csipcfgretryreliablersp.yfilter)) leaf_name_data.push_back(csipcfgretryreliablersp.get_name_leafdata());
-    if (csipcfgretryresponse.is_set || is_set(csipcfgretryresponse.yfilter)) leaf_name_data.push_back(csipcfgretryresponse.get_name_leafdata());
-    if (csipcfgretrysubscribe.is_set || is_set(csipcfgretrysubscribe.yfilter)) leaf_name_data.push_back(csipcfgretrysubscribe.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgretry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgretry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgretry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgRetryBye")
-    {
-        csipcfgretrybye = value;
-        csipcfgretrybye.value_namespace = name_space;
-        csipcfgretrybye.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryCancel")
-    {
-        csipcfgretrycancel = value;
-        csipcfgretrycancel.value_namespace = name_space;
-        csipcfgretrycancel.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryComet")
-    {
-        csipcfgretrycomet = value;
-        csipcfgretrycomet.value_namespace = name_space;
-        csipcfgretrycomet.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryInfo")
-    {
-        csipcfgretryinfo = value;
-        csipcfgretryinfo.value_namespace = name_space;
-        csipcfgretryinfo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryInvite")
-    {
-        csipcfgretryinvite = value;
-        csipcfgretryinvite.value_namespace = name_space;
-        csipcfgretryinvite.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryNotify")
-    {
-        csipcfgretrynotify = value;
-        csipcfgretrynotify.value_namespace = name_space;
-        csipcfgretrynotify.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryPrack")
-    {
-        csipcfgretryprack = value;
-        csipcfgretryprack.value_namespace = name_space;
-        csipcfgretryprack.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryRefer")
-    {
-        csipcfgretryrefer = value;
-        csipcfgretryrefer.value_namespace = name_space;
-        csipcfgretryrefer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryRegister")
-    {
-        csipcfgretryregister = value;
-        csipcfgretryregister.value_namespace = name_space;
-        csipcfgretryregister.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryReliableRsp")
-    {
-        csipcfgretryreliablersp = value;
-        csipcfgretryreliablersp.value_namespace = name_space;
-        csipcfgretryreliablersp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetryResponse")
-    {
-        csipcfgretryresponse = value;
-        csipcfgretryresponse.value_namespace = name_space;
-        csipcfgretryresponse.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgRetrySubscribe")
-    {
-        csipcfgretrysubscribe = value;
-        csipcfgretrysubscribe.value_namespace = name_space;
-        csipcfgretrysubscribe.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgretry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgRetryBye")
-    {
-        csipcfgretrybye.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryCancel")
-    {
-        csipcfgretrycancel.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryComet")
-    {
-        csipcfgretrycomet.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryInfo")
-    {
-        csipcfgretryinfo.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryInvite")
-    {
-        csipcfgretryinvite.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryNotify")
-    {
-        csipcfgretrynotify.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryPrack")
-    {
-        csipcfgretryprack.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryRefer")
-    {
-        csipcfgretryrefer.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryRegister")
-    {
-        csipcfgretryregister.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryReliableRsp")
-    {
-        csipcfgretryreliablersp.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetryResponse")
-    {
-        csipcfgretryresponse.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgRetrySubscribe")
-    {
-        csipcfgretrysubscribe.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgretry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgRetryBye" || name == "cSipCfgRetryCancel" || name == "cSipCfgRetryComet" || name == "cSipCfgRetryInfo" || name == "cSipCfgRetryInvite" || name == "cSipCfgRetryNotify" || name == "cSipCfgRetryPrack" || name == "cSipCfgRetryRefer" || name == "cSipCfgRetryRegister" || name == "cSipCfgRetryReliableRsp" || name == "cSipCfgRetryResponse" || name == "cSipCfgRetrySubscribe")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgpeer::Csipcfgpeer()
-    :
-    csipcfgoutsessiontransport{YType::enumeration, "cSipCfgOutSessionTransport"},
-    csipcfgreliable1xxrsphdr{YType::enumeration, "cSipCfgReliable1xxRspHdr"},
-    csipcfgreliable1xxrspstr{YType::str, "cSipCfgReliable1xxRspStr"},
-    csipcfgurltype{YType::enumeration, "cSipCfgUrlType"}
-{
-    yang_name = "cSipCfgPeer"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgpeer::~Csipcfgpeer()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgpeer::has_data() const
-{
-    return csipcfgoutsessiontransport.is_set
-	|| csipcfgreliable1xxrsphdr.is_set
-	|| csipcfgreliable1xxrspstr.is_set
-	|| csipcfgurltype.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgpeer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgoutsessiontransport.yfilter)
-	|| ydk::is_set(csipcfgreliable1xxrsphdr.yfilter)
-	|| ydk::is_set(csipcfgreliable1xxrspstr.yfilter)
-	|| ydk::is_set(csipcfgurltype.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgpeer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgPeer";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgpeer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgoutsessiontransport.is_set || is_set(csipcfgoutsessiontransport.yfilter)) leaf_name_data.push_back(csipcfgoutsessiontransport.get_name_leafdata());
-    if (csipcfgreliable1xxrsphdr.is_set || is_set(csipcfgreliable1xxrsphdr.yfilter)) leaf_name_data.push_back(csipcfgreliable1xxrsphdr.get_name_leafdata());
-    if (csipcfgreliable1xxrspstr.is_set || is_set(csipcfgreliable1xxrspstr.yfilter)) leaf_name_data.push_back(csipcfgreliable1xxrspstr.get_name_leafdata());
-    if (csipcfgurltype.is_set || is_set(csipcfgurltype.yfilter)) leaf_name_data.push_back(csipcfgurltype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgpeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgpeer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgpeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgOutSessionTransport")
-    {
-        csipcfgoutsessiontransport = value;
-        csipcfgoutsessiontransport.value_namespace = name_space;
-        csipcfgoutsessiontransport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgReliable1xxRspHdr")
-    {
-        csipcfgreliable1xxrsphdr = value;
-        csipcfgreliable1xxrsphdr.value_namespace = name_space;
-        csipcfgreliable1xxrsphdr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgReliable1xxRspStr")
-    {
-        csipcfgreliable1xxrspstr = value;
-        csipcfgreliable1xxrspstr.value_namespace = name_space;
-        csipcfgreliable1xxrspstr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgUrlType")
-    {
-        csipcfgurltype = value;
-        csipcfgurltype.value_namespace = name_space;
-        csipcfgurltype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgpeer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgOutSessionTransport")
-    {
-        csipcfgoutsessiontransport.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgReliable1xxRspHdr")
-    {
-        csipcfgreliable1xxrsphdr.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgReliable1xxRspStr")
-    {
-        csipcfgreliable1xxrspstr.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgUrlType")
-    {
-        csipcfgurltype.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgpeer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgOutSessionTransport" || name == "cSipCfgReliable1xxRspHdr" || name == "cSipCfgReliable1xxRspStr" || name == "cSipCfgUrlType")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgaaa::Csipcfgaaa()
-    :
-    csipcfgaaausername{YType::enumeration, "cSipCfgAaaUsername"}
-{
-    yang_name = "cSipCfgAaa"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgaaa::~Csipcfgaaa()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgaaa::has_data() const
-{
-    return csipcfgaaausername.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgaaa::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgaaausername.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgaaa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgAaa";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgaaa::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgaaausername.is_set || is_set(csipcfgaaausername.yfilter)) leaf_name_data.push_back(csipcfgaaausername.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgaaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgaaa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgaaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgAaaUsername")
-    {
-        csipcfgaaausername = value;
-        csipcfgaaausername.value_namespace = name_space;
-        csipcfgaaausername.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgaaa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgAaaUsername")
-    {
-        csipcfgaaausername.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgaaa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgAaaUsername")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgvoiceservicevoip::Csipcfgvoiceservicevoip()
+CISCOSIPUAMIB::Csipcfgvoiceservicevoip::Csipcfgvoiceservicevoip()
     :
     csipcfgheaderpassingenabled{YType::boolean, "cSipCfgHeaderPassingEnabled"},
     csipcfgmaxsubscriptionaccept{YType::uint32, "cSipCfgMaxSubscriptionAccept"},
     csipcfgmaxsubscriptionoriginate{YType::uint32, "cSipCfgMaxSubscriptionOriginate"},
     csipcfgswitchtransportenabled{YType::boolean, "cSipCfgSwitchTransportEnabled"}
 {
-    yang_name = "cSipCfgVoiceServiceVoip"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipCfgVoiceServiceVoip"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipcfgvoiceservicevoip::~Csipcfgvoiceservicevoip()
+CISCOSIPUAMIB::Csipcfgvoiceservicevoip::~Csipcfgvoiceservicevoip()
 {
 }
 
-bool CiscoSipUaMib::Csipcfgvoiceservicevoip::has_data() const
+bool CISCOSIPUAMIB::Csipcfgvoiceservicevoip::has_data() const
 {
     return csipcfgheaderpassingenabled.is_set
 	|| csipcfgmaxsubscriptionaccept.is_set
@@ -1571,7 +2561,7 @@ bool CiscoSipUaMib::Csipcfgvoiceservicevoip::has_data() const
 	|| csipcfgswitchtransportenabled.is_set;
 }
 
-bool CiscoSipUaMib::Csipcfgvoiceservicevoip::has_operation() const
+bool CISCOSIPUAMIB::Csipcfgvoiceservicevoip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipcfgheaderpassingenabled.yfilter)
@@ -1580,27 +2570,22 @@ bool CiscoSipUaMib::Csipcfgvoiceservicevoip::has_operation() const
 	|| ydk::is_set(csipcfgswitchtransportenabled.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipcfgvoiceservicevoip::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipCfgVoiceServiceVoip";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipcfgvoiceservicevoip::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipcfgheaderpassingenabled.is_set || is_set(csipcfgheaderpassingenabled.yfilter)) leaf_name_data.push_back(csipcfgheaderpassingenabled.get_name_leafdata());
@@ -1608,24 +2593,22 @@ const EntityPath CiscoSipUaMib::Csipcfgvoiceservicevoip::get_entity_path(Entity*
     if (csipcfgmaxsubscriptionoriginate.is_set || is_set(csipcfgmaxsubscriptionoriginate.yfilter)) leaf_name_data.push_back(csipcfgmaxsubscriptionoriginate.get_name_leafdata());
     if (csipcfgswitchtransportenabled.is_set || is_set(csipcfgswitchtransportenabled.yfilter)) leaf_name_data.push_back(csipcfgswitchtransportenabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgvoiceservicevoip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgvoiceservicevoip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipcfgvoiceservicevoip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipcfgvoiceservicevoip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipCfgHeaderPassingEnabled")
     {
@@ -1653,7 +2636,7 @@ void CiscoSipUaMib::Csipcfgvoiceservicevoip::set_value(const std::string & value
     }
 }
 
-void CiscoSipUaMib::Csipcfgvoiceservicevoip::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipcfgvoiceservicevoip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipCfgHeaderPassingEnabled")
     {
@@ -1673,547 +2656,209 @@ void CiscoSipUaMib::Csipcfgvoiceservicevoip::set_filter(const std::string & valu
     }
 }
 
-bool CiscoSipUaMib::Csipcfgvoiceservicevoip::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipcfgvoiceservicevoip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipCfgHeaderPassingEnabled" || name == "cSipCfgMaxSubscriptionAccept" || name == "cSipCfgMaxSubscriptionOriginate" || name == "cSipCfgSwitchTransportEnabled")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipstatsinfo::Csipstatsinfo()
+CISCOSIPUAMIB::Csipstatsconnection::Csipstatsconnection()
     :
-    csipstatsinfoforwardedins{YType::uint32, "cSipStatsInfoForwardedIns"},
-    csipstatsinfoforwardedouts{YType::uint32, "cSipStatsInfoForwardedOuts"},
-    csipstatsinfoqueuedins{YType::uint32, "cSipStatsInfoQueuedIns"},
-    csipstatsinfoqueuedouts{YType::uint32, "cSipStatsInfoQueuedOuts"},
-    csipstatsinforingingins{YType::uint32, "cSipStatsInfoRingingIns"},
-    csipstatsinforingingouts{YType::uint32, "cSipStatsInfoRingingOuts"},
-    csipstatsinfosessionprogins{YType::uint32, "cSipStatsInfoSessionProgIns"},
-    csipstatsinfosessionprogouts{YType::uint32, "cSipStatsInfoSessionProgOuts"},
-    csipstatsinfotryingins{YType::uint32, "cSipStatsInfoTryingIns"},
-    csipstatsinfotryingouts{YType::uint32, "cSipStatsInfoTryingOuts"}
+    csipstatsactivetcpconnections{YType::uint32, "cSipStatsActiveTCPConnections"},
+    csipstatsactiveudpconnections{YType::uint32, "cSipStatsActiveUDPConnections"},
+    csipstatsconntcpcreatefailures{YType::uint32, "cSipStatsConnTCPCreateFailures"},
+    csipstatsconntcpinactivetimeouts{YType::uint32, "cSipStatsConnTCPInactiveTimeouts"},
+    csipstatsconntcpremoteclosures{YType::uint32, "cSipStatsConnTCPRemoteClosures"},
+    csipstatsconntcpsendfailures{YType::uint32, "cSipStatsConnTCPSendFailures"},
+    csipstatsconnudpcreatefailures{YType::uint32, "cSipStatsConnUDPCreateFailures"},
+    csipstatsconnudpinactivetimeouts{YType::uint32, "cSipStatsConnUDPInactiveTimeouts"},
+    csipstatsconnudpsendfailures{YType::uint32, "cSipStatsConnUDPSendFailures"}
 {
-    yang_name = "cSipStatsInfo"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipStatsConnection"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipstatsinfo::~Csipstatsinfo()
+CISCOSIPUAMIB::Csipstatsconnection::~Csipstatsconnection()
 {
 }
 
-bool CiscoSipUaMib::Csipstatsinfo::has_data() const
+bool CISCOSIPUAMIB::Csipstatsconnection::has_data() const
 {
-    return csipstatsinfoforwardedins.is_set
-	|| csipstatsinfoforwardedouts.is_set
-	|| csipstatsinfoqueuedins.is_set
-	|| csipstatsinfoqueuedouts.is_set
-	|| csipstatsinforingingins.is_set
-	|| csipstatsinforingingouts.is_set
-	|| csipstatsinfosessionprogins.is_set
-	|| csipstatsinfosessionprogouts.is_set
-	|| csipstatsinfotryingins.is_set
-	|| csipstatsinfotryingouts.is_set;
+    return csipstatsactivetcpconnections.is_set
+	|| csipstatsactiveudpconnections.is_set
+	|| csipstatsconntcpcreatefailures.is_set
+	|| csipstatsconntcpinactivetimeouts.is_set
+	|| csipstatsconntcpremoteclosures.is_set
+	|| csipstatsconntcpsendfailures.is_set
+	|| csipstatsconnudpcreatefailures.is_set
+	|| csipstatsconnudpinactivetimeouts.is_set
+	|| csipstatsconnudpsendfailures.is_set;
 }
 
-bool CiscoSipUaMib::Csipstatsinfo::has_operation() const
+bool CISCOSIPUAMIB::Csipstatsconnection::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(csipstatsinfoforwardedins.yfilter)
-	|| ydk::is_set(csipstatsinfoforwardedouts.yfilter)
-	|| ydk::is_set(csipstatsinfoqueuedins.yfilter)
-	|| ydk::is_set(csipstatsinfoqueuedouts.yfilter)
-	|| ydk::is_set(csipstatsinforingingins.yfilter)
-	|| ydk::is_set(csipstatsinforingingouts.yfilter)
-	|| ydk::is_set(csipstatsinfosessionprogins.yfilter)
-	|| ydk::is_set(csipstatsinfosessionprogouts.yfilter)
-	|| ydk::is_set(csipstatsinfotryingins.yfilter)
-	|| ydk::is_set(csipstatsinfotryingouts.yfilter);
+	|| ydk::is_set(csipstatsactivetcpconnections.yfilter)
+	|| ydk::is_set(csipstatsactiveudpconnections.yfilter)
+	|| ydk::is_set(csipstatsconntcpcreatefailures.yfilter)
+	|| ydk::is_set(csipstatsconntcpinactivetimeouts.yfilter)
+	|| ydk::is_set(csipstatsconntcpremoteclosures.yfilter)
+	|| ydk::is_set(csipstatsconntcpsendfailures.yfilter)
+	|| ydk::is_set(csipstatsconnudpcreatefailures.yfilter)
+	|| ydk::is_set(csipstatsconnudpinactivetimeouts.yfilter)
+	|| ydk::is_set(csipstatsconnudpsendfailures.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipstatsinfo::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipstatsconnection::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cSipStatsInfo";
-
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipstatsinfo::get_entity_path(Entity* ancestor) const
+std::string CISCOSIPUAMIB::Csipstatsconnection::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cSipStatsConnection";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatsconnection::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (csipstatsinfoforwardedins.is_set || is_set(csipstatsinfoforwardedins.yfilter)) leaf_name_data.push_back(csipstatsinfoforwardedins.get_name_leafdata());
-    if (csipstatsinfoforwardedouts.is_set || is_set(csipstatsinfoforwardedouts.yfilter)) leaf_name_data.push_back(csipstatsinfoforwardedouts.get_name_leafdata());
-    if (csipstatsinfoqueuedins.is_set || is_set(csipstatsinfoqueuedins.yfilter)) leaf_name_data.push_back(csipstatsinfoqueuedins.get_name_leafdata());
-    if (csipstatsinfoqueuedouts.is_set || is_set(csipstatsinfoqueuedouts.yfilter)) leaf_name_data.push_back(csipstatsinfoqueuedouts.get_name_leafdata());
-    if (csipstatsinforingingins.is_set || is_set(csipstatsinforingingins.yfilter)) leaf_name_data.push_back(csipstatsinforingingins.get_name_leafdata());
-    if (csipstatsinforingingouts.is_set || is_set(csipstatsinforingingouts.yfilter)) leaf_name_data.push_back(csipstatsinforingingouts.get_name_leafdata());
-    if (csipstatsinfosessionprogins.is_set || is_set(csipstatsinfosessionprogins.yfilter)) leaf_name_data.push_back(csipstatsinfosessionprogins.get_name_leafdata());
-    if (csipstatsinfosessionprogouts.is_set || is_set(csipstatsinfosessionprogouts.yfilter)) leaf_name_data.push_back(csipstatsinfosessionprogouts.get_name_leafdata());
-    if (csipstatsinfotryingins.is_set || is_set(csipstatsinfotryingins.yfilter)) leaf_name_data.push_back(csipstatsinfotryingins.get_name_leafdata());
-    if (csipstatsinfotryingouts.is_set || is_set(csipstatsinfotryingouts.yfilter)) leaf_name_data.push_back(csipstatsinfotryingouts.get_name_leafdata());
+    if (csipstatsactivetcpconnections.is_set || is_set(csipstatsactivetcpconnections.yfilter)) leaf_name_data.push_back(csipstatsactivetcpconnections.get_name_leafdata());
+    if (csipstatsactiveudpconnections.is_set || is_set(csipstatsactiveudpconnections.yfilter)) leaf_name_data.push_back(csipstatsactiveudpconnections.get_name_leafdata());
+    if (csipstatsconntcpcreatefailures.is_set || is_set(csipstatsconntcpcreatefailures.yfilter)) leaf_name_data.push_back(csipstatsconntcpcreatefailures.get_name_leafdata());
+    if (csipstatsconntcpinactivetimeouts.is_set || is_set(csipstatsconntcpinactivetimeouts.yfilter)) leaf_name_data.push_back(csipstatsconntcpinactivetimeouts.get_name_leafdata());
+    if (csipstatsconntcpremoteclosures.is_set || is_set(csipstatsconntcpremoteclosures.yfilter)) leaf_name_data.push_back(csipstatsconntcpremoteclosures.get_name_leafdata());
+    if (csipstatsconntcpsendfailures.is_set || is_set(csipstatsconntcpsendfailures.yfilter)) leaf_name_data.push_back(csipstatsconntcpsendfailures.get_name_leafdata());
+    if (csipstatsconnudpcreatefailures.is_set || is_set(csipstatsconnudpcreatefailures.yfilter)) leaf_name_data.push_back(csipstatsconnudpcreatefailures.get_name_leafdata());
+    if (csipstatsconnudpinactivetimeouts.is_set || is_set(csipstatsconnudpinactivetimeouts.yfilter)) leaf_name_data.push_back(csipstatsconnudpinactivetimeouts.get_name_leafdata());
+    if (csipstatsconnudpsendfailures.is_set || is_set(csipstatsconnudpsendfailures.yfilter)) leaf_name_data.push_back(csipstatsconnudpsendfailures.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatsinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsconnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatsinfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsconnection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipstatsinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipstatsconnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cSipStatsInfoForwardedIns")
+    if(value_path == "cSipStatsActiveTCPConnections")
     {
-        csipstatsinfoforwardedins = value;
-        csipstatsinfoforwardedins.value_namespace = name_space;
-        csipstatsinfoforwardedins.value_namespace_prefix = name_space_prefix;
+        csipstatsactivetcpconnections = value;
+        csipstatsactivetcpconnections.value_namespace = name_space;
+        csipstatsactivetcpconnections.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoForwardedOuts")
+    if(value_path == "cSipStatsActiveUDPConnections")
     {
-        csipstatsinfoforwardedouts = value;
-        csipstatsinfoforwardedouts.value_namespace = name_space;
-        csipstatsinfoforwardedouts.value_namespace_prefix = name_space_prefix;
+        csipstatsactiveudpconnections = value;
+        csipstatsactiveudpconnections.value_namespace = name_space;
+        csipstatsactiveudpconnections.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoQueuedIns")
+    if(value_path == "cSipStatsConnTCPCreateFailures")
     {
-        csipstatsinfoqueuedins = value;
-        csipstatsinfoqueuedins.value_namespace = name_space;
-        csipstatsinfoqueuedins.value_namespace_prefix = name_space_prefix;
+        csipstatsconntcpcreatefailures = value;
+        csipstatsconntcpcreatefailures.value_namespace = name_space;
+        csipstatsconntcpcreatefailures.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoQueuedOuts")
+    if(value_path == "cSipStatsConnTCPInactiveTimeouts")
     {
-        csipstatsinfoqueuedouts = value;
-        csipstatsinfoqueuedouts.value_namespace = name_space;
-        csipstatsinfoqueuedouts.value_namespace_prefix = name_space_prefix;
+        csipstatsconntcpinactivetimeouts = value;
+        csipstatsconntcpinactivetimeouts.value_namespace = name_space;
+        csipstatsconntcpinactivetimeouts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoRingingIns")
+    if(value_path == "cSipStatsConnTCPRemoteClosures")
     {
-        csipstatsinforingingins = value;
-        csipstatsinforingingins.value_namespace = name_space;
-        csipstatsinforingingins.value_namespace_prefix = name_space_prefix;
+        csipstatsconntcpremoteclosures = value;
+        csipstatsconntcpremoteclosures.value_namespace = name_space;
+        csipstatsconntcpremoteclosures.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoRingingOuts")
+    if(value_path == "cSipStatsConnTCPSendFailures")
     {
-        csipstatsinforingingouts = value;
-        csipstatsinforingingouts.value_namespace = name_space;
-        csipstatsinforingingouts.value_namespace_prefix = name_space_prefix;
+        csipstatsconntcpsendfailures = value;
+        csipstatsconntcpsendfailures.value_namespace = name_space;
+        csipstatsconntcpsendfailures.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoSessionProgIns")
+    if(value_path == "cSipStatsConnUDPCreateFailures")
     {
-        csipstatsinfosessionprogins = value;
-        csipstatsinfosessionprogins.value_namespace = name_space;
-        csipstatsinfosessionprogins.value_namespace_prefix = name_space_prefix;
+        csipstatsconnudpcreatefailures = value;
+        csipstatsconnudpcreatefailures.value_namespace = name_space;
+        csipstatsconnudpcreatefailures.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoSessionProgOuts")
+    if(value_path == "cSipStatsConnUDPInactiveTimeouts")
     {
-        csipstatsinfosessionprogouts = value;
-        csipstatsinfosessionprogouts.value_namespace = name_space;
-        csipstatsinfosessionprogouts.value_namespace_prefix = name_space_prefix;
+        csipstatsconnudpinactivetimeouts = value;
+        csipstatsconnudpinactivetimeouts.value_namespace = name_space;
+        csipstatsconnudpinactivetimeouts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cSipStatsInfoTryingIns")
+    if(value_path == "cSipStatsConnUDPSendFailures")
     {
-        csipstatsinfotryingins = value;
-        csipstatsinfotryingins.value_namespace = name_space;
-        csipstatsinfotryingins.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsInfoTryingOuts")
-    {
-        csipstatsinfotryingouts = value;
-        csipstatsinfotryingouts.value_namespace = name_space;
-        csipstatsinfotryingouts.value_namespace_prefix = name_space_prefix;
+        csipstatsconnudpsendfailures = value;
+        csipstatsconnudpsendfailures.value_namespace = name_space;
+        csipstatsconnudpsendfailures.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoSipUaMib::Csipstatsinfo::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipstatsconnection::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cSipStatsInfoForwardedIns")
+    if(value_path == "cSipStatsActiveTCPConnections")
     {
-        csipstatsinfoforwardedins.yfilter = yfilter;
+        csipstatsactivetcpconnections.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoForwardedOuts")
+    if(value_path == "cSipStatsActiveUDPConnections")
     {
-        csipstatsinfoforwardedouts.yfilter = yfilter;
+        csipstatsactiveudpconnections.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoQueuedIns")
+    if(value_path == "cSipStatsConnTCPCreateFailures")
     {
-        csipstatsinfoqueuedins.yfilter = yfilter;
+        csipstatsconntcpcreatefailures.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoQueuedOuts")
+    if(value_path == "cSipStatsConnTCPInactiveTimeouts")
     {
-        csipstatsinfoqueuedouts.yfilter = yfilter;
+        csipstatsconntcpinactivetimeouts.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoRingingIns")
+    if(value_path == "cSipStatsConnTCPRemoteClosures")
     {
-        csipstatsinforingingins.yfilter = yfilter;
+        csipstatsconntcpremoteclosures.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoRingingOuts")
+    if(value_path == "cSipStatsConnTCPSendFailures")
     {
-        csipstatsinforingingouts.yfilter = yfilter;
+        csipstatsconntcpsendfailures.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoSessionProgIns")
+    if(value_path == "cSipStatsConnUDPCreateFailures")
     {
-        csipstatsinfosessionprogins.yfilter = yfilter;
+        csipstatsconnudpcreatefailures.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoSessionProgOuts")
+    if(value_path == "cSipStatsConnUDPInactiveTimeouts")
     {
-        csipstatsinfosessionprogouts.yfilter = yfilter;
+        csipstatsconnudpinactivetimeouts.yfilter = yfilter;
     }
-    if(value_path == "cSipStatsInfoTryingIns")
+    if(value_path == "cSipStatsConnUDPSendFailures")
     {
-        csipstatsinfotryingins.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsInfoTryingOuts")
-    {
-        csipstatsinfotryingouts.yfilter = yfilter;
+        csipstatsconnudpsendfailures.yfilter = yfilter;
     }
 }
 
-bool CiscoSipUaMib::Csipstatsinfo::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipstatsconnection::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cSipStatsInfoForwardedIns" || name == "cSipStatsInfoForwardedOuts" || name == "cSipStatsInfoQueuedIns" || name == "cSipStatsInfoQueuedOuts" || name == "cSipStatsInfoRingingIns" || name == "cSipStatsInfoRingingOuts" || name == "cSipStatsInfoSessionProgIns" || name == "cSipStatsInfoSessionProgOuts" || name == "cSipStatsInfoTryingIns" || name == "cSipStatsInfoTryingOuts")
+    if(name == "cSipStatsActiveTCPConnections" || name == "cSipStatsActiveUDPConnections" || name == "cSipStatsConnTCPCreateFailures" || name == "cSipStatsConnTCPInactiveTimeouts" || name == "cSipStatsConnTCPRemoteClosures" || name == "cSipStatsConnTCPSendFailures" || name == "cSipStatsConnUDPCreateFailures" || name == "cSipStatsConnUDPInactiveTimeouts" || name == "cSipStatsConnUDPSendFailures")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipstatssuccess::Csipstatssuccess()
-    :
-    csipstatssuccessacceptedins{YType::uint32, "cSipStatsSuccessAcceptedIns"},
-    csipstatssuccessacceptedouts{YType::uint32, "cSipStatsSuccessAcceptedOuts"},
-    csipstatssuccessokins{YType::uint32, "cSipStatsSuccessOkIns"},
-    csipstatssuccessokouts{YType::uint32, "cSipStatsSuccessOkOuts"}
-{
-    yang_name = "cSipStatsSuccess"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipstatssuccess::~Csipstatssuccess()
-{
-}
-
-bool CiscoSipUaMib::Csipstatssuccess::has_data() const
-{
-    return csipstatssuccessacceptedins.is_set
-	|| csipstatssuccessacceptedouts.is_set
-	|| csipstatssuccessokins.is_set
-	|| csipstatssuccessokouts.is_set;
-}
-
-bool CiscoSipUaMib::Csipstatssuccess::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipstatssuccessacceptedins.yfilter)
-	|| ydk::is_set(csipstatssuccessacceptedouts.yfilter)
-	|| ydk::is_set(csipstatssuccessokins.yfilter)
-	|| ydk::is_set(csipstatssuccessokouts.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatssuccess::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsSuccess";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatssuccess::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipstatssuccessacceptedins.is_set || is_set(csipstatssuccessacceptedins.yfilter)) leaf_name_data.push_back(csipstatssuccessacceptedins.get_name_leafdata());
-    if (csipstatssuccessacceptedouts.is_set || is_set(csipstatssuccessacceptedouts.yfilter)) leaf_name_data.push_back(csipstatssuccessacceptedouts.get_name_leafdata());
-    if (csipstatssuccessokins.is_set || is_set(csipstatssuccessokins.yfilter)) leaf_name_data.push_back(csipstatssuccessokins.get_name_leafdata());
-    if (csipstatssuccessokouts.is_set || is_set(csipstatssuccessokouts.yfilter)) leaf_name_data.push_back(csipstatssuccessokouts.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatssuccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatssuccess::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatssuccess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipStatsSuccessAcceptedIns")
-    {
-        csipstatssuccessacceptedins = value;
-        csipstatssuccessacceptedins.value_namespace = name_space;
-        csipstatssuccessacceptedins.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsSuccessAcceptedOuts")
-    {
-        csipstatssuccessacceptedouts = value;
-        csipstatssuccessacceptedouts.value_namespace = name_space;
-        csipstatssuccessacceptedouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsSuccessOkIns")
-    {
-        csipstatssuccessokins = value;
-        csipstatssuccessokins.value_namespace = name_space;
-        csipstatssuccessokins.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsSuccessOkOuts")
-    {
-        csipstatssuccessokouts = value;
-        csipstatssuccessokouts.value_namespace = name_space;
-        csipstatssuccessokouts.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipstatssuccess::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipStatsSuccessAcceptedIns")
-    {
-        csipstatssuccessacceptedins.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsSuccessAcceptedOuts")
-    {
-        csipstatssuccessacceptedouts.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsSuccessOkIns")
-    {
-        csipstatssuccessokins.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsSuccessOkOuts")
-    {
-        csipstatssuccessokouts.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipstatssuccess::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipStatsSuccessAcceptedIns" || name == "cSipStatsSuccessAcceptedOuts" || name == "cSipStatsSuccessOkIns" || name == "cSipStatsSuccessOkOuts")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipstatsredirect::Csipstatsredirect()
-    :
-    csipstatsrediraltservices{YType::uint32, "cSipStatsRedirAltServices"},
-    csipstatsredirmovedperms{YType::uint32, "cSipStatsRedirMovedPerms"},
-    csipstatsredirmovedtemps{YType::uint32, "cSipStatsRedirMovedTemps"},
-    csipstatsredirmovedtempsins{YType::uint32, "cSipStatsRedirMovedTempsIns"},
-    csipstatsredirmovedtempsouts{YType::uint32, "cSipStatsRedirMovedTempsOuts"},
-    csipstatsredirmultiplechoices{YType::uint32, "cSipStatsRedirMultipleChoices"},
-    csipstatsredirseeothers{YType::uint32, "cSipStatsRedirSeeOthers"},
-    csipstatsrediruseproxys{YType::uint32, "cSipStatsRedirUseProxys"}
-{
-    yang_name = "cSipStatsRedirect"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipstatsredirect::~Csipstatsredirect()
-{
-}
-
-bool CiscoSipUaMib::Csipstatsredirect::has_data() const
-{
-    return csipstatsrediraltservices.is_set
-	|| csipstatsredirmovedperms.is_set
-	|| csipstatsredirmovedtemps.is_set
-	|| csipstatsredirmovedtempsins.is_set
-	|| csipstatsredirmovedtempsouts.is_set
-	|| csipstatsredirmultiplechoices.is_set
-	|| csipstatsredirseeothers.is_set
-	|| csipstatsrediruseproxys.is_set;
-}
-
-bool CiscoSipUaMib::Csipstatsredirect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipstatsrediraltservices.yfilter)
-	|| ydk::is_set(csipstatsredirmovedperms.yfilter)
-	|| ydk::is_set(csipstatsredirmovedtemps.yfilter)
-	|| ydk::is_set(csipstatsredirmovedtempsins.yfilter)
-	|| ydk::is_set(csipstatsredirmovedtempsouts.yfilter)
-	|| ydk::is_set(csipstatsredirmultiplechoices.yfilter)
-	|| ydk::is_set(csipstatsredirseeothers.yfilter)
-	|| ydk::is_set(csipstatsrediruseproxys.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatsredirect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsRedirect";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatsredirect::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipstatsrediraltservices.is_set || is_set(csipstatsrediraltservices.yfilter)) leaf_name_data.push_back(csipstatsrediraltservices.get_name_leafdata());
-    if (csipstatsredirmovedperms.is_set || is_set(csipstatsredirmovedperms.yfilter)) leaf_name_data.push_back(csipstatsredirmovedperms.get_name_leafdata());
-    if (csipstatsredirmovedtemps.is_set || is_set(csipstatsredirmovedtemps.yfilter)) leaf_name_data.push_back(csipstatsredirmovedtemps.get_name_leafdata());
-    if (csipstatsredirmovedtempsins.is_set || is_set(csipstatsredirmovedtempsins.yfilter)) leaf_name_data.push_back(csipstatsredirmovedtempsins.get_name_leafdata());
-    if (csipstatsredirmovedtempsouts.is_set || is_set(csipstatsredirmovedtempsouts.yfilter)) leaf_name_data.push_back(csipstatsredirmovedtempsouts.get_name_leafdata());
-    if (csipstatsredirmultiplechoices.is_set || is_set(csipstatsredirmultiplechoices.yfilter)) leaf_name_data.push_back(csipstatsredirmultiplechoices.get_name_leafdata());
-    if (csipstatsredirseeothers.is_set || is_set(csipstatsredirseeothers.yfilter)) leaf_name_data.push_back(csipstatsredirseeothers.get_name_leafdata());
-    if (csipstatsrediruseproxys.is_set || is_set(csipstatsrediruseproxys.yfilter)) leaf_name_data.push_back(csipstatsrediruseproxys.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatsredirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatsredirect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatsredirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipStatsRedirAltServices")
-    {
-        csipstatsrediraltservices = value;
-        csipstatsrediraltservices.value_namespace = name_space;
-        csipstatsrediraltservices.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirMovedPerms")
-    {
-        csipstatsredirmovedperms = value;
-        csipstatsredirmovedperms.value_namespace = name_space;
-        csipstatsredirmovedperms.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirMovedTemps")
-    {
-        csipstatsredirmovedtemps = value;
-        csipstatsredirmovedtemps.value_namespace = name_space;
-        csipstatsredirmovedtemps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirMovedTempsIns")
-    {
-        csipstatsredirmovedtempsins = value;
-        csipstatsredirmovedtempsins.value_namespace = name_space;
-        csipstatsredirmovedtempsins.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirMovedTempsOuts")
-    {
-        csipstatsredirmovedtempsouts = value;
-        csipstatsredirmovedtempsouts.value_namespace = name_space;
-        csipstatsredirmovedtempsouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirMultipleChoices")
-    {
-        csipstatsredirmultiplechoices = value;
-        csipstatsredirmultiplechoices.value_namespace = name_space;
-        csipstatsredirmultiplechoices.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirSeeOthers")
-    {
-        csipstatsredirseeothers = value;
-        csipstatsredirseeothers.value_namespace = name_space;
-        csipstatsredirseeothers.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRedirUseProxys")
-    {
-        csipstatsrediruseproxys = value;
-        csipstatsrediruseproxys.value_namespace = name_space;
-        csipstatsrediruseproxys.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipstatsredirect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipStatsRedirAltServices")
-    {
-        csipstatsrediraltservices.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirMovedPerms")
-    {
-        csipstatsredirmovedperms.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirMovedTemps")
-    {
-        csipstatsredirmovedtemps.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirMovedTempsIns")
-    {
-        csipstatsredirmovedtempsins.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirMovedTempsOuts")
-    {
-        csipstatsredirmovedtempsouts.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirMultipleChoices")
-    {
-        csipstatsredirmultiplechoices.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirSeeOthers")
-    {
-        csipstatsredirseeothers.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRedirUseProxys")
-    {
-        csipstatsrediruseproxys.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipstatsredirect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipStatsRedirAltServices" || name == "cSipStatsRedirMovedPerms" || name == "cSipStatsRedirMovedTemps" || name == "cSipStatsRedirMovedTempsIns" || name == "cSipStatsRedirMovedTempsOuts" || name == "cSipStatsRedirMultipleChoices" || name == "cSipStatsRedirSeeOthers" || name == "cSipStatsRedirUseProxys")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipstatserrclient::Csipstatserrclient()
+CISCOSIPUAMIB::Csipstatserrclient::Csipstatserrclient()
     :
     csipstatsclientaddrincompleteins{YType::uint32, "cSipStatsClientAddrIncompleteIns"},
     csipstatsclientaddrincompleteouts{YType::uint32, "cSipStatsClientAddrIncompleteOuts"},
@@ -2272,14 +2917,15 @@ CiscoSipUaMib::Csipstatserrclient::Csipstatserrclient()
     csipstatsclientunauthorizedins{YType::uint32, "cSipStatsClientUnauthorizedIns"},
     csipstatsclientunauthorizedouts{YType::uint32, "cSipStatsClientUnauthorizedOuts"}
 {
-    yang_name = "cSipStatsErrClient"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipStatsErrClient"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipstatserrclient::~Csipstatserrclient()
+CISCOSIPUAMIB::Csipstatserrclient::~Csipstatserrclient()
 {
 }
 
-bool CiscoSipUaMib::Csipstatserrclient::has_data() const
+bool CISCOSIPUAMIB::Csipstatserrclient::has_data() const
 {
     return csipstatsclientaddrincompleteins.is_set
 	|| csipstatsclientaddrincompleteouts.is_set
@@ -2339,7 +2985,7 @@ bool CiscoSipUaMib::Csipstatserrclient::has_data() const
 	|| csipstatsclientunauthorizedouts.is_set;
 }
 
-bool CiscoSipUaMib::Csipstatserrclient::has_operation() const
+bool CISCOSIPUAMIB::Csipstatserrclient::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipstatsclientaddrincompleteins.yfilter)
@@ -2400,27 +3046,22 @@ bool CiscoSipUaMib::Csipstatserrclient::has_operation() const
 	|| ydk::is_set(csipstatsclientunauthorizedouts.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipstatserrclient::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipstatserrclient::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatserrclient::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipStatsErrClient";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipstatserrclient::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatserrclient::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipstatsclientaddrincompleteins.is_set || is_set(csipstatsclientaddrincompleteins.yfilter)) leaf_name_data.push_back(csipstatsclientaddrincompleteins.get_name_leafdata());
@@ -2480,24 +3121,22 @@ const EntityPath CiscoSipUaMib::Csipstatserrclient::get_entity_path(Entity* ance
     if (csipstatsclientunauthorizedins.is_set || is_set(csipstatsclientunauthorizedins.yfilter)) leaf_name_data.push_back(csipstatsclientunauthorizedins.get_name_leafdata());
     if (csipstatsclientunauthorizedouts.is_set || is_set(csipstatsclientunauthorizedouts.yfilter)) leaf_name_data.push_back(csipstatsclientunauthorizedouts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatserrclient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatserrclient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatserrclient::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatserrclient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipstatserrclient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipstatserrclient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipStatsClientAddrIncompleteIns")
     {
@@ -2837,7 +3476,7 @@ void CiscoSipUaMib::Csipstatserrclient::set_value(const std::string & value_path
     }
 }
 
-void CiscoSipUaMib::Csipstatserrclient::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipstatserrclient::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipStatsClientAddrIncompleteIns")
     {
@@ -3065,14 +3704,14 @@ void CiscoSipUaMib::Csipstatserrclient::set_filter(const std::string & value_pat
     }
 }
 
-bool CiscoSipUaMib::Csipstatserrclient::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipstatserrclient::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipStatsClientAddrIncompleteIns" || name == "cSipStatsClientAddrIncompleteOuts" || name == "cSipStatsClientAmbiguousIns" || name == "cSipStatsClientAmbiguousOuts" || name == "cSipStatsClientBadEventIns" || name == "cSipStatsClientBadEventOuts" || name == "cSipStatsClientBadExtensionIns" || name == "cSipStatsClientBadExtensionOuts" || name == "cSipStatsClientBadRequestIns" || name == "cSipStatsClientBadRequestOuts" || name == "cSipStatsClientBusyHereIns" || name == "cSipStatsClientBusyHereOuts" || name == "cSipStatsClientCallLegNoExistIns" || name == "cSipStatsClientCallLegNoExistOuts" || name == "cSipStatsClientConflictIns" || name == "cSipStatsClientConflictOuts" || name == "cSipStatsClientForbiddenIns" || name == "cSipStatsClientForbiddenOuts" || name == "cSipStatsClientGoneIns" || name == "cSipStatsClientGoneOuts" || name == "cSipStatsClientLengthRequiredIns" || name == "cSipStatsClientLengthRequiredOuts" || name == "cSipStatsClientLoopDetectedIns" || name == "cSipStatsClientLoopDetectedOuts" || name == "cSipStatsClientMethNotAllowedIns" || name == "cSipStatsClientMethNotAllowedOuts" || name == "cSipStatsClientNoAcceptHereIns" || name == "cSipStatsClientNoAcceptHereOuts" || name == "cSipStatsClientNoSupMediaTypeIns" || name == "cSipStatsClientNoSupMediaTypeOuts" || name == "cSipStatsClientNotAcceptableIns" || name == "cSipStatsClientNotAcceptableOuts" || name == "cSipStatsClientNotFoundIns" || name == "cSipStatsClientNotFoundOuts" || name == "cSipStatsClientPaymentReqdIns" || name == "cSipStatsClientPaymentReqdOuts" || name == "cSipStatsClientProxyAuthReqdIns" || name == "cSipStatsClientProxyAuthReqdOuts" || name == "cSipStatsClientReqEntTooLargeIns" || name == "cSipStatsClientReqEntTooLargeOuts" || name == "cSipStatsClientReqPendingIns" || name == "cSipStatsClientReqPendingOuts" || name == "cSipStatsClientReqTermIns" || name == "cSipStatsClientReqTermOuts" || name == "cSipStatsClientReqTimeoutIns" || name == "cSipStatsClientReqTimeoutOuts" || name == "cSipStatsClientReqURITooLargeIns" || name == "cSipStatsClientReqURITooLargeOuts" || name == "cSipStatsClientSTTooSmallIns" || name == "cSipStatsClientSTTooSmallOuts" || name == "cSipStatsClientTempNotAvailIns" || name == "cSipStatsClientTempNotAvailOuts" || name == "cSipStatsClientTooManyHopsIns" || name == "cSipStatsClientTooManyHopsOuts" || name == "cSipStatsClientUnauthorizedIns" || name == "cSipStatsClientUnauthorizedOuts")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipstatserrserver::Csipstatserrserver()
+CISCOSIPUAMIB::Csipstatserrserver::Csipstatserrserver()
     :
     csipstatsserverbadgatewayins{YType::uint32, "cSipStatsServerBadGatewayIns"},
     csipstatsserverbadgatewayouts{YType::uint32, "cSipStatsServerBadGatewayOuts"},
@@ -3089,14 +3728,15 @@ CiscoSipUaMib::Csipstatserrserver::Csipstatserrserver()
     csipstatsserverserviceunavailins{YType::uint32, "cSipStatsServerServiceUnavailIns"},
     csipstatsserverserviceunavailouts{YType::uint32, "cSipStatsServerServiceUnavailOuts"}
 {
-    yang_name = "cSipStatsErrServer"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipStatsErrServer"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipstatserrserver::~Csipstatserrserver()
+CISCOSIPUAMIB::Csipstatserrserver::~Csipstatserrserver()
 {
 }
 
-bool CiscoSipUaMib::Csipstatserrserver::has_data() const
+bool CISCOSIPUAMIB::Csipstatserrserver::has_data() const
 {
     return csipstatsserverbadgatewayins.is_set
 	|| csipstatsserverbadgatewayouts.is_set
@@ -3114,7 +3754,7 @@ bool CiscoSipUaMib::Csipstatserrserver::has_data() const
 	|| csipstatsserverserviceunavailouts.is_set;
 }
 
-bool CiscoSipUaMib::Csipstatserrserver::has_operation() const
+bool CISCOSIPUAMIB::Csipstatserrserver::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipstatsserverbadgatewayins.yfilter)
@@ -3133,27 +3773,22 @@ bool CiscoSipUaMib::Csipstatserrserver::has_operation() const
 	|| ydk::is_set(csipstatsserverserviceunavailouts.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipstatserrserver::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipstatserrserver::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatserrserver::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipStatsErrServer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipstatserrserver::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatserrserver::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipstatsserverbadgatewayins.is_set || is_set(csipstatsserverbadgatewayins.yfilter)) leaf_name_data.push_back(csipstatsserverbadgatewayins.get_name_leafdata());
@@ -3171,24 +3806,22 @@ const EntityPath CiscoSipUaMib::Csipstatserrserver::get_entity_path(Entity* ance
     if (csipstatsserverserviceunavailins.is_set || is_set(csipstatsserverserviceunavailins.yfilter)) leaf_name_data.push_back(csipstatsserverserviceunavailins.get_name_leafdata());
     if (csipstatsserverserviceunavailouts.is_set || is_set(csipstatsserverserviceunavailouts.yfilter)) leaf_name_data.push_back(csipstatsserverserviceunavailouts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatserrserver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatserrserver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatserrserver::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatserrserver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipstatserrserver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipstatserrserver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipStatsServerBadGatewayIns")
     {
@@ -3276,7 +3909,7 @@ void CiscoSipUaMib::Csipstatserrserver::set_value(const std::string & value_path
     }
 }
 
-void CiscoSipUaMib::Csipstatserrserver::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipstatserrserver::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipStatsServerBadGatewayIns")
     {
@@ -3336,14 +3969,14 @@ void CiscoSipUaMib::Csipstatserrserver::set_filter(const std::string & value_pat
     }
 }
 
-bool CiscoSipUaMib::Csipstatserrserver::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipstatserrserver::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipStatsServerBadGatewayIns" || name == "cSipStatsServerBadGatewayOuts" || name == "cSipStatsServerBadSipVersionIns" || name == "cSipStatsServerBadSipVersionOuts" || name == "cSipStatsServerGatewayTimeoutIns" || name == "cSipStatsServerGatewayTimeoutOuts" || name == "cSipStatsServerIntErrorIns" || name == "cSipStatsServerIntErrorOuts" || name == "cSipStatsServerNotImplementedIns" || name == "cSipStatsServerNotImplementedOuts" || name == "cSipStatsServerPrecondFailureIns" || name == "cSipStatsServerPrecondFailureOuts" || name == "cSipStatsServerServiceUnavailIns" || name == "cSipStatsServerServiceUnavailOuts")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipstatsglobalfail::Csipstatsglobalfail()
+CISCOSIPUAMIB::Csipstatsglobalfail::Csipstatsglobalfail()
     :
     csipstatsglobalbusyeverywhereins{YType::uint32, "cSipStatsGlobalBusyEverywhereIns"},
     csipstatsglobalbusyeverywhereouts{YType::uint32, "cSipStatsGlobalBusyEverywhereOuts"},
@@ -3354,14 +3987,15 @@ CiscoSipUaMib::Csipstatsglobalfail::Csipstatsglobalfail()
     csipstatsglobalnotanywhereins{YType::uint32, "cSipStatsGlobalNotAnywhereIns"},
     csipstatsglobalnotanywhereouts{YType::uint32, "cSipStatsGlobalNotAnywhereOuts"}
 {
-    yang_name = "cSipStatsGlobalFail"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipStatsGlobalFail"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipstatsglobalfail::~Csipstatsglobalfail()
+CISCOSIPUAMIB::Csipstatsglobalfail::~Csipstatsglobalfail()
 {
 }
 
-bool CiscoSipUaMib::Csipstatsglobalfail::has_data() const
+bool CISCOSIPUAMIB::Csipstatsglobalfail::has_data() const
 {
     return csipstatsglobalbusyeverywhereins.is_set
 	|| csipstatsglobalbusyeverywhereouts.is_set
@@ -3373,7 +4007,7 @@ bool CiscoSipUaMib::Csipstatsglobalfail::has_data() const
 	|| csipstatsglobalnotanywhereouts.is_set;
 }
 
-bool CiscoSipUaMib::Csipstatsglobalfail::has_operation() const
+bool CISCOSIPUAMIB::Csipstatsglobalfail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipstatsglobalbusyeverywhereins.yfilter)
@@ -3386,27 +4020,22 @@ bool CiscoSipUaMib::Csipstatsglobalfail::has_operation() const
 	|| ydk::is_set(csipstatsglobalnotanywhereouts.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipstatsglobalfail::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipstatsglobalfail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatsglobalfail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipStatsGlobalFail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipstatsglobalfail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatsglobalfail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipstatsglobalbusyeverywhereins.is_set || is_set(csipstatsglobalbusyeverywhereins.yfilter)) leaf_name_data.push_back(csipstatsglobalbusyeverywhereins.get_name_leafdata());
@@ -3418,24 +4047,22 @@ const EntityPath CiscoSipUaMib::Csipstatsglobalfail::get_entity_path(Entity* anc
     if (csipstatsglobalnotanywhereins.is_set || is_set(csipstatsglobalnotanywhereins.yfilter)) leaf_name_data.push_back(csipstatsglobalnotanywhereins.get_name_leafdata());
     if (csipstatsglobalnotanywhereouts.is_set || is_set(csipstatsglobalnotanywhereouts.yfilter)) leaf_name_data.push_back(csipstatsglobalnotanywhereouts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatsglobalfail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsglobalfail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatsglobalfail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsglobalfail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipstatsglobalfail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipstatsglobalfail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipStatsGlobalBusyEverywhereIns")
     {
@@ -3487,7 +4114,7 @@ void CiscoSipUaMib::Csipstatsglobalfail::set_value(const std::string & value_pat
     }
 }
 
-void CiscoSipUaMib::Csipstatsglobalfail::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipstatsglobalfail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipStatsGlobalBusyEverywhereIns")
     {
@@ -3523,14 +4150,1060 @@ void CiscoSipUaMib::Csipstatsglobalfail::set_filter(const std::string & value_pa
     }
 }
 
-bool CiscoSipUaMib::Csipstatsglobalfail::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipstatsglobalfail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipStatsGlobalBusyEverywhereIns" || name == "cSipStatsGlobalBusyEverywhereOuts" || name == "cSipStatsGlobalDeclineIns" || name == "cSipStatsGlobalDeclineOuts" || name == "cSipStatsGlobalNotAcceptableIns" || name == "cSipStatsGlobalNotAcceptableOuts" || name == "cSipStatsGlobalNotAnywhereIns" || name == "cSipStatsGlobalNotAnywhereOuts")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipstatstraffic::Csipstatstraffic()
+CISCOSIPUAMIB::Csipstatsinfo::Csipstatsinfo()
+    :
+    csipstatsinfoforwardedins{YType::uint32, "cSipStatsInfoForwardedIns"},
+    csipstatsinfoforwardedouts{YType::uint32, "cSipStatsInfoForwardedOuts"},
+    csipstatsinfoqueuedins{YType::uint32, "cSipStatsInfoQueuedIns"},
+    csipstatsinfoqueuedouts{YType::uint32, "cSipStatsInfoQueuedOuts"},
+    csipstatsinforingingins{YType::uint32, "cSipStatsInfoRingingIns"},
+    csipstatsinforingingouts{YType::uint32, "cSipStatsInfoRingingOuts"},
+    csipstatsinfosessionprogins{YType::uint32, "cSipStatsInfoSessionProgIns"},
+    csipstatsinfosessionprogouts{YType::uint32, "cSipStatsInfoSessionProgOuts"},
+    csipstatsinfotryingins{YType::uint32, "cSipStatsInfoTryingIns"},
+    csipstatsinfotryingouts{YType::uint32, "cSipStatsInfoTryingOuts"}
+{
+
+    yang_name = "cSipStatsInfo"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatsinfo::~Csipstatsinfo()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatsinfo::has_data() const
+{
+    return csipstatsinfoforwardedins.is_set
+	|| csipstatsinfoforwardedouts.is_set
+	|| csipstatsinfoqueuedins.is_set
+	|| csipstatsinfoqueuedouts.is_set
+	|| csipstatsinforingingins.is_set
+	|| csipstatsinforingingouts.is_set
+	|| csipstatsinfosessionprogins.is_set
+	|| csipstatsinfosessionprogouts.is_set
+	|| csipstatsinfotryingins.is_set
+	|| csipstatsinfotryingouts.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipstatsinfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipstatsinfoforwardedins.yfilter)
+	|| ydk::is_set(csipstatsinfoforwardedouts.yfilter)
+	|| ydk::is_set(csipstatsinfoqueuedins.yfilter)
+	|| ydk::is_set(csipstatsinfoqueuedouts.yfilter)
+	|| ydk::is_set(csipstatsinforingingins.yfilter)
+	|| ydk::is_set(csipstatsinforingingouts.yfilter)
+	|| ydk::is_set(csipstatsinfosessionprogins.yfilter)
+	|| ydk::is_set(csipstatsinfosessionprogouts.yfilter)
+	|| ydk::is_set(csipstatsinfotryingins.yfilter)
+	|| ydk::is_set(csipstatsinfotryingouts.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatsinfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatsinfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsInfo";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatsinfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipstatsinfoforwardedins.is_set || is_set(csipstatsinfoforwardedins.yfilter)) leaf_name_data.push_back(csipstatsinfoforwardedins.get_name_leafdata());
+    if (csipstatsinfoforwardedouts.is_set || is_set(csipstatsinfoforwardedouts.yfilter)) leaf_name_data.push_back(csipstatsinfoforwardedouts.get_name_leafdata());
+    if (csipstatsinfoqueuedins.is_set || is_set(csipstatsinfoqueuedins.yfilter)) leaf_name_data.push_back(csipstatsinfoqueuedins.get_name_leafdata());
+    if (csipstatsinfoqueuedouts.is_set || is_set(csipstatsinfoqueuedouts.yfilter)) leaf_name_data.push_back(csipstatsinfoqueuedouts.get_name_leafdata());
+    if (csipstatsinforingingins.is_set || is_set(csipstatsinforingingins.yfilter)) leaf_name_data.push_back(csipstatsinforingingins.get_name_leafdata());
+    if (csipstatsinforingingouts.is_set || is_set(csipstatsinforingingouts.yfilter)) leaf_name_data.push_back(csipstatsinforingingouts.get_name_leafdata());
+    if (csipstatsinfosessionprogins.is_set || is_set(csipstatsinfosessionprogins.yfilter)) leaf_name_data.push_back(csipstatsinfosessionprogins.get_name_leafdata());
+    if (csipstatsinfosessionprogouts.is_set || is_set(csipstatsinfosessionprogouts.yfilter)) leaf_name_data.push_back(csipstatsinfosessionprogouts.get_name_leafdata());
+    if (csipstatsinfotryingins.is_set || is_set(csipstatsinfotryingins.yfilter)) leaf_name_data.push_back(csipstatsinfotryingins.get_name_leafdata());
+    if (csipstatsinfotryingouts.is_set || is_set(csipstatsinfotryingouts.yfilter)) leaf_name_data.push_back(csipstatsinfotryingouts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsinfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatsinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipStatsInfoForwardedIns")
+    {
+        csipstatsinfoforwardedins = value;
+        csipstatsinfoforwardedins.value_namespace = name_space;
+        csipstatsinfoforwardedins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoForwardedOuts")
+    {
+        csipstatsinfoforwardedouts = value;
+        csipstatsinfoforwardedouts.value_namespace = name_space;
+        csipstatsinfoforwardedouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoQueuedIns")
+    {
+        csipstatsinfoqueuedins = value;
+        csipstatsinfoqueuedins.value_namespace = name_space;
+        csipstatsinfoqueuedins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoQueuedOuts")
+    {
+        csipstatsinfoqueuedouts = value;
+        csipstatsinfoqueuedouts.value_namespace = name_space;
+        csipstatsinfoqueuedouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoRingingIns")
+    {
+        csipstatsinforingingins = value;
+        csipstatsinforingingins.value_namespace = name_space;
+        csipstatsinforingingins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoRingingOuts")
+    {
+        csipstatsinforingingouts = value;
+        csipstatsinforingingouts.value_namespace = name_space;
+        csipstatsinforingingouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoSessionProgIns")
+    {
+        csipstatsinfosessionprogins = value;
+        csipstatsinfosessionprogins.value_namespace = name_space;
+        csipstatsinfosessionprogins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoSessionProgOuts")
+    {
+        csipstatsinfosessionprogouts = value;
+        csipstatsinfosessionprogouts.value_namespace = name_space;
+        csipstatsinfosessionprogouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoTryingIns")
+    {
+        csipstatsinfotryingins = value;
+        csipstatsinfotryingins.value_namespace = name_space;
+        csipstatsinfotryingins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsInfoTryingOuts")
+    {
+        csipstatsinfotryingouts = value;
+        csipstatsinfotryingouts.value_namespace = name_space;
+        csipstatsinfotryingouts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipstatsinfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipStatsInfoForwardedIns")
+    {
+        csipstatsinfoforwardedins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoForwardedOuts")
+    {
+        csipstatsinfoforwardedouts.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoQueuedIns")
+    {
+        csipstatsinfoqueuedins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoQueuedOuts")
+    {
+        csipstatsinfoqueuedouts.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoRingingIns")
+    {
+        csipstatsinforingingins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoRingingOuts")
+    {
+        csipstatsinforingingouts.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoSessionProgIns")
+    {
+        csipstatsinfosessionprogins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoSessionProgOuts")
+    {
+        csipstatsinfosessionprogouts.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoTryingIns")
+    {
+        csipstatsinfotryingins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsInfoTryingOuts")
+    {
+        csipstatsinfotryingouts.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipstatsinfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsInfoForwardedIns" || name == "cSipStatsInfoForwardedOuts" || name == "cSipStatsInfoQueuedIns" || name == "cSipStatsInfoQueuedOuts" || name == "cSipStatsInfoRingingIns" || name == "cSipStatsInfoRingingOuts" || name == "cSipStatsInfoSessionProgIns" || name == "cSipStatsInfoSessionProgOuts" || name == "cSipStatsInfoTryingIns" || name == "cSipStatsInfoTryingOuts")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatsmisc::Csipstatsmisc()
+    :
+    csipstatsmisc3xxmappedto4xxrsps{YType::uint32, "cSipStatsMisc3xxMappedTo4xxRsps"}
+{
+
+    yang_name = "cSipStatsMisc"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatsmisc::~Csipstatsmisc()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatsmisc::has_data() const
+{
+    return csipstatsmisc3xxmappedto4xxrsps.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipstatsmisc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipstatsmisc3xxmappedto4xxrsps.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatsmisc::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatsmisc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsMisc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatsmisc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipstatsmisc3xxmappedto4xxrsps.is_set || is_set(csipstatsmisc3xxmappedto4xxrsps.yfilter)) leaf_name_data.push_back(csipstatsmisc3xxmappedto4xxrsps.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsmisc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsmisc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatsmisc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipStatsMisc3xxMappedTo4xxRsps")
+    {
+        csipstatsmisc3xxmappedto4xxrsps = value;
+        csipstatsmisc3xxmappedto4xxrsps.value_namespace = name_space;
+        csipstatsmisc3xxmappedto4xxrsps.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipstatsmisc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipStatsMisc3xxMappedTo4xxRsps")
+    {
+        csipstatsmisc3xxmappedto4xxrsps.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipstatsmisc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsMisc3xxMappedTo4xxRsps")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatsredirect::Csipstatsredirect()
+    :
+    csipstatsrediraltservices{YType::uint32, "cSipStatsRedirAltServices"},
+    csipstatsredirmovedperms{YType::uint32, "cSipStatsRedirMovedPerms"},
+    csipstatsredirmovedtemps{YType::uint32, "cSipStatsRedirMovedTemps"},
+    csipstatsredirmovedtempsins{YType::uint32, "cSipStatsRedirMovedTempsIns"},
+    csipstatsredirmovedtempsouts{YType::uint32, "cSipStatsRedirMovedTempsOuts"},
+    csipstatsredirmultiplechoices{YType::uint32, "cSipStatsRedirMultipleChoices"},
+    csipstatsredirseeothers{YType::uint32, "cSipStatsRedirSeeOthers"},
+    csipstatsrediruseproxys{YType::uint32, "cSipStatsRedirUseProxys"}
+{
+
+    yang_name = "cSipStatsRedirect"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatsredirect::~Csipstatsredirect()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatsredirect::has_data() const
+{
+    return csipstatsrediraltservices.is_set
+	|| csipstatsredirmovedperms.is_set
+	|| csipstatsredirmovedtemps.is_set
+	|| csipstatsredirmovedtempsins.is_set
+	|| csipstatsredirmovedtempsouts.is_set
+	|| csipstatsredirmultiplechoices.is_set
+	|| csipstatsredirseeothers.is_set
+	|| csipstatsrediruseproxys.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipstatsredirect::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipstatsrediraltservices.yfilter)
+	|| ydk::is_set(csipstatsredirmovedperms.yfilter)
+	|| ydk::is_set(csipstatsredirmovedtemps.yfilter)
+	|| ydk::is_set(csipstatsredirmovedtempsins.yfilter)
+	|| ydk::is_set(csipstatsredirmovedtempsouts.yfilter)
+	|| ydk::is_set(csipstatsredirmultiplechoices.yfilter)
+	|| ydk::is_set(csipstatsredirseeothers.yfilter)
+	|| ydk::is_set(csipstatsrediruseproxys.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatsredirect::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatsredirect::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsRedirect";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatsredirect::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipstatsrediraltservices.is_set || is_set(csipstatsrediraltservices.yfilter)) leaf_name_data.push_back(csipstatsrediraltservices.get_name_leafdata());
+    if (csipstatsredirmovedperms.is_set || is_set(csipstatsredirmovedperms.yfilter)) leaf_name_data.push_back(csipstatsredirmovedperms.get_name_leafdata());
+    if (csipstatsredirmovedtemps.is_set || is_set(csipstatsredirmovedtemps.yfilter)) leaf_name_data.push_back(csipstatsredirmovedtemps.get_name_leafdata());
+    if (csipstatsredirmovedtempsins.is_set || is_set(csipstatsredirmovedtempsins.yfilter)) leaf_name_data.push_back(csipstatsredirmovedtempsins.get_name_leafdata());
+    if (csipstatsredirmovedtempsouts.is_set || is_set(csipstatsredirmovedtempsouts.yfilter)) leaf_name_data.push_back(csipstatsredirmovedtempsouts.get_name_leafdata());
+    if (csipstatsredirmultiplechoices.is_set || is_set(csipstatsredirmultiplechoices.yfilter)) leaf_name_data.push_back(csipstatsredirmultiplechoices.get_name_leafdata());
+    if (csipstatsredirseeothers.is_set || is_set(csipstatsredirseeothers.yfilter)) leaf_name_data.push_back(csipstatsredirseeothers.get_name_leafdata());
+    if (csipstatsrediruseproxys.is_set || is_set(csipstatsrediruseproxys.yfilter)) leaf_name_data.push_back(csipstatsrediruseproxys.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsredirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsredirect::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatsredirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipStatsRedirAltServices")
+    {
+        csipstatsrediraltservices = value;
+        csipstatsrediraltservices.value_namespace = name_space;
+        csipstatsrediraltservices.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirMovedPerms")
+    {
+        csipstatsredirmovedperms = value;
+        csipstatsredirmovedperms.value_namespace = name_space;
+        csipstatsredirmovedperms.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirMovedTemps")
+    {
+        csipstatsredirmovedtemps = value;
+        csipstatsredirmovedtemps.value_namespace = name_space;
+        csipstatsredirmovedtemps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirMovedTempsIns")
+    {
+        csipstatsredirmovedtempsins = value;
+        csipstatsredirmovedtempsins.value_namespace = name_space;
+        csipstatsredirmovedtempsins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirMovedTempsOuts")
+    {
+        csipstatsredirmovedtempsouts = value;
+        csipstatsredirmovedtempsouts.value_namespace = name_space;
+        csipstatsredirmovedtempsouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirMultipleChoices")
+    {
+        csipstatsredirmultiplechoices = value;
+        csipstatsredirmultiplechoices.value_namespace = name_space;
+        csipstatsredirmultiplechoices.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirSeeOthers")
+    {
+        csipstatsredirseeothers = value;
+        csipstatsredirseeothers.value_namespace = name_space;
+        csipstatsredirseeothers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRedirUseProxys")
+    {
+        csipstatsrediruseproxys = value;
+        csipstatsrediruseproxys.value_namespace = name_space;
+        csipstatsrediruseproxys.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipstatsredirect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipStatsRedirAltServices")
+    {
+        csipstatsrediraltservices.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirMovedPerms")
+    {
+        csipstatsredirmovedperms.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirMovedTemps")
+    {
+        csipstatsredirmovedtemps.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirMovedTempsIns")
+    {
+        csipstatsredirmovedtempsins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirMovedTempsOuts")
+    {
+        csipstatsredirmovedtempsouts.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirMultipleChoices")
+    {
+        csipstatsredirmultiplechoices.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirSeeOthers")
+    {
+        csipstatsredirseeothers.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRedirUseProxys")
+    {
+        csipstatsrediruseproxys.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipstatsredirect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsRedirAltServices" || name == "cSipStatsRedirMovedPerms" || name == "cSipStatsRedirMovedTemps" || name == "cSipStatsRedirMovedTempsIns" || name == "cSipStatsRedirMovedTempsOuts" || name == "cSipStatsRedirMultipleChoices" || name == "cSipStatsRedirSeeOthers" || name == "cSipStatsRedirUseProxys")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatsretry::Csipstatsretry()
+    :
+    csipstatsretrybyes{YType::uint32, "cSipStatsRetryByes"},
+    csipstatsretrycancels{YType::uint32, "cSipStatsRetryCancels"},
+    csipstatsretrycomets{YType::uint32, "cSipStatsRetryComets"},
+    csipstatsretryinfo{YType::uint32, "cSipStatsRetryInfo"},
+    csipstatsretryinvites{YType::uint32, "cSipStatsRetryInvites"},
+    csipstatsretrynotifys{YType::uint32, "cSipStatsRetryNotifys"},
+    csipstatsretrypracks{YType::uint32, "cSipStatsRetryPracks"},
+    csipstatsretryrefers{YType::uint32, "cSipStatsRetryRefers"},
+    csipstatsretryregisters{YType::uint32, "cSipStatsRetryRegisters"},
+    csipstatsretryreliable1xxrsps{YType::uint32, "cSipStatsRetryReliable1xxRsps"},
+    csipstatsretryresponses{YType::uint32, "cSipStatsRetryResponses"},
+    csipstatsretrysubscribe{YType::uint32, "cSipStatsRetrySubscribe"}
+{
+
+    yang_name = "cSipStatsRetry"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatsretry::~Csipstatsretry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatsretry::has_data() const
+{
+    return csipstatsretrybyes.is_set
+	|| csipstatsretrycancels.is_set
+	|| csipstatsretrycomets.is_set
+	|| csipstatsretryinfo.is_set
+	|| csipstatsretryinvites.is_set
+	|| csipstatsretrynotifys.is_set
+	|| csipstatsretrypracks.is_set
+	|| csipstatsretryrefers.is_set
+	|| csipstatsretryregisters.is_set
+	|| csipstatsretryreliable1xxrsps.is_set
+	|| csipstatsretryresponses.is_set
+	|| csipstatsretrysubscribe.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipstatsretry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipstatsretrybyes.yfilter)
+	|| ydk::is_set(csipstatsretrycancels.yfilter)
+	|| ydk::is_set(csipstatsretrycomets.yfilter)
+	|| ydk::is_set(csipstatsretryinfo.yfilter)
+	|| ydk::is_set(csipstatsretryinvites.yfilter)
+	|| ydk::is_set(csipstatsretrynotifys.yfilter)
+	|| ydk::is_set(csipstatsretrypracks.yfilter)
+	|| ydk::is_set(csipstatsretryrefers.yfilter)
+	|| ydk::is_set(csipstatsretryregisters.yfilter)
+	|| ydk::is_set(csipstatsretryreliable1xxrsps.yfilter)
+	|| ydk::is_set(csipstatsretryresponses.yfilter)
+	|| ydk::is_set(csipstatsretrysubscribe.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatsretry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatsretry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsRetry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatsretry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipstatsretrybyes.is_set || is_set(csipstatsretrybyes.yfilter)) leaf_name_data.push_back(csipstatsretrybyes.get_name_leafdata());
+    if (csipstatsretrycancels.is_set || is_set(csipstatsretrycancels.yfilter)) leaf_name_data.push_back(csipstatsretrycancels.get_name_leafdata());
+    if (csipstatsretrycomets.is_set || is_set(csipstatsretrycomets.yfilter)) leaf_name_data.push_back(csipstatsretrycomets.get_name_leafdata());
+    if (csipstatsretryinfo.is_set || is_set(csipstatsretryinfo.yfilter)) leaf_name_data.push_back(csipstatsretryinfo.get_name_leafdata());
+    if (csipstatsretryinvites.is_set || is_set(csipstatsretryinvites.yfilter)) leaf_name_data.push_back(csipstatsretryinvites.get_name_leafdata());
+    if (csipstatsretrynotifys.is_set || is_set(csipstatsretrynotifys.yfilter)) leaf_name_data.push_back(csipstatsretrynotifys.get_name_leafdata());
+    if (csipstatsretrypracks.is_set || is_set(csipstatsretrypracks.yfilter)) leaf_name_data.push_back(csipstatsretrypracks.get_name_leafdata());
+    if (csipstatsretryrefers.is_set || is_set(csipstatsretryrefers.yfilter)) leaf_name_data.push_back(csipstatsretryrefers.get_name_leafdata());
+    if (csipstatsretryregisters.is_set || is_set(csipstatsretryregisters.yfilter)) leaf_name_data.push_back(csipstatsretryregisters.get_name_leafdata());
+    if (csipstatsretryreliable1xxrsps.is_set || is_set(csipstatsretryreliable1xxrsps.yfilter)) leaf_name_data.push_back(csipstatsretryreliable1xxrsps.get_name_leafdata());
+    if (csipstatsretryresponses.is_set || is_set(csipstatsretryresponses.yfilter)) leaf_name_data.push_back(csipstatsretryresponses.get_name_leafdata());
+    if (csipstatsretrysubscribe.is_set || is_set(csipstatsretrysubscribe.yfilter)) leaf_name_data.push_back(csipstatsretrysubscribe.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsretry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsretry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatsretry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipStatsRetryByes")
+    {
+        csipstatsretrybyes = value;
+        csipstatsretrybyes.value_namespace = name_space;
+        csipstatsretrybyes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryCancels")
+    {
+        csipstatsretrycancels = value;
+        csipstatsretrycancels.value_namespace = name_space;
+        csipstatsretrycancels.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryComets")
+    {
+        csipstatsretrycomets = value;
+        csipstatsretrycomets.value_namespace = name_space;
+        csipstatsretrycomets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryInfo")
+    {
+        csipstatsretryinfo = value;
+        csipstatsretryinfo.value_namespace = name_space;
+        csipstatsretryinfo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryInvites")
+    {
+        csipstatsretryinvites = value;
+        csipstatsretryinvites.value_namespace = name_space;
+        csipstatsretryinvites.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryNotifys")
+    {
+        csipstatsretrynotifys = value;
+        csipstatsretrynotifys.value_namespace = name_space;
+        csipstatsretrynotifys.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryPracks")
+    {
+        csipstatsretrypracks = value;
+        csipstatsretrypracks.value_namespace = name_space;
+        csipstatsretrypracks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryRefers")
+    {
+        csipstatsretryrefers = value;
+        csipstatsretryrefers.value_namespace = name_space;
+        csipstatsretryrefers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryRegisters")
+    {
+        csipstatsretryregisters = value;
+        csipstatsretryregisters.value_namespace = name_space;
+        csipstatsretryregisters.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryReliable1xxRsps")
+    {
+        csipstatsretryreliable1xxrsps = value;
+        csipstatsretryreliable1xxrsps.value_namespace = name_space;
+        csipstatsretryreliable1xxrsps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetryResponses")
+    {
+        csipstatsretryresponses = value;
+        csipstatsretryresponses.value_namespace = name_space;
+        csipstatsretryresponses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsRetrySubscribe")
+    {
+        csipstatsretrysubscribe = value;
+        csipstatsretrysubscribe.value_namespace = name_space;
+        csipstatsretrysubscribe.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipstatsretry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipStatsRetryByes")
+    {
+        csipstatsretrybyes.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryCancels")
+    {
+        csipstatsretrycancels.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryComets")
+    {
+        csipstatsretrycomets.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryInfo")
+    {
+        csipstatsretryinfo.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryInvites")
+    {
+        csipstatsretryinvites.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryNotifys")
+    {
+        csipstatsretrynotifys.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryPracks")
+    {
+        csipstatsretrypracks.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryRefers")
+    {
+        csipstatsretryrefers.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryRegisters")
+    {
+        csipstatsretryregisters.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryReliable1xxRsps")
+    {
+        csipstatsretryreliable1xxrsps.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetryResponses")
+    {
+        csipstatsretryresponses.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsRetrySubscribe")
+    {
+        csipstatsretrysubscribe.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipstatsretry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsRetryByes" || name == "cSipStatsRetryCancels" || name == "cSipStatsRetryComets" || name == "cSipStatsRetryInfo" || name == "cSipStatsRetryInvites" || name == "cSipStatsRetryNotifys" || name == "cSipStatsRetryPracks" || name == "cSipStatsRetryRefers" || name == "cSipStatsRetryRegisters" || name == "cSipStatsRetryReliable1xxRsps" || name == "cSipStatsRetryResponses" || name == "cSipStatsRetrySubscribe")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatssuccess::Csipstatssuccess()
+    :
+    csipstatssuccessacceptedins{YType::uint32, "cSipStatsSuccessAcceptedIns"},
+    csipstatssuccessacceptedouts{YType::uint32, "cSipStatsSuccessAcceptedOuts"},
+    csipstatssuccessokins{YType::uint32, "cSipStatsSuccessOkIns"},
+    csipstatssuccessokouts{YType::uint32, "cSipStatsSuccessOkOuts"}
+{
+
+    yang_name = "cSipStatsSuccess"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatssuccess::~Csipstatssuccess()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccess::has_data() const
+{
+    return csipstatssuccessacceptedins.is_set
+	|| csipstatssuccessacceptedouts.is_set
+	|| csipstatssuccessokins.is_set
+	|| csipstatssuccessokouts.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccess::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipstatssuccessacceptedins.yfilter)
+	|| ydk::is_set(csipstatssuccessacceptedouts.yfilter)
+	|| ydk::is_set(csipstatssuccessokins.yfilter)
+	|| ydk::is_set(csipstatssuccessokouts.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatssuccess::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatssuccess::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsSuccess";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatssuccess::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipstatssuccessacceptedins.is_set || is_set(csipstatssuccessacceptedins.yfilter)) leaf_name_data.push_back(csipstatssuccessacceptedins.get_name_leafdata());
+    if (csipstatssuccessacceptedouts.is_set || is_set(csipstatssuccessacceptedouts.yfilter)) leaf_name_data.push_back(csipstatssuccessacceptedouts.get_name_leafdata());
+    if (csipstatssuccessokins.is_set || is_set(csipstatssuccessokins.yfilter)) leaf_name_data.push_back(csipstatssuccessokins.get_name_leafdata());
+    if (csipstatssuccessokouts.is_set || is_set(csipstatssuccessokouts.yfilter)) leaf_name_data.push_back(csipstatssuccessokouts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatssuccess::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatssuccess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipStatsSuccessAcceptedIns")
+    {
+        csipstatssuccessacceptedins = value;
+        csipstatssuccessacceptedins.value_namespace = name_space;
+        csipstatssuccessacceptedins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsSuccessAcceptedOuts")
+    {
+        csipstatssuccessacceptedouts = value;
+        csipstatssuccessacceptedouts.value_namespace = name_space;
+        csipstatssuccessacceptedouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsSuccessOkIns")
+    {
+        csipstatssuccessokins = value;
+        csipstatssuccessokins.value_namespace = name_space;
+        csipstatssuccessokins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsSuccessOkOuts")
+    {
+        csipstatssuccessokouts = value;
+        csipstatssuccessokouts.value_namespace = name_space;
+        csipstatssuccessokouts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipstatssuccess::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipStatsSuccessAcceptedIns")
+    {
+        csipstatssuccessacceptedins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsSuccessAcceptedOuts")
+    {
+        csipstatssuccessacceptedouts.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsSuccessOkIns")
+    {
+        csipstatssuccessokins.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsSuccessOkOuts")
+    {
+        csipstatssuccessokouts.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccess::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsSuccessAcceptedIns" || name == "cSipStatsSuccessAcceptedOuts" || name == "cSipStatsSuccessOkIns" || name == "cSipStatsSuccessOkOuts")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessoktable()
+{
+
+    yang_name = "cSipStatsSuccessOkTable"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatssuccessoktable::~Csipstatssuccessoktable()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccessoktable::has_data() const
+{
+    for (std::size_t index=0; index<csipstatssuccessokentry.size(); index++)
+    {
+        if(csipstatssuccessokentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccessoktable::has_operation() const
+{
+    for (std::size_t index=0; index<csipstatssuccessokentry.size(); index++)
+    {
+        if(csipstatssuccessokentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatssuccessoktable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatssuccessoktable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsSuccessOkTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatssuccessoktable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccessoktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cSipStatsSuccessOkEntry")
+    {
+        for(auto const & c : csipstatssuccessokentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry>();
+        c->parent = this;
+        csipstatssuccessokentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatssuccessoktable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : csipstatssuccessokentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatssuccessoktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOSIPUAMIB::Csipstatssuccessoktable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccessoktable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsSuccessOkEntry")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::Csipstatssuccessokentry()
+    :
+    csipstatssuccessokmethod{YType::str, "cSipStatsSuccessOkMethod"},
+    csipstatssuccessokinbounds{YType::uint32, "cSipStatsSuccessOkInbounds"},
+    csipstatssuccessokoutbounds{YType::uint32, "cSipStatsSuccessOkOutbounds"}
+{
+
+    yang_name = "cSipStatsSuccessOkEntry"; yang_parent_name = "cSipStatsSuccessOkTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::~Csipstatssuccessokentry()
+{
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::has_data() const
+{
+    return csipstatssuccessokmethod.is_set
+	|| csipstatssuccessokinbounds.is_set
+	|| csipstatssuccessokoutbounds.is_set;
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(csipstatssuccessokmethod.yfilter)
+	|| ydk::is_set(csipstatssuccessokinbounds.yfilter)
+	|| ydk::is_set(csipstatssuccessokoutbounds.yfilter);
+}
+
+std::string CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipStatsSuccessOkTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cSipStatsSuccessOkEntry" <<"[cSipStatsSuccessOkMethod='" <<csipstatssuccessokmethod <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (csipstatssuccessokmethod.is_set || is_set(csipstatssuccessokmethod.yfilter)) leaf_name_data.push_back(csipstatssuccessokmethod.get_name_leafdata());
+    if (csipstatssuccessokinbounds.is_set || is_set(csipstatssuccessokinbounds.yfilter)) leaf_name_data.push_back(csipstatssuccessokinbounds.get_name_leafdata());
+    if (csipstatssuccessokoutbounds.is_set || is_set(csipstatssuccessokoutbounds.yfilter)) leaf_name_data.push_back(csipstatssuccessokoutbounds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cSipStatsSuccessOkMethod")
+    {
+        csipstatssuccessokmethod = value;
+        csipstatssuccessokmethod.value_namespace = name_space;
+        csipstatssuccessokmethod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsSuccessOkInbounds")
+    {
+        csipstatssuccessokinbounds = value;
+        csipstatssuccessokinbounds.value_namespace = name_space;
+        csipstatssuccessokinbounds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cSipStatsSuccessOkOutbounds")
+    {
+        csipstatssuccessokoutbounds = value;
+        csipstatssuccessokoutbounds.value_namespace = name_space;
+        csipstatssuccessokoutbounds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cSipStatsSuccessOkMethod")
+    {
+        csipstatssuccessokmethod.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsSuccessOkInbounds")
+    {
+        csipstatssuccessokinbounds.yfilter = yfilter;
+    }
+    if(value_path == "cSipStatsSuccessOkOutbounds")
+    {
+        csipstatssuccessokoutbounds.yfilter = yfilter;
+    }
+}
+
+bool CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cSipStatsSuccessOkMethod" || name == "cSipStatsSuccessOkInbounds" || name == "cSipStatsSuccessOkOutbounds")
+        return true;
+    return false;
+}
+
+CISCOSIPUAMIB::Csipstatstraffic::Csipstatstraffic()
     :
     csipstatstrafficackins{YType::uint32, "cSipStatsTrafficAckIns"},
     csipstatstrafficackouts{YType::uint32, "cSipStatsTrafficAckOuts"},
@@ -3559,14 +5232,15 @@ CiscoSipUaMib::Csipstatstraffic::Csipstatstraffic()
     csipstatstrafficupdateins{YType::uint32, "cSipStatsTrafficUpdateIns"},
     csipstatstrafficupdateouts{YType::uint32, "cSipStatsTrafficUpdateOuts"}
 {
-    yang_name = "cSipStatsTraffic"; yang_parent_name = "CISCO-SIP-UA-MIB";
+
+    yang_name = "cSipStatsTraffic"; yang_parent_name = "CISCO-SIP-UA-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoSipUaMib::Csipstatstraffic::~Csipstatstraffic()
+CISCOSIPUAMIB::Csipstatstraffic::~Csipstatstraffic()
 {
 }
 
-bool CiscoSipUaMib::Csipstatstraffic::has_data() const
+bool CISCOSIPUAMIB::Csipstatstraffic::has_data() const
 {
     return csipstatstrafficackins.is_set
 	|| csipstatstrafficackouts.is_set
@@ -3596,7 +5270,7 @@ bool CiscoSipUaMib::Csipstatstraffic::has_data() const
 	|| csipstatstrafficupdateouts.is_set;
 }
 
-bool CiscoSipUaMib::Csipstatstraffic::has_operation() const
+bool CISCOSIPUAMIB::Csipstatstraffic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csipstatstrafficackins.yfilter)
@@ -3627,27 +5301,22 @@ bool CiscoSipUaMib::Csipstatstraffic::has_operation() const
 	|| ydk::is_set(csipstatstrafficupdateouts.yfilter);
 }
 
-std::string CiscoSipUaMib::Csipstatstraffic::get_segment_path() const
+std::string CISCOSIPUAMIB::Csipstatstraffic::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOSIPUAMIB::Csipstatstraffic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cSipStatsTraffic";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoSipUaMib::Csipstatstraffic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::Csipstatstraffic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (csipstatstrafficackins.is_set || is_set(csipstatstrafficackins.yfilter)) leaf_name_data.push_back(csipstatstrafficackins.get_name_leafdata());
@@ -3677,24 +5346,22 @@ const EntityPath CiscoSipUaMib::Csipstatstraffic::get_entity_path(Entity* ancest
     if (csipstatstrafficupdateins.is_set || is_set(csipstatstrafficupdateins.yfilter)) leaf_name_data.push_back(csipstatstrafficupdateins.get_name_leafdata());
     if (csipstatstrafficupdateouts.is_set || is_set(csipstatstrafficupdateouts.yfilter)) leaf_name_data.push_back(csipstatstrafficupdateouts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatstraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatstraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatstraffic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatstraffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoSipUaMib::Csipstatstraffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSIPUAMIB::Csipstatstraffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cSipStatsTrafficAckIns")
     {
@@ -3854,7 +5521,7 @@ void CiscoSipUaMib::Csipstatstraffic::set_value(const std::string & value_path, 
     }
 }
 
-void CiscoSipUaMib::Csipstatstraffic::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSIPUAMIB::Csipstatstraffic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cSipStatsTrafficAckIns")
     {
@@ -3962,1945 +5629,80 @@ void CiscoSipUaMib::Csipstatstraffic::set_filter(const std::string & value_path,
     }
 }
 
-bool CiscoSipUaMib::Csipstatstraffic::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSIPUAMIB::Csipstatstraffic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cSipStatsTrafficAckIns" || name == "cSipStatsTrafficAckOuts" || name == "cSipStatsTrafficByeIns" || name == "cSipStatsTrafficByeOuts" || name == "cSipStatsTrafficCancelIns" || name == "cSipStatsTrafficCancelOuts" || name == "cSipStatsTrafficCometIns" || name == "cSipStatsTrafficCometOuts" || name == "cSipStatsTrafficInfoIns" || name == "cSipStatsTrafficInfoOuts" || name == "cSipStatsTrafficInviteIns" || name == "cSipStatsTrafficInviteOuts" || name == "cSipStatsTrafficNotifyIns" || name == "cSipStatsTrafficNotifyOuts" || name == "cSipStatsTrafficOptionsIns" || name == "cSipStatsTrafficOptionsOuts" || name == "cSipStatsTrafficPrackIns" || name == "cSipStatsTrafficPrackOuts" || name == "cSipStatsTrafficReferIns" || name == "cSipStatsTrafficReferOuts" || name == "cSipStatsTrafficRegisterIns" || name == "cSipStatsTrafficRegisterOuts" || name == "cSipStatsTrafficSubscribeIns" || name == "cSipStatsTrafficSubscribeOuts" || name == "cSipStatsTrafficUpdateIns" || name == "cSipStatsTrafficUpdateOuts")
         return true;
     return false;
 }
 
-CiscoSipUaMib::Csipstatsretry::Csipstatsretry()
-    :
-    csipstatsretrybyes{YType::uint32, "cSipStatsRetryByes"},
-    csipstatsretrycancels{YType::uint32, "cSipStatsRetryCancels"},
-    csipstatsretrycomets{YType::uint32, "cSipStatsRetryComets"},
-    csipstatsretryinfo{YType::uint32, "cSipStatsRetryInfo"},
-    csipstatsretryinvites{YType::uint32, "cSipStatsRetryInvites"},
-    csipstatsretrynotifys{YType::uint32, "cSipStatsRetryNotifys"},
-    csipstatsretrypracks{YType::uint32, "cSipStatsRetryPracks"},
-    csipstatsretryrefers{YType::uint32, "cSipStatsRetryRefers"},
-    csipstatsretryregisters{YType::uint32, "cSipStatsRetryRegisters"},
-    csipstatsretryreliable1xxrsps{YType::uint32, "cSipStatsRetryReliable1xxRsps"},
-    csipstatsretryresponses{YType::uint32, "cSipStatsRetryResponses"},
-    csipstatsretrysubscribe{YType::uint32, "cSipStatsRetrySubscribe"}
+Ciscosipuamibnotificationprefix::Ciscosipuamibnotificationprefix()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB:ciscoSipUaMIBNotificationPrefix")
 {
-    yang_name = "cSipStatsRetry"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipstatsretry::~Csipstatsretry()
-{
-}
-
-bool CiscoSipUaMib::Csipstatsretry::has_data() const
-{
-    return csipstatsretrybyes.is_set
-	|| csipstatsretrycancels.is_set
-	|| csipstatsretrycomets.is_set
-	|| csipstatsretryinfo.is_set
-	|| csipstatsretryinvites.is_set
-	|| csipstatsretrynotifys.is_set
-	|| csipstatsretrypracks.is_set
-	|| csipstatsretryrefers.is_set
-	|| csipstatsretryregisters.is_set
-	|| csipstatsretryreliable1xxrsps.is_set
-	|| csipstatsretryresponses.is_set
-	|| csipstatsretrysubscribe.is_set;
-}
-
-bool CiscoSipUaMib::Csipstatsretry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipstatsretrybyes.yfilter)
-	|| ydk::is_set(csipstatsretrycancels.yfilter)
-	|| ydk::is_set(csipstatsretrycomets.yfilter)
-	|| ydk::is_set(csipstatsretryinfo.yfilter)
-	|| ydk::is_set(csipstatsretryinvites.yfilter)
-	|| ydk::is_set(csipstatsretrynotifys.yfilter)
-	|| ydk::is_set(csipstatsretrypracks.yfilter)
-	|| ydk::is_set(csipstatsretryrefers.yfilter)
-	|| ydk::is_set(csipstatsretryregisters.yfilter)
-	|| ydk::is_set(csipstatsretryreliable1xxrsps.yfilter)
-	|| ydk::is_set(csipstatsretryresponses.yfilter)
-	|| ydk::is_set(csipstatsretrysubscribe.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatsretry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsRetry";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatsretry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipstatsretrybyes.is_set || is_set(csipstatsretrybyes.yfilter)) leaf_name_data.push_back(csipstatsretrybyes.get_name_leafdata());
-    if (csipstatsretrycancels.is_set || is_set(csipstatsretrycancels.yfilter)) leaf_name_data.push_back(csipstatsretrycancels.get_name_leafdata());
-    if (csipstatsretrycomets.is_set || is_set(csipstatsretrycomets.yfilter)) leaf_name_data.push_back(csipstatsretrycomets.get_name_leafdata());
-    if (csipstatsretryinfo.is_set || is_set(csipstatsretryinfo.yfilter)) leaf_name_data.push_back(csipstatsretryinfo.get_name_leafdata());
-    if (csipstatsretryinvites.is_set || is_set(csipstatsretryinvites.yfilter)) leaf_name_data.push_back(csipstatsretryinvites.get_name_leafdata());
-    if (csipstatsretrynotifys.is_set || is_set(csipstatsretrynotifys.yfilter)) leaf_name_data.push_back(csipstatsretrynotifys.get_name_leafdata());
-    if (csipstatsretrypracks.is_set || is_set(csipstatsretrypracks.yfilter)) leaf_name_data.push_back(csipstatsretrypracks.get_name_leafdata());
-    if (csipstatsretryrefers.is_set || is_set(csipstatsretryrefers.yfilter)) leaf_name_data.push_back(csipstatsretryrefers.get_name_leafdata());
-    if (csipstatsretryregisters.is_set || is_set(csipstatsretryregisters.yfilter)) leaf_name_data.push_back(csipstatsretryregisters.get_name_leafdata());
-    if (csipstatsretryreliable1xxrsps.is_set || is_set(csipstatsretryreliable1xxrsps.yfilter)) leaf_name_data.push_back(csipstatsretryreliable1xxrsps.get_name_leafdata());
-    if (csipstatsretryresponses.is_set || is_set(csipstatsretryresponses.yfilter)) leaf_name_data.push_back(csipstatsretryresponses.get_name_leafdata());
-    if (csipstatsretrysubscribe.is_set || is_set(csipstatsretrysubscribe.yfilter)) leaf_name_data.push_back(csipstatsretrysubscribe.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatsretry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatsretry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatsretry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipStatsRetryByes")
-    {
-        csipstatsretrybyes = value;
-        csipstatsretrybyes.value_namespace = name_space;
-        csipstatsretrybyes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryCancels")
-    {
-        csipstatsretrycancels = value;
-        csipstatsretrycancels.value_namespace = name_space;
-        csipstatsretrycancels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryComets")
-    {
-        csipstatsretrycomets = value;
-        csipstatsretrycomets.value_namespace = name_space;
-        csipstatsretrycomets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryInfo")
-    {
-        csipstatsretryinfo = value;
-        csipstatsretryinfo.value_namespace = name_space;
-        csipstatsretryinfo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryInvites")
-    {
-        csipstatsretryinvites = value;
-        csipstatsretryinvites.value_namespace = name_space;
-        csipstatsretryinvites.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryNotifys")
-    {
-        csipstatsretrynotifys = value;
-        csipstatsretrynotifys.value_namespace = name_space;
-        csipstatsretrynotifys.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryPracks")
-    {
-        csipstatsretrypracks = value;
-        csipstatsretrypracks.value_namespace = name_space;
-        csipstatsretrypracks.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryRefers")
-    {
-        csipstatsretryrefers = value;
-        csipstatsretryrefers.value_namespace = name_space;
-        csipstatsretryrefers.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryRegisters")
-    {
-        csipstatsretryregisters = value;
-        csipstatsretryregisters.value_namespace = name_space;
-        csipstatsretryregisters.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryReliable1xxRsps")
-    {
-        csipstatsretryreliable1xxrsps = value;
-        csipstatsretryreliable1xxrsps.value_namespace = name_space;
-        csipstatsretryreliable1xxrsps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetryResponses")
-    {
-        csipstatsretryresponses = value;
-        csipstatsretryresponses.value_namespace = name_space;
-        csipstatsretryresponses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsRetrySubscribe")
-    {
-        csipstatsretrysubscribe = value;
-        csipstatsretrysubscribe.value_namespace = name_space;
-        csipstatsretrysubscribe.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipstatsretry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipStatsRetryByes")
-    {
-        csipstatsretrybyes.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryCancels")
-    {
-        csipstatsretrycancels.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryComets")
-    {
-        csipstatsretrycomets.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryInfo")
-    {
-        csipstatsretryinfo.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryInvites")
-    {
-        csipstatsretryinvites.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryNotifys")
-    {
-        csipstatsretrynotifys.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryPracks")
-    {
-        csipstatsretrypracks.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryRefers")
-    {
-        csipstatsretryrefers.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryRegisters")
-    {
-        csipstatsretryregisters.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryReliable1xxRsps")
-    {
-        csipstatsretryreliable1xxrsps.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetryResponses")
-    {
-        csipstatsretryresponses.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsRetrySubscribe")
-    {
-        csipstatsretrysubscribe.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipstatsretry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipStatsRetryByes" || name == "cSipStatsRetryCancels" || name == "cSipStatsRetryComets" || name == "cSipStatsRetryInfo" || name == "cSipStatsRetryInvites" || name == "cSipStatsRetryNotifys" || name == "cSipStatsRetryPracks" || name == "cSipStatsRetryRefers" || name == "cSipStatsRetryRegisters" || name == "cSipStatsRetryReliable1xxRsps" || name == "cSipStatsRetryResponses" || name == "cSipStatsRetrySubscribe")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipstatsmisc::Csipstatsmisc()
-    :
-    csipstatsmisc3xxmappedto4xxrsps{YType::uint32, "cSipStatsMisc3xxMappedTo4xxRsps"}
-{
-    yang_name = "cSipStatsMisc"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipstatsmisc::~Csipstatsmisc()
-{
-}
-
-bool CiscoSipUaMib::Csipstatsmisc::has_data() const
-{
-    return csipstatsmisc3xxmappedto4xxrsps.is_set;
-}
-
-bool CiscoSipUaMib::Csipstatsmisc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipstatsmisc3xxmappedto4xxrsps.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatsmisc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsMisc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatsmisc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipstatsmisc3xxmappedto4xxrsps.is_set || is_set(csipstatsmisc3xxmappedto4xxrsps.yfilter)) leaf_name_data.push_back(csipstatsmisc3xxmappedto4xxrsps.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatsmisc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatsmisc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatsmisc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipStatsMisc3xxMappedTo4xxRsps")
-    {
-        csipstatsmisc3xxmappedto4xxrsps = value;
-        csipstatsmisc3xxmappedto4xxrsps.value_namespace = name_space;
-        csipstatsmisc3xxmappedto4xxrsps.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipstatsmisc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipStatsMisc3xxMappedTo4xxRsps")
-    {
-        csipstatsmisc3xxmappedto4xxrsps.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipstatsmisc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipStatsMisc3xxMappedTo4xxRsps")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipstatsconnection::Csipstatsconnection()
-    :
-    csipstatsactivetcpconnections{YType::uint32, "cSipStatsActiveTCPConnections"},
-    csipstatsactiveudpconnections{YType::uint32, "cSipStatsActiveUDPConnections"},
-    csipstatsconntcpcreatefailures{YType::uint32, "cSipStatsConnTCPCreateFailures"},
-    csipstatsconntcpinactivetimeouts{YType::uint32, "cSipStatsConnTCPInactiveTimeouts"},
-    csipstatsconntcpremoteclosures{YType::uint32, "cSipStatsConnTCPRemoteClosures"},
-    csipstatsconntcpsendfailures{YType::uint32, "cSipStatsConnTCPSendFailures"},
-    csipstatsconnudpcreatefailures{YType::uint32, "cSipStatsConnUDPCreateFailures"},
-    csipstatsconnudpinactivetimeouts{YType::uint32, "cSipStatsConnUDPInactiveTimeouts"},
-    csipstatsconnudpsendfailures{YType::uint32, "cSipStatsConnUDPSendFailures"}
-{
-    yang_name = "cSipStatsConnection"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipstatsconnection::~Csipstatsconnection()
-{
-}
-
-bool CiscoSipUaMib::Csipstatsconnection::has_data() const
-{
-    return csipstatsactivetcpconnections.is_set
-	|| csipstatsactiveudpconnections.is_set
-	|| csipstatsconntcpcreatefailures.is_set
-	|| csipstatsconntcpinactivetimeouts.is_set
-	|| csipstatsconntcpremoteclosures.is_set
-	|| csipstatsconntcpsendfailures.is_set
-	|| csipstatsconnudpcreatefailures.is_set
-	|| csipstatsconnudpinactivetimeouts.is_set
-	|| csipstatsconnudpsendfailures.is_set;
-}
-
-bool CiscoSipUaMib::Csipstatsconnection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipstatsactivetcpconnections.yfilter)
-	|| ydk::is_set(csipstatsactiveudpconnections.yfilter)
-	|| ydk::is_set(csipstatsconntcpcreatefailures.yfilter)
-	|| ydk::is_set(csipstatsconntcpinactivetimeouts.yfilter)
-	|| ydk::is_set(csipstatsconntcpremoteclosures.yfilter)
-	|| ydk::is_set(csipstatsconntcpsendfailures.yfilter)
-	|| ydk::is_set(csipstatsconnudpcreatefailures.yfilter)
-	|| ydk::is_set(csipstatsconnudpinactivetimeouts.yfilter)
-	|| ydk::is_set(csipstatsconnudpsendfailures.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatsconnection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsConnection";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatsconnection::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipstatsactivetcpconnections.is_set || is_set(csipstatsactivetcpconnections.yfilter)) leaf_name_data.push_back(csipstatsactivetcpconnections.get_name_leafdata());
-    if (csipstatsactiveudpconnections.is_set || is_set(csipstatsactiveudpconnections.yfilter)) leaf_name_data.push_back(csipstatsactiveudpconnections.get_name_leafdata());
-    if (csipstatsconntcpcreatefailures.is_set || is_set(csipstatsconntcpcreatefailures.yfilter)) leaf_name_data.push_back(csipstatsconntcpcreatefailures.get_name_leafdata());
-    if (csipstatsconntcpinactivetimeouts.is_set || is_set(csipstatsconntcpinactivetimeouts.yfilter)) leaf_name_data.push_back(csipstatsconntcpinactivetimeouts.get_name_leafdata());
-    if (csipstatsconntcpremoteclosures.is_set || is_set(csipstatsconntcpremoteclosures.yfilter)) leaf_name_data.push_back(csipstatsconntcpremoteclosures.get_name_leafdata());
-    if (csipstatsconntcpsendfailures.is_set || is_set(csipstatsconntcpsendfailures.yfilter)) leaf_name_data.push_back(csipstatsconntcpsendfailures.get_name_leafdata());
-    if (csipstatsconnudpcreatefailures.is_set || is_set(csipstatsconnudpcreatefailures.yfilter)) leaf_name_data.push_back(csipstatsconnudpcreatefailures.get_name_leafdata());
-    if (csipstatsconnudpinactivetimeouts.is_set || is_set(csipstatsconnudpinactivetimeouts.yfilter)) leaf_name_data.push_back(csipstatsconnudpinactivetimeouts.get_name_leafdata());
-    if (csipstatsconnudpsendfailures.is_set || is_set(csipstatsconnudpsendfailures.yfilter)) leaf_name_data.push_back(csipstatsconnudpsendfailures.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatsconnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatsconnection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatsconnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipStatsActiveTCPConnections")
-    {
-        csipstatsactivetcpconnections = value;
-        csipstatsactivetcpconnections.value_namespace = name_space;
-        csipstatsactivetcpconnections.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsActiveUDPConnections")
-    {
-        csipstatsactiveudpconnections = value;
-        csipstatsactiveudpconnections.value_namespace = name_space;
-        csipstatsactiveudpconnections.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnTCPCreateFailures")
-    {
-        csipstatsconntcpcreatefailures = value;
-        csipstatsconntcpcreatefailures.value_namespace = name_space;
-        csipstatsconntcpcreatefailures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnTCPInactiveTimeouts")
-    {
-        csipstatsconntcpinactivetimeouts = value;
-        csipstatsconntcpinactivetimeouts.value_namespace = name_space;
-        csipstatsconntcpinactivetimeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnTCPRemoteClosures")
-    {
-        csipstatsconntcpremoteclosures = value;
-        csipstatsconntcpremoteclosures.value_namespace = name_space;
-        csipstatsconntcpremoteclosures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnTCPSendFailures")
-    {
-        csipstatsconntcpsendfailures = value;
-        csipstatsconntcpsendfailures.value_namespace = name_space;
-        csipstatsconntcpsendfailures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnUDPCreateFailures")
-    {
-        csipstatsconnudpcreatefailures = value;
-        csipstatsconnudpcreatefailures.value_namespace = name_space;
-        csipstatsconnudpcreatefailures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnUDPInactiveTimeouts")
-    {
-        csipstatsconnudpinactivetimeouts = value;
-        csipstatsconnudpinactivetimeouts.value_namespace = name_space;
-        csipstatsconnudpinactivetimeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsConnUDPSendFailures")
-    {
-        csipstatsconnudpsendfailures = value;
-        csipstatsconnudpsendfailures.value_namespace = name_space;
-        csipstatsconnudpsendfailures.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipstatsconnection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipStatsActiveTCPConnections")
-    {
-        csipstatsactivetcpconnections.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsActiveUDPConnections")
-    {
-        csipstatsactiveudpconnections.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnTCPCreateFailures")
-    {
-        csipstatsconntcpcreatefailures.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnTCPInactiveTimeouts")
-    {
-        csipstatsconntcpinactivetimeouts.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnTCPRemoteClosures")
-    {
-        csipstatsconntcpremoteclosures.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnTCPSendFailures")
-    {
-        csipstatsconntcpsendfailures.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnUDPCreateFailures")
-    {
-        csipstatsconnudpcreatefailures.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnUDPInactiveTimeouts")
-    {
-        csipstatsconnudpinactivetimeouts.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsConnUDPSendFailures")
-    {
-        csipstatsconnudpsendfailures.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipstatsconnection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipStatsActiveTCPConnections" || name == "cSipStatsActiveUDPConnections" || name == "cSipStatsConnTCPCreateFailures" || name == "cSipStatsConnTCPInactiveTimeouts" || name == "cSipStatsConnTCPRemoteClosures" || name == "cSipStatsConnTCPSendFailures" || name == "cSipStatsConnUDPCreateFailures" || name == "cSipStatsConnUDPInactiveTimeouts" || name == "cSipStatsConnUDPSendFailures")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediatable()
-{
-    yang_name = "cSipCfgEarlyMediaTable"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgearlymediatable::~Csipcfgearlymediatable()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgearlymediatable::has_data() const
-{
-    for (std::size_t index=0; index<csipcfgearlymediaentry.size(); index++)
-    {
-        if(csipcfgearlymediaentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoSipUaMib::Csipcfgearlymediatable::has_operation() const
-{
-    for (std::size_t index=0; index<csipcfgearlymediaentry.size(); index++)
-    {
-        if(csipcfgearlymediaentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgearlymediatable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgEarlyMediaTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgearlymediatable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgearlymediatable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cSipCfgEarlyMediaEntry")
-    {
-        for(auto const & c : csipcfgearlymediaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry>();
-        c->parent = this;
-        csipcfgearlymediaentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgearlymediatable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csipcfgearlymediaentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgearlymediatable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoSipUaMib::Csipcfgearlymediatable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoSipUaMib::Csipcfgearlymediatable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgEarlyMediaEntry")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::Csipcfgearlymediaentry()
-    :
-    csipcfgearlymediastatuscodeindex{YType::int32, "cSipCfgEarlyMediaStatusCodeIndex"},
-    csipcfgearlymediacutthrudisabled{YType::boolean, "cSipCfgEarlyMediaCutThruDisabled"}
-{
-    yang_name = "cSipCfgEarlyMediaEntry"; yang_parent_name = "cSipCfgEarlyMediaTable";
-}
-
-CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::~Csipcfgearlymediaentry()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::has_data() const
-{
-    return csipcfgearlymediastatuscodeindex.is_set
-	|| csipcfgearlymediacutthrudisabled.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgearlymediastatuscodeindex.yfilter)
-	|| ydk::is_set(csipcfgearlymediacutthrudisabled.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgEarlyMediaEntry" <<"[cSipCfgEarlyMediaStatusCodeIndex='" <<csipcfgearlymediastatuscodeindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgEarlyMediaTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgearlymediastatuscodeindex.is_set || is_set(csipcfgearlymediastatuscodeindex.yfilter)) leaf_name_data.push_back(csipcfgearlymediastatuscodeindex.get_name_leafdata());
-    if (csipcfgearlymediacutthrudisabled.is_set || is_set(csipcfgearlymediacutthrudisabled.yfilter)) leaf_name_data.push_back(csipcfgearlymediacutthrudisabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgEarlyMediaStatusCodeIndex")
-    {
-        csipcfgearlymediastatuscodeindex = value;
-        csipcfgearlymediastatuscodeindex.value_namespace = name_space;
-        csipcfgearlymediastatuscodeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgEarlyMediaCutThruDisabled")
-    {
-        csipcfgearlymediacutthrudisabled = value;
-        csipcfgearlymediacutthrudisabled.value_namespace = name_space;
-        csipcfgearlymediacutthrudisabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgEarlyMediaStatusCodeIndex")
-    {
-        csipcfgearlymediastatuscodeindex.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgEarlyMediaCutThruDisabled")
-    {
-        csipcfgearlymediacutthrudisabled.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgearlymediatable::Csipcfgearlymediaentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgEarlyMediaStatusCodeIndex" || name == "cSipCfgEarlyMediaCutThruDisabled")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrtable()
-{
-    yang_name = "cSipCfgBindSourceAddrTable"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgbindsourceaddrtable::~Csipcfgbindsourceaddrtable()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgbindsourceaddrtable::has_data() const
-{
-    for (std::size_t index=0; index<csipcfgbindsourceaddrentry.size(); index++)
-    {
-        if(csipcfgbindsourceaddrentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoSipUaMib::Csipcfgbindsourceaddrtable::has_operation() const
-{
-    for (std::size_t index=0; index<csipcfgbindsourceaddrentry.size(); index++)
-    {
-        if(csipcfgbindsourceaddrentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgbindsourceaddrtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgBindSourceAddrTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgbindsourceaddrtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgbindsourceaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cSipCfgBindSourceAddrEntry")
-    {
-        for(auto const & c : csipcfgbindsourceaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry>();
-        c->parent = this;
-        csipcfgbindsourceaddrentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgbindsourceaddrtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csipcfgbindsourceaddrentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgbindsourceaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoSipUaMib::Csipcfgbindsourceaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoSipUaMib::Csipcfgbindsourceaddrtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgBindSourceAddrEntry")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrentry()
-    :
-    csipcfgbindsourceaddrscope{YType::enumeration, "cSipCfgBindSourceAddrScope"},
-    csipcfgbindsourceaddrinterface{YType::int32, "cSipCfgBindSourceAddrInterface"}
-{
-    yang_name = "cSipCfgBindSourceAddrEntry"; yang_parent_name = "cSipCfgBindSourceAddrTable";
-}
-
-CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::~Csipcfgbindsourceaddrentry()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::has_data() const
-{
-    return csipcfgbindsourceaddrscope.is_set
-	|| csipcfgbindsourceaddrinterface.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgbindsourceaddrscope.yfilter)
-	|| ydk::is_set(csipcfgbindsourceaddrinterface.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgBindSourceAddrEntry" <<"[cSipCfgBindSourceAddrScope='" <<csipcfgbindsourceaddrscope <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgBindSourceAddrTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgbindsourceaddrscope.is_set || is_set(csipcfgbindsourceaddrscope.yfilter)) leaf_name_data.push_back(csipcfgbindsourceaddrscope.get_name_leafdata());
-    if (csipcfgbindsourceaddrinterface.is_set || is_set(csipcfgbindsourceaddrinterface.yfilter)) leaf_name_data.push_back(csipcfgbindsourceaddrinterface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgBindSourceAddrScope")
-    {
-        csipcfgbindsourceaddrscope = value;
-        csipcfgbindsourceaddrscope.value_namespace = name_space;
-        csipcfgbindsourceaddrscope.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgBindSourceAddrInterface")
-    {
-        csipcfgbindsourceaddrinterface = value;
-        csipcfgbindsourceaddrinterface.value_namespace = name_space;
-        csipcfgbindsourceaddrinterface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgBindSourceAddrScope")
-    {
-        csipcfgbindsourceaddrscope.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgBindSourceAddrInterface")
-    {
-        csipcfgbindsourceaddrinterface.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgBindSourceAddrScope" || name == "cSipCfgBindSourceAddrInterface")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeertable()
-{
-    yang_name = "cSipCfgPeerTable"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgpeertable::~Csipcfgpeertable()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgpeertable::has_data() const
-{
-    for (std::size_t index=0; index<csipcfgpeerentry.size(); index++)
-    {
-        if(csipcfgpeerentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoSipUaMib::Csipcfgpeertable::has_operation() const
-{
-    for (std::size_t index=0; index<csipcfgpeerentry.size(); index++)
-    {
-        if(csipcfgpeerentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgpeertable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgPeerTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgpeertable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgpeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cSipCfgPeerEntry")
-    {
-        for(auto const & c : csipcfgpeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry>();
-        c->parent = this;
-        csipcfgpeerentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgpeertable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csipcfgpeerentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgpeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoSipUaMib::Csipcfgpeertable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoSipUaMib::Csipcfgpeertable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgPeerEntry")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerentry()
-    :
-    csipcfgpeerindex{YType::int32, "cSipCfgPeerIndex"},
-    csipcfgpeeroutsessiontransport{YType::enumeration, "cSipCfgPeerOutSessionTransport"},
-    csipcfgpeerreliable1xxrsphdr{YType::enumeration, "cSipCfgPeerReliable1xxRspHdr"},
-    csipcfgpeerreliable1xxrspstr{YType::str, "cSipCfgPeerReliable1xxRspStr"},
-    csipcfgpeerswitchtransenabled{YType::boolean, "cSipCfgPeerSwitchTransEnabled"},
-    csipcfgpeerurltype{YType::enumeration, "cSipCfgPeerUrlType"}
-{
-    yang_name = "cSipCfgPeerEntry"; yang_parent_name = "cSipCfgPeerTable";
-}
-
-CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::~Csipcfgpeerentry()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::has_data() const
-{
-    return csipcfgpeerindex.is_set
-	|| csipcfgpeeroutsessiontransport.is_set
-	|| csipcfgpeerreliable1xxrsphdr.is_set
-	|| csipcfgpeerreliable1xxrspstr.is_set
-	|| csipcfgpeerswitchtransenabled.is_set
-	|| csipcfgpeerurltype.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgpeerindex.yfilter)
-	|| ydk::is_set(csipcfgpeeroutsessiontransport.yfilter)
-	|| ydk::is_set(csipcfgpeerreliable1xxrsphdr.yfilter)
-	|| ydk::is_set(csipcfgpeerreliable1xxrspstr.yfilter)
-	|| ydk::is_set(csipcfgpeerswitchtransenabled.yfilter)
-	|| ydk::is_set(csipcfgpeerurltype.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgPeerEntry" <<"[cSipCfgPeerIndex='" <<csipcfgpeerindex <<"']";
-
-    return path_buffer.str();
-
-}
 
-const EntityPath CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgPeerTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgpeerindex.is_set || is_set(csipcfgpeerindex.yfilter)) leaf_name_data.push_back(csipcfgpeerindex.get_name_leafdata());
-    if (csipcfgpeeroutsessiontransport.is_set || is_set(csipcfgpeeroutsessiontransport.yfilter)) leaf_name_data.push_back(csipcfgpeeroutsessiontransport.get_name_leafdata());
-    if (csipcfgpeerreliable1xxrsphdr.is_set || is_set(csipcfgpeerreliable1xxrsphdr.yfilter)) leaf_name_data.push_back(csipcfgpeerreliable1xxrsphdr.get_name_leafdata());
-    if (csipcfgpeerreliable1xxrspstr.is_set || is_set(csipcfgpeerreliable1xxrspstr.yfilter)) leaf_name_data.push_back(csipcfgpeerreliable1xxrspstr.get_name_leafdata());
-    if (csipcfgpeerswitchtransenabled.is_set || is_set(csipcfgpeerswitchtransenabled.yfilter)) leaf_name_data.push_back(csipcfgpeerswitchtransenabled.get_name_leafdata());
-    if (csipcfgpeerurltype.is_set || is_set(csipcfgpeerurltype.yfilter)) leaf_name_data.push_back(csipcfgpeerurltype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgPeerIndex")
-    {
-        csipcfgpeerindex = value;
-        csipcfgpeerindex.value_namespace = name_space;
-        csipcfgpeerindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgPeerOutSessionTransport")
-    {
-        csipcfgpeeroutsessiontransport = value;
-        csipcfgpeeroutsessiontransport.value_namespace = name_space;
-        csipcfgpeeroutsessiontransport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgPeerReliable1xxRspHdr")
-    {
-        csipcfgpeerreliable1xxrsphdr = value;
-        csipcfgpeerreliable1xxrsphdr.value_namespace = name_space;
-        csipcfgpeerreliable1xxrsphdr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgPeerReliable1xxRspStr")
-    {
-        csipcfgpeerreliable1xxrspstr = value;
-        csipcfgpeerreliable1xxrspstr.value_namespace = name_space;
-        csipcfgpeerreliable1xxrspstr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgPeerSwitchTransEnabled")
-    {
-        csipcfgpeerswitchtransenabled = value;
-        csipcfgpeerswitchtransenabled.value_namespace = name_space;
-        csipcfgpeerswitchtransenabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgPeerUrlType")
-    {
-        csipcfgpeerurltype = value;
-        csipcfgpeerurltype.value_namespace = name_space;
-        csipcfgpeerurltype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgPeerIndex")
-    {
-        csipcfgpeerindex.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgPeerOutSessionTransport")
-    {
-        csipcfgpeeroutsessiontransport.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgPeerReliable1xxRspHdr")
-    {
-        csipcfgpeerreliable1xxrsphdr.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgPeerReliable1xxRspStr")
-    {
-        csipcfgpeerreliable1xxrspstr.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgPeerSwitchTransEnabled")
-    {
-        csipcfgpeerswitchtransenabled.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgPeerUrlType")
-    {
-        csipcfgpeerurltype.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgPeerIndex" || name == "cSipCfgPeerOutSessionTransport" || name == "cSipCfgPeerReliable1xxRspHdr" || name == "cSipCfgPeerReliable1xxRspStr" || name == "cSipCfgPeerSwitchTransEnabled" || name == "cSipCfgPeerUrlType")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscausetable()
-{
-    yang_name = "cSipCfgStatusCauseTable"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgstatuscausetable::~Csipcfgstatuscausetable()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgstatuscausetable::has_data() const
-{
-    for (std::size_t index=0; index<csipcfgstatuscauseentry.size(); index++)
-    {
-        if(csipcfgstatuscauseentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoSipUaMib::Csipcfgstatuscausetable::has_operation() const
-{
-    for (std::size_t index=0; index<csipcfgstatuscauseentry.size(); index++)
-    {
-        if(csipcfgstatuscauseentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgstatuscausetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgStatusCauseTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgstatuscausetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgstatuscausetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cSipCfgStatusCauseEntry")
-    {
-        for(auto const & c : csipcfgstatuscauseentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry>();
-        c->parent = this;
-        csipcfgstatuscauseentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgstatuscausetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csipcfgstatuscauseentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgstatuscausetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoSipUaMib::Csipcfgstatuscausetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoSipUaMib::Csipcfgstatuscausetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgStatusCauseEntry")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::Csipcfgstatuscauseentry()
-    :
-    csipcfgstatuscodeindex{YType::int32, "cSipCfgStatusCodeIndex"},
-    csipcfgpstncause{YType::int32, "cSipCfgPstnCause"},
-    csipcfgstatuscausestorestatus{YType::enumeration, "cSipCfgStatusCauseStoreStatus"}
-{
-    yang_name = "cSipCfgStatusCauseEntry"; yang_parent_name = "cSipCfgStatusCauseTable";
-}
-
-CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::~Csipcfgstatuscauseentry()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::has_data() const
-{
-    return csipcfgstatuscodeindex.is_set
-	|| csipcfgpstncause.is_set
-	|| csipcfgstatuscausestorestatus.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgstatuscodeindex.yfilter)
-	|| ydk::is_set(csipcfgpstncause.yfilter)
-	|| ydk::is_set(csipcfgstatuscausestorestatus.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgStatusCauseEntry" <<"[cSipCfgStatusCodeIndex='" <<csipcfgstatuscodeindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgStatusCauseTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgstatuscodeindex.is_set || is_set(csipcfgstatuscodeindex.yfilter)) leaf_name_data.push_back(csipcfgstatuscodeindex.get_name_leafdata());
-    if (csipcfgpstncause.is_set || is_set(csipcfgpstncause.yfilter)) leaf_name_data.push_back(csipcfgpstncause.get_name_leafdata());
-    if (csipcfgstatuscausestorestatus.is_set || is_set(csipcfgstatuscausestorestatus.yfilter)) leaf_name_data.push_back(csipcfgstatuscausestorestatus.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgStatusCodeIndex")
-    {
-        csipcfgstatuscodeindex = value;
-        csipcfgstatuscodeindex.value_namespace = name_space;
-        csipcfgstatuscodeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgPstnCause")
-    {
-        csipcfgpstncause = value;
-        csipcfgpstncause.value_namespace = name_space;
-        csipcfgpstncause.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgStatusCauseStoreStatus")
-    {
-        csipcfgstatuscausestorestatus = value;
-        csipcfgstatuscausestorestatus.value_namespace = name_space;
-        csipcfgstatuscausestorestatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgStatusCodeIndex")
-    {
-        csipcfgstatuscodeindex.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgPstnCause")
-    {
-        csipcfgpstncause.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgStatusCauseStoreStatus")
-    {
-        csipcfgstatuscausestorestatus.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgStatusCodeIndex" || name == "cSipCfgPstnCause" || name == "cSipCfgStatusCauseStoreStatus")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatustable()
-{
-    yang_name = "cSipCfgCauseStatusTable"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipcfgcausestatustable::~Csipcfgcausestatustable()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgcausestatustable::has_data() const
-{
-    for (std::size_t index=0; index<csipcfgcausestatusentry.size(); index++)
-    {
-        if(csipcfgcausestatusentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoSipUaMib::Csipcfgcausestatustable::has_operation() const
-{
-    for (std::size_t index=0; index<csipcfgcausestatusentry.size(); index++)
-    {
-        if(csipcfgcausestatusentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgcausestatustable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgCauseStatusTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgcausestatustable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
 }
 
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgcausestatustable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+Ciscosipuamibnotificationprefix::~Ciscosipuamibnotificationprefix()
 {
-    if(child_yang_name == "cSipCfgCauseStatusEntry")
-    {
-        for(auto const & c : csipcfgcausestatusentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry>();
-        c->parent = this;
-        csipcfgcausestatusentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgcausestatustable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csipcfgcausestatusentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgcausestatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoSipUaMib::Csipcfgcausestatustable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoSipUaMib::Csipcfgcausestatustable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgCauseStatusEntry")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::Csipcfgcausestatusentry()
-    :
-    csipcfgpstncauseindex{YType::int32, "cSipCfgPstnCauseIndex"},
-    csipcfgcausestatusstorestatus{YType::enumeration, "cSipCfgCauseStatusStoreStatus"},
-    csipcfgstatuscode{YType::int32, "cSipCfgStatusCode"}
-{
-    yang_name = "cSipCfgCauseStatusEntry"; yang_parent_name = "cSipCfgCauseStatusTable";
-}
-
-CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::~Csipcfgcausestatusentry()
-{
-}
-
-bool CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::has_data() const
-{
-    return csipcfgpstncauseindex.is_set
-	|| csipcfgcausestatusstorestatus.is_set
-	|| csipcfgstatuscode.is_set;
-}
-
-bool CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipcfgpstncauseindex.yfilter)
-	|| ydk::is_set(csipcfgcausestatusstorestatus.yfilter)
-	|| ydk::is_set(csipcfgstatuscode.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipCfgCauseStatusEntry" <<"[cSipCfgPstnCauseIndex='" <<csipcfgpstncauseindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipCfgCauseStatusTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipcfgpstncauseindex.is_set || is_set(csipcfgpstncauseindex.yfilter)) leaf_name_data.push_back(csipcfgpstncauseindex.get_name_leafdata());
-    if (csipcfgcausestatusstorestatus.is_set || is_set(csipcfgcausestatusstorestatus.yfilter)) leaf_name_data.push_back(csipcfgcausestatusstorestatus.get_name_leafdata());
-    if (csipcfgstatuscode.is_set || is_set(csipcfgstatuscode.yfilter)) leaf_name_data.push_back(csipcfgstatuscode.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipCfgPstnCauseIndex")
-    {
-        csipcfgpstncauseindex = value;
-        csipcfgpstncauseindex.value_namespace = name_space;
-        csipcfgpstncauseindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgCauseStatusStoreStatus")
-    {
-        csipcfgcausestatusstorestatus = value;
-        csipcfgcausestatusstorestatus.value_namespace = name_space;
-        csipcfgcausestatusstorestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipCfgStatusCode")
-    {
-        csipcfgstatuscode = value;
-        csipcfgstatuscode.value_namespace = name_space;
-        csipcfgstatuscode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipCfgPstnCauseIndex")
-    {
-        csipcfgpstncauseindex.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgCauseStatusStoreStatus")
-    {
-        csipcfgcausestatusstorestatus.yfilter = yfilter;
-    }
-    if(value_path == "cSipCfgStatusCode")
-    {
-        csipcfgstatuscode.yfilter = yfilter;
-    }
-}
-
-bool CiscoSipUaMib::Csipcfgcausestatustable::Csipcfgcausestatusentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipCfgPstnCauseIndex" || name == "cSipCfgCauseStatusStoreStatus" || name == "cSipCfgStatusCode")
-        return true;
-    return false;
-}
-
-CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessoktable()
-{
-    yang_name = "cSipStatsSuccessOkTable"; yang_parent_name = "CISCO-SIP-UA-MIB";
-}
-
-CiscoSipUaMib::Csipstatssuccessoktable::~Csipstatssuccessoktable()
-{
-}
-
-bool CiscoSipUaMib::Csipstatssuccessoktable::has_data() const
-{
-    for (std::size_t index=0; index<csipstatssuccessokentry.size(); index++)
-    {
-        if(csipstatssuccessokentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoSipUaMib::Csipstatssuccessoktable::has_operation() const
-{
-    for (std::size_t index=0; index<csipstatssuccessokentry.size(); index++)
-    {
-        if(csipstatssuccessokentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatssuccessoktable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsSuccessOkTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatssuccessoktable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatssuccessoktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cSipStatsSuccessOkEntry")
-    {
-        for(auto const & c : csipstatssuccessokentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry>();
-        c->parent = this;
-        csipstatssuccessokentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatssuccessoktable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csipstatssuccessokentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatssuccessoktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoSipUaMib::Csipstatssuccessoktable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoSipUaMib::Csipstatssuccessoktable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cSipStatsSuccessOkEntry")
-        return true;
-    return false;
 }
 
-CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::Csipstatssuccessokentry()
-    :
-    csipstatssuccessokmethod{YType::str, "cSipStatsSuccessOkMethod"},
-    csipstatssuccessokinbounds{YType::uint32, "cSipStatsSuccessOkInbounds"},
-    csipstatssuccessokoutbounds{YType::uint32, "cSipStatsSuccessOkOutbounds"}
+Ciscosipuamibnotifications::Ciscosipuamibnotifications()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB", "CISCO-SIP-UA-MIB:ciscoSipUaMIBNotifications")
 {
-    yang_name = "cSipStatsSuccessOkEntry"; yang_parent_name = "cSipStatsSuccessOkTable";
-}
-
-CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::~Csipstatssuccessokentry()
-{
-}
-
-bool CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::has_data() const
-{
-    return csipstatssuccessokmethod.is_set
-	|| csipstatssuccessokinbounds.is_set
-	|| csipstatssuccessokoutbounds.is_set;
-}
-
-bool CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(csipstatssuccessokmethod.yfilter)
-	|| ydk::is_set(csipstatssuccessokinbounds.yfilter)
-	|| ydk::is_set(csipstatssuccessokoutbounds.yfilter);
-}
-
-std::string CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cSipStatsSuccessOkEntry" <<"[cSipStatsSuccessOkMethod='" <<csipstatssuccessokmethod <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-SIP-UA-MIB:CISCO-SIP-UA-MIB/cSipStatsSuccessOkTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (csipstatssuccessokmethod.is_set || is_set(csipstatssuccessokmethod.yfilter)) leaf_name_data.push_back(csipstatssuccessokmethod.get_name_leafdata());
-    if (csipstatssuccessokinbounds.is_set || is_set(csipstatssuccessokinbounds.yfilter)) leaf_name_data.push_back(csipstatssuccessokinbounds.get_name_leafdata());
-    if (csipstatssuccessokoutbounds.is_set || is_set(csipstatssuccessokoutbounds.yfilter)) leaf_name_data.push_back(csipstatssuccessokoutbounds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cSipStatsSuccessOkMethod")
-    {
-        csipstatssuccessokmethod = value;
-        csipstatssuccessokmethod.value_namespace = name_space;
-        csipstatssuccessokmethod.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsSuccessOkInbounds")
-    {
-        csipstatssuccessokinbounds = value;
-        csipstatssuccessokinbounds.value_namespace = name_space;
-        csipstatssuccessokinbounds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cSipStatsSuccessOkOutbounds")
-    {
-        csipstatssuccessokoutbounds = value;
-        csipstatssuccessokoutbounds.value_namespace = name_space;
-        csipstatssuccessokoutbounds.value_namespace_prefix = name_space_prefix;
-    }
-}
 
-void CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cSipStatsSuccessOkMethod")
-    {
-        csipstatssuccessokmethod.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsSuccessOkInbounds")
-    {
-        csipstatssuccessokinbounds.yfilter = yfilter;
-    }
-    if(value_path == "cSipStatsSuccessOkOutbounds")
-    {
-        csipstatssuccessokoutbounds.yfilter = yfilter;
-    }
 }
 
-bool CiscoSipUaMib::Csipstatssuccessoktable::Csipstatssuccessokentry::has_leaf_or_child_of_name(const std::string & name) const
+Ciscosipuamibnotifications::~Ciscosipuamibnotifications()
 {
-    if(name == "cSipStatsSuccessOkMethod" || name == "cSipStatsSuccessOkInbounds" || name == "cSipStatsSuccessOkOutbounds")
-        return true;
-    return false;
 }
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgtransport::udp {1, "udp"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgtransport::tcp {2, "tcp"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgtransport::udpAndTcp {3, "udpAndTcp"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgtransport::disabled {4, "disabled"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgaaa::Csipcfgaaausername::callingNumber {1, "callingNumber"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgaaa::Csipcfgaaausername::proxyAuth {2, "proxyAuth"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgbindsrcaddrscope::none {0, "none"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgbindsrcaddrscope::all {1, "all"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgbindsrcaddrscope::control {2, "control"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgtransport::udp {1, "udp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgtransport::tcp {2, "tcp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgtransport::udpAndTcp {3, "udpAndTcp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgtransport::disabled {4, "disabled"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgdnssrvquerystringformat::v1 {1, "v1"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgdnssrvquerystringformat::v2 {2, "v2"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgbindsrcaddrscope::none {0, "none"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgbindsrcaddrscope::all {1, "all"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgbindsrcaddrscope::control {2, "control"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgsymnatdirectionrole::none {1, "none"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgsymnatdirectionrole::passive {2, "passive"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgsymnatdirectionrole::active {3, "active"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgdnssrvquerystringformat::v1 {1, "v1"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgdnssrvquerystringformat::v2 {2, "v2"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgoffercallhold::directionAttr {1, "directionAttr"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbase::Csipcfgoffercallhold::connAddr {2, "connAddr"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgsymnatdirectionrole::none {1, "none"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgsymnatdirectionrole::passive {2, "passive"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgsymnatdirectionrole::active {3, "active"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgoutsessiontransport::udp {1, "udp"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgoutsessiontransport::tcp {2, "tcp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgoffercallhold::directionAttr {1, "directionAttr"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbase::Csipcfgoffercallhold::connAddr {2, "connAddr"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgreliable1Xxrsphdr::supported {1, "supported"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgreliable1Xxrsphdr::require {2, "require"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgreliable1Xxrsphdr::disabled {3, "disabled"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrscope::media {1, "media"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrscope::control {2, "control"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgurltype::sip {1, "sip"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeer::Csipcfgurltype::tel {2, "tel"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgoutsessiontransport::udp {1, "udp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgoutsessiontransport::tcp {2, "tcp"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgaaa::Csipcfgaaausername::callingNumber {1, "callingNumber"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgaaa::Csipcfgaaausername::proxyAuth {2, "proxyAuth"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgreliable1Xxrsphdr::supported {1, "supported"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgreliable1Xxrsphdr::require {2, "require"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgreliable1Xxrsphdr::disabled {3, "disabled"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrscope::media {1, "media"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrscope::control {2, "control"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgurltype::sip {1, "sip"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeer::Csipcfgurltype::tel {2, "tel"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport::system {1, "system"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport::udp {2, "udp"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport::tcp {3, "tcp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport::system {1, "system"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport::udp {2, "udp"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport::tcp {3, "tcp"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::system {1, "system"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::supported {2, "supported"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::require {3, "require"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::disabled {4, "disabled"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::system {1, "system"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::supported {2, "supported"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::require {3, "require"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr::disabled {4, "disabled"};
 
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype::system {1, "system"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype::sip {2, "sip"};
-const Enum::YLeaf CiscoSipUaMib::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype::tel {3, "tel"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype::system {1, "system"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype::sip {2, "sip"};
+const Enum::YLeaf CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype::tel {3, "tel"};
 
 
 }

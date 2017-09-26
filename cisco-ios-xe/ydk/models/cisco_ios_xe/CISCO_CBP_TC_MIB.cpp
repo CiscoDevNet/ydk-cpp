@@ -11,10 +11,10 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_CBP_TC_MIB {
 
-const Enum::YLeaf Cbpexecutionstrategy::other {1, "other"};
-const Enum::YLeaf Cbpexecutionstrategy::doUntilSuccess {2, "doUntilSuccess"};
-const Enum::YLeaf Cbpexecutionstrategy::doUntilFailure {3, "doUntilFailure"};
-const Enum::YLeaf Cbpexecutionstrategy::doAll {4, "doAll"};
+const Enum::YLeaf CbpExecutionStrategy::other {1, "other"};
+const Enum::YLeaf CbpExecutionStrategy::doUntilSuccess {2, "doUntilSuccess"};
+const Enum::YLeaf CbpExecutionStrategy::doUntilFailure {3, "doUntilFailure"};
+const Enum::YLeaf CbpExecutionStrategy::doAll {4, "doAll"};
 
 
 }

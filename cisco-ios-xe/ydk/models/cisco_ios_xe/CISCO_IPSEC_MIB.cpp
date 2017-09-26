@@ -11,47 +11,38 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IPSEC_MIB {
 
-CiscoIpsecMib::CiscoIpsecMib()
+CISCOIPSECMIB::CISCOIPSECMIB()
     :
-    cipscryptomapsetiftable(std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable>())
-	,cipsdynamiccryptomapsettable(std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable>())
-	,cipsipsecglobals(std::make_shared<CiscoIpsecMib::Cipsipsecglobals>())
-	,cipsipsecstatistics(std::make_shared<CiscoIpsecMib::Cipsipsecstatistics>())
-	,cipsisakmpgroup(std::make_shared<CiscoIpsecMib::Cipsisakmpgroup>())
-	,cipsisakmppolicytable(std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable>())
-	,cipsstaticcryptomapsettable(std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable>())
-	,cipsstaticcryptomaptable(std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable>())
-	,cipssyscapacitygroup(std::make_shared<CiscoIpsecMib::Cipssyscapacitygroup>())
-	,cipstrapcntlgroup(std::make_shared<CiscoIpsecMib::Cipstrapcntlgroup>())
+    cipscryptomapsetiftable(std::make_shared<CISCOIPSECMIB::Cipscryptomapsetiftable>())
+	,cipsdynamiccryptomapsettable(std::make_shared<CISCOIPSECMIB::Cipsdynamiccryptomapsettable>())
+	,cipsipsecglobals(std::make_shared<CISCOIPSECMIB::Cipsipsecglobals>())
+	,cipsipsecstatistics(std::make_shared<CISCOIPSECMIB::Cipsipsecstatistics>())
+	,cipsisakmpgroup(std::make_shared<CISCOIPSECMIB::Cipsisakmpgroup>())
+	,cipsisakmppolicytable(std::make_shared<CISCOIPSECMIB::Cipsisakmppolicytable>())
+	,cipsstaticcryptomapsettable(std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomapsettable>())
+	,cipsstaticcryptomaptable(std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomaptable>())
+	,cipssyscapacitygroup(std::make_shared<CISCOIPSECMIB::Cipssyscapacitygroup>())
+	,cipstrapcntlgroup(std::make_shared<CISCOIPSECMIB::Cipstrapcntlgroup>())
 {
     cipscryptomapsetiftable->parent = this;
-
     cipsdynamiccryptomapsettable->parent = this;
-
     cipsipsecglobals->parent = this;
-
     cipsipsecstatistics->parent = this;
-
     cipsisakmpgroup->parent = this;
-
     cipsisakmppolicytable->parent = this;
-
     cipsstaticcryptomapsettable->parent = this;
-
     cipsstaticcryptomaptable->parent = this;
-
     cipssyscapacitygroup->parent = this;
-
     cipstrapcntlgroup->parent = this;
 
-    yang_name = "CISCO-IPSEC-MIB"; yang_parent_name = "CISCO-IPSEC-MIB";
+    yang_name = "CISCO-IPSEC-MIB"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::~CiscoIpsecMib()
+CISCOIPSECMIB::~CISCOIPSECMIB()
 {
 }
 
-bool CiscoIpsecMib::has_data() const
+bool CISCOIPSECMIB::has_data() const
 {
     return (cipscryptomapsetiftable !=  nullptr && cipscryptomapsetiftable->has_data())
 	|| (cipsdynamiccryptomapsettable !=  nullptr && cipsdynamiccryptomapsettable->has_data())
@@ -65,7 +56,7 @@ bool CiscoIpsecMib::has_data() const
 	|| (cipstrapcntlgroup !=  nullptr && cipstrapcntlgroup->has_data());
 }
 
-bool CiscoIpsecMib::has_operation() const
+bool CISCOIPSECMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cipscryptomapsetiftable !=  nullptr && cipscryptomapsetiftable->has_operation())
@@ -80,40 +71,29 @@ bool CiscoIpsecMib::has_operation() const
 	|| (cipstrapcntlgroup !=  nullptr && cipstrapcntlgroup->has_operation());
 }
 
-std::string CiscoIpsecMib::get_segment_path() const
+std::string CISCOIPSECMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsCryptomapSetIfTable")
     {
         if(cipscryptomapsetiftable == nullptr)
         {
-            cipscryptomapsetiftable = std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable>();
+            cipscryptomapsetiftable = std::make_shared<CISCOIPSECMIB::Cipscryptomapsetiftable>();
         }
         return cipscryptomapsetiftable;
     }
@@ -122,7 +102,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsdynamiccryptomapsettable == nullptr)
         {
-            cipsdynamiccryptomapsettable = std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable>();
+            cipsdynamiccryptomapsettable = std::make_shared<CISCOIPSECMIB::Cipsdynamiccryptomapsettable>();
         }
         return cipsdynamiccryptomapsettable;
     }
@@ -131,7 +111,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsipsecglobals == nullptr)
         {
-            cipsipsecglobals = std::make_shared<CiscoIpsecMib::Cipsipsecglobals>();
+            cipsipsecglobals = std::make_shared<CISCOIPSECMIB::Cipsipsecglobals>();
         }
         return cipsipsecglobals;
     }
@@ -140,7 +120,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsipsecstatistics == nullptr)
         {
-            cipsipsecstatistics = std::make_shared<CiscoIpsecMib::Cipsipsecstatistics>();
+            cipsipsecstatistics = std::make_shared<CISCOIPSECMIB::Cipsipsecstatistics>();
         }
         return cipsipsecstatistics;
     }
@@ -149,7 +129,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsisakmpgroup == nullptr)
         {
-            cipsisakmpgroup = std::make_shared<CiscoIpsecMib::Cipsisakmpgroup>();
+            cipsisakmpgroup = std::make_shared<CISCOIPSECMIB::Cipsisakmpgroup>();
         }
         return cipsisakmpgroup;
     }
@@ -158,7 +138,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsisakmppolicytable == nullptr)
         {
-            cipsisakmppolicytable = std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable>();
+            cipsisakmppolicytable = std::make_shared<CISCOIPSECMIB::Cipsisakmppolicytable>();
         }
         return cipsisakmppolicytable;
     }
@@ -167,7 +147,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsstaticcryptomapsettable == nullptr)
         {
-            cipsstaticcryptomapsettable = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable>();
+            cipsstaticcryptomapsettable = std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomapsettable>();
         }
         return cipsstaticcryptomapsettable;
     }
@@ -176,7 +156,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipsstaticcryptomaptable == nullptr)
         {
-            cipsstaticcryptomaptable = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable>();
+            cipsstaticcryptomaptable = std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomaptable>();
         }
         return cipsstaticcryptomaptable;
     }
@@ -185,7 +165,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipssyscapacitygroup == nullptr)
         {
-            cipssyscapacitygroup = std::make_shared<CiscoIpsecMib::Cipssyscapacitygroup>();
+            cipssyscapacitygroup = std::make_shared<CISCOIPSECMIB::Cipssyscapacitygroup>();
         }
         return cipssyscapacitygroup;
     }
@@ -194,7 +174,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     {
         if(cipstrapcntlgroup == nullptr)
         {
-            cipstrapcntlgroup = std::make_shared<CiscoIpsecMib::Cipstrapcntlgroup>();
+            cipstrapcntlgroup = std::make_shared<CISCOIPSECMIB::Cipstrapcntlgroup>();
         }
         return cipstrapcntlgroup;
     }
@@ -202,7 +182,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cipscryptomapsetiftable != nullptr)
@@ -258,178 +238,483 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::get_children() con
     return children;
 }
 
-void CiscoIpsecMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpsecMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOIPSECMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoIpsecMib>();
+    return std::make_shared<CISCOIPSECMIB>();
 }
 
-std::string CiscoIpsecMib::get_bundle_yang_models_location() const
+std::string CISCOIPSECMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoIpsecMib::get_bundle_name() const
+std::string CISCOIPSECMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoIpsecMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIPSECMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoIpsecMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIPSECMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoIpsecMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsCryptomapSetIfTable" || name == "cipsDynamicCryptomapSetTable" || name == "cipsIPsecGlobals" || name == "cipsIPsecStatistics" || name == "cipsIsakmpGroup" || name == "cipsIsakmpPolicyTable" || name == "cipsStaticCryptomapSetTable" || name == "cipsStaticCryptomapTable" || name == "cipsSysCapacityGroup" || name == "cipsTrapCntlGroup")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsisakmpgroup::Cipsisakmpgroup()
-    :
-    cipsisakmpenabled{YType::boolean, "cipsIsakmpEnabled"},
-    cipsisakmpidentity{YType::enumeration, "cipsIsakmpIdentity"},
-    cipsisakmpkeepaliveinterval{YType::int32, "cipsIsakmpKeepaliveInterval"},
-    cipsnumisakmppolicies{YType::int32, "cipsNumIsakmpPolicies"}
+CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetiftable()
 {
-    yang_name = "cipsIsakmpGroup"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsCryptomapSetIfTable"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsisakmpgroup::~Cipsisakmpgroup()
+CISCOIPSECMIB::Cipscryptomapsetiftable::~Cipscryptomapsetiftable()
 {
 }
 
-bool CiscoIpsecMib::Cipsisakmpgroup::has_data() const
+bool CISCOIPSECMIB::Cipscryptomapsetiftable::has_data() const
 {
-    return cipsisakmpenabled.is_set
-	|| cipsisakmpidentity.is_set
-	|| cipsisakmpkeepaliveinterval.is_set
-	|| cipsnumisakmppolicies.is_set;
+    for (std::size_t index=0; index<cipscryptomapsetifentry.size(); index++)
+    {
+        if(cipscryptomapsetifentry[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool CiscoIpsecMib::Cipsisakmpgroup::has_operation() const
+bool CISCOIPSECMIB::Cipscryptomapsetiftable::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(cipsisakmpenabled.yfilter)
-	|| ydk::is_set(cipsisakmpidentity.yfilter)
-	|| ydk::is_set(cipsisakmpkeepaliveinterval.yfilter)
-	|| ydk::is_set(cipsnumisakmppolicies.yfilter);
+    for (std::size_t index=0; index<cipscryptomapsetifentry.size(); index++)
+    {
+        if(cipscryptomapsetifentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsisakmpgroup::get_segment_path() const
+std::string CISCOIPSECMIB::Cipscryptomapsetiftable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipsIsakmpGroup";
-
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsisakmpgroup::get_entity_path(Entity* ancestor) const
+std::string CISCOIPSECMIB::Cipscryptomapsetiftable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cipsCryptomapSetIfTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipscryptomapsetiftable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cipsisakmpenabled.is_set || is_set(cipsisakmpenabled.yfilter)) leaf_name_data.push_back(cipsisakmpenabled.get_name_leafdata());
-    if (cipsisakmpidentity.is_set || is_set(cipsisakmpidentity.yfilter)) leaf_name_data.push_back(cipsisakmpidentity.get_name_leafdata());
-    if (cipsisakmpkeepaliveinterval.is_set || is_set(cipsisakmpkeepaliveinterval.yfilter)) leaf_name_data.push_back(cipsisakmpkeepaliveinterval.get_name_leafdata());
-    if (cipsnumisakmppolicies.is_set || is_set(cipsnumisakmppolicies.yfilter)) leaf_name_data.push_back(cipsnumisakmppolicies.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmpgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipscryptomapsetiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cipsCryptomapSetIfEntry")
+    {
+        for(auto const & c : cipscryptomapsetifentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry>();
+        c->parent = this;
+        cipscryptomapsetifentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipscryptomapsetiftable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cipscryptomapsetifentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOIPSECMIB::Cipscryptomapsetiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOIPSECMIB::Cipscryptomapsetiftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOIPSECMIB::Cipscryptomapsetiftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipsCryptomapSetIfEntry")
+        return true;
+    return false;
+}
+
+CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::Cipscryptomapsetifentry()
+    :
+    ifindex{YType::str, "ifIndex"},
+    cipsstaticcryptomapsetname{YType::str, "cipsStaticCryptomapSetName"},
+    cipscryptomapsetifstatus{YType::enumeration, "cipsCryptomapSetIfStatus"},
+    cipscryptomapsetifvirtual{YType::boolean, "cipsCryptomapSetIfVirtual"}
+{
+
+    yang_name = "cipsCryptomapSetIfEntry"; yang_parent_name = "cipsCryptomapSetIfTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::~Cipscryptomapsetifentry()
+{
+}
+
+bool CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::has_data() const
+{
+    return ifindex.is_set
+	|| cipsstaticcryptomapsetname.is_set
+	|| cipscryptomapsetifstatus.is_set
+	|| cipscryptomapsetifvirtual.is_set;
+}
+
+bool CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cipsstaticcryptomapsetname.yfilter)
+	|| ydk::is_set(cipscryptomapsetifstatus.yfilter)
+	|| ydk::is_set(cipscryptomapsetifvirtual.yfilter);
+}
+
+std::string CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsCryptomapSetIfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipsCryptomapSetIfEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cipsStaticCryptomapSetName='" <<cipsstaticcryptomapsetname <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cipsstaticcryptomapsetname.is_set || is_set(cipsstaticcryptomapsetname.yfilter)) leaf_name_data.push_back(cipsstaticcryptomapsetname.get_name_leafdata());
+    if (cipscryptomapsetifstatus.is_set || is_set(cipscryptomapsetifstatus.yfilter)) leaf_name_data.push_back(cipscryptomapsetifstatus.get_name_leafdata());
+    if (cipscryptomapsetifvirtual.is_set || is_set(cipscryptomapsetifvirtual.yfilter)) leaf_name_data.push_back(cipscryptomapsetifvirtual.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsisakmpgroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipsisakmpgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cipsIsakmpEnabled")
+    if(value_path == "ifIndex")
     {
-        cipsisakmpenabled = value;
-        cipsisakmpenabled.value_namespace = name_space;
-        cipsisakmpenabled.value_namespace_prefix = name_space_prefix;
+        ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipsIsakmpIdentity")
+    if(value_path == "cipsStaticCryptomapSetName")
     {
-        cipsisakmpidentity = value;
-        cipsisakmpidentity.value_namespace = name_space;
-        cipsisakmpidentity.value_namespace_prefix = name_space_prefix;
+        cipsstaticcryptomapsetname = value;
+        cipsstaticcryptomapsetname.value_namespace = name_space;
+        cipsstaticcryptomapsetname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipsIsakmpKeepaliveInterval")
+    if(value_path == "cipsCryptomapSetIfStatus")
     {
-        cipsisakmpkeepaliveinterval = value;
-        cipsisakmpkeepaliveinterval.value_namespace = name_space;
-        cipsisakmpkeepaliveinterval.value_namespace_prefix = name_space_prefix;
+        cipscryptomapsetifstatus = value;
+        cipscryptomapsetifstatus.value_namespace = name_space;
+        cipscryptomapsetifstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipsNumIsakmpPolicies")
+    if(value_path == "cipsCryptomapSetIfVirtual")
     {
-        cipsnumisakmppolicies = value;
-        cipsnumisakmppolicies.value_namespace = name_space;
-        cipsnumisakmppolicies.value_namespace_prefix = name_space_prefix;
+        cipscryptomapsetifvirtual = value;
+        cipscryptomapsetifvirtual.value_namespace = name_space;
+        cipscryptomapsetifvirtual.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoIpsecMib::Cipsisakmpgroup::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cipsIsakmpEnabled")
+    if(value_path == "ifIndex")
     {
-        cipsisakmpenabled.yfilter = yfilter;
+        ifindex.yfilter = yfilter;
     }
-    if(value_path == "cipsIsakmpIdentity")
+    if(value_path == "cipsStaticCryptomapSetName")
     {
-        cipsisakmpidentity.yfilter = yfilter;
+        cipsstaticcryptomapsetname.yfilter = yfilter;
     }
-    if(value_path == "cipsIsakmpKeepaliveInterval")
+    if(value_path == "cipsCryptomapSetIfStatus")
     {
-        cipsisakmpkeepaliveinterval.yfilter = yfilter;
+        cipscryptomapsetifstatus.yfilter = yfilter;
     }
-    if(value_path == "cipsNumIsakmpPolicies")
+    if(value_path == "cipsCryptomapSetIfVirtual")
     {
-        cipsnumisakmppolicies.yfilter = yfilter;
+        cipscryptomapsetifvirtual.yfilter = yfilter;
     }
 }
 
-bool CiscoIpsecMib::Cipsisakmpgroup::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cipsIsakmpEnabled" || name == "cipsIsakmpIdentity" || name == "cipsIsakmpKeepaliveInterval" || name == "cipsNumIsakmpPolicies")
+    if(name == "ifIndex" || name == "cipsStaticCryptomapSetName" || name == "cipsCryptomapSetIfStatus" || name == "cipsCryptomapSetIfVirtual")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsipsecglobals::Cipsipsecglobals()
+CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsettable()
+{
+
+    yang_name = "cipsDynamicCryptomapSetTable"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPSECMIB::Cipsdynamiccryptomapsettable::~Cipsdynamiccryptomapsettable()
+{
+}
+
+bool CISCOIPSECMIB::Cipsdynamiccryptomapsettable::has_data() const
+{
+    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry.size(); index++)
+    {
+        if(cipsdynamiccryptomapsetentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOIPSECMIB::Cipsdynamiccryptomapsettable::has_operation() const
+{
+    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry.size(); index++)
+    {
+        if(cipsdynamiccryptomapsetentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipsDynamicCryptomapSetTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cipsDynamicCryptomapSetEntry")
+    {
+        for(auto const & c : cipsdynamiccryptomapsetentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry>();
+        c->parent = this;
+        cipsdynamiccryptomapsetentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cipsdynamiccryptomapsetentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOIPSECMIB::Cipsdynamiccryptomapsettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOIPSECMIB::Cipsdynamiccryptomapsettable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOIPSECMIB::Cipsdynamiccryptomapsettable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipsDynamicCryptomapSetEntry")
+        return true;
+    return false;
+}
+
+CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::Cipsdynamiccryptomapsetentry()
+    :
+    cipsdynamiccryptomapsetname{YType::str, "cipsDynamicCryptomapSetName"},
+    cipsdynamiccryptomapsetnumassoc{YType::uint32, "cipsDynamicCryptomapSetNumAssoc"},
+    cipsdynamiccryptomapsetsize{YType::uint32, "cipsDynamicCryptomapSetSize"}
+{
+
+    yang_name = "cipsDynamicCryptomapSetEntry"; yang_parent_name = "cipsDynamicCryptomapSetTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::~Cipsdynamiccryptomapsetentry()
+{
+}
+
+bool CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::has_data() const
+{
+    return cipsdynamiccryptomapsetname.is_set
+	|| cipsdynamiccryptomapsetnumassoc.is_set
+	|| cipsdynamiccryptomapsetsize.is_set;
+}
+
+bool CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cipsdynamiccryptomapsetname.yfilter)
+	|| ydk::is_set(cipsdynamiccryptomapsetnumassoc.yfilter)
+	|| ydk::is_set(cipsdynamiccryptomapsetsize.yfilter);
+}
+
+std::string CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsDynamicCryptomapSetTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipsDynamicCryptomapSetEntry" <<"[cipsDynamicCryptomapSetName='" <<cipsdynamiccryptomapsetname <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cipsdynamiccryptomapsetname.is_set || is_set(cipsdynamiccryptomapsetname.yfilter)) leaf_name_data.push_back(cipsdynamiccryptomapsetname.get_name_leafdata());
+    if (cipsdynamiccryptomapsetnumassoc.is_set || is_set(cipsdynamiccryptomapsetnumassoc.yfilter)) leaf_name_data.push_back(cipsdynamiccryptomapsetnumassoc.get_name_leafdata());
+    if (cipsdynamiccryptomapsetsize.is_set || is_set(cipsdynamiccryptomapsetsize.yfilter)) leaf_name_data.push_back(cipsdynamiccryptomapsetsize.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cipsDynamicCryptomapSetName")
+    {
+        cipsdynamiccryptomapsetname = value;
+        cipsdynamiccryptomapsetname.value_namespace = name_space;
+        cipsdynamiccryptomapsetname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsDynamicCryptomapSetNumAssoc")
+    {
+        cipsdynamiccryptomapsetnumassoc = value;
+        cipsdynamiccryptomapsetnumassoc.value_namespace = name_space;
+        cipsdynamiccryptomapsetnumassoc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsDynamicCryptomapSetSize")
+    {
+        cipsdynamiccryptomapsetsize = value;
+        cipsdynamiccryptomapsetsize.value_namespace = name_space;
+        cipsdynamiccryptomapsetsize.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cipsDynamicCryptomapSetName")
+    {
+        cipsdynamiccryptomapsetname.yfilter = yfilter;
+    }
+    if(value_path == "cipsDynamicCryptomapSetNumAssoc")
+    {
+        cipsdynamiccryptomapsetnumassoc.yfilter = yfilter;
+    }
+    if(value_path == "cipsDynamicCryptomapSetSize")
+    {
+        cipsdynamiccryptomapsetsize.yfilter = yfilter;
+    }
+}
+
+bool CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipsDynamicCryptomapSetName" || name == "cipsDynamicCryptomapSetNumAssoc" || name == "cipsDynamicCryptomapSetSize")
+        return true;
+    return false;
+}
+
+CISCOIPSECMIB::Cipsipsecglobals::Cipsipsecglobals()
     :
     cipsnumcetcryptomapsets{YType::uint32, "cipsNumCETCryptomapSets"},
     cipsnumdynamiccryptomapsets{YType::uint32, "cipsNumDynamicCryptomapSets"},
@@ -438,14 +723,15 @@ CiscoIpsecMib::Cipsipsecglobals::Cipsipsecglobals()
     cipssalifesize{YType::uint32, "cipsSALifesize"},
     cipssalifetime{YType::uint32, "cipsSALifetime"}
 {
-    yang_name = "cipsIPsecGlobals"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsIPsecGlobals"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsipsecglobals::~Cipsipsecglobals()
+CISCOIPSECMIB::Cipsipsecglobals::~Cipsipsecglobals()
 {
 }
 
-bool CiscoIpsecMib::Cipsipsecglobals::has_data() const
+bool CISCOIPSECMIB::Cipsipsecglobals::has_data() const
 {
     return cipsnumcetcryptomapsets.is_set
 	|| cipsnumdynamiccryptomapsets.is_set
@@ -455,7 +741,7 @@ bool CiscoIpsecMib::Cipsipsecglobals::has_data() const
 	|| cipssalifetime.is_set;
 }
 
-bool CiscoIpsecMib::Cipsipsecglobals::has_operation() const
+bool CISCOIPSECMIB::Cipsipsecglobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipsnumcetcryptomapsets.yfilter)
@@ -466,27 +752,22 @@ bool CiscoIpsecMib::Cipsipsecglobals::has_operation() const
 	|| ydk::is_set(cipssalifetime.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsipsecglobals::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsipsecglobals::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsipsecglobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsIPsecGlobals";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsipsecglobals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsipsecglobals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipsnumcetcryptomapsets.is_set || is_set(cipsnumcetcryptomapsets.yfilter)) leaf_name_data.push_back(cipsnumcetcryptomapsets.get_name_leafdata());
@@ -496,24 +777,22 @@ const EntityPath CiscoIpsecMib::Cipsipsecglobals::get_entity_path(Entity* ancest
     if (cipssalifesize.is_set || is_set(cipssalifesize.yfilter)) leaf_name_data.push_back(cipssalifesize.get_name_leafdata());
     if (cipssalifetime.is_set || is_set(cipssalifetime.yfilter)) leaf_name_data.push_back(cipssalifetime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsipsecglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsipsecglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsipsecglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsipsecglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipsipsecglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsipsecglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipsNumCETCryptomapSets")
     {
@@ -553,7 +832,7 @@ void CiscoIpsecMib::Cipsipsecglobals::set_value(const std::string & value_path, 
     }
 }
 
-void CiscoIpsecMib::Cipsipsecglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsipsecglobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipsNumCETCryptomapSets")
     {
@@ -581,34 +860,35 @@ void CiscoIpsecMib::Cipsipsecglobals::set_filter(const std::string & value_path,
     }
 }
 
-bool CiscoIpsecMib::Cipsipsecglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsipsecglobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsNumCETCryptomapSets" || name == "cipsNumDynamicCryptomapSets" || name == "cipsNumStaticCryptomapSets" || name == "cipsNumTEDCryptomapSets" || name == "cipsSALifesize" || name == "cipsSALifetime")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsipsecstatistics::Cipsipsecstatistics()
+CISCOIPSECMIB::Cipsipsecstatistics::Cipsipsecstatistics()
     :
     cipsnumtedfailures{YType::uint32, "cipsNumTEDFailures"},
     cipsnumtedprobesreceived{YType::uint32, "cipsNumTEDProbesReceived"},
     cipsnumtedprobessent{YType::uint32, "cipsNumTEDProbesSent"}
 {
-    yang_name = "cipsIPsecStatistics"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsIPsecStatistics"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsipsecstatistics::~Cipsipsecstatistics()
+CISCOIPSECMIB::Cipsipsecstatistics::~Cipsipsecstatistics()
 {
 }
 
-bool CiscoIpsecMib::Cipsipsecstatistics::has_data() const
+bool CISCOIPSECMIB::Cipsipsecstatistics::has_data() const
 {
     return cipsnumtedfailures.is_set
 	|| cipsnumtedprobesreceived.is_set
 	|| cipsnumtedprobessent.is_set;
 }
 
-bool CiscoIpsecMib::Cipsipsecstatistics::has_operation() const
+bool CISCOIPSECMIB::Cipsipsecstatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipsnumtedfailures.yfilter)
@@ -616,51 +896,44 @@ bool CiscoIpsecMib::Cipsipsecstatistics::has_operation() const
 	|| ydk::is_set(cipsnumtedprobessent.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsipsecstatistics::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsipsecstatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsipsecstatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsIPsecStatistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsipsecstatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsipsecstatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipsnumtedfailures.is_set || is_set(cipsnumtedfailures.yfilter)) leaf_name_data.push_back(cipsnumtedfailures.get_name_leafdata());
     if (cipsnumtedprobesreceived.is_set || is_set(cipsnumtedprobesreceived.yfilter)) leaf_name_data.push_back(cipsnumtedprobesreceived.get_name_leafdata());
     if (cipsnumtedprobessent.is_set || is_set(cipsnumtedprobessent.yfilter)) leaf_name_data.push_back(cipsnumtedprobessent.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsipsecstatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsipsecstatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsipsecstatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsipsecstatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipsipsecstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsipsecstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipsNumTEDFailures")
     {
@@ -682,7 +955,7 @@ void CiscoIpsecMib::Cipsipsecstatistics::set_value(const std::string & value_pat
     }
 }
 
-void CiscoIpsecMib::Cipsipsecstatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsipsecstatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipsNumTEDFailures")
     {
@@ -698,299 +971,149 @@ void CiscoIpsecMib::Cipsipsecstatistics::set_filter(const std::string & value_pa
     }
 }
 
-bool CiscoIpsecMib::Cipsipsecstatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsipsecstatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsNumTEDFailures" || name == "cipsNumTEDProbesReceived" || name == "cipsNumTEDProbesSent")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipssyscapacitygroup::Cipssyscapacitygroup()
+CISCOIPSECMIB::Cipsisakmpgroup::Cipsisakmpgroup()
     :
-    cips3descapable{YType::boolean, "cips3DesCapable"},
-    cipsmaxsas{YType::int32, "cipsMaxSAs"}
+    cipsisakmpenabled{YType::boolean, "cipsIsakmpEnabled"},
+    cipsisakmpidentity{YType::enumeration, "cipsIsakmpIdentity"},
+    cipsisakmpkeepaliveinterval{YType::int32, "cipsIsakmpKeepaliveInterval"},
+    cipsnumisakmppolicies{YType::int32, "cipsNumIsakmpPolicies"}
 {
-    yang_name = "cipsSysCapacityGroup"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsIsakmpGroup"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipssyscapacitygroup::~Cipssyscapacitygroup()
+CISCOIPSECMIB::Cipsisakmpgroup::~Cipsisakmpgroup()
 {
 }
 
-bool CiscoIpsecMib::Cipssyscapacitygroup::has_data() const
+bool CISCOIPSECMIB::Cipsisakmpgroup::has_data() const
 {
-    return cips3descapable.is_set
-	|| cipsmaxsas.is_set;
+    return cipsisakmpenabled.is_set
+	|| cipsisakmpidentity.is_set
+	|| cipsisakmpkeepaliveinterval.is_set
+	|| cipsnumisakmppolicies.is_set;
 }
 
-bool CiscoIpsecMib::Cipssyscapacitygroup::has_operation() const
+bool CISCOIPSECMIB::Cipsisakmpgroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(cips3descapable.yfilter)
-	|| ydk::is_set(cipsmaxsas.yfilter);
+	|| ydk::is_set(cipsisakmpenabled.yfilter)
+	|| ydk::is_set(cipsisakmpidentity.yfilter)
+	|| ydk::is_set(cipsisakmpkeepaliveinterval.yfilter)
+	|| ydk::is_set(cipsnumisakmppolicies.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipssyscapacitygroup::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsisakmpgroup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipsSysCapacityGroup";
-
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipssyscapacitygroup::get_entity_path(Entity* ancestor) const
+std::string CISCOIPSECMIB::Cipsisakmpgroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cipsIsakmpGroup";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsisakmpgroup::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cips3descapable.is_set || is_set(cips3descapable.yfilter)) leaf_name_data.push_back(cips3descapable.get_name_leafdata());
-    if (cipsmaxsas.is_set || is_set(cipsmaxsas.yfilter)) leaf_name_data.push_back(cipsmaxsas.get_name_leafdata());
+    if (cipsisakmpenabled.is_set || is_set(cipsisakmpenabled.yfilter)) leaf_name_data.push_back(cipsisakmpenabled.get_name_leafdata());
+    if (cipsisakmpidentity.is_set || is_set(cipsisakmpidentity.yfilter)) leaf_name_data.push_back(cipsisakmpidentity.get_name_leafdata());
+    if (cipsisakmpkeepaliveinterval.is_set || is_set(cipsisakmpkeepaliveinterval.yfilter)) leaf_name_data.push_back(cipsisakmpkeepaliveinterval.get_name_leafdata());
+    if (cipsnumisakmppolicies.is_set || is_set(cipsnumisakmppolicies.yfilter)) leaf_name_data.push_back(cipsnumisakmppolicies.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipssyscapacitygroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmpgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipssyscapacitygroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsisakmpgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipssyscapacitygroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsisakmpgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cips3DesCapable")
+    if(value_path == "cipsIsakmpEnabled")
     {
-        cips3descapable = value;
-        cips3descapable.value_namespace = name_space;
-        cips3descapable.value_namespace_prefix = name_space_prefix;
+        cipsisakmpenabled = value;
+        cipsisakmpenabled.value_namespace = name_space;
+        cipsisakmpenabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipsMaxSAs")
+    if(value_path == "cipsIsakmpIdentity")
     {
-        cipsmaxsas = value;
-        cipsmaxsas.value_namespace = name_space;
-        cipsmaxsas.value_namespace_prefix = name_space_prefix;
+        cipsisakmpidentity = value;
+        cipsisakmpidentity.value_namespace = name_space;
+        cipsisakmpidentity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsIsakmpKeepaliveInterval")
+    {
+        cipsisakmpkeepaliveinterval = value;
+        cipsisakmpkeepaliveinterval.value_namespace = name_space;
+        cipsisakmpkeepaliveinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsNumIsakmpPolicies")
+    {
+        cipsnumisakmppolicies = value;
+        cipsnumisakmppolicies.value_namespace = name_space;
+        cipsnumisakmppolicies.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoIpsecMib::Cipssyscapacitygroup::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsisakmpgroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cips3DesCapable")
+    if(value_path == "cipsIsakmpEnabled")
     {
-        cips3descapable.yfilter = yfilter;
+        cipsisakmpenabled.yfilter = yfilter;
     }
-    if(value_path == "cipsMaxSAs")
+    if(value_path == "cipsIsakmpIdentity")
     {
-        cipsmaxsas.yfilter = yfilter;
+        cipsisakmpidentity.yfilter = yfilter;
+    }
+    if(value_path == "cipsIsakmpKeepaliveInterval")
+    {
+        cipsisakmpkeepaliveinterval.yfilter = yfilter;
+    }
+    if(value_path == "cipsNumIsakmpPolicies")
+    {
+        cipsnumisakmppolicies.yfilter = yfilter;
     }
 }
 
-bool CiscoIpsecMib::Cipssyscapacitygroup::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsisakmpgroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cips3DesCapable" || name == "cipsMaxSAs")
+    if(name == "cipsIsakmpEnabled" || name == "cipsIsakmpIdentity" || name == "cipsIsakmpKeepaliveInterval" || name == "cipsNumIsakmpPolicies")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipstrapcntlgroup::Cipstrapcntlgroup()
-    :
-    cipscntlcryptomapadded{YType::enumeration, "cipsCntlCryptomapAdded"},
-    cipscntlcryptomapdeleted{YType::enumeration, "cipsCntlCryptomapDeleted"},
-    cipscntlcryptomapsetattached{YType::enumeration, "cipsCntlCryptomapSetAttached"},
-    cipscntlcryptomapsetdetached{YType::enumeration, "cipsCntlCryptomapSetDetached"},
-    cipscntlisakmppolicyadded{YType::enumeration, "cipsCntlIsakmpPolicyAdded"},
-    cipscntlisakmppolicydeleted{YType::enumeration, "cipsCntlIsakmpPolicyDeleted"},
-    cipscntltoomanysas{YType::enumeration, "cipsCntlTooManySAs"}
+CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicytable()
 {
-    yang_name = "cipsTrapCntlGroup"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsIsakmpPolicyTable"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipstrapcntlgroup::~Cipstrapcntlgroup()
+CISCOIPSECMIB::Cipsisakmppolicytable::~Cipsisakmppolicytable()
 {
 }
 
-bool CiscoIpsecMib::Cipstrapcntlgroup::has_data() const
-{
-    return cipscntlcryptomapadded.is_set
-	|| cipscntlcryptomapdeleted.is_set
-	|| cipscntlcryptomapsetattached.is_set
-	|| cipscntlcryptomapsetdetached.is_set
-	|| cipscntlisakmppolicyadded.is_set
-	|| cipscntlisakmppolicydeleted.is_set
-	|| cipscntltoomanysas.is_set;
-}
-
-bool CiscoIpsecMib::Cipstrapcntlgroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cipscntlcryptomapadded.yfilter)
-	|| ydk::is_set(cipscntlcryptomapdeleted.yfilter)
-	|| ydk::is_set(cipscntlcryptomapsetattached.yfilter)
-	|| ydk::is_set(cipscntlcryptomapsetdetached.yfilter)
-	|| ydk::is_set(cipscntlisakmppolicyadded.yfilter)
-	|| ydk::is_set(cipscntlisakmppolicydeleted.yfilter)
-	|| ydk::is_set(cipscntltoomanysas.yfilter);
-}
-
-std::string CiscoIpsecMib::Cipstrapcntlgroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipsTrapCntlGroup";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpsecMib::Cipstrapcntlgroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipscntlcryptomapadded.is_set || is_set(cipscntlcryptomapadded.yfilter)) leaf_name_data.push_back(cipscntlcryptomapadded.get_name_leafdata());
-    if (cipscntlcryptomapdeleted.is_set || is_set(cipscntlcryptomapdeleted.yfilter)) leaf_name_data.push_back(cipscntlcryptomapdeleted.get_name_leafdata());
-    if (cipscntlcryptomapsetattached.is_set || is_set(cipscntlcryptomapsetattached.yfilter)) leaf_name_data.push_back(cipscntlcryptomapsetattached.get_name_leafdata());
-    if (cipscntlcryptomapsetdetached.is_set || is_set(cipscntlcryptomapsetdetached.yfilter)) leaf_name_data.push_back(cipscntlcryptomapsetdetached.get_name_leafdata());
-    if (cipscntlisakmppolicyadded.is_set || is_set(cipscntlisakmppolicyadded.yfilter)) leaf_name_data.push_back(cipscntlisakmppolicyadded.get_name_leafdata());
-    if (cipscntlisakmppolicydeleted.is_set || is_set(cipscntlisakmppolicydeleted.yfilter)) leaf_name_data.push_back(cipscntlisakmppolicydeleted.get_name_leafdata());
-    if (cipscntltoomanysas.is_set || is_set(cipscntltoomanysas.yfilter)) leaf_name_data.push_back(cipscntltoomanysas.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpsecMib::Cipstrapcntlgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipstrapcntlgroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoIpsecMib::Cipstrapcntlgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipsCntlCryptomapAdded")
-    {
-        cipscntlcryptomapadded = value;
-        cipscntlcryptomapadded.value_namespace = name_space;
-        cipscntlcryptomapadded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCntlCryptomapDeleted")
-    {
-        cipscntlcryptomapdeleted = value;
-        cipscntlcryptomapdeleted.value_namespace = name_space;
-        cipscntlcryptomapdeleted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCntlCryptomapSetAttached")
-    {
-        cipscntlcryptomapsetattached = value;
-        cipscntlcryptomapsetattached.value_namespace = name_space;
-        cipscntlcryptomapsetattached.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCntlCryptomapSetDetached")
-    {
-        cipscntlcryptomapsetdetached = value;
-        cipscntlcryptomapsetdetached.value_namespace = name_space;
-        cipscntlcryptomapsetdetached.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCntlIsakmpPolicyAdded")
-    {
-        cipscntlisakmppolicyadded = value;
-        cipscntlisakmppolicyadded.value_namespace = name_space;
-        cipscntlisakmppolicyadded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCntlIsakmpPolicyDeleted")
-    {
-        cipscntlisakmppolicydeleted = value;
-        cipscntlisakmppolicydeleted.value_namespace = name_space;
-        cipscntlisakmppolicydeleted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCntlTooManySAs")
-    {
-        cipscntltoomanysas = value;
-        cipscntltoomanysas.value_namespace = name_space;
-        cipscntltoomanysas.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoIpsecMib::Cipstrapcntlgroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipsCntlCryptomapAdded")
-    {
-        cipscntlcryptomapadded.yfilter = yfilter;
-    }
-    if(value_path == "cipsCntlCryptomapDeleted")
-    {
-        cipscntlcryptomapdeleted.yfilter = yfilter;
-    }
-    if(value_path == "cipsCntlCryptomapSetAttached")
-    {
-        cipscntlcryptomapsetattached.yfilter = yfilter;
-    }
-    if(value_path == "cipsCntlCryptomapSetDetached")
-    {
-        cipscntlcryptomapsetdetached.yfilter = yfilter;
-    }
-    if(value_path == "cipsCntlIsakmpPolicyAdded")
-    {
-        cipscntlisakmppolicyadded.yfilter = yfilter;
-    }
-    if(value_path == "cipsCntlIsakmpPolicyDeleted")
-    {
-        cipscntlisakmppolicydeleted.yfilter = yfilter;
-    }
-    if(value_path == "cipsCntlTooManySAs")
-    {
-        cipscntltoomanysas.yfilter = yfilter;
-    }
-}
-
-bool CiscoIpsecMib::Cipstrapcntlgroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipsCntlCryptomapAdded" || name == "cipsCntlCryptomapDeleted" || name == "cipsCntlCryptomapSetAttached" || name == "cipsCntlCryptomapSetDetached" || name == "cipsCntlIsakmpPolicyAdded" || name == "cipsCntlIsakmpPolicyDeleted" || name == "cipsCntlTooManySAs")
-        return true;
-    return false;
-}
-
-CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicytable()
-{
-    yang_name = "cipsIsakmpPolicyTable"; yang_parent_name = "CISCO-IPSEC-MIB";
-}
-
-CiscoIpsecMib::Cipsisakmppolicytable::~Cipsisakmppolicytable()
-{
-}
-
-bool CiscoIpsecMib::Cipsisakmppolicytable::has_data() const
+bool CISCOIPSECMIB::Cipsisakmppolicytable::has_data() const
 {
     for (std::size_t index=0; index<cipsisakmppolicyentry.size(); index++)
     {
@@ -1000,7 +1123,7 @@ bool CiscoIpsecMib::Cipsisakmppolicytable::has_data() const
     return false;
 }
 
-bool CiscoIpsecMib::Cipsisakmppolicytable::has_operation() const
+bool CISCOIPSECMIB::Cipsisakmppolicytable::has_operation() const
 {
     for (std::size_t index=0; index<cipsisakmppolicyentry.size(); index++)
     {
@@ -1010,37 +1133,30 @@ bool CiscoIpsecMib::Cipsisakmppolicytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsisakmppolicytable::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsisakmppolicytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsisakmppolicytable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsIsakmpPolicyTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsisakmppolicytable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsisakmppolicytable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmppolicytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsIsakmpPolicyEntry")
     {
@@ -1052,7 +1168,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::get_child_by_name(
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry>();
+        auto c = std::make_shared<CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry>();
         c->parent = this;
         cipsisakmppolicyentry.push_back(c);
         return c;
@@ -1061,7 +1177,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsisakmppolicytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsisakmppolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipsisakmppolicyentry)
@@ -1072,22 +1188,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsisakmppolicyta
     return children;
 }
 
-void CiscoIpsecMib::Cipsisakmppolicytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsisakmppolicytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpsecMib::Cipsisakmppolicytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsisakmppolicytable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpsecMib::Cipsisakmppolicytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsisakmppolicytable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsIsakmpPolicyEntry")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::Cipsisakmppolicyentry()
+CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::Cipsisakmppolicyentry()
     :
     cipsisakmppolpriority{YType::int32, "cipsIsakmpPolPriority"},
     cipsisakmppolauth{YType::enumeration, "cipsIsakmpPolAuth"},
@@ -1096,14 +1212,15 @@ CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::Cipsisakmppolicyent
     cipsisakmppolhash{YType::enumeration, "cipsIsakmpPolHash"},
     cipsisakmppollifetime{YType::int32, "cipsIsakmpPolLifetime"}
 {
-    yang_name = "cipsIsakmpPolicyEntry"; yang_parent_name = "cipsIsakmpPolicyTable";
+
+    yang_name = "cipsIsakmpPolicyEntry"; yang_parent_name = "cipsIsakmpPolicyTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::~Cipsisakmppolicyentry()
+CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::~Cipsisakmppolicyentry()
 {
 }
 
-bool CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_data() const
+bool CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_data() const
 {
     return cipsisakmppolpriority.is_set
 	|| cipsisakmppolauth.is_set
@@ -1113,7 +1230,7 @@ bool CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_data() con
 	|| cipsisakmppollifetime.is_set;
 }
 
-bool CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_operation() const
+bool CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipsisakmppolpriority.yfilter)
@@ -1124,27 +1241,22 @@ bool CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_operation(
 	|| ydk::is_set(cipsisakmppollifetime.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsIsakmpPolicyTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsIsakmpPolicyEntry" <<"[cipsIsakmpPolPriority='" <<cipsisakmppolpriority <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsIsakmpPolicyTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipsisakmppolpriority.is_set || is_set(cipsisakmppolpriority.yfilter)) leaf_name_data.push_back(cipsisakmppolpriority.get_name_leafdata());
@@ -1154,24 +1266,22 @@ const EntityPath CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::ge
     if (cipsisakmppolhash.is_set || is_set(cipsisakmppolhash.yfilter)) leaf_name_data.push_back(cipsisakmppolhash.get_name_leafdata());
     if (cipsisakmppollifetime.is_set || is_set(cipsisakmppollifetime.yfilter)) leaf_name_data.push_back(cipsisakmppollifetime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipsIsakmpPolPriority")
     {
@@ -1211,7 +1321,7 @@ void CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::set_value(cons
     }
 }
 
-void CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipsIsakmpPolPriority")
     {
@@ -1239,23 +1349,24 @@ void CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::set_filter(con
     }
 }
 
-bool CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsIsakmpPolPriority" || name == "cipsIsakmpPolAuth" || name == "cipsIsakmpPolEncr" || name == "cipsIsakmpPolGroup" || name == "cipsIsakmpPolHash" || name == "cipsIsakmpPolLifetime")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsettable()
+CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsettable()
 {
-    yang_name = "cipsStaticCryptomapSetTable"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsStaticCryptomapSetTable"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsstaticcryptomapsettable::~Cipsstaticcryptomapsettable()
+CISCOIPSECMIB::Cipsstaticcryptomapsettable::~Cipsstaticcryptomapsettable()
 {
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_data() const
+bool CISCOIPSECMIB::Cipsstaticcryptomapsettable::has_data() const
 {
     for (std::size_t index=0; index<cipsstaticcryptomapsetentry.size(); index++)
     {
@@ -1265,7 +1376,7 @@ bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_data() const
     return false;
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_operation() const
+bool CISCOIPSECMIB::Cipsstaticcryptomapsettable::has_operation() const
 {
     for (std::size_t index=0; index<cipsstaticcryptomapsetentry.size(); index++)
     {
@@ -1275,37 +1386,30 @@ bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsstaticcryptomapsettable::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsStaticCryptomapSetTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsstaticcryptomapsettable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsStaticCryptomapSetEntry")
     {
@@ -1317,7 +1421,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_child_by
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry>();
+        auto c = std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry>();
         c->parent = this;
         cipsstaticcryptomapsetentry.push_back(c);
         return c;
@@ -1326,7 +1430,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipsstaticcryptomapsetentry)
@@ -1337,22 +1441,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptoma
     return children;
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomapsettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsstaticcryptomapsettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomapsettable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsstaticcryptomapsettable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsstaticcryptomapsettable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsStaticCryptomapSetEntry")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::Cipsstaticcryptomapsetentry()
+CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::Cipsstaticcryptomapsetentry()
     :
     cipsstaticcryptomapsetname{YType::str, "cipsStaticCryptomapSetName"},
     cipsstaticcryptomapsetnumcet{YType::uint32, "cipsStaticCryptomapSetNumCET"},
@@ -1363,14 +1467,15 @@ CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::Cipssta
     cipsstaticcryptomapsetnumsas{YType::uint32, "cipsStaticCryptomapSetNumSAs"},
     cipsstaticcryptomapsetsize{YType::uint32, "cipsStaticCryptomapSetSize"}
 {
-    yang_name = "cipsStaticCryptomapSetEntry"; yang_parent_name = "cipsStaticCryptomapSetTable";
+
+    yang_name = "cipsStaticCryptomapSetEntry"; yang_parent_name = "cipsStaticCryptomapSetTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::~Cipsstaticcryptomapsetentry()
+CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::~Cipsstaticcryptomapsetentry()
 {
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::has_data() const
+bool CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::has_data() const
 {
     return cipsstaticcryptomapsetname.is_set
 	|| cipsstaticcryptomapsetnumcet.is_set
@@ -1382,7 +1487,7 @@ bool CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::ha
 	|| cipsstaticcryptomapsetsize.is_set;
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::has_operation() const
+bool CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipsstaticcryptomapsetname.yfilter)
@@ -1395,27 +1500,22 @@ bool CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::ha
 	|| ydk::is_set(cipsstaticcryptomapsetsize.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsStaticCryptomapSetTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsStaticCryptomapSetEntry" <<"[cipsStaticCryptomapSetName='" <<cipsstaticcryptomapsetname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsStaticCryptomapSetTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipsstaticcryptomapsetname.is_set || is_set(cipsstaticcryptomapsetname.yfilter)) leaf_name_data.push_back(cipsstaticcryptomapsetname.get_name_leafdata());
@@ -1427,24 +1527,22 @@ const EntityPath CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomap
     if (cipsstaticcryptomapsetnumsas.is_set || is_set(cipsstaticcryptomapsetnumsas.yfilter)) leaf_name_data.push_back(cipsstaticcryptomapsetnumsas.get_name_leafdata());
     if (cipsstaticcryptomapsetsize.is_set || is_set(cipsstaticcryptomapsetsize.yfilter)) leaf_name_data.push_back(cipsstaticcryptomapsetsize.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipsStaticCryptomapSetName")
     {
@@ -1496,7 +1594,7 @@ void CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::se
     }
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipsStaticCryptomapSetName")
     {
@@ -1532,246 +1630,24 @@ void CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::se
     }
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsStaticCryptomapSetName" || name == "cipsStaticCryptomapSetNumCET" || name == "cipsStaticCryptomapSetNumDisc" || name == "cipsStaticCryptomapSetNumDynamic" || name == "cipsStaticCryptomapSetNumIsakmp" || name == "cipsStaticCryptomapSetNumManual" || name == "cipsStaticCryptomapSetNumSAs" || name == "cipsStaticCryptomapSetSize")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsettable()
+CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomaptable()
 {
-    yang_name = "cipsDynamicCryptomapSetTable"; yang_parent_name = "CISCO-IPSEC-MIB";
+
+    yang_name = "cipsStaticCryptomapTable"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsdynamiccryptomapsettable::~Cipsdynamiccryptomapsettable()
-{
-}
-
-bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::has_data() const
-{
-    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry.size(); index++)
-    {
-        if(cipsdynamiccryptomapsetentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::has_operation() const
-{
-    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry.size(); index++)
-    {
-        if(cipsdynamiccryptomapsetentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipsDynamicCryptomapSetTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cipsDynamicCryptomapSetEntry")
-    {
-        for(auto const & c : cipsdynamiccryptomapsetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry>();
-        c->parent = this;
-        cipsdynamiccryptomapsetentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsdynamiccryptomapsetentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoIpsecMib::Cipsdynamiccryptomapsettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCOIPSECMIB::Cipsstaticcryptomaptable::~Cipsstaticcryptomaptable()
 {
 }
 
-void CiscoIpsecMib::Cipsdynamiccryptomapsettable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipsDynamicCryptomapSetEntry")
-        return true;
-    return false;
-}
-
-CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::Cipsdynamiccryptomapsetentry()
-    :
-    cipsdynamiccryptomapsetname{YType::str, "cipsDynamicCryptomapSetName"},
-    cipsdynamiccryptomapsetnumassoc{YType::uint32, "cipsDynamicCryptomapSetNumAssoc"},
-    cipsdynamiccryptomapsetsize{YType::uint32, "cipsDynamicCryptomapSetSize"}
-{
-    yang_name = "cipsDynamicCryptomapSetEntry"; yang_parent_name = "cipsDynamicCryptomapSetTable";
-}
-
-CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::~Cipsdynamiccryptomapsetentry()
-{
-}
-
-bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::has_data() const
-{
-    return cipsdynamiccryptomapsetname.is_set
-	|| cipsdynamiccryptomapsetnumassoc.is_set
-	|| cipsdynamiccryptomapsetsize.is_set;
-}
-
-bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cipsdynamiccryptomapsetname.yfilter)
-	|| ydk::is_set(cipsdynamiccryptomapsetnumassoc.yfilter)
-	|| ydk::is_set(cipsdynamiccryptomapsetsize.yfilter);
-}
-
-std::string CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipsDynamicCryptomapSetEntry" <<"[cipsDynamicCryptomapSetName='" <<cipsdynamiccryptomapsetname <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsDynamicCryptomapSetTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipsdynamiccryptomapsetname.is_set || is_set(cipsdynamiccryptomapsetname.yfilter)) leaf_name_data.push_back(cipsdynamiccryptomapsetname.get_name_leafdata());
-    if (cipsdynamiccryptomapsetnumassoc.is_set || is_set(cipsdynamiccryptomapsetnumassoc.yfilter)) leaf_name_data.push_back(cipsdynamiccryptomapsetnumassoc.get_name_leafdata());
-    if (cipsdynamiccryptomapsetsize.is_set || is_set(cipsdynamiccryptomapsetsize.yfilter)) leaf_name_data.push_back(cipsdynamiccryptomapsetsize.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipsDynamicCryptomapSetName")
-    {
-        cipsdynamiccryptomapsetname = value;
-        cipsdynamiccryptomapsetname.value_namespace = name_space;
-        cipsdynamiccryptomapsetname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsDynamicCryptomapSetNumAssoc")
-    {
-        cipsdynamiccryptomapsetnumassoc = value;
-        cipsdynamiccryptomapsetnumassoc.value_namespace = name_space;
-        cipsdynamiccryptomapsetnumassoc.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsDynamicCryptomapSetSize")
-    {
-        cipsdynamiccryptomapsetsize = value;
-        cipsdynamiccryptomapsetsize.value_namespace = name_space;
-        cipsdynamiccryptomapsetsize.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipsDynamicCryptomapSetName")
-    {
-        cipsdynamiccryptomapsetname.yfilter = yfilter;
-    }
-    if(value_path == "cipsDynamicCryptomapSetNumAssoc")
-    {
-        cipsdynamiccryptomapsetnumassoc.yfilter = yfilter;
-    }
-    if(value_path == "cipsDynamicCryptomapSetSize")
-    {
-        cipsdynamiccryptomapsetsize.yfilter = yfilter;
-    }
-}
-
-bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipsDynamicCryptomapSetName" || name == "cipsDynamicCryptomapSetNumAssoc" || name == "cipsDynamicCryptomapSetSize")
-        return true;
-    return false;
-}
-
-CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomaptable()
-{
-    yang_name = "cipsStaticCryptomapTable"; yang_parent_name = "CISCO-IPSEC-MIB";
-}
-
-CiscoIpsecMib::Cipsstaticcryptomaptable::~Cipsstaticcryptomaptable()
-{
-}
-
-bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_data() const
+bool CISCOIPSECMIB::Cipsstaticcryptomaptable::has_data() const
 {
     for (std::size_t index=0; index<cipsstaticcryptomapentry.size(); index++)
     {
@@ -1781,7 +1657,7 @@ bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_data() const
     return false;
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_operation() const
+bool CISCOIPSECMIB::Cipsstaticcryptomaptable::has_operation() const
 {
     for (std::size_t index=0; index<cipsstaticcryptomapentry.size(); index++)
     {
@@ -1791,37 +1667,30 @@ bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsstaticcryptomaptable::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsstaticcryptomaptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsstaticcryptomaptable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsStaticCryptomapTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsstaticcryptomaptable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsstaticcryptomaptable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsStaticCryptomapEntry")
     {
@@ -1833,7 +1702,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::get_child_by_na
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry>();
+        auto c = std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry>();
         c->parent = this;
         cipsstaticcryptomapentry.push_back(c);
         return c;
@@ -1842,7 +1711,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptomaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipsstaticcryptomapentry)
@@ -1853,22 +1722,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptoma
     return children;
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsstaticcryptomaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsstaticcryptomaptable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsstaticcryptomaptable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsStaticCryptomapEntry")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::Cipsstaticcryptomapentry()
+CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::Cipsstaticcryptomapentry()
     :
     cipsstaticcryptomapsetname{YType::str, "cipsStaticCryptomapSetName"},
     cipsstaticcryptomappriority{YType::int32, "cipsStaticCryptomapPriority"},
@@ -1881,14 +1750,15 @@ CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::Cipsstaticcry
     cipsstaticcryptomappfs{YType::enumeration, "cipsStaticCryptomapPfs"},
     cipsstaticcryptomaptype{YType::enumeration, "cipsStaticCryptomapType"}
 {
-    yang_name = "cipsStaticCryptomapEntry"; yang_parent_name = "cipsStaticCryptomapTable";
+
+    yang_name = "cipsStaticCryptomapEntry"; yang_parent_name = "cipsStaticCryptomapTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::~Cipsstaticcryptomapentry()
+CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::~Cipsstaticcryptomapentry()
 {
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_data() const
+bool CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_data() const
 {
     return cipsstaticcryptomapsetname.is_set
 	|| cipsstaticcryptomappriority.is_set
@@ -1902,7 +1772,7 @@ bool CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_data
 	|| cipsstaticcryptomaptype.is_set;
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_operation() const
+bool CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipsstaticcryptomapsetname.yfilter)
@@ -1917,27 +1787,22 @@ bool CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_oper
 	|| ydk::is_set(cipsstaticcryptomaptype.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_segment_path() const
+std::string CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsStaticCryptomapTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipsStaticCryptomapEntry" <<"[cipsStaticCryptomapSetName='" <<cipsstaticcryptomapsetname <<"']" <<"[cipsStaticCryptomapPriority='" <<cipsstaticcryptomappriority <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsStaticCryptomapTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipsstaticcryptomapsetname.is_set || is_set(cipsstaticcryptomapsetname.yfilter)) leaf_name_data.push_back(cipsstaticcryptomapsetname.get_name_leafdata());
@@ -1951,24 +1816,22 @@ const EntityPath CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapent
     if (cipsstaticcryptomappfs.is_set || is_set(cipsstaticcryptomappfs.yfilter)) leaf_name_data.push_back(cipsstaticcryptomappfs.get_name_leafdata());
     if (cipsstaticcryptomaptype.is_set || is_set(cipsstaticcryptomaptype.yfilter)) leaf_name_data.push_back(cipsstaticcryptomaptype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipsStaticCryptomapSetName")
     {
@@ -2032,7 +1895,7 @@ void CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::set_valu
     }
 }
 
-void CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipsStaticCryptomapSetName")
     {
@@ -2076,285 +1939,312 @@ void CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::set_filt
     }
 }
 
-bool CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipsStaticCryptomapSetName" || name == "cipsStaticCryptomapPriority" || name == "cipsStaticCryptomapDescr" || name == "cipsStaticCryptomapLevelHost" || name == "cipsStaticCryptomapLifesize" || name == "cipsStaticCryptomapLifetime" || name == "cipsStaticCryptomapNumPeers" || name == "cipsStaticCryptomapPeer" || name == "cipsStaticCryptomapPfs" || name == "cipsStaticCryptomapType")
         return true;
     return false;
 }
 
-CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetiftable()
-{
-    yang_name = "cipsCryptomapSetIfTable"; yang_parent_name = "CISCO-IPSEC-MIB";
-}
-
-CiscoIpsecMib::Cipscryptomapsetiftable::~Cipscryptomapsetiftable()
-{
-}
-
-bool CiscoIpsecMib::Cipscryptomapsetiftable::has_data() const
-{
-    for (std::size_t index=0; index<cipscryptomapsetifentry.size(); index++)
-    {
-        if(cipscryptomapsetifentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoIpsecMib::Cipscryptomapsetiftable::has_operation() const
-{
-    for (std::size_t index=0; index<cipscryptomapsetifentry.size(); index++)
-    {
-        if(cipscryptomapsetifentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoIpsecMib::Cipscryptomapsetiftable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipsCryptomapSetIfTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpsecMib::Cipscryptomapsetiftable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpsecMib::Cipscryptomapsetiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cipsCryptomapSetIfEntry")
-    {
-        for(auto const & c : cipscryptomapsetifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry>();
-        c->parent = this;
-        cipscryptomapsetifentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipscryptomapsetiftable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipscryptomapsetifentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoIpsecMib::Cipscryptomapsetiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoIpsecMib::Cipscryptomapsetiftable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoIpsecMib::Cipscryptomapsetiftable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipsCryptomapSetIfEntry")
-        return true;
-    return false;
-}
-
-CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::Cipscryptomapsetifentry()
+CISCOIPSECMIB::Cipssyscapacitygroup::Cipssyscapacitygroup()
     :
-    ifindex{YType::str, "ifIndex"},
-    cipsstaticcryptomapsetname{YType::str, "cipsStaticCryptomapSetName"},
-    cipscryptomapsetifstatus{YType::enumeration, "cipsCryptomapSetIfStatus"},
-    cipscryptomapsetifvirtual{YType::boolean, "cipsCryptomapSetIfVirtual"}
+    cips3descapable{YType::boolean, "cips3DesCapable"},
+    cipsmaxsas{YType::int32, "cipsMaxSAs"}
 {
-    yang_name = "cipsCryptomapSetIfEntry"; yang_parent_name = "cipsCryptomapSetIfTable";
+
+    yang_name = "cipsSysCapacityGroup"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::~Cipscryptomapsetifentry()
+CISCOIPSECMIB::Cipssyscapacitygroup::~Cipssyscapacitygroup()
 {
 }
 
-bool CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::has_data() const
+bool CISCOIPSECMIB::Cipssyscapacitygroup::has_data() const
 {
-    return ifindex.is_set
-	|| cipsstaticcryptomapsetname.is_set
-	|| cipscryptomapsetifstatus.is_set
-	|| cipscryptomapsetifvirtual.is_set;
+    return cips3descapable.is_set
+	|| cipsmaxsas.is_set;
 }
 
-bool CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::has_operation() const
+bool CISCOIPSECMIB::Cipssyscapacitygroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ifindex.yfilter)
-	|| ydk::is_set(cipsstaticcryptomapsetname.yfilter)
-	|| ydk::is_set(cipscryptomapsetifstatus.yfilter)
-	|| ydk::is_set(cipscryptomapsetifvirtual.yfilter);
+	|| ydk::is_set(cips3descapable.yfilter)
+	|| ydk::is_set(cipsmaxsas.yfilter);
 }
 
-std::string CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_segment_path() const
+std::string CISCOIPSECMIB::Cipssyscapacitygroup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipsCryptomapSetIfEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cipsStaticCryptomapSetName='" <<cipsstaticcryptomapsetname <<"']";
-
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_entity_path(Entity* ancestor) const
+std::string CISCOIPSECMIB::Cipssyscapacitygroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/cipsCryptomapSetIfTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cipsSysCapacityGroup";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipssyscapacitygroup::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cipsstaticcryptomapsetname.is_set || is_set(cipsstaticcryptomapsetname.yfilter)) leaf_name_data.push_back(cipsstaticcryptomapsetname.get_name_leafdata());
-    if (cipscryptomapsetifstatus.is_set || is_set(cipscryptomapsetifstatus.yfilter)) leaf_name_data.push_back(cipscryptomapsetifstatus.get_name_leafdata());
-    if (cipscryptomapsetifvirtual.is_set || is_set(cipscryptomapsetifvirtual.yfilter)) leaf_name_data.push_back(cipscryptomapsetifvirtual.get_name_leafdata());
+    if (cips3descapable.is_set || is_set(cips3descapable.yfilter)) leaf_name_data.push_back(cips3descapable.get_name_leafdata());
+    if (cipsmaxsas.is_set || is_set(cipsmaxsas.yfilter)) leaf_name_data.push_back(cipsmaxsas.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipssyscapacitygroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipssyscapacitygroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSECMIB::Cipssyscapacitygroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "ifIndex")
+    if(value_path == "cips3DesCapable")
     {
-        ifindex = value;
-        ifindex.value_namespace = name_space;
-        ifindex.value_namespace_prefix = name_space_prefix;
+        cips3descapable = value;
+        cips3descapable.value_namespace = name_space;
+        cips3descapable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipsStaticCryptomapSetName")
+    if(value_path == "cipsMaxSAs")
     {
-        cipsstaticcryptomapsetname = value;
-        cipsstaticcryptomapsetname.value_namespace = name_space;
-        cipsstaticcryptomapsetname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCryptomapSetIfStatus")
-    {
-        cipscryptomapsetifstatus = value;
-        cipscryptomapsetifstatus.value_namespace = name_space;
-        cipscryptomapsetifstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipsCryptomapSetIfVirtual")
-    {
-        cipscryptomapsetifvirtual = value;
-        cipscryptomapsetifvirtual.value_namespace = name_space;
-        cipscryptomapsetifvirtual.value_namespace_prefix = name_space_prefix;
+        cipsmaxsas = value;
+        cipsmaxsas.value_namespace = name_space;
+        cipsmaxsas.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSECMIB::Cipssyscapacitygroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "ifIndex")
+    if(value_path == "cips3DesCapable")
     {
-        ifindex.yfilter = yfilter;
+        cips3descapable.yfilter = yfilter;
     }
-    if(value_path == "cipsStaticCryptomapSetName")
+    if(value_path == "cipsMaxSAs")
     {
-        cipsstaticcryptomapsetname.yfilter = yfilter;
-    }
-    if(value_path == "cipsCryptomapSetIfStatus")
-    {
-        cipscryptomapsetifstatus.yfilter = yfilter;
-    }
-    if(value_path == "cipsCryptomapSetIfVirtual")
-    {
-        cipscryptomapsetifvirtual.yfilter = yfilter;
+        cipsmaxsas.yfilter = yfilter;
     }
 }
 
-bool CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSECMIB::Cipssyscapacitygroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "cipsStaticCryptomapSetName" || name == "cipsCryptomapSetIfStatus" || name == "cipsCryptomapSetIfVirtual")
+    if(name == "cips3DesCapable" || name == "cipsMaxSAs")
         return true;
     return false;
 }
 
-const Enum::YLeaf Cryptomaptype::cryptomapTypeNONE {0, "cryptomapTypeNONE"};
-const Enum::YLeaf Cryptomaptype::cryptomapTypeMANUAL {1, "cryptomapTypeMANUAL"};
-const Enum::YLeaf Cryptomaptype::cryptomapTypeISAKMP {2, "cryptomapTypeISAKMP"};
-const Enum::YLeaf Cryptomaptype::cryptomapTypeCET {3, "cryptomapTypeCET"};
-const Enum::YLeaf Cryptomaptype::cryptomapTypeDYNAMIC {4, "cryptomapTypeDYNAMIC"};
-const Enum::YLeaf Cryptomaptype::cryptomapTypeDYNAMICDISCOVERY {5, "cryptomapTypeDYNAMICDISCOVERY"};
+CISCOIPSECMIB::Cipstrapcntlgroup::Cipstrapcntlgroup()
+    :
+    cipscntlcryptomapadded{YType::enumeration, "cipsCntlCryptomapAdded"},
+    cipscntlcryptomapdeleted{YType::enumeration, "cipsCntlCryptomapDeleted"},
+    cipscntlcryptomapsetattached{YType::enumeration, "cipsCntlCryptomapSetAttached"},
+    cipscntlcryptomapsetdetached{YType::enumeration, "cipsCntlCryptomapSetDetached"},
+    cipscntlisakmppolicyadded{YType::enumeration, "cipsCntlIsakmpPolicyAdded"},
+    cipscntlisakmppolicydeleted{YType::enumeration, "cipsCntlIsakmpPolicyDeleted"},
+    cipscntltoomanysas{YType::enumeration, "cipsCntlTooManySAs"}
+{
 
-const Enum::YLeaf Cryptomapsetbindstatus::unknown {0, "unknown"};
-const Enum::YLeaf Cryptomapsetbindstatus::attached {1, "attached"};
-const Enum::YLeaf Cryptomapsetbindstatus::detached {2, "detached"};
+    yang_name = "cipsTrapCntlGroup"; yang_parent_name = "CISCO-IPSEC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
 
-const Enum::YLeaf Ikehashalgo::none {1, "none"};
-const Enum::YLeaf Ikehashalgo::md5 {2, "md5"};
-const Enum::YLeaf Ikehashalgo::sha {3, "sha"};
+CISCOIPSECMIB::Cipstrapcntlgroup::~Cipstrapcntlgroup()
+{
+}
 
-const Enum::YLeaf Ikeidentitytype::isakmpIdTypeUNKNOWN {0, "isakmpIdTypeUNKNOWN"};
-const Enum::YLeaf Ikeidentitytype::isakmpIdTypeADDRESS {1, "isakmpIdTypeADDRESS"};
-const Enum::YLeaf Ikeidentitytype::isakmpIdTypeHOSTNAME {2, "isakmpIdTypeHOSTNAME"};
+bool CISCOIPSECMIB::Cipstrapcntlgroup::has_data() const
+{
+    return cipscntlcryptomapadded.is_set
+	|| cipscntlcryptomapdeleted.is_set
+	|| cipscntlcryptomapsetattached.is_set
+	|| cipscntlcryptomapsetdetached.is_set
+	|| cipscntlisakmppolicyadded.is_set
+	|| cipscntlisakmppolicydeleted.is_set
+	|| cipscntltoomanysas.is_set;
+}
 
-const Enum::YLeaf Diffhellmangrp::none {1, "none"};
-const Enum::YLeaf Diffhellmangrp::dhGroup1 {2, "dhGroup1"};
-const Enum::YLeaf Diffhellmangrp::dhGroup2 {3, "dhGroup2"};
+bool CISCOIPSECMIB::Cipstrapcntlgroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cipscntlcryptomapadded.yfilter)
+	|| ydk::is_set(cipscntlcryptomapdeleted.yfilter)
+	|| ydk::is_set(cipscntlcryptomapsetattached.yfilter)
+	|| ydk::is_set(cipscntlcryptomapsetdetached.yfilter)
+	|| ydk::is_set(cipscntlisakmppolicyadded.yfilter)
+	|| ydk::is_set(cipscntlisakmppolicydeleted.yfilter)
+	|| ydk::is_set(cipscntltoomanysas.yfilter);
+}
 
-const Enum::YLeaf Encryptalgo::none {1, "none"};
-const Enum::YLeaf Encryptalgo::des {2, "des"};
-const Enum::YLeaf Encryptalgo::des3 {3, "des3"};
+std::string CISCOIPSECMIB::Cipstrapcntlgroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSEC-MIB:CISCO-IPSEC-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
 
-const Enum::YLeaf Ikeauthmethod::none {1, "none"};
-const Enum::YLeaf Ikeauthmethod::preSharedKey {2, "preSharedKey"};
-const Enum::YLeaf Ikeauthmethod::rsaSig {3, "rsaSig"};
-const Enum::YLeaf Ikeauthmethod::rsaEncrypt {4, "rsaEncrypt"};
-const Enum::YLeaf Ikeauthmethod::revPublicKey {5, "revPublicKey"};
+std::string CISCOIPSECMIB::Cipstrapcntlgroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipsTrapCntlGroup";
+    return path_buffer.str();
+}
 
-const Enum::YLeaf Trapstatus::enabled {1, "enabled"};
-const Enum::YLeaf Trapstatus::disabled {2, "disabled"};
+std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::Cipstrapcntlgroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cipscntlcryptomapadded.is_set || is_set(cipscntlcryptomapadded.yfilter)) leaf_name_data.push_back(cipscntlcryptomapadded.get_name_leafdata());
+    if (cipscntlcryptomapdeleted.is_set || is_set(cipscntlcryptomapdeleted.yfilter)) leaf_name_data.push_back(cipscntlcryptomapdeleted.get_name_leafdata());
+    if (cipscntlcryptomapsetattached.is_set || is_set(cipscntlcryptomapsetattached.yfilter)) leaf_name_data.push_back(cipscntlcryptomapsetattached.get_name_leafdata());
+    if (cipscntlcryptomapsetdetached.is_set || is_set(cipscntlcryptomapsetdetached.yfilter)) leaf_name_data.push_back(cipscntlcryptomapsetdetached.get_name_leafdata());
+    if (cipscntlisakmppolicyadded.is_set || is_set(cipscntlisakmppolicyadded.yfilter)) leaf_name_data.push_back(cipscntlisakmppolicyadded.get_name_leafdata());
+    if (cipscntlisakmppolicydeleted.is_set || is_set(cipscntlisakmppolicydeleted.yfilter)) leaf_name_data.push_back(cipscntlisakmppolicydeleted.get_name_leafdata());
+    if (cipscntltoomanysas.is_set || is_set(cipscntltoomanysas.yfilter)) leaf_name_data.push_back(cipscntltoomanysas.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPSECMIB::Cipstrapcntlgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipstrapcntlgroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIPSECMIB::Cipstrapcntlgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cipsCntlCryptomapAdded")
+    {
+        cipscntlcryptomapadded = value;
+        cipscntlcryptomapadded.value_namespace = name_space;
+        cipscntlcryptomapadded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsCntlCryptomapDeleted")
+    {
+        cipscntlcryptomapdeleted = value;
+        cipscntlcryptomapdeleted.value_namespace = name_space;
+        cipscntlcryptomapdeleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsCntlCryptomapSetAttached")
+    {
+        cipscntlcryptomapsetattached = value;
+        cipscntlcryptomapsetattached.value_namespace = name_space;
+        cipscntlcryptomapsetattached.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsCntlCryptomapSetDetached")
+    {
+        cipscntlcryptomapsetdetached = value;
+        cipscntlcryptomapsetdetached.value_namespace = name_space;
+        cipscntlcryptomapsetdetached.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsCntlIsakmpPolicyAdded")
+    {
+        cipscntlisakmppolicyadded = value;
+        cipscntlisakmppolicyadded.value_namespace = name_space;
+        cipscntlisakmppolicyadded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsCntlIsakmpPolicyDeleted")
+    {
+        cipscntlisakmppolicydeleted = value;
+        cipscntlisakmppolicydeleted.value_namespace = name_space;
+        cipscntlisakmppolicydeleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipsCntlTooManySAs")
+    {
+        cipscntltoomanysas = value;
+        cipscntltoomanysas.value_namespace = name_space;
+        cipscntltoomanysas.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIPSECMIB::Cipstrapcntlgroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cipsCntlCryptomapAdded")
+    {
+        cipscntlcryptomapadded.yfilter = yfilter;
+    }
+    if(value_path == "cipsCntlCryptomapDeleted")
+    {
+        cipscntlcryptomapdeleted.yfilter = yfilter;
+    }
+    if(value_path == "cipsCntlCryptomapSetAttached")
+    {
+        cipscntlcryptomapsetattached.yfilter = yfilter;
+    }
+    if(value_path == "cipsCntlCryptomapSetDetached")
+    {
+        cipscntlcryptomapsetdetached.yfilter = yfilter;
+    }
+    if(value_path == "cipsCntlIsakmpPolicyAdded")
+    {
+        cipscntlisakmppolicyadded.yfilter = yfilter;
+    }
+    if(value_path == "cipsCntlIsakmpPolicyDeleted")
+    {
+        cipscntlisakmppolicydeleted.yfilter = yfilter;
+    }
+    if(value_path == "cipsCntlTooManySAs")
+    {
+        cipscntltoomanysas.yfilter = yfilter;
+    }
+}
+
+bool CISCOIPSECMIB::Cipstrapcntlgroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipsCntlCryptomapAdded" || name == "cipsCntlCryptomapDeleted" || name == "cipsCntlCryptomapSetAttached" || name == "cipsCntlCryptomapSetDetached" || name == "cipsCntlIsakmpPolicyAdded" || name == "cipsCntlIsakmpPolicyDeleted" || name == "cipsCntlTooManySAs")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf CryptomapType::cryptomapTypeNONE {0, "cryptomapTypeNONE"};
+const Enum::YLeaf CryptomapType::cryptomapTypeMANUAL {1, "cryptomapTypeMANUAL"};
+const Enum::YLeaf CryptomapType::cryptomapTypeISAKMP {2, "cryptomapTypeISAKMP"};
+const Enum::YLeaf CryptomapType::cryptomapTypeCET {3, "cryptomapTypeCET"};
+const Enum::YLeaf CryptomapType::cryptomapTypeDYNAMIC {4, "cryptomapTypeDYNAMIC"};
+const Enum::YLeaf CryptomapType::cryptomapTypeDYNAMICDISCOVERY {5, "cryptomapTypeDYNAMICDISCOVERY"};
+
+const Enum::YLeaf IkeHashAlgo::none {1, "none"};
+const Enum::YLeaf IkeHashAlgo::md5 {2, "md5"};
+const Enum::YLeaf IkeHashAlgo::sha {3, "sha"};
+
+const Enum::YLeaf TrapStatus::enabled {1, "enabled"};
+const Enum::YLeaf TrapStatus::disabled {2, "disabled"};
+
+const Enum::YLeaf IkeAuthMethod::none {1, "none"};
+const Enum::YLeaf IkeAuthMethod::preSharedKey {2, "preSharedKey"};
+const Enum::YLeaf IkeAuthMethod::rsaSig {3, "rsaSig"};
+const Enum::YLeaf IkeAuthMethod::rsaEncrypt {4, "rsaEncrypt"};
+const Enum::YLeaf IkeAuthMethod::revPublicKey {5, "revPublicKey"};
+
+const Enum::YLeaf DiffHellmanGrp::none {1, "none"};
+const Enum::YLeaf DiffHellmanGrp::dhGroup1 {2, "dhGroup1"};
+const Enum::YLeaf DiffHellmanGrp::dhGroup2 {3, "dhGroup2"};
+
+const Enum::YLeaf CryptomapSetBindStatus::unknown {0, "unknown"};
+const Enum::YLeaf CryptomapSetBindStatus::attached {1, "attached"};
+const Enum::YLeaf CryptomapSetBindStatus::detached {2, "detached"};
+
+const Enum::YLeaf EncryptAlgo::none {1, "none"};
+const Enum::YLeaf EncryptAlgo::des {2, "des"};
+const Enum::YLeaf EncryptAlgo::des3 {3, "des3"};
+
+const Enum::YLeaf IkeIdentityType::isakmpIdTypeUNKNOWN {0, "isakmpIdTypeUNKNOWN"};
+const Enum::YLeaf IkeIdentityType::isakmpIdTypeADDRESS {1, "isakmpIdTypeADDRESS"};
+const Enum::YLeaf IkeIdentityType::isakmpIdTypeHOSTNAME {2, "isakmpIdTypeHOSTNAME"};
 
 
 }

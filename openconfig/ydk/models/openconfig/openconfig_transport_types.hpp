@@ -12,313 +12,745 @@
 namespace openconfig {
 namespace openconfig_transport_types {
 
-class Sonet_Application_Code : public virtual ydk::Identity
+class ETHERNETPMDTYPE : public virtual ydk::Identity
 {
     public:
-        Sonet_Application_Code();
-        ~Sonet_Application_Code();
+        ETHERNETPMDTYPE();
+        ~ETHERNETPMDTYPE();
 
 
-}; // Sonet_Application_Code
+}; // ETHERNETPMDTYPE
 
-class Transceiver_Form_Factor_Type : public virtual ydk::Identity
+class FIBERCONNECTORTYPE : public virtual ydk::Identity
 {
     public:
-        Transceiver_Form_Factor_Type();
-        ~Transceiver_Form_Factor_Type();
+        FIBERCONNECTORTYPE();
+        ~FIBERCONNECTORTYPE();
 
 
-}; // Transceiver_Form_Factor_Type
+}; // FIBERCONNECTORTYPE
 
-class Fiber_Connector_Type : public virtual ydk::Identity
+class LOGICALELEMENTPROTOCOLTYPE : public virtual ydk::Identity
 {
     public:
-        Fiber_Connector_Type();
-        ~Fiber_Connector_Type();
+        LOGICALELEMENTPROTOCOLTYPE();
+        ~LOGICALELEMENTPROTOCOLTYPE();
 
 
-}; // Fiber_Connector_Type
+}; // LOGICALELEMENTPROTOCOLTYPE
 
-class Tributary_Protocol_Type : public virtual ydk::Identity
+class OPTICALCHANNEL : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
 {
     public:
-        Tributary_Protocol_Type();
-        ~Tributary_Protocol_Type();
+        OPTICALCHANNEL();
+        ~OPTICALCHANNEL();
 
 
-}; // Tributary_Protocol_Type
+}; // OPTICALCHANNEL
 
-class Tributary_Rate_Class_Type : public virtual ydk::Identity
+class OTNAPPLICATIONCODE : public virtual ydk::Identity
 {
     public:
-        Tributary_Rate_Class_Type();
-        ~Tributary_Rate_Class_Type();
+        OTNAPPLICATIONCODE();
+        ~OTNAPPLICATIONCODE();
 
 
-}; // Tributary_Rate_Class_Type
+}; // OTNAPPLICATIONCODE
 
-class Ethernet_Pmd_Type : public virtual ydk::Identity
+class SONETAPPLICATIONCODE : public virtual ydk::Identity
 {
     public:
-        Ethernet_Pmd_Type();
-        ~Ethernet_Pmd_Type();
+        SONETAPPLICATIONCODE();
+        ~SONETAPPLICATIONCODE();
 
 
-}; // Ethernet_Pmd_Type
+}; // SONETAPPLICATIONCODE
 
-class Otn_Application_Code : public virtual ydk::Identity
+class TRANSCEIVERFORMFACTORTYPE : public virtual ydk::Identity
 {
     public:
-        Otn_Application_Code();
-        ~Otn_Application_Code();
+        TRANSCEIVERFORMFACTORTYPE();
+        ~TRANSCEIVERFORMFACTORTYPE();
 
 
-}; // Otn_Application_Code
+}; // TRANSCEIVERFORMFACTORTYPE
 
-class Logical_Element_Protocol_Type : public virtual ydk::Identity
+class TRIBUTARYPROTOCOLTYPE : public virtual ydk::Identity
 {
     public:
-        Logical_Element_Protocol_Type();
-        ~Logical_Element_Protocol_Type();
+        TRIBUTARYPROTOCOLTYPE();
+        ~TRIBUTARYPROTOCOLTYPE();
 
 
-}; // Logical_Element_Protocol_Type
+}; // TRIBUTARYPROTOCOLTYPE
 
-class Optical_Channel : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
+class TRIBUTARYRATECLASSTYPE : public virtual ydk::Identity
 {
     public:
-        Optical_Channel();
-        ~Optical_Channel();
+        TRIBUTARYRATECLASSTYPE();
+        ~TRIBUTARYRATECLASSTYPE();
 
 
-}; // Optical_Channel
+}; // TRIBUTARYRATECLASSTYPE
 
-class Vsr2000_3R5 : public openconfig_transport_types::Sonet_Application_Code, virtual ydk::Identity
+class CFP : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
 {
     public:
-        Vsr2000_3R5();
-        ~Vsr2000_3R5();
+        CFP();
+        ~CFP();
 
 
-}; // Vsr2000_3R5
+}; // CFP
 
-class Eth_100Gbase_Sr10 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class CFP2 : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
 {
     public:
-        Eth_100Gbase_Sr10();
-        ~Eth_100Gbase_Sr10();
+        CFP2();
+        ~CFP2();
 
 
-}; // Eth_100Gbase_Sr10
+}; // CFP2
 
-class Prot_Otu4 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
+class CFP2ACO : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
 {
     public:
-        Prot_Otu4();
-        ~Prot_Otu4();
+        CFP2ACO();
+        ~CFP2ACO();
 
 
-}; // Prot_Otu4
+}; // CFP2ACO
 
-class Eth_10Gbase_Lrm : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class CFP4 : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
 {
     public:
-        Eth_10Gbase_Lrm();
-        ~Eth_10Gbase_Lrm();
+        CFP4();
+        ~CFP4();
 
 
-}; // Eth_10Gbase_Lrm
+}; // CFP4
 
-class Eth_40Gbase_Cr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH100GACC : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_40Gbase_Cr4();
-        ~Eth_40Gbase_Cr4();
+        ETH100GACC();
+        ~ETH100GACC();
 
 
-}; // Eth_40Gbase_Cr4
+}; // ETH100GACC
 
-class Trib_Rate_100G : public openconfig_transport_types::Tributary_Rate_Class_Type, virtual ydk::Identity
+class ETH100GAOC : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Trib_Rate_100G();
-        ~Trib_Rate_100G();
+        ETH100GAOC();
+        ~ETH100GAOC();
 
 
-}; // Trib_Rate_100G
+}; // ETH100GAOC
 
-class Xfp : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
+class ETH100GBASECLR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Xfp();
-        ~Xfp();
+        ETH100GBASECLR4();
+        ~ETH100GBASECLR4();
 
 
-}; // Xfp
+}; // ETH100GBASECLR4
 
-class Prot_Odu2E : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
+class ETH100GBASECR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Prot_Odu2E();
-        ~Prot_Odu2E();
+        ETH100GBASECR4();
+        ~ETH100GBASECR4();
 
 
-}; // Prot_Odu2E
+}; // ETH100GBASECR4
 
-class Prot_Otn : public openconfig_transport_types::Logical_Element_Protocol_Type, virtual ydk::Identity
+class ETH100GBASECWDM4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Prot_Otn();
-        ~Prot_Otn();
+        ETH100GBASECWDM4();
+        ~ETH100GBASECWDM4();
 
 
-}; // Prot_Otn
+}; // ETH100GBASECWDM4
 
-class Vsr2000_3R3 : public openconfig_transport_types::Sonet_Application_Code, virtual ydk::Identity
+class ETH100GBASEER4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Vsr2000_3R3();
-        ~Vsr2000_3R3();
+        ETH100GBASEER4();
+        ~ETH100GBASEER4();
 
 
-}; // Vsr2000_3R3
+}; // ETH100GBASEER4
 
-class Eth_100G_Aoc : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH100GBASELR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_100G_Aoc();
-        ~Eth_100G_Aoc();
+        ETH100GBASELR4();
+        ~ETH100GBASELR4();
 
 
-}; // Eth_100G_Aoc
+}; // ETH100GBASELR4
 
-class Eth_Undefined : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH100GBASEPSM4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_Undefined();
-        ~Eth_Undefined();
+        ETH100GBASEPSM4();
+        ~ETH100GBASEPSM4();
 
 
-}; // Eth_Undefined
+}; // ETH100GBASEPSM4
 
-class Prot_40Ge : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
+class ETH100GBASESR10 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Prot_40Ge();
-        ~Prot_40Ge();
+        ETH100GBASESR10();
+        ~ETH100GBASESR10();
 
 
-}; // Prot_40Ge
+}; // ETH100GBASESR10
 
-class Prot_Stm16 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
+class ETH100GBASESR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Prot_Stm16();
-        ~Prot_Stm16();
+        ETH100GBASESR4();
+        ~ETH100GBASESR4();
 
 
-}; // Prot_Stm16
+}; // ETH100GBASESR4
 
-class Eth_40Gbase_Er4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH10GBASEER : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_40Gbase_Er4();
-        ~Eth_40Gbase_Er4();
+        ETH10GBASEER();
+        ~ETH10GBASEER();
 
 
-}; // Eth_40Gbase_Er4
+}; // ETH10GBASEER
 
-class Eth_10Gbase_Sr : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH10GBASELR : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_10Gbase_Sr();
-        ~Eth_10Gbase_Sr();
+        ETH10GBASELR();
+        ~ETH10GBASELR();
 
 
-}; // Eth_10Gbase_Sr
+}; // ETH10GBASELR
 
-class Eth_100Gbase_Psm4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH10GBASELRM : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_100Gbase_Psm4();
-        ~Eth_100Gbase_Psm4();
+        ETH10GBASELRM();
+        ~ETH10GBASELRM();
 
 
-}; // Eth_100Gbase_Psm4
+}; // ETH10GBASELRM
 
-class Trib_Rate_1G : public openconfig_transport_types::Tributary_Rate_Class_Type, virtual ydk::Identity
+class ETH10GBASESR : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Trib_Rate_1G();
-        ~Trib_Rate_1G();
+        ETH10GBASESR();
+        ~ETH10GBASESR();
 
 
-}; // Trib_Rate_1G
+}; // ETH10GBASESR
 
-class Trib_Rate_2__Dot__5G : public openconfig_transport_types::Tributary_Rate_Class_Type, virtual ydk::Identity
+class ETH10GBASEZR : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Trib_Rate_2__Dot__5G();
-        ~Trib_Rate_2__Dot__5G();
+        ETH10GBASEZR();
+        ~ETH10GBASEZR();
 
 
-}; // Trib_Rate_2__Dot__5G
+}; // ETH10GBASEZR
 
-class Eth_40Gbase_Lr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH40GBASECR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_40Gbase_Lr4();
-        ~Eth_40Gbase_Lr4();
+        ETH40GBASECR4();
+        ~ETH40GBASECR4();
 
 
-}; // Eth_40Gbase_Lr4
+}; // ETH40GBASECR4
 
-class Eth_4X10Gbase_Sr : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH40GBASEER4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_4X10Gbase_Sr();
-        ~Eth_4X10Gbase_Sr();
+        ETH40GBASEER4();
+        ~ETH40GBASEER4();
 
 
-}; // Eth_4X10Gbase_Sr
+}; // ETH40GBASEER4
 
-class Sc_Connector : public openconfig_transport_types::Fiber_Connector_Type, virtual ydk::Identity
+class ETH40GBASELR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Sc_Connector();
-        ~Sc_Connector();
+        ETH40GBASELR4();
+        ~ETH40GBASELR4();
 
 
-}; // Sc_Connector
+}; // ETH40GBASELR4
 
-class Non_Pluggable : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
+class ETH40GBASEPSM4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Non_Pluggable();
-        ~Non_Pluggable();
+        ETH40GBASEPSM4();
+        ~ETH40GBASEPSM4();
 
 
-}; // Non_Pluggable
+}; // ETH40GBASEPSM4
 
-class Eth_4X10Gbase_Lr : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
+class ETH40GBASESR4 : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Eth_4X10Gbase_Lr();
-        ~Eth_4X10Gbase_Lr();
+        ETH40GBASESR4();
+        ~ETH40GBASESR4();
 
 
-}; // Eth_4X10Gbase_Lr
+}; // ETH40GBASESR4
 
-class Prot_Oc768 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
+class ETH4X10GBASELR : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
 {
     public:
-        Prot_Oc768();
-        ~Prot_Oc768();
+        ETH4X10GBASELR();
+        ~ETH4X10GBASELR();
 
 
-}; // Prot_Oc768
+}; // ETH4X10GBASELR
 
-class X2 : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
+class ETH4X10GBASESR : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
+{
+    public:
+        ETH4X10GBASESR();
+        ~ETH4X10GBASESR();
+
+
+}; // ETH4X10GBASESR
+
+class ETHUNDEFINED : public openconfig::openconfig_transport_types::ETHERNETPMDTYPE, virtual ydk::Identity
+{
+    public:
+        ETHUNDEFINED();
+        ~ETHUNDEFINED();
+
+
+}; // ETHUNDEFINED
+
+class LCCONNECTOR : public openconfig::openconfig_transport_types::FIBERCONNECTORTYPE, virtual ydk::Identity
+{
+    public:
+        LCCONNECTOR();
+        ~LCCONNECTOR();
+
+
+}; // LCCONNECTOR
+
+class MPOCONNECTOR : public openconfig::openconfig_transport_types::FIBERCONNECTORTYPE, virtual ydk::Identity
+{
+    public:
+        MPOCONNECTOR();
+        ~MPOCONNECTOR();
+
+
+}; // MPOCONNECTOR
+
+class NONPLUGGABLE : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
+{
+    public:
+        NONPLUGGABLE();
+        ~NONPLUGGABLE();
+
+
+}; // NONPLUGGABLE
+
+class OTHER : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
+{
+    public:
+        OTHER();
+        ~OTHER();
+
+
+}; // OTHER
+
+class OTNUNDEFINED : public openconfig::openconfig_transport_types::OTNAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        OTNUNDEFINED();
+        ~OTNUNDEFINED();
+
+
+}; // OTNUNDEFINED
+
+class P1L12D1 : public openconfig::openconfig_transport_types::OTNAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        P1L12D1();
+        ~P1L12D1();
+
+
+}; // P1L12D1
+
+class P1L12D2 : public openconfig::openconfig_transport_types::OTNAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        P1L12D2();
+        ~P1L12D2();
+
+
+}; // P1L12D2
+
+class P1S12D2 : public openconfig::openconfig_transport_types::OTNAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        P1S12D2();
+        ~P1S12D2();
+
+
+}; // P1S12D2
+
+class PROT100GE : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROT100GE();
+        ~PROT100GE();
+
+
+}; // PROT100GE
+
+class PROT100GMLG : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROT100GMLG();
+        ~PROT100GMLG();
+
+
+}; // PROT100GMLG
+
+class PROT10GELAN : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROT10GELAN();
+        ~PROT10GELAN();
+
+
+}; // PROT10GELAN
+
+class PROT10GEWAN : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROT10GEWAN();
+        ~PROT10GEWAN();
+
+
+}; // PROT10GEWAN
+
+class PROT1GE : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROT1GE();
+        ~PROT1GE();
+
+
+}; // PROT1GE
+
+class PROT40GE : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROT40GE();
+        ~PROT40GE();
+
+
+}; // PROT40GE
+
+class PROTETHERNET : public openconfig::openconfig_transport_types::LOGICALELEMENTPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTETHERNET();
+        ~PROTETHERNET();
+
+
+}; // PROTETHERNET
+
+class PROTOC192 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOC192();
+        ~PROTOC192();
+
+
+}; // PROTOC192
+
+class PROTOC48 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOC48();
+        ~PROTOC48();
+
+
+}; // PROTOC48
+
+class PROTOC768 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOC768();
+        ~PROTOC768();
+
+
+}; // PROTOC768
+
+class PROTODU2 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTODU2();
+        ~PROTODU2();
+
+
+}; // PROTODU2
+
+class PROTODU2E : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTODU2E();
+        ~PROTODU2E();
+
+
+}; // PROTODU2E
+
+class PROTODU3 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTODU3();
+        ~PROTODU3();
+
+
+}; // PROTODU3
+
+class PROTODU4 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTODU4();
+        ~PROTODU4();
+
+
+}; // PROTODU4
+
+class PROTOTN : public openconfig::openconfig_transport_types::LOGICALELEMENTPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTN();
+        ~PROTOTN();
+
+
+}; // PROTOTN
+
+class PROTOTU1E : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTU1E();
+        ~PROTOTU1E();
+
+
+}; // PROTOTU1E
+
+class PROTOTU2 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTU2();
+        ~PROTOTU2();
+
+
+}; // PROTOTU2
+
+class PROTOTU2E : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTU2E();
+        ~PROTOTU2E();
+
+
+}; // PROTOTU2E
+
+class PROTOTU3 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTU3();
+        ~PROTOTU3();
+
+
+}; // PROTOTU3
+
+class PROTOTU4 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTU4();
+        ~PROTOTU4();
+
+
+}; // PROTOTU4
+
+class PROTOTUCN : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTOTUCN();
+        ~PROTOTUCN();
+
+
+}; // PROTOTUCN
+
+class PROTSTM16 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTSTM16();
+        ~PROTSTM16();
+
+
+}; // PROTSTM16
+
+class PROTSTM256 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTSTM256();
+        ~PROTSTM256();
+
+
+}; // PROTSTM256
+
+class PROTSTM64 : public openconfig::openconfig_transport_types::TRIBUTARYPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        PROTSTM64();
+        ~PROTSTM64();
+
+
+}; // PROTSTM64
+
+class QSFP : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
+{
+    public:
+        QSFP();
+        ~QSFP();
+
+
+}; // QSFP
+
+class QSFP28 : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
+{
+    public:
+        QSFP28();
+        ~QSFP28();
+
+
+}; // QSFP28
+
+class SCCONNECTOR : public openconfig::openconfig_transport_types::FIBERCONNECTORTYPE, virtual ydk::Identity
+{
+    public:
+        SCCONNECTOR();
+        ~SCCONNECTOR();
+
+
+}; // SCCONNECTOR
+
+class SFP : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
+{
+    public:
+        SFP();
+        ~SFP();
+
+
+}; // SFP
+
+class SFPPLUS : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
+{
+    public:
+        SFPPLUS();
+        ~SFPPLUS();
+
+
+}; // SFPPLUS
+
+class SONETUNDEFINED : public openconfig::openconfig_transport_types::SONETAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        SONETUNDEFINED();
+        ~SONETUNDEFINED();
+
+
+}; // SONETUNDEFINED
+
+class TRIBRATE100G : public openconfig::openconfig_transport_types::TRIBUTARYRATECLASSTYPE, virtual ydk::Identity
+{
+    public:
+        TRIBRATE100G();
+        ~TRIBRATE100G();
+
+
+}; // TRIBRATE100G
+
+class TRIBRATE10G : public openconfig::openconfig_transport_types::TRIBUTARYRATECLASSTYPE, virtual ydk::Identity
+{
+    public:
+        TRIBRATE10G();
+        ~TRIBRATE10G();
+
+
+}; // TRIBRATE10G
+
+class TRIBRATE1G : public openconfig::openconfig_transport_types::TRIBUTARYRATECLASSTYPE, virtual ydk::Identity
+{
+    public:
+        TRIBRATE1G();
+        ~TRIBRATE1G();
+
+
+}; // TRIBRATE1G
+
+class TRIBRATE2DOT5G : public openconfig::openconfig_transport_types::TRIBUTARYRATECLASSTYPE, virtual ydk::Identity
+{
+    public:
+        TRIBRATE2DOT5G();
+        ~TRIBRATE2DOT5G();
+
+
+}; // TRIBRATE2DOT5G
+
+class TRIBRATE40G : public openconfig::openconfig_transport_types::TRIBUTARYRATECLASSTYPE, virtual ydk::Identity
+{
+    public:
+        TRIBRATE40G();
+        ~TRIBRATE40G();
+
+
+}; // TRIBRATE40G
+
+class VSR20003R2 : public openconfig::openconfig_transport_types::SONETAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        VSR20003R2();
+        ~VSR20003R2();
+
+
+}; // VSR20003R2
+
+class VSR20003R3 : public openconfig::openconfig_transport_types::SONETAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        VSR20003R3();
+        ~VSR20003R3();
+
+
+}; // VSR20003R3
+
+class VSR20003R5 : public openconfig::openconfig_transport_types::SONETAPPLICATIONCODE, virtual ydk::Identity
+{
+    public:
+        VSR20003R5();
+        ~VSR20003R5();
+
+
+}; // VSR20003R5
+
+class X2 : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
 {
     public:
         X2();
@@ -327,455 +759,14 @@ class X2 : public openconfig_transport_types::Transceiver_Form_Factor_Type, virt
 
 }; // X2
 
-class Prot_Oc48 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
+class XFP : public openconfig::openconfig_transport_types::TRANSCEIVERFORMFACTORTYPE, virtual ydk::Identity
 {
     public:
-        Prot_Oc48();
-        ~Prot_Oc48();
+        XFP();
+        ~XFP();
 
 
-}; // Prot_Oc48
-
-class Eth_100Gbase_Clr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100Gbase_Clr4();
-        ~Eth_100Gbase_Clr4();
-
-
-}; // Eth_100Gbase_Clr4
-
-class Prot_100Ge : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_100Ge();
-        ~Prot_100Ge();
-
-
-}; // Prot_100Ge
-
-class Sfp : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Sfp();
-        ~Sfp();
-
-
-}; // Sfp
-
-class Qsfp28 : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Qsfp28();
-        ~Qsfp28();
-
-
-}; // Qsfp28
-
-class Mpo_Connector : public openconfig_transport_types::Fiber_Connector_Type, virtual ydk::Identity
-{
-    public:
-        Mpo_Connector();
-        ~Mpo_Connector();
-
-
-}; // Mpo_Connector
-
-class Eth_100G_Acc : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100G_Acc();
-        ~Eth_100G_Acc();
-
-
-}; // Eth_100G_Acc
-
-class Prot_10Ge_Lan : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_10Ge_Lan();
-        ~Prot_10Ge_Lan();
-
-
-}; // Prot_10Ge_Lan
-
-class Prot_1Ge : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_1Ge();
-        ~Prot_1Ge();
-
-
-}; // Prot_1Ge
-
-class Cfp : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Cfp();
-        ~Cfp();
-
-
-}; // Cfp
-
-class Cfp2_Aco : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Cfp2_Aco();
-        ~Cfp2_Aco();
-
-
-}; // Cfp2_Aco
-
-class Cfp2 : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Cfp2();
-        ~Cfp2();
-
-
-}; // Cfp2
-
-class Trib_Rate_10G : public openconfig_transport_types::Tributary_Rate_Class_Type, virtual ydk::Identity
-{
-    public:
-        Trib_Rate_10G();
-        ~Trib_Rate_10G();
-
-
-}; // Trib_Rate_10G
-
-class Eth_10Gbase_Lr : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_10Gbase_Lr();
-        ~Eth_10Gbase_Lr();
-
-
-}; // Eth_10Gbase_Lr
-
-class Cfp4 : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Cfp4();
-        ~Cfp4();
-
-
-}; // Cfp4
-
-class Prot_10Ge_Wan : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_10Ge_Wan();
-        ~Prot_10Ge_Wan();
-
-
-}; // Prot_10Ge_Wan
-
-class Trib_Rate_40G : public openconfig_transport_types::Tributary_Rate_Class_Type, virtual ydk::Identity
-{
-    public:
-        Trib_Rate_40G();
-        ~Trib_Rate_40G();
-
-
-}; // Trib_Rate_40G
-
-class Eth_100Gbase_Cr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100Gbase_Cr4();
-        ~Eth_100Gbase_Cr4();
-
-
-}; // Eth_100Gbase_Cr4
-
-class Qsfp : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Qsfp();
-        ~Qsfp();
-
-
-}; // Qsfp
-
-class Prot_Odu3 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Odu3();
-        ~Prot_Odu3();
-
-
-}; // Prot_Odu3
-
-class Prot_Otucn : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Otucn();
-        ~Prot_Otucn();
-
-
-}; // Prot_Otucn
-
-class Eth_40Gbase_Psm4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_40Gbase_Psm4();
-        ~Eth_40Gbase_Psm4();
-
-
-}; // Eth_40Gbase_Psm4
-
-class Other : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Other();
-        ~Other();
-
-
-}; // Other
-
-class Vsr2000_3R2 : public openconfig_transport_types::Sonet_Application_Code, virtual ydk::Identity
-{
-    public:
-        Vsr2000_3R2();
-        ~Vsr2000_3R2();
-
-
-}; // Vsr2000_3R2
-
-class Prot_Stm256 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Stm256();
-        ~Prot_Stm256();
-
-
-}; // Prot_Stm256
-
-class Lc_Connector : public openconfig_transport_types::Fiber_Connector_Type, virtual ydk::Identity
-{
-    public:
-        Lc_Connector();
-        ~Lc_Connector();
-
-
-}; // Lc_Connector
-
-class Prot_Stm64 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Stm64();
-        ~Prot_Stm64();
-
-
-}; // Prot_Stm64
-
-class Prot_Odu2 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Odu2();
-        ~Prot_Odu2();
-
-
-}; // Prot_Odu2
-
-class Prot_Otu2E : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Otu2E();
-        ~Prot_Otu2E();
-
-
-}; // Prot_Otu2E
-
-class Prot_Oc192 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Oc192();
-        ~Prot_Oc192();
-
-
-}; // Prot_Oc192
-
-class Otn_Undefined : public openconfig_transport_types::Otn_Application_Code, virtual ydk::Identity
-{
-    public:
-        Otn_Undefined();
-        ~Otn_Undefined();
-
-
-}; // Otn_Undefined
-
-class Prot_Otu1E : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Otu1E();
-        ~Prot_Otu1E();
-
-
-}; // Prot_Otu1E
-
-class Sfp_Plus : public openconfig_transport_types::Transceiver_Form_Factor_Type, virtual ydk::Identity
-{
-    public:
-        Sfp_Plus();
-        ~Sfp_Plus();
-
-
-}; // Sfp_Plus
-
-class P1L1_2D1 : public openconfig_transport_types::Otn_Application_Code, virtual ydk::Identity
-{
-    public:
-        P1L1_2D1();
-        ~P1L1_2D1();
-
-
-}; // P1L1_2D1
-
-class Eth_40Gbase_Sr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_40Gbase_Sr4();
-        ~Eth_40Gbase_Sr4();
-
-
-}; // Eth_40Gbase_Sr4
-
-class P1S1_2D2 : public openconfig_transport_types::Otn_Application_Code, virtual ydk::Identity
-{
-    public:
-        P1S1_2D2();
-        ~P1S1_2D2();
-
-
-}; // P1S1_2D2
-
-class Prot_100G_Mlg : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_100G_Mlg();
-        ~Prot_100G_Mlg();
-
-
-}; // Prot_100G_Mlg
-
-class Eth_100Gbase_Er4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100Gbase_Er4();
-        ~Eth_100Gbase_Er4();
-
-
-}; // Eth_100Gbase_Er4
-
-class Prot_Otu2 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Otu2();
-        ~Prot_Otu2();
-
-
-}; // Prot_Otu2
-
-class Eth_10Gbase_Er : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_10Gbase_Er();
-        ~Eth_10Gbase_Er();
-
-
-}; // Eth_10Gbase_Er
-
-class Eth_10Gbase_Zr : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_10Gbase_Zr();
-        ~Eth_10Gbase_Zr();
-
-
-}; // Eth_10Gbase_Zr
-
-class Prot_Otu3 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Otu3();
-        ~Prot_Otu3();
-
-
-}; // Prot_Otu3
-
-class Eth_100Gbase_Cwdm4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100Gbase_Cwdm4();
-        ~Eth_100Gbase_Cwdm4();
-
-
-}; // Eth_100Gbase_Cwdm4
-
-class Prot_Ethernet : public openconfig_transport_types::Logical_Element_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Ethernet();
-        ~Prot_Ethernet();
-
-
-}; // Prot_Ethernet
-
-class Eth_100Gbase_Sr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100Gbase_Sr4();
-        ~Eth_100Gbase_Sr4();
-
-
-}; // Eth_100Gbase_Sr4
-
-class Eth_100Gbase_Lr4 : public openconfig_transport_types::Ethernet_Pmd_Type, virtual ydk::Identity
-{
-    public:
-        Eth_100Gbase_Lr4();
-        ~Eth_100Gbase_Lr4();
-
-
-}; // Eth_100Gbase_Lr4
-
-class P1L1_2D2 : public openconfig_transport_types::Otn_Application_Code, virtual ydk::Identity
-{
-    public:
-        P1L1_2D2();
-        ~P1L1_2D2();
-
-
-}; // P1L1_2D2
-
-class Prot_Odu4 : public openconfig_transport_types::Tributary_Protocol_Type, virtual ydk::Identity
-{
-    public:
-        Prot_Odu4();
-        ~Prot_Odu4();
-
-
-}; // Prot_Odu4
-
-class Sonet_Undefined : public openconfig_transport_types::Sonet_Application_Code, virtual ydk::Identity
-{
-    public:
-        Sonet_Undefined();
-        ~Sonet_Undefined();
-
-
-}; // Sonet_Undefined
-
-class AdminStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ENABLED;
-        static const ydk::Enum::YLeaf DISABLED;
-        static const ydk::Enum::YLeaf MAINT;
-
-};
+}; // XFP
 
 class LoopbackModeType : public ydk::Enum
 {
@@ -783,6 +774,15 @@ class LoopbackModeType : public ydk::Enum
         static const ydk::Enum::YLeaf NONE;
         static const ydk::Enum::YLeaf FACILITY;
         static const ydk::Enum::YLeaf TERMINAL;
+
+};
+
+class AdminStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ENABLED;
+        static const ydk::Enum::YLeaf DISABLED;
+        static const ydk::Enum::YLeaf MAINT;
 
 };
 

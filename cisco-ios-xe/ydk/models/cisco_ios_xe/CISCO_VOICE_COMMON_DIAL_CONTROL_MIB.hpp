@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_VOICE_COMMON_DIAL_CONTROL_MIB {
 
-class CiscoVoiceCommonDialControlMib : public ydk::Entity
+class CISCOVOICECOMMONDIALCONTROLMIB : public ydk::Entity
 {
     public:
-        CiscoVoiceCommonDialControlMib();
-        ~CiscoVoiceCommonDialControlMib();
+        CISCOVOICECOMMONDIALCONTROLMIB();
+        ~CISCOVOICECOMMONDIALCONTROLMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,16 +31,16 @@ class CiscoVoiceCommonDialControlMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cvcommondccallactivetable; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable
-        class Cvcommondccallhistorytable; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable
+        class Cvcommondccallactivetable; //type: CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable
+        class Cvcommondccallhistorytable; //type: CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable
 
-        std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable> cvcommondccallactivetable;
-        std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable> cvcommondccallhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable> cvcommondccallactivetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable> cvcommondccallhistorytable;
         
-}; // CiscoVoiceCommonDialControlMib
+}; // CISCOVOICECOMMONDIALCONTROLMIB
 
 
-class CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable : public ydk::Entity
+class CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable : public ydk::Entity
 {
     public:
         Cvcommondccallactivetable();
@@ -48,22 +48,23 @@ class CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cvcommondccallactiveentry; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry
+        class Cvcommondccallactiveentry; //type: CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry> > cvcommondccallactiveentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry> > cvcommondccallactiveentry;
         
-}; // CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable
+}; // CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable
 
 
-class CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry : public ydk::Entity
+class CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry : public ydk::Entity
 {
     public:
         Cvcommondccallactiveentry();
@@ -71,30 +72,31 @@ class CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccalla
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to DIAL_CONTROL_MIB::DialControlMib::Callactivetable::Callactiveentry::callactivesetuptime)
+        //type: uint32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::Callactivetable::Callactiveentry::callactivesetuptime)
         ydk::YLeaf callactivesetuptime;
-        //type: int32 (refers to DIAL_CONTROL_MIB::DialControlMib::Callactivetable::Callactiveentry::callactiveindex)
+        //type: int32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::Callactivetable::Callactiveentry::callactiveindex)
         ydk::YLeaf callactiveindex;
         ydk::YLeaf cvcommondccallactiveconnectionid; //type: binary
         ydk::YLeaf cvcommondccallactivevadenable; //type: boolean
-        ydk::YLeaf cvcommondccallactivecodertyperate; //type: Cvccodertyperate
+        ydk::YLeaf cvcommondccallactivecodertyperate; //type: CvcCoderTypeRate
         ydk::YLeaf cvcommondccallactivecodecbytes; //type: int32
-        ydk::YLeaf cvcommondccallactiveinbandsignaling; //type: Cvcinbandsignaling
+        ydk::YLeaf cvcommondccallactiveinbandsignaling; //type: CvcInBandSignaling
         ydk::YLeaf cvcommondccallactivecallingname; //type: string
         ydk::YLeaf cvcommondccallactivecalleridblock; //type: boolean
 
-}; // CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry
+}; // CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry
 
 
-class CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable : public ydk::Entity
+class CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable : public ydk::Entity
 {
     public:
         Cvcommondccallhistorytable();
@@ -102,22 +104,23 @@ class CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cvcommondccallhistoryentry; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry
+        class Cvcommondccallhistoryentry; //type: CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry> > cvcommondccallhistoryentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry> > cvcommondccallhistoryentry;
         
-}; // CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable
+}; // CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable
 
 
-class CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry : public ydk::Entity
+class CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry : public ydk::Entity
 {
     public:
         Cvcommondccallhistoryentry();
@@ -125,72 +128,50 @@ class CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccall
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::ccallhistoryindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::ccallhistoryindex)
         ydk::YLeaf ccallhistoryindex;
         ydk::YLeaf cvcommondccallhistoryconnectionid; //type: binary
         ydk::YLeaf cvcommondccallhistoryvadenable; //type: boolean
-        ydk::YLeaf cvcommondccallhistorycodertyperate; //type: Cvccodertyperate
+        ydk::YLeaf cvcommondccallhistorycodertyperate; //type: CvcCoderTypeRate
         ydk::YLeaf cvcommondccallhistorycodecbytes; //type: int32
-        ydk::YLeaf cvcommondccallhistoryinbandsignaling; //type: Cvcinbandsignaling
+        ydk::YLeaf cvcommondccallhistoryinbandsignaling; //type: CvcInBandSignaling
         ydk::YLeaf cvcommondccallhistorycallingname; //type: string
         ydk::YLeaf cvcommondccallhistorycalleridblock; //type: boolean
 
-}; // CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry
+}; // CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry
 
-class Cvcspeechcoderrate : public ydk::Enum
+class CvcInBandSignaling : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf g729r8000;
-        static const ydk::Enum::YLeaf g729Ar8000;
-        static const ydk::Enum::YLeaf g726r16000;
-        static const ydk::Enum::YLeaf g726r24000;
-        static const ydk::Enum::YLeaf g726r32000;
-        static const ydk::Enum::YLeaf g711ulawr64000;
-        static const ydk::Enum::YLeaf g711Alawr64000;
-        static const ydk::Enum::YLeaf g728r16000;
-        static const ydk::Enum::YLeaf g723r6300;
-        static const ydk::Enum::YLeaf g723r5300;
-        static const ydk::Enum::YLeaf gsmr13200;
-        static const ydk::Enum::YLeaf g729Br8000;
-        static const ydk::Enum::YLeaf g729ABr8000;
-        static const ydk::Enum::YLeaf g723Ar6300;
-        static const ydk::Enum::YLeaf g723Ar5300;
-        static const ydk::Enum::YLeaf g729IETFr8000;
-        static const ydk::Enum::YLeaf gsmeEr12200;
-        static const ydk::Enum::YLeaf clearChannel;
-        static const ydk::Enum::YLeaf g726r40000;
-        static const ydk::Enum::YLeaf llcc;
-        static const ydk::Enum::YLeaf gsmAmrNb;
-        static const ydk::Enum::YLeaf iLBC;
-        static const ydk::Enum::YLeaf iLBCr15200;
-        static const ydk::Enum::YLeaf iLBCr13330;
-        static const ydk::Enum::YLeaf g722r4800;
-        static const ydk::Enum::YLeaf g722r5600;
-        static const ydk::Enum::YLeaf g722r6400;
-        static const ydk::Enum::YLeaf iSAC;
-        static const ydk::Enum::YLeaf aaclc;
-        static const ydk::Enum::YLeaf aacld;
+        static const ydk::Enum::YLeaf cas;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf cept;
+        static const ydk::Enum::YLeaf transparent;
+        static const ydk::Enum::YLeaf gr303;
 
 };
 
-class Cvch320Calltype : public ydk::Enum
+class CvcVideoCoderRate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf secondary;
+        static const ydk::Enum::YLeaf h261;
+        static const ydk::Enum::YLeaf h263;
+        static const ydk::Enum::YLeaf h263plus;
+        static const ydk::Enum::YLeaf h264;
 
 };
 
-class Cvccodertyperate : public ydk::Enum
+class CvcCoderTypeRate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -234,18 +215,52 @@ class Cvccodertyperate : public ydk::Enum
 
 };
 
-class Cvcvideocoderrate : public ydk::Enum
+class CvcSpeechCoderRate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf h261;
-        static const ydk::Enum::YLeaf h263;
-        static const ydk::Enum::YLeaf h263plus;
-        static const ydk::Enum::YLeaf h264;
+        static const ydk::Enum::YLeaf g729r8000;
+        static const ydk::Enum::YLeaf g729Ar8000;
+        static const ydk::Enum::YLeaf g726r16000;
+        static const ydk::Enum::YLeaf g726r24000;
+        static const ydk::Enum::YLeaf g726r32000;
+        static const ydk::Enum::YLeaf g711ulawr64000;
+        static const ydk::Enum::YLeaf g711Alawr64000;
+        static const ydk::Enum::YLeaf g728r16000;
+        static const ydk::Enum::YLeaf g723r6300;
+        static const ydk::Enum::YLeaf g723r5300;
+        static const ydk::Enum::YLeaf gsmr13200;
+        static const ydk::Enum::YLeaf g729Br8000;
+        static const ydk::Enum::YLeaf g729ABr8000;
+        static const ydk::Enum::YLeaf g723Ar6300;
+        static const ydk::Enum::YLeaf g723Ar5300;
+        static const ydk::Enum::YLeaf g729IETFr8000;
+        static const ydk::Enum::YLeaf gsmeEr12200;
+        static const ydk::Enum::YLeaf clearChannel;
+        static const ydk::Enum::YLeaf g726r40000;
+        static const ydk::Enum::YLeaf llcc;
+        static const ydk::Enum::YLeaf gsmAmrNb;
+        static const ydk::Enum::YLeaf iLBC;
+        static const ydk::Enum::YLeaf iLBCr15200;
+        static const ydk::Enum::YLeaf iLBCr13330;
+        static const ydk::Enum::YLeaf g722r4800;
+        static const ydk::Enum::YLeaf g722r5600;
+        static const ydk::Enum::YLeaf g722r6400;
+        static const ydk::Enum::YLeaf iSAC;
+        static const ydk::Enum::YLeaf aaclc;
+        static const ydk::Enum::YLeaf aacld;
 
 };
 
-class Cvcfaxtransmitrate : public ydk::Enum
+class CvcH320CallType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
+
+};
+
+class CvcFaxTransmitRate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -256,17 +271,6 @@ class Cvcfaxtransmitrate : public ydk::Enum
         static const ydk::Enum::YLeaf fax9600;
         static const ydk::Enum::YLeaf fax14400;
         static const ydk::Enum::YLeaf fax12000;
-
-};
-
-class Cvcinbandsignaling : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cas;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf cept;
-        static const ydk::Enum::YLeaf transparent;
-        static const ydk::Enum::YLeaf gr303;
 
 };
 

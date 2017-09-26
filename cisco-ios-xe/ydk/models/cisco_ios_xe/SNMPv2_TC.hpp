@@ -10,26 +10,7 @@
 namespace cisco_ios_xe {
 namespace SNMPv2_TC {
 
-class Truthvalue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf false_;
-
-};
-
-class Storagetype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf volatile_;
-        static const ydk::Enum::YLeaf nonVolatile;
-        static const ydk::Enum::YLeaf permanent;
-        static const ydk::Enum::YLeaf readOnly;
-
-};
-
-class Rowstatus : public ydk::Enum
+class RowStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -38,6 +19,25 @@ class Rowstatus : public ydk::Enum
         static const ydk::Enum::YLeaf createAndGo;
         static const ydk::Enum::YLeaf createAndWait;
         static const ydk::Enum::YLeaf destroy;
+
+};
+
+class TruthValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+
+};
+
+class StorageType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf volatile_;
+        static const ydk::Enum::YLeaf nonVolatile;
+        static const ydk::Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf readOnly;
 
 };
 

@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_environment_oper {
 
 EnvironmentSensors::EnvironmentSensors()
 {
-    yang_name = "environment-sensors"; yang_parent_name = "Cisco-IOS-XE-environment-oper";
+
+    yang_name = "environment-sensors"; yang_parent_name = "Cisco-IOS-XE-environment-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 EnvironmentSensors::~EnvironmentSensors()
@@ -44,26 +45,15 @@ std::string EnvironmentSensors::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-environment-oper:environment-sensors";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentSensors::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentSensors::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -147,7 +137,8 @@ EnvironmentSensors::EnvironmentSensor::EnvironmentSensor()
     sensor_units{YType::enumeration, "sensor-units"},
     state{YType::str, "state"}
 {
-    yang_name = "environment-sensor"; yang_parent_name = "environment-sensors";
+
+    yang_name = "environment-sensor"; yang_parent_name = "environment-sensors"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EnvironmentSensors::EnvironmentSensor::~EnvironmentSensor()
@@ -173,27 +164,22 @@ bool EnvironmentSensors::EnvironmentSensor::has_operation() const
 	|| ydk::is_set(state.yfilter);
 }
 
+std::string EnvironmentSensors::EnvironmentSensor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-environment-oper:environment-sensors/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EnvironmentSensors::EnvironmentSensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "environment-sensor" <<"[name='" <<name <<"']" <<"[location='" <<location <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentSensors::EnvironmentSensor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentSensors::EnvironmentSensor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-environment-oper:environment-sensors/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -202,9 +188,7 @@ const EntityPath EnvironmentSensors::EnvironmentSensor::get_entity_path(Entity* 
     if (sensor_units.is_set || is_set(sensor_units.yfilter)) leaf_name_data.push_back(sensor_units.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

@@ -12,34 +12,7 @@
 namespace ietf {
 namespace policy_types {
 
-class FlowDlci : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        FlowDlci();
-        ~FlowDlci();
-
-
-}; // FlowDlci
-
-class MplsExpImp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        MplsExpImp();
-        ~MplsExpImp();
-
-
-}; // MplsExpImp
-
-class AtmVci : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        AtmVci();
-        ~AtmVci();
-
-
-}; // AtmVci
-
-class Application : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Application : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Application();
@@ -48,113 +21,32 @@ class Application : public ietf_diffserv_classifier::FilterType, virtual ydk::Id
 
 }; // Application
 
-class Metadata : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class AtmClp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Metadata();
-        ~Metadata();
+        AtmClp();
+        ~AtmClp();
 
 
-}; // Metadata
+}; // AtmClp
 
-class DstMac : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class AtmVci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DstMac();
-        ~DstMac();
+        AtmVci();
+        ~AtmVci();
 
 
-}; // DstMac
+}; // AtmVci
 
-class DeiInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class ClassMap : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DeiInner();
-        ~DeiInner();
+        ClassMap();
+        ~ClassMap();
 
 
-}; // DeiInner
-
-class WlanUserPriority : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        WlanUserPriority();
-        ~WlanUserPriority();
-
-
-}; // WlanUserPriority
-
-class PolicyType : public virtual ydk::Identity
-{
-    public:
-        PolicyType();
-        ~PolicyType();
-
-
-}; // PolicyType
-
-class Vlan : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Vlan();
-        ~Vlan();
-
-
-}; // Vlan
-
-class FlowRecord : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        FlowRecord();
-        ~FlowRecord();
-
-
-}; // FlowRecord
-
-class MplsExpTop : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        MplsExpTop();
-        ~MplsExpTop();
-
-
-}; // MplsExpTop
-
-class DiscardClass : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        DiscardClass();
-        ~DiscardClass();
-
-
-}; // DiscardClass
-
-class Prec : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Prec();
-        ~Prec();
-
-
-}; // Prec
-
-class PacketLength : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        PacketLength();
-        ~PacketLength();
-
-
-}; // PacketLength
-
-class Dei : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Dei();
-        ~Dei();
-
-
-}; // Dei
+}; // ClassMap
 
 class ClassType : public virtual ydk::Identity
 {
@@ -165,79 +57,7 @@ class ClassType : public virtual ydk::Identity
 
 }; // ClassType
 
-class SrcMac : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        SrcMac();
-        ~SrcMac();
-
-
-}; // SrcMac
-
-class Ipv4AclName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv4AclName();
-        ~Ipv4AclName();
-
-
-}; // Ipv4AclName
-
-class QosGroup : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        QosGroup();
-        ~QosGroup();
-
-
-}; // QosGroup
-
-class InputInterface : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        InputInterface();
-        ~InputInterface();
-
-
-}; // InputInterface
-
-class Ipv4Acl : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv4Acl();
-        ~Ipv4Acl();
-
-
-}; // Ipv4Acl
-
-class Ipv6AclName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv6AclName();
-        ~Ipv6AclName();
-
-
-}; // Ipv6AclName
-
-class AtmClp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        AtmClp();
-        ~AtmClp();
-
-
-}; // AtmClp
-
-class CosInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        CosInner();
-        ~CosInner();
-
-
-}; // CosInner
-
-class Cos : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Cos : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Cos();
@@ -246,52 +66,52 @@ class Cos : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 
 }; // Cos
 
-class SecurityGroupTag : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class CosInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        SecurityGroupTag();
-        ~SecurityGroupTag();
+        CosInner();
+        ~CosInner();
 
 
-}; // SecurityGroupTag
+}; // CosInner
 
-class SecurityGroupName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Dei : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        SecurityGroupName();
-        ~SecurityGroupName();
+        Dei();
+        ~Dei();
 
 
-}; // SecurityGroupName
+}; // Dei
 
-class FlowIp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DeiInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        FlowIp();
-        ~FlowIp();
+        DeiInner();
+        ~DeiInner();
 
 
-}; // FlowIp
+}; // DeiInner
 
-class IpRtp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DiscardClass : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        IpRtp();
-        ~IpRtp();
+        DiscardClass();
+        ~DiscardClass();
 
 
-}; // IpRtp
+}; // DiscardClass
 
-class Ipv6Acl : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DstMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Ipv6Acl();
-        ~Ipv6Acl();
+        DstMac();
+        ~DstMac();
 
 
-}; // Ipv6Acl
+}; // DstMac
 
-class FlowDe : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class FlowDe : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         FlowDe();
@@ -300,7 +120,187 @@ class FlowDe : public ietf_diffserv_classifier::FilterType, virtual ydk::Identit
 
 }; // FlowDe
 
-class VlanInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class FlowDlci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowDlci();
+        ~FlowDlci();
+
+
+}; // FlowDlci
+
+class FlowIp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowIp();
+        ~FlowIp();
+
+
+}; // FlowIp
+
+class FlowRecord : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowRecord();
+        ~FlowRecord();
+
+
+}; // FlowRecord
+
+class InputInterface : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        InputInterface();
+        ~InputInterface();
+
+
+}; // InputInterface
+
+class IpRtp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        IpRtp();
+        ~IpRtp();
+
+
+}; // IpRtp
+
+class Ipv4Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv4Acl();
+        ~Ipv4Acl();
+
+
+}; // Ipv4Acl
+
+class Ipv4AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv4AclName();
+        ~Ipv4AclName();
+
+
+}; // Ipv4AclName
+
+class Ipv6Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv6Acl();
+        ~Ipv6Acl();
+
+
+}; // Ipv6Acl
+
+class Ipv6AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv6AclName();
+        ~Ipv6AclName();
+
+
+}; // Ipv6AclName
+
+class Metadata : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Metadata();
+        ~Metadata();
+
+
+}; // Metadata
+
+class MplsExpImp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        MplsExpImp();
+        ~MplsExpImp();
+
+
+}; // MplsExpImp
+
+class MplsExpTop : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        MplsExpTop();
+        ~MplsExpTop();
+
+
+}; // MplsExpTop
+
+class PacketLength : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        PacketLength();
+        ~PacketLength();
+
+
+}; // PacketLength
+
+class PolicyType : public virtual ydk::Identity
+{
+    public:
+        PolicyType();
+        ~PolicyType();
+
+
+}; // PolicyType
+
+class Prec : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Prec();
+        ~Prec();
+
+
+}; // Prec
+
+class QosGroup : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        QosGroup();
+        ~QosGroup();
+
+
+}; // QosGroup
+
+class SecurityGroupName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SecurityGroupName();
+        ~SecurityGroupName();
+
+
+}; // SecurityGroupName
+
+class SecurityGroupTag : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SecurityGroupTag();
+        ~SecurityGroupTag();
+
+
+}; // SecurityGroupTag
+
+class SrcMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SrcMac();
+        ~SrcMac();
+
+
+}; // SrcMac
+
+class Vlan : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Vlan();
+        ~Vlan();
+
+
+}; // Vlan
+
+class VlanInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         VlanInner();
@@ -309,7 +309,7 @@ class VlanInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Iden
 
 }; // VlanInner
 
-class Vpls : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Vpls : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Vpls();
@@ -318,16 +318,16 @@ class Vpls : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 
 }; // Vpls
 
-class ClassMap : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class WlanUserPriority : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        ClassMap();
-        ~ClassMap();
+        WlanUserPriority();
+        ~WlanUserPriority();
 
 
-}; // ClassMap
+}; // WlanUserPriority
 
-class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
+class AccessControl : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         AccessControl();
@@ -336,16 +336,7 @@ class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // AccessControl
 
-class InspectClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        InspectClass();
-        ~InspectClass();
-
-
-}; // InspectClass
-
-class AccessControlClass : public policy_types::ClassType, virtual ydk::Identity
+class AccessControlClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         AccessControlClass();
@@ -354,88 +345,7 @@ class AccessControlClass : public policy_types::ClassType, virtual ydk::Identity
 
 }; // AccessControlClass
 
-class PacketService : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        PacketService();
-        ~PacketService();
-
-
-}; // PacketService
-
-class Qos : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Qos();
-        ~Qos();
-
-
-}; // Qos
-
-class Service : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Service();
-        ~Service();
-
-
-}; // Service
-
-class Control : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Control();
-        ~Control();
-
-
-}; // Control
-
-class AppnavClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        AppnavClass();
-        ~AppnavClass();
-
-
-}; // AppnavClass
-
-class Pbr : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Pbr();
-        ~Pbr();
-
-
-}; // Pbr
-
-class QosClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        QosClass();
-        ~QosClass();
-
-
-}; // QosClass
-
-class ControlClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        ControlClass();
-        ~ControlClass();
-
-
-}; // ControlClass
-
-class Inspect : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Inspect();
-        ~Inspect();
-
-
-}; // Inspect
-
-class Appnav : public policy_types::PolicyType, virtual ydk::Identity
+class Appnav : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Appnav();
@@ -444,7 +354,70 @@ class Appnav : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Appnav
 
-class PerfMon : public policy_types::PolicyType, virtual ydk::Identity
+class AppnavClass : public ietf::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        AppnavClass();
+        ~AppnavClass();
+
+
+}; // AppnavClass
+
+class Control : public ietf::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Control();
+        ~Control();
+
+
+}; // Control
+
+class ControlClass : public ietf::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        ControlClass();
+        ~ControlClass();
+
+
+}; // ControlClass
+
+class Inspect : public ietf::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Inspect();
+        ~Inspect();
+
+
+}; // Inspect
+
+class InspectClass : public ietf::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        InspectClass();
+        ~InspectClass();
+
+
+}; // InspectClass
+
+class PacketService : public ietf::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        PacketService();
+        ~PacketService();
+
+
+}; // PacketService
+
+class Pbr : public ietf::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Pbr();
+        ~Pbr();
+
+
+}; // Pbr
+
+class PerfMon : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         PerfMon();
@@ -452,6 +425,44 @@ class PerfMon : public policy_types::PolicyType, virtual ydk::Identity
 
 
 }; // PerfMon
+
+class Qos : public ietf::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Qos();
+        ~Qos();
+
+
+}; // Qos
+
+class QosClass : public ietf::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        QosClass();
+        ~QosClass();
+
+
+}; // QosClass
+
+class Service : public ietf::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Service();
+        ~Service();
+
+
+}; // Service
+
+class RateUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pps;
+        static const ydk::Enum::YLeaf cps;
+        static const ydk::Enum::YLeaf bps;
+        static const ydk::Enum::YLeaf perc;
+        static const ydk::Enum::YLeaf ratio;
+
+};
 
 class Direction : public ydk::Enum
 {
@@ -472,17 +483,6 @@ class Metric : public ydk::Enum
         static const ydk::Enum::YLeaf kilo;
         static const ydk::Enum::YLeaf milli;
         static const ydk::Enum::YLeaf nano;
-
-};
-
-class RateUnit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pps;
-        static const ydk::Enum::YLeaf cps;
-        static const ydk::Enum::YLeaf bps;
-        static const ydk::Enum::YLeaf perc;
-        static const ydk::Enum::YLeaf ratio;
 
 };
 

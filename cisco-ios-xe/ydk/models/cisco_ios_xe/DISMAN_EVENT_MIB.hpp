@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace DISMAN_EVENT_MIB {
 
-class DismanEventMib : public ydk::Entity
+class DISMANEVENTMIB : public ydk::Entity
 {
     public:
-        DismanEventMib();
-        ~DismanEventMib();
+        DISMANEVENTMIB();
+        ~DISMANEVENTMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,82 +32,36 @@ class DismanEventMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Mteresource; //type: DismanEventMib::Mteresource
-        class Mtetrigger; //type: DismanEventMib::Mtetrigger
-        class Mteevent; //type: DismanEventMib::Mteevent
-        class Mtetriggertable; //type: DismanEventMib::Mtetriggertable
-        class Mtetriggerdeltatable; //type: DismanEventMib::Mtetriggerdeltatable
-        class Mtetriggerexistencetable; //type: DismanEventMib::Mtetriggerexistencetable
-        class Mtetriggerbooleantable; //type: DismanEventMib::Mtetriggerbooleantable
-        class Mtetriggerthresholdtable; //type: DismanEventMib::Mtetriggerthresholdtable
-        class Mteobjectstable; //type: DismanEventMib::Mteobjectstable
-        class Mteeventtable; //type: DismanEventMib::Mteeventtable
-        class Mteeventnotificationtable; //type: DismanEventMib::Mteeventnotificationtable
-        class Mteeventsettable; //type: DismanEventMib::Mteeventsettable
+        class Mteresource; //type: DISMANEVENTMIB::Mteresource
+        class Mtetrigger; //type: DISMANEVENTMIB::Mtetrigger
+        class Mteevent; //type: DISMANEVENTMIB::Mteevent
+        class Mtetriggertable; //type: DISMANEVENTMIB::Mtetriggertable
+        class Mtetriggerdeltatable; //type: DISMANEVENTMIB::Mtetriggerdeltatable
+        class Mtetriggerexistencetable; //type: DISMANEVENTMIB::Mtetriggerexistencetable
+        class Mtetriggerbooleantable; //type: DISMANEVENTMIB::Mtetriggerbooleantable
+        class Mtetriggerthresholdtable; //type: DISMANEVENTMIB::Mtetriggerthresholdtable
+        class Mteobjectstable; //type: DISMANEVENTMIB::Mteobjectstable
+        class Mteeventtable; //type: DISMANEVENTMIB::Mteeventtable
+        class Mteeventnotificationtable; //type: DISMANEVENTMIB::Mteeventnotificationtable
+        class Mteeventsettable; //type: DISMANEVENTMIB::Mteeventsettable
 
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteevent> mteevent;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventnotificationtable> mteeventnotificationtable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventsettable> mteeventsettable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable> mteeventtable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteobjectstable> mteobjectstable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteresource> mteresource;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetrigger> mtetrigger;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerbooleantable> mtetriggerbooleantable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerdeltatable> mtetriggerdeltatable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerexistencetable> mtetriggerexistencetable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable> mtetriggertable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerthresholdtable> mtetriggerthresholdtable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteevent> mteevent;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventnotificationtable> mteeventnotificationtable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventsettable> mteeventsettable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventtable> mteeventtable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteobjectstable> mteobjectstable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteresource> mteresource;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetrigger> mtetrigger;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerbooleantable> mtetriggerbooleantable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerdeltatable> mtetriggerdeltatable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerexistencetable> mtetriggerexistencetable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable> mtetriggertable;
+        std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerthresholdtable> mtetriggerthresholdtable;
         
-}; // DismanEventMib
+}; // DISMANEVENTMIB
 
 
-class DismanEventMib::Mteresource : public ydk::Entity
-{
-    public:
-        Mteresource();
-        ~Mteresource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mteresourcesampleminimum; //type: int32
-        ydk::YLeaf mteresourcesampleinstancemaximum; //type: uint32
-        ydk::YLeaf mteresourcesampleinstances; //type: uint32
-        ydk::YLeaf mteresourcesampleinstanceshigh; //type: uint32
-        ydk::YLeaf mteresourcesampleinstancelacks; //type: uint32
-
-}; // DismanEventMib::Mteresource
-
-
-class DismanEventMib::Mtetrigger : public ydk::Entity
-{
-    public:
-        Mtetrigger();
-        ~Mtetrigger();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mtetriggerfailures; //type: uint32
-
-}; // DismanEventMib::Mtetrigger
-
-
-class DismanEventMib::Mteevent : public ydk::Entity
+class DISMANEVENTMIB::Mteevent : public ydk::Entity
 {
     public:
         Mteevent();
@@ -115,20 +69,445 @@ class DismanEventMib::Mteevent : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf mteeventfailures; //type: uint32
 
-}; // DismanEventMib::Mteevent
+}; // DISMANEVENTMIB::Mteevent
 
 
-class DismanEventMib::Mtetriggertable : public ydk::Entity
+class DISMANEVENTMIB::Mteeventnotificationtable : public ydk::Entity
+{
+    public:
+        Mteeventnotificationtable();
+        ~Mteeventnotificationtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mteeventnotificationentry; //type: DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotificationentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotificationentry> > mteeventnotificationentry;
+        
+}; // DISMANEVENTMIB::Mteeventnotificationtable
+
+
+class DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotificationentry : public ydk::Entity
+{
+    public:
+        Mteeventnotificationentry();
+        ~Mteeventnotificationentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventtable::Mteevententry::mteeventname)
+        ydk::YLeaf mteeventname;
+        ydk::YLeaf mteeventnotification; //type: string
+        ydk::YLeaf mteeventnotificationobjectsowner; //type: string
+        ydk::YLeaf mteeventnotificationobjects; //type: string
+
+}; // DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotificationentry
+
+
+class DISMANEVENTMIB::Mteeventsettable : public ydk::Entity
+{
+    public:
+        Mteeventsettable();
+        ~Mteeventsettable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mteeventsetentry; //type: DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry> > mteeventsetentry;
+        
+}; // DISMANEVENTMIB::Mteeventsettable
+
+
+class DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry : public ydk::Entity
+{
+    public:
+        Mteeventsetentry();
+        ~Mteeventsetentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventtable::Mteevententry::mteeventname)
+        ydk::YLeaf mteeventname;
+        ydk::YLeaf mteeventsetobject; //type: string
+        ydk::YLeaf mteeventsetobjectwildcard; //type: boolean
+        ydk::YLeaf mteeventsetvalue; //type: int32
+        ydk::YLeaf mteeventsettargettag; //type: string
+        ydk::YLeaf mteeventsetcontextname; //type: string
+        ydk::YLeaf mteeventsetcontextnamewildcard; //type: boolean
+
+}; // DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry
+
+
+class DISMANEVENTMIB::Mteeventtable : public ydk::Entity
+{
+    public:
+        Mteeventtable();
+        ~Mteeventtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mteevententry; //type: DISMANEVENTMIB::Mteeventtable::Mteevententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteeventtable::Mteevententry> > mteevententry;
+        
+}; // DISMANEVENTMIB::Mteeventtable
+
+
+class DISMANEVENTMIB::Mteeventtable::Mteevententry : public ydk::Entity
+{
+    public:
+        Mteevententry();
+        ~Mteevententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        ydk::YLeaf mteeventname; //type: string
+        ydk::YLeaf mteeventcomment; //type: string
+        ydk::YLeaf mteeventactions; //type: Mteeventactions
+        ydk::YLeaf mteeventenabled; //type: boolean
+        ydk::YLeaf mteevententrystatus; //type: RowStatus
+
+}; // DISMANEVENTMIB::Mteeventtable::Mteevententry
+
+
+class DISMANEVENTMIB::Mteobjectstable : public ydk::Entity
+{
+    public:
+        Mteobjectstable();
+        ~Mteobjectstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mteobjectsentry; //type: DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry> > mteobjectsentry;
+        
+}; // DISMANEVENTMIB::Mteobjectstable
+
+
+class DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry : public ydk::Entity
+{
+    public:
+        Mteobjectsentry();
+        ~Mteobjectsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        ydk::YLeaf mteobjectsname; //type: string
+        ydk::YLeaf mteobjectsindex; //type: uint32
+        ydk::YLeaf mteobjectsid; //type: string
+        ydk::YLeaf mteobjectsidwildcard; //type: boolean
+        ydk::YLeaf mteobjectsentrystatus; //type: RowStatus
+
+}; // DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry
+
+
+class DISMANEVENTMIB::Mteresource : public ydk::Entity
+{
+    public:
+        Mteresource();
+        ~Mteresource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mteresourcesampleminimum; //type: int32
+        ydk::YLeaf mteresourcesampleinstancemaximum; //type: uint32
+        ydk::YLeaf mteresourcesampleinstances; //type: uint32
+        ydk::YLeaf mteresourcesampleinstanceshigh; //type: uint32
+        ydk::YLeaf mteresourcesampleinstancelacks; //type: uint32
+
+}; // DISMANEVENTMIB::Mteresource
+
+
+class DISMANEVENTMIB::Mtetrigger : public ydk::Entity
+{
+    public:
+        Mtetrigger();
+        ~Mtetrigger();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mtetriggerfailures; //type: uint32
+
+}; // DISMANEVENTMIB::Mtetrigger
+
+
+class DISMANEVENTMIB::Mtetriggerbooleantable : public ydk::Entity
+{
+    public:
+        Mtetriggerbooleantable();
+        ~Mtetriggerbooleantable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mtetriggerbooleanentry; //type: DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry> > mtetriggerbooleanentry;
+        
+}; // DISMANEVENTMIB::Mtetriggerbooleantable
+
+
+class DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry : public ydk::Entity
+{
+    public:
+        Mtetriggerbooleanentry();
+        ~Mtetriggerbooleanentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mtetriggername)
+        ydk::YLeaf mtetriggername;
+        ydk::YLeaf mtetriggerbooleancomparison; //type: Mtetriggerbooleancomparison
+        ydk::YLeaf mtetriggerbooleanvalue; //type: int32
+        ydk::YLeaf mtetriggerbooleanstartup; //type: boolean
+        ydk::YLeaf mtetriggerbooleanobjectsowner; //type: string
+        ydk::YLeaf mtetriggerbooleanobjects; //type: string
+        ydk::YLeaf mtetriggerbooleaneventowner; //type: string
+        ydk::YLeaf mtetriggerbooleanevent; //type: string
+        class Mtetriggerbooleancomparison;
+
+}; // DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry
+
+
+class DISMANEVENTMIB::Mtetriggerdeltatable : public ydk::Entity
+{
+    public:
+        Mtetriggerdeltatable();
+        ~Mtetriggerdeltatable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mtetriggerdeltaentry; //type: DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry> > mtetriggerdeltaentry;
+        
+}; // DISMANEVENTMIB::Mtetriggerdeltatable
+
+
+class DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry : public ydk::Entity
+{
+    public:
+        Mtetriggerdeltaentry();
+        ~Mtetriggerdeltaentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mtetriggername)
+        ydk::YLeaf mtetriggername;
+        ydk::YLeaf mtetriggerdeltadiscontinuityid; //type: string
+        ydk::YLeaf mtetriggerdeltadiscontinuityidwildcard; //type: boolean
+        ydk::YLeaf mtetriggerdeltadiscontinuityidtype; //type: Mtetriggerdeltadiscontinuityidtype
+        class Mtetriggerdeltadiscontinuityidtype;
+
+}; // DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry
+
+
+class DISMANEVENTMIB::Mtetriggerexistencetable : public ydk::Entity
+{
+    public:
+        Mtetriggerexistencetable();
+        ~Mtetriggerexistencetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mtetriggerexistenceentry; //type: DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexistenceentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexistenceentry> > mtetriggerexistenceentry;
+        
+}; // DISMANEVENTMIB::Mtetriggerexistencetable
+
+
+class DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexistenceentry : public ydk::Entity
+{
+    public:
+        Mtetriggerexistenceentry();
+        ~Mtetriggerexistenceentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
+        ydk::YLeaf mteowner;
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mtetriggername)
+        ydk::YLeaf mtetriggername;
+        ydk::YLeaf mtetriggerexistencetest; //type: Mtetriggerexistencetest
+        ydk::YLeaf mtetriggerexistencestartup; //type: Mtetriggerexistencestartup
+        ydk::YLeaf mtetriggerexistenceobjectsowner; //type: string
+        ydk::YLeaf mtetriggerexistenceobjects; //type: string
+        ydk::YLeaf mtetriggerexistenceeventowner; //type: string
+        ydk::YLeaf mtetriggerexistenceevent; //type: string
+
+}; // DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexistenceentry
+
+
+class DISMANEVENTMIB::Mtetriggertable : public ydk::Entity
 {
     public:
         Mtetriggertable();
@@ -136,22 +515,23 @@ class DismanEventMib::Mtetriggertable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Mtetriggerentry; //type: DismanEventMib::Mtetriggertable::Mtetriggerentry
+        class Mtetriggerentry; //type: DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry> > mtetriggerentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry> > mtetriggerentry;
         
-}; // DismanEventMib::Mtetriggertable
+}; // DISMANEVENTMIB::Mtetriggertable
 
 
-class DismanEventMib::Mtetriggertable::Mtetriggerentry : public ydk::Entity
+class DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry : public ydk::Entity
 {
     public:
         Mtetriggerentry();
@@ -159,13 +539,14 @@ class DismanEventMib::Mtetriggertable::Mtetriggerentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf mteowner; //type: string
         ydk::YLeaf mtetriggername; //type: string
@@ -181,172 +562,13 @@ class DismanEventMib::Mtetriggertable::Mtetriggerentry : public ydk::Entity
         ydk::YLeaf mtetriggerobjectsowner; //type: string
         ydk::YLeaf mtetriggerobjects; //type: string
         ydk::YLeaf mtetriggerenabled; //type: boolean
-        ydk::YLeaf mtetriggerentrystatus; //type: Rowstatus
+        ydk::YLeaf mtetriggerentrystatus; //type: RowStatus
         class Mtetriggersampletype;
 
-}; // DismanEventMib::Mtetriggertable::Mtetriggerentry
+}; // DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry
 
 
-class DismanEventMib::Mtetriggerdeltatable : public ydk::Entity
-{
-    public:
-        Mtetriggerdeltatable();
-        ~Mtetriggerdeltatable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mtetriggerdeltaentry; //type: DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry> > mtetriggerdeltaentry;
-        
-}; // DismanEventMib::Mtetriggerdeltatable
-
-
-class DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry : public ydk::Entity
-{
-    public:
-        Mtetriggerdeltaentry();
-        ~Mtetriggerdeltaentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mtetriggername)
-        ydk::YLeaf mtetriggername;
-        ydk::YLeaf mtetriggerdeltadiscontinuityid; //type: string
-        ydk::YLeaf mtetriggerdeltadiscontinuityidwildcard; //type: boolean
-        ydk::YLeaf mtetriggerdeltadiscontinuityidtype; //type: Mtetriggerdeltadiscontinuityidtype
-        class Mtetriggerdeltadiscontinuityidtype;
-
-}; // DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry
-
-
-class DismanEventMib::Mtetriggerexistencetable : public ydk::Entity
-{
-    public:
-        Mtetriggerexistencetable();
-        ~Mtetriggerexistencetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mtetriggerexistenceentry; //type: DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry> > mtetriggerexistenceentry;
-        
-}; // DismanEventMib::Mtetriggerexistencetable
-
-
-class DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry : public ydk::Entity
-{
-    public:
-        Mtetriggerexistenceentry();
-        ~Mtetriggerexistenceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mtetriggername)
-        ydk::YLeaf mtetriggername;
-        ydk::YLeaf mtetriggerexistencetest; //type: Mtetriggerexistencetest
-        ydk::YLeaf mtetriggerexistencestartup; //type: Mtetriggerexistencestartup
-        ydk::YLeaf mtetriggerexistenceobjectsowner; //type: string
-        ydk::YLeaf mtetriggerexistenceobjects; //type: string
-        ydk::YLeaf mtetriggerexistenceeventowner; //type: string
-        ydk::YLeaf mtetriggerexistenceevent; //type: string
-
-}; // DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry
-
-
-class DismanEventMib::Mtetriggerbooleantable : public ydk::Entity
-{
-    public:
-        Mtetriggerbooleantable();
-        ~Mtetriggerbooleantable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mtetriggerbooleanentry; //type: DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry> > mtetriggerbooleanentry;
-        
-}; // DismanEventMib::Mtetriggerbooleantable
-
-
-class DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry : public ydk::Entity
-{
-    public:
-        Mtetriggerbooleanentry();
-        ~Mtetriggerbooleanentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mtetriggername)
-        ydk::YLeaf mtetriggername;
-        ydk::YLeaf mtetriggerbooleancomparison; //type: Mtetriggerbooleancomparison
-        ydk::YLeaf mtetriggerbooleanvalue; //type: int32
-        ydk::YLeaf mtetriggerbooleanstartup; //type: boolean
-        ydk::YLeaf mtetriggerbooleanobjectsowner; //type: string
-        ydk::YLeaf mtetriggerbooleanobjects; //type: string
-        ydk::YLeaf mtetriggerbooleaneventowner; //type: string
-        ydk::YLeaf mtetriggerbooleanevent; //type: string
-        class Mtetriggerbooleancomparison;
-
-}; // DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry
-
-
-class DismanEventMib::Mtetriggerthresholdtable : public ydk::Entity
+class DISMANEVENTMIB::Mtetriggerthresholdtable : public ydk::Entity
 {
     public:
         Mtetriggerthresholdtable();
@@ -354,22 +576,23 @@ class DismanEventMib::Mtetriggerthresholdtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Mtetriggerthresholdentry; //type: DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry
+        class Mtetriggerthresholdentry; //type: DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry> > mtetriggerthresholdentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry> > mtetriggerthresholdentry;
         
-}; // DismanEventMib::Mtetriggerthresholdtable
+}; // DISMANEVENTMIB::Mtetriggerthresholdtable
 
 
-class DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry : public ydk::Entity
+class DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry : public ydk::Entity
 {
     public:
         Mtetriggerthresholdentry();
@@ -377,17 +600,18 @@ class DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mteowner)
         ydk::YLeaf mteowner;
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mtetriggername)
+        //type: string (refers to cisco_ios_xe::DISMAN_EVENT_MIB::DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::mtetriggername)
         ydk::YLeaf mtetriggername;
         ydk::YLeaf mtetriggerthresholdstartup; //type: Mtetriggerthresholdstartup
         ydk::YLeaf mtetriggerthresholdrising; //type: int32
@@ -406,212 +630,9 @@ class DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry : publi
         ydk::YLeaf mtetriggerthresholddeltafallingevent; //type: string
         class Mtetriggerthresholdstartup;
 
-}; // DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry
+}; // DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry
 
-
-class DismanEventMib::Mteobjectstable : public ydk::Entity
-{
-    public:
-        Mteobjectstable();
-        ~Mteobjectstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mteobjectsentry; //type: DismanEventMib::Mteobjectstable::Mteobjectsentry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteobjectstable::Mteobjectsentry> > mteobjectsentry;
-        
-}; // DismanEventMib::Mteobjectstable
-
-
-class DismanEventMib::Mteobjectstable::Mteobjectsentry : public ydk::Entity
-{
-    public:
-        Mteobjectsentry();
-        ~Mteobjectsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        ydk::YLeaf mteobjectsname; //type: string
-        ydk::YLeaf mteobjectsindex; //type: uint32
-        ydk::YLeaf mteobjectsid; //type: string
-        ydk::YLeaf mteobjectsidwildcard; //type: boolean
-        ydk::YLeaf mteobjectsentrystatus; //type: Rowstatus
-
-}; // DismanEventMib::Mteobjectstable::Mteobjectsentry
-
-
-class DismanEventMib::Mteeventtable : public ydk::Entity
-{
-    public:
-        Mteeventtable();
-        ~Mteeventtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mteevententry; //type: DismanEventMib::Mteeventtable::Mteevententry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable::Mteevententry> > mteevententry;
-        
-}; // DismanEventMib::Mteeventtable
-
-
-class DismanEventMib::Mteeventtable::Mteevententry : public ydk::Entity
-{
-    public:
-        Mteevententry();
-        ~Mteevententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        ydk::YLeaf mteeventname; //type: string
-        ydk::YLeaf mteeventcomment; //type: string
-        ydk::YLeaf mteeventactions; //type: Mteeventactions
-        ydk::YLeaf mteeventenabled; //type: boolean
-        ydk::YLeaf mteevententrystatus; //type: Rowstatus
-
-}; // DismanEventMib::Mteeventtable::Mteevententry
-
-
-class DismanEventMib::Mteeventnotificationtable : public ydk::Entity
-{
-    public:
-        Mteeventnotificationtable();
-        ~Mteeventnotificationtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mteeventnotificationentry; //type: DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry> > mteeventnotificationentry;
-        
-}; // DismanEventMib::Mteeventnotificationtable
-
-
-class DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry : public ydk::Entity
-{
-    public:
-        Mteeventnotificationentry();
-        ~Mteeventnotificationentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable::Mteevententry::mteeventname)
-        ydk::YLeaf mteeventname;
-        ydk::YLeaf mteeventnotification; //type: string
-        ydk::YLeaf mteeventnotificationobjectsowner; //type: string
-        ydk::YLeaf mteeventnotificationobjects; //type: string
-
-}; // DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry
-
-
-class DismanEventMib::Mteeventsettable : public ydk::Entity
-{
-    public:
-        Mteeventsettable();
-        ~Mteeventsettable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mteeventsetentry; //type: DismanEventMib::Mteeventsettable::Mteeventsetentry
-
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventsettable::Mteeventsetentry> > mteeventsetentry;
-        
-}; // DismanEventMib::Mteeventsettable
-
-
-class DismanEventMib::Mteeventsettable::Mteeventsetentry : public ydk::Entity
-{
-    public:
-        Mteeventsetentry();
-        ~Mteeventsetentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry::mteowner)
-        ydk::YLeaf mteowner;
-        //type: string (refers to DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable::Mteevententry::mteeventname)
-        ydk::YLeaf mteeventname;
-        ydk::YLeaf mteeventsetobject; //type: string
-        ydk::YLeaf mteeventsetobjectwildcard; //type: boolean
-        ydk::YLeaf mteeventsetvalue; //type: int32
-        ydk::YLeaf mteeventsettargettag; //type: string
-        ydk::YLeaf mteeventsetcontextname; //type: string
-        ydk::YLeaf mteeventsetcontextnamewildcard; //type: boolean
-
-}; // DismanEventMib::Mteeventsettable::Mteeventsetentry
-
-class Failurereason : public ydk::Enum
+class FailureReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sampleOverrun;
@@ -642,24 +663,7 @@ class Failurereason : public ydk::Enum
 
 };
 
-class DismanEventMib::Mtetriggertable::Mtetriggerentry::Mtetriggersampletype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf absoluteValue;
-        static const ydk::Enum::YLeaf deltaValue;
-
-};
-
-class DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry::Mtetriggerdeltadiscontinuityidtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf timeTicks;
-        static const ydk::Enum::YLeaf timeStamp;
-        static const ydk::Enum::YLeaf dateAndTime;
-
-};
-
-class DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry::Mtetriggerbooleancomparison : public ydk::Enum
+class DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry::Mtetriggerbooleancomparison : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unequal;
@@ -671,7 +675,24 @@ class DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry::Mtetrigger
 
 };
 
-class DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry::Mtetriggerthresholdstartup : public ydk::Enum
+class DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry::Mtetriggerdeltadiscontinuityidtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf timeTicks;
+        static const ydk::Enum::YLeaf timeStamp;
+        static const ydk::Enum::YLeaf dateAndTime;
+
+};
+
+class DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::Mtetriggersampletype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf absoluteValue;
+        static const ydk::Enum::YLeaf deltaValue;
+
+};
+
+class DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry::Mtetriggerthresholdstartup : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf rising;

@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_QOS_PIB_MIB {
 
-class CiscoQosPibMib : public ydk::Entity
+class CISCOQOSPIBMIB : public ydk::Entity
 {
     public:
-        CiscoQosPibMib();
-        ~CiscoQosPibMib();
+        CISCOQOSPIBMIB();
+        ~CISCOQOSPIBMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,95 +31,142 @@ class CiscoQosPibMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Qosdevicepibincarnationtable; //type: CiscoQosPibMib::Qosdevicepibincarnationtable
-        class Qosdeviceattributetable; //type: CiscoQosPibMib::Qosdeviceattributetable
-        class Qosinterfacetypetable; //type: CiscoQosPibMib::Qosinterfacetypetable
-        class Qosdiffservmappingtable; //type: CiscoQosPibMib::Qosdiffservmappingtable
-        class Qoscostodscptable; //type: CiscoQosPibMib::Qoscostodscptable
-        class Qosunmatchedpolicytable; //type: CiscoQosPibMib::Qosunmatchedpolicytable
-        class Qospolicertable; //type: CiscoQosPibMib::Qospolicertable
-        class Qosaggregatetable; //type: CiscoQosPibMib::Qosaggregatetable
-        class Qosmacclassificationtable; //type: CiscoQosPibMib::Qosmacclassificationtable
-        class Qosipacetable; //type: CiscoQosPibMib::Qosipacetable
-        class Qosipacldefinitiontable; //type: CiscoQosPibMib::Qosipacldefinitiontable
-        class Qosipaclactiontable; //type: CiscoQosPibMib::Qosipaclactiontable
-        class Qosifschedulingpreferencestable; //type: CiscoQosPibMib::Qosifschedulingpreferencestable
-        class Qosifdroppreferencetable; //type: CiscoQosPibMib::Qosifdroppreferencetable
-        class Qosifdscpassignmenttable; //type: CiscoQosPibMib::Qosifdscpassignmenttable
-        class Qosifredtable; //type: CiscoQosPibMib::Qosifredtable
-        class Qosiftaildroptable; //type: CiscoQosPibMib::Qosiftaildroptable
-        class Qosifweightstable; //type: CiscoQosPibMib::Qosifweightstable
+        class Qosdevicepibincarnationtable; //type: CISCOQOSPIBMIB::Qosdevicepibincarnationtable
+        class Qosdeviceattributetable; //type: CISCOQOSPIBMIB::Qosdeviceattributetable
+        class Qosinterfacetypetable; //type: CISCOQOSPIBMIB::Qosinterfacetypetable
+        class Qosdiffservmappingtable; //type: CISCOQOSPIBMIB::Qosdiffservmappingtable
+        class Qoscostodscptable; //type: CISCOQOSPIBMIB::Qoscostodscptable
+        class Qosunmatchedpolicytable; //type: CISCOQOSPIBMIB::Qosunmatchedpolicytable
+        class Qospolicertable; //type: CISCOQOSPIBMIB::Qospolicertable
+        class Qosaggregatetable; //type: CISCOQOSPIBMIB::Qosaggregatetable
+        class Qosmacclassificationtable; //type: CISCOQOSPIBMIB::Qosmacclassificationtable
+        class Qosipacetable; //type: CISCOQOSPIBMIB::Qosipacetable
+        class Qosipacldefinitiontable; //type: CISCOQOSPIBMIB::Qosipacldefinitiontable
+        class Qosipaclactiontable; //type: CISCOQOSPIBMIB::Qosipaclactiontable
+        class Qosifschedulingpreferencestable; //type: CISCOQOSPIBMIB::Qosifschedulingpreferencestable
+        class Qosifdroppreferencetable; //type: CISCOQOSPIBMIB::Qosifdroppreferencetable
+        class Qosifdscpassignmenttable; //type: CISCOQOSPIBMIB::Qosifdscpassignmenttable
+        class Qosifredtable; //type: CISCOQOSPIBMIB::Qosifredtable
+        class Qosiftaildroptable; //type: CISCOQOSPIBMIB::Qosiftaildroptable
+        class Qosifweightstable; //type: CISCOQOSPIBMIB::Qosifweightstable
 
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosaggregatetable> qosaggregatetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qoscostodscptable> qoscostodscptable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdeviceattributetable> qosdeviceattributetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdevicepibincarnationtable> qosdevicepibincarnationtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdiffservmappingtable> qosdiffservmappingtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdroppreferencetable> qosifdroppreferencetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdscpassignmenttable> qosifdscpassignmenttable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifredtable> qosifredtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifschedulingpreferencestable> qosifschedulingpreferencestable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosiftaildroptable> qosiftaildroptable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifweightstable> qosifweightstable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosinterfacetypetable> qosinterfacetypetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacetable> qosipacetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipaclactiontable> qosipaclactiontable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacldefinitiontable> qosipacldefinitiontable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosmacclassificationtable> qosmacclassificationtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qospolicertable> qospolicertable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosunmatchedpolicytable> qosunmatchedpolicytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosaggregatetable> qosaggregatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qoscostodscptable> qoscostodscptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdeviceattributetable> qosdeviceattributetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdevicepibincarnationtable> qosdevicepibincarnationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdiffservmappingtable> qosdiffservmappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdroppreferencetable> qosifdroppreferencetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdscpassignmenttable> qosifdscpassignmenttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifredtable> qosifredtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifschedulingpreferencestable> qosifschedulingpreferencestable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosiftaildroptable> qosiftaildroptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifweightstable> qosifweightstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosinterfacetypetable> qosinterfacetypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacetable> qosipacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipaclactiontable> qosipaclactiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacldefinitiontable> qosipacldefinitiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosmacclassificationtable> qosmacclassificationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qospolicertable> qospolicertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosunmatchedpolicytable> qosunmatchedpolicytable;
         
-}; // CiscoQosPibMib
+}; // CISCOQOSPIBMIB
 
 
-class CiscoQosPibMib::Qosdevicepibincarnationtable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosaggregatetable : public ydk::Entity
 {
     public:
-        Qosdevicepibincarnationtable();
-        ~Qosdevicepibincarnationtable();
+        Qosaggregatetable();
+        ~Qosaggregatetable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosdevicepibincarnationentry; //type: CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
+        class Qosaggregateentry; //type: CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry> > qosdevicepibincarnationentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry> > qosaggregateentry;
         
-}; // CiscoQosPibMib::Qosdevicepibincarnationtable
+}; // CISCOQOSPIBMIB::Qosaggregatetable
 
 
-class CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry : public ydk::Entity
 {
     public:
-        Qosdevicepibincarnationentry();
-        ~Qosdevicepibincarnationentry();
+        Qosaggregateentry();
+        ~Qosaggregateentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosdeviceincarnationid; //type: uint32
-        ydk::YLeaf qosdevicepdpname; //type: string
-        ydk::YLeaf qosdevicepibincarnation; //type: binary
-        ydk::YLeaf qosdevicepibttl; //type: uint32
+        ydk::YLeaf qosaggregateid; //type: uint32
+        ydk::YLeaf qosaggregatepolicerid; //type: uint32
 
-}; // CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
+}; // CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry
 
 
-class CiscoQosPibMib::Qosdeviceattributetable : public ydk::Entity
+class CISCOQOSPIBMIB::Qoscostodscptable : public ydk::Entity
+{
+    public:
+        Qoscostodscptable();
+        ~Qoscostodscptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Qoscostodscpentry; //type: CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry> > qoscostodscpentry;
+        
+}; // CISCOQOSPIBMIB::Qoscostodscptable
+
+
+class CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry : public ydk::Entity
+{
+    public:
+        Qoscostodscpentry();
+        ~Qoscostodscpentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf qoscostodscpcos; //type: int32
+        ydk::YLeaf qoscostodscpdscp; //type: int32
+
+}; // CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry
+
+
+class CISCOQOSPIBMIB::Qosdeviceattributetable : public ydk::Entity
 {
     public:
         Qosdeviceattributetable();
@@ -127,22 +174,23 @@ class CiscoQosPibMib::Qosdeviceattributetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosdeviceattributeentry; //type: CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry
+        class Qosdeviceattributeentry; //type: CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry> > qosdeviceattributeentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry> > qosdeviceattributeentry;
         
-}; // CiscoQosPibMib::Qosdeviceattributetable
+}; // CISCOQOSPIBMIB::Qosdeviceattributetable
 
 
-class CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry : public ydk::Entity
 {
     public:
         Qosdeviceattributeentry();
@@ -150,13 +198,14 @@ class CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf qosdeviceattributeid; //type: uint32
         ydk::YLeaf qosdevicepepdomain; //type: string
@@ -165,57 +214,59 @@ class CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry : public 
         ydk::YLeaf qosdevicemaxmessagesize; //type: uint32
         ydk::YLeaf qosdevicecapabilities; //type: Qosdevicecapabilities
 
-}; // CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry
+}; // CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry
 
 
-class CiscoQosPibMib::Qosinterfacetypetable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosdevicepibincarnationtable : public ydk::Entity
 {
     public:
-        Qosinterfacetypetable();
-        ~Qosinterfacetypetable();
+        Qosdevicepibincarnationtable();
+        ~Qosdevicepibincarnationtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosinterfacetypeentry; //type: CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry
+        class Qosdevicepibincarnationentry; //type: CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry> > qosinterfacetypeentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry> > qosdevicepibincarnationentry;
         
-}; // CiscoQosPibMib::Qosinterfacetypetable
+}; // CISCOQOSPIBMIB::Qosdevicepibincarnationtable
 
 
-class CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry : public ydk::Entity
 {
     public:
-        Qosinterfacetypeentry();
-        ~Qosinterfacetypeentry();
+        Qosdevicepibincarnationentry();
+        ~Qosdevicepibincarnationentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosinterfacetypeid; //type: uint32
-        ydk::YLeaf qosinterfacequeuetype; //type: Qosinterfacequeuetype
-        ydk::YLeaf qosinterfacetyperoles; //type: binary
-        ydk::YLeaf qosinterfacetypecapabilities; //type: Qosinterfacetypecapabilities
+        ydk::YLeaf qosdeviceincarnationid; //type: uint32
+        ydk::YLeaf qosdevicepdpname; //type: string
+        ydk::YLeaf qosdevicepibincarnation; //type: binary
+        ydk::YLeaf qosdevicepibttl; //type: uint32
 
-}; // CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry
+}; // CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
 
 
-class CiscoQosPibMib::Qosdiffservmappingtable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosdiffservmappingtable : public ydk::Entity
 {
     public:
         Qosdiffservmappingtable();
@@ -223,22 +274,23 @@ class CiscoQosPibMib::Qosdiffservmappingtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosdiffservmappingentry; //type: CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry
+        class Qosdiffservmappingentry; //type: CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry> > qosdiffservmappingentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry> > qosdiffservmappingentry;
         
-}; // CiscoQosPibMib::Qosdiffservmappingtable
+}; // CISCOQOSPIBMIB::Qosdiffservmappingtable
 
 
-class CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry : public ydk::Entity
 {
     public:
         Qosdiffservmappingentry();
@@ -246,259 +298,376 @@ class CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf qosdscp; //type: int32
         ydk::YLeaf qosmarkeddscp; //type: int32
         ydk::YLeaf qosl2cos; //type: int32
 
-}; // CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry
+}; // CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry
 
 
-class CiscoQosPibMib::Qoscostodscptable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifdroppreferencetable : public ydk::Entity
 {
     public:
-        Qoscostodscptable();
-        ~Qoscostodscptable();
+        Qosifdroppreferencetable();
+        ~Qosifdroppreferencetable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qoscostodscpentry; //type: CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry
+        class Qosifdroppreferenceentry; //type: CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry> > qoscostodscpentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry> > qosifdroppreferenceentry;
         
-}; // CiscoQosPibMib::Qoscostodscptable
+}; // CISCOQOSPIBMIB::Qosifdroppreferencetable
 
 
-class CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry : public ydk::Entity
 {
     public:
-        Qoscostodscpentry();
-        ~Qoscostodscpentry();
+        Qosifdroppreferenceentry();
+        ~Qosifdroppreferenceentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qoscostodscpcos; //type: int32
-        ydk::YLeaf qoscostodscpdscp; //type: int32
+        ydk::YLeaf qosifdroppreferenceid; //type: uint32
+        ydk::YLeaf qosifdroproles; //type: binary
+        ydk::YLeaf qosifdroppreference; //type: int32
+        ydk::YLeaf qosifdropdiscipline; //type: Qosifdropdiscipline
+        class Qosifdropdiscipline;
 
-}; // CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry
+}; // CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry
 
 
-class CiscoQosPibMib::Qosunmatchedpolicytable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifdscpassignmenttable : public ydk::Entity
 {
     public:
-        Qosunmatchedpolicytable();
-        ~Qosunmatchedpolicytable();
+        Qosifdscpassignmenttable();
+        ~Qosifdscpassignmenttable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosunmatchedpolicyentry; //type: CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
+        class Qosifdscpassignmententry; //type: CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry> > qosunmatchedpolicyentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry> > qosifdscpassignmententry;
         
-}; // CiscoQosPibMib::Qosunmatchedpolicytable
+}; // CISCOQOSPIBMIB::Qosifdscpassignmenttable
 
 
-class CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry : public ydk::Entity
 {
     public:
-        Qosunmatchedpolicyentry();
-        ~Qosunmatchedpolicyentry();
+        Qosifdscpassignmententry();
+        ~Qosifdscpassignmententry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosunmatchedpolicyid; //type: uint32
-        ydk::YLeaf qosunmatchedpolicyrole; //type: binary
-        ydk::YLeaf qosunmatchedpolicydirection; //type: Qosunmatchedpolicydirection
-        ydk::YLeaf qosunmatchedpolicydscp; //type: int32
-        ydk::YLeaf qosunmatchedpolicydscptrusted; //type: boolean
-        ydk::YLeaf qosunmatchpolmicroflowpolicerid; //type: uint32
-        ydk::YLeaf qosunmatchedpolicyaggregateid; //type: uint32
-        class Qosunmatchedpolicydirection;
+        ydk::YLeaf qosifdscpassignmentid; //type: uint32
+        ydk::YLeaf qosifdscproles; //type: binary
+        ydk::YLeaf qosifqueuetype; //type: QosInterfaceQueueType
+        ydk::YLeaf qosifdscp; //type: int32
+        ydk::YLeaf qosifqueue; //type: int32
+        ydk::YLeaf qosifthresholdset; //type: int32
 
-}; // CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
+}; // CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry
 
 
-class CiscoQosPibMib::Qospolicertable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifredtable : public ydk::Entity
 {
     public:
-        Qospolicertable();
-        ~Qospolicertable();
+        Qosifredtable();
+        ~Qosifredtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qospolicerentry; //type: CiscoQosPibMib::Qospolicertable::Qospolicerentry
+        class Qosifredentry; //type: CISCOQOSPIBMIB::Qosifredtable::Qosifredentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qospolicertable::Qospolicerentry> > qospolicerentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifredtable::Qosifredentry> > qosifredentry;
         
-}; // CiscoQosPibMib::Qospolicertable
+}; // CISCOQOSPIBMIB::Qosifredtable
 
 
-class CiscoQosPibMib::Qospolicertable::Qospolicerentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifredtable::Qosifredentry : public ydk::Entity
 {
     public:
-        Qospolicerentry();
-        ~Qospolicerentry();
+        Qosifredentry();
+        ~Qosifredentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qospolicerid; //type: uint32
-        ydk::YLeaf qospolicerrate; //type: uint32
-        ydk::YLeaf qospolicernormalburst; //type: uint32
-        ydk::YLeaf qospolicerexcessburst; //type: uint32
-        ydk::YLeaf qospoliceraction; //type: Qospoliceraction
-        class Qospoliceraction;
+        ydk::YLeaf qosifredid; //type: uint32
+        ydk::YLeaf qosifredroles; //type: binary
+        ydk::YLeaf qosifrednumthresholdsets; //type: ThresholdSetRange
+        ydk::YLeaf qosifredthresholdset; //type: int32
+        ydk::YLeaf qosifredthresholdsetlower; //type: int32
+        ydk::YLeaf qosifredthresholdsetupper; //type: int32
 
-}; // CiscoQosPibMib::Qospolicertable::Qospolicerentry
+}; // CISCOQOSPIBMIB::Qosifredtable::Qosifredentry
 
 
-class CiscoQosPibMib::Qosaggregatetable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifschedulingpreferencestable : public ydk::Entity
 {
     public:
-        Qosaggregatetable();
-        ~Qosaggregatetable();
+        Qosifschedulingpreferencestable();
+        ~Qosifschedulingpreferencestable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosaggregateentry; //type: CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry
+        class Qosifschedulingpreferenceentry; //type: CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry> > qosaggregateentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry> > qosifschedulingpreferenceentry;
         
-}; // CiscoQosPibMib::Qosaggregatetable
+}; // CISCOQOSPIBMIB::Qosifschedulingpreferencestable
 
 
-class CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry : public ydk::Entity
 {
     public:
-        Qosaggregateentry();
-        ~Qosaggregateentry();
+        Qosifschedulingpreferenceentry();
+        ~Qosifschedulingpreferenceentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosaggregateid; //type: uint32
-        ydk::YLeaf qosaggregatepolicerid; //type: uint32
+        ydk::YLeaf qosifschedulingpreferenceid; //type: uint32
+        ydk::YLeaf qosifschedulingroles; //type: binary
+        ydk::YLeaf qosifschedulingpreference; //type: int32
+        ydk::YLeaf qosifschedulingdiscipline; //type: Qosifschedulingdiscipline
+        ydk::YLeaf qosifschedulingqueuetype; //type: QosInterfaceQueueType
+        class Qosifschedulingdiscipline;
 
-}; // CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry
+}; // CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
 
 
-class CiscoQosPibMib::Qosmacclassificationtable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosiftaildroptable : public ydk::Entity
 {
     public:
-        Qosmacclassificationtable();
-        ~Qosmacclassificationtable();
+        Qosiftaildroptable();
+        ~Qosiftaildroptable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosmacclassificationentry; //type: CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry
+        class Qosiftaildropentry; //type: CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry> > qosmacclassificationentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry> > qosiftaildropentry;
         
-}; // CiscoQosPibMib::Qosmacclassificationtable
+}; // CISCOQOSPIBMIB::Qosiftaildroptable
 
 
-class CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry : public ydk::Entity
 {
     public:
-        Qosmacclassificationentry();
-        ~Qosmacclassificationentry();
+        Qosiftaildropentry();
+        ~Qosiftaildropentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosmacclassificationid; //type: uint32
-        ydk::YLeaf qosdstmacvlan; //type: int32
-        ydk::YLeaf qosdstmacaddress; //type: string
-        ydk::YLeaf qosdstmaccos; //type: int32
+        ydk::YLeaf qosiftaildropid; //type: uint32
+        ydk::YLeaf qosiftaildroproles; //type: binary
+        ydk::YLeaf qosiftaildropnumthresholdsets; //type: ThresholdSetRange
+        ydk::YLeaf qosiftaildropthresholdset; //type: int32
+        ydk::YLeaf qosiftaildropthresholdsetvalue; //type: int32
 
-}; // CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry
+}; // CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry
 
 
-class CiscoQosPibMib::Qosipacetable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosifweightstable : public ydk::Entity
+{
+    public:
+        Qosifweightstable();
+        ~Qosifweightstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Qosifweightsentry; //type: CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry> > qosifweightsentry;
+        
+}; // CISCOQOSPIBMIB::Qosifweightstable
+
+
+class CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry : public ydk::Entity
+{
+    public:
+        Qosifweightsentry();
+        ~Qosifweightsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf qosifweightsid; //type: uint32
+        ydk::YLeaf qosifweightsroles; //type: binary
+        ydk::YLeaf qosifweightsnumqueues; //type: QueueRange
+        ydk::YLeaf qosifweightsqueue; //type: int32
+        ydk::YLeaf qosifweightsdrainsize; //type: uint32
+        ydk::YLeaf qosifweightsqueuesize; //type: uint32
+
+}; // CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry
+
+
+class CISCOQOSPIBMIB::Qosinterfacetypetable : public ydk::Entity
+{
+    public:
+        Qosinterfacetypetable();
+        ~Qosinterfacetypetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Qosinterfacetypeentry; //type: CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry> > qosinterfacetypeentry;
+        
+}; // CISCOQOSPIBMIB::Qosinterfacetypetable
+
+
+class CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry : public ydk::Entity
+{
+    public:
+        Qosinterfacetypeentry();
+        ~Qosinterfacetypeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf qosinterfacetypeid; //type: uint32
+        ydk::YLeaf qosinterfacequeuetype; //type: QosInterfaceQueueType
+        ydk::YLeaf qosinterfacetyperoles; //type: binary
+        ydk::YLeaf qosinterfacetypecapabilities; //type: QosInterfaceTypeCapabilities
+
+}; // CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry
+
+
+class CISCOQOSPIBMIB::Qosipacetable : public ydk::Entity
 {
     public:
         Qosipacetable();
@@ -506,22 +675,23 @@ class CiscoQosPibMib::Qosipacetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosipaceentry; //type: CiscoQosPibMib::Qosipacetable::Qosipaceentry
+        class Qosipaceentry; //type: CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacetable::Qosipaceentry> > qosipaceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry> > qosipaceentry;
         
-}; // CiscoQosPibMib::Qosipacetable
+}; // CISCOQOSPIBMIB::Qosipacetable
 
 
-class CiscoQosPibMib::Qosipacetable::Qosipaceentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry : public ydk::Entity
 {
     public:
         Qosipaceentry();
@@ -529,13 +699,14 @@ class CiscoQosPibMib::Qosipacetable::Qosipaceentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf qosipaceid; //type: uint32
         ydk::YLeaf qosipacedstaddr; //type: string
@@ -551,57 +722,10 @@ class CiscoQosPibMib::Qosipacetable::Qosipaceentry : public ydk::Entity
         ydk::YLeaf qosipacesrcl4portmax; //type: int32
         ydk::YLeaf qosipacepermit; //type: boolean
 
-}; // CiscoQosPibMib::Qosipacetable::Qosipaceentry
+}; // CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry
 
 
-class CiscoQosPibMib::Qosipacldefinitiontable : public ydk::Entity
-{
-    public:
-        Qosipacldefinitiontable();
-        ~Qosipacldefinitiontable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Qosipacldefinitionentry; //type: CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry
-
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry> > qosipacldefinitionentry;
-        
-}; // CiscoQosPibMib::Qosipacldefinitiontable
-
-
-class CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry : public ydk::Entity
-{
-    public:
-        Qosipacldefinitionentry();
-        ~Qosipacldefinitionentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf qosipacldefinitionid; //type: uint32
-        ydk::YLeaf qosipaclid; //type: uint32
-        ydk::YLeaf qosipaceorder; //type: uint32
-        ydk::YLeaf qosipacldefaceid; //type: uint32
-
-}; // CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry
-
-
-class CiscoQosPibMib::Qosipaclactiontable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosipaclactiontable : public ydk::Entity
 {
     public:
         Qosipaclactiontable();
@@ -609,22 +733,23 @@ class CiscoQosPibMib::Qosipaclactiontable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosipaclactionentry; //type: CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry
+        class Qosipaclactionentry; //type: CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry> > qosipaclactionentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry> > qosipaclactionentry;
         
-}; // CiscoQosPibMib::Qosipaclactiontable
+}; // CISCOQOSPIBMIB::Qosipaclactiontable
 
 
-class CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry : public ydk::Entity
 {
     public:
         Qosipaclactionentry();
@@ -632,13 +757,14 @@ class CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf qosipaclactionid; //type: uint32
         ydk::YLeaf qosipaclactaclid; //type: uint32
@@ -651,301 +777,236 @@ class CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry : public ydk::Ent
         ydk::YLeaf qosipaclaggregateid; //type: uint32
         class Qosipaclinterfacedirection;
 
-}; // CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry
+}; // CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry
 
 
-class CiscoQosPibMib::Qosifschedulingpreferencestable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosipacldefinitiontable : public ydk::Entity
 {
     public:
-        Qosifschedulingpreferencestable();
-        ~Qosifschedulingpreferencestable();
+        Qosipacldefinitiontable();
+        ~Qosipacldefinitiontable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosifschedulingpreferenceentry; //type: CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
+        class Qosipacldefinitionentry; //type: CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry> > qosifschedulingpreferenceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry> > qosipacldefinitionentry;
         
-}; // CiscoQosPibMib::Qosifschedulingpreferencestable
+}; // CISCOQOSPIBMIB::Qosipacldefinitiontable
 
 
-class CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry : public ydk::Entity
 {
     public:
-        Qosifschedulingpreferenceentry();
-        ~Qosifschedulingpreferenceentry();
+        Qosipacldefinitionentry();
+        ~Qosipacldefinitionentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosifschedulingpreferenceid; //type: uint32
-        ydk::YLeaf qosifschedulingroles; //type: binary
-        ydk::YLeaf qosifschedulingpreference; //type: int32
-        ydk::YLeaf qosifschedulingdiscipline; //type: Qosifschedulingdiscipline
-        ydk::YLeaf qosifschedulingqueuetype; //type: Qosinterfacequeuetype
-        class Qosifschedulingdiscipline;
+        ydk::YLeaf qosipacldefinitionid; //type: uint32
+        ydk::YLeaf qosipaclid; //type: uint32
+        ydk::YLeaf qosipaceorder; //type: uint32
+        ydk::YLeaf qosipacldefaceid; //type: uint32
 
-}; // CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
+}; // CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry
 
 
-class CiscoQosPibMib::Qosifdroppreferencetable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosmacclassificationtable : public ydk::Entity
 {
     public:
-        Qosifdroppreferencetable();
-        ~Qosifdroppreferencetable();
+        Qosmacclassificationtable();
+        ~Qosmacclassificationtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosifdroppreferenceentry; //type: CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry
+        class Qosmacclassificationentry; //type: CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry> > qosifdroppreferenceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry> > qosmacclassificationentry;
         
-}; // CiscoQosPibMib::Qosifdroppreferencetable
+}; // CISCOQOSPIBMIB::Qosmacclassificationtable
 
 
-class CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry : public ydk::Entity
 {
     public:
-        Qosifdroppreferenceentry();
-        ~Qosifdroppreferenceentry();
+        Qosmacclassificationentry();
+        ~Qosmacclassificationentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosifdroppreferenceid; //type: uint32
-        ydk::YLeaf qosifdroproles; //type: binary
-        ydk::YLeaf qosifdroppreference; //type: int32
-        ydk::YLeaf qosifdropdiscipline; //type: Qosifdropdiscipline
-        class Qosifdropdiscipline;
+        ydk::YLeaf qosmacclassificationid; //type: uint32
+        ydk::YLeaf qosdstmacvlan; //type: int32
+        ydk::YLeaf qosdstmacaddress; //type: string
+        ydk::YLeaf qosdstmaccos; //type: int32
 
-}; // CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry
+}; // CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry
 
 
-class CiscoQosPibMib::Qosifdscpassignmenttable : public ydk::Entity
+class CISCOQOSPIBMIB::Qospolicertable : public ydk::Entity
 {
     public:
-        Qosifdscpassignmenttable();
-        ~Qosifdscpassignmenttable();
+        Qospolicertable();
+        ~Qospolicertable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosifdscpassignmententry; //type: CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry
+        class Qospolicerentry; //type: CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry> > qosifdscpassignmententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry> > qospolicerentry;
         
-}; // CiscoQosPibMib::Qosifdscpassignmenttable
+}; // CISCOQOSPIBMIB::Qospolicertable
 
 
-class CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry : public ydk::Entity
+class CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry : public ydk::Entity
 {
     public:
-        Qosifdscpassignmententry();
-        ~Qosifdscpassignmententry();
+        Qospolicerentry();
+        ~Qospolicerentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosifdscpassignmentid; //type: uint32
-        ydk::YLeaf qosifdscproles; //type: binary
-        ydk::YLeaf qosifqueuetype; //type: Qosinterfacequeuetype
-        ydk::YLeaf qosifdscp; //type: int32
-        ydk::YLeaf qosifqueue; //type: int32
-        ydk::YLeaf qosifthresholdset; //type: int32
+        ydk::YLeaf qospolicerid; //type: uint32
+        ydk::YLeaf qospolicerrate; //type: uint32
+        ydk::YLeaf qospolicernormalburst; //type: uint32
+        ydk::YLeaf qospolicerexcessburst; //type: uint32
+        ydk::YLeaf qospoliceraction; //type: Qospoliceraction
+        class Qospoliceraction;
 
-}; // CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry
+}; // CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry
 
 
-class CiscoQosPibMib::Qosifredtable : public ydk::Entity
+class CISCOQOSPIBMIB::Qosunmatchedpolicytable : public ydk::Entity
 {
     public:
-        Qosifredtable();
-        ~Qosifredtable();
+        Qosunmatchedpolicytable();
+        ~Qosunmatchedpolicytable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Qosifredentry; //type: CiscoQosPibMib::Qosifredtable::Qosifredentry
+        class Qosunmatchedpolicyentry; //type: CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifredtable::Qosifredentry> > qosifredentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry> > qosunmatchedpolicyentry;
         
-}; // CiscoQosPibMib::Qosifredtable
+}; // CISCOQOSPIBMIB::Qosunmatchedpolicytable
 
 
-class CiscoQosPibMib::Qosifredtable::Qosifredentry : public ydk::Entity
+class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry : public ydk::Entity
 {
     public:
-        Qosifredentry();
-        ~Qosifredentry();
+        Qosunmatchedpolicyentry();
+        ~Qosunmatchedpolicyentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf qosifredid; //type: uint32
-        ydk::YLeaf qosifredroles; //type: binary
-        ydk::YLeaf qosifrednumthresholdsets; //type: Thresholdsetrange
-        ydk::YLeaf qosifredthresholdset; //type: int32
-        ydk::YLeaf qosifredthresholdsetlower; //type: int32
-        ydk::YLeaf qosifredthresholdsetupper; //type: int32
+        ydk::YLeaf qosunmatchedpolicyid; //type: uint32
+        ydk::YLeaf qosunmatchedpolicyrole; //type: binary
+        ydk::YLeaf qosunmatchedpolicydirection; //type: Qosunmatchedpolicydirection
+        ydk::YLeaf qosunmatchedpolicydscp; //type: int32
+        ydk::YLeaf qosunmatchedpolicydscptrusted; //type: boolean
+        ydk::YLeaf qosunmatchpolmicroflowpolicerid; //type: uint32
+        ydk::YLeaf qosunmatchedpolicyaggregateid; //type: uint32
+        class Qosunmatchedpolicydirection;
 
-}; // CiscoQosPibMib::Qosifredtable::Qosifredentry
+}; // CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
 
-
-class CiscoQosPibMib::Qosiftaildroptable : public ydk::Entity
+class ThresholdSetRange : public ydk::Enum
 {
     public:
-        Qosiftaildroptable();
-        ~Qosiftaildroptable();
+        static const ydk::Enum::YLeaf zeroT;
+        static const ydk::Enum::YLeaf oneT;
+        static const ydk::Enum::YLeaf twoT;
+        static const ydk::Enum::YLeaf fourT;
+        static const ydk::Enum::YLeaf eightT;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Qosiftaildropentry; //type: CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry
-
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry> > qosiftaildropentry;
-        
-}; // CiscoQosPibMib::Qosiftaildroptable
-
-
-class CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry : public ydk::Entity
+class QueueRange : public ydk::Enum
 {
     public:
-        Qosiftaildropentry();
-        ~Qosiftaildropentry();
+        static const ydk::Enum::YLeaf oneQ;
+        static const ydk::Enum::YLeaf twoQ;
+        static const ydk::Enum::YLeaf threeQ;
+        static const ydk::Enum::YLeaf fourQ;
+        static const ydk::Enum::YLeaf eightQ;
+        static const ydk::Enum::YLeaf sixteenQ;
+        static const ydk::Enum::YLeaf thirtyTwoQ;
+        static const ydk::Enum::YLeaf sixtyFourQ;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        ydk::YLeaf qosiftaildropid; //type: uint32
-        ydk::YLeaf qosiftaildroproles; //type: binary
-        ydk::YLeaf qosiftaildropnumthresholdsets; //type: Thresholdsetrange
-        ydk::YLeaf qosiftaildropthresholdset; //type: int32
-        ydk::YLeaf qosiftaildropthresholdsetvalue; //type: int32
-
-}; // CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry
-
-
-class CiscoQosPibMib::Qosifweightstable : public ydk::Entity
-{
-    public:
-        Qosifweightstable();
-        ~Qosifweightstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Qosifweightsentry; //type: CiscoQosPibMib::Qosifweightstable::Qosifweightsentry
-
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifweightstable::Qosifweightsentry> > qosifweightsentry;
-        
-}; // CiscoQosPibMib::Qosifweightstable
-
-
-class CiscoQosPibMib::Qosifweightstable::Qosifweightsentry : public ydk::Entity
-{
-    public:
-        Qosifweightsentry();
-        ~Qosifweightsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf qosifweightsid; //type: uint32
-        ydk::YLeaf qosifweightsroles; //type: binary
-        ydk::YLeaf qosifweightsnumqueues; //type: Queuerange
-        ydk::YLeaf qosifweightsqueue; //type: int32
-        ydk::YLeaf qosifweightsdrainsize; //type: uint32
-        ydk::YLeaf qosifweightsqueuesize; //type: uint32
-
-}; // CiscoQosPibMib::Qosifweightstable::Qosifweightsentry
-
-class Qosinterfacequeuetype : public ydk::Enum
+class QosInterfaceQueueType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf oneQ1t;
@@ -996,57 +1057,15 @@ class Qosinterfacequeuetype : public ydk::Enum
 
 };
 
-class Queuerange : public ydk::Enum
+class CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry::Qosifdropdiscipline : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf oneQ;
-        static const ydk::Enum::YLeaf twoQ;
-        static const ydk::Enum::YLeaf threeQ;
-        static const ydk::Enum::YLeaf fourQ;
-        static const ydk::Enum::YLeaf eightQ;
-        static const ydk::Enum::YLeaf sixteenQ;
-        static const ydk::Enum::YLeaf thirtyTwoQ;
-        static const ydk::Enum::YLeaf sixtyFourQ;
+        static const ydk::Enum::YLeaf qosIfDropWRED;
+        static const ydk::Enum::YLeaf qosIfDropTailDrop;
 
 };
 
-class Thresholdsetrange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf zeroT;
-        static const ydk::Enum::YLeaf oneT;
-        static const ydk::Enum::YLeaf twoT;
-        static const ydk::Enum::YLeaf fourT;
-        static const ydk::Enum::YLeaf eightT;
-
-};
-
-class CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry::Qosunmatchedpolicydirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
-
-};
-
-class CiscoQosPibMib::Qospolicertable::Qospolicerentry::Qospoliceraction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf mark;
-        static const ydk::Enum::YLeaf shape;
-
-};
-
-class CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry::Qosipaclinterfacedirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
-
-};
-
-class CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry::Qosifschedulingdiscipline : public ydk::Enum
+class CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry::Qosifschedulingdiscipline : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf weightedFairQueueing;
@@ -1060,11 +1079,28 @@ class CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreference
 
 };
 
-class CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry::Qosifdropdiscipline : public ydk::Enum
+class CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry::Qosipaclinterfacedirection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf qosIfDropWRED;
-        static const ydk::Enum::YLeaf qosIfDropTailDrop;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry::Qospoliceraction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf mark;
+        static const ydk::Enum::YLeaf shape;
+
+};
+
+class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry::Qosunmatchedpolicydirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 

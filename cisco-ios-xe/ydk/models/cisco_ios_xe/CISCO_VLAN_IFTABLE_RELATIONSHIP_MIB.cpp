@@ -11,64 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB {
 
-CiscoVlanIftableRelationshipMib::CiscoVlanIftableRelationshipMib()
+CISCOVLANIFTABLERELATIONSHIPMIB::CISCOVLANIFTABLERELATIONSHIPMIB()
     :
-    cvivlaninterfaceindextable(std::make_shared<CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable>())
+    cvivlaninterfaceindextable(std::make_shared<CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable>())
 {
     cvivlaninterfaceindextable->parent = this;
 
-    yang_name = "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB"; yang_parent_name = "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB";
+    yang_name = "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB"; yang_parent_name = "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoVlanIftableRelationshipMib::~CiscoVlanIftableRelationshipMib()
+CISCOVLANIFTABLERELATIONSHIPMIB::~CISCOVLANIFTABLERELATIONSHIPMIB()
 {
 }
 
-bool CiscoVlanIftableRelationshipMib::has_data() const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::has_data() const
 {
     return (cvivlaninterfaceindextable !=  nullptr && cvivlaninterfaceindextable->has_data());
 }
 
-bool CiscoVlanIftableRelationshipMib::has_operation() const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cvivlaninterfaceindextable !=  nullptr && cvivlaninterfaceindextable->has_operation());
 }
 
-std::string CiscoVlanIftableRelationshipMib::get_segment_path() const
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB:CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVlanIftableRelationshipMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANIFTABLERELATIONSHIPMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANIFTABLERELATIONSHIPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cviVlanInterfaceIndexTable")
     {
         if(cvivlaninterfaceindextable == nullptr)
         {
-            cvivlaninterfaceindextable = std::make_shared<CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable>();
+            cvivlaninterfaceindextable = std::make_shared<CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable>();
         }
         return cvivlaninterfaceindextable;
     }
@@ -76,7 +65,7 @@ std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVlanIftableRelationshipMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANIFTABLERELATIONSHIPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cvivlaninterfaceindextable != nullptr)
@@ -87,56 +76,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVlanIftableRelationshipMib::
     return children;
 }
 
-void CiscoVlanIftableRelationshipMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANIFTABLERELATIONSHIPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoVlanIftableRelationshipMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANIFTABLERELATIONSHIPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOVLANIFTABLERELATIONSHIPMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoVlanIftableRelationshipMib>();
+    return std::make_shared<CISCOVLANIFTABLERELATIONSHIPMIB>();
 }
 
-std::string CiscoVlanIftableRelationshipMib::get_bundle_yang_models_location() const
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoVlanIftableRelationshipMib::get_bundle_name() const
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoVlanIftableRelationshipMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOVLANIFTABLERELATIONSHIPMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoVlanIftableRelationshipMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOVLANIFTABLERELATIONSHIPMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoVlanIftableRelationshipMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cviVlanInterfaceIndexTable")
         return true;
     return false;
 }
 
-CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindextable()
+CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindextable()
 {
-    yang_name = "cviVlanInterfaceIndexTable"; yang_parent_name = "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB";
+
+    yang_name = "cviVlanInterfaceIndexTable"; yang_parent_name = "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::~Cvivlaninterfaceindextable()
+CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::~Cvivlaninterfaceindextable()
 {
 }
 
-bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::has_data() const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::has_data() const
 {
     for (std::size_t index=0; index<cvivlaninterfaceindexentry.size(); index++)
     {
@@ -146,7 +136,7 @@ bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::has_data() con
     return false;
 }
 
-bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::has_operation() const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::has_operation() const
 {
     for (std::size_t index=0; index<cvivlaninterfaceindexentry.size(); index++)
     {
@@ -156,37 +146,30 @@ bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::has_operation(
     return is_set(yfilter);
 }
 
-std::string CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::get_segment_path() const
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB:CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cviVlanInterfaceIndexTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB:CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cviVlanInterfaceIndexEntry")
     {
@@ -198,7 +181,7 @@ std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindexta
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry>();
+        auto c = std::make_shared<CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry>();
         c->parent = this;
         cvivlaninterfaceindexentry.push_back(c);
         return c;
@@ -207,7 +190,7 @@ std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindexta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cvivlaninterfaceindexentry)
@@ -218,42 +201,43 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVlanIftableRelationshipMib::
     return children;
 }
 
-void CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cviVlanInterfaceIndexEntry")
         return true;
     return false;
 }
 
-CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::Cvivlaninterfaceindexentry()
+CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::Cvivlaninterfaceindexentry()
     :
     cvivlanid{YType::int32, "cviVlanId"},
     cviphysicalifindex{YType::int32, "cviPhysicalIfIndex"},
     cviroutedvlanifindex{YType::int32, "cviRoutedVlanIfIndex"}
 {
-    yang_name = "cviVlanInterfaceIndexEntry"; yang_parent_name = "cviVlanInterfaceIndexTable";
+
+    yang_name = "cviVlanInterfaceIndexEntry"; yang_parent_name = "cviVlanInterfaceIndexTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::~Cvivlaninterfaceindexentry()
+CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::~Cvivlaninterfaceindexentry()
 {
 }
 
-bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::has_data() const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::has_data() const
 {
     return cvivlanid.is_set
 	|| cviphysicalifindex.is_set
 	|| cviroutedvlanifindex.is_set;
 }
 
-bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::has_operation() const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvivlanid.yfilter)
@@ -261,51 +245,44 @@ bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfa
 	|| ydk::is_set(cviroutedvlanifindex.yfilter);
 }
 
-std::string CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_segment_path() const
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB:CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB/cviVlanInterfaceIndexTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cviVlanInterfaceIndexEntry" <<"[cviVlanId='" <<cvivlanid <<"']" <<"[cviPhysicalIfIndex='" <<cviphysicalifindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB:CISCO-VLAN-IFTABLE-RELATIONSHIP-MIB/cviVlanInterfaceIndexTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cvivlanid.is_set || is_set(cvivlanid.yfilter)) leaf_name_data.push_back(cvivlanid.get_name_leafdata());
     if (cviphysicalifindex.is_set || is_set(cviphysicalifindex.yfilter)) leaf_name_data.push_back(cviphysicalifindex.get_name_leafdata());
     if (cviroutedvlanifindex.is_set || is_set(cviroutedvlanifindex.yfilter)) leaf_name_data.push_back(cviroutedvlanifindex.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cviVlanId")
     {
@@ -327,7 +304,7 @@ void CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfa
     }
 }
 
-void CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cviVlanId")
     {
@@ -343,7 +320,7 @@ void CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfa
     }
 }
 
-bool CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cviVlanId" || name == "cviPhysicalIfIndex" || name == "cviRoutedVlanIfIndex")
         return true;

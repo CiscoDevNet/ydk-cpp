@@ -11,33 +11,31 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_DIAL_CONTROL_MIB {
 
-CiscoDialControlMib::CiscoDialControlMib()
+CISCODIALCONTROLMIB::CISCODIALCONTROLMIB()
     :
-    ccallhistoryiectable(std::make_shared<CiscoDialControlMib::Ccallhistoryiectable>())
-	,ccallhistorytable(std::make_shared<CiscoDialControlMib::Ccallhistorytable>())
-	,cpeerglobalconfiguration(std::make_shared<CiscoDialControlMib::Cpeerglobalconfiguration>())
+    ccallhistoryiectable(std::make_shared<CISCODIALCONTROLMIB::Ccallhistoryiectable>())
+	,ccallhistorytable(std::make_shared<CISCODIALCONTROLMIB::Ccallhistorytable>())
+	,cpeerglobalconfiguration(std::make_shared<CISCODIALCONTROLMIB::Cpeerglobalconfiguration>())
 {
     ccallhistoryiectable->parent = this;
-
     ccallhistorytable->parent = this;
-
     cpeerglobalconfiguration->parent = this;
 
-    yang_name = "CISCO-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB";
+    yang_name = "CISCO-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoDialControlMib::~CiscoDialControlMib()
+CISCODIALCONTROLMIB::~CISCODIALCONTROLMIB()
 {
 }
 
-bool CiscoDialControlMib::has_data() const
+bool CISCODIALCONTROLMIB::has_data() const
 {
     return (ccallhistoryiectable !=  nullptr && ccallhistoryiectable->has_data())
 	|| (ccallhistorytable !=  nullptr && ccallhistorytable->has_data())
 	|| (cpeerglobalconfiguration !=  nullptr && cpeerglobalconfiguration->has_data());
 }
 
-bool CiscoDialControlMib::has_operation() const
+bool CISCODIALCONTROLMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ccallhistoryiectable !=  nullptr && ccallhistoryiectable->has_operation())
@@ -45,40 +43,29 @@ bool CiscoDialControlMib::has_operation() const
 	|| (cpeerglobalconfiguration !=  nullptr && cpeerglobalconfiguration->has_operation());
 }
 
-std::string CiscoDialControlMib::get_segment_path() const
+std::string CISCODIALCONTROLMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDialControlMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDialControlMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cCallHistoryIecTable")
     {
         if(ccallhistoryiectable == nullptr)
         {
-            ccallhistoryiectable = std::make_shared<CiscoDialControlMib::Ccallhistoryiectable>();
+            ccallhistoryiectable = std::make_shared<CISCODIALCONTROLMIB::Ccallhistoryiectable>();
         }
         return ccallhistoryiectable;
     }
@@ -87,7 +74,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::get_child_by_name(const std::string
     {
         if(ccallhistorytable == nullptr)
         {
-            ccallhistorytable = std::make_shared<CiscoDialControlMib::Ccallhistorytable>();
+            ccallhistorytable = std::make_shared<CISCODIALCONTROLMIB::Ccallhistorytable>();
         }
         return ccallhistorytable;
     }
@@ -96,7 +83,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::get_child_by_name(const std::string
     {
         if(cpeerglobalconfiguration == nullptr)
         {
-            cpeerglobalconfiguration = std::make_shared<CiscoDialControlMib::Cpeerglobalconfiguration>();
+            cpeerglobalconfiguration = std::make_shared<CISCODIALCONTROLMIB::Cpeerglobalconfiguration>();
         }
         return cpeerglobalconfiguration;
     }
@@ -104,7 +91,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ccallhistoryiectable != nullptr)
@@ -125,145 +112,268 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::get_children
     return children;
 }
 
-void CiscoDialControlMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODIALCONTROLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDialControlMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODIALCONTROLMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoDialControlMib::clone_ptr() const
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoDialControlMib>();
+    return std::make_shared<CISCODIALCONTROLMIB>();
 }
 
-std::string CiscoDialControlMib::get_bundle_yang_models_location() const
+std::string CISCODIALCONTROLMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoDialControlMib::get_bundle_name() const
+std::string CISCODIALCONTROLMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoDialControlMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCODIALCONTROLMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoDialControlMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCODIALCONTROLMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoDialControlMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODIALCONTROLMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cCallHistoryIecTable" || name == "cCallHistoryTable" || name == "cPeerGlobalConfiguration")
         return true;
     return false;
 }
 
-CiscoDialControlMib::Cpeerglobalconfiguration::Cpeerglobalconfiguration()
-    :
-    cpeersearchtype{YType::enumeration, "cPeerSearchType"}
+CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiectable()
 {
-    yang_name = "cPeerGlobalConfiguration"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB";
+
+    yang_name = "cCallHistoryIecTable"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDialControlMib::Cpeerglobalconfiguration::~Cpeerglobalconfiguration()
+CISCODIALCONTROLMIB::Ccallhistoryiectable::~Ccallhistoryiectable()
 {
 }
 
-bool CiscoDialControlMib::Cpeerglobalconfiguration::has_data() const
+bool CISCODIALCONTROLMIB::Ccallhistoryiectable::has_data() const
 {
-    return cpeersearchtype.is_set;
+    for (std::size_t index=0; index<ccallhistoryiecentry.size(); index++)
+    {
+        if(ccallhistoryiecentry[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool CiscoDialControlMib::Cpeerglobalconfiguration::has_operation() const
+bool CISCODIALCONTROLMIB::Ccallhistoryiectable::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(cpeersearchtype.yfilter);
+    for (std::size_t index=0; index<ccallhistoryiecentry.size(); index++)
+    {
+        if(ccallhistoryiecentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string CiscoDialControlMib::Cpeerglobalconfiguration::get_segment_path() const
+std::string CISCODIALCONTROLMIB::Ccallhistoryiectable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPeerGlobalConfiguration";
-
+    path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDialControlMib::Cpeerglobalconfiguration::get_entity_path(Entity* ancestor) const
+std::string CISCODIALCONTROLMIB::Ccallhistoryiectable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cCallHistoryIecTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::Ccallhistoryiectable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cpeersearchtype.is_set || is_set(cpeersearchtype.yfilter)) leaf_name_data.push_back(cpeersearchtype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDialControlMib::Cpeerglobalconfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistoryiectable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cCallHistoryIecEntry")
+    {
+        for(auto const & c : ccallhistoryiecentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry>();
+        c->parent = this;
+        ccallhistoryiecentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistoryiectable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ccallhistoryiecentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODIALCONTROLMIB::Ccallhistoryiectable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODIALCONTROLMIB::Ccallhistoryiectable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODIALCONTROLMIB::Ccallhistoryiectable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cCallHistoryIecEntry")
+        return true;
+    return false;
+}
+
+CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::Ccallhistoryiecentry()
+    :
+    ccallhistoryindex{YType::str, "cCallHistoryIndex"},
+    ccallhistoryiecindex{YType::uint32, "cCallHistoryIecIndex"},
+    ccallhistoryiec{YType::str, "cCallHistoryIec"}
+{
+
+    yang_name = "cCallHistoryIecEntry"; yang_parent_name = "cCallHistoryIecTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::~Ccallhistoryiecentry()
+{
+}
+
+bool CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::has_data() const
+{
+    return ccallhistoryindex.is_set
+	|| ccallhistoryiecindex.is_set
+	|| ccallhistoryiec.is_set;
+}
+
+bool CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ccallhistoryindex.yfilter)
+	|| ydk::is_set(ccallhistoryiecindex.yfilter)
+	|| ydk::is_set(ccallhistoryiec.yfilter);
+}
+
+std::string CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/cCallHistoryIecTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cCallHistoryIecEntry" <<"[cCallHistoryIndex='" <<ccallhistoryindex <<"']" <<"[cCallHistoryIecIndex='" <<ccallhistoryiecindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ccallhistoryindex.is_set || is_set(ccallhistoryindex.yfilter)) leaf_name_data.push_back(ccallhistoryindex.get_name_leafdata());
+    if (ccallhistoryiecindex.is_set || is_set(ccallhistoryiecindex.yfilter)) leaf_name_data.push_back(ccallhistoryiecindex.get_name_leafdata());
+    if (ccallhistoryiec.is_set || is_set(ccallhistoryiec.yfilter)) leaf_name_data.push_back(ccallhistoryiec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Cpeerglobalconfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDialControlMib::Cpeerglobalconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cPeerSearchType")
+    if(value_path == "cCallHistoryIndex")
     {
-        cpeersearchtype = value;
-        cpeersearchtype.value_namespace = name_space;
-        cpeersearchtype.value_namespace_prefix = name_space_prefix;
+        ccallhistoryindex = value;
+        ccallhistoryindex.value_namespace = name_space;
+        ccallhistoryindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cCallHistoryIecIndex")
+    {
+        ccallhistoryiecindex = value;
+        ccallhistoryiecindex.value_namespace = name_space;
+        ccallhistoryiecindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cCallHistoryIec")
+    {
+        ccallhistoryiec = value;
+        ccallhistoryiec.value_namespace = name_space;
+        ccallhistoryiec.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoDialControlMib::Cpeerglobalconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cPeerSearchType")
+    if(value_path == "cCallHistoryIndex")
     {
-        cpeersearchtype.yfilter = yfilter;
+        ccallhistoryindex.yfilter = yfilter;
+    }
+    if(value_path == "cCallHistoryIecIndex")
+    {
+        ccallhistoryiecindex.yfilter = yfilter;
+    }
+    if(value_path == "cCallHistoryIec")
+    {
+        ccallhistoryiec.yfilter = yfilter;
     }
 }
 
-bool CiscoDialControlMib::Cpeerglobalconfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cPeerSearchType")
+    if(name == "cCallHistoryIndex" || name == "cCallHistoryIecIndex" || name == "cCallHistoryIec")
         return true;
     return false;
 }
 
-CiscoDialControlMib::Ccallhistorytable::Ccallhistorytable()
+CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistorytable()
 {
-    yang_name = "cCallHistoryTable"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB";
+
+    yang_name = "cCallHistoryTable"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDialControlMib::Ccallhistorytable::~Ccallhistorytable()
+CISCODIALCONTROLMIB::Ccallhistorytable::~Ccallhistorytable()
 {
 }
 
-bool CiscoDialControlMib::Ccallhistorytable::has_data() const
+bool CISCODIALCONTROLMIB::Ccallhistorytable::has_data() const
 {
     for (std::size_t index=0; index<ccallhistoryentry.size(); index++)
     {
@@ -273,7 +383,7 @@ bool CiscoDialControlMib::Ccallhistorytable::has_data() const
     return false;
 }
 
-bool CiscoDialControlMib::Ccallhistorytable::has_operation() const
+bool CISCODIALCONTROLMIB::Ccallhistorytable::has_operation() const
 {
     for (std::size_t index=0; index<ccallhistoryentry.size(); index++)
     {
@@ -283,37 +393,30 @@ bool CiscoDialControlMib::Ccallhistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoDialControlMib::Ccallhistorytable::get_segment_path() const
+std::string CISCODIALCONTROLMIB::Ccallhistorytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODIALCONTROLMIB::Ccallhistorytable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cCallHistoryTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDialControlMib::Ccallhistorytable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::Ccallhistorytable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cCallHistoryEntry")
     {
@@ -325,7 +428,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry>();
+        auto c = std::make_shared<CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry>();
         c->parent = this;
         ccallhistoryentry.push_back(c);
         return c;
@@ -334,7 +437,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ccallhistoryentry)
@@ -345,22 +448,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistory
     return children;
 }
 
-void CiscoDialControlMib::Ccallhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODIALCONTROLMIB::Ccallhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDialControlMib::Ccallhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODIALCONTROLMIB::Ccallhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoDialControlMib::Ccallhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODIALCONTROLMIB::Ccallhistorytable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cCallHistoryEntry")
         return true;
     return false;
 }
 
-CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryentry()
+CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryentry()
     :
     ccallhistoryindex{YType::uint32, "cCallHistoryIndex"},
     ccallhistorycallorigin{YType::enumeration, "cCallHistoryCallOrigin"},
@@ -383,14 +486,15 @@ CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryentry()
     ccallhistorytransmitbytes{YType::uint32, "cCallHistoryTransmitBytes"},
     ccallhistorytransmitpackets{YType::uint32, "cCallHistoryTransmitPackets"}
 {
-    yang_name = "cCallHistoryEntry"; yang_parent_name = "cCallHistoryTable";
+
+    yang_name = "cCallHistoryEntry"; yang_parent_name = "cCallHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::~Ccallhistoryentry()
+CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::~Ccallhistoryentry()
 {
 }
 
-bool CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::has_data() const
+bool CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::has_data() const
 {
     return ccallhistoryindex.is_set
 	|| ccallhistorycallorigin.is_set
@@ -414,7 +518,7 @@ bool CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::has_data() const
 	|| ccallhistorytransmitpackets.is_set;
 }
 
-bool CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::has_operation() const
+bool CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccallhistoryindex.yfilter)
@@ -439,27 +543,22 @@ bool CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::has_operation() 
 	|| ydk::is_set(ccallhistorytransmitpackets.yfilter);
 }
 
-std::string CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::get_segment_path() const
+std::string CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/cCallHistoryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cCallHistoryEntry" <<"[cCallHistoryIndex='" <<ccallhistoryindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/cCallHistoryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ccallhistoryindex.is_set || is_set(ccallhistoryindex.yfilter)) leaf_name_data.push_back(ccallhistoryindex.get_name_leafdata());
@@ -483,24 +582,22 @@ const EntityPath CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::get_
     if (ccallhistorytransmitbytes.is_set || is_set(ccallhistorytransmitbytes.yfilter)) leaf_name_data.push_back(ccallhistorytransmitbytes.get_name_leafdata());
     if (ccallhistorytransmitpackets.is_set || is_set(ccallhistorytransmitpackets.yfilter)) leaf_name_data.push_back(ccallhistorytransmitpackets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -624,7 +721,7 @@ void CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::set_value(const 
     }
 }
 
-void CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -708,280 +805,140 @@ void CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::set_filter(const
     }
 }
 
-bool CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cCallHistoryIndex" || name == "cCallHistoryCallOrigin" || name == "cCallHistoryChargedUnits" || name == "cCallHistoryConnectTime" || name == "cCallHistoryDisconnectCause" || name == "cCallHistoryDisconnectText" || name == "cCallHistoryDisconnectTime" || name == "cCallHistoryInfoType" || name == "cCallHistoryLogicalIfIndex" || name == "cCallHistoryPeerAddress" || name == "cCallHistoryPeerId" || name == "cCallHistoryPeerIfIndex" || name == "cCallHistoryPeerSubAddress" || name == "cCallHistoryReceiveBytes" || name == "cCallHistoryReceivePackets" || name == "cCallHistoryReleaseSource" || name == "cCallHistoryReleaseSrc" || name == "cCallHistorySetupTime" || name == "cCallHistoryTransmitBytes" || name == "cCallHistoryTransmitPackets")
         return true;
     return false;
 }
 
-CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiectable()
-{
-    yang_name = "cCallHistoryIecTable"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB";
-}
-
-CiscoDialControlMib::Ccallhistoryiectable::~Ccallhistoryiectable()
-{
-}
-
-bool CiscoDialControlMib::Ccallhistoryiectable::has_data() const
-{
-    for (std::size_t index=0; index<ccallhistoryiecentry.size(); index++)
-    {
-        if(ccallhistoryiecentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDialControlMib::Ccallhistoryiectable::has_operation() const
-{
-    for (std::size_t index=0; index<ccallhistoryiecentry.size(); index++)
-    {
-        if(ccallhistoryiecentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDialControlMib::Ccallhistoryiectable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cCallHistoryIecTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDialControlMib::Ccallhistoryiectable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistoryiectable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cCallHistoryIecEntry")
-    {
-        for(auto const & c : ccallhistoryiecentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry>();
-        c->parent = this;
-        ccallhistoryiecentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistoryiectable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccallhistoryiecentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDialControlMib::Ccallhistoryiectable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoDialControlMib::Ccallhistoryiectable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDialControlMib::Ccallhistoryiectable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cCallHistoryIecEntry")
-        return true;
-    return false;
-}
-
-CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::Ccallhistoryiecentry()
+CISCODIALCONTROLMIB::Cpeerglobalconfiguration::Cpeerglobalconfiguration()
     :
-    ccallhistoryindex{YType::str, "cCallHistoryIndex"},
-    ccallhistoryiecindex{YType::uint32, "cCallHistoryIecIndex"},
-    ccallhistoryiec{YType::str, "cCallHistoryIec"}
+    cpeersearchtype{YType::enumeration, "cPeerSearchType"}
 {
-    yang_name = "cCallHistoryIecEntry"; yang_parent_name = "cCallHistoryIecTable";
+
+    yang_name = "cPeerGlobalConfiguration"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::~Ccallhistoryiecentry()
+CISCODIALCONTROLMIB::Cpeerglobalconfiguration::~Cpeerglobalconfiguration()
 {
 }
 
-bool CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::has_data() const
+bool CISCODIALCONTROLMIB::Cpeerglobalconfiguration::has_data() const
 {
-    return ccallhistoryindex.is_set
-	|| ccallhistoryiecindex.is_set
-	|| ccallhistoryiec.is_set;
+    return cpeersearchtype.is_set;
 }
 
-bool CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::has_operation() const
+bool CISCODIALCONTROLMIB::Cpeerglobalconfiguration::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ccallhistoryindex.yfilter)
-	|| ydk::is_set(ccallhistoryiecindex.yfilter)
-	|| ydk::is_set(ccallhistoryiec.yfilter);
+	|| ydk::is_set(cpeersearchtype.yfilter);
 }
 
-std::string CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::get_segment_path() const
+std::string CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cCallHistoryIecEntry" <<"[cCallHistoryIndex='" <<ccallhistoryindex <<"']" <<"[cCallHistoryIecIndex='" <<ccallhistoryiecindex <<"']";
-
+    path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::get_entity_path(Entity* ancestor) const
+std::string CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DIAL-CONTROL-MIB:CISCO-DIAL-CONTROL-MIB/cCallHistoryIecTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cPeerGlobalConfiguration";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ccallhistoryindex.is_set || is_set(ccallhistoryindex.yfilter)) leaf_name_data.push_back(ccallhistoryindex.get_name_leafdata());
-    if (ccallhistoryiecindex.is_set || is_set(ccallhistoryiecindex.yfilter)) leaf_name_data.push_back(ccallhistoryiecindex.get_name_leafdata());
-    if (ccallhistoryiec.is_set || is_set(ccallhistoryiec.yfilter)) leaf_name_data.push_back(ccallhistoryiec.get_name_leafdata());
+    if (cpeersearchtype.is_set || is_set(cpeersearchtype.yfilter)) leaf_name_data.push_back(cpeersearchtype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODIALCONTROLMIB::Cpeerglobalconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cCallHistoryIndex")
+    if(value_path == "cPeerSearchType")
     {
-        ccallhistoryindex = value;
-        ccallhistoryindex.value_namespace = name_space;
-        ccallhistoryindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cCallHistoryIecIndex")
-    {
-        ccallhistoryiecindex = value;
-        ccallhistoryiecindex.value_namespace = name_space;
-        ccallhistoryiecindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cCallHistoryIec")
-    {
-        ccallhistoryiec = value;
-        ccallhistoryiec.value_namespace = name_space;
-        ccallhistoryiec.value_namespace_prefix = name_space_prefix;
+        cpeersearchtype = value;
+        cpeersearchtype.value_namespace = name_space;
+        cpeersearchtype.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODIALCONTROLMIB::Cpeerglobalconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cCallHistoryIndex")
+    if(value_path == "cPeerSearchType")
     {
-        ccallhistoryindex.yfilter = yfilter;
-    }
-    if(value_path == "cCallHistoryIecIndex")
-    {
-        ccallhistoryiecindex.yfilter = yfilter;
-    }
-    if(value_path == "cCallHistoryIec")
-    {
-        ccallhistoryiec.yfilter = yfilter;
+        cpeersearchtype.yfilter = yfilter;
     }
 }
 
-bool CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODIALCONTROLMIB::Cpeerglobalconfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cCallHistoryIndex" || name == "cCallHistoryIecIndex" || name == "cCallHistoryIec")
+    if(name == "cPeerSearchType")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiscoDialControlMib::Cpeerglobalconfiguration::Cpeersearchtype::none {1, "none"};
-const Enum::YLeaf CiscoDialControlMib::Cpeerglobalconfiguration::Cpeersearchtype::datavoice {2, "datavoice"};
-const Enum::YLeaf CiscoDialControlMib::Cpeerglobalconfiguration::Cpeersearchtype::voicedata {3, "voicedata"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin::originate {1, "originate"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin::answer {2, "answer"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin::callback {3, "callback"};
 
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin::originate {1, "originate"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin::answer {2, "answer"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin::callback {3, "callback"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::other {1, "other"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::speech {2, "speech"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::audio31 {6, "audio31"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::audio7 {7, "audio7"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::video {8, "video"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::fax {10, "fax"};
 
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::other {1, "other"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::speech {2, "speech"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::audio31 {6, "audio31"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::audio7 {7, "audio7"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::video {8, "video"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype::fax {10, "fax"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::callingPartyInPstn {1, "callingPartyInPstn"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::callingPartyInVoip {2, "callingPartyInVoip"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::calledPartyInPstn {3, "calledPartyInPstn"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::calledPartyInVoip {4, "calledPartyInVoip"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::internalRelease {5, "internalRelease"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::internalCallControlApp {6, "internalCallControlApp"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::consoleCommand {7, "consoleCommand"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::externalRadiusServer {8, "externalRadiusServer"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::externalNmsApp {9, "externalNmsApp"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::externalCallControlAgent {10, "externalCallControlAgent"};
 
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::callingPartyInPstn {1, "callingPartyInPstn"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::callingPartyInVoip {2, "callingPartyInVoip"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::calledPartyInPstn {3, "calledPartyInPstn"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::calledPartyInVoip {4, "calledPartyInVoip"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::internalRelease {5, "internalRelease"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::internalCallControlApp {6, "internalCallControlApp"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::consoleCommand {7, "consoleCommand"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::externalRadiusServer {8, "externalRadiusServer"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::externalNmsApp {9, "externalNmsApp"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource::externalCallControlAgent {10, "externalCallControlAgent"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::callingPartyInPstn {1, "callingPartyInPstn"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::callingPartyInVoip {2, "callingPartyInVoip"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::calledPartyInPstn {3, "calledPartyInPstn"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::calledPartyInVoip {4, "calledPartyInVoip"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalReleaseInPotsLeg {5, "internalReleaseInPotsLeg"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalReleaseInVoipLeg {6, "internalReleaseInVoipLeg"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalCallControlApp {7, "internalCallControlApp"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalReleaseInVoipAAA {8, "internalReleaseInVoipAAA"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::consoleCommand {9, "consoleCommand"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalRadiusServer {10, "externalRadiusServer"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalNmsApp {11, "externalNmsApp"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalCallControlAgent {12, "externalCallControlAgent"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::gatekeeper {13, "gatekeeper"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalGKTMPServer {14, "externalGKTMPServer"};
 
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::callingPartyInPstn {1, "callingPartyInPstn"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::callingPartyInVoip {2, "callingPartyInVoip"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::calledPartyInPstn {3, "calledPartyInPstn"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::calledPartyInVoip {4, "calledPartyInVoip"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalReleaseInPotsLeg {5, "internalReleaseInPotsLeg"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalReleaseInVoipLeg {6, "internalReleaseInVoipLeg"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalCallControlApp {7, "internalCallControlApp"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::internalReleaseInVoipAAA {8, "internalReleaseInVoipAAA"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::consoleCommand {9, "consoleCommand"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalRadiusServer {10, "externalRadiusServer"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalNmsApp {11, "externalNmsApp"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalCallControlAgent {12, "externalCallControlAgent"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::gatekeeper {13, "gatekeeper"};
-const Enum::YLeaf CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc::externalGKTMPServer {14, "externalGKTMPServer"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Cpeerglobalconfiguration::Cpeersearchtype::none {1, "none"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Cpeerglobalconfiguration::Cpeersearchtype::datavoice {2, "datavoice"};
+const Enum::YLeaf CISCODIALCONTROLMIB::Cpeerglobalconfiguration::Cpeersearchtype::voicedata {3, "voicedata"};
 
 
 }

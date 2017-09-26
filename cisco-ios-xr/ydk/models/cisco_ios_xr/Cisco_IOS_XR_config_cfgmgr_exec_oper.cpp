@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_config_cfgmgr_exec_oper {
 
 CfgHistGl::CfgHistGl()
 {
-    yang_name = "cfg-hist-gl"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-exec-oper";
+
+    yang_name = "cfg-hist-gl"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-exec-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 CfgHistGl::~CfgHistGl()
@@ -44,26 +45,15 @@ std::string CfgHistGl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-config-cfgmgr-exec-oper:cfg-hist-gl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -143,7 +133,8 @@ CfgHistGl::RecordType::RecordType()
     :
     record_type{YType::str, "record-type"}
 {
-    yang_name = "record-type"; yang_parent_name = "cfg-hist-gl";
+
+    yang_name = "record-type"; yang_parent_name = "cfg-hist-gl"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CfgHistGl::RecordType::~RecordType()
@@ -171,34 +162,27 @@ bool CfgHistGl::RecordType::has_operation() const
 	|| ydk::is_set(record_type.yfilter);
 }
 
+std::string CfgHistGl::RecordType::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-config-cfgmgr-exec-oper:cfg-hist-gl/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CfgHistGl::RecordType::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "record-type" <<"[record-type='" <<record_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-config-cfgmgr-exec-oper:cfg-hist-gl/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (record_type.is_set || is_set(record_type.yfilter)) leaf_name_data.push_back(record_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -269,7 +253,7 @@ CfgHistGl::RecordType::Record::Record()
 {
     info->parent = this;
 
-    yang_name = "record"; yang_parent_name = "record-type";
+    yang_name = "record"; yang_parent_name = "record-type"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::~Record()
@@ -297,32 +281,18 @@ std::string CfgHistGl::RecordType::Record::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "record" <<"[record='" <<record <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Record' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (record.is_set || is_set(record.yfilter)) leaf_name_data.push_back(record.get_name_leafdata());
     if (record_type.is_set || is_set(record_type.yfilter)) leaf_name_data.push_back(record_type.get_name_leafdata());
     if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -410,20 +380,14 @@ CfgHistGl::RecordType::Record::Info::Info()
 	,startup_info(std::make_shared<CfgHistGl::RecordType::Record::Info::StartupInfo>())
 {
     alarm_info->parent = this;
-
     backup_info->parent = this;
-
     cfscheck_info->parent = this;
-
     commit_info->parent = this;
-
     oir_info->parent = this;
-
     shutdown_info->parent = this;
-
     startup_info->parent = this;
 
-    yang_name = "info"; yang_parent_name = "record";
+    yang_name = "info"; yang_parent_name = "record"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::~Info()
@@ -461,31 +425,17 @@ std::string CfgHistGl::RecordType::Record::Info::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Info' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (a.is_set || is_set(a.yfilter)) leaf_name_data.push_back(a.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -638,7 +588,8 @@ CfgHistGl::RecordType::Record::Info::AlarmInfo::AlarmInfo()
     state{YType::str, "state"},
     where{YType::str, "where"}
 {
-    yang_name = "alarm-info"; yang_parent_name = "info";
+
+    yang_name = "alarm-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::AlarmInfo::~AlarmInfo()
@@ -662,31 +613,17 @@ std::string CfgHistGl::RecordType::Record::Info::AlarmInfo::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::AlarmInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::AlarmInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AlarmInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (where.is_set || is_set(where.yfilter)) leaf_name_data.push_back(where.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -736,12 +673,89 @@ bool CfgHistGl::RecordType::Record::Info::AlarmInfo::has_leaf_or_child_of_name(c
     return false;
 }
 
+CfgHistGl::RecordType::Record::Info::BackupInfo::BackupInfo()
+    :
+    comment{YType::str, "comment"}
+{
+
+    yang_name = "backup-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+CfgHistGl::RecordType::Record::Info::BackupInfo::~BackupInfo()
+{
+}
+
+bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_data() const
+{
+    return comment.is_set;
+}
+
+bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(comment.yfilter);
+}
+
+std::string CfgHistGl::RecordType::Record::Info::BackupInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::BackupInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::BackupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::BackupInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CfgHistGl::RecordType::Record::Info::BackupInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "comment")
+    {
+        comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CfgHistGl::RecordType::Record::Info::BackupInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "comment")
+        return true;
+    return false;
+}
+
 CfgHistGl::RecordType::Record::Info::CfscheckInfo::CfscheckInfo()
     :
     line{YType::str, "line"},
     user_id{YType::str, "user-id"}
 {
-    yang_name = "cfscheck-info"; yang_parent_name = "info";
+
+    yang_name = "cfscheck-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::CfscheckInfo::~CfscheckInfo()
@@ -765,31 +779,17 @@ std::string CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "cfscheck-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CfscheckInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (line.is_set || is_set(line.yfilter)) leaf_name_data.push_back(line.get_name_leafdata());
     if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -848,7 +848,8 @@ CfgHistGl::RecordType::Record::Info::CommitInfo::CommitInfo()
     line{YType::str, "line"},
     user_id{YType::str, "user-id"}
 {
-    yang_name = "commit-info"; yang_parent_name = "info";
+
+    yang_name = "commit-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::CommitInfo::~CommitInfo()
@@ -880,23 +881,11 @@ std::string CfgHistGl::RecordType::Record::Info::CommitInfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "commit-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::CommitInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CommitInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
@@ -906,9 +895,7 @@ const EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_pat
     if (line.is_set || is_set(line.yfilter)) leaf_name_data.push_back(line.get_name_leafdata());
     if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1004,7 +991,8 @@ CfgHistGl::RecordType::Record::Info::OirInfo::OirInfo()
     config_type{YType::str, "config-type"},
     operation_{YType::str, "operation"}
 {
-    yang_name = "oir-info"; yang_parent_name = "info";
+
+    yang_name = "oir-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::OirInfo::~OirInfo()
@@ -1030,32 +1018,18 @@ std::string CfgHistGl::RecordType::Record::Info::OirInfo::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "oir-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::OirInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::OirInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OirInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (config_name.is_set || is_set(config_name.yfilter)) leaf_name_data.push_back(config_name.get_name_leafdata());
     if (config_type.is_set || is_set(config_type.yfilter)) leaf_name_data.push_back(config_type.get_name_leafdata());
     if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1119,7 +1093,8 @@ CfgHistGl::RecordType::Record::Info::ShutdownInfo::ShutdownInfo()
     :
     comment{YType::str, "comment"}
 {
-    yang_name = "shutdown-info"; yang_parent_name = "info";
+
+    yang_name = "shutdown-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::ShutdownInfo::~ShutdownInfo()
@@ -1141,30 +1116,16 @@ std::string CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ShutdownInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1209,7 +1170,8 @@ CfgHistGl::RecordType::Record::Info::StartupInfo::StartupInfo()
     boot_path{YType::str, "boot-path"},
     how_booted{YType::str, "how-booted"}
 {
-    yang_name = "startup-info"; yang_parent_name = "info";
+
+    yang_name = "startup-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfgHistGl::RecordType::Record::Info::StartupInfo::~StartupInfo()
@@ -1233,31 +1195,17 @@ std::string CfgHistGl::RecordType::Record::Info::StartupInfo::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "startup-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfgHistGl::RecordType::Record::Info::StartupInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::Info::StartupInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StartupInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (boot_path.is_set || is_set(boot_path.yfilter)) leaf_name_data.push_back(boot_path.get_name_leafdata());
     if (how_booted.is_set || is_set(how_booted.yfilter)) leaf_name_data.push_back(how_booted.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1303,95 +1251,6 @@ void CfgHistGl::RecordType::Record::Info::StartupInfo::set_filter(const std::str
 bool CfgHistGl::RecordType::Record::Info::StartupInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "boot-path" || name == "how-booted")
-        return true;
-    return false;
-}
-
-CfgHistGl::RecordType::Record::Info::BackupInfo::BackupInfo()
-    :
-    comment{YType::str, "comment"}
-{
-    yang_name = "backup-info"; yang_parent_name = "info";
-}
-
-CfgHistGl::RecordType::Record::Info::BackupInfo::~BackupInfo()
-{
-}
-
-bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_data() const
-{
-    return comment.is_set;
-}
-
-bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(comment.yfilter);
-}
-
-std::string CfgHistGl::RecordType::Record::Info::BackupInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CfgHistGl::RecordType::Record::Info::BackupInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BackupInfo' in Cisco_IOS_XR_config_cfgmgr_exec_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::BackupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::BackupInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CfgHistGl::RecordType::Record::Info::BackupInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "comment")
-    {
-        comment = value;
-        comment.value_namespace = name_space;
-        comment.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CfgHistGl::RecordType::Record::Info::BackupInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "comment")
-    {
-        comment.yfilter = yfilter;
-    }
-}
-
-bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "comment")
         return true;
     return false;
 }

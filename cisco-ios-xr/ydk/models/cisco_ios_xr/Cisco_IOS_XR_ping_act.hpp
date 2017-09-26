@@ -18,7 +18,7 @@ class Ping : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class Ping : public ydk::Entity
         class Input; //type: Ping::Input
         class Output; //type: Ping::Output
 
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Input> input;
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output> output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output> output;
         
 }; // Ping
 
@@ -48,21 +48,22 @@ class Ping::Input : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Destination; //type: Ping::Input::Destination
         class Ipv4; //type: Ping::Input::Ipv4
         class Ipv6; //type: Ping::Input::Ipv6
 
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Input::Destination> destination;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Input::Ipv4> > ipv4;
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Input::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Destination> destination;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Ipv4> > ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Ipv6> ipv6;
         
 }; // Ping::Input
 
@@ -75,13 +76,14 @@ class Ping::Input::Destination : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf destination; //type: string
         ydk::YLeaf repeat_count; //type: uint64
@@ -110,13 +112,14 @@ class Ping::Input::Ipv4 : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf destination; //type: string
         ydk::YLeaf repeat_count; //type: uint64
@@ -143,13 +146,14 @@ class Ping::Input::Ipv6 : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf destination; //type: string
         ydk::YLeaf repeat_count; //type: uint64
@@ -175,17 +179,18 @@ class Ping::Output : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class PingResponse; //type: Ping::Output::PingResponse
 
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse> ping_response;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse> ping_response;
         
 }; // Ping::Output
 
@@ -198,19 +203,20 @@ class Ping::Output::PingResponse : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Ipv4; //type: Ping::Output::PingResponse::Ipv4
         class Ipv6; //type: Ping::Output::PingResponse::Ipv6
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4> > ipv4;
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6> ipv6;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4> > ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6> ipv6;
         
 }; // Ping::Output::PingResponse
 
@@ -223,13 +229,14 @@ class Ping::Output::PingResponse::Ipv4 : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf destination; //type: string
         ydk::YLeaf repeat_count; //type: uint64
@@ -250,7 +257,7 @@ class Ping::Output::PingResponse::Ipv4 : public ydk::Entity
         ydk::YLeaf ping_error_response; //type: string
         class Replies; //type: Ping::Output::PingResponse::Ipv4::Replies
 
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies> replies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies> replies;
         
 }; // Ping::Output::PingResponse::Ipv4
 
@@ -263,7 +270,7 @@ class Ping::Output::PingResponse::Ipv4::Replies : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -273,7 +280,7 @@ class Ping::Output::PingResponse::Ipv4::Replies : public ydk::Entity
 
         class Reply; //type: Ping::Output::PingResponse::Ipv4::Replies::Reply
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply> > reply;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply> > reply;
         
 }; // Ping::Output::PingResponse::Ipv4::Replies
 
@@ -286,7 +293,7 @@ class Ping::Output::PingResponse::Ipv4::Replies::Reply : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -298,7 +305,7 @@ class Ping::Output::PingResponse::Ipv4::Replies::Reply : public ydk::Entity
         ydk::YLeaf result; //type: string
         class BroadcastReplyAddresses; //type: Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses
 
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses> broadcast_reply_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses> broadcast_reply_addresses;
         
 }; // Ping::Output::PingResponse::Ipv4::Replies::Reply
 
@@ -311,7 +318,7 @@ class Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -321,7 +328,7 @@ class Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses 
 
         class BroadcastReplyAddress; //type: Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress> > broadcast_reply_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress> > broadcast_reply_address;
         
 }; // Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses
 
@@ -334,7 +341,7 @@ class Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -356,13 +363,14 @@ class Ping::Output::PingResponse::Ipv6 : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf destination; //type: string
         ydk::YLeaf repeat_count; //type: uint64
@@ -382,7 +390,7 @@ class Ping::Output::PingResponse::Ipv6 : public ydk::Entity
         ydk::YLeaf rtt_max; //type: uint64
         class Replies; //type: Ping::Output::PingResponse::Ipv6::Replies
 
-        std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6::Replies> replies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6::Replies> replies;
         
 }; // Ping::Output::PingResponse::Ipv6
 
@@ -395,17 +403,18 @@ class Ping::Output::PingResponse::Ipv6::Replies : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Reply; //type: Ping::Output::PingResponse::Ipv6::Replies::Reply
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6::Replies::Reply> > reply;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6::Replies::Reply> > reply;
         
 }; // Ping::Output::PingResponse::Ipv6::Replies
 
@@ -418,13 +427,14 @@ class Ping::Output::PingResponse::Ipv6::Replies::Reply : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf reply_index; //type: uint64
         ydk::YLeaf result; //type: string

@@ -18,7 +18,7 @@ class FlowMonitors : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class FlowMonitors : public ydk::Entity
 
         class FlowMonitor; //type: FlowMonitors::FlowMonitor
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor> > flow_monitor;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor> > flow_monitor;
         
 }; // FlowMonitors
 
@@ -46,19 +46,20 @@ class FlowMonitors::FlowMonitor : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf time_collected; //type: uint64
         class Flows; //type: FlowMonitors::FlowMonitor::Flows
 
-        std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows> flows;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows> flows;
         
 }; // FlowMonitors::FlowMonitor
 
@@ -71,7 +72,7 @@ class FlowMonitors::FlowMonitor::Flows : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -81,7 +82,7 @@ class FlowMonitors::FlowMonitor::Flows : public ydk::Entity
 
         class Flow; //type: FlowMonitors::FlowMonitor::Flows::Flow
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows::Flow> > flow;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows::Flow> > flow;
         
 }; // FlowMonitors::FlowMonitor::Flows
 
@@ -94,7 +95,7 @@ class FlowMonitors::FlowMonitor::Flows::Flow : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

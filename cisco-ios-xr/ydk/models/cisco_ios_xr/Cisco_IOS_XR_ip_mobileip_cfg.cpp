@@ -17,10 +17,9 @@ MobileIp::MobileIp()
 	,lmas(std::make_shared<MobileIp::Lmas>())
 {
     domains->parent = this;
-
     lmas->parent = this;
 
-    yang_name = "mobile-ip"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-cfg";
+    yang_name = "mobile-ip"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MobileIp::~MobileIp()
@@ -44,26 +43,15 @@ std::string MobileIp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +136,8 @@ bool MobileIp::has_leaf_or_child_of_name(const std::string & name) const
 
 MobileIp::Domains::Domains()
 {
-    yang_name = "domains"; yang_parent_name = "mobile-ip";
+
+    yang_name = "domains"; yang_parent_name = "mobile-ip"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MobileIp::Domains::~Domains()
@@ -175,33 +164,26 @@ bool MobileIp::Domains::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MobileIp::Domains::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MobileIp::Domains::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "domains";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Domains::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -263,14 +245,11 @@ MobileIp::Domains::Domain::Domain()
 	,nais(std::make_shared<MobileIp::Domains::Domain::Nais>())
 {
     authenticate_option->parent = this;
-
     lmas->parent = this;
-
     mags->parent = this;
-
     nais->parent = this;
 
-    yang_name = "domain"; yang_parent_name = "domains";
+    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MobileIp::Domains::Domain::~Domain()
@@ -298,35 +277,28 @@ bool MobileIp::Domains::Domain::has_operation() const
 	|| (nais !=  nullptr && nais->has_operation());
 }
 
+std::string MobileIp::Domains::Domain::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/domains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MobileIp::Domains::Domain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "domain" <<"[domain-name='" <<domain_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Domains::Domain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/domains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -432,9 +404,269 @@ bool MobileIp::Domains::Domain::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
+MobileIp::Domains::Domain::AuthenticateOption::AuthenticateOption()
+    :
+    key{YType::str, "key"},
+    spi{YType::str, "spi"}
+{
+
+    yang_name = "authenticate-option"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Domains::Domain::AuthenticateOption::~AuthenticateOption()
+{
+}
+
+bool MobileIp::Domains::Domain::AuthenticateOption::has_data() const
+{
+    return key.is_set
+	|| spi.is_set;
+}
+
+bool MobileIp::Domains::Domain::AuthenticateOption::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key.yfilter)
+	|| ydk::is_set(spi.yfilter);
+}
+
+std::string MobileIp::Domains::Domain::AuthenticateOption::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authenticate-option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::AuthenticateOption::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
+    if (spi.is_set || is_set(spi.yfilter)) leaf_name_data.push_back(spi.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Domains::Domain::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::AuthenticateOption::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Domains::Domain::AuthenticateOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key")
+    {
+        key = value;
+        key.value_namespace = name_space;
+        key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "spi")
+    {
+        spi = value;
+        spi.value_namespace = name_space;
+        spi.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Domains::Domain::AuthenticateOption::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key")
+    {
+        key.yfilter = yfilter;
+    }
+    if(value_path == "spi")
+    {
+        spi.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Domains::Domain::AuthenticateOption::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key" || name == "spi")
+        return true;
+    return false;
+}
+
+MobileIp::Domains::Domain::Lmas::Lmas()
+{
+
+    yang_name = "lmas"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Domains::Domain::Lmas::~Lmas()
+{
+}
+
+bool MobileIp::Domains::Domain::Lmas::has_data() const
+{
+    for (std::size_t index=0; index<lma.size(); index++)
+    {
+        if(lma[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Domains::Domain::Lmas::has_operation() const
+{
+    for (std::size_t index=0; index<lma.size(); index++)
+    {
+        if(lma[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Domains::Domain::Lmas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lmas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Lmas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "lma")
+    {
+        for(auto const & c : lma)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Domains::Domain::Lmas::Lma>();
+        c->parent = this;
+        lma.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : lma)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Domains::Domain::Lmas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Domains::Domain::Lmas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Domains::Domain::Lmas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lma")
+        return true;
+    return false;
+}
+
+MobileIp::Domains::Domain::Lmas::Lma::Lma()
+    :
+    lma_name{YType::str, "lma-name"}
+{
+
+    yang_name = "lma"; yang_parent_name = "lmas"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Domains::Domain::Lmas::Lma::~Lma()
+{
+}
+
+bool MobileIp::Domains::Domain::Lmas::Lma::has_data() const
+{
+    return lma_name.is_set;
+}
+
+bool MobileIp::Domains::Domain::Lmas::Lma::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lma_name.yfilter);
+}
+
+std::string MobileIp::Domains::Domain::Lmas::Lma::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lma" <<"[lma-name='" <<lma_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Lmas::Lma::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lma_name.is_set || is_set(lma_name.yfilter)) leaf_name_data.push_back(lma_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::Lma::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Domains::Domain::Lmas::Lma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lma-name")
+    {
+        lma_name = value;
+        lma_name.value_namespace = name_space;
+        lma_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Domains::Domain::Lmas::Lma::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lma-name")
+    {
+        lma_name.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Domains::Domain::Lmas::Lma::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lma-name")
+        return true;
+    return false;
+}
+
 MobileIp::Domains::Domain::Mags::Mags()
 {
-    yang_name = "mags"; yang_parent_name = "domain";
+
+    yang_name = "mags"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Domains::Domain::Mags::~Mags()
@@ -465,29 +697,15 @@ std::string MobileIp::Domains::Domain::Mags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Domains::Domain::Mags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Mags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mags' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -542,7 +760,8 @@ MobileIp::Domains::Domain::Mags::Mag::Mag()
     :
     mag_name{YType::str, "mag-name"}
 {
-    yang_name = "mag"; yang_parent_name = "mags";
+
+    yang_name = "mag"; yang_parent_name = "mags"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Domains::Domain::Mags::Mag::~Mag()
@@ -564,30 +783,16 @@ std::string MobileIp::Domains::Domain::Mags::Mag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mag" <<"[mag-name='" <<mag_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Domains::Domain::Mags::Mag::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Mags::Mag::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mag' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mag_name.is_set || is_set(mag_name.yfilter)) leaf_name_data.push_back(mag_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -629,7 +834,8 @@ bool MobileIp::Domains::Domain::Mags::Mag::has_leaf_or_child_of_name(const std::
 
 MobileIp::Domains::Domain::Nais::Nais()
 {
-    yang_name = "nais"; yang_parent_name = "domain";
+
+    yang_name = "nais"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Domains::Domain::Nais::~Nais()
@@ -660,29 +866,15 @@ std::string MobileIp::Domains::Domain::Nais::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nais";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Domains::Domain::Nais::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Nais::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Nais' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -742,7 +934,8 @@ MobileIp::Domains::Domain::Nais::Nai::Nai()
     network{YType::str, "network"},
     service{YType::enumeration, "service"}
 {
-    yang_name = "nai"; yang_parent_name = "nais";
+
+    yang_name = "nai"; yang_parent_name = "nais"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Domains::Domain::Nais::Nai::~Nai()
@@ -774,23 +967,11 @@ std::string MobileIp::Domains::Domain::Nais::Nai::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nai" <<"[nai-name='" <<nai_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Domains::Domain::Nais::Nai::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Nais::Nai::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Nai' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nai_name.is_set || is_set(nai_name.yfilter)) leaf_name_data.push_back(nai_name.get_name_leafdata());
@@ -800,9 +981,7 @@ const EntityPath MobileIp::Domains::Domain::Nais::Nai::get_entity_path(Entity* a
     if (network.is_set || is_set(network.yfilter)) leaf_name_data.push_back(network.get_name_leafdata());
     if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -892,307 +1071,10 @@ bool MobileIp::Domains::Domain::Nais::Nai::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-MobileIp::Domains::Domain::AuthenticateOption::AuthenticateOption()
-    :
-    key{YType::str, "key"},
-    spi{YType::str, "spi"}
-{
-    yang_name = "authenticate-option"; yang_parent_name = "domain";
-}
-
-MobileIp::Domains::Domain::AuthenticateOption::~AuthenticateOption()
-{
-}
-
-bool MobileIp::Domains::Domain::AuthenticateOption::has_data() const
-{
-    return key.is_set
-	|| spi.is_set;
-}
-
-bool MobileIp::Domains::Domain::AuthenticateOption::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key.yfilter)
-	|| ydk::is_set(spi.yfilter);
-}
-
-std::string MobileIp::Domains::Domain::AuthenticateOption::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authenticate-option";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Domains::Domain::AuthenticateOption::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthenticateOption' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (spi.is_set || is_set(spi.yfilter)) leaf_name_data.push_back(spi.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Domains::Domain::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::AuthenticateOption::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Domains::Domain::AuthenticateOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key")
-    {
-        key = value;
-        key.value_namespace = name_space;
-        key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spi")
-    {
-        spi = value;
-        spi.value_namespace = name_space;
-        spi.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Domains::Domain::AuthenticateOption::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key")
-    {
-        key.yfilter = yfilter;
-    }
-    if(value_path == "spi")
-    {
-        spi.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Domains::Domain::AuthenticateOption::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key" || name == "spi")
-        return true;
-    return false;
-}
-
-MobileIp::Domains::Domain::Lmas::Lmas()
-{
-    yang_name = "lmas"; yang_parent_name = "domain";
-}
-
-MobileIp::Domains::Domain::Lmas::~Lmas()
-{
-}
-
-bool MobileIp::Domains::Domain::Lmas::has_data() const
-{
-    for (std::size_t index=0; index<lma.size(); index++)
-    {
-        if(lma[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Domains::Domain::Lmas::has_operation() const
-{
-    for (std::size_t index=0; index<lma.size(); index++)
-    {
-        if(lma[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Domains::Domain::Lmas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lmas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Domains::Domain::Lmas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lmas' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lma")
-    {
-        for(auto const & c : lma)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Domains::Domain::Lmas::Lma>();
-        c->parent = this;
-        lma.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lma)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Domains::Domain::Lmas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Domains::Domain::Lmas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Domains::Domain::Lmas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lma")
-        return true;
-    return false;
-}
-
-MobileIp::Domains::Domain::Lmas::Lma::Lma()
-    :
-    lma_name{YType::str, "lma-name"}
-{
-    yang_name = "lma"; yang_parent_name = "lmas";
-}
-
-MobileIp::Domains::Domain::Lmas::Lma::~Lma()
-{
-}
-
-bool MobileIp::Domains::Domain::Lmas::Lma::has_data() const
-{
-    return lma_name.is_set;
-}
-
-bool MobileIp::Domains::Domain::Lmas::Lma::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lma_name.yfilter);
-}
-
-std::string MobileIp::Domains::Domain::Lmas::Lma::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lma" <<"[lma-name='" <<lma_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Domains::Domain::Lmas::Lma::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lma' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lma_name.is_set || is_set(lma_name.yfilter)) leaf_name_data.push_back(lma_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::Lma::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Domains::Domain::Lmas::Lma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lma-name")
-    {
-        lma_name = value;
-        lma_name.value_namespace = name_space;
-        lma_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Domains::Domain::Lmas::Lma::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lma-name")
-    {
-        lma_name.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Domains::Domain::Lmas::Lma::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lma-name")
-        return true;
-    return false;
-}
-
 MobileIp::Lmas::Lmas()
 {
-    yang_name = "lmas"; yang_parent_name = "mobile-ip";
+
+    yang_name = "lmas"; yang_parent_name = "mobile-ip"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MobileIp::Lmas::~Lmas()
@@ -1219,33 +1101,26 @@ bool MobileIp::Lmas::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MobileIp::Lmas::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MobileIp::Lmas::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lmas";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1329,38 +1204,23 @@ MobileIp::Lmas::Lma::Lma()
 	,tunnel_attributes(std::make_shared<MobileIp::Lmas::Lma::TunnelAttributes>())
 {
     aaa->parent = this;
-
     binding_attributes->parent = this;
-
     binding_revocation_attributes->parent = this;
-
     dscp->parent = this;
-
     heart_beat_attributes->parent = this;
-
     hnp->parent = this;
-
     lmaipv4_addresses->parent = this;
-
     lmaipv6_addresses->parent = this;
-
     mags->parent = this;
-
     networks->parent = this;
-
     rat_attributes->parent = this;
-
     redistribute->parent = this;
-
     replay_protection->parent = this;
-
     roles->parent = this;
-
     services->parent = this;
-
     tunnel_attributes->parent = this;
 
-    yang_name = "lma"; yang_parent_name = "lmas";
+    yang_name = "lma"; yang_parent_name = "lmas"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MobileIp::Lmas::Lma::~Lma()
@@ -1432,27 +1292,22 @@ bool MobileIp::Lmas::Lma::has_operation() const
 	|| (tunnel_attributes !=  nullptr && tunnel_attributes->has_operation());
 }
 
+std::string MobileIp::Lmas::Lma::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/lmas/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MobileIp::Lmas::Lma::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lma" <<"[lma-name='" <<lma_name <<"']" <<"[domain-name='" <<domain_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-mobileip-cfg:mobile-ip/lmas/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (lma_name.is_set || is_set(lma_name.yfilter)) leaf_name_data.push_back(lma_name.get_name_leafdata());
@@ -1468,9 +1323,7 @@ const EntityPath MobileIp::Lmas::Lma::get_entity_path(Entity* ancestor) const
     if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
     if (pgw_subs_cont.is_set || is_set(pgw_subs_cont.yfilter)) leaf_name_data.push_back(pgw_subs_cont.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1844,832 +1697,13 @@ bool MobileIp::Lmas::Lma::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
-MobileIp::Lmas::Lma::BindingRevocationAttributes::BindingRevocationAttributes()
-    :
-    retry{YType::uint32, "retry"}
-    	,
-    delay(std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>())
-{
-    delay->parent = this;
-
-    yang_name = "binding-revocation-attributes"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::BindingRevocationAttributes::~BindingRevocationAttributes()
-{
-}
-
-bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_data() const
-{
-    return retry.is_set
-	|| (delay !=  nullptr && delay->has_data());
-}
-
-bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(retry.yfilter)
-	|| (delay !=  nullptr && delay->has_operation());
-}
-
-std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "binding-revocation-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BindingRevocationAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (retry.is_set || is_set(retry.yfilter)) leaf_name_data.push_back(retry.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "delay")
-    {
-        if(delay == nullptr)
-        {
-            delay = std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>();
-        }
-        return delay;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(delay != nullptr)
-    {
-        children["delay"] = delay;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::BindingRevocationAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "retry")
-    {
-        retry = value;
-        retry.value_namespace = name_space;
-        retry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::BindingRevocationAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "retry")
-    {
-        retry.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "delay" || name == "retry")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::Delay()
-    :
-    br_max{YType::uint32, "br-max"},
-    br_min{YType::uint32, "br-min"}
-{
-    yang_name = "delay"; yang_parent_name = "binding-revocation-attributes";
-}
-
-MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::~Delay()
-{
-}
-
-bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_data() const
-{
-    return br_max.is_set
-	|| br_min.is_set;
-}
-
-bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(br_max.yfilter)
-	|| ydk::is_set(br_min.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delay";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Delay' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (br_max.is_set || is_set(br_max.yfilter)) leaf_name_data.push_back(br_max.get_name_leafdata());
-    if (br_min.is_set || is_set(br_min.yfilter)) leaf_name_data.push_back(br_min.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "br-max")
-    {
-        br_max = value;
-        br_max.value_namespace = name_space;
-        br_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "br-min")
-    {
-        br_min = value;
-        br_min.value_namespace = name_space;
-        br_min.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "br-max")
-    {
-        br_max.yfilter = yfilter;
-    }
-    if(value_path == "br-min")
-    {
-        br_min.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "br-max" || name == "br-min")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::RatAttributes::RatAttributes()
-    :
-    lma_rat{YType::enumeration, "lma-rat"},
-    priority_value{YType::uint32, "priority-value"}
-{
-    yang_name = "rat-attributes"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::RatAttributes::~RatAttributes()
-{
-}
-
-bool MobileIp::Lmas::Lma::RatAttributes::has_data() const
-{
-    return lma_rat.is_set
-	|| priority_value.is_set;
-}
-
-bool MobileIp::Lmas::Lma::RatAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lma_rat.yfilter)
-	|| ydk::is_set(priority_value.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::RatAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rat-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::RatAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RatAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lma_rat.is_set || is_set(lma_rat.yfilter)) leaf_name_data.push_back(lma_rat.get_name_leafdata());
-    if (priority_value.is_set || is_set(priority_value.yfilter)) leaf_name_data.push_back(priority_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::RatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::RatAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::RatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lma-rat")
-    {
-        lma_rat = value;
-        lma_rat.value_namespace = name_space;
-        lma_rat.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-value")
-    {
-        priority_value = value;
-        priority_value.value_namespace = name_space;
-        priority_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::RatAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lma-rat")
-    {
-        lma_rat.yfilter = yfilter;
-    }
-    if(value_path == "priority-value")
-    {
-        priority_value.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::RatAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lma-rat" || name == "priority-value")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::HeartBeatAttributes::HeartBeatAttributes()
-    :
-    interval{YType::uint32, "interval"},
-    retries{YType::uint32, "retries"},
-    timeout{YType::uint32, "timeout"}
-{
-    yang_name = "heart-beat-attributes"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::HeartBeatAttributes::~HeartBeatAttributes()
-{
-}
-
-bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_data() const
-{
-    return interval.is_set
-	|| retries.is_set
-	|| timeout.is_set;
-}
-
-bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interval.yfilter)
-	|| ydk::is_set(retries.yfilter)
-	|| ydk::is_set(timeout.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::HeartBeatAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "heart-beat-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::HeartBeatAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HeartBeatAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (retries.is_set || is_set(retries.yfilter)) leaf_name_data.push_back(retries.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::HeartBeatAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::HeartBeatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retries")
-    {
-        retries = value;
-        retries.value_namespace = name_space;
-        retries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::HeartBeatAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-    if(value_path == "retries")
-    {
-        retries.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interval" || name == "retries" || name == "timeout")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Addresses()
-{
-    yang_name = "lmaipv6-addresses"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Lmaipv6Addresses::~Lmaipv6Addresses()
-{
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_data() const
-{
-    for (std::size_t index=0; index<lmaipv6_address.size(); index++)
-    {
-        if(lmaipv6_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_operation() const
-{
-    for (std::size_t index=0; index<lmaipv6_address.size(); index++)
-    {
-        if(lmaipv6_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lmaipv6-addresses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lmaipv6Addresses' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lmaipv6-address")
-    {
-        for(auto const & c : lmaipv6_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address>();
-        c->parent = this;
-        lmaipv6_address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lmaipv6_address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Lmaipv6Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Lmaipv6Addresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lmaipv6-address")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::Lmaipv6Address()
-    :
-    address{YType::str, "address"}
-{
-    yang_name = "lmaipv6-address"; yang_parent_name = "lmaipv6-addresses";
-}
-
-MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::~Lmaipv6Address()
-{
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_data() const
-{
-    return address.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lmaipv6-address" <<"[address='" <<address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lmaipv6Address' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Hnp::Hnp()
-    :
-    maximum{YType::uint32, "maximum"}
-{
-    yang_name = "hnp"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Hnp::~Hnp()
-{
-}
-
-bool MobileIp::Lmas::Lma::Hnp::has_data() const
-{
-    return maximum.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Hnp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(maximum.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Hnp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hnp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Hnp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hnp' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Hnp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Hnp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Hnp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Hnp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Hnp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "maximum")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Redistribute::Redistribute()
-    :
-    redist_sub_type{YType::enumeration, "redist-sub-type"},
-    redist_type{YType::enumeration, "redist-type"}
-{
-    yang_name = "redistribute"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Redistribute::~Redistribute()
-{
-}
-
-bool MobileIp::Lmas::Lma::Redistribute::has_data() const
-{
-    return redist_sub_type.is_set
-	|| redist_type.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Redistribute::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(redist_sub_type.yfilter)
-	|| ydk::is_set(redist_type.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Redistribute::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "redistribute";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Redistribute::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redistribute' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (redist_sub_type.is_set || is_set(redist_sub_type.yfilter)) leaf_name_data.push_back(redist_sub_type.get_name_leafdata());
-    if (redist_type.is_set || is_set(redist_type.yfilter)) leaf_name_data.push_back(redist_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Redistribute::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "redist-sub-type")
-    {
-        redist_sub_type = value;
-        redist_sub_type.value_namespace = name_space;
-        redist_sub_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redist-type")
-    {
-        redist_type = value;
-        redist_type.value_namespace = name_space;
-        redist_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Redistribute::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "redist-sub-type")
-    {
-        redist_sub_type.yfilter = yfilter;
-    }
-    if(value_path == "redist-type")
-    {
-        redist_type.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Redistribute::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "redist-sub-type" || name == "redist-type")
-        return true;
-    return false;
-}
-
 MobileIp::Lmas::Lma::Aaa::Aaa()
     :
     accounting(std::make_shared<MobileIp::Lmas::Lma::Aaa::Accounting>())
 {
     accounting->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "lma";
+    yang_name = "aaa"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Aaa::~Aaa()
@@ -2691,29 +1725,15 @@ std::string MobileIp::Lmas::Lma::Aaa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aaa";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Aaa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Aaa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Aaa' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2762,7 +1782,8 @@ MobileIp::Lmas::Lma::Aaa::Accounting::Accounting()
     enable{YType::empty, "enable"},
     interim_interval{YType::uint32, "interim-interval"}
 {
-    yang_name = "accounting"; yang_parent_name = "aaa";
+
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Aaa::Accounting::~Accounting()
@@ -2786,31 +1807,17 @@ std::string MobileIp::Lmas::Lma::Aaa::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Aaa::Accounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Aaa::Accounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Accounting' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (interim_interval.is_set || is_set(interim_interval.yfilter)) leaf_name_data.push_back(interim_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2860,499 +1867,6 @@ bool MobileIp::Lmas::Lma::Aaa::Accounting::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-MobileIp::Lmas::Lma::Dscp::Dscp()
-    :
-    force{YType::empty, "force"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "dscp"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Dscp::~Dscp()
-{
-}
-
-bool MobileIp::Lmas::Lma::Dscp::has_data() const
-{
-    return force.is_set
-	|| value_.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Dscp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(force.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Dscp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dscp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Dscp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dscp' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Dscp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "force")
-    {
-        force = value;
-        force.value_namespace = name_space;
-        force.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Dscp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "force")
-    {
-        force.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Dscp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "force" || name == "value")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Addresses()
-{
-    yang_name = "lmaipv4-addresses"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Lmaipv4Addresses::~Lmaipv4Addresses()
-{
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_data() const
-{
-    for (std::size_t index=0; index<lmaipv4_address.size(); index++)
-    {
-        if(lmaipv4_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_operation() const
-{
-    for (std::size_t index=0; index<lmaipv4_address.size(); index++)
-    {
-        if(lmaipv4_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lmaipv4-addresses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lmaipv4Addresses' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lmaipv4-address")
-    {
-        for(auto const & c : lmaipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address>();
-        c->parent = this;
-        lmaipv4_address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lmaipv4_address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Lmaipv4Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Lmaipv4Addresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lmaipv4-address")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::Lmaipv4Address()
-    :
-    address{YType::str, "address"}
-{
-    yang_name = "lmaipv4-address"; yang_parent_name = "lmaipv4-addresses";
-}
-
-MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::~Lmaipv4Address()
-{
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_data() const
-{
-    return address.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lmaipv4-address" <<"[address='" <<address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lmaipv4Address' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Roles::Roles()
-{
-    yang_name = "roles"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Roles::~Roles()
-{
-}
-
-bool MobileIp::Lmas::Lma::Roles::has_data() const
-{
-    for (std::size_t index=0; index<role.size(); index++)
-    {
-        if(role[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Roles::has_operation() const
-{
-    for (std::size_t index=0; index<role.size(); index++)
-    {
-        if(role[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Roles::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "roles";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Roles::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Roles' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "role")
-    {
-        for(auto const & c : role)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Roles::Role>();
-        c->parent = this;
-        role.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : role)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Roles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Roles::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Roles::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "role")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Roles::Role::Role()
-    :
-    lma_role{YType::enumeration, "lma-role"}
-{
-    yang_name = "role"; yang_parent_name = "roles";
-}
-
-MobileIp::Lmas::Lma::Roles::Role::~Role()
-{
-}
-
-bool MobileIp::Lmas::Lma::Roles::Role::has_data() const
-{
-    return lma_role.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Roles::Role::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lma_role.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Roles::Role::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "role" <<"[lma-role='" <<lma_role <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Roles::Role::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Role' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lma_role.is_set || is_set(lma_role.yfilter)) leaf_name_data.push_back(lma_role.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::Role::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Roles::Role::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lma-role")
-    {
-        lma_role = value;
-        lma_role.value_namespace = name_space;
-        lma_role.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Roles::Role::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lma-role")
-    {
-        lma_role.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Roles::Role::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lma-role")
-        return true;
-    return false;
-}
-
 MobileIp::Lmas::Lma::BindingAttributes::BindingAttributes()
     :
     create_wait_interval{YType::uint32, "create-wait-interval"},
@@ -3361,7 +1875,8 @@ MobileIp::Lmas::Lma::BindingAttributes::BindingAttributes()
     maximum{YType::uint32, "maximum"},
     refresh_time{YType::uint32, "refresh-time"}
 {
-    yang_name = "binding-attributes"; yang_parent_name = "lma";
+
+    yang_name = "binding-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::BindingAttributes::~BindingAttributes()
@@ -3391,23 +1906,11 @@ std::string MobileIp::Lmas::Lma::BindingAttributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "binding-attributes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::BindingAttributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::BindingAttributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BindingAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (create_wait_interval.is_set || is_set(create_wait_interval.yfilter)) leaf_name_data.push_back(create_wait_interval.get_name_leafdata());
@@ -3416,9 +1919,7 @@ const EntityPath MobileIp::Lmas::Lma::BindingAttributes::get_entity_path(Entity*
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (refresh_time.is_set || is_set(refresh_time.yfilter)) leaf_name_data.push_back(refresh_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3498,9 +1999,803 @@ bool MobileIp::Lmas::Lma::BindingAttributes::has_leaf_or_child_of_name(const std
     return false;
 }
 
+MobileIp::Lmas::Lma::BindingRevocationAttributes::BindingRevocationAttributes()
+    :
+    retry{YType::uint32, "retry"}
+    	,
+    delay(std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>())
+{
+    delay->parent = this;
+
+    yang_name = "binding-revocation-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::BindingRevocationAttributes::~BindingRevocationAttributes()
+{
+}
+
+bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_data() const
+{
+    return retry.is_set
+	|| (delay !=  nullptr && delay->has_data());
+}
+
+bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(retry.yfilter)
+	|| (delay !=  nullptr && delay->has_operation());
+}
+
+std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-revocation-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::BindingRevocationAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (retry.is_set || is_set(retry.yfilter)) leaf_name_data.push_back(retry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "delay")
+    {
+        if(delay == nullptr)
+        {
+            delay = std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>();
+        }
+        return delay;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(delay != nullptr)
+    {
+        children["delay"] = delay;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::BindingRevocationAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "retry")
+    {
+        retry = value;
+        retry.value_namespace = name_space;
+        retry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::BindingRevocationAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "retry")
+    {
+        retry.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delay" || name == "retry")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::Delay()
+    :
+    br_max{YType::uint32, "br-max"},
+    br_min{YType::uint32, "br-min"}
+{
+
+    yang_name = "delay"; yang_parent_name = "binding-revocation-attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::~Delay()
+{
+}
+
+bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_data() const
+{
+    return br_max.is_set
+	|| br_min.is_set;
+}
+
+bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(br_max.yfilter)
+	|| ydk::is_set(br_min.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (br_max.is_set || is_set(br_max.yfilter)) leaf_name_data.push_back(br_max.get_name_leafdata());
+    if (br_min.is_set || is_set(br_min.yfilter)) leaf_name_data.push_back(br_min.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "br-max")
+    {
+        br_max = value;
+        br_max.value_namespace = name_space;
+        br_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "br-min")
+    {
+        br_min = value;
+        br_min.value_namespace = name_space;
+        br_min.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "br-max")
+    {
+        br_max.yfilter = yfilter;
+    }
+    if(value_path == "br-min")
+    {
+        br_min.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "br-max" || name == "br-min")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Dscp::Dscp()
+    :
+    force{YType::empty, "force"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "dscp"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Dscp::~Dscp()
+{
+}
+
+bool MobileIp::Lmas::Lma::Dscp::has_data() const
+{
+    return force.is_set
+	|| value_.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Dscp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(force.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Dscp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dscp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Dscp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Dscp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "force")
+    {
+        force = value;
+        force.value_namespace = name_space;
+        force.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Dscp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "force")
+    {
+        force.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Dscp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "force" || name == "value")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::HeartBeatAttributes::HeartBeatAttributes()
+    :
+    interval{YType::uint32, "interval"},
+    retries{YType::uint32, "retries"},
+    timeout{YType::uint32, "timeout"}
+{
+
+    yang_name = "heart-beat-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::HeartBeatAttributes::~HeartBeatAttributes()
+{
+}
+
+bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_data() const
+{
+    return interval.is_set
+	|| retries.is_set
+	|| timeout.is_set;
+}
+
+bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(retries.yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::HeartBeatAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "heart-beat-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::HeartBeatAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (retries.is_set || is_set(retries.yfilter)) leaf_name_data.push_back(retries.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::HeartBeatAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::HeartBeatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retries")
+    {
+        retries = value;
+        retries.value_namespace = name_space;
+        retries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::HeartBeatAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "retries")
+    {
+        retries.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interval" || name == "retries" || name == "timeout")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Hnp::Hnp()
+    :
+    maximum{YType::uint32, "maximum"}
+{
+
+    yang_name = "hnp"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Hnp::~Hnp()
+{
+}
+
+bool MobileIp::Lmas::Lma::Hnp::has_data() const
+{
+    return maximum.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Hnp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maximum.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Hnp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hnp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Hnp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Hnp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Hnp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Hnp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Hnp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Hnp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Addresses()
+{
+
+    yang_name = "lmaipv4-addresses"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Lmaipv4Addresses::~Lmaipv4Addresses()
+{
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_data() const
+{
+    for (std::size_t index=0; index<lmaipv4_address.size(); index++)
+    {
+        if(lmaipv4_address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_operation() const
+{
+    for (std::size_t index=0; index<lmaipv4_address.size(); index++)
+    {
+        if(lmaipv4_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lmaipv4-addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv4Addresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "lmaipv4-address")
+    {
+        for(auto const & c : lmaipv4_address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address>();
+        c->parent = this;
+        lmaipv4_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : lmaipv4_address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Lmaipv4Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Lmaipv4Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lmaipv4-address")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::Lmaipv4Address()
+    :
+    address{YType::str, "address"}
+{
+
+    yang_name = "lmaipv4-address"; yang_parent_name = "lmaipv4-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::~Lmaipv4Address()
+{
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_data() const
+{
+    return address.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lmaipv4-address" <<"[address='" <<address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Addresses()
+{
+
+    yang_name = "lmaipv6-addresses"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Lmaipv6Addresses::~Lmaipv6Addresses()
+{
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_data() const
+{
+    for (std::size_t index=0; index<lmaipv6_address.size(); index++)
+    {
+        if(lmaipv6_address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_operation() const
+{
+    for (std::size_t index=0; index<lmaipv6_address.size(); index++)
+    {
+        if(lmaipv6_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lmaipv6-addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv6Addresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "lmaipv6-address")
+    {
+        for(auto const & c : lmaipv6_address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address>();
+        c->parent = this;
+        lmaipv6_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : lmaipv6_address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Lmaipv6Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Lmaipv6Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lmaipv6-address")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::Lmaipv6Address()
+    :
+    address{YType::str, "address"}
+{
+
+    yang_name = "lmaipv6-address"; yang_parent_name = "lmaipv6-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::~Lmaipv6Address()
+{
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_data() const
+{
+    return address.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lmaipv6-address" <<"[address='" <<address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
 MobileIp::Lmas::Lma::Mags::Mags()
 {
-    yang_name = "mags"; yang_parent_name = "lma";
+
+    yang_name = "mags"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Mags::~Mags()
@@ -3531,29 +2826,15 @@ std::string MobileIp::Lmas::Lma::Mags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Mags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mags' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3617,10 +2898,9 @@ MobileIp::Lmas::Lma::Mags::Mag::Mag()
 	,dscp(std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::Dscp>())
 {
     authenticate_option->parent = this;
-
     dscp->parent = this;
 
-    yang_name = "mag"; yang_parent_name = "mags";
+    yang_name = "mag"; yang_parent_name = "mags"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Mags::Mag::~Mag()
@@ -3656,23 +2936,11 @@ std::string MobileIp::Lmas::Lma::Mags::Mag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mag" <<"[mag-name='" <<mag_name <<"']" <<"[domain-name='" <<domain_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::Mag::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mag' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mag_name.is_set || is_set(mag_name.yfilter)) leaf_name_data.push_back(mag_name.get_name_leafdata());
@@ -3682,9 +2950,7 @@ const EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancesto
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
     if (tunnel.is_set || is_set(tunnel.yfilter)) leaf_name_data.push_back(tunnel.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3807,7 +3073,8 @@ MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::AuthenticateOption()
     key{YType::str, "key"},
     spi{YType::str, "spi"}
 {
-    yang_name = "authenticate-option"; yang_parent_name = "mag";
+
+    yang_name = "authenticate-option"; yang_parent_name = "mag"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::~AuthenticateOption()
@@ -3831,31 +3098,17 @@ std::string MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "authenticate-option";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthenticateOption' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
     if (spi.is_set || is_set(spi.yfilter)) leaf_name_data.push_back(spi.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3910,7 +3163,8 @@ MobileIp::Lmas::Lma::Mags::Mag::Dscp::Dscp()
     force{YType::empty, "force"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "dscp"; yang_parent_name = "mag";
+
+    yang_name = "dscp"; yang_parent_name = "mag"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Mags::Mag::Dscp::~Dscp()
@@ -3934,31 +3188,17 @@ std::string MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dscp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dscp' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4008,112 +3248,1491 @@ bool MobileIp::Lmas::Lma::Mags::Mag::Dscp::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-MobileIp::Lmas::Lma::TunnelAttributes::TunnelAttributes()
-    :
-    acl{YType::str, "acl"},
-    mtu{YType::uint32, "mtu"}
+MobileIp::Lmas::Lma::Networks::Networks()
 {
-    yang_name = "tunnel-attributes"; yang_parent_name = "lma";
+
+    yang_name = "networks"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MobileIp::Lmas::Lma::TunnelAttributes::~TunnelAttributes()
+MobileIp::Lmas::Lma::Networks::~Networks()
 {
 }
 
-bool MobileIp::Lmas::Lma::TunnelAttributes::has_data() const
+bool MobileIp::Lmas::Lma::Networks::has_data() const
 {
-    return acl.is_set
-	|| mtu.is_set;
+    for (std::size_t index=0; index<network.size(); index++)
+    {
+        if(network[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool MobileIp::Lmas::Lma::TunnelAttributes::has_operation() const
+bool MobileIp::Lmas::Lma::Networks::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(acl.yfilter)
-	|| ydk::is_set(mtu.yfilter);
+    for (std::size_t index=0; index<network.size(); index++)
+    {
+        if(network[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string MobileIp::Lmas::Lma::TunnelAttributes::get_segment_path() const
+std::string MobileIp::Lmas::Lma::Networks::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel-attributes";
-
+    path_buffer << "networks";
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::TunnelAttributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TunnelAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acl.is_set || is_set(acl.yfilter)) leaf_name_data.push_back(acl.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::TunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "network")
+    {
+        for(auto const & c : network)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network>();
+        c->parent = this;
+        network.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : network)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Networks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::Network()
+    :
+    lma_network{YType::str, "lma-network"}
+    	,
+    pool_attributes(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>())
+{
+    pool_attributes->parent = this;
+
+    yang_name = "network"; yang_parent_name = "networks"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::~Network()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::has_data() const
+{
+    return lma_network.is_set
+	|| (pool_attributes !=  nullptr && pool_attributes->has_data());
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lma_network.yfilter)
+	|| (pool_attributes !=  nullptr && pool_attributes->has_operation());
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network" <<"[lma-network='" <<lma_network <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lma_network.is_set || is_set(lma_network.yfilter)) leaf_name_data.push_back(lma_network.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pool-attributes")
+    {
+        if(pool_attributes == nullptr)
+        {
+            pool_attributes = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>();
+        }
+        return pool_attributes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pool_attributes != nullptr)
+    {
+        children["pool-attributes"] = pool_attributes;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lma-network")
+    {
+        lma_network = value;
+        lma_network.value_namespace = name_space;
+        lma_network.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lma-network")
+    {
+        lma_network.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-attributes" || name == "lma-network")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::PoolAttributes()
+    :
+    mobile_network(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>())
+	,mobile_node(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>())
+{
+    mobile_network->parent = this;
+    mobile_node->parent = this;
+
+    yang_name = "pool-attributes"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::~PoolAttributes()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_data() const
+{
+    return (mobile_network !=  nullptr && mobile_network->has_data())
+	|| (mobile_node !=  nullptr && mobile_node->has_data());
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| (mobile_network !=  nullptr && mobile_network->has_operation())
+	|| (mobile_node !=  nullptr && mobile_node->has_operation());
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pool-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mobile-network")
+    {
+        if(mobile_network == nullptr)
+        {
+            mobile_network = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>();
+        }
+        return mobile_network;
+    }
+
+    if(child_yang_name == "mobile-node")
+    {
+        if(mobile_node == nullptr)
+        {
+            mobile_node = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>();
+        }
+        return mobile_node;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mobile_network != nullptr)
+    {
+        children["mobile-network"] = mobile_network;
+    }
+
+    if(mobile_node != nullptr)
+    {
+        children["mobile-node"] = mobile_node;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mobile-network" || name == "mobile-node")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::MobileNetwork()
+    :
+    mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>())
+	,mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>())
+{
+    mripv4_pools->parent = this;
+    mripv6_pools->parent = this;
+
+    yang_name = "mobile-network"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::~MobileNetwork()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_data() const
+{
+    return (mripv4_pools !=  nullptr && mripv4_pools->has_data())
+	|| (mripv6_pools !=  nullptr && mripv6_pools->has_data());
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_operation() const
+{
+    return is_set(yfilter)
+	|| (mripv4_pools !=  nullptr && mripv4_pools->has_operation())
+	|| (mripv6_pools !=  nullptr && mripv6_pools->has_operation());
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mobile-network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mripv4-pools")
+    {
+        if(mripv4_pools == nullptr)
+        {
+            mripv4_pools = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>();
+        }
+        return mripv4_pools;
+    }
+
+    if(child_yang_name == "mripv6-pools")
+    {
+        if(mripv6_pools == nullptr)
+        {
+            mripv6_pools = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>();
+        }
+        return mripv6_pools;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mripv4_pools != nullptr)
+    {
+        children["mripv4-pools"] = mripv4_pools;
+    }
+
+    if(mripv6_pools != nullptr)
+    {
+        children["mripv6-pools"] = mripv6_pools;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mripv4-pools" || name == "mripv6-pools")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pools()
+{
+
+    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::~Mripv4Pools()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_data() const
+{
+    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    {
+        if(mripv4_pool[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_operation() const
+{
+    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    {
+        if(mripv4_pool[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv4-pools";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mripv4-pool")
+    {
+        for(auto const & c : mripv4_pool)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
+        c->parent = this;
+        mripv4_pool.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mripv4_pool)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mripv4-pool")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::Mripv4Pool()
+    :
+    start_address{YType::str, "start-address"},
+    network_prefix{YType::uint32, "network-prefix"},
+    pool_prefix{YType::uint32, "pool-prefix"}
+{
+
+    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::~Mripv4Pool()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_data() const
+{
+    return start_address.is_set
+	|| network_prefix.is_set
+	|| pool_prefix.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(network_prefix.yfilter)
+	|| ydk::is_set(pool_prefix.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv4-pool" <<"[start-address='" <<start_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
+    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::TunnelAttributes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MobileIp::Lmas::Lma::TunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "acl")
+    if(value_path == "start-address")
     {
-        acl = value;
-        acl.value_namespace = name_space;
-        acl.value_namespace_prefix = name_space_prefix;
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mtu")
+    if(value_path == "network-prefix")
     {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
+        network_prefix = value;
+        network_prefix.value_namespace = name_space;
+        network_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix = value;
+        pool_prefix.value_namespace = name_space;
+        pool_prefix.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MobileIp::Lmas::Lma::TunnelAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "acl")
+    if(value_path == "start-address")
     {
-        acl.yfilter = yfilter;
+        start_address.yfilter = yfilter;
     }
-    if(value_path == "mtu")
+    if(value_path == "network-prefix")
     {
-        mtu.yfilter = yfilter;
+        network_prefix.yfilter = yfilter;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix.yfilter = yfilter;
     }
 }
 
-bool MobileIp::Lmas::Lma::TunnelAttributes::has_leaf_or_child_of_name(const std::string & name) const
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acl" || name == "mtu")
+    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pools()
+{
+
+    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::~Mripv6Pools()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_data() const
+{
+    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    {
+        if(mripv6_pool[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_operation() const
+{
+    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    {
+        if(mripv6_pool[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv6-pools";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mripv6-pool")
+    {
+        for(auto const & c : mripv6_pool)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
+        c->parent = this;
+        mripv6_pool.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mripv6_pool)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mripv6-pool")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::Mripv6Pool()
+    :
+    start_address{YType::str, "start-address"},
+    network_prefix{YType::uint32, "network-prefix"},
+    pool_prefix{YType::uint32, "pool-prefix"}
+{
+
+    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::~Mripv6Pool()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_data() const
+{
+    return start_address.is_set
+	|| network_prefix.is_set
+	|| pool_prefix.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(network_prefix.yfilter)
+	|| ydk::is_set(pool_prefix.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv6-pool" <<"[start-address='" <<start_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
+    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "network-prefix")
+    {
+        network_prefix = value;
+        network_prefix.value_namespace = name_space;
+        network_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix = value;
+        pool_prefix.value_namespace = name_space;
+        pool_prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+    if(value_path == "network-prefix")
+    {
+        network_prefix.yfilter = yfilter;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::MobileNode()
+    :
+    ipv4_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool>())
+	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>())
+{
+    ipv4_pool->parent = this;
+    ipv6_pool->parent = this;
+
+    yang_name = "mobile-node"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::~MobileNode()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_data() const
+{
+    return (ipv4_pool !=  nullptr && ipv4_pool->has_data())
+	|| (ipv6_pool !=  nullptr && ipv6_pool->has_data());
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipv4_pool !=  nullptr && ipv4_pool->has_operation())
+	|| (ipv6_pool !=  nullptr && ipv6_pool->has_operation());
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mobile-node";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4-pool")
+    {
+        if(ipv4_pool == nullptr)
+        {
+            ipv4_pool = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool>();
+        }
+        return ipv4_pool;
+    }
+
+    if(child_yang_name == "ipv6-pool")
+    {
+        if(ipv6_pool == nullptr)
+        {
+            ipv6_pool = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>();
+        }
+        return ipv6_pool;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_pool != nullptr)
+    {
+        children["ipv4-pool"] = ipv4_pool;
+    }
+
+    if(ipv6_pool != nullptr)
+    {
+        children["ipv6-pool"] = ipv6_pool;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-pool" || name == "ipv6-pool")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::Ipv4Pool()
+    :
+    pool_prefix{YType::uint32, "pool-prefix"},
+    start_address{YType::str, "start-address"}
+{
+
+    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::~Ipv4Pool()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_data() const
+{
+    return pool_prefix.is_set
+	|| start_address.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pool_prefix.yfilter)
+	|| ydk::is_set(start_address.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-pool";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix = value;
+        pool_prefix.value_namespace = name_space;
+        pool_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix.yfilter = yfilter;
+    }
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-prefix" || name == "start-address")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::Ipv6Pool()
+    :
+    pool_prefix{YType::uint32, "pool-prefix"},
+    start_address{YType::str, "start-address"}
+{
+
+    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::~Ipv6Pool()
+{
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_data() const
+{
+    return pool_prefix.is_set
+	|| start_address.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pool_prefix.yfilter)
+	|| ydk::is_set(start_address.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-pool";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix = value;
+        pool_prefix.value_namespace = name_space;
+        pool_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix.yfilter = yfilter;
+    }
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-prefix" || name == "start-address")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::RatAttributes::RatAttributes()
+    :
+    lma_rat{YType::enumeration, "lma-rat"},
+    priority_value{YType::uint32, "priority-value"}
+{
+
+    yang_name = "rat-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::RatAttributes::~RatAttributes()
+{
+}
+
+bool MobileIp::Lmas::Lma::RatAttributes::has_data() const
+{
+    return lma_rat.is_set
+	|| priority_value.is_set;
+}
+
+bool MobileIp::Lmas::Lma::RatAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lma_rat.yfilter)
+	|| ydk::is_set(priority_value.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::RatAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rat-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::RatAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lma_rat.is_set || is_set(lma_rat.yfilter)) leaf_name_data.push_back(lma_rat.get_name_leafdata());
+    if (priority_value.is_set || is_set(priority_value.yfilter)) leaf_name_data.push_back(priority_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::RatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::RatAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::RatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lma-rat")
+    {
+        lma_rat = value;
+        lma_rat.value_namespace = name_space;
+        lma_rat.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority-value")
+    {
+        priority_value = value;
+        priority_value.value_namespace = name_space;
+        priority_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::RatAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lma-rat")
+    {
+        lma_rat.yfilter = yfilter;
+    }
+    if(value_path == "priority-value")
+    {
+        priority_value.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::RatAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lma-rat" || name == "priority-value")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Redistribute::Redistribute()
+    :
+    redist_sub_type{YType::enumeration, "redist-sub-type"},
+    redist_type{YType::enumeration, "redist-type"}
+{
+
+    yang_name = "redistribute"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Redistribute::~Redistribute()
+{
+}
+
+bool MobileIp::Lmas::Lma::Redistribute::has_data() const
+{
+    return redist_sub_type.is_set
+	|| redist_type.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Redistribute::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(redist_sub_type.yfilter)
+	|| ydk::is_set(redist_type.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Redistribute::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "redistribute";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Redistribute::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (redist_sub_type.is_set || is_set(redist_sub_type.yfilter)) leaf_name_data.push_back(redist_sub_type.get_name_leafdata());
+    if (redist_type.is_set || is_set(redist_type.yfilter)) leaf_name_data.push_back(redist_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Redistribute::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "redist-sub-type")
+    {
+        redist_sub_type = value;
+        redist_sub_type.value_namespace = name_space;
+        redist_sub_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redist-type")
+    {
+        redist_type = value;
+        redist_type.value_namespace = name_space;
+        redist_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Redistribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "redist-sub-type")
+    {
+        redist_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "redist-type")
+    {
+        redist_type.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Redistribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "redist-sub-type" || name == "redist-type")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::ReplayProtection::ReplayProtection()
+    :
+    timestamp_window{YType::uint32, "timestamp-window"}
+{
+
+    yang_name = "replay-protection"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::ReplayProtection::~ReplayProtection()
+{
+}
+
+bool MobileIp::Lmas::Lma::ReplayProtection::has_data() const
+{
+    return timestamp_window.is_set;
+}
+
+bool MobileIp::Lmas::Lma::ReplayProtection::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timestamp_window.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::ReplayProtection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "replay-protection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::ReplayProtection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timestamp_window.is_set || is_set(timestamp_window.yfilter)) leaf_name_data.push_back(timestamp_window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::ReplayProtection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timestamp-window")
+    {
+        timestamp_window = value;
+        timestamp_window.value_namespace = name_space;
+        timestamp_window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::ReplayProtection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timestamp-window")
+    {
+        timestamp_window.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::ReplayProtection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timestamp-window")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Roles::Roles()
+{
+
+    yang_name = "roles"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Roles::~Roles()
+{
+}
+
+bool MobileIp::Lmas::Lma::Roles::has_data() const
+{
+    for (std::size_t index=0; index<role.size(); index++)
+    {
+        if(role[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Roles::has_operation() const
+{
+    for (std::size_t index=0; index<role.size(); index++)
+    {
+        if(role[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Roles::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "roles";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Roles::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "role")
+    {
+        for(auto const & c : role)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Roles::Role>();
+        c->parent = this;
+        role.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : role)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Roles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Roles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Roles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "role")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Roles::Role::Role()
+    :
+    lma_role{YType::enumeration, "lma-role"}
+{
+
+    yang_name = "role"; yang_parent_name = "roles"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Roles::Role::~Role()
+{
+}
+
+bool MobileIp::Lmas::Lma::Roles::Role::has_data() const
+{
+    return lma_role.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Roles::Role::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lma_role.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Roles::Role::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "role" <<"[lma-role='" <<lma_role <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Roles::Role::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lma_role.is_set || is_set(lma_role.yfilter)) leaf_name_data.push_back(lma_role.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::Role::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Roles::Role::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lma-role")
+    {
+        lma_role = value;
+        lma_role.value_namespace = name_space;
+        lma_role.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Roles::Role::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lma-role")
+    {
+        lma_role.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Roles::Role::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lma-role")
         return true;
     return false;
 }
 
 MobileIp::Lmas::Lma::Services::Services()
 {
-    yang_name = "services"; yang_parent_name = "lma";
+
+    yang_name = "services"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::~Services()
@@ -4144,29 +4763,15 @@ std::string MobileIp::Lmas::Lma::Services::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "services";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Services' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4232,7 +4837,7 @@ MobileIp::Lmas::Lma::Services::Service::Service()
 {
     customers->parent = this;
 
-    yang_name = "service"; yang_parent_name = "services";
+    yang_name = "service"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::~Service()
@@ -4270,23 +4875,11 @@ std::string MobileIp::Lmas::Lma::Services::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service" <<"[lma-service='" <<lma_service <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Service' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (lma_service.is_set || is_set(lma_service.yfilter)) leaf_name_data.push_back(lma_service.get_name_leafdata());
@@ -4298,9 +4891,7 @@ const EntityPath MobileIp::Lmas::Lma::Services::Service::get_entity_path(Entity*
     if (mnp_ipv6_lmn.is_set || is_set(mnp_ipv6_lmn.yfilter)) leaf_name_data.push_back(mnp_ipv6_lmn.get_name_leafdata());
     if (mnp_lmn.is_set || is_set(mnp_lmn.yfilter)) leaf_name_data.push_back(mnp_lmn.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4426,7 +5017,8 @@ bool MobileIp::Lmas::Lma::Services::Service::has_leaf_or_child_of_name(const std
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customers()
 {
-    yang_name = "customers"; yang_parent_name = "service";
+
+    yang_name = "customers"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::~Customers()
@@ -4457,29 +5049,15 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "customers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Customers' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4534,7 +5112,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Customer()
     :
     customer_name{YType::str, "customer-name"},
     vrf_name{YType::str, "vrf-name"},
-    bandwidth_aggregate{YType::int32, "bandwidth-aggregate"},
+    bandwidth_aggregate{YType::uint32, "bandwidth-aggregate"},
     mnp_customer{YType::uint32, "mnp-customer"},
     mnp_ipv4_customer{YType::uint32, "mnp-ipv4-customer"},
     mnp_ipv4_lmn{YType::uint32, "mnp-ipv4-lmn"},
@@ -4551,18 +5129,13 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Customer()
 	,transports(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports>())
 {
     authenticate_option->parent = this;
-
     binding_attributes->parent = this;
-
     gre_key->parent = this;
-
     heart_beat_attributes->parent = this;
-
     network_attributes->parent = this;
-
     transports->parent = this;
 
-    yang_name = "customer"; yang_parent_name = "customers";
+    yang_name = "customer"; yang_parent_name = "customers"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::~Customer()
@@ -4614,23 +5187,11 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "customer" <<"[customer-name='" <<customer_name <<"']" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Customer' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (customer_name.is_set || is_set(customer_name.yfilter)) leaf_name_data.push_back(customer_name.get_name_leafdata());
@@ -4644,9 +5205,7 @@ const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::ge
     if (mnp_lmn.is_set || is_set(mnp_lmn.yfilter)) leaf_name_data.push_back(mnp_lmn.get_name_leafdata());
     if (mobile_route_ad.is_set || is_set(mobile_route_ad.yfilter)) leaf_name_data.push_back(mobile_route_ad.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4865,7 +5424,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption:
     key{YType::str, "key"},
     spi{YType::str, "spi"}
 {
-    yang_name = "authenticate-option"; yang_parent_name = "customer";
+
+    yang_name = "authenticate-option"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::~AuthenticateOption()
@@ -4889,31 +5449,17 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Authent
 {
     std::ostringstream path_buffer;
     path_buffer << "authenticate-option";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthenticateOption' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
     if (spi.is_set || is_set(spi.yfilter)) leaf_name_data.push_back(spi.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4963,13 +5509,180 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOp
     return false;
 }
 
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::BindingAttributes()
+    :
+    max_life_time{YType::uint32, "max-life-time"}
+{
+
+    yang_name = "binding-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::~BindingAttributes()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_data() const
+{
+    return max_life_time.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_life_time.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_life_time.is_set || is_set(max_life_time.yfilter)) leaf_name_data.push_back(max_life_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-life-time")
+    {
+        max_life_time = value;
+        max_life_time.value_namespace = name_space;
+        max_life_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-life-time")
+    {
+        max_life_time.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-life-time")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::GreKey()
+    :
+    gre_key_type{YType::enumeration, "gre-key-type"},
+    gre_key_value{YType::uint32, "gre-key-value"}
+{
+
+    yang_name = "gre-key"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::~GreKey()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_data() const
+{
+    return gre_key_type.is_set
+	|| gre_key_value.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(gre_key_type.yfilter)
+	|| ydk::is_set(gre_key_value.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gre-key";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (gre_key_type.is_set || is_set(gre_key_type.yfilter)) leaf_name_data.push_back(gre_key_type.get_name_leafdata());
+    if (gre_key_value.is_set || is_set(gre_key_value.yfilter)) leaf_name_data.push_back(gre_key_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "gre-key-type")
+    {
+        gre_key_type = value;
+        gre_key_type.value_namespace = name_space;
+        gre_key_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gre-key-value")
+    {
+        gre_key_value = value;
+        gre_key_value.value_namespace = name_space;
+        gre_key_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "gre-key-type")
+    {
+        gre_key_type.yfilter = yfilter;
+    }
+    if(value_path == "gre-key-value")
+    {
+        gre_key_value.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gre-key-type" || name == "gre-key-value")
+        return true;
+    return false;
+}
+
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::HeartBeatAttributes()
     :
     interval{YType::uint32, "interval"},
     retries{YType::uint32, "retries"},
     timeout{YType::uint32, "timeout"}
 {
-    yang_name = "heart-beat-attributes"; yang_parent_name = "customer";
+
+    yang_name = "heart-beat-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::~HeartBeatAttributes()
@@ -4995,32 +5708,18 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBe
 {
     std::ostringstream path_buffer;
     path_buffer << "heart-beat-attributes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HeartBeatAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
     if (retries.is_set || is_set(retries.yfilter)) leaf_name_data.push_back(retries.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5080,229 +5779,6 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttri
     return false;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transports()
-{
-    yang_name = "transports"; yang_parent_name = "customer";
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::~Transports()
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_data() const
-{
-    for (std::size_t index=0; index<transport.size(); index++)
-    {
-        if(transport[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_operation() const
-{
-    for (std::size_t index=0; index<transport.size(); index++)
-    {
-        if(transport[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transports";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Transports' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "transport")
-    {
-        for(auto const & c : transport)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport>();
-        c->parent = this;
-        transport.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : transport)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "transport")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::Transport()
-    :
-    vrf_name{YType::str, "vrf-name"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "transport"; yang_parent_name = "transports";
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::~Transport()
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_data() const
-{
-    return vrf_name.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transport" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Transport' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::NetworkAttributes()
     :
     unauthorize{YType::empty, "unauthorize"}
@@ -5311,7 +5787,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 {
     authorizes->parent = this;
 
-    yang_name = "network-attributes"; yang_parent_name = "customer";
+    yang_name = "network-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::~NetworkAttributes()
@@ -5335,30 +5811,16 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "network-attributes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unauthorize.is_set || is_set(unauthorize.yfilter)) leaf_name_data.push_back(unauthorize.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5414,7 +5876,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorizes()
 {
-    yang_name = "authorizes"; yang_parent_name = "network-attributes";
+
+    yang_name = "authorizes"; yang_parent_name = "network-attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::~Authorizes()
@@ -5445,29 +5908,15 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "authorizes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authorizes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5526,7 +5975,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 {
     pool_attributes->parent = this;
 
-    yang_name = "authorize"; yang_parent_name = "authorizes";
+    yang_name = "authorize"; yang_parent_name = "authorizes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::~Authorize()
@@ -5550,30 +5999,16 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "authorize" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authorize' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5633,10 +6068,9 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 	,mobile_node(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode>())
 {
     mobile_network->parent = this;
-
     mobile_node->parent = this;
 
-    yang_name = "pool-attributes"; yang_parent_name = "authorize";
+    yang_name = "pool-attributes"; yang_parent_name = "authorize"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::~PoolAttributes()
@@ -5660,29 +6094,15 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "pool-attributes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoolAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5740,16 +6160,507 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
     return false;
 }
 
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::MobileNetwork()
+    :
+    mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>())
+	,mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>())
+{
+    mripv4_pools->parent = this;
+    mripv6_pools->parent = this;
+
+    yang_name = "mobile-network"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::~MobileNetwork()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_data() const
+{
+    return (mripv4_pools !=  nullptr && mripv4_pools->has_data())
+	|| (mripv6_pools !=  nullptr && mripv6_pools->has_data());
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_operation() const
+{
+    return is_set(yfilter)
+	|| (mripv4_pools !=  nullptr && mripv4_pools->has_operation())
+	|| (mripv6_pools !=  nullptr && mripv6_pools->has_operation());
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mobile-network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mripv4-pools")
+    {
+        if(mripv4_pools == nullptr)
+        {
+            mripv4_pools = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>();
+        }
+        return mripv4_pools;
+    }
+
+    if(child_yang_name == "mripv6-pools")
+    {
+        if(mripv6_pools == nullptr)
+        {
+            mripv6_pools = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>();
+        }
+        return mripv6_pools;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mripv4_pools != nullptr)
+    {
+        children["mripv4-pools"] = mripv4_pools;
+    }
+
+    if(mripv6_pools != nullptr)
+    {
+        children["mripv6-pools"] = mripv6_pools;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mripv4-pools" || name == "mripv6-pools")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pools()
+{
+
+    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::~Mripv4Pools()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_data() const
+{
+    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    {
+        if(mripv4_pool[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_operation() const
+{
+    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    {
+        if(mripv4_pool[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv4-pools";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mripv4-pool")
+    {
+        for(auto const & c : mripv4_pool)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
+        c->parent = this;
+        mripv4_pool.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mripv4_pool)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mripv4-pool")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::Mripv4Pool()
+    :
+    start_address{YType::str, "start-address"},
+    network_prefix{YType::uint32, "network-prefix"},
+    pool_prefix{YType::uint32, "pool-prefix"}
+{
+
+    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::~Mripv4Pool()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_data() const
+{
+    return start_address.is_set
+	|| network_prefix.is_set
+	|| pool_prefix.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(network_prefix.yfilter)
+	|| ydk::is_set(pool_prefix.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv4-pool" <<"[start-address='" <<start_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
+    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "network-prefix")
+    {
+        network_prefix = value;
+        network_prefix.value_namespace = name_space;
+        network_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix = value;
+        pool_prefix.value_namespace = name_space;
+        pool_prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+    if(value_path == "network-prefix")
+    {
+        network_prefix.yfilter = yfilter;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pools()
+{
+
+    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::~Mripv6Pools()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_data() const
+{
+    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    {
+        if(mripv6_pool[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_operation() const
+{
+    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    {
+        if(mripv6_pool[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv6-pools";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mripv6-pool")
+    {
+        for(auto const & c : mripv6_pool)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
+        c->parent = this;
+        mripv6_pool.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mripv6_pool)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mripv6-pool")
+        return true;
+    return false;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::Mripv6Pool()
+    :
+    start_address{YType::str, "start-address"},
+    network_prefix{YType::uint32, "network-prefix"},
+    pool_prefix{YType::uint32, "pool-prefix"}
+{
+
+    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::~Mripv6Pool()
+{
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_data() const
+{
+    return start_address.is_set
+	|| network_prefix.is_set
+	|| pool_prefix.is_set;
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(network_prefix.yfilter)
+	|| ydk::is_set(pool_prefix.yfilter);
+}
+
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mripv6-pool" <<"[start-address='" <<start_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
+    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "network-prefix")
+    {
+        network_prefix = value;
+        network_prefix.value_namespace = name_space;
+        network_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix = value;
+        pool_prefix.value_namespace = name_space;
+        pool_prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+    if(value_path == "network-prefix")
+    {
+        network_prefix.yfilter = yfilter;
+    }
+    if(value_path == "pool-prefix")
+    {
+        pool_prefix.yfilter = yfilter;
+    }
+}
+
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
+        return true;
+    return false;
+}
+
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::MobileNode()
     :
     ipv4_pool(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool>())
 	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool>())
 {
     ipv4_pool->parent = this;
-
     ipv6_pool->parent = this;
 
-    yang_name = "mobile-node"; yang_parent_name = "pool-attributes";
+    yang_name = "mobile-node"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::~MobileNode()
@@ -5773,29 +6684,15 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "mobile-node";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MobileNode' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5858,7 +6755,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     pool_prefix{YType::uint32, "pool-prefix"},
     start_address{YType::str, "start-address"}
 {
-    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node";
+
+    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::~Ipv4Pool()
@@ -5882,31 +6780,17 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-pool";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
     if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5961,7 +6845,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     pool_prefix{YType::uint32, "pool-prefix"},
     start_address{YType::str, "start-address"}
 {
-    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node";
+
+    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::~Ipv6Pool()
@@ -5985,31 +6870,17 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-pool";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
     if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6059,183 +6930,57 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
     return false;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::MobileNetwork()
-    :
-    mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>())
-	,mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>())
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transports()
 {
-    mripv4_pools->parent = this;
 
-    mripv6_pools->parent = this;
-
-    yang_name = "mobile-network"; yang_parent_name = "pool-attributes";
+    yang_name = "transports"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::~MobileNetwork()
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::~Transports()
 {
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_data() const
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_data() const
 {
-    return (mripv4_pools !=  nullptr && mripv4_pools->has_data())
-	|| (mripv6_pools !=  nullptr && mripv6_pools->has_data());
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mripv4_pools !=  nullptr && mripv4_pools->has_operation())
-	|| (mripv6_pools !=  nullptr && mripv6_pools->has_operation());
-}
-
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mobile-network";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<transport.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MobileNetwork' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mripv4-pools")
-    {
-        if(mripv4_pools == nullptr)
-        {
-            mripv4_pools = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>();
-        }
-        return mripv4_pools;
-    }
-
-    if(child_yang_name == "mripv6-pools")
-    {
-        if(mripv6_pools == nullptr)
-        {
-            mripv6_pools = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>();
-        }
-        return mripv6_pools;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mripv4_pools != nullptr)
-    {
-        children["mripv4-pools"] = mripv4_pools;
-    }
-
-    if(mripv6_pools != nullptr)
-    {
-        children["mripv6-pools"] = mripv6_pools;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mripv4-pools" || name == "mripv6-pools")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pools()
-{
-    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network";
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::~Mripv6Pools()
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_data() const
-{
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
-    {
-        if(mripv6_pool[index]->has_data())
+        if(transport[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_operation() const
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_operation() const
 {
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    for (std::size_t index=0; index<transport.size(); index++)
     {
-        if(mripv6_pool[index]->has_operation())
+        if(transport[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_segment_path() const
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv6-pools";
-
+    path_buffer << "transports";
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv6Pools' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mripv6-pool")
+    if(child_yang_name == "transport")
     {
-        for(auto const & c : mripv6_pool)
+        for(auto const & c : transport)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -6243,19 +6988,19 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
                 return c;
             }
         }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
+        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport>();
         c->parent = this;
-        mripv6_pool.push_back(c);
+        transport.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mripv6_pool)
+    for (auto const & c : transport)
     {
         children[c->get_segment_path()] = c;
     }
@@ -6263,1844 +7008,211 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Se
     return children;
 }
 
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::set_filter(const std::string & value_path, YFilter yfilter)
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_leaf_or_child_of_name(const std::string & name) const
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mripv6-pool")
+    if(name == "transport")
         return true;
     return false;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::Mripv6Pool()
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::Transport()
     :
-    start_address{YType::str, "start-address"},
-    network_prefix{YType::uint32, "network-prefix"},
-    pool_prefix{YType::uint32, "pool-prefix"}
+    vrf_name{YType::str, "vrf-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
 {
-    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools";
+
+    yang_name = "transport"; yang_parent_name = "transports"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::~Mripv6Pool()
+MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::~Transport()
 {
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_data() const
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_data() const
 {
-    return start_address.is_set
-	|| network_prefix.is_set
-	|| pool_prefix.is_set;
+    return vrf_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_operation() const
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(start_address.yfilter)
-	|| ydk::is_set(network_prefix.yfilter)
-	|| ydk::is_set(pool_prefix.yfilter);
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_segment_path() const
+std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv6-pool" <<"[start-address='" <<start_address <<"']";
-
+    path_buffer << "transport" <<"[vrf-name='" <<vrf_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv6Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
-    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "start-address")
+    if(value_path == "vrf-name")
     {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "network-prefix")
+    if(value_path == "ipv4-address")
     {
-        network_prefix = value;
-        network_prefix.value_namespace = name_space;
-        network_prefix.value_namespace_prefix = name_space_prefix;
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pool-prefix")
+    if(value_path == "ipv6-address")
     {
-        pool_prefix = value;
-        pool_prefix.value_namespace = name_space;
-        pool_prefix.value_namespace_prefix = name_space_prefix;
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_filter(const std::string & value_path, YFilter yfilter)
+void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "start-address")
+    if(value_path == "vrf-name")
     {
-        start_address.yfilter = yfilter;
+        vrf_name.yfilter = yfilter;
     }
-    if(value_path == "network-prefix")
+    if(value_path == "ipv4-address")
     {
-        network_prefix.yfilter = yfilter;
+        ipv4_address.yfilter = yfilter;
     }
-    if(value_path == "pool-prefix")
+    if(value_path == "ipv6-address")
     {
-        pool_prefix.yfilter = yfilter;
+        ipv6_address.yfilter = yfilter;
     }
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_leaf_or_child_of_name(const std::string & name) const
+bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
+    if(name == "vrf-name" || name == "ipv4-address" || name == "ipv6-address")
         return true;
     return false;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pools()
-{
-    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network";
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::~Mripv4Pools()
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_data() const
-{
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
-    {
-        if(mripv4_pool[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_operation() const
-{
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
-    {
-        if(mripv4_pool[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mripv4-pools";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv4Pools' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mripv4-pool")
-    {
-        for(auto const & c : mripv4_pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
-        c->parent = this;
-        mripv4_pool.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mripv4_pool)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mripv4-pool")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::Mripv4Pool()
+MobileIp::Lmas::Lma::TunnelAttributes::TunnelAttributes()
     :
-    start_address{YType::str, "start-address"},
-    network_prefix{YType::uint32, "network-prefix"},
-    pool_prefix{YType::uint32, "pool-prefix"}
+    acl{YType::str, "acl"},
+    mtu{YType::uint32, "mtu"}
 {
-    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools";
+
+    yang_name = "tunnel-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::~Mripv4Pool()
+MobileIp::Lmas::Lma::TunnelAttributes::~TunnelAttributes()
 {
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_data() const
+bool MobileIp::Lmas::Lma::TunnelAttributes::has_data() const
 {
-    return start_address.is_set
-	|| network_prefix.is_set
-	|| pool_prefix.is_set;
+    return acl.is_set
+	|| mtu.is_set;
 }
 
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_operation() const
+bool MobileIp::Lmas::Lma::TunnelAttributes::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(start_address.yfilter)
-	|| ydk::is_set(network_prefix.yfilter)
-	|| ydk::is_set(pool_prefix.yfilter);
+	|| ydk::is_set(acl.yfilter)
+	|| ydk::is_set(mtu.yfilter);
 }
 
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_segment_path() const
+std::string MobileIp::Lmas::Lma::TunnelAttributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv4-pool" <<"[start-address='" <<start_address <<"']";
-
+    path_buffer << "tunnel-attributes";
     return path_buffer.str();
-
 }
 
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::TunnelAttributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv4Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
-    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
+    if (acl.is_set || is_set(acl.yfilter)) leaf_name_data.push_back(acl.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MobileIp::Lmas::Lma::TunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::TunnelAttributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MobileIp::Lmas::Lma::TunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "start-address")
+    if(value_path == "acl")
     {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
+        acl = value;
+        acl.value_namespace = name_space;
+        acl.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "network-prefix")
+    if(value_path == "mtu")
     {
-        network_prefix = value;
-        network_prefix.value_namespace = name_space;
-        network_prefix.value_namespace_prefix = name_space_prefix;
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix = value;
-        pool_prefix.value_namespace = name_space;
-        pool_prefix.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-    if(value_path == "network-prefix")
-    {
-        network_prefix.yfilter = yfilter;
-    }
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::GreKey()
-    :
-    gre_key_type{YType::enumeration, "gre-key-type"},
-    gre_key_value{YType::int32, "gre-key-value"}
-{
-    yang_name = "gre-key"; yang_parent_name = "customer";
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::~GreKey()
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_data() const
-{
-    return gre_key_type.is_set
-	|| gre_key_value.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(gre_key_type.yfilter)
-	|| ydk::is_set(gre_key_value.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gre-key";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GreKey' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (gre_key_type.is_set || is_set(gre_key_type.yfilter)) leaf_name_data.push_back(gre_key_type.get_name_leafdata());
-    if (gre_key_value.is_set || is_set(gre_key_value.yfilter)) leaf_name_data.push_back(gre_key_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "gre-key-type")
-    {
-        gre_key_type = value;
-        gre_key_type.value_namespace = name_space;
-        gre_key_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "gre-key-value")
-    {
-        gre_key_value = value;
-        gre_key_value.value_namespace = name_space;
-        gre_key_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "gre-key-type")
-    {
-        gre_key_type.yfilter = yfilter;
-    }
-    if(value_path == "gre-key-value")
-    {
-        gre_key_value.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gre-key-type" || name == "gre-key-value")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::BindingAttributes()
-    :
-    max_life_time{YType::uint32, "max-life-time"}
-{
-    yang_name = "binding-attributes"; yang_parent_name = "customer";
-}
-
-MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::~BindingAttributes()
-{
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_data() const
-{
-    return max_life_time.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_life_time.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "binding-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BindingAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_life_time.is_set || is_set(max_life_time.yfilter)) leaf_name_data.push_back(max_life_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-life-time")
-    {
-        max_life_time = value;
-        max_life_time.value_namespace = name_space;
-        max_life_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-life-time")
-    {
-        max_life_time.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-life-time")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Networks()
-{
-    yang_name = "networks"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::Networks::~Networks()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::has_data() const
-{
-    for (std::size_t index=0; index<network.size(); index++)
-    {
-        if(network[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Networks::has_operation() const
-{
-    for (std::size_t index=0; index<network.size(); index++)
-    {
-        if(network[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "networks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Networks' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "network")
-    {
-        for(auto const & c : network)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network>();
-        c->parent = this;
-        network.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : network)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Networks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::Network()
-    :
-    lma_network{YType::str, "lma-network"}
-    	,
-    pool_attributes(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>())
-{
-    pool_attributes->parent = this;
-
-    yang_name = "network"; yang_parent_name = "networks";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::~Network()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::has_data() const
-{
-    return lma_network.is_set
-	|| (pool_attributes !=  nullptr && pool_attributes->has_data());
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lma_network.yfilter)
-	|| (pool_attributes !=  nullptr && pool_attributes->has_operation());
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network" <<"[lma-network='" <<lma_network <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Network' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lma_network.is_set || is_set(lma_network.yfilter)) leaf_name_data.push_back(lma_network.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pool-attributes")
-    {
-        if(pool_attributes == nullptr)
-        {
-            pool_attributes = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>();
-        }
-        return pool_attributes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pool_attributes != nullptr)
-    {
-        children["pool-attributes"] = pool_attributes;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lma-network")
-    {
-        lma_network = value;
-        lma_network.value_namespace = name_space;
-        lma_network.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lma-network")
-    {
-        lma_network.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pool-attributes" || name == "lma-network")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::PoolAttributes()
-    :
-    mobile_network(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>())
-	,mobile_node(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>())
-{
-    mobile_network->parent = this;
-
-    mobile_node->parent = this;
-
-    yang_name = "pool-attributes"; yang_parent_name = "network";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::~PoolAttributes()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_data() const
-{
-    return (mobile_network !=  nullptr && mobile_network->has_data())
-	|| (mobile_node !=  nullptr && mobile_node->has_data());
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mobile_network !=  nullptr && mobile_network->has_operation())
-	|| (mobile_node !=  nullptr && mobile_node->has_operation());
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pool-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoolAttributes' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mobile-network")
-    {
-        if(mobile_network == nullptr)
-        {
-            mobile_network = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>();
-        }
-        return mobile_network;
-    }
-
-    if(child_yang_name == "mobile-node")
-    {
-        if(mobile_node == nullptr)
-        {
-            mobile_node = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>();
-        }
-        return mobile_node;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mobile_network != nullptr)
-    {
-        children["mobile-network"] = mobile_network;
-    }
-
-    if(mobile_node != nullptr)
-    {
-        children["mobile-node"] = mobile_node;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mobile-network" || name == "mobile-node")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::MobileNode()
-    :
-    ipv4_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool>())
-	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>())
-{
-    ipv4_pool->parent = this;
-
-    ipv6_pool->parent = this;
-
-    yang_name = "mobile-node"; yang_parent_name = "pool-attributes";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::~MobileNode()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_data() const
-{
-    return (ipv4_pool !=  nullptr && ipv4_pool->has_data())
-	|| (ipv6_pool !=  nullptr && ipv6_pool->has_data());
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ipv4_pool !=  nullptr && ipv4_pool->has_operation())
-	|| (ipv6_pool !=  nullptr && ipv6_pool->has_operation());
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mobile-node";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MobileNode' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4-pool")
-    {
-        if(ipv4_pool == nullptr)
-        {
-            ipv4_pool = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool>();
-        }
-        return ipv4_pool;
-    }
-
-    if(child_yang_name == "ipv6-pool")
-    {
-        if(ipv6_pool == nullptr)
-        {
-            ipv6_pool = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>();
-        }
-        return ipv6_pool;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4_pool != nullptr)
-    {
-        children["ipv4-pool"] = ipv4_pool;
-    }
-
-    if(ipv6_pool != nullptr)
-    {
-        children["ipv6-pool"] = ipv6_pool;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-pool" || name == "ipv6-pool")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::Ipv4Pool()
-    :
-    pool_prefix{YType::uint32, "pool-prefix"},
-    start_address{YType::str, "start-address"}
-{
-    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::~Ipv4Pool()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_data() const
-{
-    return pool_prefix.is_set
-	|| start_address.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(pool_prefix.yfilter)
-	|| ydk::is_set(start_address.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-pool";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix = value;
-        pool_prefix.value_namespace = name_space;
-        pool_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-address")
-    {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix.yfilter = yfilter;
-    }
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pool-prefix" || name == "start-address")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::Ipv6Pool()
-    :
-    pool_prefix{YType::uint32, "pool-prefix"},
-    start_address{YType::str, "start-address"}
-{
-    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::~Ipv6Pool()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_data() const
-{
-    return pool_prefix.is_set
-	|| start_address.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(pool_prefix.yfilter)
-	|| ydk::is_set(start_address.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-pool";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix = value;
-        pool_prefix.value_namespace = name_space;
-        pool_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-address")
-    {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix.yfilter = yfilter;
-    }
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pool-prefix" || name == "start-address")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::MobileNetwork()
-    :
-    mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>())
-	,mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>())
-{
-    mripv4_pools->parent = this;
-
-    mripv6_pools->parent = this;
-
-    yang_name = "mobile-network"; yang_parent_name = "pool-attributes";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::~MobileNetwork()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_data() const
-{
-    return (mripv4_pools !=  nullptr && mripv4_pools->has_data())
-	|| (mripv6_pools !=  nullptr && mripv6_pools->has_data());
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mripv4_pools !=  nullptr && mripv4_pools->has_operation())
-	|| (mripv6_pools !=  nullptr && mripv6_pools->has_operation());
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mobile-network";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MobileNetwork' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mripv4-pools")
-    {
-        if(mripv4_pools == nullptr)
-        {
-            mripv4_pools = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>();
-        }
-        return mripv4_pools;
-    }
-
-    if(child_yang_name == "mripv6-pools")
-    {
-        if(mripv6_pools == nullptr)
-        {
-            mripv6_pools = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>();
-        }
-        return mripv6_pools;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mripv4_pools != nullptr)
-    {
-        children["mripv4-pools"] = mripv4_pools;
-    }
-
-    if(mripv6_pools != nullptr)
-    {
-        children["mripv6-pools"] = mripv6_pools;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mripv4-pools" || name == "mripv6-pools")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pools()
-{
-    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::~Mripv6Pools()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_data() const
-{
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
-    {
-        if(mripv6_pool[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_operation() const
-{
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
-    {
-        if(mripv6_pool[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mripv6-pools";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv6Pools' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mripv6-pool")
-    {
-        for(auto const & c : mripv6_pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
-        c->parent = this;
-        mripv6_pool.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mripv6_pool)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mripv6-pool")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::Mripv6Pool()
-    :
-    start_address{YType::str, "start-address"},
-    network_prefix{YType::uint32, "network-prefix"},
-    pool_prefix{YType::uint32, "pool-prefix"}
-{
-    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::~Mripv6Pool()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_data() const
-{
-    return start_address.is_set
-	|| network_prefix.is_set
-	|| pool_prefix.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(start_address.yfilter)
-	|| ydk::is_set(network_prefix.yfilter)
-	|| ydk::is_set(pool_prefix.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mripv6-pool" <<"[start-address='" <<start_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv6Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
-    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "start-address")
-    {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "network-prefix")
-    {
-        network_prefix = value;
-        network_prefix.value_namespace = name_space;
-        network_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix = value;
-        pool_prefix.value_namespace = name_space;
-        pool_prefix.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-    if(value_path == "network-prefix")
-    {
-        network_prefix.yfilter = yfilter;
-    }
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pools()
-{
-    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::~Mripv4Pools()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_data() const
-{
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
-    {
-        if(mripv4_pool[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_operation() const
-{
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
-    {
-        if(mripv4_pool[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mripv4-pools";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv4Pools' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mripv4-pool")
-    {
-        for(auto const & c : mripv4_pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
-        c->parent = this;
-        mripv4_pool.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mripv4_pool)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mripv4-pool")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::Mripv4Pool()
-    :
-    start_address{YType::str, "start-address"},
-    network_prefix{YType::uint32, "network-prefix"},
-    pool_prefix{YType::uint32, "pool-prefix"}
-{
-    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools";
-}
-
-MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::~Mripv4Pool()
-{
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_data() const
-{
-    return start_address.is_set
-	|| network_prefix.is_set
-	|| pool_prefix.is_set;
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(start_address.yfilter)
-	|| ydk::is_set(network_prefix.yfilter)
-	|| ydk::is_set(pool_prefix.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mripv4-pool" <<"[start-address='" <<start_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mripv4Pool' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (network_prefix.is_set || is_set(network_prefix.yfilter)) leaf_name_data.push_back(network_prefix.get_name_leafdata());
-    if (pool_prefix.is_set || is_set(pool_prefix.yfilter)) leaf_name_data.push_back(pool_prefix.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+void MobileIp::Lmas::Lma::TunnelAttributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "start-address")
-    {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "network-prefix")
-    {
-        network_prefix = value;
-        network_prefix.value_namespace = name_space;
-        network_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix = value;
-        pool_prefix.value_namespace = name_space;
-        pool_prefix.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-    if(value_path == "network-prefix")
-    {
-        network_prefix.yfilter = yfilter;
-    }
-    if(value_path == "pool-prefix")
-    {
-        pool_prefix.yfilter = yfilter;
-    }
-}
-
-bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "start-address" || name == "network-prefix" || name == "pool-prefix")
-        return true;
-    return false;
-}
-
-MobileIp::Lmas::Lma::ReplayProtection::ReplayProtection()
-    :
-    timestamp_window{YType::uint32, "timestamp-window"}
-{
-    yang_name = "replay-protection"; yang_parent_name = "lma";
-}
-
-MobileIp::Lmas::Lma::ReplayProtection::~ReplayProtection()
-{
-}
-
-bool MobileIp::Lmas::Lma::ReplayProtection::has_data() const
-{
-    return timestamp_window.is_set;
-}
-
-bool MobileIp::Lmas::Lma::ReplayProtection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timestamp_window.yfilter);
-}
-
-std::string MobileIp::Lmas::Lma::ReplayProtection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "replay-protection";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MobileIp::Lmas::Lma::ReplayProtection::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReplayProtection' in Cisco_IOS_XR_ip_mobileip_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timestamp_window.is_set || is_set(timestamp_window.yfilter)) leaf_name_data.push_back(timestamp_window.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::ReplayProtection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MobileIp::Lmas::Lma::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "timestamp-window")
+    if(value_path == "acl")
     {
-        timestamp_window = value;
-        timestamp_window.value_namespace = name_space;
-        timestamp_window.value_namespace_prefix = name_space_prefix;
+        acl.yfilter = yfilter;
     }
-}
-
-void MobileIp::Lmas::Lma::ReplayProtection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "timestamp-window")
+    if(value_path == "mtu")
     {
-        timestamp_window.yfilter = yfilter;
+        mtu.yfilter = yfilter;
     }
 }
 
-bool MobileIp::Lmas::Lma::ReplayProtection::has_leaf_or_child_of_name(const std::string & name) const
+bool MobileIp::Lmas::Lma::TunnelAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "timestamp-window")
+    if(name == "acl" || name == "mtu")
         return true;
     return false;
 }
@@ -8108,7 +7220,12 @@ bool MobileIp::Lmas::Lma::ReplayProtection::has_leaf_or_child_of_name(const std:
 const Enum::YLeaf RedistSubType::host_prefix {1, "host-prefix"};
 const Enum::YLeaf RedistSubType::disable {2, "disable"};
 
-const Enum::YLeaf RedistType::home_address {1, "home-address"};
+const Enum::YLeaf EncapOpt::greipv4 {4, "greipv4"};
+const Enum::YLeaf EncapOpt::greipv6 {5, "greipv6"};
+const Enum::YLeaf EncapOpt::mgreipv4 {7, "mgreipv4"};
+const Enum::YLeaf EncapOpt::mgreipv6 {8, "mgreipv6"};
+
+const Enum::YLeaf LmaService::service_mll {1, "service-mll"};
 
 const Enum::YLeaf LmaRat::virtual_ {0, "virtual"};
 const Enum::YLeaf LmaRat::ppp {1, "ppp"};
@@ -8123,18 +7240,13 @@ const Enum::YLeaf LmaRat::Y_3gpp2hrpd {9, "3gpp2hrpd"};
 const Enum::YLeaf LmaRat::Y_3gpp21rtt {10, "3gpp21rtt"};
 const Enum::YLeaf LmaRat::Y_3gpp2umb {11, "3gpp2umb"};
 
-const Enum::YLeaf LmaService::service_mll {1, "service-mll"};
-
-const Enum::YLeaf EncapOpt::greipv4 {4, "greipv4"};
-const Enum::YLeaf EncapOpt::greipv6 {5, "greipv6"};
-const Enum::YLeaf EncapOpt::mgreipv4 {7, "mgreipv4"};
-const Enum::YLeaf EncapOpt::mgreipv6 {8, "mgreipv6"};
-
 const Enum::YLeaf GreKeyType::symmetric {1, "symmetric"};
 
 const Enum::YLeaf ServiceType::ipv4 {1, "ipv4"};
 const Enum::YLeaf ServiceType::ipv6 {2, "ipv6"};
 const Enum::YLeaf ServiceType::dual {3, "dual"};
+
+const Enum::YLeaf RedistType::home_address {1, "home-address"};
 
 const Enum::YLeaf LmaRole::Y_3gma {0, "3gma"};
 

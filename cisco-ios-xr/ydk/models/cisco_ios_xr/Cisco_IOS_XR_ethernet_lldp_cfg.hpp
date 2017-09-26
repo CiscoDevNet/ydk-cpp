@@ -18,7 +18,7 @@ class Lldp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -39,7 +39,7 @@ class Lldp : public ydk::Entity
         ydk::YLeaf enable; //type: boolean
         class TlvSelect; //type: Lldp::TlvSelect
 
-        std::shared_ptr<Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect> tlv_select; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect> tlv_select; // presence node
         
 }; // Lldp
 
@@ -52,13 +52,14 @@ class Lldp::TlvSelect : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf tlv_select_enter; //type: boolean
         class SystemName; //type: Lldp::TlvSelect::SystemName
@@ -67,97 +68,13 @@ class Lldp::TlvSelect : public ydk::Entity
         class SystemCapabilities; //type: Lldp::TlvSelect::SystemCapabilities
         class ManagementAddress; //type: Lldp::TlvSelect::ManagementAddress
 
-        std::shared_ptr<Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::ManagementAddress> management_address;
-        std::shared_ptr<Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::PortDescription> port_description;
-        std::shared_ptr<Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemCapabilities> system_capabilities;
-        std::shared_ptr<Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemDescription> system_description;
-        std::shared_ptr<Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemName> system_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::ManagementAddress> management_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::PortDescription> port_description;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemCapabilities> system_capabilities;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemDescription> system_description;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemName> system_name;
         
 }; // Lldp::TlvSelect
-
-
-class Lldp::TlvSelect::SystemName : public ydk::Entity
-{
-    public:
-        SystemName();
-        ~SystemName();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: boolean
-
-}; // Lldp::TlvSelect::SystemName
-
-
-class Lldp::TlvSelect::PortDescription : public ydk::Entity
-{
-    public:
-        PortDescription();
-        ~PortDescription();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: boolean
-
-}; // Lldp::TlvSelect::PortDescription
-
-
-class Lldp::TlvSelect::SystemDescription : public ydk::Entity
-{
-    public:
-        SystemDescription();
-        ~SystemDescription();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: boolean
-
-}; // Lldp::TlvSelect::SystemDescription
-
-
-class Lldp::TlvSelect::SystemCapabilities : public ydk::Entity
-{
-    public:
-        SystemCapabilities();
-        ~SystemCapabilities();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: boolean
-
-}; // Lldp::TlvSelect::SystemCapabilities
 
 
 class Lldp::TlvSelect::ManagementAddress : public ydk::Entity
@@ -168,17 +85,106 @@ class Lldp::TlvSelect::ManagementAddress : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf disable; //type: boolean
 
 }; // Lldp::TlvSelect::ManagementAddress
+
+
+class Lldp::TlvSelect::PortDescription : public ydk::Entity
+{
+    public:
+        PortDescription();
+        ~PortDescription();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disable; //type: boolean
+
+}; // Lldp::TlvSelect::PortDescription
+
+
+class Lldp::TlvSelect::SystemCapabilities : public ydk::Entity
+{
+    public:
+        SystemCapabilities();
+        ~SystemCapabilities();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disable; //type: boolean
+
+}; // Lldp::TlvSelect::SystemCapabilities
+
+
+class Lldp::TlvSelect::SystemDescription : public ydk::Entity
+{
+    public:
+        SystemDescription();
+        ~SystemDescription();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disable; //type: boolean
+
+}; // Lldp::TlvSelect::SystemDescription
+
+
+class Lldp::TlvSelect::SystemName : public ydk::Entity
+{
+    public:
+        SystemName();
+        ~SystemName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disable; //type: boolean
+
+}; // Lldp::TlvSelect::SystemName
 
 
 }

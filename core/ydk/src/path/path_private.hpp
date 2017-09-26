@@ -25,13 +25,10 @@
 #define YDK_PRIVATE_HPP
 
 #include <algorithm>
-#include <map>
 #include <cstdlib>
 #include <functional>
-#include <iostream>
 #include <cstring>
 #include <cassert>
-#include <sstream>
 #include <unordered_set>
 #include <unordered_map>
 
@@ -272,7 +269,7 @@ namespace ydk {
 
             ~RpcImpl();
 
-            std::shared_ptr<DataNode> operator()(const ServiceProvider& provider);
+            std::shared_ptr<DataNode> operator()(const Session& session);
 
             DataNode& get_input_node() const;
 

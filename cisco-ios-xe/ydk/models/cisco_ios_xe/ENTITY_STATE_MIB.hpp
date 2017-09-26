@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace ENTITY_STATE_MIB {
 
-class EntityStateMib : public ydk::Entity
+class ENTITYSTATEMIB : public ydk::Entity
 {
     public:
-        EntityStateMib();
-        ~EntityStateMib();
+        ENTITYSTATEMIB();
+        ~ENTITYSTATEMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,14 +32,14 @@ class EntityStateMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entstatetable; //type: EntityStateMib::Entstatetable
+        class Entstatetable; //type: ENTITYSTATEMIB::Entstatetable
 
-        std::shared_ptr<ENTITY_STATE_MIB::EntityStateMib::Entstatetable> entstatetable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_STATE_MIB::ENTITYSTATEMIB::Entstatetable> entstatetable;
         
-}; // EntityStateMib
+}; // ENTITYSTATEMIB
 
 
-class EntityStateMib::Entstatetable : public ydk::Entity
+class ENTITYSTATEMIB::Entstatetable : public ydk::Entity
 {
     public:
         Entstatetable();
@@ -47,22 +47,23 @@ class EntityStateMib::Entstatetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Entstateentry; //type: EntityStateMib::Entstatetable::Entstateentry
+        class Entstateentry; //type: ENTITYSTATEMIB::Entstatetable::Entstateentry
 
-        std::vector<std::shared_ptr<ENTITY_STATE_MIB::EntityStateMib::Entstatetable::Entstateentry> > entstateentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_STATE_MIB::ENTITYSTATEMIB::Entstatetable::Entstateentry> > entstateentry;
         
-}; // EntityStateMib::Entstatetable
+}; // ENTITYSTATEMIB::Entstatetable
 
 
-class EntityStateMib::Entstatetable::Entstateentry : public ydk::Entity
+class ENTITYSTATEMIB::Entstatetable::Entstateentry : public ydk::Entity
 {
     public:
         Entstateentry();
@@ -70,24 +71,25 @@ class EntityStateMib::Entstatetable::Entstateentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf entstatelastchanged; //type: string
-        ydk::YLeaf entstateadmin; //type: Entityadminstate
-        ydk::YLeaf entstateoper; //type: Entityoperstate
-        ydk::YLeaf entstateusage; //type: Entityusagestate
-        ydk::YLeaf entstatealarm; //type: Entityalarmstatus
-        ydk::YLeaf entstatestandby; //type: Entitystandbystatus
+        ydk::YLeaf entstateadmin; //type: EntityAdminState
+        ydk::YLeaf entstateoper; //type: EntityOperState
+        ydk::YLeaf entstateusage; //type: EntityUsageState
+        ydk::YLeaf entstatealarm; //type: EntityAlarmStatus
+        ydk::YLeaf entstatestandby; //type: EntityStandbyStatus
 
-}; // EntityStateMib::Entstatetable::Entstateentry
+}; // ENTITYSTATEMIB::Entstatetable::Entstateentry
 
 
 }

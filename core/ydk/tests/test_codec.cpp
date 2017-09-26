@@ -37,7 +37,7 @@ TEST_CASE( "test_codec_rpc" )
 {
     ydk::path::Codec s{};
     std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    mock::MockSession sp{searchdir, test_openconfig};
 
     auto & schema = sp.get_root_schema();
 

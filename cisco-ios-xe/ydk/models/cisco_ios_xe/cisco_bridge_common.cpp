@@ -14,6 +14,7 @@ namespace cisco_bridge_common {
 MacLimitNotificationType::MacLimitNotificationType()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:mac-limit-notification-type")
 {
+
 }
 
 MacLimitNotificationType::~MacLimitNotificationType()
@@ -23,6 +24,7 @@ MacLimitNotificationType::~MacLimitNotificationType()
 NotifNone::NotifNone()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-none")
 {
+
 }
 
 NotifNone::~NotifNone()
@@ -32,6 +34,7 @@ NotifNone::~NotifNone()
 NotifSnmpTrap::NotifSnmpTrap()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-snmp-trap")
 {
+
 }
 
 NotifSnmpTrap::~NotifSnmpTrap()
@@ -41,6 +44,7 @@ NotifSnmpTrap::~NotifSnmpTrap()
 NotifSyslog::NotifSyslog()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-syslog")
 {
+
 }
 
 NotifSyslog::~NotifSyslog()
@@ -50,19 +54,20 @@ NotifSyslog::~NotifSyslog()
 NotifSyslogAndSnmpTrap::NotifSyslogAndSnmpTrap()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-syslog-and-snmp-trap")
 {
+
 }
 
 NotifSyslogAndSnmpTrap::~NotifSyslogAndSnmpTrap()
 {
 }
 
-const Enum::YLeaf MacAgingType::inactivity {0, "inactivity"};
-const Enum::YLeaf MacAgingType::absolute {1, "absolute"};
-
 const Enum::YLeaf MacLimitAction::none {0, "none"};
 const Enum::YLeaf MacLimitAction::flood {1, "flood"};
 const Enum::YLeaf MacLimitAction::drop {2, "drop"};
 const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
+
+const Enum::YLeaf MacAgingType::inactivity {0, "inactivity"};
+const Enum::YLeaf MacAgingType::absolute {1, "absolute"};
 
 const Enum::YLeaf EthTrafficClass::broadcast {0, "broadcast"};
 const Enum::YLeaf EthTrafficClass::multicast {1, "multicast"};

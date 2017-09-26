@@ -18,7 +18,7 @@ class Wanphy : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class Wanphy : public ydk::Entity
 
         class Controllers; //type: Wanphy::Controllers
 
-        std::shared_ptr<Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers> controllers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers> controllers;
         
 }; // Wanphy
 
@@ -46,17 +46,18 @@ class Wanphy::Controllers : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Controller; //type: Wanphy::Controllers::Controller
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers::Controller> > controller;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers::Controller> > controller;
         
 }; // Wanphy::Controllers
 
@@ -69,18 +70,19 @@ class Wanphy::Controllers::Controller : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf controller_name; //type: string
         class Info; //type: Wanphy::Controllers::Controller::Info
 
-        std::shared_ptr<Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers::Controller::Info> info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers::Controller::Info> info;
         
 }; // Wanphy::Controllers::Controller
 
@@ -93,7 +95,7 @@ class Wanphy::Controllers::Controller::Info : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -149,19 +151,19 @@ class Wanphy::Controllers::Controller::Info : public ydk::Entity
 
 }; // Wanphy::Controllers::Controller::Info
 
-class WanphyAlarmRepStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
 class WanphyModeInfo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lan;
         static const ydk::Enum::YLeaf wan;
+
+};
+
+class WanphyAlarmRepStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 

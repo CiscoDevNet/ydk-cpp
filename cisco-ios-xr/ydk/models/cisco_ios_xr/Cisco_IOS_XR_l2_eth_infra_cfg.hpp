@@ -19,7 +19,7 @@ class EthernetFeatures : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -36,32 +36,11 @@ class EthernetFeatures : public ydk::Entity
         class Cfm; //type: EthernetFeatures::Cfm
         class EtherLinkOam; //type: EthernetFeatures::EtherLinkOam
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm> cfm;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EgressFiltering> egress_filtering;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam> ether_link_oam;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm> cfm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EgressFiltering> egress_filtering;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam> ether_link_oam;
         
 }; // EthernetFeatures
-
-
-class EthernetFeatures::EgressFiltering : public ydk::Entity
-{
-    public:
-        EgressFiltering();
-        ~EgressFiltering();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf egress_filtering_default_on; //type: empty
-
-}; // EthernetFeatures::EgressFiltering
 
 
 class EthernetFeatures::Cfm : public ydk::Entity
@@ -72,44 +51,23 @@ class EthernetFeatures::Cfm : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf nv_satellite_sla_processing_disable; //type: empty
         class TracerouteCache; //type: EthernetFeatures::Cfm::TracerouteCache
         class Domains; //type: EthernetFeatures::Cfm::Domains
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains> domains;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::TracerouteCache> traceroute_cache;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains> domains;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::TracerouteCache> traceroute_cache;
         
 }; // EthernetFeatures::Cfm
-
-
-class EthernetFeatures::Cfm::TracerouteCache : public ydk::Entity
-{
-    public:
-        TracerouteCache();
-        ~TracerouteCache();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hold_time; //type: uint32
-        ydk::YLeaf cache_size; //type: uint32
-
-}; // EthernetFeatures::Cfm::TracerouteCache
 
 
 class EthernetFeatures::Cfm::Domains : public ydk::Entity
@@ -120,17 +78,18 @@ class EthernetFeatures::Cfm::Domains : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Domain; //type: EthernetFeatures::Cfm::Domains::Domain
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain> > domain;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain> > domain;
         
 }; // EthernetFeatures::Cfm::Domains
 
@@ -143,7 +102,34 @@ class EthernetFeatures::Cfm::Domains::Domain : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf domain; //type: string
+        class Services; //type: EthernetFeatures::Cfm::Domains::Domain::Services
+        class DomainProperties; //type: EthernetFeatures::Cfm::Domains::Domain::DomainProperties
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::DomainProperties> domain_properties;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services> services;
+        
+}; // EthernetFeatures::Cfm::Domains::Domain
+
+
+class EthernetFeatures::Cfm::Domains::Domain::DomainProperties : public ydk::Entity
+{
+    public:
+        DomainProperties();
+        ~DomainProperties();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -151,14 +137,13 @@ class EthernetFeatures::Cfm::Domains::Domain : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf domain; //type: string
-        class Services; //type: EthernetFeatures::Cfm::Domains::Domain::Services
-        class DomainProperties; //type: EthernetFeatures::Cfm::Domains::Domain::DomainProperties
+        ydk::YLeaf level; //type: uint32
+        ydk::YLeaf mdid_format; //type: CfmMdidFormat
+        ydk::YLeaf mdid_mac_address; //type: string
+        ydk::YLeaf mdid_number; //type: uint32
+        ydk::YLeaf mdid_string; //type: string
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::DomainProperties> domain_properties;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services> services;
-        
-}; // EthernetFeatures::Cfm::Domains::Domain
+}; // EthernetFeatures::Cfm::Domains::Domain::DomainProperties
 
 
 class EthernetFeatures::Cfm::Domains::Domain::Services : public ydk::Entity
@@ -169,7 +154,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -179,7 +164,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services : public ydk::Entity
 
         class Service; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service> > service;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service> > service;
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services
 
@@ -192,7 +177,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -217,80 +202,14 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service : public ydk::En
         class CrossCheck; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
         class ServiceProperties; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais> ais;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval> continuity_check_interval; // presence node
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck> cross_check;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2> efd2; // presence node
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation> mip_auto_creation; // presence node
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties> service_properties; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais> ais;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval> continuity_check_interval; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck> cross_check;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2> efd2; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation> mip_auto_creation; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties> service_properties; // presence node
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service
-
-
-class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2 : public ydk::Entity
-{
-    public:
-        Efd2();
-        ~Efd2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf protection_switching_enable; //type: empty
-
-}; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2
-
-
-class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval : public ydk::Entity
-{
-    public:
-        ContinuityCheckInterval();
-        ~ContinuityCheckInterval();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ccm_interval; //type: CfmCcmInterval
-        ydk::YLeaf loss_threshold; //type: uint32
-
-}; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval
-
-
-class EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation : public ydk::Entity
-{
-    public:
-        MipAutoCreation();
-        ~MipAutoCreation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mip_policy; //type: CfmMipPolicy
-        ydk::YLeaf ccm_learning_enable; //type: empty
-
-}; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation
 
 
 class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais : public ydk::Entity
@@ -301,7 +220,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -311,7 +230,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais : public yd
 
         class Transmission; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission> transmission; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission> transmission; // presence node
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais
 
@@ -324,7 +243,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmissi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -338,6 +257,28 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmissi
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission
 
 
+class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval : public ydk::Entity
+{
+    public:
+        ContinuityCheckInterval();
+        ~ContinuityCheckInterval();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ccm_interval; //type: CfmCcmInterval
+        ydk::YLeaf loss_threshold; //type: uint32
+
+}; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval
+
+
 class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck : public ydk::Entity
 {
     public:
@@ -346,7 +287,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -357,7 +298,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck : pu
         ydk::YLeaf auto_; //type: empty
         class CrossCheckMeps; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps> cross_check_meps;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps> cross_check_meps;
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
 
@@ -370,7 +311,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cro
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -380,7 +321,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cro
 
         class CrossCheckMep; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep> > cross_check_mep;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep> > cross_check_mep;
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps
 
@@ -393,7 +334,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cro
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -408,6 +349,50 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cro
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep
 
 
+class EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2 : public ydk::Entity
+{
+    public:
+        Efd2();
+        ~Efd2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf protection_switching_enable; //type: empty
+
+}; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2
+
+
+class EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation : public ydk::Entity
+{
+    public:
+        MipAutoCreation();
+        ~MipAutoCreation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mip_policy; //type: CfmMipPolicy
+        ydk::YLeaf ccm_learning_enable; //type: empty
+
+}; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation
+
+
 class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties : public ydk::Entity
 {
     public:
@@ -416,7 +401,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -429,6 +414,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperti
         ydk::YLeaf switching_name; //type: string
         ydk::YLeaf ce_id; //type: uint32
         ydk::YLeaf remote_ce_id; //type: uint32
+        ydk::YLeaf evi; //type: uint32
         ydk::YLeaf short_ma_name_format; //type: CfmShortMaNameFormat
         ydk::YLeaf short_ma_name_string; //type: string
         ydk::YLeaf short_ma_name_number; //type: uint32
@@ -440,29 +426,49 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperti
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties
 
 
-class EthernetFeatures::Cfm::Domains::Domain::DomainProperties : public ydk::Entity
+class EthernetFeatures::Cfm::TracerouteCache : public ydk::Entity
 {
     public:
-        DomainProperties();
-        ~DomainProperties();
+        TracerouteCache();
+        ~TracerouteCache();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf level; //type: uint32
-        ydk::YLeaf mdid_format; //type: CfmMdidFormat
-        ydk::YLeaf mdid_mac_address; //type: string
-        ydk::YLeaf mdid_number; //type: uint32
-        ydk::YLeaf mdid_string; //type: string
+        ydk::YLeaf hold_time; //type: uint32
+        ydk::YLeaf cache_size; //type: uint32
 
-}; // EthernetFeatures::Cfm::Domains::Domain::DomainProperties
+}; // EthernetFeatures::Cfm::TracerouteCache
+
+
+class EthernetFeatures::EgressFiltering : public ydk::Entity
+{
+    public:
+        EgressFiltering();
+        ~EgressFiltering();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf egress_filtering_default_on; //type: empty
+
+}; // EthernetFeatures::EgressFiltering
 
 
 class EthernetFeatures::EtherLinkOam : public ydk::Entity
@@ -473,17 +479,18 @@ class EthernetFeatures::EtherLinkOam : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Profiles; //type: EthernetFeatures::EtherLinkOam::Profiles
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles> profiles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles> profiles;
         
 }; // EthernetFeatures::EtherLinkOam
 
@@ -496,17 +503,18 @@ class EthernetFeatures::EtherLinkOam::Profiles : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Profile; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile> > profile;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile> > profile;
         
 }; // EthernetFeatures::EtherLinkOam::Profiles
 
@@ -519,13 +527,14 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf profile; //type: string
         ydk::YLeaf mib_retrieval; //type: boolean
@@ -538,9 +547,9 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile : public ydk::Entity
         class RequireRemote; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote
         class LinkMonitoring; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::Action> action;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring> link_monitoring;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote> require_remote;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::Action> action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring> link_monitoring;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote> require_remote;
         
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile
 
@@ -553,7 +562,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::Action : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -575,30 +584,6 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::Action : public ydk::En
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::Action
 
 
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote : public ydk::Entity
-{
-    public:
-        RequireRemote();
-        ~RequireRemote();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mib_retrieval; //type: boolean
-        ydk::YLeaf mode; //type: EtherLinkOamRequireModeEnum
-        ydk::YLeaf remote_loopback; //type: boolean
-        ydk::YLeaf link_monitoring; //type: boolean
-
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote
-
-
 class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring : public ydk::Entity
 {
     public:
@@ -607,7 +592,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -621,48 +606,23 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring : public
         class FrameSeconds; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds
         class Frame; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame> frame;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod> frame_period;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds> frame_seconds;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod> symbol_period;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame> frame;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod> frame_period;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds> frame_seconds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod> symbol_period;
         
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring
 
 
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod : public ydk::Entity
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame : public ydk::Entity
 {
     public:
-        SymbolPeriod();
-        ~SymbolPeriod();
+        Frame();
+        ~Frame();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Window; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window
-        class Threshold; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold
-
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold> threshold;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window> window; // presence node
-        
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod
-
-
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window : public ydk::Entity
-{
-    public:
-        Window();
-        ~Window();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -671,13 +631,14 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolP
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint32
-        ydk::YLeaf units; //type: EtherLinkOamWindowUnitsSymbolsEnum
-        ydk::YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnum
+        class Threshold; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold
 
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold> threshold;
+        
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame
 
 
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold : public ydk::Entity
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -685,7 +646,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolP
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -695,11 +656,10 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolP
 
         ydk::YLeaf threshold_low; //type: uint32
         ydk::YLeaf threshold_high; //type: uint32
-        ydk::YLeaf units; //type: EtherLinkOamThresholdUnitsSymbolsEnum
         ydk::YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnum
         ydk::YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold
 
 
 class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod : public ydk::Entity
@@ -710,7 +670,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -721,33 +681,10 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePe
         class Window; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window
         class Threshold; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold> threshold;
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window> window; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window> window; // presence node
         
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod
-
-
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window : public ydk::Entity
-{
-    public:
-        Window();
-        ~Window();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf window; //type: uint32
-        ydk::YLeaf units; //type: EtherLinkOamWindowUnitsFramesEnum
-        ydk::YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnum
-
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window
 
 
 class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold : public ydk::Entity
@@ -758,7 +695,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -775,6 +712,29 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePe
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold
 
 
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window : public ydk::Entity
+{
+    public:
+        Window();
+        ~Window();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf window; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamWindowUnitsFramesEnum
+        ydk::YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnum
+
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window
+
+
 class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds : public ydk::Entity
 {
     public:
@@ -783,7 +743,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -794,7 +754,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSe
         ydk::YLeaf window; //type: uint32
         class Threshold; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold> threshold;
         
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds
 
@@ -807,7 +767,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -821,15 +781,15 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSe
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold
 
 
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame : public ydk::Entity
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod : public ydk::Entity
 {
     public:
-        Frame();
-        ~Frame();
+        SymbolPeriod();
+        ~SymbolPeriod();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -837,15 +797,16 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf window; //type: uint32
-        class Threshold; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold
+        class Window; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window
+        class Threshold; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold
 
-        std::shared_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window> window; // presence node
         
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod
 
 
-class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold : public ydk::Entity
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -853,7 +814,7 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -863,29 +824,58 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::
 
         ydk::YLeaf threshold_low; //type: uint32
         ydk::YLeaf threshold_high; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamThresholdUnitsSymbolsEnum
         ydk::YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnum
         ydk::YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold
 
-class L2ProtocolMode : public ydk::Enum
+
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf forward;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf reverse_tunnel;
+        Window();
+        ~Window();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class EgressFiltering : public ydk::Enum
+        ydk::YLeaf window; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamWindowUnitsSymbolsEnum
+        ydk::YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnum
+
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window
+
+
+class EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf egress_filtering_type_strict;
-        static const ydk::Enum::YLeaf egress_filtering_type_disable;
-        static const ydk::Enum::YLeaf egress_filtering_type_default;
+        RequireRemote();
+        ~RequireRemote();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mib_retrieval; //type: boolean
+        ydk::YLeaf mode; //type: EtherLinkOamRequireModeEnum
+        ydk::YLeaf remote_loopback; //type: boolean
+        ydk::YLeaf link_monitoring; //type: boolean
+
+}; // EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote
 
 class L2ProtocolName : public ydk::Enum
 {
@@ -898,11 +888,30 @@ class L2ProtocolName : public ydk::Enum
 
 };
 
+class L2ProtocolMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf forward;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf reverse_tunnel;
+
+};
+
 class Filtering : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf filtering_type_dot1q;
         static const ydk::Enum::YLeaf filtering_type_dot1ad;
+
+};
+
+class EgressFiltering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress_filtering_type_strict;
+        static const ydk::Enum::YLeaf egress_filtering_type_disable;
+        static const ydk::Enum::YLeaf egress_filtering_type_default;
 
 };
 

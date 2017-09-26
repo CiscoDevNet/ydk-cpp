@@ -10,50 +10,50 @@
 namespace openconfig {
 namespace openconfig_vlan_types {
 
-class Tpid_Types : public virtual ydk::Identity
+class TPIDTYPES : public virtual ydk::Identity
 {
     public:
-        Tpid_Types();
-        ~Tpid_Types();
+        TPIDTYPES();
+        ~TPIDTYPES();
 
 
-}; // Tpid_Types
+}; // TPIDTYPES
 
-class Tpid_0X8100 : public openconfig_vlan_types::Tpid_Types, virtual ydk::Identity
+class TPID0X9200 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
     public:
-        Tpid_0X8100();
-        ~Tpid_0X8100();
+        TPID0X9200();
+        ~TPID0X9200();
 
 
-}; // Tpid_0X8100
+}; // TPID0X9200
 
-class Tpid_0X8A88 : public openconfig_vlan_types::Tpid_Types, virtual ydk::Identity
+class TPID0x8100 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
     public:
-        Tpid_0X8A88();
-        ~Tpid_0X8A88();
+        TPID0x8100();
+        ~TPID0x8100();
 
 
-}; // Tpid_0X8A88
+}; // TPID0x8100
 
-class Tpid_0X9100 : public openconfig_vlan_types::Tpid_Types, virtual ydk::Identity
+class TPID0x8A88 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
     public:
-        Tpid_0X9100();
-        ~Tpid_0X9100();
+        TPID0x8A88();
+        ~TPID0x8A88();
 
 
-}; // Tpid_0X9100
+}; // TPID0x8A88
 
-class Tpid_0X9200 : public openconfig_vlan_types::Tpid_Types, virtual ydk::Identity
+class TPID0x9100 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
     public:
-        Tpid_0X9200();
-        ~Tpid_0X9200();
+        TPID0x9100();
+        ~TPID0x9100();
 
 
-}; // Tpid_0X9200
+}; // TPID0x9100
 
 class VlanModeType : public ydk::Enum
 {

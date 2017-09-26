@@ -21,15 +21,6 @@ class Bgp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Bgp
 
-class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
-{
-    public:
-        Rip();
-        ~Rip();
-
-
-}; // Rip
-
 class Eigrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
@@ -56,6 +47,15 @@ class Mobile : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 
 }; // Mobile
+
+class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Rip();
+        ~Rip();
+
+
+}; // Rip
 
 
 }

@@ -18,7 +18,7 @@ class Redundancy : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class Redundancy : public ydk::Entity
         class Nodes; //type: Redundancy::Nodes
         class Summary; //type: Redundancy::Summary
 
-        std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes> nodes;
-        std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary> summary;
         
 }; // Redundancy
 
@@ -48,17 +48,18 @@ class Redundancy::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: Redundancy::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node> > node;
         
 }; // Redundancy::Nodes
 
@@ -71,13 +72,14 @@ class Redundancy::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_id; //type: string
         ydk::YLeaf log; //type: string
@@ -86,7 +88,7 @@ class Redundancy::Nodes::Node : public ydk::Entity
         ydk::YLeaf err_log; //type: string
         class Redundancy_; //type: Redundancy::Nodes::Node::Redundancy_
 
-        std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node::Redundancy_> redundancy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node::Redundancy_> redundancy;
         
 }; // Redundancy::Nodes::Node
 
@@ -99,7 +101,7 @@ class Redundancy::Nodes::Node::Redundancy_ : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -113,7 +115,7 @@ class Redundancy::Nodes::Node::Redundancy_ : public ydk::Entity
         ydk::YLeaf nsr_state; //type: string
         class Groupinfo; //type: Redundancy::Nodes::Node::Redundancy_::Groupinfo
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node::Redundancy_::Groupinfo> > groupinfo;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node::Redundancy_::Groupinfo> > groupinfo;
         
 }; // Redundancy::Nodes::Node::Redundancy_
 
@@ -126,7 +128,7 @@ class Redundancy::Nodes::Node::Redundancy_::Groupinfo : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -150,18 +152,19 @@ class Redundancy::Summary : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf err_log; //type: string
         class RedPair; //type: Redundancy::Summary::RedPair
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary::RedPair> > red_pair;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary::RedPair> > red_pair;
         
 }; // Redundancy::Summary
 
@@ -174,13 +177,14 @@ class Redundancy::Summary::RedPair : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf active; //type: string
         ydk::YLeaf standby; //type: string
@@ -188,7 +192,7 @@ class Redundancy::Summary::RedPair : public ydk::Entity
         ydk::YLeaf nsr_state; //type: string
         class Groupinfo; //type: Redundancy::Summary::RedPair::Groupinfo
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary::RedPair::Groupinfo> > groupinfo;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary::RedPair::Groupinfo> > groupinfo;
         
 }; // Redundancy::Summary::RedPair
 
@@ -201,13 +205,14 @@ class Redundancy::Summary::RedPair::Groupinfo : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf active; //type: string
         ydk::YLeaf standby; //type: string

@@ -17,10 +17,9 @@ RestconfState::RestconfState()
 	,streams(std::make_shared<RestconfState::Streams>())
 {
     capabilities->parent = this;
-
     streams->parent = this;
 
-    yang_name = "restconf-state"; yang_parent_name = "ietf-restconf-monitoring";
+    yang_name = "restconf-state"; yang_parent_name = "ietf-restconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 RestconfState::~RestconfState()
@@ -44,26 +43,15 @@ std::string RestconfState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-restconf-monitoring:restconf-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RestconfState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RestconfState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -150,7 +138,8 @@ RestconfState::Capabilities::Capabilities()
     :
     capability{YType::str, "capability"}
 {
-    yang_name = "capabilities"; yang_parent_name = "restconf-state";
+
+    yang_name = "capabilities"; yang_parent_name = "restconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RestconfState::Capabilities::~Capabilities()
@@ -178,35 +167,28 @@ bool RestconfState::Capabilities::has_operation() const
 	|| ydk::is_set(capability.yfilter);
 }
 
+std::string RestconfState::Capabilities::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-restconf-monitoring:restconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RestconfState::Capabilities::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "capabilities";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RestconfState::Capabilities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RestconfState::Capabilities::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-restconf-monitoring:restconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto capability_name_datas = capability.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), capability_name_datas.begin(), capability_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -246,7 +228,8 @@ bool RestconfState::Capabilities::has_leaf_or_child_of_name(const std::string & 
 
 RestconfState::Streams::Streams()
 {
-    yang_name = "streams"; yang_parent_name = "restconf-state";
+
+    yang_name = "streams"; yang_parent_name = "restconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RestconfState::Streams::~Streams()
@@ -273,33 +256,26 @@ bool RestconfState::Streams::has_operation() const
     return is_set(yfilter);
 }
 
+std::string RestconfState::Streams::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-restconf-monitoring:restconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RestconfState::Streams::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "streams";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RestconfState::Streams::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-restconf-monitoring:restconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -357,7 +333,8 @@ RestconfState::Streams::Stream::Stream()
     replay_log_creation_time{YType::str, "replay-log-creation-time"},
     replay_support{YType::boolean, "replay-support"}
 {
-    yang_name = "stream"; yang_parent_name = "streams";
+
+    yang_name = "stream"; yang_parent_name = "streams"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RestconfState::Streams::Stream::~Stream()
@@ -391,27 +368,22 @@ bool RestconfState::Streams::Stream::has_operation() const
 	|| ydk::is_set(replay_support.yfilter);
 }
 
+std::string RestconfState::Streams::Stream::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-restconf-monitoring:restconf-state/streams/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RestconfState::Streams::Stream::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stream" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RestconfState::Streams::Stream::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::Stream::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-restconf-monitoring:restconf-state/streams/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -419,9 +391,7 @@ const EntityPath RestconfState::Streams::Stream::get_entity_path(Entity* ancesto
     if (replay_log_creation_time.is_set || is_set(replay_log_creation_time.yfilter)) leaf_name_data.push_back(replay_log_creation_time.get_name_leafdata());
     if (replay_support.is_set || is_set(replay_support.yfilter)) leaf_name_data.push_back(replay_support.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -517,7 +487,8 @@ RestconfState::Streams::Stream::Access::Access()
     encoding{YType::str, "encoding"},
     location{YType::str, "location"}
 {
-    yang_name = "access"; yang_parent_name = "stream";
+
+    yang_name = "access"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RestconfState::Streams::Stream::Access::~Access()
@@ -541,31 +512,17 @@ std::string RestconfState::Streams::Stream::Access::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access" <<"[encoding='" <<encoding <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RestconfState::Streams::Stream::Access::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::Stream::Access::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Access' in ietf_restconf_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

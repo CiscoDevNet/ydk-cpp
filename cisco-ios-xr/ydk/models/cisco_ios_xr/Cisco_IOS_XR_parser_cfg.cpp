@@ -17,25 +17,21 @@ Parser::Parser()
 	,configuration(std::make_shared<Parser::Configuration>())
 	,history(std::make_shared<Parser::History>())
 	,indentation(std::make_shared<Parser::Indentation>())
+	,interactive(std::make_shared<Parser::Interactive>())
 	,interface_display(std::make_shared<Parser::InterfaceDisplay>())
 	,netmask_format(std::make_shared<Parser::NetmaskFormat>())
 	,submode_exit(std::make_shared<Parser::SubmodeExit>())
 {
     alias->parent = this;
-
     configuration->parent = this;
-
     history->parent = this;
-
     indentation->parent = this;
-
+    interactive->parent = this;
     interface_display->parent = this;
-
     netmask_format->parent = this;
-
     submode_exit->parent = this;
 
-    yang_name = "parser"; yang_parent_name = "Cisco-IOS-XR-parser-cfg";
+    yang_name = "parser"; yang_parent_name = "Cisco-IOS-XR-parser-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Parser::~Parser()
@@ -48,6 +44,7 @@ bool Parser::has_data() const
 	|| (configuration !=  nullptr && configuration->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (indentation !=  nullptr && indentation->has_data())
+	|| (interactive !=  nullptr && interactive->has_data())
 	|| (interface_display !=  nullptr && interface_display->has_data())
 	|| (netmask_format !=  nullptr && netmask_format->has_data())
 	|| (submode_exit !=  nullptr && submode_exit->has_data());
@@ -60,6 +57,7 @@ bool Parser::has_operation() const
 	|| (configuration !=  nullptr && configuration->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (indentation !=  nullptr && indentation->has_operation())
+	|| (interactive !=  nullptr && interactive->has_operation())
 	|| (interface_display !=  nullptr && interface_display->has_operation())
 	|| (netmask_format !=  nullptr && netmask_format->has_operation())
 	|| (submode_exit !=  nullptr && submode_exit->has_operation());
@@ -69,26 +67,15 @@ std::string Parser::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-parser-cfg:parser";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -128,6 +115,15 @@ std::shared_ptr<Entity> Parser::get_child_by_name(const std::string & child_yang
             indentation = std::make_shared<Parser::Indentation>();
         }
         return indentation;
+    }
+
+    if(child_yang_name == "interactive")
+    {
+        if(interactive == nullptr)
+        {
+            interactive = std::make_shared<Parser::Interactive>();
+        }
+        return interactive;
     }
 
     if(child_yang_name == "interface-display")
@@ -183,6 +179,11 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::get_children() const
         children["indentation"] = indentation;
     }
 
+    if(interactive != nullptr)
+    {
+        children["interactive"] = interactive;
+    }
+
     if(interface_display != nullptr)
     {
         children["interface-display"] = interface_display;
@@ -236,96 +237,7 @@ std::map<std::pair<std::string, std::string>, std::string> Parser::get_namespace
 
 bool Parser::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "alias" || name == "configuration" || name == "history" || name == "indentation" || name == "interface-display" || name == "netmask-format" || name == "submode-exit")
-        return true;
-    return false;
-}
-
-Parser::Indentation::Indentation()
-    :
-    indentation_disable{YType::boolean, "indentation-disable"}
-{
-    yang_name = "indentation"; yang_parent_name = "parser";
-}
-
-Parser::Indentation::~Indentation()
-{
-}
-
-bool Parser::Indentation::has_data() const
-{
-    return indentation_disable.is_set;
-}
-
-bool Parser::Indentation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(indentation_disable.yfilter);
-}
-
-std::string Parser::Indentation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "indentation";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Parser::Indentation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (indentation_disable.is_set || is_set(indentation_disable.yfilter)) leaf_name_data.push_back(indentation_disable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Parser::Indentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Parser::Indentation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Parser::Indentation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "indentation-disable")
-    {
-        indentation_disable = value;
-        indentation_disable.value_namespace = name_space;
-        indentation_disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Parser::Indentation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "indentation-disable")
-    {
-        indentation_disable.yfilter = yfilter;
-    }
-}
-
-bool Parser::Indentation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "indentation-disable")
+    if(name == "alias" || name == "configuration" || name == "history" || name == "indentation" || name == "interactive" || name == "interface-display" || name == "netmask-format" || name == "submode-exit")
         return true;
     return false;
 }
@@ -337,12 +249,10 @@ Parser::Alias::Alias()
 	,execs(std::make_shared<Parser::Alias::Execs>())
 {
     alls->parent = this;
-
     configurations->parent = this;
-
     execs->parent = this;
 
-    yang_name = "alias"; yang_parent_name = "parser";
+    yang_name = "alias"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Parser::Alias::~Alias()
@@ -364,33 +274,26 @@ bool Parser::Alias::has_operation() const
 	|| (execs !=  nullptr && execs->has_operation());
 }
 
+std::string Parser::Alias::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Parser::Alias::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alias";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::Alias::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -462,427 +365,10 @@ bool Parser::Alias::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Parser::Alias::Execs::Execs()
-{
-    yang_name = "execs"; yang_parent_name = "alias";
-}
-
-Parser::Alias::Execs::~Execs()
-{
-}
-
-bool Parser::Alias::Execs::has_data() const
-{
-    for (std::size_t index=0; index<exec.size(); index++)
-    {
-        if(exec[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Parser::Alias::Execs::has_operation() const
-{
-    for (std::size_t index=0; index<exec.size(); index++)
-    {
-        if(exec[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Parser::Alias::Execs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "execs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Parser::Alias::Execs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Parser::Alias::Execs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "exec")
-    {
-        for(auto const & c : exec)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Parser::Alias::Execs::Exec>();
-        c->parent = this;
-        exec.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : exec)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Parser::Alias::Execs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Parser::Alias::Execs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Parser::Alias::Execs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exec")
-        return true;
-    return false;
-}
-
-Parser::Alias::Execs::Exec::Exec()
-    :
-    identifier{YType::str, "identifier"},
-    identifier_xr{YType::str, "identifier-xr"}
-{
-    yang_name = "exec"; yang_parent_name = "execs";
-}
-
-Parser::Alias::Execs::Exec::~Exec()
-{
-}
-
-bool Parser::Alias::Execs::Exec::has_data() const
-{
-    return identifier.is_set
-	|| identifier_xr.is_set;
-}
-
-bool Parser::Alias::Execs::Exec::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(identifier.yfilter)
-	|| ydk::is_set(identifier_xr.yfilter);
-}
-
-std::string Parser::Alias::Execs::Exec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exec" <<"[identifier='" <<identifier <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Parser::Alias::Execs::Exec::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/execs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Parser::Alias::Execs::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::Exec::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Parser::Alias::Execs::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "identifier")
-    {
-        identifier = value;
-        identifier.value_namespace = name_space;
-        identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "identifier-xr")
-    {
-        identifier_xr = value;
-        identifier_xr.value_namespace = name_space;
-        identifier_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Parser::Alias::Execs::Exec::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "identifier")
-    {
-        identifier.yfilter = yfilter;
-    }
-    if(value_path == "identifier-xr")
-    {
-        identifier_xr.yfilter = yfilter;
-    }
-}
-
-bool Parser::Alias::Execs::Exec::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "identifier" || name == "identifier-xr")
-        return true;
-    return false;
-}
-
-Parser::Alias::Configurations::Configurations()
-{
-    yang_name = "configurations"; yang_parent_name = "alias";
-}
-
-Parser::Alias::Configurations::~Configurations()
-{
-}
-
-bool Parser::Alias::Configurations::has_data() const
-{
-    for (std::size_t index=0; index<configuration.size(); index++)
-    {
-        if(configuration[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Parser::Alias::Configurations::has_operation() const
-{
-    for (std::size_t index=0; index<configuration.size(); index++)
-    {
-        if(configuration[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Parser::Alias::Configurations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "configurations";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Parser::Alias::Configurations::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Parser::Alias::Configurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "configuration")
-    {
-        for(auto const & c : configuration)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Parser::Alias::Configurations::Configuration>();
-        c->parent = this;
-        configuration.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : configuration)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Parser::Alias::Configurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Parser::Alias::Configurations::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Parser::Alias::Configurations::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "configuration")
-        return true;
-    return false;
-}
-
-Parser::Alias::Configurations::Configuration::Configuration()
-    :
-    identifier{YType::str, "identifier"},
-    identifier_xr{YType::str, "identifier-xr"}
-{
-    yang_name = "configuration"; yang_parent_name = "configurations";
-}
-
-Parser::Alias::Configurations::Configuration::~Configuration()
-{
-}
-
-bool Parser::Alias::Configurations::Configuration::has_data() const
-{
-    return identifier.is_set
-	|| identifier_xr.is_set;
-}
-
-bool Parser::Alias::Configurations::Configuration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(identifier.yfilter)
-	|| ydk::is_set(identifier_xr.yfilter);
-}
-
-std::string Parser::Alias::Configurations::Configuration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "configuration" <<"[identifier='" <<identifier <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Parser::Alias::Configurations::Configuration::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/configurations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Parser::Alias::Configurations::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::Configuration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Parser::Alias::Configurations::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "identifier")
-    {
-        identifier = value;
-        identifier.value_namespace = name_space;
-        identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "identifier-xr")
-    {
-        identifier_xr = value;
-        identifier_xr.value_namespace = name_space;
-        identifier_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Parser::Alias::Configurations::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "identifier")
-    {
-        identifier.yfilter = yfilter;
-    }
-    if(value_path == "identifier-xr")
-    {
-        identifier_xr.yfilter = yfilter;
-    }
-}
-
-bool Parser::Alias::Configurations::Configuration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "identifier" || name == "identifier-xr")
-        return true;
-    return false;
-}
-
 Parser::Alias::Alls::Alls()
 {
-    yang_name = "alls"; yang_parent_name = "alias";
+
+    yang_name = "alls"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Parser::Alias::Alls::~Alls()
@@ -909,33 +395,26 @@ bool Parser::Alias::Alls::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Parser::Alias::Alls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Parser::Alias::Alls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alls";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::Alias::Alls::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::Alls::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -991,7 +470,8 @@ Parser::Alias::Alls::All::All()
     identifier{YType::str, "identifier"},
     identifier_xr{YType::str, "identifier-xr"}
 {
-    yang_name = "all"; yang_parent_name = "alls";
+
+    yang_name = "all"; yang_parent_name = "alls"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Parser::Alias::Alls::All::~All()
@@ -1011,35 +491,28 @@ bool Parser::Alias::Alls::All::has_operation() const
 	|| ydk::is_set(identifier_xr.yfilter);
 }
 
+std::string Parser::Alias::Alls::All::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/alls/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Parser::Alias::Alls::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all" <<"[identifier='" <<identifier <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::Alias::Alls::All::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::Alls::All::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/alls/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
     if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1089,269 +562,396 @@ bool Parser::Alias::Alls::All::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-Parser::History::History()
-    :
-    size{YType::uint32, "size"}
+Parser::Alias::Configurations::Configurations()
 {
-    yang_name = "history"; yang_parent_name = "parser";
+
+    yang_name = "configurations"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Parser::History::~History()
+Parser::Alias::Configurations::~Configurations()
 {
 }
 
-bool Parser::History::has_data() const
+bool Parser::Alias::Configurations::has_data() const
 {
-    return size.is_set;
+    for (std::size_t index=0; index<configuration.size(); index++)
+    {
+        if(configuration[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Parser::History::has_operation() const
+bool Parser::Alias::Configurations::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(size.yfilter);
+    for (std::size_t index=0; index<configuration.size(); index++)
+    {
+        if(configuration[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string Parser::History::get_segment_path() const
+std::string Parser::Alias::Configurations::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history";
-
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::History::get_entity_path(Entity* ancestor) const
+std::string Parser::Alias::Configurations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "configurations";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::Configurations::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Parser::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Parser::Alias::Configurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "configuration")
+    {
+        for(auto const & c : configuration)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Parser::Alias::Configurations::Configuration>();
+        c->parent = this;
+        configuration.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::History::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : configuration)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void Parser::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Parser::Alias::Configurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "size")
-    {
-        size = value;
-        size.value_namespace = name_space;
-        size.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Parser::History::set_filter(const std::string & value_path, YFilter yfilter)
+void Parser::Alias::Configurations::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "size")
-    {
-        size.yfilter = yfilter;
-    }
 }
 
-bool Parser::History::has_leaf_or_child_of_name(const std::string & name) const
+bool Parser::Alias::Configurations::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "size")
+    if(name == "configuration")
         return true;
     return false;
 }
 
-Parser::InterfaceDisplay::InterfaceDisplay()
+Parser::Alias::Configurations::Configuration::Configuration()
     :
-    slot_order{YType::boolean, "slot-order"}
+    identifier{YType::str, "identifier"},
+    identifier_xr{YType::str, "identifier-xr"}
 {
-    yang_name = "interface-display"; yang_parent_name = "parser";
+
+    yang_name = "configuration"; yang_parent_name = "configurations"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Parser::InterfaceDisplay::~InterfaceDisplay()
+Parser::Alias::Configurations::Configuration::~Configuration()
 {
 }
 
-bool Parser::InterfaceDisplay::has_data() const
+bool Parser::Alias::Configurations::Configuration::has_data() const
 {
-    return slot_order.is_set;
+    return identifier.is_set
+	|| identifier_xr.is_set;
 }
 
-bool Parser::InterfaceDisplay::has_operation() const
+bool Parser::Alias::Configurations::Configuration::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(slot_order.yfilter);
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(identifier_xr.yfilter);
 }
 
-std::string Parser::InterfaceDisplay::get_segment_path() const
+std::string Parser::Alias::Configurations::Configuration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-display";
-
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/configurations/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::InterfaceDisplay::get_entity_path(Entity* ancestor) const
+std::string Parser::Alias::Configurations::Configuration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "configuration" <<"[identifier='" <<identifier <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::Configurations::Configuration::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slot_order.is_set || is_set(slot_order.yfilter)) leaf_name_data.push_back(slot_order.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Parser::InterfaceDisplay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Parser::Alias::Configurations::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::InterfaceDisplay::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Parser::InterfaceDisplay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Parser::Alias::Configurations::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "slot-order")
+    if(value_path == "identifier")
     {
-        slot_order = value;
-        slot_order.value_namespace = name_space;
-        slot_order.value_namespace_prefix = name_space_prefix;
+        identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr = value;
+        identifier_xr.value_namespace = name_space;
+        identifier_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Parser::InterfaceDisplay::set_filter(const std::string & value_path, YFilter yfilter)
+void Parser::Alias::Configurations::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "slot-order")
+    if(value_path == "identifier")
     {
-        slot_order.yfilter = yfilter;
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr.yfilter = yfilter;
     }
 }
 
-bool Parser::InterfaceDisplay::has_leaf_or_child_of_name(const std::string & name) const
+bool Parser::Alias::Configurations::Configuration::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "slot-order")
+    if(name == "identifier" || name == "identifier-xr")
         return true;
     return false;
 }
 
-Parser::NetmaskFormat::NetmaskFormat()
-    :
-    bit_count{YType::boolean, "bit-count"}
+Parser::Alias::Execs::Execs()
 {
-    yang_name = "netmask-format"; yang_parent_name = "parser";
+
+    yang_name = "execs"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Parser::NetmaskFormat::~NetmaskFormat()
+Parser::Alias::Execs::~Execs()
 {
 }
 
-bool Parser::NetmaskFormat::has_data() const
+bool Parser::Alias::Execs::has_data() const
 {
-    return bit_count.is_set;
+    for (std::size_t index=0; index<exec.size(); index++)
+    {
+        if(exec[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Parser::NetmaskFormat::has_operation() const
+bool Parser::Alias::Execs::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(bit_count.yfilter);
+    for (std::size_t index=0; index<exec.size(); index++)
+    {
+        if(exec[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string Parser::NetmaskFormat::get_segment_path() const
+std::string Parser::Alias::Execs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "netmask-format";
-
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::NetmaskFormat::get_entity_path(Entity* ancestor) const
+std::string Parser::Alias::Execs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "execs";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::Execs::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bit_count.is_set || is_set(bit_count.yfilter)) leaf_name_data.push_back(bit_count.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Parser::NetmaskFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Parser::Alias::Execs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "exec")
+    {
+        for(auto const & c : exec)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Parser::Alias::Execs::Exec>();
+        c->parent = this;
+        exec.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : exec)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Parser::Alias::Execs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Parser::Alias::Execs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Parser::Alias::Execs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exec")
+        return true;
+    return false;
+}
+
+Parser::Alias::Execs::Exec::Exec()
+    :
+    identifier{YType::str, "identifier"},
+    identifier_xr{YType::str, "identifier-xr"}
+{
+
+    yang_name = "exec"; yang_parent_name = "execs"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Parser::Alias::Execs::Exec::~Exec()
+{
+}
+
+bool Parser::Alias::Execs::Exec::has_data() const
+{
+    return identifier.is_set
+	|| identifier_xr.is_set;
+}
+
+bool Parser::Alias::Execs::Exec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(identifier_xr.yfilter);
+}
+
+std::string Parser::Alias::Execs::Exec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/alias/execs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::Alias::Execs::Exec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exec" <<"[identifier='" <<identifier <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::Alias::Execs::Exec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::Alias::Execs::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::NetmaskFormat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Parser::NetmaskFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Parser::Alias::Execs::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "bit-count")
+    if(value_path == "identifier")
     {
-        bit_count = value;
-        bit_count.value_namespace = name_space;
-        bit_count.value_namespace_prefix = name_space_prefix;
+        identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr = value;
+        identifier_xr.value_namespace = name_space;
+        identifier_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Parser::NetmaskFormat::set_filter(const std::string & value_path, YFilter yfilter)
+void Parser::Alias::Execs::Exec::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "bit-count")
+    if(value_path == "identifier")
     {
-        bit_count.yfilter = yfilter;
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr.yfilter = yfilter;
     }
 }
 
-bool Parser::NetmaskFormat::has_leaf_or_child_of_name(const std::string & name) const
+bool Parser::Alias::Execs::Exec::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bit-count")
+    if(name == "identifier" || name == "identifier-xr")
         return true;
     return false;
 }
@@ -1362,7 +962,7 @@ Parser::Configuration::Configuration()
 {
     disable->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "parser";
+    yang_name = "configuration"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Parser::Configuration::~Configuration()
@@ -1380,33 +980,26 @@ bool Parser::Configuration::has_operation() const
 	|| (disable !=  nullptr && disable->has_operation());
 }
 
+std::string Parser::Configuration::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Parser::Configuration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "configuration";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::Configuration::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::Configuration::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1454,7 +1047,8 @@ Parser::Configuration::Disable::Disable()
     :
     usergroup{YType::str, "usergroup"}
 {
-    yang_name = "disable"; yang_parent_name = "configuration";
+
+    yang_name = "disable"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Parser::Configuration::Disable::~Disable()
@@ -1472,34 +1066,27 @@ bool Parser::Configuration::Disable::has_operation() const
 	|| ydk::is_set(usergroup.yfilter);
 }
 
+std::string Parser::Configuration::Disable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/configuration/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Parser::Configuration::Disable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::Configuration::Disable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::Configuration::Disable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/configuration/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (usergroup.is_set || is_set(usergroup.yfilter)) leaf_name_data.push_back(usergroup.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1539,11 +1126,427 @@ bool Parser::Configuration::Disable::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
+Parser::History::History()
+    :
+    size{YType::uint32, "size"}
+{
+
+    yang_name = "history"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Parser::History::~History()
+{
+}
+
+bool Parser::History::has_data() const
+{
+    return size.is_set;
+}
+
+bool Parser::History::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter);
+}
+
+std::string Parser::History::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::History::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::History::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::History::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Parser::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "size")
+    {
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+}
+
+bool Parser::History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "size")
+        return true;
+    return false;
+}
+
+Parser::Indentation::Indentation()
+    :
+    indentation_disable{YType::boolean, "indentation-disable"}
+{
+
+    yang_name = "indentation"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Parser::Indentation::~Indentation()
+{
+}
+
+bool Parser::Indentation::has_data() const
+{
+    return indentation_disable.is_set;
+}
+
+bool Parser::Indentation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(indentation_disable.yfilter);
+}
+
+std::string Parser::Indentation::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::Indentation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "indentation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::Indentation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (indentation_disable.is_set || is_set(indentation_disable.yfilter)) leaf_name_data.push_back(indentation_disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::Indentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::Indentation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Parser::Indentation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "indentation-disable")
+    {
+        indentation_disable = value;
+        indentation_disable.value_namespace = name_space;
+        indentation_disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::Indentation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "indentation-disable")
+    {
+        indentation_disable.yfilter = yfilter;
+    }
+}
+
+bool Parser::Indentation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "indentation-disable")
+        return true;
+    return false;
+}
+
+Parser::Interactive::Interactive()
+    :
+    interactive_disable{YType::boolean, "interactive-disable"}
+{
+
+    yang_name = "interactive"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Parser::Interactive::~Interactive()
+{
+}
+
+bool Parser::Interactive::has_data() const
+{
+    return interactive_disable.is_set;
+}
+
+bool Parser::Interactive::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interactive_disable.yfilter);
+}
+
+std::string Parser::Interactive::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::Interactive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interactive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::Interactive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interactive_disable.is_set || is_set(interactive_disable.yfilter)) leaf_name_data.push_back(interactive_disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::Interactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::Interactive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Parser::Interactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interactive-disable")
+    {
+        interactive_disable = value;
+        interactive_disable.value_namespace = name_space;
+        interactive_disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::Interactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interactive-disable")
+    {
+        interactive_disable.yfilter = yfilter;
+    }
+}
+
+bool Parser::Interactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interactive-disable")
+        return true;
+    return false;
+}
+
+Parser::InterfaceDisplay::InterfaceDisplay()
+    :
+    slot_order{YType::boolean, "slot-order"}
+{
+
+    yang_name = "interface-display"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Parser::InterfaceDisplay::~InterfaceDisplay()
+{
+}
+
+bool Parser::InterfaceDisplay::has_data() const
+{
+    return slot_order.is_set;
+}
+
+bool Parser::InterfaceDisplay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(slot_order.yfilter);
+}
+
+std::string Parser::InterfaceDisplay::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::InterfaceDisplay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-display";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::InterfaceDisplay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (slot_order.is_set || is_set(slot_order.yfilter)) leaf_name_data.push_back(slot_order.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::InterfaceDisplay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::InterfaceDisplay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Parser::InterfaceDisplay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "slot-order")
+    {
+        slot_order = value;
+        slot_order.value_namespace = name_space;
+        slot_order.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::InterfaceDisplay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slot-order")
+    {
+        slot_order.yfilter = yfilter;
+    }
+}
+
+bool Parser::InterfaceDisplay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slot-order")
+        return true;
+    return false;
+}
+
+Parser::NetmaskFormat::NetmaskFormat()
+    :
+    bit_count{YType::boolean, "bit-count"}
+{
+
+    yang_name = "netmask-format"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Parser::NetmaskFormat::~NetmaskFormat()
+{
+}
+
+bool Parser::NetmaskFormat::has_data() const
+{
+    return bit_count.is_set;
+}
+
+bool Parser::NetmaskFormat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bit_count.yfilter);
+}
+
+std::string Parser::NetmaskFormat::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::NetmaskFormat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "netmask-format";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::NetmaskFormat::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bit_count.is_set || is_set(bit_count.yfilter)) leaf_name_data.push_back(bit_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::NetmaskFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::NetmaskFormat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Parser::NetmaskFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bit-count")
+    {
+        bit_count = value;
+        bit_count.value_namespace = name_space;
+        bit_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::NetmaskFormat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-count")
+    {
+        bit_count.yfilter = yfilter;
+    }
+}
+
+bool Parser::NetmaskFormat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-count")
+        return true;
+    return false;
+}
+
 Parser::SubmodeExit::SubmodeExit()
     :
     enable{YType::boolean, "enable"}
 {
-    yang_name = "submode-exit"; yang_parent_name = "parser";
+
+    yang_name = "submode-exit"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Parser::SubmodeExit::~SubmodeExit()
@@ -1561,34 +1564,27 @@ bool Parser::SubmodeExit::has_operation() const
 	|| ydk::is_set(enable.yfilter);
 }
 
+std::string Parser::SubmodeExit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Parser::SubmodeExit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "submode-exit";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Parser::SubmodeExit::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Parser::SubmodeExit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

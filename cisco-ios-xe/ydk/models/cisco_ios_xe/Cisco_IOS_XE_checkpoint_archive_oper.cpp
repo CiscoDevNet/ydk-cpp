@@ -21,7 +21,7 @@ CheckpointArchives::CheckpointArchives()
 {
     archives->parent = this;
 
-    yang_name = "checkpoint-archives"; yang_parent_name = "Cisco-IOS-XE-checkpoint-archive-oper";
+    yang_name = "checkpoint-archives"; yang_parent_name = "Cisco-IOS-XE-checkpoint-archive-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 CheckpointArchives::~CheckpointArchives()
@@ -49,29 +49,18 @@ std::string CheckpointArchives::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-checkpoint-archive-oper:checkpoint-archives";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CheckpointArchives::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CheckpointArchives::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (current.is_set || is_set(current.yfilter)) leaf_name_data.push_back(current.get_name_leafdata());
     if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
     if (recent.is_set || is_set(recent.yfilter)) leaf_name_data.push_back(recent.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -172,7 +161,8 @@ bool CheckpointArchives::has_leaf_or_child_of_name(const std::string & name) con
 
 CheckpointArchives::Archives::Archives()
 {
-    yang_name = "archives"; yang_parent_name = "checkpoint-archives";
+
+    yang_name = "archives"; yang_parent_name = "checkpoint-archives"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CheckpointArchives::Archives::~Archives()
@@ -199,33 +189,26 @@ bool CheckpointArchives::Archives::has_operation() const
     return is_set(yfilter);
 }
 
+std::string CheckpointArchives::Archives::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-checkpoint-archive-oper:checkpoint-archives/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CheckpointArchives::Archives::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "archives";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CheckpointArchives::Archives::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CheckpointArchives::Archives::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-checkpoint-archive-oper:checkpoint-archives/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -281,7 +264,8 @@ CheckpointArchives::Archives::Archive::Archive()
     number{YType::uint16, "number"},
     name{YType::str, "name"}
 {
-    yang_name = "archive"; yang_parent_name = "archives";
+
+    yang_name = "archive"; yang_parent_name = "archives"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CheckpointArchives::Archives::Archive::~Archive()
@@ -301,35 +285,28 @@ bool CheckpointArchives::Archives::Archive::has_operation() const
 	|| ydk::is_set(name.yfilter);
 }
 
+std::string CheckpointArchives::Archives::Archive::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-checkpoint-archive-oper:checkpoint-archives/archives/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CheckpointArchives::Archives::Archive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "archive" <<"[number='" <<number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CheckpointArchives::Archives::Archive::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CheckpointArchives::Archives::Archive::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-checkpoint-archive-oper:checkpoint-archives/archives/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

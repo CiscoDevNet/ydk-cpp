@@ -22,15 +22,6 @@ class IcpeCpmControlFsmState : public ydk::Enum
 
 };
 
-class DpmProtoHostState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dpm_proto_host_state_idle;
-        static const ydk::Enum::YLeaf dpm_proto_host_state_discovered;
-        static const ydk::Enum::YLeaf dpm_proto_host_state_rejecting;
-
-};
-
 class IcpeCpmChanFsmState : public ydk::Enum
 {
     public:
@@ -43,13 +34,12 @@ class IcpeCpmChanFsmState : public ydk::Enum
 
 };
 
-class IcpeCpmChannelResyncState : public ydk::Enum
+class DpmProtoHostState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_unknown;
-        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_not_in_resync;
-        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_client_resync;
-        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_satellite_resync;
+        static const ydk::Enum::YLeaf dpm_proto_host_state_idle;
+        static const ydk::Enum::YLeaf dpm_proto_host_state_discovered;
+        static const ydk::Enum::YLeaf dpm_proto_host_state_rejecting;
 
 };
 
@@ -63,6 +53,16 @@ class DpmProtoState : public ydk::Enum
         static const ydk::Enum::YLeaf dpm_proto_state_discovered;
         static const ydk::Enum::YLeaf dpm_proto_state_rejecting;
         static const ydk::Enum::YLeaf dpm_proto_state_seen;
+
+};
+
+class IcpeCpmChannelResyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_unknown;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_not_in_resync;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_client_resync;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_satellite_resync;
 
 };
 

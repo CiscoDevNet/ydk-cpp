@@ -19,7 +19,7 @@ Rib::Rib()
 {
     af->parent = this;
 
-    yang_name = "rib"; yang_parent_name = "Cisco-IOS-XR-ip-rib-cfg";
+    yang_name = "rib"; yang_parent_name = "Cisco-IOS-XR-ip-rib-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Rib::~Rib()
@@ -43,27 +43,16 @@ std::string Rib::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_recursion_depth.is_set || is_set(max_recursion_depth.yfilter)) leaf_name_data.push_back(max_recursion_depth.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,10 +137,9 @@ Rib::Af::Af()
 	,ipv6(std::make_shared<Rib::Af::Ipv6>())
 {
     ipv4->parent = this;
-
     ipv6->parent = this;
 
-    yang_name = "af"; yang_parent_name = "rib";
+    yang_name = "af"; yang_parent_name = "rib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::~Af()
@@ -171,33 +159,26 @@ bool Rib::Af::has_operation() const
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
+std::string Rib::Af::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -263,7 +244,7 @@ Rib::Af::Ipv4::Ipv4()
 {
     redistribution_history->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "af";
+    yang_name = "ipv4"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::Ipv4::~Ipv4()
@@ -283,34 +264,27 @@ bool Rib::Af::Ipv4::has_operation() const
 	|| (redistribution_history !=  nullptr && redistribution_history->has_operation());
 }
 
+std::string Rib::Af::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (next_hop_dampening_disable.is_set || is_set(next_hop_dampening_disable.yfilter)) leaf_name_data.push_back(next_hop_dampening_disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -373,7 +347,7 @@ Rib::Af::Ipv4::RedistributionHistory::RedistributionHistory()
 {
     keep->parent = this;
 
-    yang_name = "redistribution-history"; yang_parent_name = "ipv4";
+    yang_name = "redistribution-history"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::Ipv4::RedistributionHistory::~RedistributionHistory()
@@ -395,35 +369,28 @@ bool Rib::Af::Ipv4::RedistributionHistory::has_operation() const
 	|| (keep !=  nullptr && keep->has_operation());
 }
 
+std::string Rib::Af::Ipv4::RedistributionHistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::Ipv4::RedistributionHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redistribution-history";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::Ipv4::RedistributionHistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv4::RedistributionHistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv4/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bcdl_client.is_set || is_set(bcdl_client.yfilter)) leaf_name_data.push_back(bcdl_client.get_name_leafdata());
     if (protocol_client.is_set || is_set(protocol_client.yfilter)) leaf_name_data.push_back(protocol_client.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -491,7 +458,8 @@ Rib::Af::Ipv4::RedistributionHistory::Keep::Keep()
     :
     bcdl{YType::empty, "bcdl"}
 {
-    yang_name = "keep"; yang_parent_name = "redistribution-history";
+
+    yang_name = "keep"; yang_parent_name = "redistribution-history"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::Ipv4::RedistributionHistory::Keep::~Keep()
@@ -509,34 +477,27 @@ bool Rib::Af::Ipv4::RedistributionHistory::Keep::has_operation() const
 	|| ydk::is_set(bcdl.yfilter);
 }
 
+std::string Rib::Af::Ipv4::RedistributionHistory::Keep::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv4/redistribution-history/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::Ipv4::RedistributionHistory::Keep::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keep";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::Ipv4::RedistributionHistory::Keep::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv4::RedistributionHistory::Keep::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv4/redistribution-history/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bcdl.is_set || is_set(bcdl.yfilter)) leaf_name_data.push_back(bcdl.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -584,7 +545,7 @@ Rib::Af::Ipv6::Ipv6()
 {
     redistribution_history->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "af";
+    yang_name = "ipv6"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::Ipv6::~Ipv6()
@@ -604,34 +565,27 @@ bool Rib::Af::Ipv6::has_operation() const
 	|| (redistribution_history !=  nullptr && redistribution_history->has_operation());
 }
 
+std::string Rib::Af::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (next_hop_dampening_disable.is_set || is_set(next_hop_dampening_disable.yfilter)) leaf_name_data.push_back(next_hop_dampening_disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -694,7 +648,7 @@ Rib::Af::Ipv6::RedistributionHistory::RedistributionHistory()
 {
     keep->parent = this;
 
-    yang_name = "redistribution-history"; yang_parent_name = "ipv6";
+    yang_name = "redistribution-history"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::Ipv6::RedistributionHistory::~RedistributionHistory()
@@ -716,35 +670,28 @@ bool Rib::Af::Ipv6::RedistributionHistory::has_operation() const
 	|| (keep !=  nullptr && keep->has_operation());
 }
 
+std::string Rib::Af::Ipv6::RedistributionHistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::Ipv6::RedistributionHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redistribution-history";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::Ipv6::RedistributionHistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv6::RedistributionHistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bcdl_client.is_set || is_set(bcdl_client.yfilter)) leaf_name_data.push_back(bcdl_client.get_name_leafdata());
     if (protocol_client.is_set || is_set(protocol_client.yfilter)) leaf_name_data.push_back(protocol_client.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -812,7 +759,8 @@ Rib::Af::Ipv6::RedistributionHistory::Keep::Keep()
     :
     bcdl{YType::empty, "bcdl"}
 {
-    yang_name = "keep"; yang_parent_name = "redistribution-history";
+
+    yang_name = "keep"; yang_parent_name = "redistribution-history"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Rib::Af::Ipv6::RedistributionHistory::Keep::~Keep()
@@ -830,34 +778,27 @@ bool Rib::Af::Ipv6::RedistributionHistory::Keep::has_operation() const
 	|| ydk::is_set(bcdl.yfilter);
 }
 
+std::string Rib::Af::Ipv6::RedistributionHistory::Keep::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv6/redistribution-history/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Rib::Af::Ipv6::RedistributionHistory::Keep::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keep";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rib::Af::Ipv6::RedistributionHistory::Keep::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv6::RedistributionHistory::Keep::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rib-cfg:rib/af/ipv6/redistribution-history/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bcdl.is_set || is_set(bcdl.yfilter)) leaf_name_data.push_back(bcdl.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

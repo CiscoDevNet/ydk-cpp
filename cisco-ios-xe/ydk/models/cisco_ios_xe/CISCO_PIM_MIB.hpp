@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_PIM_MIB {
 
-class CiscoPimMib : public ydk::Entity
+class CISCOPIMMIB : public ydk::Entity
 {
     public:
-        CiscoPimMib();
-        ~CiscoPimMib();
+        CISCOPIMMIB();
+        ~CISCOPIMMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,46 +32,16 @@ class CiscoPimMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpim; //type: CiscoPimMib::Cpim
-        class Ciscopimmibnotificationobjects; //type: CiscoPimMib::Ciscopimmibnotificationobjects
+        class Cpim; //type: CISCOPIMMIB::Cpim
+        class Ciscopimmibnotificationobjects; //type: CISCOPIMMIB::Ciscopimmibnotificationobjects
 
-        std::shared_ptr<CISCO_PIM_MIB::CiscoPimMib::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects;
-        std::shared_ptr<CISCO_PIM_MIB::CiscoPimMib::Cpim> cpim;
+        std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Cpim> cpim;
         
-}; // CiscoPimMib
+}; // CISCOPIMMIB
 
 
-class CiscoPimMib::Cpim : public ydk::Entity
-{
-    public:
-        Cpim();
-        ~Cpim();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cpiminvalidregistermsgsrcvd; //type: uint32
-        ydk::YLeaf cpiminvalidjoinprunemsgsrcvd; //type: uint32
-        ydk::YLeaf cpimlasterrortype; //type: Cpimlasterrortype
-        ydk::YLeaf cpimlasterrororigintype; //type: Inetaddresstype
-        ydk::YLeaf cpimlasterrororigin; //type: binary
-        ydk::YLeaf cpimlasterrorgrouptype; //type: Inetaddresstype
-        ydk::YLeaf cpimlasterrorgroup; //type: binary
-        ydk::YLeaf cpimlasterrorrptype; //type: Inetaddresstype
-        ydk::YLeaf cpimlasterrorrp; //type: binary
-        class Cpimlasterrortype;
-
-}; // CiscoPimMib::Cpim
-
-
-class CiscoPimMib::Ciscopimmibnotificationobjects : public ydk::Entity
+class CISCOPIMMIB::Ciscopimmibnotificationobjects : public ydk::Entity
 {
     public:
         Ciscopimmibnotificationobjects();
@@ -79,35 +49,67 @@ class CiscoPimMib::Ciscopimmibnotificationobjects : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cpimrpmappingchangetype; //type: Cpimrpmappingchangetype
         class Cpimrpmappingchangetype;
 
-}; // CiscoPimMib::Ciscopimmibnotificationobjects
+}; // CISCOPIMMIB::Ciscopimmibnotificationobjects
 
-class CiscoPimMib::Cpim::Cpimlasterrortype : public ydk::Enum
+
+class CISCOPIMMIB::Cpim : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf invalidRegister;
-        static const ydk::Enum::YLeaf invalidJoinPrune;
+        Cpim();
+        ~Cpim();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class CiscoPimMib::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype : public ydk::Enum
+        ydk::YLeaf cpiminvalidregistermsgsrcvd; //type: uint32
+        ydk::YLeaf cpiminvalidjoinprunemsgsrcvd; //type: uint32
+        ydk::YLeaf cpimlasterrortype; //type: Cpimlasterrortype
+        ydk::YLeaf cpimlasterrororigintype; //type: InetAddressType
+        ydk::YLeaf cpimlasterrororigin; //type: binary
+        ydk::YLeaf cpimlasterrorgrouptype; //type: InetAddressType
+        ydk::YLeaf cpimlasterrorgroup; //type: binary
+        ydk::YLeaf cpimlasterrorrptype; //type: InetAddressType
+        ydk::YLeaf cpimlasterrorrp; //type: binary
+        class Cpimlasterrortype;
+
+}; // CISCOPIMMIB::Cpim
+
+class CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf newMapping;
         static const ydk::Enum::YLeaf deletedMapping;
         static const ydk::Enum::YLeaf modifiedOldMapping;
         static const ydk::Enum::YLeaf modifiedNewMapping;
+
+};
+
+class CISCOPIMMIB::Cpim::Cpimlasterrortype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf invalidRegister;
+        static const ydk::Enum::YLeaf invalidJoinPrune;
 
 };
 

@@ -10,19 +10,19 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mpls {
 
-class LdpDiscoveryAddressType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface;
-
-};
-
 class MplsTeTiebreakerType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf max_fill;
         static const ydk::Enum::YLeaf min_fill;
         static const ydk::Enum::YLeaf random;
+
+};
+
+class LdpDiscoveryAddressType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface;
 
 };
 

@@ -17,10 +17,9 @@ Ipv6AclAndPrefixList::Ipv6AclAndPrefixList()
 	,oor(std::make_shared<Ipv6AclAndPrefixList::Oor>())
 {
     access_list_manager->parent = this;
-
     oor->parent = this;
 
-    yang_name = "ipv6-acl-and-prefix-list"; yang_parent_name = "Cisco-IOS-XR-ipv6-acl-oper";
+    yang_name = "ipv6-acl-and-prefix-list"; yang_parent_name = "Cisco-IOS-XR-ipv6-acl-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::~Ipv6AclAndPrefixList()
@@ -44,26 +43,15 @@ std::string Ipv6AclAndPrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -153,12 +141,10 @@ Ipv6AclAndPrefixList::AccessListManager::AccessListManager()
 	,usages(std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Usages>())
 {
     accesses->parent = this;
-
     prefixes->parent = this;
-
     usages->parent = this;
 
-    yang_name = "access-list-manager"; yang_parent_name = "ipv6-acl-and-prefix-list";
+    yang_name = "access-list-manager"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::~AccessListManager()
@@ -180,33 +166,26 @@ bool Ipv6AclAndPrefixList::AccessListManager::has_operation() const
 	|| (usages !=  nullptr && usages->has_operation());
 }
 
+std::string Ipv6AclAndPrefixList::AccessListManager::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::AccessListManager::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-manager";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -278,810 +257,10 @@ bool Ipv6AclAndPrefixList::AccessListManager::has_leaf_or_child_of_name(const st
     return false;
 }
 
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefixes()
-{
-    yang_name = "prefixes"; yang_parent_name = "access-list-manager";
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::~Prefixes()
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::has_data() const
-{
-    for (std::size_t index=0; index<prefix.size(); index++)
-    {
-        if(prefix[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::has_operation() const
-{
-    for (std::size_t index=0; index<prefix.size(); index++)
-    {
-        if(prefix[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefixes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix")
-    {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix>();
-        c->parent = this;
-        prefix.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : prefix)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix")
-        return true;
-    return false;
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::Prefix()
-    :
-    prefix_list_name{YType::str, "prefix-list-name"}
-    	,
-    prefix_list_sequences(std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences>())
-{
-    prefix_list_sequences->parent = this;
-
-    yang_name = "prefix"; yang_parent_name = "prefixes";
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::~Prefix()
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_data() const
-{
-    return prefix_list_name.is_set
-	|| (prefix_list_sequences !=  nullptr && prefix_list_sequences->has_data());
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_list_name.yfilter)
-	|| (prefix_list_sequences !=  nullptr && prefix_list_sequences->has_operation());
-}
-
-std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix" <<"[prefix-list-name='" <<prefix_list_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/prefixes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-list-sequences")
-    {
-        if(prefix_list_sequences == nullptr)
-        {
-            prefix_list_sequences = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences>();
-        }
-        return prefix_list_sequences;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_list_sequences != nullptr)
-    {
-        children["prefix-list-sequences"] = prefix_list_sequences;
-    }
-
-    return children;
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name = value;
-        prefix_list_name.value_namespace = name_space;
-        prefix_list_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name.yfilter = yfilter;
-    }
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-list-sequences" || name == "prefix-list-name")
-        return true;
-    return false;
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequences()
-{
-    yang_name = "prefix-list-sequences"; yang_parent_name = "prefix";
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::~PrefixListSequences()
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::has_data() const
-{
-    for (std::size_t index=0; index<prefix_list_sequence.size(); index++)
-    {
-        if(prefix_list_sequence[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::has_operation() const
-{
-    for (std::size_t index=0; index<prefix_list_sequence.size(); index++)
-    {
-        if(prefix_list_sequence[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-list-sequences";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixListSequences' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-list-sequence")
-    {
-        for(auto const & c : prefix_list_sequence)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence>();
-        c->parent = this;
-        prefix_list_sequence.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : prefix_list_sequence)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-list-sequence")
-        return true;
-    return false;
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::PrefixListSequence()
-    :
-    sequence_number{YType::uint32, "sequence-number"},
-    acl_name{YType::str, "acl-name"},
-    hits{YType::uint32, "hits"},
-    is_ace_sequence_number{YType::uint32, "is-ace-sequence-number"},
-    is_ace_type{YType::enumeration, "is-ace-type"},
-    is_address_in_numbers{YType::str, "is-address-in-numbers"},
-    is_address_mask_length{YType::uint32, "is-address-mask-length"},
-    is_comment_for_entry{YType::str, "is-comment-for-entry"},
-    is_length_operator{YType::enumeration, "is-length-operator"},
-    is_packet_allow_or_deny{YType::enumeration, "is-packet-allow-or-deny"},
-    is_packet_maximum_length{YType::uint32, "is-packet-maximum-length"},
-    is_packet_minimum_length{YType::uint32, "is-packet-minimum-length"}
-{
-    yang_name = "prefix-list-sequence"; yang_parent_name = "prefix-list-sequences";
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::~PrefixListSequence()
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::has_data() const
-{
-    return sequence_number.is_set
-	|| acl_name.is_set
-	|| hits.is_set
-	|| is_ace_sequence_number.is_set
-	|| is_ace_type.is_set
-	|| is_address_in_numbers.is_set
-	|| is_address_mask_length.is_set
-	|| is_comment_for_entry.is_set
-	|| is_length_operator.is_set
-	|| is_packet_allow_or_deny.is_set
-	|| is_packet_maximum_length.is_set
-	|| is_packet_minimum_length.is_set;
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sequence_number.yfilter)
-	|| ydk::is_set(acl_name.yfilter)
-	|| ydk::is_set(hits.yfilter)
-	|| ydk::is_set(is_ace_sequence_number.yfilter)
-	|| ydk::is_set(is_ace_type.yfilter)
-	|| ydk::is_set(is_address_in_numbers.yfilter)
-	|| ydk::is_set(is_address_mask_length.yfilter)
-	|| ydk::is_set(is_comment_for_entry.yfilter)
-	|| ydk::is_set(is_length_operator.yfilter)
-	|| ydk::is_set(is_packet_allow_or_deny.yfilter)
-	|| ydk::is_set(is_packet_maximum_length.yfilter)
-	|| ydk::is_set(is_packet_minimum_length.yfilter);
-}
-
-std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-list-sequence" <<"[sequence-number='" <<sequence_number <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixListSequence' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
-    if (is_ace_sequence_number.is_set || is_set(is_ace_sequence_number.yfilter)) leaf_name_data.push_back(is_ace_sequence_number.get_name_leafdata());
-    if (is_ace_type.is_set || is_set(is_ace_type.yfilter)) leaf_name_data.push_back(is_ace_type.get_name_leafdata());
-    if (is_address_in_numbers.is_set || is_set(is_address_in_numbers.yfilter)) leaf_name_data.push_back(is_address_in_numbers.get_name_leafdata());
-    if (is_address_mask_length.is_set || is_set(is_address_mask_length.yfilter)) leaf_name_data.push_back(is_address_mask_length.get_name_leafdata());
-    if (is_comment_for_entry.is_set || is_set(is_comment_for_entry.yfilter)) leaf_name_data.push_back(is_comment_for_entry.get_name_leafdata());
-    if (is_length_operator.is_set || is_set(is_length_operator.yfilter)) leaf_name_data.push_back(is_length_operator.get_name_leafdata());
-    if (is_packet_allow_or_deny.is_set || is_set(is_packet_allow_or_deny.yfilter)) leaf_name_data.push_back(is_packet_allow_or_deny.get_name_leafdata());
-    if (is_packet_maximum_length.is_set || is_set(is_packet_maximum_length.yfilter)) leaf_name_data.push_back(is_packet_maximum_length.get_name_leafdata());
-    if (is_packet_minimum_length.is_set || is_set(is_packet_minimum_length.yfilter)) leaf_name_data.push_back(is_packet_minimum_length.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sequence-number")
-    {
-        sequence_number = value;
-        sequence_number.value_namespace = name_space;
-        sequence_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hits")
-    {
-        hits = value;
-        hits.value_namespace = name_space;
-        hits.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-ace-sequence-number")
-    {
-        is_ace_sequence_number = value;
-        is_ace_sequence_number.value_namespace = name_space;
-        is_ace_sequence_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-ace-type")
-    {
-        is_ace_type = value;
-        is_ace_type.value_namespace = name_space;
-        is_ace_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-address-in-numbers")
-    {
-        is_address_in_numbers = value;
-        is_address_in_numbers.value_namespace = name_space;
-        is_address_in_numbers.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-address-mask-length")
-    {
-        is_address_mask_length = value;
-        is_address_mask_length.value_namespace = name_space;
-        is_address_mask_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-comment-for-entry")
-    {
-        is_comment_for_entry = value;
-        is_comment_for_entry.value_namespace = name_space;
-        is_comment_for_entry.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-length-operator")
-    {
-        is_length_operator = value;
-        is_length_operator.value_namespace = name_space;
-        is_length_operator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-packet-allow-or-deny")
-    {
-        is_packet_allow_or_deny = value;
-        is_packet_allow_or_deny.value_namespace = name_space;
-        is_packet_allow_or_deny.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-packet-maximum-length")
-    {
-        is_packet_maximum_length = value;
-        is_packet_maximum_length.value_namespace = name_space;
-        is_packet_maximum_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-packet-minimum-length")
-    {
-        is_packet_minimum_length = value;
-        is_packet_minimum_length.value_namespace = name_space;
-        is_packet_minimum_length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sequence-number")
-    {
-        sequence_number.yfilter = yfilter;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name.yfilter = yfilter;
-    }
-    if(value_path == "hits")
-    {
-        hits.yfilter = yfilter;
-    }
-    if(value_path == "is-ace-sequence-number")
-    {
-        is_ace_sequence_number.yfilter = yfilter;
-    }
-    if(value_path == "is-ace-type")
-    {
-        is_ace_type.yfilter = yfilter;
-    }
-    if(value_path == "is-address-in-numbers")
-    {
-        is_address_in_numbers.yfilter = yfilter;
-    }
-    if(value_path == "is-address-mask-length")
-    {
-        is_address_mask_length.yfilter = yfilter;
-    }
-    if(value_path == "is-comment-for-entry")
-    {
-        is_comment_for_entry.yfilter = yfilter;
-    }
-    if(value_path == "is-length-operator")
-    {
-        is_length_operator.yfilter = yfilter;
-    }
-    if(value_path == "is-packet-allow-or-deny")
-    {
-        is_packet_allow_or_deny.yfilter = yfilter;
-    }
-    if(value_path == "is-packet-maximum-length")
-    {
-        is_packet_maximum_length.yfilter = yfilter;
-    }
-    if(value_path == "is-packet-minimum-length")
-    {
-        is_packet_minimum_length.yfilter = yfilter;
-    }
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sequence-number" || name == "acl-name" || name == "hits" || name == "is-ace-sequence-number" || name == "is-ace-type" || name == "is-address-in-numbers" || name == "is-address-mask-length" || name == "is-comment-for-entry" || name == "is-length-operator" || name == "is-packet-allow-or-deny" || name == "is-packet-maximum-length" || name == "is-packet-minimum-length")
-        return true;
-    return false;
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Usages::Usages()
-{
-    yang_name = "usages"; yang_parent_name = "access-list-manager";
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Usages::~Usages()
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Usages::has_data() const
-{
-    for (std::size_t index=0; index<usage.size(); index++)
-    {
-        if(usage[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Usages::has_operation() const
-{
-    for (std::size_t index=0; index<usage.size(); index++)
-    {
-        if(usage[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ipv6AclAndPrefixList::AccessListManager::Usages::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "usages";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Usages::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "usage")
-    {
-        for(auto const & c : usage)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Usages::Usage>();
-        c->parent = this;
-        usage.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Usages::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : usage)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Usages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Usages::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Usages::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "usage")
-        return true;
-    return false;
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::Usage()
-    :
-    access_list_name{YType::str, "access-list-name"},
-    application_id{YType::enumeration, "application-id"},
-    node_name{YType::str, "node-name"},
-    usage_details{YType::str, "usage-details"}
-{
-    yang_name = "usage"; yang_parent_name = "usages";
-}
-
-Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::~Usage()
-{
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::has_data() const
-{
-    return access_list_name.is_set
-	|| application_id.is_set
-	|| node_name.is_set
-	|| usage_details.is_set;
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(access_list_name.yfilter)
-	|| ydk::is_set(application_id.yfilter)
-	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(usage_details.yfilter);
-}
-
-std::string Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "usage";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/usages/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (application_id.is_set || is_set(application_id.yfilter)) leaf_name_data.push_back(application_id.get_name_leafdata());
-    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (usage_details.is_set || is_set(usage_details.yfilter)) leaf_name_data.push_back(usage_details.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "access-list-name")
-    {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "application-id")
-    {
-        application_id = value;
-        application_id.value_namespace = name_space;
-        application_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-name")
-    {
-        node_name = value;
-        node_name.value_namespace = name_space;
-        node_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "usage-details")
-    {
-        usage_details = value;
-        usage_details.value_namespace = name_space;
-        usage_details.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "access-list-name")
-    {
-        access_list_name.yfilter = yfilter;
-    }
-    if(value_path == "application-id")
-    {
-        application_id.yfilter = yfilter;
-    }
-    if(value_path == "node-name")
-    {
-        node_name.yfilter = yfilter;
-    }
-    if(value_path == "usage-details")
-    {
-        usage_details.yfilter = yfilter;
-    }
-}
-
-bool Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-list-name" || name == "application-id" || name == "node-name" || name == "usage-details")
-        return true;
-    return false;
-}
-
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Accesses()
 {
-    yang_name = "accesses"; yang_parent_name = "access-list-manager";
+
+    yang_name = "accesses"; yang_parent_name = "access-list-manager"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::~Accesses()
@@ -1108,33 +287,26 @@ bool Ipv6AclAndPrefixList::AccessListManager::Accesses::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accesses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1193,7 +365,7 @@ Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::Access()
 {
     access_list_sequences->parent = this;
 
-    yang_name = "access"; yang_parent_name = "accesses";
+    yang_name = "access"; yang_parent_name = "accesses"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::~Access()
@@ -1213,34 +385,27 @@ bool Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::has_operation() 
 	|| (access_list_sequences !=  nullptr && access_list_sequences->has_operation());
 }
 
+std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/accesses/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access" <<"[access-list-name='" <<access_list_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/accesses/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1296,7 +461,8 @@ bool Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::has_leaf_or_chil
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequences()
 {
-    yang_name = "access-list-sequences"; yang_parent_name = "access";
+
+    yang_name = "access-list-sequences"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::~AccessListSequences()
@@ -1327,29 +493,15 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-sequences";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessListSequences' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1448,6 +600,7 @@ Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::
     no_stats{YType::int32, "no-stats"},
     qos_group{YType::uint16, "qos-group"},
     sequence_str{YType::str, "sequence-str"},
+    set_ttl{YType::uint16, "set-ttl"},
     source_mask{YType::str, "source-mask"},
     source_port_group{YType::str, "source-port-group"},
     source_prefix_group{YType::str, "source-prefix-group"},
@@ -1457,7 +610,7 @@ Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::
 {
     hw_next_hop_info->parent = this;
 
-    yang_name = "access-list-sequence"; yang_parent_name = "access-list-sequences";
+    yang_name = "access-list-sequence"; yang_parent_name = "access-list-sequences"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::~AccessListSequence()
@@ -1522,6 +675,7 @@ bool Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
 	|| no_stats.is_set
 	|| qos_group.is_set
 	|| sequence_str.is_set
+	|| set_ttl.is_set
 	|| source_mask.is_set
 	|| source_port_group.is_set
 	|| source_prefix_group.is_set
@@ -1588,6 +742,7 @@ bool Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
 	|| ydk::is_set(no_stats.yfilter)
 	|| ydk::is_set(qos_group.yfilter)
 	|| ydk::is_set(sequence_str.yfilter)
+	|| ydk::is_set(set_ttl.yfilter)
 	|| ydk::is_set(source_mask.yfilter)
 	|| ydk::is_set(source_port_group.yfilter)
 	|| ydk::is_set(source_prefix_group.yfilter)
@@ -1599,23 +754,11 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-sequence" <<"[sequence-number='" <<sequence_number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessListSequence' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
@@ -1664,14 +807,13 @@ const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::Acce
     if (no_stats.is_set || is_set(no_stats.yfilter)) leaf_name_data.push_back(no_stats.get_name_leafdata());
     if (qos_group.is_set || is_set(qos_group.yfilter)) leaf_name_data.push_back(qos_group.get_name_leafdata());
     if (sequence_str.is_set || is_set(sequence_str.yfilter)) leaf_name_data.push_back(sequence_str.get_name_leafdata());
+    if (set_ttl.is_set || is_set(set_ttl.yfilter)) leaf_name_data.push_back(set_ttl.get_name_leafdata());
     if (source_mask.is_set || is_set(source_mask.yfilter)) leaf_name_data.push_back(source_mask.get_name_leafdata());
     if (source_port_group.is_set || is_set(source_port_group.yfilter)) leaf_name_data.push_back(source_port_group.get_name_leafdata());
     if (source_prefix_group.is_set || is_set(source_prefix_group.yfilter)) leaf_name_data.push_back(source_prefix_group.get_name_leafdata());
     if (undetermined_transport.is_set || is_set(undetermined_transport.yfilter)) leaf_name_data.push_back(undetermined_transport.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2020,6 +1162,12 @@ void Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
         sequence_str.value_namespace = name_space;
         sequence_str.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "set-ttl")
+    {
+        set_ttl = value;
+        set_ttl.value_namespace = name_space;
+        set_ttl.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "source-mask")
     {
         source_mask = value;
@@ -2232,6 +1380,10 @@ void Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
     {
         sequence_str.yfilter = yfilter;
     }
+    if(value_path == "set-ttl")
+    {
+        set_ttl.yfilter = yfilter;
+    }
     if(value_path == "source-mask")
     {
         source_mask.yfilter = yfilter;
@@ -2252,7 +1404,7 @@ void Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
 
 bool Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hw-next-hop-info" || name == "next-hop-info" || name == "udf" || name == "sequence-number" || name == "acl-name" || name == "capture" || name == "counter-name" || name == "destination-mask" || name == "destination-port-group" || name == "destination-prefix-group" || name == "hits" || name == "is-ace-sequence-number" || name == "is-ace-type" || name == "is-comment-for-entry" || name == "is-destination-address-in-numbers" || name == "is-destination-address-prefix-length" || name == "is-destination-operator" || name == "is-destination-port1" || name == "is-destination-port2" || name == "is-dscp-present" || name == "is-dscp-valu" || name == "is-flow-id" || name == "is-header-matches" || name == "is-icmp-message-off" || name == "is-ipv6-protocol2-type" || name == "is-ipv6-protocol-type" || name == "is-log-option" || name == "is-packet-allow-or-deny" || name == "is-packet-length-end" || name == "is-packet-length-operator" || name == "is-packet-length-start" || name == "is-precedence-present" || name == "is-precedence-value" || name == "is-protocol-operator" || name == "is-source-address-in-numbers" || name == "is-source-address-prefix-length" || name == "is-source-operator" || name == "is-source-port1" || name == "is-source-port2" || name == "is-tcp-bits" || name == "is-tcp-bits-mask" || name == "is-tcp-bits-operator" || name == "is-time-to-live-end" || name == "is-time-to-live-operator" || name == "is-time-to-live-start" || name == "next-hop-type" || name == "no-stats" || name == "qos-group" || name == "sequence-str" || name == "source-mask" || name == "source-port-group" || name == "source-prefix-group" || name == "undetermined-transport")
+    if(name == "hw-next-hop-info" || name == "next-hop-info" || name == "udf" || name == "sequence-number" || name == "acl-name" || name == "capture" || name == "counter-name" || name == "destination-mask" || name == "destination-port-group" || name == "destination-prefix-group" || name == "hits" || name == "is-ace-sequence-number" || name == "is-ace-type" || name == "is-comment-for-entry" || name == "is-destination-address-in-numbers" || name == "is-destination-address-prefix-length" || name == "is-destination-operator" || name == "is-destination-port1" || name == "is-destination-port2" || name == "is-dscp-present" || name == "is-dscp-valu" || name == "is-flow-id" || name == "is-header-matches" || name == "is-icmp-message-off" || name == "is-ipv6-protocol2-type" || name == "is-ipv6-protocol-type" || name == "is-log-option" || name == "is-packet-allow-or-deny" || name == "is-packet-length-end" || name == "is-packet-length-operator" || name == "is-packet-length-start" || name == "is-precedence-present" || name == "is-precedence-value" || name == "is-protocol-operator" || name == "is-source-address-in-numbers" || name == "is-source-address-prefix-length" || name == "is-source-operator" || name == "is-source-port1" || name == "is-source-port2" || name == "is-tcp-bits" || name == "is-tcp-bits-mask" || name == "is-tcp-bits-operator" || name == "is-time-to-live-end" || name == "is-time-to-live-operator" || name == "is-time-to-live-start" || name == "next-hop-type" || name == "no-stats" || name == "qos-group" || name == "sequence-str" || name == "set-ttl" || name == "source-mask" || name == "source-port-group" || name == "source-prefix-group" || name == "undetermined-transport")
         return true;
     return false;
 }
@@ -2264,7 +1416,8 @@ Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::
     type{YType::enumeration, "type"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "hw-next-hop-info"; yang_parent_name = "access-list-sequence";
+
+    yang_name = "hw-next-hop-info"; yang_parent_name = "access-list-sequence"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::~HwNextHopInfo()
@@ -2292,23 +1445,11 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-next-hop-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HwNextHopInfo' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
@@ -2316,9 +1457,7 @@ const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::Acce
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2397,7 +1536,8 @@ Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::
     track_name{YType::str, "track-name"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "next-hop-info"; yang_parent_name = "access-list-sequence";
+
+    yang_name = "next-hop-info"; yang_parent_name = "access-list-sequence"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::~NextHopInfo()
@@ -2429,23 +1569,11 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NextHopInfo' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (acl_nh_exist.is_set || is_set(acl_nh_exist.yfilter)) leaf_name_data.push_back(acl_nh_exist.get_name_leafdata());
@@ -2455,9 +1583,7 @@ const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::Acce
     if (track_name.is_set || is_set(track_name.yfilter)) leaf_name_data.push_back(track_name.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2553,7 +1679,8 @@ Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::
     udf_name{YType::str, "udf-name"},
     udf_value{YType::uint32, "udf-value"}
 {
-    yang_name = "udf"; yang_parent_name = "access-list-sequence";
+
+    yang_name = "udf"; yang_parent_name = "access-list-sequence"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::~Udf()
@@ -2579,32 +1706,18 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "udf";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Udf' in Cisco_IOS_XR_ipv6_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (udf_mask.is_set || is_set(udf_mask.yfilter)) leaf_name_data.push_back(udf_mask.get_name_leafdata());
     if (udf_name.is_set || is_set(udf_name.yfilter)) leaf_name_data.push_back(udf_name.get_name_leafdata());
     if (udf_value.is_set || is_set(udf_value.yfilter)) leaf_name_data.push_back(udf_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2664,6 +1777,756 @@ bool Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
     return false;
 }
 
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefixes()
+{
+
+    yang_name = "prefixes"; yang_parent_name = "access-list-manager"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::~Prefixes()
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::has_data() const
+{
+    for (std::size_t index=0; index<prefix.size(); index++)
+    {
+        if(prefix[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::has_operation() const
+{
+    for (std::size_t index=0; index<prefix.size(); index++)
+    {
+        if(prefix[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix")
+    {
+        for(auto const & c : prefix)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix>();
+        c->parent = this;
+        prefix.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : prefix)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix")
+        return true;
+    return false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::Prefix()
+    :
+    prefix_list_name{YType::str, "prefix-list-name"}
+    	,
+    prefix_list_sequences(std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences>())
+{
+    prefix_list_sequences->parent = this;
+
+    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::~Prefix()
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_data() const
+{
+    return prefix_list_name.is_set
+	|| (prefix_list_sequences !=  nullptr && prefix_list_sequences->has_data());
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter)
+	|| (prefix_list_sequences !=  nullptr && prefix_list_sequences->has_operation());
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/prefixes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix" <<"[prefix-list-name='" <<prefix_list_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-list-sequences")
+    {
+        if(prefix_list_sequences == nullptr)
+        {
+            prefix_list_sequences = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences>();
+        }
+        return prefix_list_sequences;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_list_sequences != nullptr)
+    {
+        children["prefix-list-sequences"] = prefix_list_sequences;
+    }
+
+    return children;
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-sequences" || name == "prefix-list-name")
+        return true;
+    return false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequences()
+{
+
+    yang_name = "prefix-list-sequences"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::~PrefixListSequences()
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::has_data() const
+{
+    for (std::size_t index=0; index<prefix_list_sequence.size(); index++)
+    {
+        if(prefix_list_sequence[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::has_operation() const
+{
+    for (std::size_t index=0; index<prefix_list_sequence.size(); index++)
+    {
+        if(prefix_list_sequence[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-list-sequences";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-list-sequence")
+    {
+        for(auto const & c : prefix_list_sequence)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence>();
+        c->parent = this;
+        prefix_list_sequence.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : prefix_list_sequence)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-sequence")
+        return true;
+    return false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::PrefixListSequence()
+    :
+    sequence_number{YType::uint32, "sequence-number"},
+    acl_name{YType::str, "acl-name"},
+    hits{YType::uint32, "hits"},
+    is_ace_sequence_number{YType::uint32, "is-ace-sequence-number"},
+    is_ace_type{YType::enumeration, "is-ace-type"},
+    is_address_in_numbers{YType::str, "is-address-in-numbers"},
+    is_address_mask_length{YType::uint32, "is-address-mask-length"},
+    is_comment_for_entry{YType::str, "is-comment-for-entry"},
+    is_length_operator{YType::enumeration, "is-length-operator"},
+    is_packet_allow_or_deny{YType::enumeration, "is-packet-allow-or-deny"},
+    is_packet_maximum_length{YType::uint32, "is-packet-maximum-length"},
+    is_packet_minimum_length{YType::uint32, "is-packet-minimum-length"}
+{
+
+    yang_name = "prefix-list-sequence"; yang_parent_name = "prefix-list-sequences"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::~PrefixListSequence()
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::has_data() const
+{
+    return sequence_number.is_set
+	|| acl_name.is_set
+	|| hits.is_set
+	|| is_ace_sequence_number.is_set
+	|| is_ace_type.is_set
+	|| is_address_in_numbers.is_set
+	|| is_address_mask_length.is_set
+	|| is_comment_for_entry.is_set
+	|| is_length_operator.is_set
+	|| is_packet_allow_or_deny.is_set
+	|| is_packet_maximum_length.is_set
+	|| is_packet_minimum_length.is_set;
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sequence_number.yfilter)
+	|| ydk::is_set(acl_name.yfilter)
+	|| ydk::is_set(hits.yfilter)
+	|| ydk::is_set(is_ace_sequence_number.yfilter)
+	|| ydk::is_set(is_ace_type.yfilter)
+	|| ydk::is_set(is_address_in_numbers.yfilter)
+	|| ydk::is_set(is_address_mask_length.yfilter)
+	|| ydk::is_set(is_comment_for_entry.yfilter)
+	|| ydk::is_set(is_length_operator.yfilter)
+	|| ydk::is_set(is_packet_allow_or_deny.yfilter)
+	|| ydk::is_set(is_packet_maximum_length.yfilter)
+	|| ydk::is_set(is_packet_minimum_length.yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-list-sequence" <<"[sequence-number='" <<sequence_number <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
+    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
+    if (is_ace_sequence_number.is_set || is_set(is_ace_sequence_number.yfilter)) leaf_name_data.push_back(is_ace_sequence_number.get_name_leafdata());
+    if (is_ace_type.is_set || is_set(is_ace_type.yfilter)) leaf_name_data.push_back(is_ace_type.get_name_leafdata());
+    if (is_address_in_numbers.is_set || is_set(is_address_in_numbers.yfilter)) leaf_name_data.push_back(is_address_in_numbers.get_name_leafdata());
+    if (is_address_mask_length.is_set || is_set(is_address_mask_length.yfilter)) leaf_name_data.push_back(is_address_mask_length.get_name_leafdata());
+    if (is_comment_for_entry.is_set || is_set(is_comment_for_entry.yfilter)) leaf_name_data.push_back(is_comment_for_entry.get_name_leafdata());
+    if (is_length_operator.is_set || is_set(is_length_operator.yfilter)) leaf_name_data.push_back(is_length_operator.get_name_leafdata());
+    if (is_packet_allow_or_deny.is_set || is_set(is_packet_allow_or_deny.yfilter)) leaf_name_data.push_back(is_packet_allow_or_deny.get_name_leafdata());
+    if (is_packet_maximum_length.is_set || is_set(is_packet_maximum_length.yfilter)) leaf_name_data.push_back(is_packet_maximum_length.get_name_leafdata());
+    if (is_packet_minimum_length.is_set || is_set(is_packet_minimum_length.yfilter)) leaf_name_data.push_back(is_packet_minimum_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sequence-number")
+    {
+        sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acl-name")
+    {
+        acl_name = value;
+        acl_name.value_namespace = name_space;
+        acl_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hits")
+    {
+        hits = value;
+        hits.value_namespace = name_space;
+        hits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-ace-sequence-number")
+    {
+        is_ace_sequence_number = value;
+        is_ace_sequence_number.value_namespace = name_space;
+        is_ace_sequence_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-ace-type")
+    {
+        is_ace_type = value;
+        is_ace_type.value_namespace = name_space;
+        is_ace_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-address-in-numbers")
+    {
+        is_address_in_numbers = value;
+        is_address_in_numbers.value_namespace = name_space;
+        is_address_in_numbers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-address-mask-length")
+    {
+        is_address_mask_length = value;
+        is_address_mask_length.value_namespace = name_space;
+        is_address_mask_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-comment-for-entry")
+    {
+        is_comment_for_entry = value;
+        is_comment_for_entry.value_namespace = name_space;
+        is_comment_for_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-length-operator")
+    {
+        is_length_operator = value;
+        is_length_operator.value_namespace = name_space;
+        is_length_operator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-packet-allow-or-deny")
+    {
+        is_packet_allow_or_deny = value;
+        is_packet_allow_or_deny.value_namespace = name_space;
+        is_packet_allow_or_deny.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-packet-maximum-length")
+    {
+        is_packet_maximum_length = value;
+        is_packet_maximum_length.value_namespace = name_space;
+        is_packet_maximum_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-packet-minimum-length")
+    {
+        is_packet_minimum_length = value;
+        is_packet_minimum_length.value_namespace = name_space;
+        is_packet_minimum_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+    if(value_path == "acl-name")
+    {
+        acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hits")
+    {
+        hits.yfilter = yfilter;
+    }
+    if(value_path == "is-ace-sequence-number")
+    {
+        is_ace_sequence_number.yfilter = yfilter;
+    }
+    if(value_path == "is-ace-type")
+    {
+        is_ace_type.yfilter = yfilter;
+    }
+    if(value_path == "is-address-in-numbers")
+    {
+        is_address_in_numbers.yfilter = yfilter;
+    }
+    if(value_path == "is-address-mask-length")
+    {
+        is_address_mask_length.yfilter = yfilter;
+    }
+    if(value_path == "is-comment-for-entry")
+    {
+        is_comment_for_entry.yfilter = yfilter;
+    }
+    if(value_path == "is-length-operator")
+    {
+        is_length_operator.yfilter = yfilter;
+    }
+    if(value_path == "is-packet-allow-or-deny")
+    {
+        is_packet_allow_or_deny.yfilter = yfilter;
+    }
+    if(value_path == "is-packet-maximum-length")
+    {
+        is_packet_maximum_length.yfilter = yfilter;
+    }
+    if(value_path == "is-packet-minimum-length")
+    {
+        is_packet_minimum_length.yfilter = yfilter;
+    }
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sequence-number" || name == "acl-name" || name == "hits" || name == "is-ace-sequence-number" || name == "is-ace-type" || name == "is-address-in-numbers" || name == "is-address-mask-length" || name == "is-comment-for-entry" || name == "is-length-operator" || name == "is-packet-allow-or-deny" || name == "is-packet-maximum-length" || name == "is-packet-minimum-length")
+        return true;
+    return false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Usages::Usages()
+{
+
+    yang_name = "usages"; yang_parent_name = "access-list-manager"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Usages::~Usages()
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Usages::has_data() const
+{
+    for (std::size_t index=0; index<usage.size(); index++)
+    {
+        if(usage[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Usages::has_operation() const
+{
+    for (std::size_t index=0; index<usage.size(); index++)
+    {
+        if(usage[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Usages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Usages::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "usages";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Usages::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "usage")
+    {
+        for(auto const & c : usage)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Usages::Usage>();
+        c->parent = this;
+        usage.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Usages::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : usage)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Usages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Usages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Usages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "usage")
+        return true;
+    return false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::Usage()
+    :
+    access_list_name{YType::str, "access-list-name"},
+    application_id{YType::enumeration, "application-id"},
+    node_name{YType::str, "node-name"},
+    usage_details{YType::str, "usage-details"}
+{
+
+    yang_name = "usage"; yang_parent_name = "usages"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::~Usage()
+{
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::has_data() const
+{
+    return access_list_name.is_set
+	|| application_id.is_set
+	|| node_name.is_set
+	|| usage_details.is_set;
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(application_id.yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(usage_details.yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/access-list-manager/usages/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "usage";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (application_id.is_set || is_set(application_id.yfilter)) leaf_name_data.push_back(application_id.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (usage_details.is_set || is_set(usage_details.yfilter)) leaf_name_data.push_back(usage_details.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "application-id")
+    {
+        application_id = value;
+        application_id.value_namespace = name_space;
+        application_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "usage-details")
+    {
+        usage_details = value;
+        usage_details.value_namespace = name_space;
+        usage_details.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "application-id")
+    {
+        application_id.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "usage-details")
+    {
+        usage_details.yfilter = yfilter;
+    }
+}
+
+bool Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "application-id" || name == "node-name" || name == "usage-details")
+        return true;
+    return false;
+}
+
 Ipv6AclAndPrefixList::Oor::Oor()
     :
     access_list_summary(std::make_shared<Ipv6AclAndPrefixList::Oor::AccessListSummary>())
@@ -2673,16 +2536,12 @@ Ipv6AclAndPrefixList::Oor::Oor()
 	,prefix_list_summary(std::make_shared<Ipv6AclAndPrefixList::Oor::PrefixListSummary>())
 {
     access_list_summary->parent = this;
-
     details->parent = this;
-
     oor_accesses->parent = this;
-
     oor_prefixes->parent = this;
-
     prefix_list_summary->parent = this;
 
-    yang_name = "oor"; yang_parent_name = "ipv6-acl-and-prefix-list";
+    yang_name = "oor"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::Oor::~Oor()
@@ -2708,33 +2567,26 @@ bool Ipv6AclAndPrefixList::Oor::has_operation() const
 	|| (prefix_list_summary !=  nullptr && prefix_list_summary->has_operation());
 }
 
+std::string Ipv6AclAndPrefixList::Oor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::Oor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2834,6 +2686,274 @@ bool Ipv6AclAndPrefixList::Oor::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
+Ipv6AclAndPrefixList::Oor::AccessListSummary::AccessListSummary()
+    :
+    details(std::make_shared<Ipv6AclAndPrefixList::Oor::AccessListSummary::Details>())
+{
+    details->parent = this;
+
+    yang_name = "access-list-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv6AclAndPrefixList::Oor::AccessListSummary::~AccessListSummary()
+{
+}
+
+bool Ipv6AclAndPrefixList::Oor::AccessListSummary::has_data() const
+{
+    return (details !=  nullptr && details->has_data());
+}
+
+bool Ipv6AclAndPrefixList::Oor::AccessListSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| (details !=  nullptr && details->has_operation());
+}
+
+std::string Ipv6AclAndPrefixList::Oor::AccessListSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::Oor::AccessListSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-list-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::AccessListSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "details")
+    {
+        if(details == nullptr)
+        {
+            details = std::make_shared<Ipv6AclAndPrefixList::Oor::AccessListSummary::Details>();
+        }
+        return details;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(details != nullptr)
+    {
+        children["details"] = details;
+    }
+
+    return children;
+}
+
+void Ipv6AclAndPrefixList::Oor::AccessListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6AclAndPrefixList::Oor::AccessListSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6AclAndPrefixList::Oor::AccessListSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details")
+        return true;
+    return false;
+}
+
+Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::Details()
+    :
+    is_current_configured_ac_ls{YType::uint32, "is-current-configured-ac-ls"},
+    is_current_configured_aces{YType::uint32, "is-current-configured-aces"},
+    is_current_maximum_configurable_aces{YType::uint32, "is-current-maximum-configurable-aces"},
+    is_current_maximum_configurable_acls{YType::uint32, "is-current-maximum-configurable-acls"},
+    is_default_maximum_configurable_ac_es{YType::uint32, "is-default-maximum-configurable-ac-es"},
+    is_default_maximum_configurable_ac_ls{YType::uint32, "is-default-maximum-configurable-ac-ls"},
+    is_maximum_configurable_ac_es{YType::uint32, "is-maximum-configurable-ac-es"},
+    is_maximum_configurable_ac_ls{YType::uint32, "is-maximum-configurable-ac-ls"}
+{
+
+    yang_name = "details"; yang_parent_name = "access-list-summary"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::~Details()
+{
+}
+
+bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_data() const
+{
+    return is_current_configured_ac_ls.is_set
+	|| is_current_configured_aces.is_set
+	|| is_current_maximum_configurable_aces.is_set
+	|| is_current_maximum_configurable_acls.is_set
+	|| is_default_maximum_configurable_ac_es.is_set
+	|| is_default_maximum_configurable_ac_ls.is_set
+	|| is_maximum_configurable_ac_es.is_set
+	|| is_maximum_configurable_ac_ls.is_set;
+}
+
+bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_current_configured_ac_ls.yfilter)
+	|| ydk::is_set(is_current_configured_aces.yfilter)
+	|| ydk::is_set(is_current_maximum_configurable_aces.yfilter)
+	|| ydk::is_set(is_current_maximum_configurable_acls.yfilter)
+	|| ydk::is_set(is_default_maximum_configurable_ac_es.yfilter)
+	|| ydk::is_set(is_default_maximum_configurable_ac_ls.yfilter)
+	|| ydk::is_set(is_maximum_configurable_ac_es.yfilter)
+	|| ydk::is_set(is_maximum_configurable_ac_ls.yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/access-list-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_current_configured_ac_ls.is_set || is_set(is_current_configured_ac_ls.yfilter)) leaf_name_data.push_back(is_current_configured_ac_ls.get_name_leafdata());
+    if (is_current_configured_aces.is_set || is_set(is_current_configured_aces.yfilter)) leaf_name_data.push_back(is_current_configured_aces.get_name_leafdata());
+    if (is_current_maximum_configurable_aces.is_set || is_set(is_current_maximum_configurable_aces.yfilter)) leaf_name_data.push_back(is_current_maximum_configurable_aces.get_name_leafdata());
+    if (is_current_maximum_configurable_acls.is_set || is_set(is_current_maximum_configurable_acls.yfilter)) leaf_name_data.push_back(is_current_maximum_configurable_acls.get_name_leafdata());
+    if (is_default_maximum_configurable_ac_es.is_set || is_set(is_default_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_default_maximum_configurable_ac_es.get_name_leafdata());
+    if (is_default_maximum_configurable_ac_ls.is_set || is_set(is_default_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_default_maximum_configurable_ac_ls.get_name_leafdata());
+    if (is_maximum_configurable_ac_es.is_set || is_set(is_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_es.get_name_leafdata());
+    if (is_maximum_configurable_ac_ls.is_set || is_set(is_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_ls.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-current-configured-ac-ls")
+    {
+        is_current_configured_ac_ls = value;
+        is_current_configured_ac_ls.value_namespace = name_space;
+        is_current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-current-configured-aces")
+    {
+        is_current_configured_aces = value;
+        is_current_configured_aces.value_namespace = name_space;
+        is_current_configured_aces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-current-maximum-configurable-aces")
+    {
+        is_current_maximum_configurable_aces = value;
+        is_current_maximum_configurable_aces.value_namespace = name_space;
+        is_current_maximum_configurable_aces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-current-maximum-configurable-acls")
+    {
+        is_current_maximum_configurable_acls = value;
+        is_current_maximum_configurable_acls.value_namespace = name_space;
+        is_current_maximum_configurable_acls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-default-maximum-configurable-ac-es")
+    {
+        is_default_maximum_configurable_ac_es = value;
+        is_default_maximum_configurable_ac_es.value_namespace = name_space;
+        is_default_maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-default-maximum-configurable-ac-ls")
+    {
+        is_default_maximum_configurable_ac_ls = value;
+        is_default_maximum_configurable_ac_ls.value_namespace = name_space;
+        is_default_maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-maximum-configurable-ac-es")
+    {
+        is_maximum_configurable_ac_es = value;
+        is_maximum_configurable_ac_es.value_namespace = name_space;
+        is_maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-maximum-configurable-ac-ls")
+    {
+        is_maximum_configurable_ac_ls = value;
+        is_maximum_configurable_ac_ls.value_namespace = name_space;
+        is_maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-current-configured-ac-ls")
+    {
+        is_current_configured_ac_ls.yfilter = yfilter;
+    }
+    if(value_path == "is-current-configured-aces")
+    {
+        is_current_configured_aces.yfilter = yfilter;
+    }
+    if(value_path == "is-current-maximum-configurable-aces")
+    {
+        is_current_maximum_configurable_aces.yfilter = yfilter;
+    }
+    if(value_path == "is-current-maximum-configurable-acls")
+    {
+        is_current_maximum_configurable_acls.yfilter = yfilter;
+    }
+    if(value_path == "is-default-maximum-configurable-ac-es")
+    {
+        is_default_maximum_configurable_ac_es.yfilter = yfilter;
+    }
+    if(value_path == "is-default-maximum-configurable-ac-ls")
+    {
+        is_default_maximum_configurable_ac_ls.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-configurable-ac-es")
+    {
+        is_maximum_configurable_ac_es.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-configurable-ac-ls")
+    {
+        is_maximum_configurable_ac_ls.yfilter = yfilter;
+    }
+}
+
+bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-current-configured-ac-ls" || name == "is-current-configured-aces" || name == "is-current-maximum-configurable-aces" || name == "is-current-maximum-configurable-acls" || name == "is-default-maximum-configurable-ac-es" || name == "is-default-maximum-configurable-ac-ls" || name == "is-maximum-configurable-ac-es" || name == "is-maximum-configurable-ac-ls")
+        return true;
+    return false;
+}
+
 Ipv6AclAndPrefixList::Oor::Details::Details()
     :
     is_current_configured_ac_ls{YType::uint32, "is-current-configured-ac-ls"},
@@ -2845,7 +2965,8 @@ Ipv6AclAndPrefixList::Oor::Details::Details()
     is_maximum_configurable_ac_es{YType::uint32, "is-maximum-configurable-ac-es"},
     is_maximum_configurable_ac_ls{YType::uint32, "is-maximum-configurable-ac-ls"}
 {
-    yang_name = "details"; yang_parent_name = "oor";
+
+    yang_name = "details"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::Oor::Details::~Details()
@@ -2877,27 +2998,22 @@ bool Ipv6AclAndPrefixList::Oor::Details::has_operation() const
 	|| ydk::is_set(is_maximum_configurable_ac_ls.yfilter);
 }
 
+std::string Ipv6AclAndPrefixList::Oor::Details::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::Oor::Details::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "details";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::Details::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::Details::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_current_configured_ac_ls.is_set || is_set(is_current_configured_ac_ls.yfilter)) leaf_name_data.push_back(is_current_configured_ac_ls.get_name_leafdata());
@@ -2909,9 +3025,7 @@ const EntityPath Ipv6AclAndPrefixList::Oor::Details::get_entity_path(Entity* anc
     if (is_maximum_configurable_ac_es.is_set || is_set(is_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_es.get_name_leafdata());
     if (is_maximum_configurable_ac_ls.is_set || is_set(is_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_ls.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3021,290 +3135,10 @@ bool Ipv6AclAndPrefixList::Oor::Details::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Ipv6AclAndPrefixList::Oor::PrefixListSummary::PrefixListSummary()
-    :
-    details(std::make_shared<Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details>())
-{
-    details->parent = this;
-
-    yang_name = "prefix-list-summary"; yang_parent_name = "oor";
-}
-
-Ipv6AclAndPrefixList::Oor::PrefixListSummary::~PrefixListSummary()
-{
-}
-
-bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::has_data() const
-{
-    return (details !=  nullptr && details->has_data());
-}
-
-bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| (details !=  nullptr && details->has_operation());
-}
-
-std::string Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-list-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "details")
-    {
-        if(details == nullptr)
-        {
-            details = std::make_shared<Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details>();
-        }
-        return details;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(details != nullptr)
-    {
-        children["details"] = details;
-    }
-
-    return children;
-}
-
-void Ipv6AclAndPrefixList::Oor::PrefixListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv6AclAndPrefixList::Oor::PrefixListSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "details")
-        return true;
-    return false;
-}
-
-Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::Details()
-    :
-    is_current_configured_ac_ls{YType::uint32, "is-current-configured-ac-ls"},
-    is_current_configured_aces{YType::uint32, "is-current-configured-aces"},
-    is_current_maximum_configurable_aces{YType::uint32, "is-current-maximum-configurable-aces"},
-    is_current_maximum_configurable_acls{YType::uint32, "is-current-maximum-configurable-acls"},
-    is_default_maximum_configurable_ac_es{YType::uint32, "is-default-maximum-configurable-ac-es"},
-    is_default_maximum_configurable_ac_ls{YType::uint32, "is-default-maximum-configurable-ac-ls"},
-    is_maximum_configurable_ac_es{YType::uint32, "is-maximum-configurable-ac-es"},
-    is_maximum_configurable_ac_ls{YType::uint32, "is-maximum-configurable-ac-ls"}
-{
-    yang_name = "details"; yang_parent_name = "prefix-list-summary";
-}
-
-Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::~Details()
-{
-}
-
-bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::has_data() const
-{
-    return is_current_configured_ac_ls.is_set
-	|| is_current_configured_aces.is_set
-	|| is_current_maximum_configurable_aces.is_set
-	|| is_current_maximum_configurable_acls.is_set
-	|| is_default_maximum_configurable_ac_es.is_set
-	|| is_default_maximum_configurable_ac_ls.is_set
-	|| is_maximum_configurable_ac_es.is_set
-	|| is_maximum_configurable_ac_ls.is_set;
-}
-
-bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_current_configured_ac_ls.yfilter)
-	|| ydk::is_set(is_current_configured_aces.yfilter)
-	|| ydk::is_set(is_current_maximum_configurable_aces.yfilter)
-	|| ydk::is_set(is_current_maximum_configurable_acls.yfilter)
-	|| ydk::is_set(is_default_maximum_configurable_ac_es.yfilter)
-	|| ydk::is_set(is_default_maximum_configurable_ac_ls.yfilter)
-	|| ydk::is_set(is_maximum_configurable_ac_es.yfilter)
-	|| ydk::is_set(is_maximum_configurable_ac_ls.yfilter);
-}
-
-std::string Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/prefix-list-summary/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_current_configured_ac_ls.is_set || is_set(is_current_configured_ac_ls.yfilter)) leaf_name_data.push_back(is_current_configured_ac_ls.get_name_leafdata());
-    if (is_current_configured_aces.is_set || is_set(is_current_configured_aces.yfilter)) leaf_name_data.push_back(is_current_configured_aces.get_name_leafdata());
-    if (is_current_maximum_configurable_aces.is_set || is_set(is_current_maximum_configurable_aces.yfilter)) leaf_name_data.push_back(is_current_maximum_configurable_aces.get_name_leafdata());
-    if (is_current_maximum_configurable_acls.is_set || is_set(is_current_maximum_configurable_acls.yfilter)) leaf_name_data.push_back(is_current_maximum_configurable_acls.get_name_leafdata());
-    if (is_default_maximum_configurable_ac_es.is_set || is_set(is_default_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_default_maximum_configurable_ac_es.get_name_leafdata());
-    if (is_default_maximum_configurable_ac_ls.is_set || is_set(is_default_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_default_maximum_configurable_ac_ls.get_name_leafdata());
-    if (is_maximum_configurable_ac_es.is_set || is_set(is_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_es.get_name_leafdata());
-    if (is_maximum_configurable_ac_ls.is_set || is_set(is_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_ls.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-current-configured-ac-ls")
-    {
-        is_current_configured_ac_ls = value;
-        is_current_configured_ac_ls.value_namespace = name_space;
-        is_current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-current-configured-aces")
-    {
-        is_current_configured_aces = value;
-        is_current_configured_aces.value_namespace = name_space;
-        is_current_configured_aces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-current-maximum-configurable-aces")
-    {
-        is_current_maximum_configurable_aces = value;
-        is_current_maximum_configurable_aces.value_namespace = name_space;
-        is_current_maximum_configurable_aces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-current-maximum-configurable-acls")
-    {
-        is_current_maximum_configurable_acls = value;
-        is_current_maximum_configurable_acls.value_namespace = name_space;
-        is_current_maximum_configurable_acls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-default-maximum-configurable-ac-es")
-    {
-        is_default_maximum_configurable_ac_es = value;
-        is_default_maximum_configurable_ac_es.value_namespace = name_space;
-        is_default_maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-default-maximum-configurable-ac-ls")
-    {
-        is_default_maximum_configurable_ac_ls = value;
-        is_default_maximum_configurable_ac_ls.value_namespace = name_space;
-        is_default_maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-maximum-configurable-ac-es")
-    {
-        is_maximum_configurable_ac_es = value;
-        is_maximum_configurable_ac_es.value_namespace = name_space;
-        is_maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-maximum-configurable-ac-ls")
-    {
-        is_maximum_configurable_ac_ls = value;
-        is_maximum_configurable_ac_ls.value_namespace = name_space;
-        is_maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-current-configured-ac-ls")
-    {
-        is_current_configured_ac_ls.yfilter = yfilter;
-    }
-    if(value_path == "is-current-configured-aces")
-    {
-        is_current_configured_aces.yfilter = yfilter;
-    }
-    if(value_path == "is-current-maximum-configurable-aces")
-    {
-        is_current_maximum_configurable_aces.yfilter = yfilter;
-    }
-    if(value_path == "is-current-maximum-configurable-acls")
-    {
-        is_current_maximum_configurable_acls.yfilter = yfilter;
-    }
-    if(value_path == "is-default-maximum-configurable-ac-es")
-    {
-        is_default_maximum_configurable_ac_es.yfilter = yfilter;
-    }
-    if(value_path == "is-default-maximum-configurable-ac-ls")
-    {
-        is_default_maximum_configurable_ac_ls.yfilter = yfilter;
-    }
-    if(value_path == "is-maximum-configurable-ac-es")
-    {
-        is_maximum_configurable_ac_es.yfilter = yfilter;
-    }
-    if(value_path == "is-maximum-configurable-ac-ls")
-    {
-        is_maximum_configurable_ac_ls.yfilter = yfilter;
-    }
-}
-
-bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-current-configured-ac-ls" || name == "is-current-configured-aces" || name == "is-current-maximum-configurable-aces" || name == "is-current-maximum-configurable-acls" || name == "is-default-maximum-configurable-ac-es" || name == "is-default-maximum-configurable-ac-ls" || name == "is-maximum-configurable-ac-es" || name == "is-maximum-configurable-ac-ls")
-        return true;
-    return false;
-}
-
 Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccesses()
 {
-    yang_name = "oor-accesses"; yang_parent_name = "oor";
+
+    yang_name = "oor-accesses"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::Oor::OorAccesses::~OorAccesses()
@@ -3331,33 +3165,26 @@ bool Ipv6AclAndPrefixList::Oor::OorAccesses::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ipv6AclAndPrefixList::Oor::OorAccesses::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::Oor::OorAccesses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor-accesses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::OorAccesses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::OorAccesses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3420,7 +3247,8 @@ Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::OorAccess()
     is_maximum_configurable_ac_es{YType::uint32, "is-maximum-configurable-ac-es"},
     is_maximum_configurable_ac_ls{YType::uint32, "is-maximum-configurable-ac-ls"}
 {
-    yang_name = "oor-access"; yang_parent_name = "oor-accesses";
+
+    yang_name = "oor-access"; yang_parent_name = "oor-accesses"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::~OorAccess()
@@ -3454,27 +3282,22 @@ bool Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::has_operation() const
 	|| ydk::is_set(is_maximum_configurable_ac_ls.yfilter);
 }
 
+std::string Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/oor-accesses/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor-access" <<"[access-list-name='" <<access_list_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/oor-accesses/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
@@ -3487,9 +3310,7 @@ const EntityPath Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_entity_p
     if (is_maximum_configurable_ac_es.is_set || is_set(is_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_es.get_name_leafdata());
     if (is_maximum_configurable_ac_ls.is_set || is_set(is_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_ls.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3611,7 +3432,8 @@ bool Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::has_leaf_or_child_of_nam
 
 Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefixes()
 {
-    yang_name = "oor-prefixes"; yang_parent_name = "oor";
+
+    yang_name = "oor-prefixes"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::Oor::OorPrefixes::~OorPrefixes()
@@ -3638,33 +3460,26 @@ bool Ipv6AclAndPrefixList::Oor::OorPrefixes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ipv6AclAndPrefixList::Oor::OorPrefixes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::Oor::OorPrefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor-prefixes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::OorPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::OorPrefixes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3727,7 +3542,8 @@ Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::OorPrefix()
     is_maximum_configurable_ac_es{YType::uint32, "is-maximum-configurable-ac-es"},
     is_maximum_configurable_ac_ls{YType::uint32, "is-maximum-configurable-ac-ls"}
 {
-    yang_name = "oor-prefix"; yang_parent_name = "oor-prefixes";
+
+    yang_name = "oor-prefix"; yang_parent_name = "oor-prefixes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::~OorPrefix()
@@ -3761,27 +3577,22 @@ bool Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::has_operation() const
 	|| ydk::is_set(is_maximum_configurable_ac_ls.yfilter);
 }
 
+std::string Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/oor-prefixes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor-prefix" <<"[prefix-list-name='" <<prefix_list_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/oor-prefixes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
@@ -3794,9 +3605,7 @@ const EntityPath Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_entity_p
     if (is_maximum_configurable_ac_es.is_set || is_set(is_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_es.get_name_leafdata());
     if (is_maximum_configurable_ac_ls.is_set || is_set(is_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_ls.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3916,67 +3725,60 @@ bool Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::has_leaf_or_child_of_nam
     return false;
 }
 
-Ipv6AclAndPrefixList::Oor::AccessListSummary::AccessListSummary()
+Ipv6AclAndPrefixList::Oor::PrefixListSummary::PrefixListSummary()
     :
-    details(std::make_shared<Ipv6AclAndPrefixList::Oor::AccessListSummary::Details>())
+    details(std::make_shared<Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details>())
 {
     details->parent = this;
 
-    yang_name = "access-list-summary"; yang_parent_name = "oor";
+    yang_name = "prefix-list-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Ipv6AclAndPrefixList::Oor::AccessListSummary::~AccessListSummary()
+Ipv6AclAndPrefixList::Oor::PrefixListSummary::~PrefixListSummary()
 {
 }
 
-bool Ipv6AclAndPrefixList::Oor::AccessListSummary::has_data() const
+bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::has_data() const
 {
     return (details !=  nullptr && details->has_data());
 }
 
-bool Ipv6AclAndPrefixList::Oor::AccessListSummary::has_operation() const
+bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| (details !=  nullptr && details->has_operation());
 }
 
-std::string Ipv6AclAndPrefixList::Oor::AccessListSummary::get_segment_path() const
+std::string Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-list-summary";
-
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::AccessListSummary::get_entity_path(Entity* ancestor) const
+std::string Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "prefix-list-summary";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
         if(details == nullptr)
         {
-            details = std::make_shared<Ipv6AclAndPrefixList::Oor::AccessListSummary::Details>();
+            details = std::make_shared<Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details>();
         }
         return details;
     }
@@ -3984,7 +3786,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(details != nullptr)
@@ -3995,22 +3797,22 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::Access
     return children;
 }
 
-void Ipv6AclAndPrefixList::Oor::AccessListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6AclAndPrefixList::Oor::PrefixListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv6AclAndPrefixList::Oor::AccessListSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6AclAndPrefixList::Oor::PrefixListSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv6AclAndPrefixList::Oor::AccessListSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "details")
         return true;
     return false;
 }
 
-Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::Details()
+Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::Details()
     :
     is_current_configured_ac_ls{YType::uint32, "is-current-configured-ac-ls"},
     is_current_configured_aces{YType::uint32, "is-current-configured-aces"},
@@ -4021,14 +3823,15 @@ Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::Details()
     is_maximum_configurable_ac_es{YType::uint32, "is-maximum-configurable-ac-es"},
     is_maximum_configurable_ac_ls{YType::uint32, "is-maximum-configurable-ac-ls"}
 {
-    yang_name = "details"; yang_parent_name = "access-list-summary";
+
+    yang_name = "details"; yang_parent_name = "prefix-list-summary"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::~Details()
+Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::~Details()
 {
 }
 
-bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_data() const
+bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::has_data() const
 {
     return is_current_configured_ac_ls.is_set
 	|| is_current_configured_aces.is_set
@@ -4040,7 +3843,7 @@ bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_data() const
 	|| is_maximum_configurable_ac_ls.is_set;
 }
 
-bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_operation() const
+bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_current_configured_ac_ls.yfilter)
@@ -4053,27 +3856,22 @@ bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_operation() cons
 	|| ydk::is_set(is_maximum_configurable_ac_ls.yfilter);
 }
 
-std::string Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_segment_path() const
+std::string Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/prefix-list-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "details";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-acl-oper:ipv6-acl-and-prefix-list/oor/access-list-summary/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_current_configured_ac_ls.is_set || is_set(is_current_configured_ac_ls.yfilter)) leaf_name_data.push_back(is_current_configured_ac_ls.get_name_leafdata());
@@ -4085,24 +3883,22 @@ const EntityPath Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_enti
     if (is_maximum_configurable_ac_es.is_set || is_set(is_maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_es.get_name_leafdata());
     if (is_maximum_configurable_ac_ls.is_set || is_set(is_maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(is_maximum_configurable_ac_ls.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-current-configured-ac-ls")
     {
@@ -4154,7 +3950,7 @@ void Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::set_value(const std:
     }
 }
 
-void Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-current-configured-ac-ls")
     {
@@ -4190,31 +3986,12 @@ void Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::set_filter(const std
     }
 }
 
-bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-current-configured-ac-ls" || name == "is-current-configured-aces" || name == "is-current-maximum-configurable-aces" || name == "is-current-maximum-configurable-acls" || name == "is-default-maximum-configurable-ac-es" || name == "is-default-maximum-configurable-ac-ls" || name == "is-maximum-configurable-ac-es" || name == "is-maximum-configurable-ac-ls")
         return true;
     return false;
 }
-
-const Enum::YLeaf BagAclNhAtStatus::unknown {0, "unknown"};
-const Enum::YLeaf BagAclNhAtStatus::up {1, "up"};
-const Enum::YLeaf BagAclNhAtStatus::down {2, "down"};
-const Enum::YLeaf BagAclNhAtStatus::not_present {3, "not-present"};
-const Enum::YLeaf BagAclNhAtStatus::max {4, "max"};
-
-const Enum::YLeaf BagAclNh::nexthop_none {0, "nexthop-none"};
-const Enum::YLeaf BagAclNh::nexthop_default {1, "nexthop-default"};
-const Enum::YLeaf BagAclNh::nexthop {2, "nexthop"};
-
-const Enum::YLeaf AclAce1::normal {0, "normal"};
-const Enum::YLeaf AclAce1::remark {1, "remark"};
-const Enum::YLeaf AclAce1::abf {2, "abf"};
-
-const Enum::YLeaf AclTcpflagsOperator::match_none {0, "match-none"};
-const Enum::YLeaf AclTcpflagsOperator::match_all {1, "match-all"};
-const Enum::YLeaf AclTcpflagsOperator::match_any_old {2, "match-any-old"};
-const Enum::YLeaf AclTcpflagsOperator::match_any {3, "match-any"};
 
 const Enum::YLeaf AclPortOperator::none {0, "none"};
 const Enum::YLeaf AclPortOperator::eq {1, "eq"};
@@ -4225,16 +4002,66 @@ const Enum::YLeaf AclPortOperator::range {5, "range"};
 const Enum::YLeaf AclPortOperator::onebyte {8, "onebyte"};
 const Enum::YLeaf AclPortOperator::twobytes {9, "twobytes"};
 
+const Enum::YLeaf AclPortOperator_::none {0, "none"};
+const Enum::YLeaf AclPortOperator_::eq {1, "eq"};
+const Enum::YLeaf AclPortOperator_::gt {2, "gt"};
+const Enum::YLeaf AclPortOperator_::lt {3, "lt"};
+const Enum::YLeaf AclPortOperator_::neq {4, "neq"};
+const Enum::YLeaf AclPortOperator_::range {5, "range"};
+const Enum::YLeaf AclPortOperator_::onebyte {8, "onebyte"};
+const Enum::YLeaf AclPortOperator_::twobytes {9, "twobytes"};
+
+const Enum::YLeaf BagAclNh::nexthop_none {0, "nexthop-none"};
+const Enum::YLeaf BagAclNh::nexthop_default {1, "nexthop-default"};
+const Enum::YLeaf BagAclNh::nexthop {2, "nexthop"};
+
+const Enum::YLeaf AclPortOperator__::none {0, "none"};
+const Enum::YLeaf AclPortOperator__::eq {1, "eq"};
+const Enum::YLeaf AclPortOperator__::gt {2, "gt"};
+const Enum::YLeaf AclPortOperator__::lt {3, "lt"};
+const Enum::YLeaf AclPortOperator__::neq {4, "neq"};
+const Enum::YLeaf AclPortOperator__::range {5, "range"};
+const Enum::YLeaf AclPortOperator__::onebyte {8, "onebyte"};
+const Enum::YLeaf AclPortOperator__::twobytes {9, "twobytes"};
+
+const Enum::YLeaf BagAclNhAtStatus::unknown {0, "unknown"};
+const Enum::YLeaf BagAclNhAtStatus::up {1, "up"};
+const Enum::YLeaf BagAclNhAtStatus::down {2, "down"};
+const Enum::YLeaf BagAclNhAtStatus::not_present {3, "not-present"};
+const Enum::YLeaf BagAclNhAtStatus::max {4, "max"};
+
+const Enum::YLeaf AclTcpflagsOperator::match_none {0, "match-none"};
+const Enum::YLeaf AclTcpflagsOperator::match_all {1, "match-all"};
+const Enum::YLeaf AclTcpflagsOperator::match_any_old {2, "match-any-old"};
+const Enum::YLeaf AclTcpflagsOperator::match_any {3, "match-any"};
+
+const Enum::YLeaf AclAce1::normal {0, "normal"};
+const Enum::YLeaf AclAce1::remark {1, "remark"};
+const Enum::YLeaf AclAce1::abf {2, "abf"};
+
+const Enum::YLeaf AclPortOperator___::none {0, "none"};
+const Enum::YLeaf AclPortOperator___::eq {1, "eq"};
+const Enum::YLeaf AclPortOperator___::gt {2, "gt"};
+const Enum::YLeaf AclPortOperator___::lt {3, "lt"};
+const Enum::YLeaf AclPortOperator___::neq {4, "neq"};
+const Enum::YLeaf AclPortOperator___::range {5, "range"};
+const Enum::YLeaf AclPortOperator___::onebyte {8, "onebyte"};
+const Enum::YLeaf AclPortOperator___::twobytes {9, "twobytes"};
+
+const Enum::YLeaf AclLog::log_none {0, "log-none"};
+const Enum::YLeaf AclLog::log {1, "log"};
+const Enum::YLeaf AclLog::log_input {2, "log-input"};
+
+const Enum::YLeaf AclAce1_::normal {0, "normal"};
+const Enum::YLeaf AclAce1_::remark {1, "remark"};
+const Enum::YLeaf AclAce1_::abf {2, "abf"};
+
 const Enum::YLeaf AclAction::deny {0, "deny"};
 const Enum::YLeaf AclAction::permit {1, "permit"};
 const Enum::YLeaf AclAction::encrypt {2, "encrypt"};
 const Enum::YLeaf AclAction::bypass {3, "bypass"};
 const Enum::YLeaf AclAction::fallthrough {4, "fallthrough"};
 const Enum::YLeaf AclAction::invalid {5, "invalid"};
-
-const Enum::YLeaf AclLog::log_none {0, "log-none"};
-const Enum::YLeaf AclLog::log {1, "log"};
-const Enum::YLeaf AclLog::log_input {2, "log-input"};
 
 const Enum::YLeaf BagAclNhStatus::not_present {0, "not-present"};
 const Enum::YLeaf BagAclNhStatus::unknown {1, "unknown"};

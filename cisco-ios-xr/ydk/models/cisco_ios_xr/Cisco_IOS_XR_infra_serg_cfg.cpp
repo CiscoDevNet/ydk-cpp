@@ -23,10 +23,9 @@ SessionRedundancy::SessionRedundancy()
 	,revertive_timer(std::make_shared<SessionRedundancy::RevertiveTimer>())
 {
     groups->parent = this;
-
     revertive_timer->parent = this;
 
-    yang_name = "session-redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-serg-cfg";
+    yang_name = "session-redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-serg-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SessionRedundancy::~SessionRedundancy()
@@ -60,20 +59,11 @@ std::string SessionRedundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
@@ -82,9 +72,7 @@ const EntityPath SessionRedundancy::get_entity_path(Entity* ancestor) const
     if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -219,7 +207,8 @@ bool SessionRedundancy::has_leaf_or_child_of_name(const std::string & name) cons
 
 SessionRedundancy::Groups::Groups()
 {
-    yang_name = "groups"; yang_parent_name = "session-redundancy";
+
+    yang_name = "groups"; yang_parent_name = "session-redundancy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SessionRedundancy::Groups::~Groups()
@@ -246,33 +235,26 @@ bool SessionRedundancy::Groups::has_operation() const
     return is_set(yfilter);
 }
 
+std::string SessionRedundancy::Groups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SessionRedundancy::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -340,12 +322,10 @@ SessionRedundancy::Groups::Group::Group()
 	,revertive_timer(std::make_shared<SessionRedundancy::Groups::Group::RevertiveTimer>())
 {
     interface_list->parent = this;
-
     peer->parent = this;
-
     revertive_timer->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups";
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SessionRedundancy::Groups::Group::~Group()
@@ -385,27 +365,22 @@ bool SessionRedundancy::Groups::Group::has_operation() const
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation());
 }
 
+std::string SessionRedundancy::Groups::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy/groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SessionRedundancy::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group" <<"[group-id='" <<group_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::Group::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy/groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
@@ -418,9 +393,7 @@ const EntityPath SessionRedundancy::Groups::Group::get_entity_path(Entity* ances
     if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
     if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -582,306 +555,6 @@ bool SessionRedundancy::Groups::Group::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-SessionRedundancy::Groups::Group::Peer::Peer()
-    :
-    ipaddress(std::make_shared<SessionRedundancy::Groups::Group::Peer::Ipaddress>())
-{
-    ipaddress->parent = this;
-
-    yang_name = "peer"; yang_parent_name = "group";
-}
-
-SessionRedundancy::Groups::Group::Peer::~Peer()
-{
-}
-
-bool SessionRedundancy::Groups::Group::Peer::has_data() const
-{
-    return (ipaddress !=  nullptr && ipaddress->has_data());
-}
-
-bool SessionRedundancy::Groups::Group::Peer::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ipaddress !=  nullptr && ipaddress->has_operation());
-}
-
-std::string SessionRedundancy::Groups::Group::Peer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SessionRedundancy::Groups::Group::Peer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Peer' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipaddress")
-    {
-        if(ipaddress == nullptr)
-        {
-            ipaddress = std::make_shared<SessionRedundancy::Groups::Group::Peer::Ipaddress>();
-        }
-        return ipaddress;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipaddress != nullptr)
-    {
-        children["ipaddress"] = ipaddress;
-    }
-
-    return children;
-}
-
-void SessionRedundancy::Groups::Group::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void SessionRedundancy::Groups::Group::Peer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool SessionRedundancy::Groups::Group::Peer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipaddress")
-        return true;
-    return false;
-}
-
-SessionRedundancy::Groups::Group::Peer::Ipaddress::Ipaddress()
-    :
-    address_family{YType::enumeration, "address-family"},
-    prefix_string{YType::str, "prefix-string"}
-{
-    yang_name = "ipaddress"; yang_parent_name = "peer";
-}
-
-SessionRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
-{
-}
-
-bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_data() const
-{
-    return address_family.is_set
-	|| prefix_string.is_set;
-}
-
-bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(prefix_string.yfilter);
-}
-
-std::string SessionRedundancy::Groups::Group::Peer::Ipaddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipaddress";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SessionRedundancy::Groups::Group::Peer::Ipaddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipaddress' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-string")
-    {
-        prefix_string = value;
-        prefix_string.value_namespace = name_space;
-        prefix_string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "prefix-string")
-    {
-        prefix_string.yfilter = yfilter;
-    }
-}
-
-bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "prefix-string")
-        return true;
-    return false;
-}
-
-SessionRedundancy::Groups::Group::RevertiveTimer::RevertiveTimer()
-    :
-    max_value{YType::uint32, "max-value"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "revertive-timer"; yang_parent_name = "group";
-}
-
-SessionRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
-{
-}
-
-bool SessionRedundancy::Groups::Group::RevertiveTimer::has_data() const
-{
-    return max_value.is_set
-	|| value_.is_set;
-}
-
-bool SessionRedundancy::Groups::Group::RevertiveTimer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_value.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string SessionRedundancy::Groups::Group::RevertiveTimer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "revertive-timer";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SessionRedundancy::Groups::Group::RevertiveTimer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RevertiveTimer' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::RevertiveTimer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SessionRedundancy::Groups::Group::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-value")
-    {
-        max_value = value;
-        max_value.value_namespace = name_space;
-        max_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SessionRedundancy::Groups::Group::RevertiveTimer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-value")
-    {
-        max_value.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool SessionRedundancy::Groups::Group::RevertiveTimer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-value" || name == "value")
-        return true;
-    return false;
-}
-
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceList()
     :
     enable{YType::empty, "enable"}
@@ -890,10 +563,9 @@ SessionRedundancy::Groups::Group::InterfaceList::InterfaceList()
 	,interfaces(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces>())
 {
     interface_ranges->parent = this;
-
     interfaces->parent = this;
 
-    yang_name = "interface-list"; yang_parent_name = "group";
+    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::~InterfaceList()
@@ -919,30 +591,16 @@ std::string SessionRedundancy::Groups::Group::InterfaceList::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::Group::InterfaceList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::InterfaceList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceList' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1012,7 +670,8 @@ bool SessionRedundancy::Groups::Group::InterfaceList::has_leaf_or_child_of_name(
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
 {
-    yang_name = "interface-ranges"; yang_parent_name = "interface-list";
+
+    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRanges()
@@ -1043,29 +702,15 @@ std::string SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ranges";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceRanges' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1124,7 +769,8 @@ SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
     interface_id_range_end{YType::uint32, "interface-id-range-end"},
     interface_id_range_start{YType::uint32, "interface-id-range-start"}
 {
-    yang_name = "interface-range"; yang_parent_name = "interface-ranges";
+
+    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::~InterfaceRange()
@@ -1154,23 +800,11 @@ std::string SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::In
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-range" <<"[interface-name='" <<interface_name <<"']" <<"[sub-interface-range-start='" <<sub_interface_range_start <<"']" <<"[sub-interface-range-end='" <<sub_interface_range_end <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceRange' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -1179,9 +813,7 @@ const EntityPath SessionRedundancy::Groups::Group::InterfaceList::InterfaceRange
     if (interface_id_range_end.is_set || is_set(interface_id_range_end.yfilter)) leaf_name_data.push_back(interface_id_range_end.get_name_leafdata());
     if (interface_id_range_start.is_set || is_set(interface_id_range_start.yfilter)) leaf_name_data.push_back(interface_id_range_start.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1263,7 +895,8 @@ bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interface
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "interface-list";
+
+    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
@@ -1294,29 +927,15 @@ std::string SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1372,7 +991,8 @@ SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::Interfac
     interface_name{YType::str, "interface-name"},
     interface_id{YType::uint32, "interface-id"}
 {
-    yang_name = "interface"; yang_parent_name = "interfaces";
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interface()
@@ -1396,31 +1016,17 @@ std::string SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interfa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_infra_serg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1470,12 +1076,273 @@ bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has
     return false;
 }
 
+SessionRedundancy::Groups::Group::Peer::Peer()
+    :
+    ipaddress(std::make_shared<SessionRedundancy::Groups::Group::Peer::Ipaddress>())
+{
+    ipaddress->parent = this;
+
+    yang_name = "peer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SessionRedundancy::Groups::Group::Peer::~Peer()
+{
+}
+
+bool SessionRedundancy::Groups::Group::Peer::has_data() const
+{
+    return (ipaddress !=  nullptr && ipaddress->has_data());
+}
+
+bool SessionRedundancy::Groups::Group::Peer::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipaddress !=  nullptr && ipaddress->has_operation());
+}
+
+std::string SessionRedundancy::Groups::Group::Peer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::Peer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipaddress")
+    {
+        if(ipaddress == nullptr)
+        {
+            ipaddress = std::make_shared<SessionRedundancy::Groups::Group::Peer::Ipaddress>();
+        }
+        return ipaddress;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipaddress != nullptr)
+    {
+        children["ipaddress"] = ipaddress;
+    }
+
+    return children;
+}
+
+void SessionRedundancy::Groups::Group::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SessionRedundancy::Groups::Group::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SessionRedundancy::Groups::Group::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipaddress")
+        return true;
+    return false;
+}
+
+SessionRedundancy::Groups::Group::Peer::Ipaddress::Ipaddress()
+    :
+    address_family{YType::enumeration, "address-family"},
+    prefix_string{YType::str, "prefix-string"}
+{
+
+    yang_name = "ipaddress"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SessionRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
+{
+}
+
+bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_data() const
+{
+    return address_family.is_set
+	|| prefix_string.is_set;
+}
+
+bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(prefix_string.yfilter);
+}
+
+std::string SessionRedundancy::Groups::Group::Peer::Ipaddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipaddress";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::Peer::Ipaddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-string")
+    {
+        prefix_string = value;
+        prefix_string.value_namespace = name_space;
+        prefix_string.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "prefix-string")
+    {
+        prefix_string.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "prefix-string")
+        return true;
+    return false;
+}
+
+SessionRedundancy::Groups::Group::RevertiveTimer::RevertiveTimer()
+    :
+    max_value{YType::uint32, "max-value"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "revertive-timer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SessionRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
+{
+}
+
+bool SessionRedundancy::Groups::Group::RevertiveTimer::has_data() const
+{
+    return max_value.is_set
+	|| value_.is_set;
+}
+
+bool SessionRedundancy::Groups::Group::RevertiveTimer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_value.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string SessionRedundancy::Groups::Group::RevertiveTimer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "revertive-timer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::RevertiveTimer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancy::Groups::Group::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::RevertiveTimer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SessionRedundancy::Groups::Group::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-value")
+    {
+        max_value = value;
+        max_value.value_namespace = name_space;
+        max_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionRedundancy::Groups::Group::RevertiveTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-value")
+    {
+        max_value.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::RevertiveTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-value" || name == "value")
+        return true;
+    return false;
+}
+
 SessionRedundancy::RevertiveTimer::RevertiveTimer()
     :
     max_value{YType::uint32, "max-value"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "revertive-timer"; yang_parent_name = "session-redundancy";
+
+    yang_name = "revertive-timer"; yang_parent_name = "session-redundancy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SessionRedundancy::RevertiveTimer::~RevertiveTimer()
@@ -1495,35 +1362,28 @@ bool SessionRedundancy::RevertiveTimer::has_operation() const
 	|| ydk::is_set(value_.yfilter);
 }
 
+std::string SessionRedundancy::RevertiveTimer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SessionRedundancy::RevertiveTimer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "revertive-timer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionRedundancy::RevertiveTimer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::RevertiveTimer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-serg-cfg:session-redundancy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

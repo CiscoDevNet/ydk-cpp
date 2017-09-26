@@ -18,7 +18,7 @@ class Sr : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,10 +33,12 @@ class Sr : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
         class GlobalBlock; //type: Sr::GlobalBlock
+        class LocalBlock; //type: Sr::LocalBlock
         class Mappings; //type: Sr::Mappings
 
-        std::shared_ptr<Cisco_IOS_XR_segment_routing_ms_cfg::Sr::GlobalBlock> global_block; // presence node
-        std::shared_ptr<Cisco_IOS_XR_segment_routing_ms_cfg::Sr::Mappings> mappings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::GlobalBlock> global_block; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::LocalBlock> local_block; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::Mappings> mappings;
         
 }; // Sr
 
@@ -49,18 +51,42 @@ class Sr::GlobalBlock : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf lower_bound; //type: uint32
         ydk::YLeaf upper_bound; //type: uint32
 
 }; // Sr::GlobalBlock
+
+
+class Sr::LocalBlock : public ydk::Entity
+{
+    public:
+        LocalBlock();
+        ~LocalBlock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf lower_bound; //type: uint32
+        ydk::YLeaf upper_bound; //type: uint32
+
+}; // Sr::LocalBlock
 
 
 class Sr::Mappings : public ydk::Entity
@@ -71,17 +97,18 @@ class Sr::Mappings : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Mapping; //type: Sr::Mappings::Mapping
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_segment_routing_ms_cfg::Sr::Mappings::Mapping> > mapping;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::Mappings::Mapping> > mapping;
         
 }; // Sr::Mappings
 
@@ -94,13 +121,14 @@ class Sr::Mappings::Mapping : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf af; //type: string
         ydk::YLeaf ip; //type: string

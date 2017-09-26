@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace ENTITY_STATE_TC_MIB {
 
-class Entityusagestate : public ydk::Enum
+class EntityUsageState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -20,17 +20,7 @@ class Entityusagestate : public ydk::Enum
 
 };
 
-class Entityoperstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf testing;
-
-};
-
-class Entitystandbystatus : public ydk::Enum
+class EntityStandbyStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -40,13 +30,23 @@ class Entitystandbystatus : public ydk::Enum
 
 };
 
-class Entityadminstate : public ydk::Enum
+class EntityAdminState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf locked;
         static const ydk::Enum::YLeaf shuttingDown;
         static const ydk::Enum::YLeaf unlocked;
+
+};
+
+class EntityOperState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf testing;
 
 };
 

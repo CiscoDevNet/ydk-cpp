@@ -56,9 +56,9 @@ ydk::path::RpcImpl::~RpcImpl()
 }
 
 std::shared_ptr<ydk::path::DataNode>
-ydk::path::RpcImpl::operator()(const ydk::path::ServiceProvider& provider)
+ydk::path::RpcImpl::operator()(const ydk::path::Session& session)
 {
-    return provider.invoke(*this);
+    return session.invoke(*this);
 }
 
 

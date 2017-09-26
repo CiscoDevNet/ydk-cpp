@@ -16,11 +16,12 @@ Sr::Sr()
     enable{YType::empty, "enable"}
     	,
     global_block(nullptr) // presence node
+	,local_block(nullptr) // presence node
 	,mappings(std::make_shared<Sr::Mappings>())
 {
     mappings->parent = this;
 
-    yang_name = "sr"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-cfg";
+    yang_name = "sr"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Sr::~Sr()
@@ -31,6 +32,7 @@ bool Sr::has_data() const
 {
     return enable.is_set
 	|| (global_block !=  nullptr && global_block->has_data())
+	|| (local_block !=  nullptr && local_block->has_data())
 	|| (mappings !=  nullptr && mappings->has_data());
 }
 
@@ -39,6 +41,7 @@ bool Sr::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| (global_block !=  nullptr && global_block->has_operation())
+	|| (local_block !=  nullptr && local_block->has_operation())
 	|| (mappings !=  nullptr && mappings->has_operation());
 }
 
@@ -46,27 +49,16 @@ std::string Sr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -79,6 +71,15 @@ std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_nam
             global_block = std::make_shared<Sr::GlobalBlock>();
         }
         return global_block;
+    }
+
+    if(child_yang_name == "local-block")
+    {
+        if(local_block == nullptr)
+        {
+            local_block = std::make_shared<Sr::LocalBlock>();
+        }
+        return local_block;
     }
 
     if(child_yang_name == "mappings")
@@ -99,6 +100,11 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
     if(global_block != nullptr)
     {
         children["global-block"] = global_block;
+    }
+
+    if(local_block != nullptr)
+    {
+        children["local-block"] = local_block;
     }
 
     if(mappings != nullptr)
@@ -154,7 +160,7 @@ std::map<std::pair<std::string, std::string>, std::string> Sr::get_namespace_ide
 
 bool Sr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "global-block" || name == "mappings" || name == "enable")
+    if(name == "global-block" || name == "local-block" || name == "mappings" || name == "enable")
         return true;
     return false;
 }
@@ -164,7 +170,8 @@ Sr::GlobalBlock::GlobalBlock()
     lower_bound{YType::uint32, "lower-bound"},
     upper_bound{YType::uint32, "upper-bound"}
 {
-    yang_name = "global-block"; yang_parent_name = "sr";
+
+    yang_name = "global-block"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sr::GlobalBlock::~GlobalBlock()
@@ -184,35 +191,28 @@ bool Sr::GlobalBlock::has_operation() const
 	|| ydk::is_set(upper_bound.yfilter);
 }
 
+std::string Sr::GlobalBlock::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sr::GlobalBlock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global-block";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sr::GlobalBlock::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sr::GlobalBlock::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
     if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -262,9 +262,107 @@ bool Sr::GlobalBlock::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Sr::LocalBlock::LocalBlock()
+    :
+    lower_bound{YType::uint32, "lower-bound"},
+    upper_bound{YType::uint32, "upper-bound"}
+{
+
+    yang_name = "local-block"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::LocalBlock::~LocalBlock()
+{
+}
+
+bool Sr::LocalBlock::has_data() const
+{
+    return lower_bound.is_set
+	|| upper_bound.is_set;
+}
+
+bool Sr::LocalBlock::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(upper_bound.yfilter);
+}
+
+std::string Sr::LocalBlock::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::LocalBlock::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-block";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::LocalBlock::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::LocalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::LocalBlock::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Sr::LocalBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::LocalBlock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+}
+
+bool Sr::LocalBlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower-bound" || name == "upper-bound")
+        return true;
+    return false;
+}
+
 Sr::Mappings::Mappings()
 {
-    yang_name = "mappings"; yang_parent_name = "sr";
+
+    yang_name = "mappings"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sr::Mappings::~Mappings()
@@ -291,33 +389,26 @@ bool Sr::Mappings::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Sr::Mappings::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sr::Mappings::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mappings";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sr::Mappings::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sr::Mappings::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -377,7 +468,8 @@ Sr::Mappings::Mapping::Mapping()
     sid_range{YType::int32, "sid-range"},
     sid_start{YType::uint32, "sid-start"}
 {
-    yang_name = "mapping"; yang_parent_name = "mappings";
+
+    yang_name = "mapping"; yang_parent_name = "mappings"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sr::Mappings::Mapping::~Mapping()
@@ -405,27 +497,22 @@ bool Sr::Mappings::Mapping::has_operation() const
 	|| ydk::is_set(sid_start.yfilter);
 }
 
+std::string Sr::Mappings::Mapping::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/mappings/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sr::Mappings::Mapping::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mapping" <<"[af='" <<af <<"']" <<"[ip='" <<ip <<"']" <<"[mask='" <<mask <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sr::Mappings::Mapping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sr::Mappings::Mapping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/mappings/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
@@ -435,9 +522,7 @@ const EntityPath Sr::Mappings::Mapping::get_entity_path(Entity* ancestor) const
     if (sid_range.is_set || is_set(sid_range.yfilter)) leaf_name_data.push_back(sid_range.get_name_leafdata());
     if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

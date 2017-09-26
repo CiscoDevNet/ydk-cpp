@@ -45,7 +45,7 @@ void config_bgp(Bgp* bgp)
 
     // global address family
     auto global_af = make_unique<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf>();
-    global_af->af_name = BgpAddressFamilyEnum::ipv4_unicast;
+    global_af->af_name = BgpAddressFamily::ipv4_unicast;
     global_af->enable = Empty();
     global_af->parent = four_byte_as->default_vrf->global->global_afs.get();
     four_byte_as->default_vrf->global->global_afs->global_af.push_back(move(global_af));
@@ -60,7 +60,7 @@ void config_bgp(Bgp* bgp)
     neighbor_group->update_source_interface = "Loopback0";
     // ipv4 unicast
     auto neighbor_group_af = make_unique<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf>();
-    neighbor_group_af->af_name = BgpAddressFamilyEnum::ipv4_unicast;
+    neighbor_group_af->af_name = BgpAddressFamily::ipv4_unicast;
     neighbor_group_af->activate = Empty();
     neighbor_group_af->parent = neighbor_group->neighbor_group_afs.get();
     neighbor_group->parent = four_byte_as->default_vrf->bgp_entity->neighbor_groups.get();
@@ -84,27 +84,27 @@ void config_bgp(Bgp* bgp)
 
 int main(int argc, char* argv[])
 {
-	vector<string> args = parse_args(argc, argv);
-	if(args.empty()) return 1;
-	string host, username, password;
-	int port;
+    vector<string> args = parse_args(argc, argv);
+    if(args.empty()) return 1;
+    string host, username, password;
+    int port;
 
-	username = args[0]; password = args[1]; host = args[2]; port = stoi(args[3]);
+    username = args[0]; password = args[1]; host = args[2]; port = stoi(args[3]);
 
-	bool verbose=(args[4]=="--verbose");
-	if(verbose)
-	{
+    bool verbose=(args[4]=="--verbose");
+    if(verbose)
+    {
             auto logger = spdlog::stdout_color_mt("ydk");
             logger->set_level(spdlog::level::info);
-	}
+    }
 
-	NetconfServiceProvider provider{host, username, password, port};
-	CrudService crud{};
+    NetconfServiceProvider provider{host, username, password, port};
+    CrudService crud{};
 
-	auto bgp = make_unique<Bgp>();
-	config_bgp(bgp.get());
-	bool reply = crud.create(provider, *bgp);
+    auto bgp = make_unique<Bgp>();
+    config_bgp(bgp.get());
+    bool reply = crud.create(provider, *bgp);
 
-	if(reply) cout << "Create operation success" << endl << endl; else cout << "Operation failed" << endl << endl;
+    if(reply) cout << "Create yfilter success" << endl << endl; else cout << "Operation failed" << endl << endl;
 
 }

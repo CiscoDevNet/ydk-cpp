@@ -11,35 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace P_BRIDGE_MIB {
 
-PBridgeMib::PBridgeMib()
+PBRIDGEMIB::PBRIDGEMIB()
     :
-    dot1dextbase(std::make_shared<PBridgeMib::Dot1Dextbase>())
-	,dot1dportoutboundaccessprioritytable(std::make_shared<PBridgeMib::Dot1Dportoutboundaccessprioritytable>())
-	,dot1dtphcporttable(std::make_shared<PBridgeMib::Dot1Dtphcporttable>())
-	,dot1dtpportoverflowtable(std::make_shared<PBridgeMib::Dot1Dtpportoverflowtable>())
-	,dot1dtrafficclasstable(std::make_shared<PBridgeMib::Dot1Dtrafficclasstable>())
-	,dot1duserpriorityregentable(std::make_shared<PBridgeMib::Dot1Duserpriorityregentable>())
+    dot1dextbase(std::make_shared<PBRIDGEMIB::Dot1Dextbase>())
+	,dot1dportoutboundaccessprioritytable(std::make_shared<PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable>())
+	,dot1dtphcporttable(std::make_shared<PBRIDGEMIB::Dot1Dtphcporttable>())
+	,dot1dtpportoverflowtable(std::make_shared<PBRIDGEMIB::Dot1Dtpportoverflowtable>())
+	,dot1dtrafficclasstable(std::make_shared<PBRIDGEMIB::Dot1Dtrafficclasstable>())
+	,dot1duserpriorityregentable(std::make_shared<PBRIDGEMIB::Dot1Duserpriorityregentable>())
 {
     dot1dextbase->parent = this;
-
     dot1dportoutboundaccessprioritytable->parent = this;
-
     dot1dtphcporttable->parent = this;
-
     dot1dtpportoverflowtable->parent = this;
-
     dot1dtrafficclasstable->parent = this;
-
     dot1duserpriorityregentable->parent = this;
 
-    yang_name = "P-BRIDGE-MIB"; yang_parent_name = "P-BRIDGE-MIB";
+    yang_name = "P-BRIDGE-MIB"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-PBridgeMib::~PBridgeMib()
+PBRIDGEMIB::~PBRIDGEMIB()
 {
 }
 
-bool PBridgeMib::has_data() const
+bool PBRIDGEMIB::has_data() const
 {
     return (dot1dextbase !=  nullptr && dot1dextbase->has_data())
 	|| (dot1dportoutboundaccessprioritytable !=  nullptr && dot1dportoutboundaccessprioritytable->has_data())
@@ -49,7 +44,7 @@ bool PBridgeMib::has_data() const
 	|| (dot1duserpriorityregentable !=  nullptr && dot1duserpriorityregentable->has_data());
 }
 
-bool PBridgeMib::has_operation() const
+bool PBRIDGEMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (dot1dextbase !=  nullptr && dot1dextbase->has_operation())
@@ -60,40 +55,29 @@ bool PBridgeMib::has_operation() const
 	|| (dot1duserpriorityregentable !=  nullptr && dot1duserpriorityregentable->has_operation());
 }
 
-std::string PBridgeMib::get_segment_path() const
+std::string PBRIDGEMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dExtBase")
     {
         if(dot1dextbase == nullptr)
         {
-            dot1dextbase = std::make_shared<PBridgeMib::Dot1Dextbase>();
+            dot1dextbase = std::make_shared<PBRIDGEMIB::Dot1Dextbase>();
         }
         return dot1dextbase;
     }
@@ -102,7 +86,7 @@ std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_
     {
         if(dot1dportoutboundaccessprioritytable == nullptr)
         {
-            dot1dportoutboundaccessprioritytable = std::make_shared<PBridgeMib::Dot1Dportoutboundaccessprioritytable>();
+            dot1dportoutboundaccessprioritytable = std::make_shared<PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable>();
         }
         return dot1dportoutboundaccessprioritytable;
     }
@@ -111,7 +95,7 @@ std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_
     {
         if(dot1dtphcporttable == nullptr)
         {
-            dot1dtphcporttable = std::make_shared<PBridgeMib::Dot1Dtphcporttable>();
+            dot1dtphcporttable = std::make_shared<PBRIDGEMIB::Dot1Dtphcporttable>();
         }
         return dot1dtphcporttable;
     }
@@ -120,7 +104,7 @@ std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_
     {
         if(dot1dtpportoverflowtable == nullptr)
         {
-            dot1dtpportoverflowtable = std::make_shared<PBridgeMib::Dot1Dtpportoverflowtable>();
+            dot1dtpportoverflowtable = std::make_shared<PBRIDGEMIB::Dot1Dtpportoverflowtable>();
         }
         return dot1dtpportoverflowtable;
     }
@@ -129,7 +113,7 @@ std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_
     {
         if(dot1dtrafficclasstable == nullptr)
         {
-            dot1dtrafficclasstable = std::make_shared<PBridgeMib::Dot1Dtrafficclasstable>();
+            dot1dtrafficclasstable = std::make_shared<PBRIDGEMIB::Dot1Dtrafficclasstable>();
         }
         return dot1dtrafficclasstable;
     }
@@ -138,7 +122,7 @@ std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_
     {
         if(dot1duserpriorityregentable == nullptr)
         {
-            dot1duserpriorityregentable = std::make_shared<PBridgeMib::Dot1Duserpriorityregentable>();
+            dot1duserpriorityregentable = std::make_shared<PBRIDGEMIB::Dot1Duserpriorityregentable>();
         }
         return dot1duserpriorityregentable;
     }
@@ -146,7 +130,7 @@ std::shared_ptr<Entity> PBridgeMib::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dot1dextbase != nullptr)
@@ -182,67 +166,68 @@ std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::get_children() const
     return children;
 }
 
-void PBridgeMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PBridgeMib::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PBridgeMib::clone_ptr() const
+std::shared_ptr<Entity> PBRIDGEMIB::clone_ptr() const
 {
-    return std::make_shared<PBridgeMib>();
+    return std::make_shared<PBRIDGEMIB>();
 }
 
-std::string PBridgeMib::get_bundle_yang_models_location() const
+std::string PBRIDGEMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string PBridgeMib::get_bundle_name() const
+std::string PBRIDGEMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function PBridgeMib::get_augment_capabilities_function() const
+augment_capabilities_function PBRIDGEMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> PBridgeMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> PBRIDGEMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool PBridgeMib::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dExtBase" || name == "dot1dPortOutboundAccessPriorityTable" || name == "dot1dTpHCPortTable" || name == "dot1dTpPortOverflowTable" || name == "dot1dTrafficClassTable" || name == "dot1dUserPriorityRegenTable")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dextbase::Dot1Dextbase()
+PBRIDGEMIB::Dot1Dextbase::Dot1Dextbase()
     :
     dot1ddevicecapabilities{YType::bits, "dot1dDeviceCapabilities"},
     dot1dgmrpstatus{YType::enumeration, "dot1dGmrpStatus"},
     dot1dtrafficclassesenabled{YType::boolean, "dot1dTrafficClassesEnabled"}
 {
-    yang_name = "dot1dExtBase"; yang_parent_name = "P-BRIDGE-MIB";
+
+    yang_name = "dot1dExtBase"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dextbase::~Dot1Dextbase()
+PBRIDGEMIB::Dot1Dextbase::~Dot1Dextbase()
 {
 }
 
-bool PBridgeMib::Dot1Dextbase::has_data() const
+bool PBRIDGEMIB::Dot1Dextbase::has_data() const
 {
     return dot1ddevicecapabilities.is_set
 	|| dot1dgmrpstatus.is_set
 	|| dot1dtrafficclassesenabled.is_set;
 }
 
-bool PBridgeMib::Dot1Dextbase::has_operation() const
+bool PBRIDGEMIB::Dot1Dextbase::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1ddevicecapabilities.yfilter)
@@ -250,51 +235,44 @@ bool PBridgeMib::Dot1Dextbase::has_operation() const
 	|| ydk::is_set(dot1dtrafficclassesenabled.yfilter);
 }
 
-std::string PBridgeMib::Dot1Dextbase::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dextbase::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dextbase::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dExtBase";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dextbase::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dextbase::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dot1ddevicecapabilities.is_set || is_set(dot1ddevicecapabilities.yfilter)) leaf_name_data.push_back(dot1ddevicecapabilities.get_name_leafdata());
     if (dot1dgmrpstatus.is_set || is_set(dot1dgmrpstatus.yfilter)) leaf_name_data.push_back(dot1dgmrpstatus.get_name_leafdata());
     if (dot1dtrafficclassesenabled.is_set || is_set(dot1dtrafficclassesenabled.yfilter)) leaf_name_data.push_back(dot1dtrafficclassesenabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dextbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dextbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dextbase::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dextbase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PBridgeMib::Dot1Dextbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dextbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dDeviceCapabilities")
     {
@@ -314,7 +292,7 @@ void PBridgeMib::Dot1Dextbase::set_value(const std::string & value_path, const s
     }
 }
 
-void PBridgeMib::Dot1Dextbase::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dextbase::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dDeviceCapabilities")
     {
@@ -330,23 +308,235 @@ void PBridgeMib::Dot1Dextbase::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool PBridgeMib::Dot1Dextbase::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dextbase::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dDeviceCapabilities" || name == "dot1dGmrpStatus" || name == "dot1dTrafficClassesEnabled")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcporttable()
+PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccessprioritytable()
 {
-    yang_name = "dot1dTpHCPortTable"; yang_parent_name = "P-BRIDGE-MIB";
+
+    yang_name = "dot1dPortOutboundAccessPriorityTable"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dtphcporttable::~Dot1Dtphcporttable()
+PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::~Dot1Dportoutboundaccessprioritytable()
 {
 }
 
-bool PBridgeMib::Dot1Dtphcporttable::has_data() const
+bool PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::has_data() const
+{
+    for (std::size_t index=0; index<dot1dportoutboundaccesspriorityentry.size(); index++)
+    {
+        if(dot1dportoutboundaccesspriorityentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::has_operation() const
+{
+    for (std::size_t index=0; index<dot1dportoutboundaccesspriorityentry.size(); index++)
+    {
+        if(dot1dportoutboundaccesspriorityentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dot1dPortOutboundAccessPriorityTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dot1dPortOutboundAccessPriorityEntry")
+    {
+        for(auto const & c : dot1dportoutboundaccesspriorityentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry>();
+        c->parent = this;
+        dot1dportoutboundaccesspriorityentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : dot1dportoutboundaccesspriorityentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot1dPortOutboundAccessPriorityEntry")
+        return true;
+    return false;
+}
+
+PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::Dot1Dportoutboundaccesspriorityentry()
+    :
+    dot1dbaseport{YType::str, "dot1dBasePort"},
+    dot1dregenuserpriority{YType::str, "dot1dRegenUserPriority"},
+    dot1dportoutboundaccesspriority{YType::int32, "dot1dPortOutboundAccessPriority"}
+{
+
+    yang_name = "dot1dPortOutboundAccessPriorityEntry"; yang_parent_name = "dot1dPortOutboundAccessPriorityTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::~Dot1Dportoutboundaccesspriorityentry()
+{
+}
+
+bool PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::has_data() const
+{
+    return dot1dbaseport.is_set
+	|| dot1dregenuserpriority.is_set
+	|| dot1dportoutboundaccesspriority.is_set;
+}
+
+bool PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dot1dbaseport.yfilter)
+	|| ydk::is_set(dot1dregenuserpriority.yfilter)
+	|| ydk::is_set(dot1dportoutboundaccesspriority.yfilter);
+}
+
+std::string PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dPortOutboundAccessPriorityTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dot1dPortOutboundAccessPriorityEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1dRegenUserPriority='" <<dot1dregenuserpriority <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dot1dbaseport.is_set || is_set(dot1dbaseport.yfilter)) leaf_name_data.push_back(dot1dbaseport.get_name_leafdata());
+    if (dot1dregenuserpriority.is_set || is_set(dot1dregenuserpriority.yfilter)) leaf_name_data.push_back(dot1dregenuserpriority.get_name_leafdata());
+    if (dot1dportoutboundaccesspriority.is_set || is_set(dot1dportoutboundaccesspriority.yfilter)) leaf_name_data.push_back(dot1dportoutboundaccesspriority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dot1dBasePort")
+    {
+        dot1dbaseport = value;
+        dot1dbaseport.value_namespace = name_space;
+        dot1dbaseport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dot1dRegenUserPriority")
+    {
+        dot1dregenuserpriority = value;
+        dot1dregenuserpriority.value_namespace = name_space;
+        dot1dregenuserpriority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dot1dPortOutboundAccessPriority")
+    {
+        dot1dportoutboundaccesspriority = value;
+        dot1dportoutboundaccesspriority.value_namespace = name_space;
+        dot1dportoutboundaccesspriority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot1dBasePort")
+    {
+        dot1dbaseport.yfilter = yfilter;
+    }
+    if(value_path == "dot1dRegenUserPriority")
+    {
+        dot1dregenuserpriority.yfilter = yfilter;
+    }
+    if(value_path == "dot1dPortOutboundAccessPriority")
+    {
+        dot1dportoutboundaccesspriority.yfilter = yfilter;
+    }
+}
+
+bool PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot1dBasePort" || name == "dot1dRegenUserPriority" || name == "dot1dPortOutboundAccessPriority")
+        return true;
+    return false;
+}
+
+PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcporttable()
+{
+
+    yang_name = "dot1dTpHCPortTable"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PBRIDGEMIB::Dot1Dtphcporttable::~Dot1Dtphcporttable()
+{
+}
+
+bool PBRIDGEMIB::Dot1Dtphcporttable::has_data() const
 {
     for (std::size_t index=0; index<dot1dtphcportentry.size(); index++)
     {
@@ -356,7 +546,7 @@ bool PBridgeMib::Dot1Dtphcporttable::has_data() const
     return false;
 }
 
-bool PBridgeMib::Dot1Dtphcporttable::has_operation() const
+bool PBRIDGEMIB::Dot1Dtphcporttable::has_operation() const
 {
     for (std::size_t index=0; index<dot1dtphcportentry.size(); index++)
     {
@@ -366,37 +556,30 @@ bool PBridgeMib::Dot1Dtphcporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PBridgeMib::Dot1Dtphcporttable::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dtphcporttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dtphcporttable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTpHCPortTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dtphcporttable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dtphcporttable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dtphcporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dtphcporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTpHCPortEntry")
     {
@@ -408,7 +591,7 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dtphcporttable::get_child_by_name(const 
                 return c;
             }
         }
-        auto c = std::make_shared<PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry>();
+        auto c = std::make_shared<PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry>();
         c->parent = this;
         dot1dtphcportentry.push_back(c);
         return c;
@@ -417,7 +600,7 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dtphcporttable::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtphcporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dtphcporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dot1dtphcportentry)
@@ -428,36 +611,37 @@ std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtphcporttable::g
     return children;
 }
 
-void PBridgeMib::Dot1Dtphcporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dtphcporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PBridgeMib::Dot1Dtphcporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dtphcporttable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PBridgeMib::Dot1Dtphcporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dtphcporttable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpHCPortEntry")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::Dot1Dtphcportentry()
+PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::Dot1Dtphcportentry()
     :
     dot1dtpport{YType::str, "dot1dTpPort"},
     dot1dtphcportindiscards{YType::uint64, "dot1dTpHCPortInDiscards"},
     dot1dtphcportinframes{YType::uint64, "dot1dTpHCPortInFrames"},
     dot1dtphcportoutframes{YType::uint64, "dot1dTpHCPortOutFrames"}
 {
-    yang_name = "dot1dTpHCPortEntry"; yang_parent_name = "dot1dTpHCPortTable";
+
+    yang_name = "dot1dTpHCPortEntry"; yang_parent_name = "dot1dTpHCPortTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::~Dot1Dtphcportentry()
+PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::~Dot1Dtphcportentry()
 {
 }
 
-bool PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::has_data() const
+bool PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::has_data() const
 {
     return dot1dtpport.is_set
 	|| dot1dtphcportindiscards.is_set
@@ -465,7 +649,7 @@ bool PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::has_data() const
 	|| dot1dtphcportoutframes.is_set;
 }
 
-bool PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::has_operation() const
+bool PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dtpport.yfilter)
@@ -474,27 +658,22 @@ bool PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::has_operation() const
 	|| ydk::is_set(dot1dtphcportoutframes.yfilter);
 }
 
-std::string PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dTpHCPortTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTpHCPortEntry" <<"[dot1dTpPort='" <<dot1dtpport <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dTpHCPortTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dot1dtpport.is_set || is_set(dot1dtpport.yfilter)) leaf_name_data.push_back(dot1dtpport.get_name_leafdata());
@@ -502,24 +681,22 @@ const EntityPath PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::get_entity_
     if (dot1dtphcportinframes.is_set || is_set(dot1dtphcportinframes.yfilter)) leaf_name_data.push_back(dot1dtphcportinframes.get_name_leafdata());
     if (dot1dtphcportoutframes.is_set || is_set(dot1dtphcportoutframes.yfilter)) leaf_name_data.push_back(dot1dtphcportoutframes.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dTpPort")
     {
@@ -547,7 +724,7 @@ void PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::set_value(const std::st
     }
 }
 
-void PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dTpPort")
     {
@@ -567,23 +744,24 @@ void PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::set_filter(const std::s
     }
 }
 
-bool PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpPort" || name == "dot1dTpHCPortInDiscards" || name == "dot1dTpHCPortInFrames" || name == "dot1dTpHCPortOutFrames")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowtable()
+PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowtable()
 {
-    yang_name = "dot1dTpPortOverflowTable"; yang_parent_name = "P-BRIDGE-MIB";
+
+    yang_name = "dot1dTpPortOverflowTable"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dtpportoverflowtable::~Dot1Dtpportoverflowtable()
+PBRIDGEMIB::Dot1Dtpportoverflowtable::~Dot1Dtpportoverflowtable()
 {
 }
 
-bool PBridgeMib::Dot1Dtpportoverflowtable::has_data() const
+bool PBRIDGEMIB::Dot1Dtpportoverflowtable::has_data() const
 {
     for (std::size_t index=0; index<dot1dtpportoverflowentry.size(); index++)
     {
@@ -593,7 +771,7 @@ bool PBridgeMib::Dot1Dtpportoverflowtable::has_data() const
     return false;
 }
 
-bool PBridgeMib::Dot1Dtpportoverflowtable::has_operation() const
+bool PBRIDGEMIB::Dot1Dtpportoverflowtable::has_operation() const
 {
     for (std::size_t index=0; index<dot1dtpportoverflowentry.size(); index++)
     {
@@ -603,37 +781,30 @@ bool PBridgeMib::Dot1Dtpportoverflowtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PBridgeMib::Dot1Dtpportoverflowtable::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dtpportoverflowtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dtpportoverflowtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTpPortOverflowTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dtpportoverflowtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dtpportoverflowtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dtpportoverflowtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dtpportoverflowtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTpPortOverflowEntry")
     {
@@ -645,7 +816,7 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dtpportoverflowtable::get_child_by_name(
                 return c;
             }
         }
-        auto c = std::make_shared<PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry>();
+        auto c = std::make_shared<PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry>();
         c->parent = this;
         dot1dtpportoverflowentry.push_back(c);
         return c;
@@ -654,7 +825,7 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dtpportoverflowtable::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtpportoverflowtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dtpportoverflowtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dot1dtpportoverflowentry)
@@ -665,36 +836,37 @@ std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtpportoverflowta
     return children;
 }
 
-void PBridgeMib::Dot1Dtpportoverflowtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dtpportoverflowtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PBridgeMib::Dot1Dtpportoverflowtable::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dtpportoverflowtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PBridgeMib::Dot1Dtpportoverflowtable::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dtpportoverflowtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpPortOverflowEntry")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::Dot1Dtpportoverflowentry()
+PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::Dot1Dtpportoverflowentry()
     :
     dot1dtpport{YType::str, "dot1dTpPort"},
     dot1dtpportinoverflowdiscards{YType::uint32, "dot1dTpPortInOverflowDiscards"},
     dot1dtpportinoverflowframes{YType::uint32, "dot1dTpPortInOverflowFrames"},
     dot1dtpportoutoverflowframes{YType::uint32, "dot1dTpPortOutOverflowFrames"}
 {
-    yang_name = "dot1dTpPortOverflowEntry"; yang_parent_name = "dot1dTpPortOverflowTable";
+
+    yang_name = "dot1dTpPortOverflowEntry"; yang_parent_name = "dot1dTpPortOverflowTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::~Dot1Dtpportoverflowentry()
+PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::~Dot1Dtpportoverflowentry()
 {
 }
 
-bool PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_data() const
+bool PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_data() const
 {
     return dot1dtpport.is_set
 	|| dot1dtpportinoverflowdiscards.is_set
@@ -702,7 +874,7 @@ bool PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_data() 
 	|| dot1dtpportoutoverflowframes.is_set;
 }
 
-bool PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_operation() const
+bool PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dtpport.yfilter)
@@ -711,27 +883,22 @@ bool PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_operati
 	|| ydk::is_set(dot1dtpportoutoverflowframes.yfilter);
 }
 
-std::string PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dTpPortOverflowTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTpPortOverflowEntry" <<"[dot1dTpPort='" <<dot1dtpport <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dTpPortOverflowTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dot1dtpport.is_set || is_set(dot1dtpport.yfilter)) leaf_name_data.push_back(dot1dtpport.get_name_leafdata());
@@ -739,24 +906,22 @@ const EntityPath PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry:
     if (dot1dtpportinoverflowframes.is_set || is_set(dot1dtpportinoverflowframes.yfilter)) leaf_name_data.push_back(dot1dtpportinoverflowframes.get_name_leafdata());
     if (dot1dtpportoutoverflowframes.is_set || is_set(dot1dtpportoutoverflowframes.yfilter)) leaf_name_data.push_back(dot1dtpportoutoverflowframes.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dTpPort")
     {
@@ -784,7 +949,7 @@ void PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::set_value(c
     }
 }
 
-void PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dTpPort")
     {
@@ -804,246 +969,24 @@ void PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::set_filter(
     }
 }
 
-bool PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpPort" || name == "dot1dTpPortInOverflowDiscards" || name == "dot1dTpPortInOverflowFrames" || name == "dot1dTpPortOutOverflowFrames")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregentable()
+PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclasstable()
 {
-    yang_name = "dot1dUserPriorityRegenTable"; yang_parent_name = "P-BRIDGE-MIB";
+
+    yang_name = "dot1dTrafficClassTable"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Duserpriorityregentable::~Dot1Duserpriorityregentable()
-{
-}
-
-bool PBridgeMib::Dot1Duserpriorityregentable::has_data() const
-{
-    for (std::size_t index=0; index<dot1duserpriorityregenentry.size(); index++)
-    {
-        if(dot1duserpriorityregenentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PBridgeMib::Dot1Duserpriorityregentable::has_operation() const
-{
-    for (std::size_t index=0; index<dot1duserpriorityregenentry.size(); index++)
-    {
-        if(dot1duserpriorityregenentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PBridgeMib::Dot1Duserpriorityregentable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot1dUserPriorityRegenTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PBridgeMib::Dot1Duserpriorityregentable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PBridgeMib::Dot1Duserpriorityregentable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dot1dUserPriorityRegenEntry")
-    {
-        for(auto const & c : dot1duserpriorityregenentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry>();
-        c->parent = this;
-        dot1duserpriorityregenentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Duserpriorityregentable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1duserpriorityregenentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PBridgeMib::Dot1Duserpriorityregentable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+PBRIDGEMIB::Dot1Dtrafficclasstable::~Dot1Dtrafficclasstable()
 {
 }
 
-void PBridgeMib::Dot1Duserpriorityregentable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PBridgeMib::Dot1Duserpriorityregentable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dot1dUserPriorityRegenEntry")
-        return true;
-    return false;
-}
-
-PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::Dot1Duserpriorityregenentry()
-    :
-    dot1dbaseport{YType::str, "dot1dBasePort"},
-    dot1duserpriority{YType::int32, "dot1dUserPriority"},
-    dot1dregenuserpriority{YType::int32, "dot1dRegenUserPriority"}
-{
-    yang_name = "dot1dUserPriorityRegenEntry"; yang_parent_name = "dot1dUserPriorityRegenTable";
-}
-
-PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::~Dot1Duserpriorityregenentry()
-{
-}
-
-bool PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::has_data() const
-{
-    return dot1dbaseport.is_set
-	|| dot1duserpriority.is_set
-	|| dot1dregenuserpriority.is_set;
-}
-
-bool PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dot1dbaseport.yfilter)
-	|| ydk::is_set(dot1duserpriority.yfilter)
-	|| ydk::is_set(dot1dregenuserpriority.yfilter);
-}
-
-std::string PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot1dUserPriorityRegenEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1dUserPriority='" <<dot1duserpriority <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dUserPriorityRegenTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dot1dbaseport.is_set || is_set(dot1dbaseport.yfilter)) leaf_name_data.push_back(dot1dbaseport.get_name_leafdata());
-    if (dot1duserpriority.is_set || is_set(dot1duserpriority.yfilter)) leaf_name_data.push_back(dot1duserpriority.get_name_leafdata());
-    if (dot1dregenuserpriority.is_set || is_set(dot1dregenuserpriority.yfilter)) leaf_name_data.push_back(dot1dregenuserpriority.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dot1dBasePort")
-    {
-        dot1dbaseport = value;
-        dot1dbaseport.value_namespace = name_space;
-        dot1dbaseport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dot1dUserPriority")
-    {
-        dot1duserpriority = value;
-        dot1duserpriority.value_namespace = name_space;
-        dot1duserpriority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dot1dRegenUserPriority")
-    {
-        dot1dregenuserpriority = value;
-        dot1dregenuserpriority.value_namespace = name_space;
-        dot1dregenuserpriority.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dot1dBasePort")
-    {
-        dot1dbaseport.yfilter = yfilter;
-    }
-    if(value_path == "dot1dUserPriority")
-    {
-        dot1duserpriority.yfilter = yfilter;
-    }
-    if(value_path == "dot1dRegenUserPriority")
-    {
-        dot1dregenuserpriority.yfilter = yfilter;
-    }
-}
-
-bool PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dot1dBasePort" || name == "dot1dUserPriority" || name == "dot1dRegenUserPriority")
-        return true;
-    return false;
-}
-
-PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclasstable()
-{
-    yang_name = "dot1dTrafficClassTable"; yang_parent_name = "P-BRIDGE-MIB";
-}
-
-PBridgeMib::Dot1Dtrafficclasstable::~Dot1Dtrafficclasstable()
-{
-}
-
-bool PBridgeMib::Dot1Dtrafficclasstable::has_data() const
+bool PBRIDGEMIB::Dot1Dtrafficclasstable::has_data() const
 {
     for (std::size_t index=0; index<dot1dtrafficclassentry.size(); index++)
     {
@@ -1053,7 +996,7 @@ bool PBridgeMib::Dot1Dtrafficclasstable::has_data() const
     return false;
 }
 
-bool PBridgeMib::Dot1Dtrafficclasstable::has_operation() const
+bool PBRIDGEMIB::Dot1Dtrafficclasstable::has_operation() const
 {
     for (std::size_t index=0; index<dot1dtrafficclassentry.size(); index++)
     {
@@ -1063,37 +1006,30 @@ bool PBridgeMib::Dot1Dtrafficclasstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PBridgeMib::Dot1Dtrafficclasstable::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dtrafficclasstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dtrafficclasstable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTrafficClassTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dtrafficclasstable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dtrafficclasstable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dtrafficclasstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dtrafficclasstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTrafficClassEntry")
     {
@@ -1105,7 +1041,7 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dtrafficclasstable::get_child_by_name(co
                 return c;
             }
         }
-        auto c = std::make_shared<PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry>();
+        auto c = std::make_shared<PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry>();
         c->parent = this;
         dot1dtrafficclassentry.push_back(c);
         return c;
@@ -1114,7 +1050,7 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dtrafficclasstable::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtrafficclasstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dtrafficclasstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dot1dtrafficclassentry)
@@ -1125,42 +1061,43 @@ std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtrafficclasstabl
     return children;
 }
 
-void PBridgeMib::Dot1Dtrafficclasstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dtrafficclasstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PBridgeMib::Dot1Dtrafficclasstable::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dtrafficclasstable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PBridgeMib::Dot1Dtrafficclasstable::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dtrafficclasstable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTrafficClassEntry")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::Dot1Dtrafficclassentry()
+PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::Dot1Dtrafficclassentry()
     :
     dot1dbaseport{YType::str, "dot1dBasePort"},
     dot1dtrafficclasspriority{YType::int32, "dot1dTrafficClassPriority"},
     dot1dtrafficclass{YType::int32, "dot1dTrafficClass"}
 {
-    yang_name = "dot1dTrafficClassEntry"; yang_parent_name = "dot1dTrafficClassTable";
+
+    yang_name = "dot1dTrafficClassEntry"; yang_parent_name = "dot1dTrafficClassTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::~Dot1Dtrafficclassentry()
+PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::~Dot1Dtrafficclassentry()
 {
 }
 
-bool PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_data() const
+bool PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_data() const
 {
     return dot1dbaseport.is_set
 	|| dot1dtrafficclasspriority.is_set
 	|| dot1dtrafficclass.is_set;
 }
 
-bool PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_operation() const
+bool PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbaseport.yfilter)
@@ -1168,51 +1105,44 @@ bool PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_operation()
 	|| ydk::is_set(dot1dtrafficclass.yfilter);
 }
 
-std::string PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dTrafficClassTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTrafficClassEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1dTrafficClassPriority='" <<dot1dtrafficclasspriority <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dTrafficClassTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dot1dbaseport.is_set || is_set(dot1dbaseport.yfilter)) leaf_name_data.push_back(dot1dbaseport.get_name_leafdata());
     if (dot1dtrafficclasspriority.is_set || is_set(dot1dtrafficclasspriority.yfilter)) leaf_name_data.push_back(dot1dtrafficclasspriority.get_name_leafdata());
     if (dot1dtrafficclass.is_set || is_set(dot1dtrafficclass.yfilter)) leaf_name_data.push_back(dot1dtrafficclass.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -1234,7 +1164,7 @@ void PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::set_value(const
     }
 }
 
-void PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -1250,77 +1180,71 @@ void PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::set_filter(cons
     }
 }
 
-bool PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBasePort" || name == "dot1dTrafficClassPriority" || name == "dot1dTrafficClass")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccessprioritytable()
+PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregentable()
 {
-    yang_name = "dot1dPortOutboundAccessPriorityTable"; yang_parent_name = "P-BRIDGE-MIB";
+
+    yang_name = "dot1dUserPriorityRegenTable"; yang_parent_name = "P-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dportoutboundaccessprioritytable::~Dot1Dportoutboundaccessprioritytable()
+PBRIDGEMIB::Dot1Duserpriorityregentable::~Dot1Duserpriorityregentable()
 {
 }
 
-bool PBridgeMib::Dot1Dportoutboundaccessprioritytable::has_data() const
+bool PBRIDGEMIB::Dot1Duserpriorityregentable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dportoutboundaccesspriorityentry.size(); index++)
+    for (std::size_t index=0; index<dot1duserpriorityregenentry.size(); index++)
     {
-        if(dot1dportoutboundaccesspriorityentry[index]->has_data())
+        if(dot1duserpriorityregenentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool PBridgeMib::Dot1Dportoutboundaccessprioritytable::has_operation() const
+bool PBRIDGEMIB::Dot1Duserpriorityregentable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dportoutboundaccesspriorityentry.size(); index++)
+    for (std::size_t index=0; index<dot1duserpriorityregenentry.size(); index++)
     {
-        if(dot1dportoutboundaccesspriorityentry[index]->has_operation())
+        if(dot1duserpriorityregenentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string PBridgeMib::Dot1Dportoutboundaccessprioritytable::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Duserpriorityregentable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dPortOutboundAccessPriorityTable";
-
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dportoutboundaccessprioritytable::get_entity_path(Entity* ancestor) const
+std::string PBRIDGEMIB::Dot1Duserpriorityregentable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "dot1dUserPriorityRegenTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Duserpriorityregentable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dportoutboundaccessprioritytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Duserpriorityregentable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dot1dPortOutboundAccessPriorityEntry")
+    if(child_yang_name == "dot1dUserPriorityRegenEntry")
     {
-        for(auto const & c : dot1dportoutboundaccesspriorityentry)
+        for(auto const & c : dot1duserpriorityregenentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1328,19 +1252,19 @@ std::shared_ptr<Entity> PBridgeMib::Dot1Dportoutboundaccessprioritytable::get_ch
                 return c;
             }
         }
-        auto c = std::make_shared<PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry>();
+        auto c = std::make_shared<PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry>();
         c->parent = this;
-        dot1dportoutboundaccesspriorityentry.push_back(c);
+        dot1duserpriorityregenentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dportoutboundaccessprioritytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Duserpriorityregentable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1dportoutboundaccesspriorityentry)
+    for (auto const & c : dot1duserpriorityregenentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1348,94 +1272,88 @@ std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dportoutboundacce
     return children;
 }
 
-void PBridgeMib::Dot1Dportoutboundaccessprioritytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Duserpriorityregentable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PBridgeMib::Dot1Dportoutboundaccessprioritytable::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Duserpriorityregentable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PBridgeMib::Dot1Dportoutboundaccessprioritytable::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Duserpriorityregentable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dot1dPortOutboundAccessPriorityEntry")
+    if(name == "dot1dUserPriorityRegenEntry")
         return true;
     return false;
 }
 
-PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::Dot1Dportoutboundaccesspriorityentry()
+PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::Dot1Duserpriorityregenentry()
     :
     dot1dbaseport{YType::str, "dot1dBasePort"},
-    dot1dregenuserpriority{YType::str, "dot1dRegenUserPriority"},
-    dot1dportoutboundaccesspriority{YType::int32, "dot1dPortOutboundAccessPriority"}
+    dot1duserpriority{YType::int32, "dot1dUserPriority"},
+    dot1dregenuserpriority{YType::int32, "dot1dRegenUserPriority"}
 {
-    yang_name = "dot1dPortOutboundAccessPriorityEntry"; yang_parent_name = "dot1dPortOutboundAccessPriorityTable";
+
+    yang_name = "dot1dUserPriorityRegenEntry"; yang_parent_name = "dot1dUserPriorityRegenTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::~Dot1Dportoutboundaccesspriorityentry()
+PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::~Dot1Duserpriorityregenentry()
 {
 }
 
-bool PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::has_data() const
+bool PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::has_data() const
 {
     return dot1dbaseport.is_set
-	|| dot1dregenuserpriority.is_set
-	|| dot1dportoutboundaccesspriority.is_set;
+	|| dot1duserpriority.is_set
+	|| dot1dregenuserpriority.is_set;
 }
 
-bool PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::has_operation() const
+bool PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbaseport.yfilter)
-	|| ydk::is_set(dot1dregenuserpriority.yfilter)
-	|| ydk::is_set(dot1dportoutboundaccesspriority.yfilter);
+	|| ydk::is_set(dot1duserpriority.yfilter)
+	|| ydk::is_set(dot1dregenuserpriority.yfilter);
 }
 
-std::string PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_segment_path() const
+std::string PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dPortOutboundAccessPriorityEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1dRegenUserPriority='" <<dot1dregenuserpriority <<"']";
-
+    path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dUserPriorityRegenTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_entity_path(Entity* ancestor) const
+std::string PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "P-BRIDGE-MIB:P-BRIDGE-MIB/dot1dPortOutboundAccessPriorityTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "dot1dUserPriorityRegenEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1dUserPriority='" <<dot1duserpriority <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dot1dbaseport.is_set || is_set(dot1dbaseport.yfilter)) leaf_name_data.push_back(dot1dbaseport.get_name_leafdata());
+    if (dot1duserpriority.is_set || is_set(dot1duserpriority.yfilter)) leaf_name_data.push_back(dot1duserpriority.get_name_leafdata());
     if (dot1dregenuserpriority.is_set || is_set(dot1dregenuserpriority.yfilter)) leaf_name_data.push_back(dot1dregenuserpriority.get_name_leafdata());
-    if (dot1dportoutboundaccesspriority.is_set || is_set(dot1dportoutboundaccesspriority.yfilter)) leaf_name_data.push_back(dot1dportoutboundaccesspriority.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -1443,45 +1361,45 @@ void PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspr
         dot1dbaseport.value_namespace = name_space;
         dot1dbaseport.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "dot1dUserPriority")
+    {
+        dot1duserpriority = value;
+        dot1duserpriority.value_namespace = name_space;
+        dot1duserpriority.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "dot1dRegenUserPriority")
     {
         dot1dregenuserpriority = value;
         dot1dregenuserpriority.value_namespace = name_space;
         dot1dregenuserpriority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortOutboundAccessPriority")
-    {
-        dot1dportoutboundaccesspriority = value;
-        dot1dportoutboundaccesspriority.value_namespace = name_space;
-        dot1dportoutboundaccesspriority.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBasePort")
     {
         dot1dbaseport.yfilter = yfilter;
     }
+    if(value_path == "dot1dUserPriority")
+    {
+        dot1duserpriority.yfilter = yfilter;
+    }
     if(value_path == "dot1dRegenUserPriority")
     {
         dot1dregenuserpriority.yfilter = yfilter;
     }
-    if(value_path == "dot1dPortOutboundAccessPriority")
-    {
-        dot1dportoutboundaccesspriority.yfilter = yfilter;
-    }
 }
 
-bool PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dot1dBasePort" || name == "dot1dRegenUserPriority" || name == "dot1dPortOutboundAccessPriority")
+    if(name == "dot1dBasePort" || name == "dot1dUserPriority" || name == "dot1dRegenUserPriority")
         return true;
     return false;
 }
 
-const Enum::YLeaf Enabledstatus::enabled {1, "enabled"};
-const Enum::YLeaf Enabledstatus::disabled {2, "disabled"};
+const Enum::YLeaf EnabledStatus::enabled {1, "enabled"};
+const Enum::YLeaf EnabledStatus::disabled {2, "disabled"};
 
 
 }

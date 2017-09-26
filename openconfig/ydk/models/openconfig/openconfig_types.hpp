@@ -10,32 +10,50 @@
 namespace openconfig {
 namespace openconfig_types {
 
-class Address_Family : public virtual ydk::Identity
+class ADDRESSFAMILY : public virtual ydk::Identity
 {
     public:
-        Address_Family();
-        ~Address_Family();
+        ADDRESSFAMILY();
+        ~ADDRESSFAMILY();
 
 
-}; // Address_Family
+}; // ADDRESSFAMILY
 
-class Ipv4 : public openconfig_types::Address_Family, virtual ydk::Identity
+class IPV4 : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
 {
     public:
-        Ipv4();
-        ~Ipv4();
+        IPV4();
+        ~IPV4();
 
 
-}; // Ipv4
+}; // IPV4
 
-class Ipv6 : public openconfig_types::Address_Family, virtual ydk::Identity
+class IPV6 : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
 {
     public:
-        Ipv6();
-        ~Ipv6();
+        IPV6();
+        ~IPV6();
 
 
-}; // Ipv6
+}; // IPV6
+
+class L2ETHERNET : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
+{
+    public:
+        L2ETHERNET();
+        ~L2ETHERNET();
+
+
+}; // L2ETHERNET
+
+class MPLS : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
+{
+    public:
+        MPLS();
+        ~MPLS();
+
+
+}; // MPLS
 
 
 }

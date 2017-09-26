@@ -17,10 +17,9 @@ SystemTime::SystemTime()
 	,uptime(std::make_shared<SystemTime::Uptime>())
 {
     clock_->parent = this;
-
     uptime->parent = this;
 
-    yang_name = "system-time"; yang_parent_name = "Cisco-IOS-XR-shellutil-oper";
+    yang_name = "system-time"; yang_parent_name = "Cisco-IOS-XR-shellutil-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SystemTime::~SystemTime()
@@ -44,26 +43,15 @@ std::string SystemTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-shellutil-oper:system-time";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SystemTime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SystemTime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -159,7 +147,8 @@ SystemTime::Clock_::Clock_()
     wday{YType::uint16, "wday"},
     year{YType::uint16, "year"}
 {
-    yang_name = "clock"; yang_parent_name = "system-time";
+
+    yang_name = "clock"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SystemTime::Clock_::~Clock_()
@@ -195,27 +184,22 @@ bool SystemTime::Clock_::has_operation() const
 	|| ydk::is_set(year.yfilter);
 }
 
+std::string SystemTime::Clock_::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-shellutil-oper:system-time/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SystemTime::Clock_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SystemTime::Clock_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SystemTime::Clock_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-shellutil-oper:system-time/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
@@ -229,9 +213,7 @@ const EntityPath SystemTime::Clock_::get_entity_path(Entity* ancestor) const
     if (wday.is_set || is_set(wday.yfilter)) leaf_name_data.push_back(wday.get_name_leafdata());
     if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -366,7 +348,8 @@ SystemTime::Uptime::Uptime()
     host_name{YType::str, "host-name"},
     uptime{YType::uint32, "uptime"}
 {
-    yang_name = "uptime"; yang_parent_name = "system-time";
+
+    yang_name = "uptime"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SystemTime::Uptime::~Uptime()
@@ -386,35 +369,28 @@ bool SystemTime::Uptime::has_operation() const
 	|| ydk::is_set(uptime.yfilter);
 }
 
+std::string SystemTime::Uptime::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-shellutil-oper:system-time/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SystemTime::Uptime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uptime";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SystemTime::Uptime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SystemTime::Uptime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-shellutil-oper:system-time/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
     if (uptime.is_set || is_set(uptime.yfilter)) leaf_name_data.push_back(uptime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

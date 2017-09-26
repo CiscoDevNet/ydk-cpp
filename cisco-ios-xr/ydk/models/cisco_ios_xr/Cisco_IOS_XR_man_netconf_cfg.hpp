@@ -18,7 +18,7 @@ class NetconfYang : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class NetconfYang : public ydk::Entity
 
         class Agent; //type: NetconfYang::Agent
 
-        std::shared_ptr<Cisco_IOS_XR_man_netconf_cfg::NetconfYang::Agent> agent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_netconf_cfg::NetconfYang::Agent> agent;
         
 }; // NetconfYang
 
@@ -46,43 +46,23 @@ class NetconfYang::Agent : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf rate_limit; //type: uint32
         class Ssh; //type: NetconfYang::Agent::Ssh
         class Session; //type: NetconfYang::Agent::Session
 
-        std::shared_ptr<Cisco_IOS_XR_man_netconf_cfg::NetconfYang::Agent::Session> session;
-        std::shared_ptr<Cisco_IOS_XR_man_netconf_cfg::NetconfYang::Agent::Ssh> ssh;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_netconf_cfg::NetconfYang::Agent::Session> session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_netconf_cfg::NetconfYang::Agent::Ssh> ssh;
         
 }; // NetconfYang::Agent
-
-
-class NetconfYang::Agent::Ssh : public ydk::Entity
-{
-    public:
-        Ssh();
-        ~Ssh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // NetconfYang::Agent::Ssh
 
 
 class NetconfYang::Agent::Session : public ydk::Entity
@@ -93,19 +73,42 @@ class NetconfYang::Agent::Session : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf limit; //type: uint32
         ydk::YLeaf absolute_timeout; //type: uint32
         ydk::YLeaf idle_timeout; //type: uint32
 
 }; // NetconfYang::Agent::Session
+
+
+class NetconfYang::Agent::Ssh : public ydk::Entity
+{
+    public:
+        Ssh();
+        ~Ssh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // NetconfYang::Agent::Ssh
 
 
 }

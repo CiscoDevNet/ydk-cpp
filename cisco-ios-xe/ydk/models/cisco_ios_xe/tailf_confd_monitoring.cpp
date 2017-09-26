@@ -30,10 +30,9 @@ ConfdState::ConfdState()
 	,webui(nullptr) // presence node
 {
     internal->parent = this;
-
     loaded_data_models->parent = this;
 
-    yang_name = "confd-state"; yang_parent_name = "tailf-confd-monitoring";
+    yang_name = "confd-state"; yang_parent_name = "tailf-confd-monitoring"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ConfdState::~ConfdState()
@@ -81,20 +80,11 @@ std::string ConfdState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tailf-confd-monitoring:confd-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (daemon_status.is_set || is_set(daemon_status.yfilter)) leaf_name_data.push_back(daemon_status.get_name_leafdata());
@@ -103,9 +93,7 @@ const EntityPath ConfdState::get_entity_path(Entity* ancestor) const
     if (upgrade_mode.is_set || is_set(upgrade_mode.yfilter)) leaf_name_data.push_back(upgrade_mode.get_name_leafdata());
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -336,91 +324,286 @@ bool ConfdState::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-ConfdState::Smp::Smp()
+ConfdState::Cli::Cli()
     :
-    number_of_threads{YType::uint16, "number-of-threads"}
+    listen(std::make_shared<ConfdState::Cli::Listen>())
 {
-    yang_name = "smp"; yang_parent_name = "confd-state";
+    listen->parent = this;
+
+    yang_name = "cli"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Smp::~Smp()
+ConfdState::Cli::~Cli()
 {
 }
 
-bool ConfdState::Smp::has_data() const
+bool ConfdState::Cli::has_data() const
 {
-    return number_of_threads.is_set;
+    return (listen !=  nullptr && listen->has_data());
 }
 
-bool ConfdState::Smp::has_operation() const
+bool ConfdState::Cli::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(number_of_threads.yfilter);
+	|| (listen !=  nullptr && listen->has_operation());
 }
 
-std::string ConfdState::Smp::get_segment_path() const
+std::string ConfdState::Cli::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "smp";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Smp::get_entity_path(Entity* ancestor) const
+std::string ConfdState::Cli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cli";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::Cli::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number_of_threads.is_set || is_set(number_of_threads.yfilter)) leaf_name_data.push_back(number_of_threads.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Smp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "listen")
+    {
+        if(listen == nullptr)
+        {
+            listen = std::make_shared<ConfdState::Cli::Listen>();
+        }
+        return listen;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(listen != nullptr)
+    {
+        children["listen"] = listen;
+    }
+
+    return children;
+}
+
+void ConfdState::Cli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Cli::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Cli::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "listen")
+        return true;
+    return false;
+}
+
+ConfdState::Cli::Listen::Listen()
+{
+
+    yang_name = "listen"; yang_parent_name = "cli"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Cli::Listen::~Listen()
+{
+}
+
+bool ConfdState::Cli::Listen::has_data() const
+{
+    for (std::size_t index=0; index<ssh.size(); index++)
+    {
+        if(ssh[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Cli::Listen::has_operation() const
+{
+    for (std::size_t index=0; index<ssh.size(); index++)
+    {
+        if(ssh[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Cli::Listen::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/cli/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Cli::Listen::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "listen";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Cli::Listen::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ssh")
+    {
+        for(auto const & c : ssh)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Cli::Listen::Ssh>();
+        c->parent = this;
+        ssh.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ssh)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Cli::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Cli::Listen::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Cli::Listen::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssh")
+        return true;
+    return false;
+}
+
+ConfdState::Cli::Listen::Ssh::Ssh()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "ssh"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Cli::Listen::Ssh::~Ssh()
+{
+}
+
+bool ConfdState::Cli::Listen::Ssh::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Cli::Listen::Ssh::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Cli::Listen::Ssh::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/cli/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Cli::Listen::Ssh::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssh";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Cli::Listen::Ssh::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Cli::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Smp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::Ssh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Smp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Cli::Listen::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "number-of-threads")
+    if(value_path == "ip")
     {
-        number_of_threads = value;
-        number_of_threads.value_namespace = name_space;
-        number_of_threads.value_namespace_prefix = name_space_prefix;
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ConfdState::Smp::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Cli::Listen::Ssh::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "number-of-threads")
+    if(value_path == "ip")
     {
-        number_of_threads.yfilter = yfilter;
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
     }
 }
 
-bool ConfdState::Smp::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Cli::Listen::Ssh::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "number-of-threads")
+    if(name == "ip" || name == "port")
         return true;
     return false;
 }
@@ -433,7 +616,8 @@ ConfdState::Ha::Ha()
     node_id{YType::str, "node-id"},
     pending_slave{YType::str, "pending-slave"}
 {
-    yang_name = "ha"; yang_parent_name = "confd-state";
+
+    yang_name = "ha"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Ha::~Ha()
@@ -477,27 +661,22 @@ bool ConfdState::Ha::has_operation() const
 	|| ydk::is_set(pending_slave.yfilter);
 }
 
+std::string ConfdState::Ha::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Ha::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ha";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Ha::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Ha::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (master_node_id.is_set || is_set(master_node_id.yfilter)) leaf_name_data.push_back(master_node_id.get_name_leafdata());
@@ -508,9 +687,7 @@ const EntityPath ConfdState::Ha::get_entity_path(Entity* ancestor) const
     leaf_name_data.insert(leaf_name_data.end(), connected_slave_name_datas.begin(), connected_slave_name_datas.end());
     auto pending_slave_name_datas = pending_slave.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), pending_slave_name_datas.begin(), pending_slave_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -586,2379 +763,15 @@ bool ConfdState::Ha::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-ConfdState::LoadedDataModels::LoadedDataModels()
-{
-    yang_name = "loaded-data-models"; yang_parent_name = "confd-state";
-}
-
-ConfdState::LoadedDataModels::~LoadedDataModels()
-{
-}
-
-bool ConfdState::LoadedDataModels::has_data() const
-{
-    for (std::size_t index=0; index<data_model.size(); index++)
-    {
-        if(data_model[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ConfdState::LoadedDataModels::has_operation() const
-{
-    for (std::size_t index=0; index<data_model.size(); index++)
-    {
-        if(data_model[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ConfdState::LoadedDataModels::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "loaded-data-models";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::LoadedDataModels::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "data-model")
-    {
-        for(auto const & c : data_model)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
-        c->parent = this;
-        data_model.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : data_model)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::LoadedDataModels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::LoadedDataModels::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::LoadedDataModels::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data-model")
-        return true;
-    return false;
-}
-
-ConfdState::LoadedDataModels::DataModel::DataModel()
-    :
-    name{YType::str, "name"},
-    exported_to{YType::str, "exported-to"},
-    exported_to_all{YType::empty, "exported-to-all"},
-    namespace_{YType::str, "namespace"},
-    prefix{YType::str, "prefix"},
-    revision{YType::str, "revision"}
-{
-    yang_name = "data-model"; yang_parent_name = "loaded-data-models";
-}
-
-ConfdState::LoadedDataModels::DataModel::~DataModel()
-{
-}
-
-bool ConfdState::LoadedDataModels::DataModel::has_data() const
-{
-    for (auto const & leaf : exported_to.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return name.is_set
-	|| exported_to_all.is_set
-	|| namespace_.is_set
-	|| prefix.is_set
-	|| revision.is_set;
-}
-
-bool ConfdState::LoadedDataModels::DataModel::has_operation() const
-{
-    for (auto const & leaf : exported_to.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(exported_to.yfilter)
-	|| ydk::is_set(exported_to_all.yfilter)
-	|| ydk::is_set(namespace_.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(revision.yfilter);
-}
-
-std::string ConfdState::LoadedDataModels::DataModel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "data-model" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::LoadedDataModels::DataModel::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/loaded-data-models/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (exported_to_all.is_set || is_set(exported_to_all.yfilter)) leaf_name_data.push_back(exported_to_all.get_name_leafdata());
-    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
-
-    auto exported_to_name_datas = exported_to.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), exported_to_name_datas.begin(), exported_to_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::LoadedDataModels::DataModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::DataModel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::LoadedDataModels::DataModel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exported-to")
-    {
-        exported_to.append(value);
-    }
-    if(value_path == "exported-to-all")
-    {
-        exported_to_all = value;
-        exported_to_all.value_namespace = name_space;
-        exported_to_all.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "namespace")
-    {
-        namespace_ = value;
-        namespace_.value_namespace = name_space;
-        namespace_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "revision")
-    {
-        revision = value;
-        revision.value_namespace = name_space;
-        revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::LoadedDataModels::DataModel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "exported-to")
-    {
-        exported_to.yfilter = yfilter;
-    }
-    if(value_path == "exported-to-all")
-    {
-        exported_to_all.yfilter = yfilter;
-    }
-    if(value_path == "namespace")
-    {
-        namespace_.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "revision")
-    {
-        revision.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::LoadedDataModels::DataModel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "exported-to" || name == "exported-to-all" || name == "namespace" || name == "prefix" || name == "revision")
-        return true;
-    return false;
-}
-
-ConfdState::Netconf::Netconf()
-    :
-    listen(std::make_shared<ConfdState::Netconf::Listen>())
-{
-    listen->parent = this;
-
-    yang_name = "netconf"; yang_parent_name = "confd-state";
-}
-
-ConfdState::Netconf::~Netconf()
-{
-}
-
-bool ConfdState::Netconf::has_data() const
-{
-    return (listen !=  nullptr && listen->has_data());
-}
-
-bool ConfdState::Netconf::has_operation() const
-{
-    return is_set(yfilter)
-	|| (listen !=  nullptr && listen->has_operation());
-}
-
-std::string ConfdState::Netconf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "netconf";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Netconf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "listen")
-    {
-        if(listen == nullptr)
-        {
-            listen = std::make_shared<ConfdState::Netconf::Listen>();
-        }
-        return listen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
-    {
-        children["listen"] = listen;
-    }
-
-    return children;
-}
-
-void ConfdState::Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Netconf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Netconf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "listen")
-        return true;
-    return false;
-}
-
-ConfdState::Netconf::Listen::Listen()
-{
-    yang_name = "listen"; yang_parent_name = "netconf";
-}
-
-ConfdState::Netconf::Listen::~Listen()
-{
-}
-
-bool ConfdState::Netconf::Listen::has_data() const
-{
-    for (std::size_t index=0; index<ssh.size(); index++)
-    {
-        if(ssh[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<tcp.size(); index++)
-    {
-        if(tcp[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ConfdState::Netconf::Listen::has_operation() const
-{
-    for (std::size_t index=0; index<ssh.size(); index++)
-    {
-        if(ssh[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<tcp.size(); index++)
-    {
-        if(tcp[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ConfdState::Netconf::Listen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "listen";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Netconf::Listen::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/netconf/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ssh")
-    {
-        for(auto const & c : ssh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Netconf::Listen::Ssh>();
-        c->parent = this;
-        ssh.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "tcp")
-    {
-        for(auto const & c : tcp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Netconf::Listen::Tcp>();
-        c->parent = this;
-        tcp.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssh)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : tcp)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Netconf::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Netconf::Listen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Netconf::Listen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ssh" || name == "tcp")
-        return true;
-    return false;
-}
-
-ConfdState::Netconf::Listen::Tcp::Tcp()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "tcp"; yang_parent_name = "listen";
-}
-
-ConfdState::Netconf::Listen::Tcp::~Tcp()
-{
-}
-
-bool ConfdState::Netconf::Listen::Tcp::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Netconf::Listen::Tcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Netconf::Listen::Tcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Netconf::Listen::Tcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/netconf/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Netconf::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Tcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Netconf::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Netconf::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Netconf::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Netconf::Listen::Ssh::Ssh()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "ssh"; yang_parent_name = "listen";
-}
-
-ConfdState::Netconf::Listen::Ssh::~Ssh()
-{
-}
-
-bool ConfdState::Netconf::Listen::Ssh::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Netconf::Listen::Ssh::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Netconf::Listen::Ssh::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ssh";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Netconf::Listen::Ssh::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/netconf/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Netconf::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Ssh::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Netconf::Listen::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Netconf::Listen::Ssh::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Netconf::Listen::Ssh::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Cli::Cli()
-    :
-    listen(std::make_shared<ConfdState::Cli::Listen>())
-{
-    listen->parent = this;
-
-    yang_name = "cli"; yang_parent_name = "confd-state";
-}
-
-ConfdState::Cli::~Cli()
-{
-}
-
-bool ConfdState::Cli::has_data() const
-{
-    return (listen !=  nullptr && listen->has_data());
-}
-
-bool ConfdState::Cli::has_operation() const
-{
-    return is_set(yfilter)
-	|| (listen !=  nullptr && listen->has_operation());
-}
-
-std::string ConfdState::Cli::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cli";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Cli::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "listen")
-    {
-        if(listen == nullptr)
-        {
-            listen = std::make_shared<ConfdState::Cli::Listen>();
-        }
-        return listen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
-    {
-        children["listen"] = listen;
-    }
-
-    return children;
-}
-
-void ConfdState::Cli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Cli::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Cli::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "listen")
-        return true;
-    return false;
-}
-
-ConfdState::Cli::Listen::Listen()
-{
-    yang_name = "listen"; yang_parent_name = "cli";
-}
-
-ConfdState::Cli::Listen::~Listen()
-{
-}
-
-bool ConfdState::Cli::Listen::has_data() const
-{
-    for (std::size_t index=0; index<ssh.size(); index++)
-    {
-        if(ssh[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ConfdState::Cli::Listen::has_operation() const
-{
-    for (std::size_t index=0; index<ssh.size(); index++)
-    {
-        if(ssh[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ConfdState::Cli::Listen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "listen";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Cli::Listen::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/cli/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ssh")
-    {
-        for(auto const & c : ssh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Cli::Listen::Ssh>();
-        c->parent = this;
-        ssh.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssh)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Cli::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Cli::Listen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Cli::Listen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ssh")
-        return true;
-    return false;
-}
-
-ConfdState::Cli::Listen::Ssh::Ssh()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "ssh"; yang_parent_name = "listen";
-}
-
-ConfdState::Cli::Listen::Ssh::~Ssh()
-{
-}
-
-bool ConfdState::Cli::Listen::Ssh::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Cli::Listen::Ssh::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Cli::Listen::Ssh::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ssh";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Cli::Listen::Ssh::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/cli/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Cli::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::Ssh::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Cli::Listen::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Cli::Listen::Ssh::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Cli::Listen::Ssh::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Webui::Webui()
-    :
-    listen(std::make_shared<ConfdState::Webui::Listen>())
-{
-    listen->parent = this;
-
-    yang_name = "webui"; yang_parent_name = "confd-state";
-}
-
-ConfdState::Webui::~Webui()
-{
-}
-
-bool ConfdState::Webui::has_data() const
-{
-    return (listen !=  nullptr && listen->has_data());
-}
-
-bool ConfdState::Webui::has_operation() const
-{
-    return is_set(yfilter)
-	|| (listen !=  nullptr && listen->has_operation());
-}
-
-std::string ConfdState::Webui::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "webui";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Webui::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "listen")
-    {
-        if(listen == nullptr)
-        {
-            listen = std::make_shared<ConfdState::Webui::Listen>();
-        }
-        return listen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
-    {
-        children["listen"] = listen;
-    }
-
-    return children;
-}
-
-void ConfdState::Webui::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Webui::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Webui::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "listen")
-        return true;
-    return false;
-}
-
-ConfdState::Webui::Listen::Listen()
-{
-    yang_name = "listen"; yang_parent_name = "webui";
-}
-
-ConfdState::Webui::Listen::~Listen()
-{
-}
-
-bool ConfdState::Webui::Listen::has_data() const
-{
-    for (std::size_t index=0; index<ssl.size(); index++)
-    {
-        if(ssl[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<tcp.size(); index++)
-    {
-        if(tcp[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ConfdState::Webui::Listen::has_operation() const
-{
-    for (std::size_t index=0; index<ssl.size(); index++)
-    {
-        if(ssl[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<tcp.size(); index++)
-    {
-        if(tcp[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ConfdState::Webui::Listen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "listen";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Webui::Listen::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/webui/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ssl")
-    {
-        for(auto const & c : ssl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Webui::Listen::Ssl>();
-        c->parent = this;
-        ssl.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "tcp")
-    {
-        for(auto const & c : tcp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Webui::Listen::Tcp>();
-        c->parent = this;
-        tcp.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssl)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : tcp)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Webui::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Webui::Listen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Webui::Listen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ssl" || name == "tcp")
-        return true;
-    return false;
-}
-
-ConfdState::Webui::Listen::Tcp::Tcp()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "tcp"; yang_parent_name = "listen";
-}
-
-ConfdState::Webui::Listen::Tcp::~Tcp()
-{
-}
-
-bool ConfdState::Webui::Listen::Tcp::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Webui::Listen::Tcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Webui::Listen::Tcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Webui::Listen::Tcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/webui/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Webui::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Tcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Webui::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Webui::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Webui::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Webui::Listen::Ssl::Ssl()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "ssl"; yang_parent_name = "listen";
-}
-
-ConfdState::Webui::Listen::Ssl::~Ssl()
-{
-}
-
-bool ConfdState::Webui::Listen::Ssl::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Webui::Listen::Ssl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Webui::Listen::Ssl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ssl";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Webui::Listen::Ssl::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/webui/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Webui::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Ssl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Webui::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Webui::Listen::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Webui::Listen::Ssl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Rest::Rest()
-    :
-    listen(std::make_shared<ConfdState::Rest::Listen>())
-{
-    listen->parent = this;
-
-    yang_name = "rest"; yang_parent_name = "confd-state";
-}
-
-ConfdState::Rest::~Rest()
-{
-}
-
-bool ConfdState::Rest::has_data() const
-{
-    return (listen !=  nullptr && listen->has_data());
-}
-
-bool ConfdState::Rest::has_operation() const
-{
-    return is_set(yfilter)
-	|| (listen !=  nullptr && listen->has_operation());
-}
-
-std::string ConfdState::Rest::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rest";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Rest::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "listen")
-    {
-        if(listen == nullptr)
-        {
-            listen = std::make_shared<ConfdState::Rest::Listen>();
-        }
-        return listen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
-    {
-        children["listen"] = listen;
-    }
-
-    return children;
-}
-
-void ConfdState::Rest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Rest::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Rest::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "listen")
-        return true;
-    return false;
-}
-
-ConfdState::Rest::Listen::Listen()
-{
-    yang_name = "listen"; yang_parent_name = "rest";
-}
-
-ConfdState::Rest::Listen::~Listen()
-{
-}
-
-bool ConfdState::Rest::Listen::has_data() const
-{
-    for (std::size_t index=0; index<ssl.size(); index++)
-    {
-        if(ssl[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<tcp.size(); index++)
-    {
-        if(tcp[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ConfdState::Rest::Listen::has_operation() const
-{
-    for (std::size_t index=0; index<ssl.size(); index++)
-    {
-        if(ssl[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<tcp.size(); index++)
-    {
-        if(tcp[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ConfdState::Rest::Listen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "listen";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Rest::Listen::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/rest/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ssl")
-    {
-        for(auto const & c : ssl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Rest::Listen::Ssl>();
-        c->parent = this;
-        ssl.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "tcp")
-    {
-        for(auto const & c : tcp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Rest::Listen::Tcp>();
-        c->parent = this;
-        tcp.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssl)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : tcp)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Rest::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Rest::Listen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Rest::Listen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ssl" || name == "tcp")
-        return true;
-    return false;
-}
-
-ConfdState::Rest::Listen::Tcp::Tcp()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "tcp"; yang_parent_name = "listen";
-}
-
-ConfdState::Rest::Listen::Tcp::~Tcp()
-{
-}
-
-bool ConfdState::Rest::Listen::Tcp::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Rest::Listen::Tcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Rest::Listen::Tcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Rest::Listen::Tcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/rest/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Rest::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Tcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Rest::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Rest::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Rest::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Rest::Listen::Ssl::Ssl()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "ssl"; yang_parent_name = "listen";
-}
-
-ConfdState::Rest::Listen::Ssl::~Ssl()
-{
-}
-
-bool ConfdState::Rest::Listen::Ssl::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Rest::Listen::Ssl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Rest::Listen::Ssl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ssl";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Rest::Listen::Ssl::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/rest/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Rest::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Ssl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Rest::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Rest::Listen::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Rest::Listen::Ssl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Snmp::Snmp()
-    :
-    engine_id{YType::str, "engine-id"},
-    mib{YType::str, "mib"}
-    	,
-    listen(std::make_shared<ConfdState::Snmp::Listen>())
-	,version(std::make_shared<ConfdState::Snmp::Version>())
-{
-    listen->parent = this;
-
-    version->parent = this;
-
-    yang_name = "snmp"; yang_parent_name = "confd-state";
-}
-
-ConfdState::Snmp::~Snmp()
-{
-}
-
-bool ConfdState::Snmp::has_data() const
-{
-    for (auto const & leaf : mib.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return engine_id.is_set
-	|| (listen !=  nullptr && listen->has_data())
-	|| (version !=  nullptr && version->has_data());
-}
-
-bool ConfdState::Snmp::has_operation() const
-{
-    for (auto const & leaf : mib.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(engine_id.yfilter)
-	|| ydk::is_set(mib.yfilter)
-	|| (listen !=  nullptr && listen->has_operation())
-	|| (version !=  nullptr && version->has_operation());
-}
-
-std::string ConfdState::Snmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "snmp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Snmp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (engine_id.is_set || is_set(engine_id.yfilter)) leaf_name_data.push_back(engine_id.get_name_leafdata());
-
-    auto mib_name_datas = mib.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), mib_name_datas.begin(), mib_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "listen")
-    {
-        if(listen == nullptr)
-        {
-            listen = std::make_shared<ConfdState::Snmp::Listen>();
-        }
-        return listen;
-    }
-
-    if(child_yang_name == "version")
-    {
-        if(version == nullptr)
-        {
-            version = std::make_shared<ConfdState::Snmp::Version>();
-        }
-        return version;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
-    {
-        children["listen"] = listen;
-    }
-
-    if(version != nullptr)
-    {
-        children["version"] = version;
-    }
-
-    return children;
-}
-
-void ConfdState::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "engine-id")
-    {
-        engine_id = value;
-        engine_id.value_namespace = name_space;
-        engine_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mib")
-    {
-        mib.append(value);
-    }
-}
-
-void ConfdState::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "engine-id")
-    {
-        engine_id.yfilter = yfilter;
-    }
-    if(value_path == "mib")
-    {
-        mib.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Snmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "listen" || name == "version" || name == "engine-id" || name == "mib")
-        return true;
-    return false;
-}
-
-ConfdState::Snmp::Listen::Listen()
-{
-    yang_name = "listen"; yang_parent_name = "snmp";
-}
-
-ConfdState::Snmp::Listen::~Listen()
-{
-}
-
-bool ConfdState::Snmp::Listen::has_data() const
-{
-    for (std::size_t index=0; index<udp.size(); index++)
-    {
-        if(udp[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ConfdState::Snmp::Listen::has_operation() const
-{
-    for (std::size_t index=0; index<udp.size(); index++)
-    {
-        if(udp[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ConfdState::Snmp::Listen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "listen";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Snmp::Listen::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/snmp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "udp")
-    {
-        for(auto const & c : udp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Snmp::Listen::Udp>();
-        c->parent = this;
-        udp.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : udp)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Snmp::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ConfdState::Snmp::Listen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ConfdState::Snmp::Listen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "udp")
-        return true;
-    return false;
-}
-
-ConfdState::Snmp::Listen::Udp::Udp()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-{
-    yang_name = "udp"; yang_parent_name = "listen";
-}
-
-ConfdState::Snmp::Listen::Udp::~Udp()
-{
-}
-
-bool ConfdState::Snmp::Listen::Udp::has_data() const
-{
-    return ip.is_set
-	|| port.is_set;
-}
-
-bool ConfdState::Snmp::Listen::Udp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string ConfdState::Snmp::Listen::Udp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "udp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Snmp::Listen::Udp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/snmp/listen/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Snmp::Listen::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::Udp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Snmp::Listen::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Snmp::Listen::Udp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Snmp::Listen::Udp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-ConfdState::Snmp::Version::Version()
-    :
-    v1{YType::empty, "v1"},
-    v2c{YType::empty, "v2c"},
-    v3{YType::empty, "v3"}
-{
-    yang_name = "version"; yang_parent_name = "snmp";
-}
-
-ConfdState::Snmp::Version::~Version()
-{
-}
-
-bool ConfdState::Snmp::Version::has_data() const
-{
-    return v1.is_set
-	|| v2c.is_set
-	|| v3.is_set;
-}
-
-bool ConfdState::Snmp::Version::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(v1.yfilter)
-	|| ydk::is_set(v2c.yfilter)
-	|| ydk::is_set(v3.yfilter);
-}
-
-std::string ConfdState::Snmp::Version::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "version";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Snmp::Version::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/snmp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (v1.is_set || is_set(v1.yfilter)) leaf_name_data.push_back(v1.get_name_leafdata());
-    if (v2c.is_set || is_set(v2c.yfilter)) leaf_name_data.push_back(v2c.get_name_leafdata());
-    if (v3.is_set || is_set(v3.yfilter)) leaf_name_data.push_back(v3.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Snmp::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Version::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Snmp::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "v1")
-    {
-        v1 = value;
-        v1.value_namespace = name_space;
-        v1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v2c")
-    {
-        v2c = value;
-        v2c.value_namespace = name_space;
-        v2c.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v3")
-    {
-        v3 = value;
-        v3.value_namespace = name_space;
-        v3.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Snmp::Version::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "v1")
-    {
-        v1.yfilter = yfilter;
-    }
-    if(value_path == "v2c")
-    {
-        v2c.yfilter = yfilter;
-    }
-    if(value_path == "v3")
-    {
-        v3.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Snmp::Version::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "v1" || name == "v2c" || name == "v3")
-        return true;
-    return false;
-}
-
 ConfdState::Internal::Internal()
     :
     callpoints(std::make_shared<ConfdState::Internal::Callpoints>())
 	,cdb(std::make_shared<ConfdState::Internal::Cdb>())
 {
     callpoints->parent = this;
-
     cdb->parent = this;
 
-    yang_name = "internal"; yang_parent_name = "confd-state";
+    yang_name = "internal"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::~Internal()
@@ -2978,33 +791,26 @@ bool ConfdState::Internal::has_operation() const
 	|| (cdb !=  nullptr && cdb->has_operation());
 }
 
+std::string ConfdState::Internal::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "internal";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3067,7 +873,8 @@ ConfdState::Internal::Callpoints::Callpoints()
     authentication_callback(nullptr) // presence node
 	,authorization_callbacks(nullptr) // presence node
 {
-    yang_name = "callpoints"; yang_parent_name = "internal";
+
+    yang_name = "callpoints"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::Callpoints::~Callpoints()
@@ -3167,33 +974,26 @@ bool ConfdState::Internal::Callpoints::has_operation() const
 	|| (authorization_callbacks !=  nullptr && authorization_callbacks->has_operation());
 }
 
+std::string ConfdState::Internal::Callpoints::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::Callpoints::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "callpoints";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3419,1112 +1219,6 @@ bool ConfdState::Internal::Callpoints::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-ConfdState::Internal::Callpoints::Callpoint::Callpoint()
-    :
-    id{YType::str, "id"},
-    error{YType::enumeration, "error"},
-    file{YType::str, "file"},
-    path{YType::str, "path"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "callpoint"; yang_parent_name = "callpoints";
-}
-
-ConfdState::Internal::Callpoints::Callpoint::~Callpoint()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::has_data() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_data())
-            return true;
-    }
-    return id.is_set
-	|| error.is_set
-	|| file.is_set
-	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::has_operation() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(file.yfilter)
-	|| ydk::is_set(path.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::Callpoint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "callpoint" <<"[id='" <<id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Callpoint::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>();
-        }
-        return daemon;
-    }
-
-    if(child_yang_name == "range")
-    {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range>();
-        c->parent = this;
-        range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    for (auto const & c : range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Callpoint::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "callpoint";
-}
-
-ConfdState::Internal::Callpoints::Callpoint::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::Callpoint::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Callpoint::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Callpoint::Range::Range()
-    :
-    default_{YType::empty, "default"},
-    lower{YType::str, "lower"},
-    upper{YType::str, "upper"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "range"; yang_parent_name = "callpoint";
-}
-
-ConfdState::Internal::Callpoints::Callpoint::Range::~Range()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Range::has_data() const
-{
-    return default_.is_set
-	|| lower.is_set
-	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Range::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(default_.yfilter)
-	|| ydk::is_set(lower.yfilter)
-	|| ydk::is_set(upper.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::Callpoint::Range::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "range";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Callpoint::Range::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
-    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>();
-        }
-        return daemon;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lower")
-    {
-        lower = value;
-        lower.value_namespace = name_space;
-        lower.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "upper")
-    {
-        upper = value;
-        upper.value_namespace = name_space;
-        upper.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::Range::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-    if(value_path == "lower")
-    {
-        lower.yfilter = yfilter;
-    }
-    if(value_path == "upper")
-    {
-        upper.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Range::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "range";
-}
-
-ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Validationpoint()
-    :
-    id{YType::str, "id"},
-    error{YType::enumeration, "error"},
-    file{YType::str, "file"},
-    path{YType::str, "path"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "validationpoint"; yang_parent_name = "callpoints";
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::~Validationpoint()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::has_data() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_data())
-            return true;
-    }
-    return id.is_set
-	|| error.is_set
-	|| file.is_set
-	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::has_operation() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(file.yfilter)
-	|| ydk::is_set(path.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::Validationpoint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "validationpoint" <<"[id='" <<id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Validationpoint::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>();
-        }
-        return daemon;
-    }
-
-    if(child_yang_name == "range")
-    {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range>();
-        c->parent = this;
-        range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    for (auto const & c : range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "validationpoint";
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Range::Range()
-    :
-    default_{YType::empty, "default"},
-    lower{YType::str, "lower"},
-    upper{YType::str, "upper"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "range"; yang_parent_name = "validationpoint";
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Range::~Range()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_data() const
-{
-    return default_.is_set
-	|| lower.is_set
-	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(default_.yfilter)
-	|| ydk::is_set(lower.yfilter)
-	|| ydk::is_set(upper.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::Validationpoint::Range::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "range";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Validationpoint::Range::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
-    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>();
-        }
-        return daemon;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lower")
-    {
-        lower = value;
-        lower.value_namespace = name_space;
-        lower.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "upper")
-    {
-        upper = value;
-        upper.value_namespace = name_space;
-        upper.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::Range::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-    if(value_path == "lower")
-    {
-        lower.yfilter = yfilter;
-    }
-    if(value_path == "upper")
-    {
-        upper.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "range";
-}
-
-ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
 ConfdState::Internal::Callpoints::Actionpoint::Actionpoint()
     :
     id{YType::str, "id"},
@@ -4536,7 +1230,7 @@ ConfdState::Internal::Callpoints::Actionpoint::Actionpoint()
 {
     daemon->parent = this;
 
-    yang_name = "actionpoint"; yang_parent_name = "callpoints";
+    yang_name = "actionpoint"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::Callpoints::Actionpoint::~Actionpoint()
@@ -4572,27 +1266,22 @@ bool ConfdState::Internal::Callpoints::Actionpoint::has_operation() const
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
+std::string ConfdState::Internal::Callpoints::Actionpoint::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::Callpoints::Actionpoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "actionpoint" <<"[id='" <<id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::Actionpoint::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Actionpoint::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
@@ -4600,9 +1289,7 @@ const EntityPath ConfdState::Internal::Callpoints::Actionpoint::get_entity_path(
     if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4713,7 +1400,8 @@ ConfdState::Internal::Callpoints::Actionpoint::Daemon::Daemon()
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "actionpoint";
+
+    yang_name = "daemon"; yang_parent_name = "actionpoint"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::Actionpoint::Daemon::~Daemon()
@@ -4739,32 +1427,18 @@ std::string ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4834,7 +1508,7 @@ ConfdState::Internal::Callpoints::Actionpoint::Range::Range()
 {
     daemon->parent = this;
 
-    yang_name = "range"; yang_parent_name = "actionpoint";
+    yang_name = "range"; yang_parent_name = "actionpoint"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::Actionpoint::Range::~Range()
@@ -4862,32 +1536,18 @@ std::string ConfdState::Internal::Callpoints::Actionpoint::Range::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::Actionpoint::Range::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Actionpoint::Range::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
     if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
     if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4967,7 +1627,8 @@ ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::Daemon()
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "range";
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::~Daemon()
@@ -4993,32 +1654,18 @@ std::string ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5078,39 +1725,39 @@ bool ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::has_leaf_or_c
     return false;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::SnmpInformCallback()
+ConfdState::Internal::Callpoints::AuthenticationCallback::AuthenticationCallback()
     :
-    id{YType::str, "id"},
+    enabled{YType::boolean, "enabled"},
     error{YType::enumeration, "error"},
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>())
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>())
 {
     daemon->parent = this;
 
-    yang_name = "snmp-inform-callback"; yang_parent_name = "callpoints";
+    yang_name = "authentication-callback"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::~SnmpInformCallback()
+ConfdState::Internal::Callpoints::AuthenticationCallback::~AuthenticationCallback()
 {
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_data() const
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
         if(range[index]->has_data())
             return true;
     }
-    return id.is_set
+    return enabled.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
 	|| (daemon !=  nullptr && daemon->has_data());
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_operation() const
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -5118,54 +1765,47 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(enabled.yfilter)
 	|| ydk::is_set(error.yfilter)
 	|| ydk::is_set(file.yfilter)
 	|| ydk::is_set(path.yfilter)
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
-std::string ConfdState::Internal::Callpoints::SnmpInformCallback::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "snmp-inform-callback" <<"[id='" <<id <<"']";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::SnmpInformCallback::get_entity_path(Entity* ancestor) const
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "authentication-callback";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthenticationCallback::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
         if(daemon == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>();
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>();
         }
         return daemon;
     }
@@ -5180,7 +1820,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
                 return c;
             }
         }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range>();
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -5189,7 +1829,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(daemon != nullptr)
@@ -5205,7 +1845,1061 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints:
     return children;
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::AuthenticationCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "file")
+    {
+        file = value;
+        file.value_namespace = name_space;
+        file.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "file")
+    {
+        file.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "range" || name == "enabled" || name == "error" || name == "file" || name == "path")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "authentication-callback"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authentication-callback/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Range()
+    :
+    default_{YType::empty, "default"},
+    lower{YType::str, "lower"},
+    upper{YType::str, "upper"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "range"; yang_parent_name = "authentication-callback"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthenticationCallback::Range::~Range()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_data() const
+{
+    return default_.is_set
+	|| lower.is_set
+	|| upper.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authentication-callback/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>();
+        }
+        return daemon;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lower")
+    {
+        lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper")
+    {
+        upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authentication-callback/range/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::AuthorizationCallbacks()
+    :
+    enabled{YType::boolean, "enabled"},
+    error{YType::enumeration, "error"},
+    file{YType::str, "file"},
+    path{YType::str, "path"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "authorization-callbacks"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::~AuthorizationCallbacks()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_data() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_data())
+            return true;
+    }
+    return enabled.is_set
+	|| error.is_set
+	|| file.is_set
+	|| path.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_operation() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(file.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authorization-callbacks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>();
+        }
+        return daemon;
+    }
+
+    if(child_yang_name == "range")
+    {
+        for(auto const & c : range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range>();
+        c->parent = this;
+        range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    for (auto const & c : range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "file")
+    {
+        file = value;
+        file.value_namespace = name_space;
+        file.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "file")
+    {
+        file.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "range" || name == "enabled" || name == "error" || name == "file" || name == "path")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "authorization-callbacks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authorization-callbacks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Range()
+    :
+    default_{YType::empty, "default"},
+    lower{YType::str, "lower"},
+    upper{YType::str, "upper"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "range"; yang_parent_name = "authorization-callbacks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::~Range()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_data() const
+{
+    return default_.is_set
+	|| lower.is_set
+	|| upper.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authorization-callbacks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>();
+        }
+        return daemon;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lower")
+    {
+        lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper")
+    {
+        upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authorization-callbacks/range/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Callpoint::Callpoint()
+    :
+    id{YType::str, "id"},
+    error{YType::enumeration, "error"},
+    file{YType::str, "file"},
+    path{YType::str, "path"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "callpoint"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::Callpoint::~Callpoint()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Callpoint::has_data() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_data())
+            return true;
+    }
+    return id.is_set
+	|| error.is_set
+	|| file.is_set
+	|| path.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::Callpoint::has_operation() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(file.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::Callpoint::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::Callpoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "callpoint" <<"[id='" <<id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Callpoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>();
+        }
+        return daemon;
+    }
+
+    if(child_yang_name == "range")
+    {
+        for(auto const & c : range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range>();
+        c->parent = this;
+        range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    for (auto const & c : range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Callpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -5233,7 +2927,7 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::set_value(const std::
     }
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::Callpoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -5253,34 +2947,35 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::set_filter(const std:
     }
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::Callpoint::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Daemon()
+ConfdState::Internal::Callpoints::Callpoint::Daemon::Daemon()
     :
     error{YType::enumeration, "error"},
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "snmp-inform-callback";
+
+    yang_name = "daemon"; yang_parent_name = "callpoint"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::~Daemon()
+ConfdState::Internal::Callpoints::Callpoint::Daemon::~Daemon()
 {
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_data() const
+bool ConfdState::Internal::Callpoints::Callpoint::Daemon::has_data() const
 {
     return error.is_set
 	|| id.is_set
 	|| name.is_set;
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_operation() const
+bool ConfdState::Internal::Callpoints::Callpoint::Daemon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error.yfilter)
@@ -5288,51 +2983,37 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_operation
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::Callpoint::Daemon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Callpoint::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::Callpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
@@ -5354,7 +3035,7 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_value(con
     }
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::Callpoint::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error")
     {
@@ -5370,31 +3051,31 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_filter(co
     }
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::Callpoint::Daemon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error" || name == "id" || name == "name")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Range()
+ConfdState::Internal::Callpoints::Callpoint::Range::Range()
     :
     default_{YType::empty, "default"},
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>())
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>())
 {
     daemon->parent = this;
 
-    yang_name = "range"; yang_parent_name = "snmp-inform-callback";
+    yang_name = "range"; yang_parent_name = "callpoint"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::Range::~Range()
+ConfdState::Internal::Callpoints::Callpoint::Range::~Range()
 {
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_data() const
+bool ConfdState::Internal::Callpoints::Callpoint::Range::has_data() const
 {
     return default_.is_set
 	|| lower.is_set
@@ -5402,7 +3083,7 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_data() con
 	|| (daemon !=  nullptr && daemon->has_data());
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_operation() const
+bool ConfdState::Internal::Callpoints::Callpoint::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -5411,46 +3092,32 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_operation(
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
-std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::Callpoint::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Callpoint::Range::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
     if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
     if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
         if(daemon == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>();
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>();
         }
         return daemon;
     }
@@ -5458,7 +3125,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Ra
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(daemon != nullptr)
@@ -5469,7 +3136,7 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints:
     return children;
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::Callpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -5491,7 +3158,7 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_value(cons
     }
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::Callpoint::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -5507,34 +3174,35 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_filter(con
     }
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::Callpoint::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Daemon()
+ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Daemon()
     :
     error{YType::enumeration, "error"},
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "range";
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::~Daemon()
+ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::~Daemon()
 {
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_data() const
+bool ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::has_data() const
 {
     return error.is_set
 	|| id.is_set
 	|| name.is_set;
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_operation() const
+bool ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error.yfilter)
@@ -5542,51 +3210,37 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_op
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
@@ -5608,7 +3262,7 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_va
     }
 }
 
-void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error")
     {
@@ -5624,560 +3278,7 @@ void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_fi
     }
 }
 
-bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::SnmpNotificationSubscription()
-    :
-    id{YType::str, "id"},
-    error{YType::enumeration, "error"},
-    file{YType::str, "file"},
-    path{YType::str, "path"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "snmp-notification-subscription"; yang_parent_name = "callpoints";
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::~SnmpNotificationSubscription()
-{
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_data() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_data())
-            return true;
-    }
-    return id.is_set
-	|| error.is_set
-	|| file.is_set
-	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_operation() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(file.yfilter)
-	|| ydk::is_set(path.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "snmp-notification-subscription" <<"[id='" <<id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>();
-        }
-        return daemon;
-    }
-
-    if(child_yang_name == "range")
-    {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range>();
-        c->parent = this;
-        range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    for (auto const & c : range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "snmp-notification-subscription";
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Range()
-    :
-    default_{YType::empty, "default"},
-    lower{YType::str, "lower"},
-    upper{YType::str, "upper"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "range"; yang_parent_name = "snmp-notification-subscription";
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::~Range()
-{
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_data() const
-{
-    return default_.is_set
-	|| lower.is_set
-	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(default_.yfilter)
-	|| ydk::is_set(lower.yfilter)
-	|| ydk::is_set(upper.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "range";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
-    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>();
-        }
-        return daemon;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lower")
-    {
-        lower = value;
-        lower.value_namespace = name_space;
-        lower.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "upper")
-    {
-        upper = value;
-        upper.value_namespace = name_space;
-        upper.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-    if(value_path == "lower")
-    {
-        lower.yfilter = yfilter;
-    }
-    if(value_path == "upper")
-    {
-        upper.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "range";
-}
-
-ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error" || name == "id" || name == "name")
         return true;
@@ -6195,7 +3296,7 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::ErrorFormattingCallba
 {
     daemon->parent = this;
 
-    yang_name = "error-formatting-callback"; yang_parent_name = "callpoints";
+    yang_name = "error-formatting-callback"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::Callpoints::ErrorFormattingCallback::~ErrorFormattingCallback()
@@ -6231,27 +3332,22 @@ bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::has_operation() 
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
+std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "error-formatting-callback" <<"[id='" <<id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
@@ -6259,9 +3355,7 @@ const EntityPath ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_
     if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6372,7 +3466,8 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::Daemon()
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "error-formatting-callback";
+
+    yang_name = "daemon"; yang_parent_name = "error-formatting-callback"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::~Daemon()
@@ -6398,32 +3493,18 @@ std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::g
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6493,7 +3574,7 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Range()
 {
     daemon->parent = this;
 
-    yang_name = "range"; yang_parent_name = "error-formatting-callback";
+    yang_name = "range"; yang_parent_name = "error-formatting-callback"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::~Range()
@@ -6521,32 +3602,18 @@ std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
     if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
     if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6626,7 +3693,8 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::Daemon
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "range";
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::~Daemon()
@@ -6652,32 +3720,18 @@ std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Da
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6737,559 +3791,6 @@ bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::h
     return false;
 }
 
-ConfdState::Internal::Callpoints::Typepoint::Typepoint()
-    :
-    id{YType::str, "id"},
-    error{YType::enumeration, "error"},
-    file{YType::str, "file"},
-    path{YType::str, "path"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "typepoint"; yang_parent_name = "callpoints";
-}
-
-ConfdState::Internal::Callpoints::Typepoint::~Typepoint()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::has_data() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_data())
-            return true;
-    }
-    return id.is_set
-	|| error.is_set
-	|| file.is_set
-	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::has_operation() const
-{
-    for (std::size_t index=0; index<range.size(); index++)
-    {
-        if(range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(file.yfilter)
-	|| ydk::is_set(path.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::Typepoint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "typepoint" <<"[id='" <<id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Typepoint::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>();
-        }
-        return daemon;
-    }
-
-    if(child_yang_name == "range")
-    {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range>();
-        c->parent = this;
-        range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    for (auto const & c : range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Typepoint::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "typepoint";
-}
-
-ConfdState::Internal::Callpoints::Typepoint::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::Typepoint::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Typepoint::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Typepoint::Range::Range()
-    :
-    default_{YType::empty, "default"},
-    lower{YType::str, "lower"},
-    upper{YType::str, "upper"}
-    	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>())
-{
-    daemon->parent = this;
-
-    yang_name = "range"; yang_parent_name = "typepoint";
-}
-
-ConfdState::Internal::Callpoints::Typepoint::Range::~Range()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Range::has_data() const
-{
-    return default_.is_set
-	|| lower.is_set
-	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Range::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(default_.yfilter)
-	|| ydk::is_set(lower.yfilter)
-	|| ydk::is_set(upper.yfilter)
-	|| (daemon !=  nullptr && daemon->has_operation());
-}
-
-std::string ConfdState::Internal::Callpoints::Typepoint::Range::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "range";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Typepoint::Range::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
-    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "daemon")
-    {
-        if(daemon == nullptr)
-        {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>();
-        }
-        return daemon;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
-    {
-        children["daemon"] = daemon;
-    }
-
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lower")
-    {
-        lower = value;
-        lower.value_namespace = name_space;
-        lower.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "upper")
-    {
-        upper = value;
-        upper.value_namespace = name_space;
-        upper.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::Range::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-    if(value_path == "lower")
-    {
-        lower.yfilter = yfilter;
-    }
-    if(value_path == "upper")
-    {
-        upper.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Range::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Daemon()
-    :
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    name{YType::str, "name"}
-{
-    yang_name = "daemon"; yang_parent_name = "range";
-}
-
-ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::~Daemon()
-{
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::has_data() const
-{
-    return error.is_set
-	|| id.is_set
-	|| name.is_set;
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "daemon";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error" || name == "id" || name == "name")
-        return true;
-    return false;
-}
-
 ConfdState::Internal::Callpoints::NotificationStreamReplay::NotificationStreamReplay()
     :
     name{YType::str, "name"},
@@ -7302,7 +3803,7 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::NotificationStreamRe
 {
     daemon->parent = this;
 
-    yang_name = "notification-stream-replay"; yang_parent_name = "callpoints";
+    yang_name = "notification-stream-replay"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::Callpoints::NotificationStreamReplay::~NotificationStreamReplay()
@@ -7340,27 +3841,22 @@ bool ConfdState::Internal::Callpoints::NotificationStreamReplay::has_operation()
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
+std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "notification-stream-replay" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::NotificationStreamReplay::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::NotificationStreamReplay::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -7369,9 +3865,7 @@ const EntityPath ConfdState::Internal::Callpoints::NotificationStreamReplay::get
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
     if (replay_support.is_set || is_set(replay_support.yfilter)) leaf_name_data.push_back(replay_support.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7492,7 +3986,8 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::Daemon()
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "notification-stream-replay";
+
+    yang_name = "daemon"; yang_parent_name = "notification-stream-replay"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::~Daemon()
@@ -7518,32 +4013,18 @@ std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7613,7 +4094,7 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Range()
 {
     daemon->parent = this;
 
-    yang_name = "range"; yang_parent_name = "notification-stream-replay";
+    yang_name = "range"; yang_parent_name = "notification-stream-replay"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::~Range()
@@ -7641,32 +4122,18 @@ std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::g
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Range' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
     if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
     if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7746,7 +4213,8 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::Daemo
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "range";
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::~Daemon()
@@ -7772,32 +4240,18 @@ std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::D
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Daemon' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7857,39 +4311,39 @@ bool ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::AuthenticationCallback()
+ConfdState::Internal::Callpoints::SnmpInformCallback::SnmpInformCallback()
     :
-    enabled{YType::boolean, "enabled"},
+    id{YType::str, "id"},
     error{YType::enumeration, "error"},
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>())
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>())
 {
     daemon->parent = this;
 
-    yang_name = "authentication-callback"; yang_parent_name = "callpoints";
+    yang_name = "snmp-inform-callback"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::~AuthenticationCallback()
+ConfdState::Internal::Callpoints::SnmpInformCallback::~SnmpInformCallback()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
         if(range[index]->has_data())
             return true;
     }
-    return enabled.is_set
+    return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
 	|| (daemon !=  nullptr && daemon->has_data());
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -7897,54 +4351,47 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_operation() c
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(error.yfilter)
 	|| ydk::is_set(file.yfilter)
 	|| ydk::is_set(path.yfilter)
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
-std::string ConfdState::Internal::Callpoints::AuthenticationCallback::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpInformCallback::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "authentication-callback";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthenticationCallback::get_entity_path(Entity* ancestor) const
+std::string ConfdState::Internal::Callpoints::SnmpInformCallback::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "snmp-inform-callback" <<"[id='" <<id <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpInformCallback::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
         if(daemon == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>();
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>();
         }
         return daemon;
     }
@@ -7959,7 +4406,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
                 return c;
             }
         }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range>();
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -7968,7 +4415,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(daemon != nullptr)
@@ -7984,13 +4431,13 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints:
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enabled")
+    if(value_path == "id")
     {
-        enabled = value;
-        enabled.value_namespace = name_space;
-        enabled.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
@@ -8012,11 +4459,11 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::set_value(const s
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enabled")
+    if(value_path == "id")
     {
-        enabled.yfilter = yfilter;
+        id.yfilter = yfilter;
     }
     if(value_path == "error")
     {
@@ -8032,34 +4479,35 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::set_filter(const 
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "daemon" || name == "range" || name == "enabled" || name == "error" || name == "file" || name == "path")
+    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::Daemon()
+ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Daemon()
     :
     error{YType::enumeration, "error"},
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "authentication-callback";
+
+    yang_name = "daemon"; yang_parent_name = "snmp-inform-callback"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::~Daemon()
+ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::~Daemon()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_data() const
 {
     return error.is_set
 	|| id.is_set
 	|| name.is_set;
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error.yfilter)
@@ -8067,51 +4515,37 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_opera
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authentication-callback/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
@@ -8133,7 +4567,7 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_value
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error")
     {
@@ -8149,31 +4583,31 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_filte
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error" || name == "id" || name == "name")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Range()
+ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Range()
     :
     default_{YType::empty, "default"},
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>())
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>())
 {
     daemon->parent = this;
 
-    yang_name = "range"; yang_parent_name = "authentication-callback";
+    yang_name = "range"; yang_parent_name = "snmp-inform-callback"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::Range::~Range()
+ConfdState::Internal::Callpoints::SnmpInformCallback::Range::~Range()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_data() const
 {
     return default_.is_set
 	|| lower.is_set
@@ -8181,7 +4615,7 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_data()
 	|| (daemon !=  nullptr && daemon->has_data());
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -8190,46 +4624,32 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_operat
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
-std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authentication-callback/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
     if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
     if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
         if(daemon == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>();
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>();
         }
         return daemon;
     }
@@ -8237,7 +4657,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(daemon != nullptr)
@@ -8248,7 +4668,7 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints:
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -8270,7 +4690,7 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_value(
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -8286,34 +4706,35 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_filter
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::Daemon()
+ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Daemon()
     :
     error{YType::enumeration, "error"},
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "range";
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::~Daemon()
+ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::~Daemon()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_data() const
 {
     return error.is_set
 	|| id.is_set
 	|| name.is_set;
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error.yfilter)
@@ -8321,51 +4742,37 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::ha
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authentication-callback/range/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
@@ -8387,7 +4794,7 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::se
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error")
     {
@@ -8403,46 +4810,46 @@ void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::se
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error" || name == "id" || name == "name")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::AuthorizationCallbacks()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::SnmpNotificationSubscription()
     :
-    enabled{YType::boolean, "enabled"},
+    id{YType::str, "id"},
     error{YType::enumeration, "error"},
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>())
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>())
 {
     daemon->parent = this;
 
-    yang_name = "authorization-callbacks"; yang_parent_name = "callpoints";
+    yang_name = "snmp-notification-subscription"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::~AuthorizationCallbacks()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::~SnmpNotificationSubscription()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
         if(range[index]->has_data())
             return true;
     }
-    return enabled.is_set
+    return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
 	|| (daemon !=  nullptr && daemon->has_data());
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -8450,54 +4857,47 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_operation() c
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(error.yfilter)
 	|| ydk::is_set(file.yfilter)
 	|| ydk::is_set(path.yfilter)
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
-std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "authorization-callbacks";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_entity_path(Entity* ancestor) const
+std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "snmp-notification-subscription" <<"[id='" <<id <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
         if(daemon == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>();
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>();
         }
         return daemon;
     }
@@ -8512,7 +4912,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
                 return c;
             }
         }
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range>();
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -8521,7 +4921,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(daemon != nullptr)
@@ -8537,13 +4937,13 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints:
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enabled")
+    if(value_path == "id")
     {
-        enabled = value;
-        enabled.value_namespace = name_space;
-        enabled.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
@@ -8565,11 +4965,11 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_value(const s
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enabled")
+    if(value_path == "id")
     {
-        enabled.yfilter = yfilter;
+        id.yfilter = yfilter;
     }
     if(value_path == "error")
     {
@@ -8585,34 +4985,35 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_filter(const 
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "daemon" || name == "range" || name == "enabled" || name == "error" || name == "file" || name == "path")
+    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::Daemon()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Daemon()
     :
     error{YType::enumeration, "error"},
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "authorization-callbacks";
+
+    yang_name = "daemon"; yang_parent_name = "snmp-notification-subscription"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::~Daemon()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::~Daemon()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::has_data() const
 {
     return error.is_set
 	|| id.is_set
 	|| name.is_set;
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error.yfilter)
@@ -8620,51 +5021,37 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_opera
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authorization-callbacks/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
@@ -8686,7 +5073,7 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_value
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error")
     {
@@ -8702,31 +5089,31 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_filte
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error" || name == "id" || name == "name")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Range()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Range()
     :
     default_{YType::empty, "default"},
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>())
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>())
 {
     daemon->parent = this;
 
-    yang_name = "range"; yang_parent_name = "authorization-callbacks";
+    yang_name = "range"; yang_parent_name = "snmp-notification-subscription"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::~Range()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::~Range()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_data() const
 {
     return default_.is_set
 	|| lower.is_set
@@ -8734,7 +5121,7 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_data()
 	|| (daemon !=  nullptr && daemon->has_data());
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -8743,46 +5130,32 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_operat
 	|| (daemon !=  nullptr && daemon->has_operation());
 }
 
-std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authorization-callbacks/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
     if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
     if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
         if(daemon == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>();
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>();
         }
         return daemon;
     }
@@ -8790,7 +5163,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(daemon != nullptr)
@@ -8801,7 +5174,7 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints:
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -8823,7 +5196,7 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_value(
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -8839,34 +5212,35 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_filter
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
         return true;
     return false;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::Daemon()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::Daemon()
     :
     error{YType::enumeration, "error"},
     id{YType::uint32, "id"},
     name{YType::str, "name"}
 {
-    yang_name = "daemon"; yang_parent_name = "range";
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::~Daemon()
+ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::~Daemon()
 {
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::has_data() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::has_data() const
 {
     return error.is_set
 	|| id.is_set
 	|| name.is_set;
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::has_operation() const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error.yfilter)
@@ -8874,51 +5248,37 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::ha
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_segment_path() const
+std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daemon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/authorization-callbacks/range/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
@@ -8940,7 +5300,7 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::se
     }
 }
 
-void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error")
     {
@@ -8956,7 +5316,1019 @@ void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::se
     }
 }
 
-bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Typepoint()
+    :
+    id{YType::str, "id"},
+    error{YType::enumeration, "error"},
+    file{YType::str, "file"},
+    path{YType::str, "path"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "typepoint"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::~Typepoint()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::has_data() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_data())
+            return true;
+    }
+    return id.is_set
+	|| error.is_set
+	|| file.is_set
+	|| path.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::has_operation() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(file.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::Typepoint::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::Typepoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "typepoint" <<"[id='" <<id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Typepoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>();
+        }
+        return daemon;
+    }
+
+    if(child_yang_name == "range")
+    {
+        for(auto const & c : range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range>();
+        c->parent = this;
+        range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    for (auto const & c : range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "file")
+    {
+        file = value;
+        file.value_namespace = name_space;
+        file.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "file")
+    {
+        file.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "typepoint"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::Typepoint::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Typepoint::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Range::Range()
+    :
+    default_{YType::empty, "default"},
+    lower{YType::str, "lower"},
+    upper{YType::str, "upper"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "range"; yang_parent_name = "typepoint"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Range::~Range()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Range::has_data() const
+{
+    return default_.is_set
+	|| lower.is_set
+	|| upper.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Range::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::Typepoint::Range::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Typepoint::Range::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>();
+        }
+        return daemon;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lower")
+    {
+        lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper")
+    {
+        upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::Range::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Range::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Validationpoint()
+    :
+    id{YType::str, "id"},
+    error{YType::enumeration, "error"},
+    file{YType::str, "file"},
+    path{YType::str, "path"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "validationpoint"; yang_parent_name = "callpoints"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::~Validationpoint()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::has_data() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_data())
+            return true;
+    }
+    return id.is_set
+	|| error.is_set
+	|| file.is_set
+	|| path.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::has_operation() const
+{
+    for (std::size_t index=0; index<range.size(); index++)
+    {
+        if(range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(file.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::Validationpoint::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/callpoints/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Callpoints::Validationpoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "validationpoint" <<"[id='" <<id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Validationpoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>();
+        }
+        return daemon;
+    }
+
+    if(child_yang_name == "range")
+    {
+        for(auto const & c : range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range>();
+        c->parent = this;
+        range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    for (auto const & c : range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "file")
+    {
+        file = value;
+        file.value_namespace = name_space;
+        file.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "file")
+    {
+        file.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "range" || name == "id" || name == "error" || name == "file" || name == "path")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "validationpoint"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Daemon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error" || name == "id" || name == "name")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Range::Range()
+    :
+    default_{YType::empty, "default"},
+    lower{YType::str, "lower"},
+    upper{YType::str, "upper"}
+    	,
+    daemon(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>())
+{
+    daemon->parent = this;
+
+    yang_name = "range"; yang_parent_name = "validationpoint"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Range::~Range()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_data() const
+{
+    return default_.is_set
+	|| lower.is_set
+	|| upper.is_set
+	|| (daemon !=  nullptr && daemon->has_data());
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter)
+	|| (daemon !=  nullptr && daemon->has_operation());
+}
+
+std::string ConfdState::Internal::Callpoints::Validationpoint::Range::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Validationpoint::Range::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daemon")
+    {
+        if(daemon == nullptr)
+        {
+            daemon = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>();
+        }
+        return daemon;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(daemon != nullptr)
+    {
+        children["daemon"] = daemon;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lower")
+    {
+        lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper")
+    {
+        upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::Range::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daemon" || name == "default" || name == "lower" || name == "upper")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Daemon()
+    :
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "daemon"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::~Daemon()
+{
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::has_data() const
+{
+    return error.is_set
+	|| id.is_set
+	|| name.is_set;
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daemon";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error" || name == "id" || name == "name")
         return true;
@@ -8965,7 +6337,8 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::ha
 
 ConfdState::Internal::Cdb::Cdb()
 {
-    yang_name = "cdb"; yang_parent_name = "internal";
+
+    yang_name = "cdb"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::Cdb::~Cdb()
@@ -9002,33 +6375,26 @@ bool ConfdState::Internal::Cdb::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ConfdState::Internal::Cdb::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::Cdb::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdb";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9100,6 +6466,329 @@ bool ConfdState::Internal::Cdb::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
+ConfdState::Internal::Cdb::Client::Client()
+    :
+    datastore{YType::str, "datastore"},
+    info{YType::str, "info"},
+    lock{YType::enumeration, "lock"},
+    name{YType::str, "name"},
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "client"; yang_parent_name = "cdb"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Cdb::Client::~Client()
+{
+}
+
+bool ConfdState::Internal::Cdb::Client::has_data() const
+{
+    for (std::size_t index=0; index<subscription.size(); index++)
+    {
+        if(subscription[index]->has_data())
+            return true;
+    }
+    return datastore.is_set
+	|| info.is_set
+	|| lock.is_set
+	|| name.is_set
+	|| type.is_set;
+}
+
+bool ConfdState::Internal::Cdb::Client::has_operation() const
+{
+    for (std::size_t index=0; index<subscription.size(); index++)
+    {
+        if(subscription[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(datastore.yfilter)
+	|| ydk::is_set(info.yfilter)
+	|| ydk::is_set(lock.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string ConfdState::Internal::Cdb::Client::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/cdb/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Cdb::Client::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Client::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (datastore.is_set || is_set(datastore.yfilter)) leaf_name_data.push_back(datastore.get_name_leafdata());
+    if (info.is_set || is_set(info.yfilter)) leaf_name_data.push_back(info.get_name_leafdata());
+    if (lock.is_set || is_set(lock.yfilter)) leaf_name_data.push_back(lock.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "subscription")
+    {
+        for(auto const & c : subscription)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Internal::Cdb::Client::Subscription>();
+        c->parent = this;
+        subscription.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : subscription)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Cdb::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "datastore")
+    {
+        datastore = value;
+        datastore.value_namespace = name_space;
+        datastore.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "info")
+    {
+        info = value;
+        info.value_namespace = name_space;
+        info.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lock")
+    {
+        lock = value;
+        lock.value_namespace = name_space;
+        lock.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Cdb::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "datastore")
+    {
+        datastore.yfilter = yfilter;
+    }
+    if(value_path == "info")
+    {
+        info.yfilter = yfilter;
+    }
+    if(value_path == "lock")
+    {
+        lock.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Cdb::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscription" || name == "datastore" || name == "info" || name == "lock" || name == "name" || name == "type")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Cdb::Client::Subscription::Subscription()
+    :
+    datastore{YType::enumeration, "datastore"},
+    error{YType::enumeration, "error"},
+    id{YType::uint32, "id"},
+    path{YType::str, "path"},
+    priority{YType::int32, "priority"},
+    twophase{YType::empty, "twophase"}
+{
+
+    yang_name = "subscription"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Internal::Cdb::Client::Subscription::~Subscription()
+{
+}
+
+bool ConfdState::Internal::Cdb::Client::Subscription::has_data() const
+{
+    return datastore.is_set
+	|| error.is_set
+	|| id.is_set
+	|| path.is_set
+	|| priority.is_set
+	|| twophase.is_set;
+}
+
+bool ConfdState::Internal::Cdb::Client::Subscription::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(datastore.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(twophase.yfilter);
+}
+
+std::string ConfdState::Internal::Cdb::Client::Subscription::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/cdb/client/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Internal::Cdb::Client::Subscription::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subscription";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Client::Subscription::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (datastore.is_set || is_set(datastore.yfilter)) leaf_name_data.push_back(datastore.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (twophase.is_set || is_set(twophase.yfilter)) leaf_name_data.push_back(twophase.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::Subscription::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Cdb::Client::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "datastore")
+    {
+        datastore = value;
+        datastore.value_namespace = name_space;
+        datastore.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "twophase")
+    {
+        twophase = value;
+        twophase.value_namespace = name_space;
+        twophase.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Internal::Cdb::Client::Subscription::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "datastore")
+    {
+        datastore.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "twophase")
+    {
+        twophase.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Cdb::Client::Subscription::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "datastore" || name == "error" || name == "id" || name == "path" || name == "priority" || name == "twophase")
+        return true;
+    return false;
+}
+
 ConfdState::Internal::Cdb::Datastore::Datastore()
     :
     name{YType::enumeration, "name"},
@@ -9115,7 +6804,8 @@ ConfdState::Internal::Cdb::Datastore::Datastore()
     	,
     pending_subscription_sync(nullptr) // presence node
 {
-    yang_name = "datastore"; yang_parent_name = "cdb";
+
+    yang_name = "datastore"; yang_parent_name = "cdb"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ConfdState::Internal::Cdb::Datastore::~Datastore()
@@ -9163,27 +6853,22 @@ bool ConfdState::Internal::Cdb::Datastore::has_operation() const
 	|| (pending_subscription_sync !=  nullptr && pending_subscription_sync->has_operation());
 }
 
+std::string ConfdState::Internal::Cdb::Datastore::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/internal/cdb/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ConfdState::Internal::Cdb::Datastore::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "datastore" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::Datastore::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datastore::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/cdb/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -9197,9 +6882,7 @@ const EntityPath ConfdState::Internal::Cdb::Datastore::get_entity_path(Entity* a
     if (write_lock_set.is_set || is_set(write_lock_set.yfilter)) leaf_name_data.push_back(write_lock_set.get_name_leafdata());
     if (write_queue.is_set || is_set(write_queue.yfilter)) leaf_name_data.push_back(write_queue.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9364,12 +7047,218 @@ bool ConfdState::Internal::Cdb::Datastore::has_leaf_or_child_of_name(const std::
     return false;
 }
 
+ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::PendingNotificationQueue()
+{
+
+    yang_name = "pending-notification-queue"; yang_parent_name = "datastore"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::~PendingNotificationQueue()
+{
+}
+
+bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_data() const
+{
+    for (std::size_t index=0; index<notification.size(); index++)
+    {
+        if(notification[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_operation() const
+{
+    for (std::size_t index=0; index<notification.size(); index++)
+    {
+        if(notification[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pending-notification-queue";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "notification")
+    {
+        for(auto const & c : notification)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification>();
+        c->parent = this;
+        notification.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : notification)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "notification")
+        return true;
+    return false;
+}
+
+ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::Notification()
+    :
+    client_name{YType::str, "client-name"},
+    priority{YType::int32, "priority"},
+    subscription_ids{YType::uint32, "subscription-ids"}
+{
+
+    yang_name = "notification"; yang_parent_name = "pending-notification-queue"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::~Notification()
+{
+}
+
+bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::has_data() const
+{
+    for (auto const & leaf : subscription_ids.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return client_name.is_set
+	|| priority.is_set;
+}
+
+bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::has_operation() const
+{
+    for (auto const & leaf : subscription_ids.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(client_name.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(subscription_ids.yfilter);
+}
+
+std::string ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "notification";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    auto subscription_ids_name_datas = subscription_ids.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), subscription_ids_name_datas.begin(), subscription_ids_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "client-name")
+    {
+        client_name = value;
+        client_name.value_namespace = name_space;
+        client_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscription-ids")
+    {
+        subscription_ids.append(value);
+    }
+}
+
+void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-name")
+    {
+        client_name.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "subscription-ids")
+    {
+        subscription_ids.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-name" || name == "priority" || name == "subscription-ids")
+        return true;
+    return false;
+}
+
 ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::PendingSubscriptionSync()
     :
     priority{YType::int32, "priority"},
     time_remaining{YType::str, "time-remaining"}
 {
-    yang_name = "pending-subscription-sync"; yang_parent_name = "datastore";
+
+    yang_name = "pending-subscription-sync"; yang_parent_name = "datastore"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::~PendingSubscriptionSync()
@@ -9403,31 +7292,17 @@ std::string ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "pending-subscription-sync";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PendingSubscriptionSync' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9503,7 +7378,8 @@ ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::Not
     client_name{YType::str, "client-name"},
     subscription_ids{YType::uint32, "subscription-ids"}
 {
-    yang_name = "notification"; yang_parent_name = "pending-subscription-sync";
+
+    yang_name = "notification"; yang_parent_name = "pending-subscription-sync"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::~Notification()
@@ -9536,32 +7412,18 @@ std::string ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notif
 {
     std::ostringstream path_buffer;
     path_buffer << "notification";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Notification' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
 
     auto subscription_ids_name_datas = subscription_ids.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), subscription_ids_name_datas.begin(), subscription_ids_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9609,70 +7471,64 @@ bool ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
     return false;
 }
 
-ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::PendingNotificationQueue()
+ConfdState::LoadedDataModels::LoadedDataModels()
 {
-    yang_name = "pending-notification-queue"; yang_parent_name = "datastore";
+
+    yang_name = "loaded-data-models"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::~PendingNotificationQueue()
+ConfdState::LoadedDataModels::~LoadedDataModels()
 {
 }
 
-bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_data() const
+bool ConfdState::LoadedDataModels::has_data() const
 {
-    for (std::size_t index=0; index<notification.size(); index++)
+    for (std::size_t index=0; index<data_model.size(); index++)
     {
-        if(notification[index]->has_data())
+        if(data_model[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_operation() const
+bool ConfdState::LoadedDataModels::has_operation() const
 {
-    for (std::size_t index=0; index<notification.size(); index++)
+    for (std::size_t index=0; index<data_model.size(); index++)
     {
-        if(notification[index]->has_operation())
+        if(data_model[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_segment_path() const
+std::string ConfdState::LoadedDataModels::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pending-notification-queue";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_entity_path(Entity* ancestor) const
+std::string ConfdState::LoadedDataModels::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PendingNotificationQueue' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "loaded-data-models";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::LoadedDataModels::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "notification")
+    if(child_yang_name == "data-model")
     {
-        for(auto const & c : notification)
+        for(auto const & c : data_model)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -9680,19 +7536,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
                 return c;
             }
         }
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification>();
+        auto c = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
         c->parent = this;
-        notification.push_back(c);
+        data_model.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : notification)
+    for (auto const & c : data_model)
     {
         children[c->get_segment_path()] = c;
     }
@@ -9700,477 +7556,1947 @@ std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datast
     return children;
 }
 
-void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::LoadedDataModels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::LoadedDataModels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::LoadedDataModels::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "notification")
+    if(name == "data-model")
         return true;
     return false;
 }
 
-ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::Notification()
+ConfdState::LoadedDataModels::DataModel::DataModel()
     :
-    client_name{YType::str, "client-name"},
-    priority{YType::int32, "priority"},
-    subscription_ids{YType::uint32, "subscription-ids"}
+    name{YType::str, "name"},
+    exported_to{YType::str, "exported-to"},
+    exported_to_all{YType::empty, "exported-to-all"},
+    namespace_{YType::str, "namespace"},
+    prefix{YType::str, "prefix"},
+    revision{YType::str, "revision"}
 {
-    yang_name = "notification"; yang_parent_name = "pending-notification-queue";
+
+    yang_name = "data-model"; yang_parent_name = "loaded-data-models"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::~Notification()
+ConfdState::LoadedDataModels::DataModel::~DataModel()
 {
 }
 
-bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::has_data() const
+bool ConfdState::LoadedDataModels::DataModel::has_data() const
 {
-    for (auto const & leaf : subscription_ids.getYLeafs())
+    for (auto const & leaf : exported_to.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    return client_name.is_set
-	|| priority.is_set;
+    return name.is_set
+	|| exported_to_all.is_set
+	|| namespace_.is_set
+	|| prefix.is_set
+	|| revision.is_set;
 }
 
-bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::has_operation() const
+bool ConfdState::LoadedDataModels::DataModel::has_operation() const
 {
-    for (auto const & leaf : subscription_ids.getYLeafs())
+    for (auto const & leaf : exported_to.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(client_name.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(subscription_ids.yfilter);
-}
-
-std::string ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "notification";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Notification' in tailf_confd_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-    auto subscription_ids_name_datas = subscription_ids.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), subscription_ids_name_datas.begin(), subscription_ids_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "client-name")
-    {
-        client_name = value;
-        client_name.value_namespace = name_space;
-        client_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "subscription-ids")
-    {
-        subscription_ids.append(value);
-    }
-}
-
-void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "client-name")
-    {
-        client_name.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "subscription-ids")
-    {
-        subscription_ids.yfilter = yfilter;
-    }
-}
-
-bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "client-name" || name == "priority" || name == "subscription-ids")
-        return true;
-    return false;
-}
-
-ConfdState::Internal::Cdb::Client::Client()
-    :
-    datastore{YType::str, "datastore"},
-    info{YType::str, "info"},
-    lock{YType::enumeration, "lock"},
-    name{YType::str, "name"},
-    type{YType::enumeration, "type"}
-{
-    yang_name = "client"; yang_parent_name = "cdb";
-}
-
-ConfdState::Internal::Cdb::Client::~Client()
-{
-}
-
-bool ConfdState::Internal::Cdb::Client::has_data() const
-{
-    for (std::size_t index=0; index<subscription.size(); index++)
-    {
-        if(subscription[index]->has_data())
-            return true;
-    }
-    return datastore.is_set
-	|| info.is_set
-	|| lock.is_set
-	|| name.is_set
-	|| type.is_set;
-}
-
-bool ConfdState::Internal::Cdb::Client::has_operation() const
-{
-    for (std::size_t index=0; index<subscription.size(); index++)
-    {
-        if(subscription[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(datastore.yfilter)
-	|| ydk::is_set(info.yfilter)
-	|| ydk::is_set(lock.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(type.yfilter);
+	|| ydk::is_set(exported_to.yfilter)
+	|| ydk::is_set(exported_to_all.yfilter)
+	|| ydk::is_set(namespace_.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(revision.yfilter);
 }
 
-std::string ConfdState::Internal::Cdb::Client::get_segment_path() const
+std::string ConfdState::LoadedDataModels::DataModel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/loaded-data-models/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::Client::get_entity_path(Entity* ancestor) const
+std::string ConfdState::LoadedDataModels::DataModel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/cdb/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "data-model" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::LoadedDataModels::DataModel::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (datastore.is_set || is_set(datastore.yfilter)) leaf_name_data.push_back(datastore.get_name_leafdata());
-    if (info.is_set || is_set(info.yfilter)) leaf_name_data.push_back(info.get_name_leafdata());
-    if (lock.is_set || is_set(lock.yfilter)) leaf_name_data.push_back(lock.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (exported_to_all.is_set || is_set(exported_to_all.yfilter)) leaf_name_data.push_back(exported_to_all.get_name_leafdata());
+    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    auto exported_to_name_datas = exported_to.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), exported_to_name_datas.begin(), exported_to_name_datas.end());
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::LoadedDataModels::DataModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "subscription")
-    {
-        for(auto const & c : subscription)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Client::Subscription>();
-        c->parent = this;
-        subscription.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::DataModel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : subscription)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void ConfdState::Internal::Cdb::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::LoadedDataModels::DataModel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "datastore")
-    {
-        datastore = value;
-        datastore.value_namespace = name_space;
-        datastore.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "info")
-    {
-        info = value;
-        info.value_namespace = name_space;
-        info.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lock")
-    {
-        lock = value;
-        lock.value_namespace = name_space;
-        lock.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "name")
     {
         name = value;
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type")
+    if(value_path == "exported-to")
     {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
+        exported_to.append(value);
+    }
+    if(value_path == "exported-to-all")
+    {
+        exported_to_all = value;
+        exported_to_all.value_namespace = name_space;
+        exported_to_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "namespace")
+    {
+        namespace_ = value;
+        namespace_.value_namespace = name_space;
+        namespace_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "revision")
+    {
+        revision = value;
+        revision.value_namespace = name_space;
+        revision.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ConfdState::Internal::Cdb::Client::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::LoadedDataModels::DataModel::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "datastore")
-    {
-        datastore.yfilter = yfilter;
-    }
-    if(value_path == "info")
-    {
-        info.yfilter = yfilter;
-    }
-    if(value_path == "lock")
-    {
-        lock.yfilter = yfilter;
-    }
     if(value_path == "name")
     {
         name.yfilter = yfilter;
     }
-    if(value_path == "type")
+    if(value_path == "exported-to")
     {
-        type.yfilter = yfilter;
+        exported_to.yfilter = yfilter;
+    }
+    if(value_path == "exported-to-all")
+    {
+        exported_to_all.yfilter = yfilter;
+    }
+    if(value_path == "namespace")
+    {
+        namespace_.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "revision")
+    {
+        revision.yfilter = yfilter;
     }
 }
 
-bool ConfdState::Internal::Cdb::Client::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::LoadedDataModels::DataModel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "subscription" || name == "datastore" || name == "info" || name == "lock" || name == "name" || name == "type")
+    if(name == "name" || name == "exported-to" || name == "exported-to-all" || name == "namespace" || name == "prefix" || name == "revision")
         return true;
     return false;
 }
 
-ConfdState::Internal::Cdb::Client::Subscription::Subscription()
+ConfdState::Netconf::Netconf()
     :
-    datastore{YType::enumeration, "datastore"},
-    error{YType::enumeration, "error"},
-    id{YType::uint32, "id"},
-    path{YType::str, "path"},
-    priority{YType::int32, "priority"},
-    twophase{YType::empty, "twophase"}
+    listen(std::make_shared<ConfdState::Netconf::Listen>())
 {
-    yang_name = "subscription"; yang_parent_name = "client";
+    listen->parent = this;
+
+    yang_name = "netconf"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ConfdState::Internal::Cdb::Client::Subscription::~Subscription()
+ConfdState::Netconf::~Netconf()
 {
 }
 
-bool ConfdState::Internal::Cdb::Client::Subscription::has_data() const
+bool ConfdState::Netconf::has_data() const
 {
-    return datastore.is_set
-	|| error.is_set
-	|| id.is_set
-	|| path.is_set
-	|| priority.is_set
-	|| twophase.is_set;
+    return (listen !=  nullptr && listen->has_data());
 }
 
-bool ConfdState::Internal::Cdb::Client::Subscription::has_operation() const
+bool ConfdState::Netconf::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(datastore.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(path.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(twophase.yfilter);
+	|| (listen !=  nullptr && listen->has_operation());
 }
 
-std::string ConfdState::Internal::Cdb::Client::Subscription::get_segment_path() const
+std::string ConfdState::Netconf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscription";
-
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ConfdState::Internal::Cdb::Client::Subscription::get_entity_path(Entity* ancestor) const
+std::string ConfdState::Netconf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-confd-monitoring:confd-state/internal/cdb/client/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "netconf";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (datastore.is_set || is_set(datastore.yfilter)) leaf_name_data.push_back(datastore.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (twophase.is_set || is_set(twophase.yfilter)) leaf_name_data.push_back(twophase.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "listen")
+    {
+        if(listen == nullptr)
+        {
+            listen = std::make_shared<ConfdState::Netconf::Listen>();
+        }
+        return listen;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(listen != nullptr)
+    {
+        children["listen"] = listen;
+    }
+
+    return children;
+}
+
+void ConfdState::Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Netconf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Netconf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "listen")
+        return true;
+    return false;
+}
+
+ConfdState::Netconf::Listen::Listen()
+{
+
+    yang_name = "listen"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Netconf::Listen::~Listen()
+{
+}
+
+bool ConfdState::Netconf::Listen::has_data() const
+{
+    for (std::size_t index=0; index<ssh.size(); index++)
+    {
+        if(ssh[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<tcp.size(); index++)
+    {
+        if(tcp[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Netconf::Listen::has_operation() const
+{
+    for (std::size_t index=0; index<ssh.size(); index++)
+    {
+        if(ssh[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<tcp.size(); index++)
+    {
+        if(tcp[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Netconf::Listen::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/netconf/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Netconf::Listen::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "listen";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::Listen::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ssh")
+    {
+        for(auto const & c : ssh)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Netconf::Listen::Ssh>();
+        c->parent = this;
+        ssh.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "tcp")
+    {
+        for(auto const & c : tcp)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Netconf::Listen::Tcp>();
+        c->parent = this;
+        tcp.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ssh)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : tcp)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Netconf::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Netconf::Listen::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Netconf::Listen::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssh" || name == "tcp")
+        return true;
+    return false;
+}
+
+ConfdState::Netconf::Listen::Ssh::Ssh()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "ssh"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Netconf::Listen::Ssh::~Ssh()
+{
+}
+
+bool ConfdState::Netconf::Listen::Ssh::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Netconf::Listen::Ssh::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Netconf::Listen::Ssh::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/netconf/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Netconf::Listen::Ssh::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssh";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::Listen::Ssh::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Netconf::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Ssh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ConfdState::Internal::Cdb::Client::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ConfdState::Netconf::Listen::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "datastore")
+    if(value_path == "ip")
     {
-        datastore = value;
-        datastore.value_namespace = name_space;
-        datastore.value_namespace_prefix = name_space_prefix;
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "error")
+    if(value_path == "port")
     {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "twophase")
-    {
-        twophase = value;
-        twophase.value_namespace = name_space;
-        twophase.value_namespace_prefix = name_space_prefix;
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ConfdState::Internal::Cdb::Client::Subscription::set_filter(const std::string & value_path, YFilter yfilter)
+void ConfdState::Netconf::Listen::Ssh::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "datastore")
+    if(value_path == "ip")
     {
-        datastore.yfilter = yfilter;
+        ip.yfilter = yfilter;
     }
-    if(value_path == "error")
+    if(value_path == "port")
     {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "twophase")
-    {
-        twophase.yfilter = yfilter;
+        port.yfilter = yfilter;
     }
 }
 
-bool ConfdState::Internal::Cdb::Client::Subscription::has_leaf_or_child_of_name(const std::string & name) const
+bool ConfdState::Netconf::Listen::Ssh::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "datastore" || name == "error" || name == "id" || name == "path" || name == "priority" || name == "twophase")
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Netconf::Listen::Tcp::Tcp()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "tcp"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Netconf::Listen::Tcp::~Tcp()
+{
+}
+
+bool ConfdState::Netconf::Listen::Tcp::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Netconf::Listen::Tcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Netconf::Listen::Tcp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/netconf/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Netconf::Listen::Tcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::Listen::Tcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Netconf::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Tcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Netconf::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Netconf::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Netconf::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Rest()
+    :
+    listen(std::make_shared<ConfdState::Rest::Listen>())
+{
+    listen->parent = this;
+
+    yang_name = "rest"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Rest::~Rest()
+{
+}
+
+bool ConfdState::Rest::has_data() const
+{
+    return (listen !=  nullptr && listen->has_data());
+}
+
+bool ConfdState::Rest::has_operation() const
+{
+    return is_set(yfilter)
+	|| (listen !=  nullptr && listen->has_operation());
+}
+
+std::string ConfdState::Rest::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rest";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "listen")
+    {
+        if(listen == nullptr)
+        {
+            listen = std::make_shared<ConfdState::Rest::Listen>();
+        }
+        return listen;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(listen != nullptr)
+    {
+        children["listen"] = listen;
+    }
+
+    return children;
+}
+
+void ConfdState::Rest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Rest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Rest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "listen")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Listen::Listen()
+{
+
+    yang_name = "listen"; yang_parent_name = "rest"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Rest::Listen::~Listen()
+{
+}
+
+bool ConfdState::Rest::Listen::has_data() const
+{
+    for (std::size_t index=0; index<ssl.size(); index++)
+    {
+        if(ssl[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<tcp.size(); index++)
+    {
+        if(tcp[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Rest::Listen::has_operation() const
+{
+    for (std::size_t index=0; index<ssl.size(); index++)
+    {
+        if(ssl[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<tcp.size(); index++)
+    {
+        if(tcp[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Rest::Listen::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/rest/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::Listen::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "listen";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ssl")
+    {
+        for(auto const & c : ssl)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Rest::Listen::Ssl>();
+        c->parent = this;
+        ssl.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "tcp")
+    {
+        for(auto const & c : tcp)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Rest::Listen::Tcp>();
+        c->parent = this;
+        tcp.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ssl)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : tcp)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Rest::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Rest::Listen::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Rest::Listen::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssl" || name == "tcp")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Listen::Ssl::Ssl()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "ssl"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Rest::Listen::Ssl::~Ssl()
+{
+}
+
+bool ConfdState::Rest::Listen::Ssl::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Rest::Listen::Ssl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Rest::Listen::Ssl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/rest/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::Listen::Ssl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssl";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::Ssl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Rest::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Ssl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Rest::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Rest::Listen::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Rest::Listen::Ssl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Listen::Tcp::Tcp()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "tcp"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Rest::Listen::Tcp::~Tcp()
+{
+}
+
+bool ConfdState::Rest::Listen::Tcp::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Rest::Listen::Tcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Rest::Listen::Tcp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/rest/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::Listen::Tcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::Tcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Rest::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Tcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Rest::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Rest::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Rest::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Smp::Smp()
+    :
+    number_of_threads{YType::uint16, "number-of-threads"}
+{
+
+    yang_name = "smp"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Smp::~Smp()
+{
+}
+
+bool ConfdState::Smp::has_data() const
+{
+    return number_of_threads.is_set;
+}
+
+bool ConfdState::Smp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number_of_threads.yfilter);
+}
+
+std::string ConfdState::Smp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Smp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "smp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Smp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number_of_threads.is_set || is_set(number_of_threads.yfilter)) leaf_name_data.push_back(number_of_threads.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Smp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Smp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Smp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number-of-threads")
+    {
+        number_of_threads = value;
+        number_of_threads.value_namespace = name_space;
+        number_of_threads.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Smp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-of-threads")
+    {
+        number_of_threads.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Smp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number-of-threads")
+        return true;
+    return false;
+}
+
+ConfdState::Snmp::Snmp()
+    :
+    engine_id{YType::str, "engine-id"},
+    mib{YType::str, "mib"}
+    	,
+    listen(std::make_shared<ConfdState::Snmp::Listen>())
+	,version(std::make_shared<ConfdState::Snmp::Version>())
+{
+    listen->parent = this;
+    version->parent = this;
+
+    yang_name = "snmp"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Snmp::~Snmp()
+{
+}
+
+bool ConfdState::Snmp::has_data() const
+{
+    for (auto const & leaf : mib.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return engine_id.is_set
+	|| (listen !=  nullptr && listen->has_data())
+	|| (version !=  nullptr && version->has_data());
+}
+
+bool ConfdState::Snmp::has_operation() const
+{
+    for (auto const & leaf : mib.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(engine_id.yfilter)
+	|| ydk::is_set(mib.yfilter)
+	|| (listen !=  nullptr && listen->has_operation())
+	|| (version !=  nullptr && version->has_operation());
+}
+
+std::string ConfdState::Snmp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Snmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "snmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (engine_id.is_set || is_set(engine_id.yfilter)) leaf_name_data.push_back(engine_id.get_name_leafdata());
+
+    auto mib_name_datas = mib.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_name_datas.begin(), mib_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "listen")
+    {
+        if(listen == nullptr)
+        {
+            listen = std::make_shared<ConfdState::Snmp::Listen>();
+        }
+        return listen;
+    }
+
+    if(child_yang_name == "version")
+    {
+        if(version == nullptr)
+        {
+            version = std::make_shared<ConfdState::Snmp::Version>();
+        }
+        return version;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(listen != nullptr)
+    {
+        children["listen"] = listen;
+    }
+
+    if(version != nullptr)
+    {
+        children["version"] = version;
+    }
+
+    return children;
+}
+
+void ConfdState::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "engine-id")
+    {
+        engine_id = value;
+        engine_id.value_namespace = name_space;
+        engine_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mib")
+    {
+        mib.append(value);
+    }
+}
+
+void ConfdState::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "engine-id")
+    {
+        engine_id.yfilter = yfilter;
+    }
+    if(value_path == "mib")
+    {
+        mib.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Snmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "listen" || name == "version" || name == "engine-id" || name == "mib")
+        return true;
+    return false;
+}
+
+ConfdState::Snmp::Listen::Listen()
+{
+
+    yang_name = "listen"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Snmp::Listen::~Listen()
+{
+}
+
+bool ConfdState::Snmp::Listen::has_data() const
+{
+    for (std::size_t index=0; index<udp.size(); index++)
+    {
+        if(udp[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Snmp::Listen::has_operation() const
+{
+    for (std::size_t index=0; index<udp.size(); index++)
+    {
+        if(udp[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Snmp::Listen::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/snmp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Snmp::Listen::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "listen";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::Listen::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "udp")
+    {
+        for(auto const & c : udp)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Snmp::Listen::Udp>();
+        c->parent = this;
+        udp.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : udp)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Snmp::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Snmp::Listen::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Snmp::Listen::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udp")
+        return true;
+    return false;
+}
+
+ConfdState::Snmp::Listen::Udp::Udp()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "udp"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Snmp::Listen::Udp::~Udp()
+{
+}
+
+bool ConfdState::Snmp::Listen::Udp::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Snmp::Listen::Udp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Snmp::Listen::Udp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/snmp/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Snmp::Listen::Udp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "udp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::Listen::Udp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Snmp::Listen::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::Udp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Snmp::Listen::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Snmp::Listen::Udp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Snmp::Listen::Udp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Snmp::Version::Version()
+    :
+    v1{YType::empty, "v1"},
+    v2c{YType::empty, "v2c"},
+    v3{YType::empty, "v3"}
+{
+
+    yang_name = "version"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Snmp::Version::~Version()
+{
+}
+
+bool ConfdState::Snmp::Version::has_data() const
+{
+    return v1.is_set
+	|| v2c.is_set
+	|| v3.is_set;
+}
+
+bool ConfdState::Snmp::Version::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(v1.yfilter)
+	|| ydk::is_set(v2c.yfilter)
+	|| ydk::is_set(v3.yfilter);
+}
+
+std::string ConfdState::Snmp::Version::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/snmp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Snmp::Version::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "version";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::Version::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (v1.is_set || is_set(v1.yfilter)) leaf_name_data.push_back(v1.get_name_leafdata());
+    if (v2c.is_set || is_set(v2c.yfilter)) leaf_name_data.push_back(v2c.get_name_leafdata());
+    if (v3.is_set || is_set(v3.yfilter)) leaf_name_data.push_back(v3.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Snmp::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Version::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Snmp::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "v1")
+    {
+        v1 = value;
+        v1.value_namespace = name_space;
+        v1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v2c")
+    {
+        v2c = value;
+        v2c.value_namespace = name_space;
+        v2c.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v3")
+    {
+        v3 = value;
+        v3.value_namespace = name_space;
+        v3.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Snmp::Version::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "v1")
+    {
+        v1.yfilter = yfilter;
+    }
+    if(value_path == "v2c")
+    {
+        v2c.yfilter = yfilter;
+    }
+    if(value_path == "v3")
+    {
+        v3.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Snmp::Version::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "v1" || name == "v2c" || name == "v3")
+        return true;
+    return false;
+}
+
+ConfdState::Webui::Webui()
+    :
+    listen(std::make_shared<ConfdState::Webui::Listen>())
+{
+    listen->parent = this;
+
+    yang_name = "webui"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Webui::~Webui()
+{
+}
+
+bool ConfdState::Webui::has_data() const
+{
+    return (listen !=  nullptr && listen->has_data());
+}
+
+bool ConfdState::Webui::has_operation() const
+{
+    return is_set(yfilter)
+	|| (listen !=  nullptr && listen->has_operation());
+}
+
+std::string ConfdState::Webui::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Webui::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "webui";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "listen")
+    {
+        if(listen == nullptr)
+        {
+            listen = std::make_shared<ConfdState::Webui::Listen>();
+        }
+        return listen;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(listen != nullptr)
+    {
+        children["listen"] = listen;
+    }
+
+    return children;
+}
+
+void ConfdState::Webui::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Webui::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Webui::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "listen")
+        return true;
+    return false;
+}
+
+ConfdState::Webui::Listen::Listen()
+{
+
+    yang_name = "listen"; yang_parent_name = "webui"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Webui::Listen::~Listen()
+{
+}
+
+bool ConfdState::Webui::Listen::has_data() const
+{
+    for (std::size_t index=0; index<ssl.size(); index++)
+    {
+        if(ssl[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<tcp.size(); index++)
+    {
+        if(tcp[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Webui::Listen::has_operation() const
+{
+    for (std::size_t index=0; index<ssl.size(); index++)
+    {
+        if(ssl[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<tcp.size(); index++)
+    {
+        if(tcp[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Webui::Listen::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/webui/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Webui::Listen::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "listen";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::Listen::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ssl")
+    {
+        for(auto const & c : ssl)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Webui::Listen::Ssl>();
+        c->parent = this;
+        ssl.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "tcp")
+    {
+        for(auto const & c : tcp)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ConfdState::Webui::Listen::Tcp>();
+        c->parent = this;
+        tcp.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ssl)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : tcp)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ConfdState::Webui::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Webui::Listen::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Webui::Listen::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssl" || name == "tcp")
+        return true;
+    return false;
+}
+
+ConfdState::Webui::Listen::Ssl::Ssl()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "ssl"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Webui::Listen::Ssl::~Ssl()
+{
+}
+
+bool ConfdState::Webui::Listen::Ssl::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Webui::Listen::Ssl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Webui::Listen::Ssl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/webui/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Webui::Listen::Ssl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssl";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::Listen::Ssl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Webui::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Ssl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Webui::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Webui::Listen::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Webui::Listen::Ssl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Webui::Listen::Tcp::Tcp()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "tcp"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ConfdState::Webui::Listen::Tcp::~Tcp()
+{
+}
+
+bool ConfdState::Webui::Listen::Tcp::has_data() const
+{
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Webui::Listen::Tcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Webui::Listen::Tcp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/webui/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Webui::Listen::Tcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::Listen::Tcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ConfdState::Webui::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Tcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ConfdState::Webui::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Webui::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Webui::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
         return true;
     return false;
 }
@@ -10186,29 +9512,9 @@ const Enum::YLeaf ConfdState::Ha::Mode::slave {1, "slave"};
 const Enum::YLeaf ConfdState::Ha::Mode::master {2, "master"};
 const Enum::YLeaf ConfdState::Ha::Mode::relay_slave {3, "relay-slave"};
 
-const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::netconf {0, "netconf"};
-const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::cli {1, "cli"};
-const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::webui {2, "webui"};
-const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::rest {3, "rest"};
-const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::snmp {4, "snmp"};
-
 const Enum::YLeaf ConfdState::Internal::DatastoreName::running {0, "running"};
 const Enum::YLeaf ConfdState::Internal::DatastoreName::startup {1, "startup"};
 const Enum::YLeaf ConfdState::Internal::DatastoreName::operational {2, "operational"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Error::PENDING {0, "PENDING"};
 
 const Enum::YLeaf ConfdState::Internal::Callpoints::Actionpoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
 const Enum::YLeaf ConfdState::Internal::Callpoints::Actionpoint::Error::UNKNOWN {1, "UNKNOWN"};
@@ -10216,45 +9522,6 @@ const Enum::YLeaf ConfdState::Internal::Callpoints::Actionpoint::Error::UNKNOWN 
 const Enum::YLeaf ConfdState::Internal::Callpoints::Actionpoint::Daemon::Error::PENDING {0, "PENDING"};
 
 const Enum::YLeaf ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport::none {0, "none"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport::builtin {1, "builtin"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport::external {2, "external"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Error::UNKNOWN {1, "UNKNOWN"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::Error::PENDING {0, "PENDING"};
-
-const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::Error::PENDING {0, "PENDING"};
 
 const Enum::YLeaf ConfdState::Internal::Callpoints::AuthenticationCallback::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
 const Enum::YLeaf ConfdState::Internal::Callpoints::AuthenticationCallback::Error::UNKNOWN {1, "UNKNOWN"};
@@ -10270,7 +9537,58 @@ const Enum::YLeaf ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daem
 
 const Enum::YLeaf ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::Error::PENDING {0, "PENDING"};
 
-const Enum::YLeaf ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::TimeRemaining::infinity {0, "infinity"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport::none {0, "none"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport::builtin {1, "builtin"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport::external {2, "external"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Error::NOT_REGISTERED {0, "NOT-REGISTERED"};
+const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Error::UNKNOWN {1, "UNKNOWN"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Daemon::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Error::PENDING {0, "PENDING"};
 
 const Enum::YLeaf ConfdState::Internal::Cdb::Client::Type::inactive {0, "inactive"};
 const Enum::YLeaf ConfdState::Internal::Cdb::Client::Type::client {1, "client"};
@@ -10285,6 +9603,14 @@ const Enum::YLeaf ConfdState::Internal::Cdb::Client::Lock::pending_read {2, "pen
 const Enum::YLeaf ConfdState::Internal::Cdb::Client::Lock::pending_subscription {3, "pending-subscription"};
 
 const Enum::YLeaf ConfdState::Internal::Cdb::Client::Subscription::Error::PENDING {0, "PENDING"};
+
+const Enum::YLeaf ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::TimeRemaining::infinity {0, "infinity"};
+
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::netconf {0, "netconf"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::cli {1, "cli"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::webui {2, "webui"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::rest {3, "rest"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::snmp {4, "snmp"};
 
 
 }

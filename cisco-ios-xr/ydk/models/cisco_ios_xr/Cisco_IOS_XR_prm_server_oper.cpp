@@ -17,7 +17,7 @@ HardwareModule::HardwareModule()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper";
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 HardwareModule::~HardwareModule()
@@ -39,26 +39,15 @@ std::string HardwareModule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-prm-server-oper:hardware-module";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool HardwareModule::has_leaf_or_child_of_name(const std::string & name) const
 
 HardwareModule::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "hardware-module";
+
+    yang_name = "nodes"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HardwareModule::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool HardwareModule::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string HardwareModule::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-prm-server-oper:hardware-module/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HardwareModule::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-prm-server-oper:hardware-module/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ HardwareModule::Nodes::Node::Node()
 {
     np->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HardwareModule::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool HardwareModule::Nodes::Node::has_operation() const
 	|| (np !=  nullptr && np->has_operation());
 }
 
+std::string HardwareModule::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-prm-server-oper:hardware-module/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HardwareModule::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-prm-server-oper:hardware-module/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -348,10 +324,9 @@ HardwareModule::Nodes::Node::Np::Np()
 	,platform_drop(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop>())
 {
     cpu->parent = this;
-
     platform_drop->parent = this;
 
-    yang_name = "np"; yang_parent_name = "node";
+    yang_name = "np"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::~Np()
@@ -375,29 +350,15 @@ std::string HardwareModule::Nodes::Node::Np::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "np";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Np' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -461,7 +422,7 @@ HardwareModule::Nodes::Node::Np::Cpu::Cpu()
 {
     indexes->parent = this;
 
-    yang_name = "cpu"; yang_parent_name = "np";
+    yang_name = "cpu"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::~Cpu()
@@ -483,29 +444,15 @@ std::string HardwareModule::Nodes::Node::Np::Cpu::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::Cpu::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::Cpu::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cpu' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -551,7 +498,8 @@ bool HardwareModule::Nodes::Node::Np::Cpu::has_leaf_or_child_of_name(const std::
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::Indexes()
 {
-    yang_name = "indexes"; yang_parent_name = "cpu";
+
+    yang_name = "indexes"; yang_parent_name = "cpu"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::~Indexes()
@@ -582,29 +530,15 @@ std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "indexes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Indexes' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -666,7 +600,8 @@ HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::Index_()
     flow_rate{YType::uint32, "flow-rate"},
     rx_channel{YType::uint32, "rx-channel"}
 {
-    yang_name = "index"; yang_parent_name = "indexes";
+
+    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::~Index_()
@@ -702,23 +637,11 @@ std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "index" <<"[index='" <<index_ <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Index_' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
@@ -730,9 +653,7 @@ const EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_enti
     if (flow_rate.is_set || is_set(flow_rate.yfilter)) leaf_name_data.push_back(flow_rate.get_name_leafdata());
     if (rx_channel.is_set || is_set(rx_channel.yfilter)) leaf_name_data.push_back(rx_channel.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -848,10 +769,9 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::PlatformDrop()
 	,indxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes>())
 {
     idxes->parent = this;
-
     indxes->parent = this;
 
-    yang_name = "platform-drop"; yang_parent_name = "np";
+    yang_name = "platform-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::~PlatformDrop()
@@ -875,29 +795,15 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "platform-drop";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PlatformDrop' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -955,9 +861,207 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_leaf_or_child_of_name(co
     return false;
 }
 
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idxes()
+{
+
+    yang_name = "idxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::~Idxes()
+{
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_data() const
+{
+    for (std::size_t index=0; index<idx.size(); index++)
+    {
+        if(idx[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_operation() const
+{
+    for (std::size_t index=0; index<idx.size(); index++)
+    {
+        if(idx[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idxes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "idx")
+    {
+        for(auto const & c : idx)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
+        c->parent = this;
+        idx.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : idx)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idx")
+        return true;
+    return false;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::Idx()
+    :
+    index_{YType::int32, "index"},
+    counters{YType::uint32, "counters"},
+    drop_reason{YType::str, "drop-reason"}
+{
+
+    yang_name = "idx"; yang_parent_name = "idxes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::~Idx()
+{
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_data() const
+{
+    return index_.is_set
+	|| counters.is_set
+	|| drop_reason.is_set;
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(counters.yfilter)
+	|| ydk::is_set(drop_reason.yfilter);
+}
+
+std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idx" <<"[index='" <<index_ <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (counters.is_set || is_set(counters.yfilter)) leaf_name_data.push_back(counters.get_name_leafdata());
+    if (drop_reason.is_set || is_set(drop_reason.yfilter)) leaf_name_data.push_back(drop_reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "counters")
+    {
+        counters = value;
+        counters.value_namespace = name_space;
+        counters.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-reason")
+    {
+        drop_reason = value;
+        drop_reason.value_namespace = name_space;
+        drop_reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "counters")
+    {
+        counters.yfilter = yfilter;
+    }
+    if(value_path == "drop-reason")
+    {
+        drop_reason.yfilter = yfilter;
+    }
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "counters" || name == "drop-reason")
+        return true;
+    return false;
+}
+
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indxes()
 {
-    yang_name = "indxes"; yang_parent_name = "platform-drop";
+
+    yang_name = "indxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::~Indxes()
@@ -988,29 +1092,15 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "indxes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Indxes' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1077,7 +1167,8 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::Indx()
     total_captured{YType::uint32, "total-captured"},
     years{YType::uint64, "years"}
 {
-    yang_name = "indx"; yang_parent_name = "indxes";
+
+    yang_name = "indx"; yang_parent_name = "indxes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::~Indx()
@@ -1123,23 +1214,11 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "indx" <<"[index='" <<index_ <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Indx' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
@@ -1156,9 +1235,7 @@ const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::ge
     if (total_captured.is_set || is_set(total_captured.yfilter)) leaf_name_data.push_back(total_captured.get_name_leafdata());
     if (years.is_set || is_set(years.yfilter)) leaf_name_data.push_back(years.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1318,236 +1395,13 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_leaf_or_ch
     return false;
 }
 
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idxes()
-{
-    yang_name = "idxes"; yang_parent_name = "platform-drop";
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::~Idxes()
-{
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_data() const
-{
-    for (std::size_t index=0; index<idx.size(); index++)
-    {
-        if(idx[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_operation() const
-{
-    for (std::size_t index=0; index<idx.size(); index++)
-    {
-        if(idx[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idxes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Idxes' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "idx")
-    {
-        for(auto const & c : idx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
-        c->parent = this;
-        idx.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : idx)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "idx")
-        return true;
-    return false;
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::Idx()
-    :
-    index_{YType::int32, "index"},
-    counters{YType::uint32, "counters"},
-    drop_reason{YType::str, "drop-reason"}
-{
-    yang_name = "idx"; yang_parent_name = "idxes";
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::~Idx()
-{
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_data() const
-{
-    return index_.is_set
-	|| counters.is_set
-	|| drop_reason.is_set;
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(counters.yfilter)
-	|| ydk::is_set(drop_reason.yfilter);
-}
-
-std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idx" <<"[index='" <<index_ <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Idx' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (counters.is_set || is_set(counters.yfilter)) leaf_name_data.push_back(counters.get_name_leafdata());
-    if (drop_reason.is_set || is_set(drop_reason.yfilter)) leaf_name_data.push_back(drop_reason.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "counters")
-    {
-        counters = value;
-        counters.value_namespace = name_space;
-        counters.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "drop-reason")
-    {
-        drop_reason = value;
-        drop_reason.value_namespace = name_space;
-        drop_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "counters")
-    {
-        counters.yfilter = yfilter;
-    }
-    if(value_path == "drop-reason")
-    {
-        drop_reason.yfilter = yfilter;
-    }
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "index" || name == "counters" || name == "drop-reason")
-        return true;
-    return false;
-}
-
 Prm::Prm()
     :
     nodes(std::make_shared<Prm::Nodes>())
 {
     nodes->parent = this;
 
-    yang_name = "prm"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper";
+    yang_name = "prm"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Prm::~Prm()
@@ -1569,26 +1423,15 @@ std::string Prm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-prm-server-oper:prm";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1659,7 +1502,8 @@ bool Prm::has_leaf_or_child_of_name(const std::string & name) const
 
 Prm::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "prm";
+
+    yang_name = "nodes"; yang_parent_name = "prm"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Prm::Nodes::~Nodes()
@@ -1686,33 +1530,26 @@ bool Prm::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Prm::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-prm-server-oper:prm/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Prm::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-prm-server-oper:prm/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1771,7 +1608,7 @@ Prm::Nodes::Node::Node()
 {
     server->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Prm::Nodes::Node::~Node()
@@ -1791,34 +1628,27 @@ bool Prm::Nodes::Node::has_operation() const
 	|| (server !=  nullptr && server->has_operation());
 }
 
+std::string Prm::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-prm-server-oper:prm/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Prm::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-prm-server-oper:prm/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1878,7 +1708,7 @@ Prm::Nodes::Node::Server::Server()
 {
     resource->parent = this;
 
-    yang_name = "server"; yang_parent_name = "node";
+    yang_name = "server"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Prm::Nodes::Node::Server::~Server()
@@ -1900,29 +1730,15 @@ std::string Prm::Nodes::Node::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Server' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1972,7 +1788,7 @@ Prm::Nodes::Node::Server::Resource::Resource()
 {
     indexes->parent = this;
 
-    yang_name = "resource"; yang_parent_name = "server";
+    yang_name = "resource"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Prm::Nodes::Node::Server::Resource::~Resource()
@@ -1994,29 +1810,15 @@ std::string Prm::Nodes::Node::Server::Resource::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "resource";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::Nodes::Node::Server::Resource::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resource::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Resource' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2062,7 +1864,8 @@ bool Prm::Nodes::Node::Server::Resource::has_leaf_or_child_of_name(const std::st
 
 Prm::Nodes::Node::Server::Resource::Indexes::Indexes()
 {
-    yang_name = "indexes"; yang_parent_name = "resource";
+
+    yang_name = "indexes"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Prm::Nodes::Node::Server::Resource::Indexes::~Indexes()
@@ -2093,29 +1896,15 @@ std::string Prm::Nodes::Node::Server::Resource::Indexes::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "indexes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::Nodes::Node::Server::Resource::Indexes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resource::Indexes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Indexes' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2179,7 +1968,8 @@ Prm::Nodes::Node::Server::Resource::Indexes::Index_::Index_()
     start_index{YType::uint32, "start-index"},
     total_num{YType::uint32, "total-num"}
 {
-    yang_name = "index"; yang_parent_name = "indexes";
+
+    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Prm::Nodes::Node::Server::Resource::Indexes::Index_::~Index_()
@@ -2219,23 +2009,11 @@ std::string Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "index" <<"[index='" <<index_ <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Index_' in Cisco_IOS_XR_prm_server_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
@@ -2249,9 +2027,7 @@ const EntityPath Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_entity
     if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
     if (total_num.is_set || is_set(total_num.yfilter)) leaf_name_data.push_back(total_num.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

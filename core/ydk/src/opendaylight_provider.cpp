@@ -13,13 +13,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 ------------------------------------------------------------------*/
+
+#include "logger.hpp"
 #include "netconf_provider.hpp"
 #include "opendaylight_parser.hpp"
 #include "opendaylight_provider.hpp"
 #include "path_api.hpp"
 #include "restconf_client.hpp"
 #include "restconf_provider.hpp"
-#include "logger.hpp"
+#include "service_provider.hpp"
 
 
 using namespace std;
@@ -56,7 +58,7 @@ OpenDaylightServiceProvider::~OpenDaylightServiceProvider()
 {
 }
 
-unique_ptr<path::ServiceProvider> OpenDaylightServiceProvider::create_provider_for_node(const string & node_id)
+unique_ptr<ydk::ServiceProvider> OpenDaylightServiceProvider::create_provider_for_node(const string & node_id)
 {
     if(odl_nodes.find(node_id) == odl_nodes.end())
     {
@@ -87,7 +89,7 @@ unique_ptr<path::ServiceProvider> OpenDaylightServiceProvider::create_provider_f
                             );
 }
 
-path::ServiceProvider & OpenDaylightServiceProvider::get_node_provider(const string & node_id)
+ydk::ServiceProvider & OpenDaylightServiceProvider::get_node_provider(const string & node_id)
 {
     if(providers.find(node_id) != providers.end())
     {
@@ -113,4 +115,3 @@ static string get_encoding_string(EncodingFormat encoding)
 
 #undef ODLNode
 }
-

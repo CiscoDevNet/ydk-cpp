@@ -21,17 +21,19 @@
 //
 //////////////////////////////////////////////////////////////////
 
+#include <unordered_map>
 #include "entity_lookup.hpp"
 #include "path_api.hpp"
+
 
 namespace ydk
 {
 
-std::vector<path::Capability> ydk_global_capabilities;
+std::vector<std::unordered_map<std::string, path::Capability>> ydk_global_capabilities_lookup_tables;
 
-const std::vector<path::Capability> get_global_capabilities()
+const std::vector<std::unordered_map<std::string, path::Capability>> get_global_capabilities_lookup_tables()
 {
-    return ydk_global_capabilities;
+    return ydk_global_capabilities_lookup_tables;
 }
 
 }

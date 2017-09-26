@@ -10,149 +10,149 @@
 namespace openconfig {
 namespace openconfig_rib_bgp_types {
 
-class Bgp_Not_Selected_Policy : public virtual ydk::Identity
+class BGPNOTSELECTEDBESTPATH : public virtual ydk::Identity
 {
     public:
-        Bgp_Not_Selected_Policy();
-        ~Bgp_Not_Selected_Policy();
+        BGPNOTSELECTEDBESTPATH();
+        ~BGPNOTSELECTEDBESTPATH();
 
 
-}; // Bgp_Not_Selected_Policy
+}; // BGPNOTSELECTEDBESTPATH
 
-class Bgp_Not_Selected_Bestpath : public virtual ydk::Identity
+class BGPNOTSELECTEDPOLICY : public virtual ydk::Identity
 {
     public:
-        Bgp_Not_Selected_Bestpath();
-        ~Bgp_Not_Selected_Bestpath();
+        BGPNOTSELECTEDPOLICY();
+        ~BGPNOTSELECTEDPOLICY();
 
 
-}; // Bgp_Not_Selected_Bestpath
+}; // BGPNOTSELECTEDPOLICY
 
-class Invalid_Route_Reason : public virtual ydk::Identity
+class INVALIDROUTEREASON : public virtual ydk::Identity
 {
     public:
-        Invalid_Route_Reason();
-        ~Invalid_Route_Reason();
+        INVALIDROUTEREASON();
+        ~INVALIDROUTEREASON();
 
 
-}; // Invalid_Route_Reason
+}; // INVALIDROUTEREASON
 
-class Invalid_Cluster_Loop : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
+class ASPATHLONGER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Invalid_Cluster_Loop();
-        ~Invalid_Cluster_Loop();
+        ASPATHLONGER();
+        ~ASPATHLONGER();
 
 
-}; // Invalid_Cluster_Loop
+}; // ASPATHLONGER
 
-class Higher_Router_Id : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class HIGHERPEERADDRESS : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Higher_Router_Id();
-        ~Higher_Router_Id();
+        HIGHERPEERADDRESS();
+        ~HIGHERPEERADDRESS();
 
 
-}; // Higher_Router_Id
+}; // HIGHERPEERADDRESS
 
-class Invalid_As_Loop : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
+class HIGHERROUTERID : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Invalid_As_Loop();
-        ~Invalid_As_Loop();
+        HIGHERROUTERID();
+        ~HIGHERROUTERID();
 
 
-}; // Invalid_As_Loop
+}; // HIGHERROUTERID
 
-class Invalid_Originator : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
+class INVALIDASLOOP : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
     public:
-        Invalid_Originator();
-        ~Invalid_Originator();
+        INVALIDASLOOP();
+        ~INVALIDASLOOP();
 
 
-}; // Invalid_Originator
+}; // INVALIDASLOOP
 
-class Invalid_Confed : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
+class INVALIDCLUSTERLOOP : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
     public:
-        Invalid_Confed();
-        ~Invalid_Confed();
+        INVALIDCLUSTERLOOP();
+        ~INVALIDCLUSTERLOOP();
 
 
-}; // Invalid_Confed
+}; // INVALIDCLUSTERLOOP
 
-class Origin_Type_Higher : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class INVALIDCONFED : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
     public:
-        Origin_Type_Higher();
-        ~Origin_Type_Higher();
+        INVALIDCONFED();
+        ~INVALIDCONFED();
 
 
-}; // Origin_Type_Higher
+}; // INVALIDCONFED
 
-class Local_Pref_Lower : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class INVALIDORIGINATOR : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
     public:
-        Local_Pref_Lower();
-        ~Local_Pref_Lower();
+        INVALIDORIGINATOR();
+        ~INVALIDORIGINATOR();
 
 
-}; // Local_Pref_Lower
+}; // INVALIDORIGINATOR
 
-class Prefer_External : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class LOCALPREFLOWER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Prefer_External();
-        ~Prefer_External();
+        LOCALPREFLOWER();
+        ~LOCALPREFLOWER();
 
 
-}; // Prefer_External
+}; // LOCALPREFLOWER
 
-class Rejected_Import_Policy : public openconfig_rib_bgp_types::Bgp_Not_Selected_Policy, virtual ydk::Identity
+class MEDHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Rejected_Import_Policy();
-        ~Rejected_Import_Policy();
+        MEDHIGHER();
+        ~MEDHIGHER();
 
 
-}; // Rejected_Import_Policy
+}; // MEDHIGHER
 
-class As_Path_Longer : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class NEXTHOPCOSTHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        As_Path_Longer();
-        ~As_Path_Longer();
+        NEXTHOPCOSTHIGHER();
+        ~NEXTHOPCOSTHIGHER();
 
 
-}; // As_Path_Longer
+}; // NEXTHOPCOSTHIGHER
 
-class Higher_Peer_Address : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class ORIGINTYPEHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Higher_Peer_Address();
-        ~Higher_Peer_Address();
+        ORIGINTYPEHIGHER();
+        ~ORIGINTYPEHIGHER();
 
 
-}; // Higher_Peer_Address
+}; // ORIGINTYPEHIGHER
 
-class Nexthop_Cost_Higher : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class PREFEREXTERNAL : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        Nexthop_Cost_Higher();
-        ~Nexthop_Cost_Higher();
+        PREFEREXTERNAL();
+        ~PREFEREXTERNAL();
 
 
-}; // Nexthop_Cost_Higher
+}; // PREFEREXTERNAL
 
-class Med_Higher : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
+class REJECTEDIMPORTPOLICY : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDPOLICY, virtual ydk::Identity
 {
     public:
-        Med_Higher();
-        ~Med_Higher();
+        REJECTEDIMPORTPOLICY();
+        ~REJECTEDIMPORTPOLICY();
 
 
-}; // Med_Higher
+}; // REJECTEDIMPORTPOLICY
 
 
 }

@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_DATA_COLLECTION_MIB {
 
-class CiscoDataCollectionMib : public ydk::Entity
+class CISCODATACOLLECTIONMIB : public ydk::Entity
 {
     public:
-        CiscoDataCollectionMib();
-        ~CiscoDataCollectionMib();
+        CISCODATACOLLECTIONMIB();
+        ~CISCODATACOLLECTIONMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,165 +32,130 @@ class CiscoDataCollectionMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cdcvfile; //type: CiscoDataCollectionMib::Cdcvfile
-        class Cdcvfiletable; //type: CiscoDataCollectionMib::Cdcvfiletable
-        class Cdcvfilemgmttable; //type: CiscoDataCollectionMib::Cdcvfilemgmttable
-        class Cdcdgtable; //type: CiscoDataCollectionMib::Cdcdgtable
-        class Cdcdgbaseobjecttable; //type: CiscoDataCollectionMib::Cdcdgbaseobjecttable
-        class Cdcdginstancetable; //type: CiscoDataCollectionMib::Cdcdginstancetable
-        class Cdcfilexferconftable; //type: CiscoDataCollectionMib::Cdcfilexferconftable
+        class Cdcvfile; //type: CISCODATACOLLECTIONMIB::Cdcvfile
+        class Cdcvfiletable; //type: CISCODATACOLLECTIONMIB::Cdcvfiletable
+        class Cdcvfilemgmttable; //type: CISCODATACOLLECTIONMIB::Cdcvfilemgmttable
+        class Cdcdgtable; //type: CISCODATACOLLECTIONMIB::Cdcdgtable
+        class Cdcdgbaseobjecttable; //type: CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable
+        class Cdcdginstancetable; //type: CISCODATACOLLECTIONMIB::Cdcdginstancetable
+        class Cdcfilexferconftable; //type: CISCODATACOLLECTIONMIB::Cdcfilexferconftable
 
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgbaseobjecttable> cdcdgbaseobjecttable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdginstancetable> cdcdginstancetable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgtable> cdcdgtable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcfilexferconftable> cdcfilexferconftable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfile> cdcvfile;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfilemgmttable> cdcvfilemgmttable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable> cdcvfiletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable> cdcdgbaseobjecttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcdginstancetable> cdcdginstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcdgtable> cdcdgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcfilexferconftable> cdcfilexferconftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfile> cdcvfile;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfilemgmttable> cdcvfilemgmttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfiletable> cdcvfiletable;
         
-}; // CiscoDataCollectionMib
+}; // CISCODATACOLLECTIONMIB
 
 
-class CiscoDataCollectionMib::Cdcvfile : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable : public ydk::Entity
 {
     public:
-        Cdcvfile();
-        ~Cdcvfile();
+        Cdcdgbaseobjecttable();
+        ~Cdcdgbaseobjecttable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cdcvfilepersistentstorage; //type: boolean
-        ydk::YLeaf cdcvfilemaxsizehitslimit; //type: uint32
+        class Cdcdgbaseobjectentry; //type: CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry
 
-}; // CiscoDataCollectionMib::Cdcvfile
-
-
-class CiscoDataCollectionMib::Cdcvfiletable : public ydk::Entity
-{
-    public:
-        Cdcvfiletable();
-        ~Cdcvfiletable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cdcvfileentry; //type: CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry
-
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry> > cdcvfileentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry> > cdcdgbaseobjectentry;
         
-}; // CiscoDataCollectionMib::Cdcvfiletable
+}; // CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable
 
 
-class CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry : public ydk::Entity
 {
     public:
-        Cdcvfileentry();
-        ~Cdcvfileentry();
+        Cdcdgbaseobjectentry();
+        ~Cdcdgbaseobjectentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cdcvfileindex; //type: uint32
-        ydk::YLeaf cdcvfilename; //type: string
-        ydk::YLeaf cdcvfiledescription; //type: string
-        ydk::YLeaf cdcvfilecommand; //type: Cdcvfilecommand
-        ydk::YLeaf cdcvfilemaxsize; //type: uint32
-        ydk::YLeaf cdcvfilecurrentsize; //type: uint32
-        ydk::YLeaf cdcvfileformat; //type: Cdcfileformat
-        ydk::YLeaf cdcvfilecollectmode; //type: Cdcvfilecollectmode
-        ydk::YLeaf cdcvfilecollectionperiod; //type: uint32
-        ydk::YLeaf cdcvfileretentionperiod; //type: uint32
-        ydk::YLeaf cdcvfileadminstatus; //type: Cdcvfileadminstatus
-        ydk::YLeaf cdcvfileoperstatus; //type: Cdcvfileoperstatus
-        ydk::YLeaf cdcvfileerrorcode; //type: Cdcvfileerrorcode
-        ydk::YLeaf cdcvfilecollectionerrorenable; //type: boolean
-        ydk::YLeaf cdcvfilerowstatus; //type: Rowstatus
-        class Cdcvfilecommand;
-        class Cdcvfilecollectmode;
-        class Cdcvfileadminstatus;
-        class Cdcvfileoperstatus;
-        class Cdcvfileerrorcode;
+        ydk::YLeaf cdcdgbaseobjectgrpindex; //type: uint32
+        ydk::YLeaf cdcdgbaseobjectindex; //type: uint32
+        ydk::YLeaf cdcdgbaseobjectsubtree; //type: string
+        ydk::YLeaf cdcdgbaseobjectlist; //type: binary
+        ydk::YLeaf cdcdgbaseobjectrowstatus; //type: RowStatus
 
-}; // CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry
+}; // CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry
 
 
-class CiscoDataCollectionMib::Cdcvfilemgmttable : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcdginstancetable : public ydk::Entity
 {
     public:
-        Cdcvfilemgmttable();
-        ~Cdcvfilemgmttable();
+        Cdcdginstancetable();
+        ~Cdcdginstancetable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cdcvfilemgmtentry; //type: CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry
+        class Cdcdginstanceentry; //type: CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry> > cdcvfilemgmtentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry> > cdcdginstanceentry;
         
-}; // CiscoDataCollectionMib::Cdcvfilemgmttable
+}; // CISCODATACOLLECTIONMIB::Cdcdginstancetable
 
 
-class CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry : public ydk::Entity
 {
     public:
-        Cdcvfilemgmtentry();
-        ~Cdcvfilemgmtentry();
+        Cdcdginstanceentry();
+        ~Cdcdginstanceentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::cdcvfileindex)
-        ydk::YLeaf cdcvfileindex;
-        ydk::YLeaf cdcvfilemgmtindex; //type: uint32
-        ydk::YLeaf cdcvfilemgmtname; //type: string
-        ydk::YLeaf cdcvfilemgmttimestamp; //type: string
-        ydk::YLeaf cdcvfilemgmttimetolive; //type: uint32
-        ydk::YLeaf cdcvfilemgmtcommand; //type: Cdcvfilemgmtcommand
-        ydk::YLeaf cdcvfilemgmtxferurl; //type: binary
-        ydk::YLeaf cdcvfilemgmtlastxferstatus; //type: Cdcfilexferstatus
-        ydk::YLeaf cdcvfilemgmtlastxferurl; //type: binary
-        class Cdcvfilemgmtcommand;
+        ydk::YLeaf cdcdginstancegrpindex; //type: uint32
+        ydk::YLeaf cdcdginstanceindex; //type: uint32
+        ydk::YLeaf cdcdginstancetype; //type: Cdcdginstancetype
+        ydk::YLeaf cdcdginstanceoid; //type: string
+        ydk::YLeaf cdcdginstanceoidend; //type: string
+        ydk::YLeaf cdcdginstancenumrepititions; //type: uint32
+        ydk::YLeaf cdcdginstanceotherptr; //type: string
+        ydk::YLeaf cdcdginstancerowstatus; //type: RowStatus
+        class Cdcdginstancetype;
 
-}; // CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry
+}; // CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry
 
 
-class CiscoDataCollectionMib::Cdcdgtable : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcdgtable : public ydk::Entity
 {
     public:
         Cdcdgtable();
@@ -198,22 +163,23 @@ class CiscoDataCollectionMib::Cdcdgtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cdcdgentry; //type: CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry
+        class Cdcdgentry; //type: CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry> > cdcdgentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry> > cdcdgentry;
         
-}; // CiscoDataCollectionMib::Cdcdgtable
+}; // CISCODATACOLLECTIONMIB::Cdcdgtable
 
 
-class CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry : public ydk::Entity
 {
     public:
         Cdcdgentry();
@@ -221,13 +187,14 @@ class CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cdcdgindex; //type: uint32
         ydk::YLeaf cdcdgcomment; //type: string
@@ -239,113 +206,13 @@ class CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry : public ydk::Entity
         ydk::YLeaf cdcdgobjectgrpindex; //type: uint32
         ydk::YLeaf cdcdginstgrpindex; //type: uint32
         ydk::YLeaf cdcdgpollperiod; //type: uint32
-        ydk::YLeaf cdcdgrowstatus; //type: Rowstatus
+        ydk::YLeaf cdcdgrowstatus; //type: RowStatus
         class Cdcdgtype;
 
-}; // CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry
+}; // CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry
 
 
-class CiscoDataCollectionMib::Cdcdgbaseobjecttable : public ydk::Entity
-{
-    public:
-        Cdcdgbaseobjecttable();
-        ~Cdcdgbaseobjecttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cdcdgbaseobjectentry; //type: CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry
-
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry> > cdcdgbaseobjectentry;
-        
-}; // CiscoDataCollectionMib::Cdcdgbaseobjecttable
-
-
-class CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry : public ydk::Entity
-{
-    public:
-        Cdcdgbaseobjectentry();
-        ~Cdcdgbaseobjectentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cdcdgbaseobjectgrpindex; //type: uint32
-        ydk::YLeaf cdcdgbaseobjectindex; //type: uint32
-        ydk::YLeaf cdcdgbaseobjectsubtree; //type: string
-        ydk::YLeaf cdcdgbaseobjectlist; //type: binary
-        ydk::YLeaf cdcdgbaseobjectrowstatus; //type: Rowstatus
-
-}; // CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry
-
-
-class CiscoDataCollectionMib::Cdcdginstancetable : public ydk::Entity
-{
-    public:
-        Cdcdginstancetable();
-        ~Cdcdginstancetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cdcdginstanceentry; //type: CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry
-
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry> > cdcdginstanceentry;
-        
-}; // CiscoDataCollectionMib::Cdcdginstancetable
-
-
-class CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry : public ydk::Entity
-{
-    public:
-        Cdcdginstanceentry();
-        ~Cdcdginstanceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cdcdginstancegrpindex; //type: uint32
-        ydk::YLeaf cdcdginstanceindex; //type: uint32
-        ydk::YLeaf cdcdginstancetype; //type: Cdcdginstancetype
-        ydk::YLeaf cdcdginstanceoid; //type: string
-        ydk::YLeaf cdcdginstanceoidend; //type: string
-        ydk::YLeaf cdcdginstancenumrepititions; //type: uint32
-        ydk::YLeaf cdcdginstanceotherptr; //type: string
-        ydk::YLeaf cdcdginstancerowstatus; //type: Rowstatus
-        class Cdcdginstancetype;
-
-}; // CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry
-
-
-class CiscoDataCollectionMib::Cdcfilexferconftable : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcfilexferconftable : public ydk::Entity
 {
     public:
         Cdcfilexferconftable();
@@ -353,22 +220,23 @@ class CiscoDataCollectionMib::Cdcfilexferconftable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cdcfilexferconfentry; //type: CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry
+        class Cdcfilexferconfentry; //type: CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry> > cdcfilexferconfentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry> > cdcfilexferconfentry;
         
-}; // CiscoDataCollectionMib::Cdcfilexferconftable
+}; // CISCODATACOLLECTIONMIB::Cdcfilexferconftable
 
 
-class CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry : public ydk::Entity
+class CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry : public ydk::Entity
 {
     public:
         Cdcfilexferconfentry();
@@ -376,15 +244,16 @@ class CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::cdcvfileindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::cdcvfileindex)
         ydk::YLeaf cdcvfileindex;
         ydk::YLeaf cdcfilexferconfpriurl; //type: binary
         ydk::YLeaf cdcfilexferconfsecurl; //type: binary
@@ -393,18 +262,153 @@ class CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry : publi
         ydk::YLeaf cdcfilexferconfsuccessenable; //type: boolean
         ydk::YLeaf cdcfilexferconffailureenable; //type: boolean
 
-}; // CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry
+}; // CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry
 
-class Cdcfileformat : public ydk::Enum
+
+class CISCODATACOLLECTIONMIB::Cdcvfile : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf cdcBulkASCII;
-        static const ydk::Enum::YLeaf cdcBulkBinary;
-        static const ydk::Enum::YLeaf cdcSchemaASCII;
+        Cdcvfile();
+        ~Cdcvfile();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class Cdcfilexferstatus : public ydk::Enum
+        ydk::YLeaf cdcvfilepersistentstorage; //type: boolean
+        ydk::YLeaf cdcvfilemaxsizehitslimit; //type: uint32
+
+}; // CISCODATACOLLECTIONMIB::Cdcvfile
+
+
+class CISCODATACOLLECTIONMIB::Cdcvfilemgmttable : public ydk::Entity
+{
+    public:
+        Cdcvfilemgmttable();
+        ~Cdcvfilemgmttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cdcvfilemgmtentry; //type: CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry> > cdcvfilemgmtentry;
+        
+}; // CISCODATACOLLECTIONMIB::Cdcvfilemgmttable
+
+
+class CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry : public ydk::Entity
+{
+    public:
+        Cdcvfilemgmtentry();
+        ~Cdcvfilemgmtentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::cdcvfileindex)
+        ydk::YLeaf cdcvfileindex;
+        ydk::YLeaf cdcvfilemgmtindex; //type: uint32
+        ydk::YLeaf cdcvfilemgmtname; //type: string
+        ydk::YLeaf cdcvfilemgmttimestamp; //type: string
+        ydk::YLeaf cdcvfilemgmttimetolive; //type: uint32
+        ydk::YLeaf cdcvfilemgmtcommand; //type: Cdcvfilemgmtcommand
+        ydk::YLeaf cdcvfilemgmtxferurl; //type: binary
+        ydk::YLeaf cdcvfilemgmtlastxferstatus; //type: CdcFileXferStatus
+        ydk::YLeaf cdcvfilemgmtlastxferurl; //type: binary
+        class Cdcvfilemgmtcommand;
+
+}; // CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry
+
+
+class CISCODATACOLLECTIONMIB::Cdcvfiletable : public ydk::Entity
+{
+    public:
+        Cdcvfiletable();
+        ~Cdcvfiletable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cdcvfileentry; //type: CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DATA_COLLECTION_MIB::CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry> > cdcvfileentry;
+        
+}; // CISCODATACOLLECTIONMIB::Cdcvfiletable
+
+
+class CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry : public ydk::Entity
+{
+    public:
+        Cdcvfileentry();
+        ~Cdcvfileentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cdcvfileindex; //type: uint32
+        ydk::YLeaf cdcvfilename; //type: string
+        ydk::YLeaf cdcvfiledescription; //type: string
+        ydk::YLeaf cdcvfilecommand; //type: Cdcvfilecommand
+        ydk::YLeaf cdcvfilemaxsize; //type: uint32
+        ydk::YLeaf cdcvfilecurrentsize; //type: uint32
+        ydk::YLeaf cdcvfileformat; //type: CdcFileFormat
+        ydk::YLeaf cdcvfilecollectmode; //type: Cdcvfilecollectmode
+        ydk::YLeaf cdcvfilecollectionperiod; //type: uint32
+        ydk::YLeaf cdcvfileretentionperiod; //type: uint32
+        ydk::YLeaf cdcvfileadminstatus; //type: Cdcvfileadminstatus
+        ydk::YLeaf cdcvfileoperstatus; //type: Cdcvfileoperstatus
+        ydk::YLeaf cdcvfileerrorcode; //type: Cdcvfileerrorcode
+        ydk::YLeaf cdcvfilecollectionerrorenable; //type: boolean
+        ydk::YLeaf cdcvfilerowstatus; //type: RowStatus
+        class Cdcvfilecommand;
+        class Cdcvfilecollectmode;
+        class Cdcvfileadminstatus;
+        class Cdcvfileoperstatus;
+        class Cdcvfileerrorcode;
+
+}; // CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry
+
+class CdcFileXferStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notStarted;
@@ -419,54 +423,35 @@ class Cdcfilexferstatus : public ydk::Enum
 
 };
 
-class CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand : public ydk::Enum
+class CdcFileFormat : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf swapToNewFile;
-        static const ydk::Enum::YLeaf collectNow;
+        static const ydk::Enum::YLeaf cdcBulkASCII;
+        static const ydk::Enum::YLeaf cdcBulkBinary;
+        static const ydk::Enum::YLeaf cdcSchemaASCII;
 
 };
 
-class CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecollectmode : public ydk::Enum
+class CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf auto_;
-        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf individual;
+        static const ydk::Enum::YLeaf range;
+        static const ydk::Enum::YLeaf repititions;
+        static const ydk::Enum::YLeaf subTree;
+        static const ydk::Enum::YLeaf other;
 
 };
 
-class CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileadminstatus : public ydk::Enum
+class CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::Cdcdgtype : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf object;
+        static const ydk::Enum::YLeaf table;
 
 };
 
-class CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf error;
-
-};
-
-class CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf noError;
-        static const ydk::Enum::YLeaf otherError;
-        static const ydk::Enum::YLeaf noSpace;
-        static const ydk::Enum::YLeaf openError;
-        static const ydk::Enum::YLeaf tooSmallMaxSize;
-        static const ydk::Enum::YLeaf tooManyMaxSizeHits;
-        static const ydk::Enum::YLeaf noResource;
-
-};
-
-class CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand : public ydk::Enum
+class CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf idle;
@@ -476,22 +461,50 @@ class CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmt
 
 };
 
-class CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::Cdcdgtype : public ydk::Enum
+class CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf object;
-        static const ydk::Enum::YLeaf table;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf swapToNewFile;
+        static const ydk::Enum::YLeaf collectNow;
 
 };
 
-class CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype : public ydk::Enum
+class CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecollectmode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf individual;
-        static const ydk::Enum::YLeaf range;
-        static const ydk::Enum::YLeaf repititions;
-        static const ydk::Enum::YLeaf subTree;
-        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf manual;
+
+};
+
+class CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileadminstatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
+class CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf error;
+
+};
+
+class CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf noError;
+        static const ydk::Enum::YLeaf otherError;
+        static const ydk::Enum::YLeaf noSpace;
+        static const ydk::Enum::YLeaf openError;
+        static const ydk::Enum::YLeaf tooSmallMaxSize;
+        static const ydk::Enum::YLeaf tooManyMaxSizeHits;
+        static const ydk::Enum::YLeaf noResource;
 
 };
 

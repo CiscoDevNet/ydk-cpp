@@ -17,7 +17,7 @@ Pbr::Pbr()
 {
     nodes->parent = this;
 
-    yang_name = "pbr"; yang_parent_name = "Cisco-IOS-XR-pbr-oper";
+    yang_name = "pbr"; yang_parent_name = "Cisco-IOS-XR-pbr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Pbr::~Pbr()
@@ -39,26 +39,15 @@ std::string Pbr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-pbr-oper:pbr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Pbr::has_leaf_or_child_of_name(const std::string & name) const
 
 Pbr::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "pbr";
+
+    yang_name = "nodes"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Pbr::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Pbr::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Pbr::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pbr-oper:pbr/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Pbr::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pbr-oper:pbr/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ Pbr::Nodes::Node::Node()
 {
     policy_map->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Pbr::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool Pbr::Nodes::Node::has_operation() const
 	|| (policy_map !=  nullptr && policy_map->has_operation());
 }
 
+std::string Pbr::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pbr-oper:pbr/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Pbr::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pbr-oper:pbr/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -348,7 +324,7 @@ Pbr::Nodes::Node::PolicyMap::PolicyMap()
 {
     interfaces->parent = this;
 
-    yang_name = "policy-map"; yang_parent_name = "node";
+    yang_name = "policy-map"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::~PolicyMap()
@@ -370,29 +346,15 @@ std::string Pbr::Nodes::Node::PolicyMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-map";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PolicyMap' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -438,7 +400,8 @@ bool Pbr::Nodes::Node::PolicyMap::has_leaf_or_child_of_name(const std::string & 
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "policy-map";
+
+    yang_name = "interfaces"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::~Interfaces()
@@ -469,29 +432,15 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -550,7 +499,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Interface()
 {
     direction->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::~Interface()
@@ -574,30 +523,16 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -657,7 +592,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Direction()
 {
     input->parent = this;
 
-    yang_name = "direction"; yang_parent_name = "interface";
+    yang_name = "direction"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::~Direction()
@@ -679,29 +614,15 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "direction";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Direction' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -752,7 +673,8 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Input()
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"}
 {
-    yang_name = "input"; yang_parent_name = "direction";
+
+    yang_name = "input"; yang_parent_name = "direction"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::~Input()
@@ -790,23 +712,11 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Input' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
@@ -814,9 +724,7 @@ const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (state_description.is_set || is_set(state_description.yfilter)) leaf_name_data.push_back(state_description.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -917,10 +825,9 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 	,httpr_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>())
 {
     general_stats->parent = this;
-
     httpr_stats->parent = this;
 
-    yang_name = "class-stat"; yang_parent_name = "input";
+    yang_name = "class-stat"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::~ClassStat()
@@ -950,32 +857,18 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stat";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClassStat' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_id.is_set || is_set(class_id.yfilter)) leaf_name_data.push_back(class_id.get_name_leafdata());
     if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
     if (counter_validity_bitmask.is_set || is_set(counter_validity_bitmask.yfilter)) leaf_name_data.push_back(counter_validity_bitmask.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1075,7 +968,8 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
     transmit_bytes{YType::uint64, "transmit-bytes"},
     transmit_packets{YType::uint64, "transmit-packets"}
 {
-    yang_name = "general-stats"; yang_parent_name = "class-stat";
+
+    yang_name = "general-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::~GeneralStats()
@@ -1113,23 +1007,11 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 {
     std::ostringstream path_buffer;
     path_buffer << "general-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GeneralStats' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (match_data_rate.is_set || is_set(match_data_rate.yfilter)) leaf_name_data.push_back(match_data_rate.get_name_leafdata());
@@ -1142,9 +1024,7 @@ const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::
     if (transmit_bytes.is_set || is_set(transmit_bytes.yfilter)) leaf_name_data.push_back(transmit_bytes.get_name_leafdata());
     if (transmit_packets.is_set || is_set(transmit_packets.yfilter)) leaf_name_data.push_back(transmit_packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1273,7 +1153,8 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
     rqst_rcvd_bytes{YType::uint64, "rqst-rcvd-bytes"},
     rqst_rcvd_packets{YType::uint64, "rqst-rcvd-packets"}
 {
-    yang_name = "httpr-stats"; yang_parent_name = "class-stat";
+
+    yang_name = "httpr-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::~HttprStats()
@@ -1305,23 +1186,11 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 {
     std::ostringstream path_buffer;
     path_buffer << "httpr-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HttprStats' in Cisco_IOS_XR_pbr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
@@ -1331,9 +1200,7 @@ const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::
     if (rqst_rcvd_bytes.is_set || is_set(rqst_rcvd_bytes.yfilter)) leaf_name_data.push_back(rqst_rcvd_bytes.get_name_leafdata());
     if (rqst_rcvd_packets.is_set || is_set(rqst_rcvd_packets.yfilter)) leaf_name_data.push_back(rqst_rcvd_packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

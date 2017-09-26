@@ -18,12 +18,10 @@ BridgeDomainConfig::BridgeDomainConfig()
 	,global(std::make_shared<BridgeDomainConfig::Global>())
 {
     bridge_domains->parent = this;
-
     bridge_groups->parent = this;
-
     global->parent = this;
 
-    yang_name = "bridge-domain-config"; yang_parent_name = "cisco-bridge-domain";
+    yang_name = "bridge-domain-config"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 BridgeDomainConfig::~BridgeDomainConfig()
@@ -49,26 +47,15 @@ std::string BridgeDomainConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-bridge-domain:bridge-domain-config";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -165,416 +152,10 @@ bool BridgeDomainConfig::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-BridgeDomainConfig::Global::Global()
-    :
-    bd_state_notification_enabled{YType::boolean, "bd-state-notification-enabled"},
-    bd_state_notification_rate{YType::uint32, "bd-state-notification-rate"}
-    	,
-    pbb(std::make_shared<BridgeDomainConfig::Global::Pbb>())
-{
-    pbb->parent = this;
-
-    yang_name = "global"; yang_parent_name = "bridge-domain-config";
-}
-
-BridgeDomainConfig::Global::~Global()
-{
-}
-
-bool BridgeDomainConfig::Global::has_data() const
-{
-    return bd_state_notification_enabled.is_set
-	|| bd_state_notification_rate.is_set
-	|| (pbb !=  nullptr && pbb->has_data());
-}
-
-bool BridgeDomainConfig::Global::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bd_state_notification_enabled.yfilter)
-	|| ydk::is_set(bd_state_notification_rate.yfilter)
-	|| (pbb !=  nullptr && pbb->has_operation());
-}
-
-std::string BridgeDomainConfig::Global::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::Global::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-config/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bd_state_notification_enabled.is_set || is_set(bd_state_notification_enabled.yfilter)) leaf_name_data.push_back(bd_state_notification_enabled.get_name_leafdata());
-    if (bd_state_notification_rate.is_set || is_set(bd_state_notification_rate.yfilter)) leaf_name_data.push_back(bd_state_notification_rate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pbb")
-    {
-        if(pbb == nullptr)
-        {
-            pbb = std::make_shared<BridgeDomainConfig::Global::Pbb>();
-        }
-        return pbb;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::Global::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbb != nullptr)
-    {
-        children["pbb"] = pbb;
-    }
-
-    return children;
-}
-
-void BridgeDomainConfig::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bd-state-notification-enabled")
-    {
-        bd_state_notification_enabled = value;
-        bd_state_notification_enabled.value_namespace = name_space;
-        bd_state_notification_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bd-state-notification-rate")
-    {
-        bd_state_notification_rate = value;
-        bd_state_notification_rate.value_namespace = name_space;
-        bd_state_notification_rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::Global::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bd-state-notification-enabled")
-    {
-        bd_state_notification_enabled.yfilter = yfilter;
-    }
-    if(value_path == "bd-state-notification-rate")
-    {
-        bd_state_notification_rate.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::Global::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbb" || name == "bd-state-notification-enabled" || name == "bd-state-notification-rate")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::Global::Pbb::Pbb()
-    :
-    backbone_src_mac{YType::str, "backbone-src-mac"}
-{
-    yang_name = "pbb"; yang_parent_name = "global";
-}
-
-BridgeDomainConfig::Global::Pbb::~Pbb()
-{
-}
-
-bool BridgeDomainConfig::Global::Pbb::has_data() const
-{
-    return backbone_src_mac.is_set;
-}
-
-bool BridgeDomainConfig::Global::Pbb::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(backbone_src_mac.yfilter);
-}
-
-std::string BridgeDomainConfig::Global::Pbb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbb";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::Global::Pbb::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-config/global/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backbone_src_mac.is_set || is_set(backbone_src_mac.yfilter)) leaf_name_data.push_back(backbone_src_mac.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::Global::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::Global::Pbb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::Global::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backbone-src-mac")
-    {
-        backbone_src_mac = value;
-        backbone_src_mac.value_namespace = name_space;
-        backbone_src_mac.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::Global::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backbone-src-mac")
-    {
-        backbone_src_mac.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::Global::Pbb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backbone-src-mac")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeGroups::BridgeGroups()
-{
-    yang_name = "bridge-groups"; yang_parent_name = "bridge-domain-config";
-}
-
-BridgeDomainConfig::BridgeGroups::~BridgeGroups()
-{
-}
-
-bool BridgeDomainConfig::BridgeGroups::has_data() const
-{
-    for (std::size_t index=0; index<bridge_group.size(); index++)
-    {
-        if(bridge_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool BridgeDomainConfig::BridgeGroups::has_operation() const
-{
-    for (std::size_t index=0; index<bridge_group.size(); index++)
-    {
-        if(bridge_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bridge-groups";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeGroups::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-config/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bridge-group")
-    {
-        for(auto const & c : bridge_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BridgeDomainConfig::BridgeGroups::BridgeGroup>();
-        c->parent = this;
-        bridge_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bridge_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void BridgeDomainConfig::BridgeGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void BridgeDomainConfig::BridgeGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool BridgeDomainConfig::BridgeGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bridge-group")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeGroups::BridgeGroup::BridgeGroup()
-    :
-    name{YType::str, "name"}
-{
-    yang_name = "bridge-group"; yang_parent_name = "bridge-groups";
-}
-
-BridgeDomainConfig::BridgeGroups::BridgeGroup::~BridgeGroup()
-{
-}
-
-bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_data() const
-{
-    return name.is_set;
-}
-
-bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeGroups::BridgeGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bridge-group" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeGroups::BridgeGroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-config/bridge-groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::BridgeGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups::BridgeGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeGroups::BridgeGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeGroups::BridgeGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
 BridgeDomainConfig::BridgeDomains::BridgeDomains()
 {
-    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-config";
+
+    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BridgeDomainConfig::BridgeDomains::~BridgeDomains()
@@ -601,33 +182,26 @@ bool BridgeDomainConfig::BridgeDomains::has_operation() const
     return is_set(yfilter);
 }
 
+std::string BridgeDomainConfig::BridgeDomains::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-config/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BridgeDomainConfig::BridgeDomains::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-domains";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-config/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -697,18 +271,13 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::BridgeDomain()
 	,storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl>())
 {
     dhcp_ipv4_snooping->parent = this;
-
     igmp_snooping->parent = this;
-
     mac->parent = this;
-
     members->parent = this;
-
     mld_snooping->parent = this;
-
     storm_control->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains";
+    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::~BridgeDomain()
@@ -752,27 +321,22 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::has_operation() const
 	|| (storm_control !=  nullptr && storm_control->has_operation());
 }
 
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-config/bridge-domains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-domain" <<"[id='" <<id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-config/bridge-domains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
@@ -782,9 +346,7 @@ const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::get_entity_pat
     if (flooding_mode.is_set || is_set(flooding_mode.yfilter)) leaf_name_data.push_back(flooding_mode.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -986,13 +548,1270 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(
     return false;
 }
 
+BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::DhcpIpv4Snooping()
+    :
+    profile_name{YType::str, "profile-name"}
+{
+
+    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::~DhcpIpv4Snooping()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_data() const
+{
+    return profile_name.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp-ipv4-snooping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::DynamicArpInspection()
+    :
+    logging{YType::boolean, "logging"}
+    	,
+    address_validation(nullptr) // presence node
+{
+
+    yang_name = "dynamic-arp-inspection"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::~DynamicArpInspection()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_data() const
+{
+    return logging.is_set
+	|| (address_validation !=  nullptr && address_validation->has_data());
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(logging.yfilter)
+	|| (address_validation !=  nullptr && address_validation->has_operation());
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic-arp-inspection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-validation")
+    {
+        if(address_validation == nullptr)
+        {
+            address_validation = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation>();
+        }
+        return address_validation;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_validation != nullptr)
+    {
+        children["address-validation"] = address_validation;
+    }
+
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "logging")
+    {
+        logging = value;
+        logging.value_namespace = name_space;
+        logging.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "logging")
+    {
+        logging.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-validation" || name == "logging")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::AddressValidation()
+    :
+    dst_mac{YType::empty, "dst-mac"},
+    ipv4{YType::empty, "ipv4"},
+    src_mac{YType::empty, "src-mac"}
+{
+
+    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::~AddressValidation()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_data() const
+{
+    return dst_mac.is_set
+	|| ipv4.is_set
+	|| src_mac.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dst_mac.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(src_mac.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-validation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dst_mac.is_set || is_set(dst_mac.yfilter)) leaf_name_data.push_back(dst_mac.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (src_mac.is_set || is_set(src_mac.yfilter)) leaf_name_data.push_back(src_mac.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dst-mac")
+    {
+        dst_mac = value;
+        dst_mac.value_namespace = name_space;
+        dst_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src-mac")
+    {
+        src_mac = value;
+        src_mac.value_namespace = name_space;
+        src_mac.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dst-mac")
+    {
+        dst_mac.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "src-mac")
+    {
+        src_mac.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dst-mac" || name == "ipv4" || name == "src-mac")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::IgmpSnooping()
+    :
+    disabled{YType::empty, "disabled"},
+    profile_name{YType::str, "profile-name"}
+{
+
+    yang_name = "igmp-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::~IgmpSnooping()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_data() const
+{
+    return disabled.is_set
+	|| profile_name.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disabled.yfilter)
+	|| ydk::is_set(profile_name.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmp-snooping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disabled")
+    {
+        disabled = value;
+        disabled.value_namespace = name_space;
+        disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profile-name")
+    {
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disabled")
+    {
+        disabled.yfilter = yfilter;
+    }
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disabled" || name == "profile-name")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::IpSourceGuard()
+    :
+    logging{YType::boolean, "logging"}
+{
+
+    yang_name = "ip-source-guard"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::~IpSourceGuard()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_data() const
+{
+    return logging.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(logging.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-source-guard";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "logging")
+    {
+        logging = value;
+        logging.value_namespace = name_space;
+        logging.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "logging")
+    {
+        logging.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "logging")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Mac()
+    :
+    learning_enabled{YType::boolean, "learning-enabled"}
+    	,
+    aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging>())
+	,flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>())
+	,limit(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit>())
+	,port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>())
+	,secure(nullptr) // presence node
+	,static_(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_>())
+{
+    aging->parent = this;
+    flooding->parent = this;
+    limit->parent = this;
+    port_down->parent = this;
+    static_->parent = this;
+
+    yang_name = "mac"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::~Mac()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_data() const
+{
+    return learning_enabled.is_set
+	|| (aging !=  nullptr && aging->has_data())
+	|| (flooding !=  nullptr && flooding->has_data())
+	|| (limit !=  nullptr && limit->has_data())
+	|| (port_down !=  nullptr && port_down->has_data())
+	|| (secure !=  nullptr && secure->has_data())
+	|| (static_ !=  nullptr && static_->has_data());
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(learning_enabled.yfilter)
+	|| (aging !=  nullptr && aging->has_operation())
+	|| (flooding !=  nullptr && flooding->has_operation())
+	|| (limit !=  nullptr && limit->has_operation())
+	|| (port_down !=  nullptr && port_down->has_operation())
+	|| (secure !=  nullptr && secure->has_operation())
+	|| (static_ !=  nullptr && static_->has_operation());
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (learning_enabled.is_set || is_set(learning_enabled.yfilter)) leaf_name_data.push_back(learning_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "aging")
+    {
+        if(aging == nullptr)
+        {
+            aging = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging>();
+        }
+        return aging;
+    }
+
+    if(child_yang_name == "flooding")
+    {
+        if(flooding == nullptr)
+        {
+            flooding = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>();
+        }
+        return flooding;
+    }
+
+    if(child_yang_name == "limit")
+    {
+        if(limit == nullptr)
+        {
+            limit = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit>();
+        }
+        return limit;
+    }
+
+    if(child_yang_name == "port-down")
+    {
+        if(port_down == nullptr)
+        {
+            port_down = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>();
+        }
+        return port_down;
+    }
+
+    if(child_yang_name == "secure")
+    {
+        if(secure == nullptr)
+        {
+            secure = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure>();
+        }
+        return secure;
+    }
+
+    if(child_yang_name == "static")
+    {
+        if(static_ == nullptr)
+        {
+            static_ = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_>();
+        }
+        return static_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aging != nullptr)
+    {
+        children["aging"] = aging;
+    }
+
+    if(flooding != nullptr)
+    {
+        children["flooding"] = flooding;
+    }
+
+    if(limit != nullptr)
+    {
+        children["limit"] = limit;
+    }
+
+    if(port_down != nullptr)
+    {
+        children["port-down"] = port_down;
+    }
+
+    if(secure != nullptr)
+    {
+        children["secure"] = secure;
+    }
+
+    if(static_ != nullptr)
+    {
+        children["static"] = static_;
+    }
+
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "learning-enabled")
+    {
+        learning_enabled = value;
+        learning_enabled.value_namespace = name_space;
+        learning_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "learning-enabled")
+    {
+        learning_enabled.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aging" || name == "flooding" || name == "limit" || name == "port-down" || name == "secure" || name == "static" || name == "learning-enabled")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::Aging()
+    :
+    time{YType::uint32, "time"},
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::~Aging()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_data() const
+{
+    return time.is_set
+	|| type.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aging";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time")
+    {
+        time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "type")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::Flooding()
+    :
+    disabled{YType::empty, "disabled"},
+    disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
+{
+
+    yang_name = "flooding"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::~Flooding()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_data() const
+{
+    return disabled.is_set
+	|| disabled_unknown_unicast.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disabled.yfilter)
+	|| ydk::is_set(disabled_unknown_unicast.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flooding";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
+    if (disabled_unknown_unicast.is_set || is_set(disabled_unknown_unicast.yfilter)) leaf_name_data.push_back(disabled_unknown_unicast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disabled")
+    {
+        disabled = value;
+        disabled.value_namespace = name_space;
+        disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disabled-unknown-unicast")
+    {
+        disabled_unknown_unicast = value;
+        disabled_unknown_unicast.value_namespace = name_space;
+        disabled_unknown_unicast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disabled")
+    {
+        disabled.yfilter = yfilter;
+    }
+    if(value_path == "disabled-unknown-unicast")
+    {
+        disabled_unknown_unicast.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disabled" || name == "disabled-unknown-unicast")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::Limit()
+    :
+    action{YType::enumeration, "action"},
+    maximum{YType::uint32, "maximum"},
+    notification{YType::identityref, "notification"}
+{
+
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::~Limit()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_data() const
+{
+    return action.is_set
+	|| maximum.is_set
+	|| notification.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(action.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(notification.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "limit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (notification.is_set || is_set(notification.yfilter)) leaf_name_data.push_back(notification.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action")
+    {
+        action = value;
+        action.value_namespace = name_space;
+        action.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "notification")
+    {
+        notification = value;
+        notification.value_namespace = name_space;
+        notification.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action")
+    {
+        action.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "notification")
+    {
+        notification.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action" || name == "maximum" || name == "notification")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::PortDown()
+    :
+    flush{YType::boolean, "flush"}
+{
+
+    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::~PortDown()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_data() const
+{
+    return flush.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flush.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-down";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flush.is_set || is_set(flush.yfilter)) leaf_name_data.push_back(flush.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flush")
+    {
+        flush = value;
+        flush.value_namespace = name_space;
+        flush.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flush")
+    {
+        flush.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flush")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::Secure()
+    :
+    action{YType::enumeration, "action"},
+    logging{YType::boolean, "logging"}
+{
+
+    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::~Secure()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_data() const
+{
+    return action.is_set
+	|| logging.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(action.yfilter)
+	|| ydk::is_set(logging.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "secure";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
+    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action")
+    {
+        action = value;
+        action.value_namespace = name_space;
+        action.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "logging")
+    {
+        logging = value;
+        logging.value_namespace = name_space;
+        logging.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action")
+    {
+        action.yfilter = yfilter;
+    }
+    if(value_path == "logging")
+    {
+        logging.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action" || name == "logging")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::Static_()
+{
+
+    yang_name = "static"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::~Static_()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_data() const
+{
+    for (std::size_t index=0; index<mac_addresses.size(); index++)
+    {
+        if(mac_addresses[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_operation() const
+{
+    for (std::size_t index=0; index<mac_addresses.size(); index++)
+    {
+        if(mac_addresses[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-addresses")
+    {
+        for(auto const & c : mac_addresses)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses>();
+        c->parent = this;
+        mac_addresses.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mac_addresses)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-addresses")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::MacAddresses()
+    :
+    mac_addr{YType::str, "mac-addr"},
+    drop{YType::boolean, "drop"}
+{
+
+    yang_name = "mac-addresses"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::~MacAddresses()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_data() const
+{
+    return mac_addr.is_set
+	|| drop.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mac_addr.yfilter)
+	|| ydk::is_set(drop.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-addresses" <<"[mac-addr='" <<mac_addr <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mac_addr.is_set || is_set(mac_addr.yfilter)) leaf_name_data.push_back(mac_addr.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mac-addr")
+    {
+        mac_addr = value;
+        mac_addr.value_namespace = name_space;
+        mac_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop")
+    {
+        drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac-addr")
+    {
+        mac_addr.yfilter = yfilter;
+    }
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-addr" || name == "drop")
+        return true;
+    return false;
+}
+
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::Members()
     :
     access_pw_member(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember>())
 {
     access_pw_member->parent = this;
 
-    yang_name = "members"; yang_parent_name = "bridge-domain";
+    yang_name = "members"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::~Members()
@@ -1034,29 +1853,15 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "members";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Members' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1157,22 +1962,15 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::AcMember()
 	,storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl>())
 {
     dhcp_ipv4_snooping->parent = this;
-
     dynamic_arp_inspection->parent = this;
-
     flooding->parent = this;
-
     igmp_snooping->parent = this;
-
     ip_source_guard->parent = this;
-
     mac->parent = this;
-
     mld_snooping->parent = this;
-
     storm_control->parent = this;
 
-    yang_name = "ac-member"; yang_parent_name = "members";
+    yang_name = "ac-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::~AcMember()
@@ -1212,30 +2010,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "ac-member" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AcMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1401,91 +2185,546 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::has_lea
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::SplitHorizonGroup()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::DhcpIpv4Snooping()
     :
-    id{YType::uint16, "id"}
+    profile_name{YType::str, "profile-name"}
 {
-    yang_name = "split-horizon-group"; yang_parent_name = "ac-member";
+
+    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::~SplitHorizonGroup()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::~DhcpIpv4Snooping()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_data() const
 {
-    return id.is_set;
+    return profile_name.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(id.yfilter);
+	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "split-horizon-group";
-
+    path_buffer << "dhcp-ipv4-snooping";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SplitHorizonGroup' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "id")
+    if(value_path == "profile-name")
     {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "id")
+    if(value_path == "profile-name")
     {
-        id.yfilter = yfilter;
+        profile_name.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id")
+    if(name == "profile-name")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::DynamicArpInspection()
+    :
+    enable{YType::boolean, "enable"},
+    logging{YType::boolean, "logging"}
+    	,
+    address_validation(nullptr) // presence node
+{
+
+    yang_name = "dynamic-arp-inspection"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::~DynamicArpInspection()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_data() const
+{
+    return enable.is_set
+	|| logging.is_set
+	|| (address_validation !=  nullptr && address_validation->has_data());
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(logging.yfilter)
+	|| (address_validation !=  nullptr && address_validation->has_operation());
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic-arp-inspection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-validation")
+    {
+        if(address_validation == nullptr)
+        {
+            address_validation = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation>();
+        }
+        return address_validation;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_validation != nullptr)
+    {
+        children["address-validation"] = address_validation;
+    }
+
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "logging")
+    {
+        logging = value;
+        logging.value_namespace = name_space;
+        logging.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "logging")
+    {
+        logging.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-validation" || name == "enable" || name == "logging")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::AddressValidation()
+    :
+    dst_mac{YType::empty, "dst-mac"},
+    ipv4{YType::empty, "ipv4"},
+    src_mac{YType::empty, "src-mac"}
+{
+
+    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::~AddressValidation()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_data() const
+{
+    return dst_mac.is_set
+	|| ipv4.is_set
+	|| src_mac.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dst_mac.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(src_mac.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-validation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dst_mac.is_set || is_set(dst_mac.yfilter)) leaf_name_data.push_back(dst_mac.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (src_mac.is_set || is_set(src_mac.yfilter)) leaf_name_data.push_back(src_mac.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dst-mac")
+    {
+        dst_mac = value;
+        dst_mac.value_namespace = name_space;
+        dst_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src-mac")
+    {
+        src_mac = value;
+        src_mac.value_namespace = name_space;
+        src_mac.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dst-mac")
+    {
+        dst_mac.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "src-mac")
+    {
+        src_mac.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dst-mac" || name == "ipv4" || name == "src-mac")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::Flooding()
+    :
+    disabled{YType::empty, "disabled"},
+    disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
+{
+
+    yang_name = "flooding"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::~Flooding()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_data() const
+{
+    return disabled.is_set
+	|| disabled_unknown_unicast.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disabled.yfilter)
+	|| ydk::is_set(disabled_unknown_unicast.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flooding";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
+    if (disabled_unknown_unicast.is_set || is_set(disabled_unknown_unicast.yfilter)) leaf_name_data.push_back(disabled_unknown_unicast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disabled")
+    {
+        disabled = value;
+        disabled.value_namespace = name_space;
+        disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disabled-unknown-unicast")
+    {
+        disabled_unknown_unicast = value;
+        disabled_unknown_unicast.value_namespace = name_space;
+        disabled_unknown_unicast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disabled")
+    {
+        disabled.yfilter = yfilter;
+    }
+    if(value_path == "disabled-unknown-unicast")
+    {
+        disabled_unknown_unicast.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disabled" || name == "disabled-unknown-unicast")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::IgmpSnooping()
+    :
+    profile_name{YType::str, "profile-name"}
+{
+
+    yang_name = "igmp-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::~IgmpSnooping()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_data() const
+{
+    return profile_name.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmp-snooping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::IpSourceGuard()
+    :
+    enable{YType::boolean, "enable"},
+    logging{YType::boolean, "logging"}
+{
+
+    yang_name = "ip-source-guard"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::~IpSourceGuard()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_data() const
+{
+    return enable.is_set
+	|| logging.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(logging.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-source-guard";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "logging")
+    {
+        logging = value;
+        logging.value_namespace = name_space;
+        logging.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "logging")
+    {
+        logging.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "logging")
         return true;
     return false;
 }
@@ -1500,14 +2739,11 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Mac()
 	,secure(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure>())
 {
     aging->parent = this;
-
     limit->parent = this;
-
     port_down->parent = this;
-
     secure->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "ac-member";
+    yang_name = "mac"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::~Mac()
@@ -1537,30 +2773,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "mac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mac' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (learning_enabled.is_set || is_set(learning_enabled.yfilter)) leaf_name_data.push_back(learning_enabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1656,13 +2878,104 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::ha
     return false;
 }
 
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::Aging()
+    :
+    time{YType::uint32, "time"},
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::~Aging()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_data() const
+{
+    return time.is_set
+	|| type.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aging";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time")
+    {
+        time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "type")
+        return true;
+    return false;
+}
+
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::Limit()
     :
     action{YType::enumeration, "action"},
     maximum{YType::uint32, "maximum"},
     notification{YType::identityref, "notification"}
 {
-    yang_name = "limit"; yang_parent_name = "mac";
+
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::~Limit()
@@ -1688,32 +3001,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "limit";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Limit' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (notification.is_set || is_set(notification.yfilter)) leaf_name_data.push_back(notification.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1773,114 +3072,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Li
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::Aging()
-    :
-    time{YType::uint32, "time"},
-    type{YType::enumeration, "type"}
-{
-    yang_name = "aging"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::~Aging()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_data() const
-{
-    return time.is_set
-	|| type.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "aging";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Aging' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time")
-    {
-        time = value;
-        time.value_namespace = name_space;
-        time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time")
-    {
-        time.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time" || name == "type")
-        return true;
-    return false;
-}
-
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::PortDown()
     :
     flush{YType::boolean, "flush"}
 {
-    yang_name = "port-down"; yang_parent_name = "mac";
+
+    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::~PortDown()
@@ -1902,30 +3099,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "port-down";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortDown' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flush.is_set || is_set(flush.yfilter)) leaf_name_data.push_back(flush.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1971,7 +3154,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure:
     enabled{YType::boolean, "enabled"},
     logging{YType::boolean, "logging"}
 {
-    yang_name = "secure"; yang_parent_name = "mac";
+
+    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure::~Secure()
@@ -1997,32 +3181,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "secure";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Secure' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2082,100 +3252,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Se
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::IgmpSnooping()
-    :
-    profile_name{YType::str, "profile-name"}
-{
-    yang_name = "igmp-snooping"; yang_parent_name = "ac-member";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::~IgmpSnooping()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_data() const
-{
-    return profile_name.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igmp-snooping";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IgmpSnooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile-name")
-    {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile-name")
-    {
-        profile_name.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile-name")
-        return true;
-    return false;
-}
-
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::MldSnooping()
     :
     profile_name{YType::str, "profile-name"}
 {
-    yang_name = "mld-snooping"; yang_parent_name = "ac-member";
+
+    yang_name = "mld-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::~MldSnooping()
@@ -2197,30 +3279,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "mld-snooping";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MldSnooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2260,194 +3328,78 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnoo
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::DhcpIpv4Snooping()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::SplitHorizonGroup()
     :
-    profile_name{YType::str, "profile-name"}
+    id{YType::uint16, "id"}
 {
-    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "ac-member";
+
+    yang_name = "split-horizon-group"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::~DhcpIpv4Snooping()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::~SplitHorizonGroup()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_data() const
 {
-    return profile_name.is_set;
+    return id.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter);
+	|| ydk::is_set(id.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcp-ipv4-snooping";
-
+    path_buffer << "split-horizon-group";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DhcpIpv4Snooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "profile-name")
+    if(value_path == "id")
     {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "profile-name")
+    if(value_path == "id")
     {
-        profile_name.yfilter = yfilter;
+        id.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile-name")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::Flooding()
-    :
-    disabled{YType::empty, "disabled"},
-    disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
-{
-    yang_name = "flooding"; yang_parent_name = "ac-member";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::~Flooding()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_data() const
-{
-    return disabled.is_set
-	|| disabled_unknown_unicast.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disabled.yfilter)
-	|| ydk::is_set(disabled_unknown_unicast.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flooding";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flooding' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
-    if (disabled_unknown_unicast.is_set || is_set(disabled_unknown_unicast.yfilter)) leaf_name_data.push_back(disabled_unknown_unicast.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disabled")
-    {
-        disabled = value;
-        disabled.value_namespace = name_space;
-        disabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disabled-unknown-unicast")
-    {
-        disabled_unknown_unicast = value;
-        disabled_unknown_unicast.value_namespace = name_space;
-        disabled_unknown_unicast.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disabled")
-    {
-        disabled.yfilter = yfilter;
-    }
-    if(value_path == "disabled-unknown-unicast")
-    {
-        disabled_unknown_unicast.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disabled" || name == "disabled-unknown-unicast")
+    if(name == "id")
         return true;
     return false;
 }
@@ -2456,7 +3408,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
     :
     action{YType::identityref, "action"}
 {
-    yang_name = "storm-control"; yang_parent_name = "ac-member";
+
+    yang_name = "storm-control"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::~StormControl()
@@ -2488,30 +3441,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "storm-control";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StormControl' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2578,7 +3517,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "thresholds"; yang_parent_name = "storm-control";
+
+    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::~Thresholds()
@@ -2604,32 +3544,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::
 {
     std::ostringstream path_buffer;
     path_buffer << "thresholds" <<"[traffic-class='" <<traffic_class <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Thresholds' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2689,439 +3615,10 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::DynamicArpInspection()
-    :
-    enable{YType::boolean, "enable"},
-    logging{YType::boolean, "logging"}
-    	,
-    address_validation(nullptr) // presence node
-{
-    yang_name = "dynamic-arp-inspection"; yang_parent_name = "ac-member";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::~DynamicArpInspection()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_data() const
-{
-    return enable.is_set
-	|| logging.is_set
-	|| (address_validation !=  nullptr && address_validation->has_data());
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(logging.yfilter)
-	|| (address_validation !=  nullptr && address_validation->has_operation());
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dynamic-arp-inspection";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DynamicArpInspection' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-validation")
-    {
-        if(address_validation == nullptr)
-        {
-            address_validation = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation>();
-        }
-        return address_validation;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_validation != nullptr)
-    {
-        children["address-validation"] = address_validation;
-    }
-
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "logging")
-    {
-        logging = value;
-        logging.value_namespace = name_space;
-        logging.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "logging")
-    {
-        logging.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-validation" || name == "enable" || name == "logging")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::AddressValidation()
-    :
-    dst_mac{YType::empty, "dst-mac"},
-    ipv4{YType::empty, "ipv4"},
-    src_mac{YType::empty, "src-mac"}
-{
-    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::~AddressValidation()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_data() const
-{
-    return dst_mac.is_set
-	|| ipv4.is_set
-	|| src_mac.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dst_mac.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(src_mac.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-validation";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressValidation' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dst_mac.is_set || is_set(dst_mac.yfilter)) leaf_name_data.push_back(dst_mac.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (src_mac.is_set || is_set(src_mac.yfilter)) leaf_name_data.push_back(src_mac.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dst-mac")
-    {
-        dst_mac = value;
-        dst_mac.value_namespace = name_space;
-        dst_mac.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src-mac")
-    {
-        src_mac = value;
-        src_mac.value_namespace = name_space;
-        src_mac.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dst-mac")
-    {
-        dst_mac.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "src-mac")
-    {
-        src_mac.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dst-mac" || name == "ipv4" || name == "src-mac")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::IpSourceGuard()
-    :
-    enable{YType::boolean, "enable"},
-    logging{YType::boolean, "logging"}
-{
-    yang_name = "ip-source-guard"; yang_parent_name = "ac-member";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::~IpSourceGuard()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_data() const
-{
-    return enable.is_set
-	|| logging.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(logging.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-source-guard";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSourceGuard' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "logging")
-    {
-        logging = value;
-        logging.value_namespace = name_space;
-        logging.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "logging")
-    {
-        logging.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "logging")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::VfiMember()
-    :
-    interface{YType::str, "interface"}
-{
-    yang_name = "vfi-member"; yang_parent_name = "members";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_data() const
-{
-    return interface.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vfi-member" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VfiMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface")
-        return true;
-    return false;
-}
-
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwMember()
 {
-    yang_name = "access-pw-member"; yang_parent_name = "members";
+
+    yang_name = "access-pw-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::~AccessPwMember()
@@ -3162,29 +3659,15 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "access-pw-member";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessPwMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3260,7 +3743,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::Access
     :
     interface{YType::str, "interface"}
 {
-    yang_name = "access-pw-if-member"; yang_parent_name = "access-pw-member";
+
+    yang_name = "access-pw-if-member"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::~AccessPwIfMember()
@@ -3282,30 +3766,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "access-pw-if-member" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessPwIfMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3365,22 +3835,15 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 	,storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl>())
 {
     backup->parent = this;
-
     dhcp_ipv4_snooping->parent = this;
-
     flooding->parent = this;
-
     igmp_snooping->parent = this;
-
     mac->parent = this;
-
     mld_snooping->parent = this;
-
     static_label->parent = this;
-
     storm_control->parent = this;
 
-    yang_name = "pw-neighbor-spec"; yang_parent_name = "access-pw-member";
+    yang_name = "pw-neighbor-spec"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::~PwNeighborSpec()
@@ -3430,23 +3893,11 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "pw-neighbor-spec" <<"[neighbor-ip-address='" <<neighbor_ip_address <<"']" <<"[vc-id='" <<vc_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PwNeighborSpec' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_ip_address.is_set || is_set(neighbor_ip_address.yfilter)) leaf_name_data.push_back(neighbor_ip_address.get_name_leafdata());
@@ -3456,9 +3907,7 @@ const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::Acces
     if (source_ipv6.is_set || is_set(source_ipv6.yfilter)) leaf_name_data.push_back(source_ipv6.get_name_leafdata());
     if (tag_impose_vlan.is_set || is_set(tag_impose_vlan.yfilter)) leaf_name_data.push_back(tag_impose_vlan.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3674,194 +4123,348 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::StaticLabel()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::Backup()
     :
-    local_label{YType::uint32, "local-label"},
-    remote_label{YType::uint32, "remote-label"}
+    neighbor_ip_address{YType::str, "neighbor-ip-address"},
+    pw_class_template{YType::str, "pw-class-template"},
+    vc_id{YType::uint32, "vc-id"}
 {
-    yang_name = "static-label"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "backup"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::~StaticLabel()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::~Backup()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_data() const
 {
-    return local_label.is_set
-	|| remote_label.is_set;
+    return neighbor_ip_address.is_set
+	|| pw_class_template.is_set
+	|| vc_id.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(local_label.yfilter)
-	|| ydk::is_set(remote_label.yfilter);
+	|| ydk::is_set(neighbor_ip_address.yfilter)
+	|| ydk::is_set(pw_class_template.yfilter)
+	|| ydk::is_set(vc_id.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-label";
-
+    path_buffer << "backup";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StaticLabel' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
-    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
+    if (neighbor_ip_address.is_set || is_set(neighbor_ip_address.yfilter)) leaf_name_data.push_back(neighbor_ip_address.get_name_leafdata());
+    if (pw_class_template.is_set || is_set(pw_class_template.yfilter)) leaf_name_data.push_back(pw_class_template.get_name_leafdata());
+    if (vc_id.is_set || is_set(vc_id.yfilter)) leaf_name_data.push_back(vc_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "local-label")
+    if(value_path == "neighbor-ip-address")
     {
-        local_label = value;
-        local_label.value_namespace = name_space;
-        local_label.value_namespace_prefix = name_space_prefix;
+        neighbor_ip_address = value;
+        neighbor_ip_address.value_namespace = name_space;
+        neighbor_ip_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "remote-label")
+    if(value_path == "pw-class-template")
     {
-        remote_label = value;
-        remote_label.value_namespace = name_space;
-        remote_label.value_namespace_prefix = name_space_prefix;
+        pw_class_template = value;
+        pw_class_template.value_namespace = name_space;
+        pw_class_template.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vc-id")
+    {
+        vc_id = value;
+        vc_id.value_namespace = name_space;
+        vc_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "local-label")
+    if(value_path == "neighbor-ip-address")
     {
-        local_label.yfilter = yfilter;
+        neighbor_ip_address.yfilter = yfilter;
     }
-    if(value_path == "remote-label")
+    if(value_path == "pw-class-template")
     {
-        remote_label.yfilter = yfilter;
+        pw_class_template.yfilter = yfilter;
+    }
+    if(value_path == "vc-id")
+    {
+        vc_id.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-label" || name == "remote-label")
+    if(name == "neighbor-ip-address" || name == "pw-class-template" || name == "vc-id")
         return true;
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::SplitHorizonGroup()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::DhcpIpv4Snooping()
     :
-    id{YType::uint16, "id"}
+    profile_name{YType::str, "profile-name"}
 {
-    yang_name = "split-horizon-group"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::~SplitHorizonGroup()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::~DhcpIpv4Snooping()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_data() const
 {
-    return id.is_set;
+    return profile_name.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(id.yfilter);
+	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "split-horizon-group";
-
+    path_buffer << "dhcp-ipv4-snooping";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SplitHorizonGroup' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "id")
+    if(value_path == "profile-name")
     {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "id")
+    if(value_path == "profile-name")
     {
-        id.yfilter = yfilter;
+        profile_name.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id")
+    if(name == "profile-name")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::Flooding()
+    :
+    disabled{YType::empty, "disabled"},
+    disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
+{
+
+    yang_name = "flooding"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::~Flooding()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_data() const
+{
+    return disabled.is_set
+	|| disabled_unknown_unicast.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disabled.yfilter)
+	|| ydk::is_set(disabled_unknown_unicast.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flooding";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
+    if (disabled_unknown_unicast.is_set || is_set(disabled_unknown_unicast.yfilter)) leaf_name_data.push_back(disabled_unknown_unicast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disabled")
+    {
+        disabled = value;
+        disabled.value_namespace = name_space;
+        disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disabled-unknown-unicast")
+    {
+        disabled_unknown_unicast = value;
+        disabled_unknown_unicast.value_namespace = name_space;
+        disabled_unknown_unicast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disabled")
+    {
+        disabled.yfilter = yfilter;
+    }
+    if(value_path == "disabled-unknown-unicast")
+    {
+        disabled_unknown_unicast.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disabled" || name == "disabled-unknown-unicast")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::IgmpSnooping()
+    :
+    profile_name{YType::str, "profile-name"}
+{
+
+    yang_name = "igmp-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::~IgmpSnooping()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_data() const
+{
+    return profile_name.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmp-snooping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
         return true;
     return false;
 }
@@ -3876,14 +4479,11 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 	,secure(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure>())
 {
     aging->parent = this;
-
     limit->parent = this;
-
     port_down->parent = this;
-
     secure->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "pw-neighbor-spec";
+    yang_name = "mac"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::~Mac()
@@ -3913,30 +4513,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "mac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mac' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (learning_enabled.is_set || is_set(learning_enabled.yfilter)) leaf_name_data.push_back(learning_enabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4032,13 +4618,104 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
     return false;
 }
 
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::Aging()
+    :
+    time{YType::uint32, "time"},
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::~Aging()
+{
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_data() const
+{
+    return time.is_set
+	|| type.is_set;
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aging";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time")
+    {
+        time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "type")
+        return true;
+    return false;
+}
+
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::Limit()
     :
     action{YType::enumeration, "action"},
     maximum{YType::uint32, "maximum"},
     notification{YType::identityref, "notification"}
 {
-    yang_name = "limit"; yang_parent_name = "mac";
+
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::~Limit()
@@ -4064,32 +4741,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "limit";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Limit' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (notification.is_set || is_set(notification.yfilter)) leaf_name_data.push_back(notification.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4149,114 +4812,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::Aging()
-    :
-    time{YType::uint32, "time"},
-    type{YType::enumeration, "type"}
-{
-    yang_name = "aging"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::~Aging()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_data() const
-{
-    return time.is_set
-	|| type.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "aging";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Aging' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time")
-    {
-        time = value;
-        time.value_namespace = name_space;
-        time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time")
-    {
-        time.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time" || name == "type")
-        return true;
-    return false;
-}
-
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::PortDown()
     :
     flush{YType::boolean, "flush"}
 {
-    yang_name = "port-down"; yang_parent_name = "mac";
+
+    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::~PortDown()
@@ -4278,30 +4839,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "port-down";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortDown' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flush.is_set || is_set(flush.yfilter)) leaf_name_data.push_back(flush.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4347,7 +4894,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     enabled{YType::boolean, "enabled"},
     logging{YType::boolean, "logging"}
 {
-    yang_name = "secure"; yang_parent_name = "mac";
+
+    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure::~Secure()
@@ -4373,32 +4921,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "secure";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Secure' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4458,100 +4992,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::IgmpSnooping()
-    :
-    profile_name{YType::str, "profile-name"}
-{
-    yang_name = "igmp-snooping"; yang_parent_name = "pw-neighbor-spec";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::~IgmpSnooping()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_data() const
-{
-    return profile_name.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igmp-snooping";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IgmpSnooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile-name")
-    {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile-name")
-    {
-        profile_name.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile-name")
-        return true;
-    return false;
-}
-
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::MldSnooping()
     :
     profile_name{YType::str, "profile-name"}
 {
-    yang_name = "mld-snooping"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "mld-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::~MldSnooping()
@@ -4573,30 +5019,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "mld-snooping";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MldSnooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4636,194 +5068,168 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::DhcpIpv4Snooping()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::SplitHorizonGroup()
     :
-    profile_name{YType::str, "profile-name"}
+    id{YType::uint16, "id"}
 {
-    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "split-horizon-group"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::~DhcpIpv4Snooping()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::~SplitHorizonGroup()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_data() const
 {
-    return profile_name.is_set;
+    return id.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter);
+	|| ydk::is_set(id.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcp-ipv4-snooping";
-
+    path_buffer << "split-horizon-group";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DhcpIpv4Snooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "profile-name")
+    if(value_path == "id")
     {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "profile-name")
+    if(value_path == "id")
     {
-        profile_name.yfilter = yfilter;
+        id.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile-name")
+    if(name == "id")
         return true;
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::Flooding()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::StaticLabel()
     :
-    disabled{YType::empty, "disabled"},
-    disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
+    local_label{YType::uint32, "local-label"},
+    remote_label{YType::uint32, "remote-label"}
 {
-    yang_name = "flooding"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "static-label"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::~Flooding()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::~StaticLabel()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_data() const
 {
-    return disabled.is_set
-	|| disabled_unknown_unicast.is_set;
+    return local_label.is_set
+	|| remote_label.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(disabled.yfilter)
-	|| ydk::is_set(disabled_unknown_unicast.yfilter);
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(remote_label.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flooding";
-
+    path_buffer << "static-label";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flooding' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
-    if (disabled_unknown_unicast.is_set || is_set(disabled_unknown_unicast.yfilter)) leaf_name_data.push_back(disabled_unknown_unicast.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "disabled")
+    if(value_path == "local-label")
     {
-        disabled = value;
-        disabled.value_namespace = name_space;
-        disabled.value_namespace_prefix = name_space_prefix;
+        local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "disabled-unknown-unicast")
+    if(value_path == "remote-label")
     {
-        disabled_unknown_unicast = value;
-        disabled_unknown_unicast.value_namespace = name_space;
-        disabled_unknown_unicast.value_namespace_prefix = name_space_prefix;
+        remote_label = value;
+        remote_label.value_namespace = name_space;
+        remote_label.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "disabled")
+    if(value_path == "local-label")
     {
-        disabled.yfilter = yfilter;
+        local_label.yfilter = yfilter;
     }
-    if(value_path == "disabled-unknown-unicast")
+    if(value_path == "remote-label")
     {
-        disabled_unknown_unicast.yfilter = yfilter;
+        remote_label.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disabled" || name == "disabled-unknown-unicast")
+    if(name == "local-label" || name == "remote-label")
         return true;
     return false;
 }
@@ -4832,7 +5238,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     :
     action{YType::identityref, "action"}
 {
-    yang_name = "storm-control"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "storm-control"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::~StormControl()
@@ -4864,30 +5271,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "storm-control";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StormControl' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4954,7 +5347,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "thresholds"; yang_parent_name = "storm-control";
+
+    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::~Thresholds()
@@ -4980,32 +5374,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMe
 {
     std::ostringstream path_buffer;
     path_buffer << "thresholds" <<"[traffic-class='" <<traffic_class <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Thresholds' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5065,1358 +5445,154 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::Backup()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::VfiMember()
     :
-    neighbor_ip_address{YType::str, "neighbor-ip-address"},
-    pw_class_template{YType::str, "pw-class-template"},
-    vc_id{YType::uint32, "vc-id"}
+    interface{YType::str, "interface"}
 {
-    yang_name = "backup"; yang_parent_name = "pw-neighbor-spec";
+
+    yang_name = "vfi-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::~Backup()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_data() const
 {
-    return neighbor_ip_address.is_set
-	|| pw_class_template.is_set
-	|| vc_id.is_set;
+    return interface.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(neighbor_ip_address.yfilter)
-	|| ydk::is_set(pw_class_template.yfilter)
-	|| ydk::is_set(vc_id.yfilter);
+	|| ydk::is_set(interface.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "backup";
-
+    path_buffer << "vfi-member" <<"[interface='" <<interface <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Backup' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_ip_address.is_set || is_set(neighbor_ip_address.yfilter)) leaf_name_data.push_back(neighbor_ip_address.get_name_leafdata());
-    if (pw_class_template.is_set || is_set(pw_class_template.yfilter)) leaf_name_data.push_back(pw_class_template.get_name_leafdata());
-    if (vc_id.is_set || is_set(vc_id.yfilter)) leaf_name_data.push_back(vc_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "neighbor-ip-address")
+    if(value_path == "interface")
     {
-        neighbor_ip_address = value;
-        neighbor_ip_address.value_namespace = name_space;
-        neighbor_ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pw-class-template")
-    {
-        pw_class_template = value;
-        pw_class_template.value_namespace = name_space;
-        pw_class_template.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vc-id")
-    {
-        vc_id = value;
-        vc_id.value_namespace = name_space;
-        vc_id.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "neighbor-ip-address")
+    if(value_path == "interface")
     {
-        neighbor_ip_address.yfilter = yfilter;
-    }
-    if(value_path == "pw-class-template")
-    {
-        pw_class_template.yfilter = yfilter;
-    }
-    if(value_path == "vc-id")
-    {
-        vc_id.yfilter = yfilter;
+        interface.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-ip-address" || name == "pw-class-template" || name == "vc-id")
+    if(name == "interface")
         return true;
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Mac()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::MldSnooping()
     :
-    learning_enabled{YType::boolean, "learning-enabled"}
-    	,
-    aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging>())
-	,flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>())
-	,limit(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit>())
-	,port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>())
-	,secure(nullptr) // presence node
-	,static_(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_>())
+    profile_name{YType::str, "profile-name"}
 {
-    aging->parent = this;
 
-    flooding->parent = this;
-
-    limit->parent = this;
-
-    port_down->parent = this;
-
-    static_->parent = this;
-
-    yang_name = "mac"; yang_parent_name = "bridge-domain";
+    yang_name = "mld-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::~Mac()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::~MldSnooping()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_data() const
 {
-    return learning_enabled.is_set
-	|| (aging !=  nullptr && aging->has_data())
-	|| (flooding !=  nullptr && flooding->has_data())
-	|| (limit !=  nullptr && limit->has_data())
-	|| (port_down !=  nullptr && port_down->has_data())
-	|| (secure !=  nullptr && secure->has_data())
-	|| (static_ !=  nullptr && static_->has_data());
+    return profile_name.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(learning_enabled.yfilter)
-	|| (aging !=  nullptr && aging->has_operation())
-	|| (flooding !=  nullptr && flooding->has_operation())
-	|| (limit !=  nullptr && limit->has_operation())
-	|| (port_down !=  nullptr && port_down->has_operation())
-	|| (secure !=  nullptr && secure->has_operation())
-	|| (static_ !=  nullptr && static_->has_operation());
+	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac";
-
+    path_buffer << "mld-snooping";
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mac' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (learning_enabled.is_set || is_set(learning_enabled.yfilter)) leaf_name_data.push_back(learning_enabled.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "aging")
-    {
-        if(aging == nullptr)
-        {
-            aging = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging>();
-        }
-        return aging;
-    }
-
-    if(child_yang_name == "flooding")
-    {
-        if(flooding == nullptr)
-        {
-            flooding = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>();
-        }
-        return flooding;
-    }
-
-    if(child_yang_name == "limit")
-    {
-        if(limit == nullptr)
-        {
-            limit = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit>();
-        }
-        return limit;
-    }
-
-    if(child_yang_name == "port-down")
-    {
-        if(port_down == nullptr)
-        {
-            port_down = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>();
-        }
-        return port_down;
-    }
-
-    if(child_yang_name == "secure")
-    {
-        if(secure == nullptr)
-        {
-            secure = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure>();
-        }
-        return secure;
-    }
-
-    if(child_yang_name == "static")
-    {
-        if(static_ == nullptr)
-        {
-            static_ = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_>();
-        }
-        return static_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(aging != nullptr)
-    {
-        children["aging"] = aging;
-    }
-
-    if(flooding != nullptr)
-    {
-        children["flooding"] = flooding;
-    }
-
-    if(limit != nullptr)
-    {
-        children["limit"] = limit;
-    }
-
-    if(port_down != nullptr)
-    {
-        children["port-down"] = port_down;
-    }
-
-    if(secure != nullptr)
-    {
-        children["secure"] = secure;
-    }
-
-    if(static_ != nullptr)
-    {
-        children["static"] = static_;
-    }
-
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "learning-enabled")
-    {
-        learning_enabled = value;
-        learning_enabled.value_namespace = name_space;
-        learning_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "learning-enabled")
-    {
-        learning_enabled.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "aging" || name == "flooding" || name == "limit" || name == "port-down" || name == "secure" || name == "static" || name == "learning-enabled")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::Limit()
-    :
-    action{YType::enumeration, "action"},
-    maximum{YType::uint32, "maximum"},
-    notification{YType::identityref, "notification"}
-{
-    yang_name = "limit"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::~Limit()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_data() const
-{
-    return action.is_set
-	|| maximum.is_set
-	|| notification.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(notification.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Limit' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (notification.is_set || is_set(notification.yfilter)) leaf_name_data.push_back(notification.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action")
+    if(value_path == "profile-name")
     {
-        action = value;
-        action.value_namespace = name_space;
-        action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "notification")
-    {
-        notification = value;
-        notification.value_namespace = name_space;
-        notification.value_namespace_prefix = name_space_prefix;
+        profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action")
+    if(value_path == "profile-name")
     {
-        action.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "notification")
-    {
-        notification.yfilter = yfilter;
+        profile_name.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "action" || name == "maximum" || name == "notification")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::Aging()
-    :
-    time{YType::uint32, "time"},
-    type{YType::enumeration, "type"}
-{
-    yang_name = "aging"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::~Aging()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_data() const
-{
-    return time.is_set
-	|| type.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "aging";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Aging' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time")
-    {
-        time = value;
-        time.value_namespace = name_space;
-        time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time")
-    {
-        time.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time" || name == "type")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::PortDown()
-    :
-    flush{YType::boolean, "flush"}
-{
-    yang_name = "port-down"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::~PortDown()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_data() const
-{
-    return flush.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flush.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "port-down";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortDown' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flush.is_set || is_set(flush.yfilter)) leaf_name_data.push_back(flush.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flush")
-    {
-        flush = value;
-        flush.value_namespace = name_space;
-        flush.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flush")
-    {
-        flush.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flush")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::Flooding()
-    :
-    disabled{YType::empty, "disabled"},
-    disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
-{
-    yang_name = "flooding"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::~Flooding()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_data() const
-{
-    return disabled.is_set
-	|| disabled_unknown_unicast.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disabled.yfilter)
-	|| ydk::is_set(disabled_unknown_unicast.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flooding";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flooding' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
-    if (disabled_unknown_unicast.is_set || is_set(disabled_unknown_unicast.yfilter)) leaf_name_data.push_back(disabled_unknown_unicast.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disabled")
-    {
-        disabled = value;
-        disabled.value_namespace = name_space;
-        disabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disabled-unknown-unicast")
-    {
-        disabled_unknown_unicast = value;
-        disabled_unknown_unicast.value_namespace = name_space;
-        disabled_unknown_unicast.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disabled")
-    {
-        disabled.yfilter = yfilter;
-    }
-    if(value_path == "disabled-unknown-unicast")
-    {
-        disabled_unknown_unicast.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disabled" || name == "disabled-unknown-unicast")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::Secure()
-    :
-    action{YType::enumeration, "action"},
-    logging{YType::boolean, "logging"}
-{
-    yang_name = "secure"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::~Secure()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_data() const
-{
-    return action.is_set
-	|| logging.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(logging.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "secure";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Secure' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action")
-    {
-        action = value;
-        action.value_namespace = name_space;
-        action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "logging")
-    {
-        logging = value;
-        logging.value_namespace = name_space;
-        logging.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action")
-    {
-        action.yfilter = yfilter;
-    }
-    if(value_path == "logging")
-    {
-        logging.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action" || name == "logging")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::Static_()
-{
-    yang_name = "static"; yang_parent_name = "mac";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::~Static_()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_data() const
-{
-    for (std::size_t index=0; index<mac_addresses.size(); index++)
-    {
-        if(mac_addresses[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_operation() const
-{
-    for (std::size_t index=0; index<mac_addresses.size(); index++)
-    {
-        if(mac_addresses[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "static";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Static_' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mac-addresses")
-    {
-        for(auto const & c : mac_addresses)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses>();
-        c->parent = this;
-        mac_addresses.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mac_addresses)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mac-addresses")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::MacAddresses()
-    :
-    mac_addr{YType::str, "mac-addr"},
-    drop{YType::boolean, "drop"}
-{
-    yang_name = "mac-addresses"; yang_parent_name = "static";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::~MacAddresses()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_data() const
-{
-    return mac_addr.is_set
-	|| drop.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mac_addr.yfilter)
-	|| ydk::is_set(drop.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mac-addresses" <<"[mac-addr='" <<mac_addr <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MacAddresses' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mac_addr.is_set || is_set(mac_addr.yfilter)) leaf_name_data.push_back(mac_addr.get_name_leafdata());
-    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mac-addr")
-    {
-        mac_addr = value;
-        mac_addr.value_namespace = name_space;
-        mac_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "drop")
-    {
-        drop = value;
-        drop.value_namespace = name_space;
-        drop.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mac-addr")
-    {
-        mac_addr.yfilter = yfilter;
-    }
-    if(value_path == "drop")
-    {
-        drop.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mac-addr" || name == "drop")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::DynamicArpInspection()
-    :
-    logging{YType::boolean, "logging"}
-    	,
-    address_validation(nullptr) // presence node
-{
-    yang_name = "dynamic-arp-inspection"; yang_parent_name = "bridge-domain";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::~DynamicArpInspection()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_data() const
-{
-    return logging.is_set
-	|| (address_validation !=  nullptr && address_validation->has_data());
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(logging.yfilter)
-	|| (address_validation !=  nullptr && address_validation->has_operation());
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dynamic-arp-inspection";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DynamicArpInspection' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-validation")
-    {
-        if(address_validation == nullptr)
-        {
-            address_validation = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation>();
-        }
-        return address_validation;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_validation != nullptr)
-    {
-        children["address-validation"] = address_validation;
-    }
-
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "logging")
-    {
-        logging = value;
-        logging.value_namespace = name_space;
-        logging.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "logging")
-    {
-        logging.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-validation" || name == "logging")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::AddressValidation()
-    :
-    dst_mac{YType::empty, "dst-mac"},
-    ipv4{YType::empty, "ipv4"},
-    src_mac{YType::empty, "src-mac"}
-{
-    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::~AddressValidation()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_data() const
-{
-    return dst_mac.is_set
-	|| ipv4.is_set
-	|| src_mac.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dst_mac.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(src_mac.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-validation";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressValidation' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dst_mac.is_set || is_set(dst_mac.yfilter)) leaf_name_data.push_back(dst_mac.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (src_mac.is_set || is_set(src_mac.yfilter)) leaf_name_data.push_back(src_mac.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dst-mac")
-    {
-        dst_mac = value;
-        dst_mac.value_namespace = name_space;
-        dst_mac.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src-mac")
-    {
-        src_mac = value;
-        src_mac.value_namespace = name_space;
-        src_mac.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dst-mac")
-    {
-        dst_mac.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "src-mac")
-    {
-        src_mac.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dst-mac" || name == "ipv4" || name == "src-mac")
-        return true;
-    return false;
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::IpSourceGuard()
-    :
-    logging{YType::boolean, "logging"}
-{
-    yang_name = "ip-source-guard"; yang_parent_name = "bridge-domain";
-}
-
-BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::~IpSourceGuard()
-{
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_data() const
-{
-    return logging.is_set;
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(logging.yfilter);
-}
-
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-source-guard";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSourceGuard' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "logging")
-    {
-        logging = value;
-        logging.value_namespace = name_space;
-        logging.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "logging")
-    {
-        logging.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "logging")
+    if(name == "profile-name")
         return true;
     return false;
 }
@@ -6425,7 +5601,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::StormControl()
     :
     action{YType::identityref, "action"}
 {
-    yang_name = "storm-control"; yang_parent_name = "bridge-domain";
+
+    yang_name = "storm-control"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::~StormControl()
@@ -6457,30 +5634,16 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "storm-control";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StormControl' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6547,7 +5710,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::Thres
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "thresholds"; yang_parent_name = "storm-control";
+
+    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::~Thresholds()
@@ -6573,32 +5737,18 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thres
 {
     std::ostringstream path_buffer;
     path_buffer << "thresholds" <<"[traffic-class='" <<traffic_class <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Thresholds' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6658,283 +5808,384 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::IgmpSnooping()
-    :
-    disabled{YType::empty, "disabled"},
-    profile_name{YType::str, "profile-name"}
+BridgeDomainConfig::BridgeGroups::BridgeGroups()
 {
-    yang_name = "igmp-snooping"; yang_parent_name = "bridge-domain";
+
+    yang_name = "bridge-groups"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::~IgmpSnooping()
+BridgeDomainConfig::BridgeGroups::~BridgeGroups()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_data() const
+bool BridgeDomainConfig::BridgeGroups::has_data() const
 {
-    return disabled.is_set
-	|| profile_name.is_set;
+    for (std::size_t index=0; index<bridge_group.size(); index++)
+    {
+        if(bridge_group[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_operation() const
+bool BridgeDomainConfig::BridgeGroups::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(disabled.yfilter)
-	|| ydk::is_set(profile_name.yfilter);
+    for (std::size_t index=0; index<bridge_group.size(); index++)
+    {
+        if(bridge_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_segment_path() const
+std::string BridgeDomainConfig::BridgeGroups::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "igmp-snooping";
-
+    path_buffer << "cisco-bridge-domain:bridge-domain-config/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_entity_path(Entity* ancestor) const
+std::string BridgeDomainConfig::BridgeGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IgmpSnooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "bridge-groups";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeGroups::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "bridge-group")
+    {
+        for(auto const & c : bridge_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BridgeDomainConfig::BridgeGroups::BridgeGroup>();
+        c->parent = this;
+        bridge_group.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bridge_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "disabled")
-    {
-        disabled = value;
-        disabled.value_namespace = name_space;
-        disabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "profile-name")
-    {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeGroups::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "disabled")
-    {
-        disabled.yfilter = yfilter;
-    }
-    if(value_path == "profile-name")
-    {
-        profile_name.yfilter = yfilter;
-    }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeGroups::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disabled" || name == "profile-name")
+    if(name == "bridge-group")
         return true;
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::MldSnooping()
+BridgeDomainConfig::BridgeGroups::BridgeGroup::BridgeGroup()
     :
-    profile_name{YType::str, "profile-name"}
+    name{YType::str, "name"}
 {
-    yang_name = "mld-snooping"; yang_parent_name = "bridge-domain";
+
+    yang_name = "bridge-group"; yang_parent_name = "bridge-groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::~MldSnooping()
+BridgeDomainConfig::BridgeGroups::BridgeGroup::~BridgeGroup()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_data() const
+bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_data() const
 {
-    return profile_name.is_set;
+    return name.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_operation() const
+bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter);
+	|| ydk::is_set(name.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_segment_path() const
+std::string BridgeDomainConfig::BridgeGroups::BridgeGroup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mld-snooping";
-
+    path_buffer << "cisco-bridge-domain:bridge-domain-config/bridge-groups/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_entity_path(Entity* ancestor) const
+std::string BridgeDomainConfig::BridgeGroups::BridgeGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MldSnooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "bridge-group" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeGroups::BridgeGroup::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::BridgeGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups::BridgeGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeGroups::BridgeGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "profile-name")
+    if(value_path == "name")
     {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeGroups::BridgeGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "profile-name")
+    if(value_path == "name")
     {
-        profile_name.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile-name")
+    if(name == "name")
         return true;
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::DhcpIpv4Snooping()
+BridgeDomainConfig::Global::Global()
     :
-    profile_name{YType::str, "profile-name"}
+    bd_state_notification_enabled{YType::boolean, "bd-state-notification-enabled"},
+    bd_state_notification_rate{YType::uint32, "bd-state-notification-rate"}
+    	,
+    pbb(std::make_shared<BridgeDomainConfig::Global::Pbb>())
 {
-    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "bridge-domain";
+    pbb->parent = this;
+
+    yang_name = "global"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::~DhcpIpv4Snooping()
+BridgeDomainConfig::Global::~Global()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_data() const
+bool BridgeDomainConfig::Global::has_data() const
 {
-    return profile_name.is_set;
+    return bd_state_notification_enabled.is_set
+	|| bd_state_notification_rate.is_set
+	|| (pbb !=  nullptr && pbb->has_data());
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_operation() const
+bool BridgeDomainConfig::Global::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter);
+	|| ydk::is_set(bd_state_notification_enabled.yfilter)
+	|| ydk::is_set(bd_state_notification_rate.yfilter)
+	|| (pbb !=  nullptr && pbb->has_operation());
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_segment_path() const
+std::string BridgeDomainConfig::Global::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcp-ipv4-snooping";
-
+    path_buffer << "cisco-bridge-domain:bridge-domain-config/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_entity_path(Entity* ancestor) const
+std::string BridgeDomainConfig::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DhcpIpv4Snooping' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "global";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::Global::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (bd_state_notification_enabled.is_set || is_set(bd_state_notification_enabled.yfilter)) leaf_name_data.push_back(bd_state_notification_enabled.get_name_leafdata());
+    if (bd_state_notification_rate.is_set || is_set(bd_state_notification_rate.yfilter)) leaf_name_data.push_back(bd_state_notification_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbb")
+    {
+        if(pbb == nullptr)
+        {
+            pbb = std::make_shared<BridgeDomainConfig::Global::Pbb>();
+        }
+        return pbb;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::Global::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbb != nullptr)
+    {
+        children["pbb"] = pbb;
+    }
+
+    return children;
+}
+
+void BridgeDomainConfig::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bd-state-notification-enabled")
+    {
+        bd_state_notification_enabled = value;
+        bd_state_notification_enabled.value_namespace = name_space;
+        bd_state_notification_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bd-state-notification-rate")
+    {
+        bd_state_notification_rate = value;
+        bd_state_notification_rate.value_namespace = name_space;
+        bd_state_notification_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainConfig::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bd-state-notification-enabled")
+    {
+        bd_state_notification_enabled.yfilter = yfilter;
+    }
+    if(value_path == "bd-state-notification-rate")
+    {
+        bd_state_notification_rate.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainConfig::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbb" || name == "bd-state-notification-enabled" || name == "bd-state-notification-rate")
+        return true;
+    return false;
+}
+
+BridgeDomainConfig::Global::Pbb::Pbb()
+    :
+    backbone_src_mac{YType::str, "backbone-src-mac"}
+{
+
+    yang_name = "pbb"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+BridgeDomainConfig::Global::Pbb::~Pbb()
+{
+}
+
+bool BridgeDomainConfig::Global::Pbb::has_data() const
+{
+    return backbone_src_mac.is_set;
+}
+
+bool BridgeDomainConfig::Global::Pbb::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(backbone_src_mac.yfilter);
+}
+
+std::string BridgeDomainConfig::Global::Pbb::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-config/global/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string BridgeDomainConfig::Global::Pbb::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pbb";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::Global::Pbb::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (backbone_src_mac.is_set || is_set(backbone_src_mac.yfilter)) leaf_name_data.push_back(backbone_src_mac.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainConfig::Global::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::Global::Pbb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::Global::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "profile-name")
+    if(value_path == "backbone-src-mac")
     {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
+        backbone_src_mac = value;
+        backbone_src_mac.value_namespace = name_space;
+        backbone_src_mac.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::Global::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "profile-name")
+    if(value_path == "backbone-src-mac")
     {
-        profile_name.yfilter = yfilter;
+        backbone_src_mac.yfilter = yfilter;
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::Global::Pbb::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile-name")
+    if(name == "backbone-src-mac")
         return true;
     return false;
 }
@@ -6946,12 +6197,10 @@ BridgeDomainState::BridgeDomainState()
 	,system_capabilities(std::make_shared<BridgeDomainState::SystemCapabilities>())
 {
     bridge_domains->parent = this;
-
     module_capabilities->parent = this;
-
     system_capabilities->parent = this;
 
-    yang_name = "bridge-domain-state"; yang_parent_name = "cisco-bridge-domain";
+    yang_name = "bridge-domain-state"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 BridgeDomainState::~BridgeDomainState()
@@ -6987,26 +6236,15 @@ std::string BridgeDomainState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-bridge-domain:bridge-domain-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7124,461 +6362,10 @@ bool BridgeDomainState::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-BridgeDomainState::SystemCapabilities::SystemCapabilities()
-    :
-    max_ac_per_bd{YType::uint32, "max-ac-per-bd"},
-    max_bd{YType::uint32, "max-bd"},
-    max_interflex_if_per_bd{YType::uint32, "max-interflex-if-per-bd"},
-    max_pw_per_bd{YType::uint32, "max-pw-per-bd"},
-    max_sh_group_per_bd{YType::uint32, "max-sh-group-per-bd"},
-    max_vfi_per_bd{YType::uint32, "max-vfi-per-bd"}
-{
-    yang_name = "system-capabilities"; yang_parent_name = "bridge-domain-state";
-}
-
-BridgeDomainState::SystemCapabilities::~SystemCapabilities()
-{
-}
-
-bool BridgeDomainState::SystemCapabilities::has_data() const
-{
-    return max_ac_per_bd.is_set
-	|| max_bd.is_set
-	|| max_interflex_if_per_bd.is_set
-	|| max_pw_per_bd.is_set
-	|| max_sh_group_per_bd.is_set
-	|| max_vfi_per_bd.is_set;
-}
-
-bool BridgeDomainState::SystemCapabilities::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_ac_per_bd.yfilter)
-	|| ydk::is_set(max_bd.yfilter)
-	|| ydk::is_set(max_interflex_if_per_bd.yfilter)
-	|| ydk::is_set(max_pw_per_bd.yfilter)
-	|| ydk::is_set(max_sh_group_per_bd.yfilter)
-	|| ydk::is_set(max_vfi_per_bd.yfilter);
-}
-
-std::string BridgeDomainState::SystemCapabilities::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "system-capabilities";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainState::SystemCapabilities::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_ac_per_bd.is_set || is_set(max_ac_per_bd.yfilter)) leaf_name_data.push_back(max_ac_per_bd.get_name_leafdata());
-    if (max_bd.is_set || is_set(max_bd.yfilter)) leaf_name_data.push_back(max_bd.get_name_leafdata());
-    if (max_interflex_if_per_bd.is_set || is_set(max_interflex_if_per_bd.yfilter)) leaf_name_data.push_back(max_interflex_if_per_bd.get_name_leafdata());
-    if (max_pw_per_bd.is_set || is_set(max_pw_per_bd.yfilter)) leaf_name_data.push_back(max_pw_per_bd.get_name_leafdata());
-    if (max_sh_group_per_bd.is_set || is_set(max_sh_group_per_bd.yfilter)) leaf_name_data.push_back(max_sh_group_per_bd.get_name_leafdata());
-    if (max_vfi_per_bd.is_set || is_set(max_vfi_per_bd.yfilter)) leaf_name_data.push_back(max_vfi_per_bd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainState::SystemCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::SystemCapabilities::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainState::SystemCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-ac-per-bd")
-    {
-        max_ac_per_bd = value;
-        max_ac_per_bd.value_namespace = name_space;
-        max_ac_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-bd")
-    {
-        max_bd = value;
-        max_bd.value_namespace = name_space;
-        max_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-interflex-if-per-bd")
-    {
-        max_interflex_if_per_bd = value;
-        max_interflex_if_per_bd.value_namespace = name_space;
-        max_interflex_if_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-pw-per-bd")
-    {
-        max_pw_per_bd = value;
-        max_pw_per_bd.value_namespace = name_space;
-        max_pw_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-sh-group-per-bd")
-    {
-        max_sh_group_per_bd = value;
-        max_sh_group_per_bd.value_namespace = name_space;
-        max_sh_group_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-vfi-per-bd")
-    {
-        max_vfi_per_bd = value;
-        max_vfi_per_bd.value_namespace = name_space;
-        max_vfi_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainState::SystemCapabilities::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-ac-per-bd")
-    {
-        max_ac_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-bd")
-    {
-        max_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-interflex-if-per-bd")
-    {
-        max_interflex_if_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-pw-per-bd")
-    {
-        max_pw_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-sh-group-per-bd")
-    {
-        max_sh_group_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-vfi-per-bd")
-    {
-        max_vfi_per_bd.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainState::SystemCapabilities::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-ac-per-bd" || name == "max-bd" || name == "max-interflex-if-per-bd" || name == "max-pw-per-bd" || name == "max-sh-group-per-bd" || name == "max-vfi-per-bd")
-        return true;
-    return false;
-}
-
-BridgeDomainState::ModuleCapabilities::ModuleCapabilities()
-{
-    yang_name = "module-capabilities"; yang_parent_name = "bridge-domain-state";
-}
-
-BridgeDomainState::ModuleCapabilities::~ModuleCapabilities()
-{
-}
-
-bool BridgeDomainState::ModuleCapabilities::has_data() const
-{
-    for (std::size_t index=0; index<modules.size(); index++)
-    {
-        if(modules[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool BridgeDomainState::ModuleCapabilities::has_operation() const
-{
-    for (std::size_t index=0; index<modules.size(); index++)
-    {
-        if(modules[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string BridgeDomainState::ModuleCapabilities::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "module-capabilities";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainState::ModuleCapabilities::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "modules")
-    {
-        for(auto const & c : modules)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BridgeDomainState::ModuleCapabilities::Modules>();
-        c->parent = this;
-        modules.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabilities::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : modules)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void BridgeDomainState::ModuleCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void BridgeDomainState::ModuleCapabilities::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool BridgeDomainState::ModuleCapabilities::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "modules")
-        return true;
-    return false;
-}
-
-BridgeDomainState::ModuleCapabilities::Modules::Modules()
-    :
-    name{YType::str, "name"},
-    max_ac_per_bd{YType::uint32, "max-ac-per-bd"},
-    max_bd{YType::uint32, "max-bd"},
-    max_mac_per_bd{YType::uint32, "max-mac-per-bd"},
-    max_pdd_edge_bd{YType::uint32, "max-pdd-edge-bd"},
-    max_pw_per_bd{YType::uint32, "max-pw-per-bd"},
-    max_sh_group_per_bd{YType::uint32, "max-sh-group-per-bd"},
-    max_vfi_per_bd{YType::uint32, "max-vfi-per-bd"}
-{
-    yang_name = "modules"; yang_parent_name = "module-capabilities";
-}
-
-BridgeDomainState::ModuleCapabilities::Modules::~Modules()
-{
-}
-
-bool BridgeDomainState::ModuleCapabilities::Modules::has_data() const
-{
-    return name.is_set
-	|| max_ac_per_bd.is_set
-	|| max_bd.is_set
-	|| max_mac_per_bd.is_set
-	|| max_pdd_edge_bd.is_set
-	|| max_pw_per_bd.is_set
-	|| max_sh_group_per_bd.is_set
-	|| max_vfi_per_bd.is_set;
-}
-
-bool BridgeDomainState::ModuleCapabilities::Modules::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(max_ac_per_bd.yfilter)
-	|| ydk::is_set(max_bd.yfilter)
-	|| ydk::is_set(max_mac_per_bd.yfilter)
-	|| ydk::is_set(max_pdd_edge_bd.yfilter)
-	|| ydk::is_set(max_pw_per_bd.yfilter)
-	|| ydk::is_set(max_sh_group_per_bd.yfilter)
-	|| ydk::is_set(max_vfi_per_bd.yfilter);
-}
-
-std::string BridgeDomainState::ModuleCapabilities::Modules::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "modules" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainState::ModuleCapabilities::Modules::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-state/module-capabilities/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (max_ac_per_bd.is_set || is_set(max_ac_per_bd.yfilter)) leaf_name_data.push_back(max_ac_per_bd.get_name_leafdata());
-    if (max_bd.is_set || is_set(max_bd.yfilter)) leaf_name_data.push_back(max_bd.get_name_leafdata());
-    if (max_mac_per_bd.is_set || is_set(max_mac_per_bd.yfilter)) leaf_name_data.push_back(max_mac_per_bd.get_name_leafdata());
-    if (max_pdd_edge_bd.is_set || is_set(max_pdd_edge_bd.yfilter)) leaf_name_data.push_back(max_pdd_edge_bd.get_name_leafdata());
-    if (max_pw_per_bd.is_set || is_set(max_pw_per_bd.yfilter)) leaf_name_data.push_back(max_pw_per_bd.get_name_leafdata());
-    if (max_sh_group_per_bd.is_set || is_set(max_sh_group_per_bd.yfilter)) leaf_name_data.push_back(max_sh_group_per_bd.get_name_leafdata());
-    if (max_vfi_per_bd.is_set || is_set(max_vfi_per_bd.yfilter)) leaf_name_data.push_back(max_vfi_per_bd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::Modules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabilities::Modules::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainState::ModuleCapabilities::Modules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-ac-per-bd")
-    {
-        max_ac_per_bd = value;
-        max_ac_per_bd.value_namespace = name_space;
-        max_ac_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-bd")
-    {
-        max_bd = value;
-        max_bd.value_namespace = name_space;
-        max_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-mac-per-bd")
-    {
-        max_mac_per_bd = value;
-        max_mac_per_bd.value_namespace = name_space;
-        max_mac_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-pdd-edge-bd")
-    {
-        max_pdd_edge_bd = value;
-        max_pdd_edge_bd.value_namespace = name_space;
-        max_pdd_edge_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-pw-per-bd")
-    {
-        max_pw_per_bd = value;
-        max_pw_per_bd.value_namespace = name_space;
-        max_pw_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-sh-group-per-bd")
-    {
-        max_sh_group_per_bd = value;
-        max_sh_group_per_bd.value_namespace = name_space;
-        max_sh_group_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-vfi-per-bd")
-    {
-        max_vfi_per_bd = value;
-        max_vfi_per_bd.value_namespace = name_space;
-        max_vfi_per_bd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainState::ModuleCapabilities::Modules::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "max-ac-per-bd")
-    {
-        max_ac_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-bd")
-    {
-        max_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-mac-per-bd")
-    {
-        max_mac_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-pdd-edge-bd")
-    {
-        max_pdd_edge_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-pw-per-bd")
-    {
-        max_pw_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-sh-group-per-bd")
-    {
-        max_sh_group_per_bd.yfilter = yfilter;
-    }
-    if(value_path == "max-vfi-per-bd")
-    {
-        max_vfi_per_bd.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainState::ModuleCapabilities::Modules::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "max-ac-per-bd" || name == "max-bd" || name == "max-mac-per-bd" || name == "max-pdd-edge-bd" || name == "max-pw-per-bd" || name == "max-sh-group-per-bd" || name == "max-vfi-per-bd")
-        return true;
-    return false;
-}
-
 BridgeDomainState::BridgeDomains::BridgeDomains()
 {
-    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-state";
+
+    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BridgeDomainState::BridgeDomains::~BridgeDomains()
@@ -7605,33 +6392,26 @@ bool BridgeDomainState::BridgeDomains::has_operation() const
     return is_set(yfilter);
 }
 
+std::string BridgeDomainState::BridgeDomains::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BridgeDomainState::BridgeDomains::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-domains";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7695,7 +6475,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::BridgeDomain()
 {
     members->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains";
+    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::~BridgeDomain()
@@ -7725,27 +6505,22 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::has_operation() const
 	|| (members !=  nullptr && members->has_operation());
 }
 
+std::string BridgeDomainState::BridgeDomains::BridgeDomain::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-state/bridge-domains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-domain" <<"[id='" <<id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-state/bridge-domains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
@@ -7755,9 +6530,7 @@ const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::get_entity_path
     if (mac_limit_reached.is_set || is_set(mac_limit_reached.yfilter)) leaf_name_data.push_back(mac_limit_reached.get_name_leafdata());
     if (p2mp_pw_disabled.is_set || is_set(p2mp_pw_disabled.yfilter)) leaf_name_data.push_back(p2mp_pw_disabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7863,7 +6636,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(c
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::Members()
 {
-    yang_name = "members"; yang_parent_name = "bridge-domain";
+
+    yang_name = "members"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::~Members()
@@ -7914,29 +6688,15 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "members";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Members' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8039,12 +6799,10 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::AcMember()
 	,storm_control(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl>())
 {
     dai_stats->parent = this;
-
     ipsg_stats->parent = this;
-
     storm_control->parent = this;
 
-    yang_name = "ac-member"; yang_parent_name = "members";
+    yang_name = "ac-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::~AcMember()
@@ -8074,31 +6832,17 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::g
 {
     std::ostringstream path_buffer;
     path_buffer << "ac-member" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AcMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (static_mac_count.is_set || is_set(static_mac_count.yfilter)) leaf_name_data.push_back(static_mac_count.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8195,7 +6939,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::Dai
     byte_drops{YType::uint64, "byte-drops"},
     packet_drops{YType::uint64, "packet-drops"}
 {
-    yang_name = "dai-stats"; yang_parent_name = "ac-member";
+
+    yang_name = "dai-stats"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::~DaiStats()
@@ -8219,31 +6964,17 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::D
 {
     std::ostringstream path_buffer;
     path_buffer << "dai-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DaiStats' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (byte_drops.is_set || is_set(byte_drops.yfilter)) leaf_name_data.push_back(byte_drops.get_name_leafdata());
     if (packet_drops.is_set || is_set(packet_drops.yfilter)) leaf_name_data.push_back(packet_drops.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8298,7 +7029,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::Ip
     byte_drops{YType::uint64, "byte-drops"},
     packet_drops{YType::uint64, "packet-drops"}
 {
-    yang_name = "ipsg-stats"; yang_parent_name = "ac-member";
+
+    yang_name = "ipsg-stats"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::~IpsgStats()
@@ -8322,31 +7054,17 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipsg-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpsgStats' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (byte_drops.is_set || is_set(byte_drops.yfilter)) leaf_name_data.push_back(byte_drops.get_name_leafdata());
     if (packet_drops.is_set || is_set(packet_drops.yfilter)) leaf_name_data.push_back(packet_drops.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8398,7 +7116,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStat
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::StormControl()
 {
-    yang_name = "storm-control"; yang_parent_name = "ac-member";
+
+    yang_name = "storm-control"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::~StormControl()
@@ -8429,29 +7148,15 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::S
 {
     std::ostringstream path_buffer;
     path_buffer << "storm-control";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StormControl' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8508,7 +7213,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl:
     octate_drops{YType::uint64, "octate-drops"},
     packet_drops{YType::uint64, "packet-drops"}
 {
-    yang_name = "drop-counter"; yang_parent_name = "storm-control";
+
+    yang_name = "drop-counter"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::~DropCounter()
@@ -8534,32 +7240,18 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::S
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-counter" <<"[traffic-class='" <<traffic_class <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DropCounter' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
     if (octate_drops.is_set || is_set(octate_drops.yfilter)) leaf_name_data.push_back(octate_drops.get_name_leafdata());
     if (packet_drops.is_set || is_set(packet_drops.yfilter)) leaf_name_data.push_back(packet_drops.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8619,324 +7311,6 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCon
     return false;
 }
 
-BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::VfiMember()
-    :
-    interface{YType::str, "interface"}
-    	,
-    flooding(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding>())
-{
-    flooding->parent = this;
-
-    yang_name = "vfi-member"; yang_parent_name = "members";
-}
-
-BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
-{
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_data() const
-{
-    return interface.is_set
-	|| (flooding !=  nullptr && flooding->has_data());
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| (flooding !=  nullptr && flooding->has_operation());
-}
-
-std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vfi-member" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VfiMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flooding")
-    {
-        if(flooding == nullptr)
-        {
-            flooding = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding>();
-        }
-        return flooding;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(flooding != nullptr)
-    {
-        children["flooding"] = flooding;
-    }
-
-    return children;
-}
-
-void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flooding" || name == "interface")
-        return true;
-    return false;
-}
-
-BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Flooding()
-{
-    yang_name = "flooding"; yang_parent_name = "vfi-member";
-}
-
-BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::~Flooding()
-{
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_data() const
-{
-    for (std::size_t index=0; index<status.size(); index++)
-    {
-        if(status[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_operation() const
-{
-    for (std::size_t index=0; index<status.size(); index++)
-    {
-        if(status[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flooding";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flooding' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "status")
-    {
-        for(auto const & c : status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status>();
-        c->parent = this;
-        status.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : status)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "status")
-        return true;
-    return false;
-}
-
-BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::Status()
-    :
-    traffic_class{YType::enumeration, "traffic-class"},
-    enabled{YType::boolean, "enabled"}
-{
-    yang_name = "status"; yang_parent_name = "flooding";
-}
-
-BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::~Status()
-{
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_data() const
-{
-    return traffic_class.is_set
-	|| enabled.is_set;
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(traffic_class.yfilter)
-	|| ydk::is_set(enabled.yfilter);
-}
-
-std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "status" <<"[traffic-class='" <<traffic_class <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Status' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "traffic-class")
-    {
-        traffic_class = value;
-        traffic_class.value_namespace = name_space;
-        traffic_class.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enabled")
-    {
-        enabled = value;
-        enabled.value_namespace = name_space;
-        enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "traffic-class")
-    {
-        traffic_class.yfilter = yfilter;
-    }
-    if(value_path == "enabled")
-    {
-        enabled.yfilter = yfilter;
-    }
-}
-
-bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "traffic-class" || name == "enabled")
-        return true;
-    return false;
-}
-
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwMember()
     :
     vc_peer_address{YType::str, "vc-peer-address"},
@@ -8946,7 +7320,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessP
 {
     flooding->parent = this;
 
-    yang_name = "access-pw-member"; yang_parent_name = "members";
+    yang_name = "access-pw-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::~AccessPwMember()
@@ -8972,31 +7346,17 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMem
 {
     std::ostringstream path_buffer;
     path_buffer << "access-pw-member" <<"[vc-peer-address='" <<vc_peer_address <<"']" <<"[vc-id='" <<vc_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessPwMember' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vc_peer_address.is_set || is_set(vc_peer_address.yfilter)) leaf_name_data.push_back(vc_peer_address.get_name_leafdata());
     if (vc_id.is_set || is_set(vc_id.yfilter)) leaf_name_data.push_back(vc_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9062,7 +7422,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::ha
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Flooding()
 {
-    yang_name = "flooding"; yang_parent_name = "access-pw-member";
+
+    yang_name = "flooding"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::~Flooding()
@@ -9093,29 +7454,15 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMem
 {
     std::ostringstream path_buffer;
     path_buffer << "flooding";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flooding' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9171,7 +7518,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Floodin
     traffic_class{YType::enumeration, "traffic-class"},
     enabled{YType::boolean, "enabled"}
 {
-    yang_name = "status"; yang_parent_name = "flooding";
+
+    yang_name = "status"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::~Status()
@@ -9195,31 +7543,17 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMem
 {
     std::ostringstream path_buffer;
     path_buffer << "status" <<"[traffic-class='" <<traffic_class <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Status' in cisco_bridge_domain cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
     if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9269,6 +7603,284 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Fl
     return false;
 }
 
+BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::VfiMember()
+    :
+    interface{YType::str, "interface"}
+    	,
+    flooding(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding>())
+{
+    flooding->parent = this;
+
+    yang_name = "vfi-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
+{
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_data() const
+{
+    return interface.is_set
+	|| (flooding !=  nullptr && flooding->has_data());
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| (flooding !=  nullptr && flooding->has_operation());
+}
+
+std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vfi-member" <<"[interface='" <<interface <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "flooding")
+    {
+        if(flooding == nullptr)
+        {
+            flooding = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding>();
+        }
+        return flooding;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flooding != nullptr)
+    {
+        children["flooding"] = flooding;
+    }
+
+    return children;
+}
+
+void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flooding" || name == "interface")
+        return true;
+    return false;
+}
+
+BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Flooding()
+{
+
+    yang_name = "flooding"; yang_parent_name = "vfi-member"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::~Flooding()
+{
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_data() const
+{
+    for (std::size_t index=0; index<status.size(); index++)
+    {
+        if(status[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_operation() const
+{
+    for (std::size_t index=0; index<status.size(); index++)
+    {
+        if(status[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flooding";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "status")
+    {
+        for(auto const & c : status)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status>();
+        c->parent = this;
+        status.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : status)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status")
+        return true;
+    return false;
+}
+
+BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::Status()
+    :
+    traffic_class{YType::enumeration, "traffic-class"},
+    enabled{YType::boolean, "enabled"}
+{
+
+    yang_name = "status"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::~Status()
+{
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_data() const
+{
+    return traffic_class.is_set
+	|| enabled.is_set;
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(traffic_class.yfilter)
+	|| ydk::is_set(enabled.yfilter);
+}
+
+std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "status" <<"[traffic-class='" <<traffic_class <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "traffic-class")
+    {
+        traffic_class = value;
+        traffic_class.value_namespace = name_space;
+        traffic_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic-class" || name == "enabled")
+        return true;
+    return false;
+}
+
 BridgeDomainState::MacTable::MacTable()
     :
     bd_id{YType::str, "bd-id"},
@@ -9280,7 +7892,8 @@ BridgeDomainState::MacTable::MacTable()
     ntfy_mac{YType::boolean, "ntfy-mac"},
     secure_mac{YType::boolean, "secure-mac"}
 {
-    yang_name = "mac-table"; yang_parent_name = "bridge-domain-state";
+
+    yang_name = "mac-table"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BridgeDomainState::MacTable::~MacTable()
@@ -9312,27 +7925,22 @@ bool BridgeDomainState::MacTable::has_operation() const
 	|| ydk::is_set(secure_mac.yfilter);
 }
 
+std::string BridgeDomainState::MacTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BridgeDomainState::MacTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-table" <<"[bd-id='" <<bd_id <<"']" <<"[mac-address='" <<mac_address <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BridgeDomainState::MacTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::MacTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bd_id.is_set || is_set(bd_id.yfilter)) leaf_name_data.push_back(bd_id.get_name_leafdata());
@@ -9344,9 +7952,7 @@ const EntityPath BridgeDomainState::MacTable::get_entity_path(Entity* ancestor) 
     if (ntfy_mac.is_set || is_set(ntfy_mac.yfilter)) leaf_name_data.push_back(ntfy_mac.get_name_leafdata());
     if (secure_mac.is_set || is_set(secure_mac.yfilter)) leaf_name_data.push_back(secure_mac.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9456,16 +8062,449 @@ bool BridgeDomainState::MacTable::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
+BridgeDomainState::ModuleCapabilities::ModuleCapabilities()
+{
+
+    yang_name = "module-capabilities"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+BridgeDomainState::ModuleCapabilities::~ModuleCapabilities()
+{
+}
+
+bool BridgeDomainState::ModuleCapabilities::has_data() const
+{
+    for (std::size_t index=0; index<modules.size(); index++)
+    {
+        if(modules[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BridgeDomainState::ModuleCapabilities::has_operation() const
+{
+    for (std::size_t index=0; index<modules.size(); index++)
+    {
+        if(modules[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BridgeDomainState::ModuleCapabilities::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string BridgeDomainState::ModuleCapabilities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "module-capabilities";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::ModuleCapabilities::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "modules")
+    {
+        for(auto const & c : modules)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BridgeDomainState::ModuleCapabilities::Modules>();
+        c->parent = this;
+        modules.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabilities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : modules)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BridgeDomainState::ModuleCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BridgeDomainState::ModuleCapabilities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BridgeDomainState::ModuleCapabilities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "modules")
+        return true;
+    return false;
+}
+
+BridgeDomainState::ModuleCapabilities::Modules::Modules()
+    :
+    name{YType::str, "name"},
+    max_ac_per_bd{YType::uint32, "max-ac-per-bd"},
+    max_bd{YType::uint32, "max-bd"},
+    max_mac_per_bd{YType::uint32, "max-mac-per-bd"},
+    max_pdd_edge_bd{YType::uint32, "max-pdd-edge-bd"},
+    max_pw_per_bd{YType::uint32, "max-pw-per-bd"},
+    max_sh_group_per_bd{YType::uint32, "max-sh-group-per-bd"},
+    max_vfi_per_bd{YType::uint32, "max-vfi-per-bd"}
+{
+
+    yang_name = "modules"; yang_parent_name = "module-capabilities"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+BridgeDomainState::ModuleCapabilities::Modules::~Modules()
+{
+}
+
+bool BridgeDomainState::ModuleCapabilities::Modules::has_data() const
+{
+    return name.is_set
+	|| max_ac_per_bd.is_set
+	|| max_bd.is_set
+	|| max_mac_per_bd.is_set
+	|| max_pdd_edge_bd.is_set
+	|| max_pw_per_bd.is_set
+	|| max_sh_group_per_bd.is_set
+	|| max_vfi_per_bd.is_set;
+}
+
+bool BridgeDomainState::ModuleCapabilities::Modules::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(max_ac_per_bd.yfilter)
+	|| ydk::is_set(max_bd.yfilter)
+	|| ydk::is_set(max_mac_per_bd.yfilter)
+	|| ydk::is_set(max_pdd_edge_bd.yfilter)
+	|| ydk::is_set(max_pw_per_bd.yfilter)
+	|| ydk::is_set(max_sh_group_per_bd.yfilter)
+	|| ydk::is_set(max_vfi_per_bd.yfilter);
+}
+
+std::string BridgeDomainState::ModuleCapabilities::Modules::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-state/module-capabilities/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string BridgeDomainState::ModuleCapabilities::Modules::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "modules" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::ModuleCapabilities::Modules::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (max_ac_per_bd.is_set || is_set(max_ac_per_bd.yfilter)) leaf_name_data.push_back(max_ac_per_bd.get_name_leafdata());
+    if (max_bd.is_set || is_set(max_bd.yfilter)) leaf_name_data.push_back(max_bd.get_name_leafdata());
+    if (max_mac_per_bd.is_set || is_set(max_mac_per_bd.yfilter)) leaf_name_data.push_back(max_mac_per_bd.get_name_leafdata());
+    if (max_pdd_edge_bd.is_set || is_set(max_pdd_edge_bd.yfilter)) leaf_name_data.push_back(max_pdd_edge_bd.get_name_leafdata());
+    if (max_pw_per_bd.is_set || is_set(max_pw_per_bd.yfilter)) leaf_name_data.push_back(max_pw_per_bd.get_name_leafdata());
+    if (max_sh_group_per_bd.is_set || is_set(max_sh_group_per_bd.yfilter)) leaf_name_data.push_back(max_sh_group_per_bd.get_name_leafdata());
+    if (max_vfi_per_bd.is_set || is_set(max_vfi_per_bd.yfilter)) leaf_name_data.push_back(max_vfi_per_bd.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::Modules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabilities::Modules::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainState::ModuleCapabilities::Modules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-ac-per-bd")
+    {
+        max_ac_per_bd = value;
+        max_ac_per_bd.value_namespace = name_space;
+        max_ac_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-bd")
+    {
+        max_bd = value;
+        max_bd.value_namespace = name_space;
+        max_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-mac-per-bd")
+    {
+        max_mac_per_bd = value;
+        max_mac_per_bd.value_namespace = name_space;
+        max_mac_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-pdd-edge-bd")
+    {
+        max_pdd_edge_bd = value;
+        max_pdd_edge_bd.value_namespace = name_space;
+        max_pdd_edge_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-pw-per-bd")
+    {
+        max_pw_per_bd = value;
+        max_pw_per_bd.value_namespace = name_space;
+        max_pw_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-sh-group-per-bd")
+    {
+        max_sh_group_per_bd = value;
+        max_sh_group_per_bd.value_namespace = name_space;
+        max_sh_group_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-vfi-per-bd")
+    {
+        max_vfi_per_bd = value;
+        max_vfi_per_bd.value_namespace = name_space;
+        max_vfi_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainState::ModuleCapabilities::Modules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "max-ac-per-bd")
+    {
+        max_ac_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-bd")
+    {
+        max_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-mac-per-bd")
+    {
+        max_mac_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-pdd-edge-bd")
+    {
+        max_pdd_edge_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-pw-per-bd")
+    {
+        max_pw_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-sh-group-per-bd")
+    {
+        max_sh_group_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-vfi-per-bd")
+    {
+        max_vfi_per_bd.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainState::ModuleCapabilities::Modules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "max-ac-per-bd" || name == "max-bd" || name == "max-mac-per-bd" || name == "max-pdd-edge-bd" || name == "max-pw-per-bd" || name == "max-sh-group-per-bd" || name == "max-vfi-per-bd")
+        return true;
+    return false;
+}
+
+BridgeDomainState::SystemCapabilities::SystemCapabilities()
+    :
+    max_ac_per_bd{YType::uint32, "max-ac-per-bd"},
+    max_bd{YType::uint32, "max-bd"},
+    max_interflex_if_per_bd{YType::uint32, "max-interflex-if-per-bd"},
+    max_pw_per_bd{YType::uint32, "max-pw-per-bd"},
+    max_sh_group_per_bd{YType::uint32, "max-sh-group-per-bd"},
+    max_vfi_per_bd{YType::uint32, "max-vfi-per-bd"}
+{
+
+    yang_name = "system-capabilities"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+BridgeDomainState::SystemCapabilities::~SystemCapabilities()
+{
+}
+
+bool BridgeDomainState::SystemCapabilities::has_data() const
+{
+    return max_ac_per_bd.is_set
+	|| max_bd.is_set
+	|| max_interflex_if_per_bd.is_set
+	|| max_pw_per_bd.is_set
+	|| max_sh_group_per_bd.is_set
+	|| max_vfi_per_bd.is_set;
+}
+
+bool BridgeDomainState::SystemCapabilities::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_ac_per_bd.yfilter)
+	|| ydk::is_set(max_bd.yfilter)
+	|| ydk::is_set(max_interflex_if_per_bd.yfilter)
+	|| ydk::is_set(max_pw_per_bd.yfilter)
+	|| ydk::is_set(max_sh_group_per_bd.yfilter)
+	|| ydk::is_set(max_vfi_per_bd.yfilter);
+}
+
+std::string BridgeDomainState::SystemCapabilities::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:bridge-domain-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string BridgeDomainState::SystemCapabilities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "system-capabilities";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BridgeDomainState::SystemCapabilities::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_ac_per_bd.is_set || is_set(max_ac_per_bd.yfilter)) leaf_name_data.push_back(max_ac_per_bd.get_name_leafdata());
+    if (max_bd.is_set || is_set(max_bd.yfilter)) leaf_name_data.push_back(max_bd.get_name_leafdata());
+    if (max_interflex_if_per_bd.is_set || is_set(max_interflex_if_per_bd.yfilter)) leaf_name_data.push_back(max_interflex_if_per_bd.get_name_leafdata());
+    if (max_pw_per_bd.is_set || is_set(max_pw_per_bd.yfilter)) leaf_name_data.push_back(max_pw_per_bd.get_name_leafdata());
+    if (max_sh_group_per_bd.is_set || is_set(max_sh_group_per_bd.yfilter)) leaf_name_data.push_back(max_sh_group_per_bd.get_name_leafdata());
+    if (max_vfi_per_bd.is_set || is_set(max_vfi_per_bd.yfilter)) leaf_name_data.push_back(max_vfi_per_bd.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BridgeDomainState::SystemCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::SystemCapabilities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BridgeDomainState::SystemCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-ac-per-bd")
+    {
+        max_ac_per_bd = value;
+        max_ac_per_bd.value_namespace = name_space;
+        max_ac_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-bd")
+    {
+        max_bd = value;
+        max_bd.value_namespace = name_space;
+        max_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-interflex-if-per-bd")
+    {
+        max_interflex_if_per_bd = value;
+        max_interflex_if_per_bd.value_namespace = name_space;
+        max_interflex_if_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-pw-per-bd")
+    {
+        max_pw_per_bd = value;
+        max_pw_per_bd.value_namespace = name_space;
+        max_pw_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-sh-group-per-bd")
+    {
+        max_sh_group_per_bd = value;
+        max_sh_group_per_bd.value_namespace = name_space;
+        max_sh_group_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-vfi-per-bd")
+    {
+        max_vfi_per_bd = value;
+        max_vfi_per_bd.value_namespace = name_space;
+        max_vfi_per_bd.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BridgeDomainState::SystemCapabilities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-ac-per-bd")
+    {
+        max_ac_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-bd")
+    {
+        max_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-interflex-if-per-bd")
+    {
+        max_interflex_if_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-pw-per-bd")
+    {
+        max_pw_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-sh-group-per-bd")
+    {
+        max_sh_group_per_bd.yfilter = yfilter;
+    }
+    if(value_path == "max-vfi-per-bd")
+    {
+        max_vfi_per_bd.yfilter = yfilter;
+    }
+}
+
+bool BridgeDomainState::SystemCapabilities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-ac-per-bd" || name == "max-bd" || name == "max-interflex-if-per-bd" || name == "max-pw-per-bd" || name == "max-sh-group-per-bd" || name == "max-vfi-per-bd")
+        return true;
+    return false;
+}
+
 ClearBridgeDomain::ClearBridgeDomain()
     :
     input(std::make_shared<ClearBridgeDomain::Input>())
 	,output(std::make_shared<ClearBridgeDomain::Output>())
 {
     input->parent = this;
-
     output->parent = this;
 
-    yang_name = "clear-bridge-domain"; yang_parent_name = "cisco-bridge-domain";
+    yang_name = "clear-bridge-domain"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ClearBridgeDomain::~ClearBridgeDomain()
@@ -9489,26 +8528,15 @@ std::string ClearBridgeDomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-bridge-domain:clear-bridge-domain";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearBridgeDomain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearBridgeDomain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9597,7 +8625,8 @@ ClearBridgeDomain::Input::Input()
     bd_id{YType::str, "bd-id"},
     bg_id{YType::str, "bg-id"}
 {
-    yang_name = "input"; yang_parent_name = "clear-bridge-domain";
+
+    yang_name = "input"; yang_parent_name = "clear-bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ClearBridgeDomain::Input::~Input()
@@ -9619,36 +8648,29 @@ bool ClearBridgeDomain::Input::has_operation() const
 	|| ydk::is_set(bg_id.yfilter);
 }
 
+std::string ClearBridgeDomain::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:clear-bridge-domain/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ClearBridgeDomain::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearBridgeDomain::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearBridgeDomain::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:clear-bridge-domain/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
     if (bd_id.is_set || is_set(bd_id.yfilter)) leaf_name_data.push_back(bd_id.get_name_leafdata());
     if (bg_id.is_set || is_set(bg_id.yfilter)) leaf_name_data.push_back(bg_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9712,7 +8734,8 @@ ClearBridgeDomain::Output::Output()
     :
     errstr{YType::str, "errstr"}
 {
-    yang_name = "output"; yang_parent_name = "clear-bridge-domain";
+
+    yang_name = "output"; yang_parent_name = "clear-bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ClearBridgeDomain::Output::~Output()
@@ -9730,34 +8753,27 @@ bool ClearBridgeDomain::Output::has_operation() const
 	|| ydk::is_set(errstr.yfilter);
 }
 
+std::string ClearBridgeDomain::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:clear-bridge-domain/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ClearBridgeDomain::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearBridgeDomain::Output::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearBridgeDomain::Output::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:clear-bridge-domain/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (errstr.is_set || is_set(errstr.yfilter)) leaf_name_data.push_back(errstr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9803,10 +8819,9 @@ ClearMacAddress::ClearMacAddress()
 	,output(std::make_shared<ClearMacAddress::Output>())
 {
     input->parent = this;
-
     output->parent = this;
 
-    yang_name = "clear-mac-address"; yang_parent_name = "cisco-bridge-domain";
+    yang_name = "clear-mac-address"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ClearMacAddress::~ClearMacAddress()
@@ -9830,26 +8845,15 @@ std::string ClearMacAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-bridge-domain:clear-mac-address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearMacAddress::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearMacAddress::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9941,7 +8945,7 @@ ClearMacAddress::Input::Input()
 {
     bridge_domain->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-mac-address";
+    yang_name = "input"; yang_parent_name = "clear-mac-address"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ClearMacAddress::Input::~Input()
@@ -9963,35 +8967,28 @@ bool ClearMacAddress::Input::has_operation() const
 	|| (bridge_domain !=  nullptr && bridge_domain->has_operation());
 }
 
+std::string ClearMacAddress::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:clear-mac-address/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ClearMacAddress::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearMacAddress::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearMacAddress::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:clear-mac-address/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10060,7 +9057,8 @@ ClearMacAddress::Input::BridgeDomain::BridgeDomain()
     bd_id{YType::str, "bd-id"},
     bg_id{YType::str, "bg-id"}
 {
-    yang_name = "bridge-domain"; yang_parent_name = "input";
+
+    yang_name = "bridge-domain"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ClearMacAddress::Input::BridgeDomain::~BridgeDomain()
@@ -10080,35 +9078,28 @@ bool ClearMacAddress::Input::BridgeDomain::has_operation() const
 	|| ydk::is_set(bg_id.yfilter);
 }
 
+std::string ClearMacAddress::Input::BridgeDomain::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:clear-mac-address/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ClearMacAddress::Input::BridgeDomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-domain";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearMacAddress::Input::BridgeDomain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearMacAddress::Input::BridgeDomain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:clear-mac-address/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bd_id.is_set || is_set(bd_id.yfilter)) leaf_name_data.push_back(bd_id.get_name_leafdata());
     if (bg_id.is_set || is_set(bg_id.yfilter)) leaf_name_data.push_back(bg_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10162,7 +9153,8 @@ ClearMacAddress::Output::Output()
     :
     errstr{YType::str, "errstr"}
 {
-    yang_name = "output"; yang_parent_name = "clear-mac-address";
+
+    yang_name = "output"; yang_parent_name = "clear-mac-address"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ClearMacAddress::Output::~Output()
@@ -10180,34 +9172,27 @@ bool ClearMacAddress::Output::has_operation() const
 	|| ydk::is_set(errstr.yfilter);
 }
 
+std::string ClearMacAddress::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:clear-mac-address/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ClearMacAddress::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ClearMacAddress::Output::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ClearMacAddress::Output::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:clear-mac-address/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (errstr.is_set || is_set(errstr.yfilter)) leaf_name_data.push_back(errstr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10253,10 +9238,9 @@ CreateParameterizedBridgeDomains::CreateParameterizedBridgeDomains()
 	,output(std::make_shared<CreateParameterizedBridgeDomains::Output>())
 {
     input->parent = this;
-
     output->parent = this;
 
-    yang_name = "create-parameterized-bridge-domains"; yang_parent_name = "cisco-bridge-domain";
+    yang_name = "create-parameterized-bridge-domains"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 CreateParameterizedBridgeDomains::~CreateParameterizedBridgeDomains()
@@ -10280,26 +9264,15 @@ std::string CreateParameterizedBridgeDomains::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CreateParameterizedBridgeDomains::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CreateParameterizedBridgeDomains::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10386,7 +9359,8 @@ CreateParameterizedBridgeDomains::Input::Input()
     :
     parameter{YType::enumeration, "parameter"}
 {
-    yang_name = "input"; yang_parent_name = "create-parameterized-bridge-domains";
+
+    yang_name = "input"; yang_parent_name = "create-parameterized-bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CreateParameterizedBridgeDomains::Input::~Input()
@@ -10414,34 +9388,27 @@ bool CreateParameterizedBridgeDomains::Input::has_operation() const
 	|| ydk::is_set(parameter.yfilter);
 }
 
+std::string CreateParameterizedBridgeDomains::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CreateParameterizedBridgeDomains::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CreateParameterizedBridgeDomains::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CreateParameterizedBridgeDomains::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (parameter.is_set || is_set(parameter.yfilter)) leaf_name_data.push_back(parameter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10506,7 +9473,8 @@ CreateParameterizedBridgeDomains::Input::Member::Member()
     :
     interface{YType::str, "interface"}
 {
-    yang_name = "member"; yang_parent_name = "input";
+
+    yang_name = "member"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CreateParameterizedBridgeDomains::Input::Member::~Member()
@@ -10524,34 +9492,27 @@ bool CreateParameterizedBridgeDomains::Input::Member::has_operation() const
 	|| ydk::is_set(interface.yfilter);
 }
 
+std::string CreateParameterizedBridgeDomains::Input::Member::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CreateParameterizedBridgeDomains::Input::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "member" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CreateParameterizedBridgeDomains::Input::Member::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CreateParameterizedBridgeDomains::Input::Member::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10595,7 +9556,8 @@ CreateParameterizedBridgeDomains::Output::Output()
     :
     errstr{YType::str, "errstr"}
 {
-    yang_name = "output"; yang_parent_name = "create-parameterized-bridge-domains";
+
+    yang_name = "output"; yang_parent_name = "create-parameterized-bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CreateParameterizedBridgeDomains::Output::~Output()
@@ -10613,34 +9575,27 @@ bool CreateParameterizedBridgeDomains::Output::has_operation() const
 	|| ydk::is_set(errstr.yfilter);
 }
 
+std::string CreateParameterizedBridgeDomains::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CreateParameterizedBridgeDomains::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CreateParameterizedBridgeDomains::Output::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CreateParameterizedBridgeDomains::Output::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-bridge-domain:create-parameterized-bridge-domains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (errstr.is_set || is_set(errstr.yfilter)) leaf_name_data.push_back(errstr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

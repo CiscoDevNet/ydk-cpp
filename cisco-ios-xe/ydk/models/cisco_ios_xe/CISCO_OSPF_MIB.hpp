@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_OSPF_MIB {
 
-class CiscoOspfMib : public ydk::Entity
+class CISCOOSPFMIB : public ydk::Entity
 {
     public:
-        CiscoOspfMib();
-        ~CiscoOspfMib();
+        CISCOOSPFMIB();
+        ~CISCOOSPFMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,26 +32,26 @@ class CiscoOspfMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cospfgeneralgroup; //type: CiscoOspfMib::Cospfgeneralgroup
-        class Cospflsdbtable; //type: CiscoOspfMib::Cospflsdbtable
-        class Cospfshamlinktable; //type: CiscoOspfMib::Cospfshamlinktable
-        class Cospflocallsdbtable; //type: CiscoOspfMib::Cospflocallsdbtable
-        class Cospfvirtlocallsdbtable; //type: CiscoOspfMib::Cospfvirtlocallsdbtable
-        class Cospfshamlinknbrtable; //type: CiscoOspfMib::Cospfshamlinknbrtable
-        class Cospfshamlinkstable; //type: CiscoOspfMib::Cospfshamlinkstable
+        class Cospfgeneralgroup; //type: CISCOOSPFMIB::Cospfgeneralgroup
+        class Cospflsdbtable; //type: CISCOOSPFMIB::Cospflsdbtable
+        class Cospfshamlinktable; //type: CISCOOSPFMIB::Cospfshamlinktable
+        class Cospflocallsdbtable; //type: CISCOOSPFMIB::Cospflocallsdbtable
+        class Cospfvirtlocallsdbtable; //type: CISCOOSPFMIB::Cospfvirtlocallsdbtable
+        class Cospfshamlinknbrtable; //type: CISCOOSPFMIB::Cospfshamlinknbrtable
+        class Cospfshamlinkstable; //type: CISCOOSPFMIB::Cospfshamlinkstable
 
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfgeneralgroup> cospfgeneralgroup;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflocallsdbtable> cospflocallsdbtable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflsdbtable> cospflsdbtable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinknbrtable> cospfshamlinknbrtable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable> cospfshamlinkstable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinktable> cospfshamlinktable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfvirtlocallsdbtable> cospfvirtlocallsdbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfgeneralgroup> cospfgeneralgroup;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflocallsdbtable> cospflocallsdbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflsdbtable> cospflsdbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinknbrtable> cospfshamlinknbrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinkstable> cospfshamlinkstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinktable> cospfshamlinktable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfvirtlocallsdbtable> cospfvirtlocallsdbtable;
         
-}; // CiscoOspfMib
+}; // CISCOOSPFMIB
 
 
-class CiscoOspfMib::Cospfgeneralgroup : public ydk::Entity
+class CISCOOSPFMIB::Cospfgeneralgroup : public ydk::Entity
 {
     public:
         Cospfgeneralgroup();
@@ -59,13 +59,14 @@ class CiscoOspfMib::Cospfgeneralgroup : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cospfrfc1583compatibility; //type: boolean
         ydk::YLeaf cospfopaquelsasupport; //type: boolean
@@ -73,118 +74,10 @@ class CiscoOspfMib::Cospfgeneralgroup : public ydk::Entity
         ydk::YLeaf cospfopaqueaslsacount; //type: uint32
         ydk::YLeaf cospfopaqueaslsacksumsum; //type: uint32
 
-}; // CiscoOspfMib::Cospfgeneralgroup
+}; // CISCOOSPFMIB::Cospfgeneralgroup
 
 
-class CiscoOspfMib::Cospflsdbtable : public ydk::Entity
-{
-    public:
-        Cospflsdbtable();
-        ~Cospflsdbtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cospflsdbentry; //type: CiscoOspfMib::Cospflsdbtable::Cospflsdbentry
-
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflsdbtable::Cospflsdbentry> > cospflsdbentry;
-        
-}; // CiscoOspfMib::Cospflsdbtable
-
-
-class CiscoOspfMib::Cospflsdbtable::Cospflsdbentry : public ydk::Entity
-{
-    public:
-        Cospflsdbentry();
-        ~Cospflsdbentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry::ospflsdbareaid)
-        ydk::YLeaf ospflsdbareaid;
-        ydk::YLeaf cospflsdbtype; //type: Cospflsdbtype
-        //type: string (refers to OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry::ospflsdblsid)
-        ydk::YLeaf ospflsdblsid;
-        //type: string (refers to OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry::ospflsdbrouterid)
-        ydk::YLeaf ospflsdbrouterid;
-        ydk::YLeaf cospflsdbsequence; //type: int32
-        ydk::YLeaf cospflsdbage; //type: int32
-        ydk::YLeaf cospflsdbchecksum; //type: int32
-        ydk::YLeaf cospflsdbadvertisement; //type: binary
-        class Cospflsdbtype;
-
-}; // CiscoOspfMib::Cospflsdbtable::Cospflsdbentry
-
-
-class CiscoOspfMib::Cospfshamlinktable : public ydk::Entity
-{
-    public:
-        Cospfshamlinktable();
-        ~Cospfshamlinktable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cospfshamlinkentry; //type: CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry
-
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry> > cospfshamlinkentry;
-        
-}; // CiscoOspfMib::Cospfshamlinktable
-
-
-class CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry : public ydk::Entity
-{
-    public:
-        Cospfshamlinkentry();
-        ~Cospfshamlinkentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cospfshamlinkareaid; //type: string
-        ydk::YLeaf cospfshamlinklocalipaddress; //type: string
-        ydk::YLeaf cospfshamlinkneighborid; //type: string
-        ydk::YLeaf cospfshamlinkretransinterval; //type: int32
-        ydk::YLeaf cospfshamlinkhellointerval; //type: int32
-        ydk::YLeaf cospfshamlinkrtrdeadinterval; //type: int32
-        ydk::YLeaf cospfshamlinkstate; //type: Cospfshamlinkstate
-        ydk::YLeaf cospfshamlinkevents; //type: uint32
-        ydk::YLeaf cospfshamlinkmetric; //type: int32
-        class Cospfshamlinkstate;
-
-}; // CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry
-
-
-class CiscoOspfMib::Cospflocallsdbtable : public ydk::Entity
+class CISCOOSPFMIB::Cospflocallsdbtable : public ydk::Entity
 {
     public:
         Cospflocallsdbtable();
@@ -192,22 +85,23 @@ class CiscoOspfMib::Cospflocallsdbtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cospflocallsdbentry; //type: CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry
+        class Cospflocallsdbentry; //type: CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry> > cospflocallsdbentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry> > cospflocallsdbentry;
         
-}; // CiscoOspfMib::Cospflocallsdbtable
+}; // CISCOOSPFMIB::Cospflocallsdbtable
 
 
-class CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry : public ydk::Entity
+class CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry : public ydk::Entity
 {
     public:
         Cospflocallsdbentry();
@@ -215,13 +109,14 @@ class CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cospflocallsdbipaddress; //type: string
         ydk::YLeaf cospflocallsdbaddresslessif; //type: int32
@@ -234,10 +129,237 @@ class CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry : public ydk::Entit
         ydk::YLeaf cospflocallsdbadvertisement; //type: binary
         class Cospflocallsdbtype;
 
-}; // CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry
+}; // CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry
 
 
-class CiscoOspfMib::Cospfvirtlocallsdbtable : public ydk::Entity
+class CISCOOSPFMIB::Cospflsdbtable : public ydk::Entity
+{
+    public:
+        Cospflsdbtable();
+        ~Cospflsdbtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cospflsdbentry; //type: CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry> > cospflsdbentry;
+        
+}; // CISCOOSPFMIB::Cospflsdbtable
+
+
+class CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry : public ydk::Entity
+{
+    public:
+        Cospflsdbentry();
+        ~Cospflsdbentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry::ospflsdbareaid)
+        ydk::YLeaf ospflsdbareaid;
+        ydk::YLeaf cospflsdbtype; //type: Cospflsdbtype
+        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry::ospflsdblsid)
+        ydk::YLeaf ospflsdblsid;
+        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry::ospflsdbrouterid)
+        ydk::YLeaf ospflsdbrouterid;
+        ydk::YLeaf cospflsdbsequence; //type: int32
+        ydk::YLeaf cospflsdbage; //type: int32
+        ydk::YLeaf cospflsdbchecksum; //type: int32
+        ydk::YLeaf cospflsdbadvertisement; //type: binary
+        class Cospflsdbtype;
+
+}; // CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry
+
+
+class CISCOOSPFMIB::Cospfshamlinknbrtable : public ydk::Entity
+{
+    public:
+        Cospfshamlinknbrtable();
+        ~Cospfshamlinknbrtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cospfshamlinknbrentry; //type: CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry> > cospfshamlinknbrentry;
+        
+}; // CISCOOSPFMIB::Cospfshamlinknbrtable
+
+
+class CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry : public ydk::Entity
+{
+    public:
+        Cospfshamlinknbrentry();
+        ~Cospfshamlinknbrentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cospfshamlinkslocalipaddrtype; //type: InetAddressType
+        //type: binary (refers to cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::cospfshamlinkslocalipaddr)
+        ydk::YLeaf cospfshamlinkslocalipaddr;
+        ydk::YLeaf cospfshamlinknbrarea; //type: string
+        ydk::YLeaf cospfshamlinknbripaddrtype; //type: InetAddressType
+        ydk::YLeaf cospfshamlinknbripaddr; //type: binary
+        ydk::YLeaf cospfshamlinknbrrtrid; //type: string
+        ydk::YLeaf cospfshamlinknbroptions; //type: int32
+        ydk::YLeaf cospfshamlinknbrstate; //type: Cospfshamlinknbrstate
+        ydk::YLeaf cospfshamlinknbrevents; //type: uint32
+        ydk::YLeaf cospfshamlinknbrlsretransqlen; //type: uint32
+        ydk::YLeaf cospfshamlinknbrhellosuppressed; //type: boolean
+        class Cospfshamlinknbrstate;
+
+}; // CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry
+
+
+class CISCOOSPFMIB::Cospfshamlinkstable : public ydk::Entity
+{
+    public:
+        Cospfshamlinkstable();
+        ~Cospfshamlinkstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cospfshamlinksentry; //type: CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry> > cospfshamlinksentry;
+        
+}; // CISCOOSPFMIB::Cospfshamlinkstable
+
+
+class CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry : public ydk::Entity
+{
+    public:
+        Cospfshamlinksentry();
+        ~Cospfshamlinksentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cospfshamlinksareaid; //type: string
+        ydk::YLeaf cospfshamlinkslocalipaddrtype; //type: InetAddressType
+        ydk::YLeaf cospfshamlinkslocalipaddr; //type: binary
+        ydk::YLeaf cospfshamlinksremoteipaddrtype; //type: InetAddressType
+        ydk::YLeaf cospfshamlinksremoteipaddr; //type: binary
+        ydk::YLeaf cospfshamlinksretransinterval; //type: int32
+        ydk::YLeaf cospfshamlinkshellointerval; //type: int32
+        ydk::YLeaf cospfshamlinksrtrdeadinterval; //type: int32
+        ydk::YLeaf cospfshamlinksstate; //type: Cospfshamlinksstate
+        ydk::YLeaf cospfshamlinksevents; //type: uint32
+        ydk::YLeaf cospfshamlinksmetric; //type: int32
+        class Cospfshamlinksstate;
+
+}; // CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry
+
+
+class CISCOOSPFMIB::Cospfshamlinktable : public ydk::Entity
+{
+    public:
+        Cospfshamlinktable();
+        ~Cospfshamlinktable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cospfshamlinkentry; //type: CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry> > cospfshamlinkentry;
+        
+}; // CISCOOSPFMIB::Cospfshamlinktable
+
+
+class CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry : public ydk::Entity
+{
+    public:
+        Cospfshamlinkentry();
+        ~Cospfshamlinkentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cospfshamlinkareaid; //type: string
+        ydk::YLeaf cospfshamlinklocalipaddress; //type: string
+        ydk::YLeaf cospfshamlinkneighborid; //type: string
+        ydk::YLeaf cospfshamlinkretransinterval; //type: int32
+        ydk::YLeaf cospfshamlinkhellointerval; //type: int32
+        ydk::YLeaf cospfshamlinkrtrdeadinterval; //type: int32
+        ydk::YLeaf cospfshamlinkstate; //type: Cospfshamlinkstate
+        ydk::YLeaf cospfshamlinkevents; //type: uint32
+        ydk::YLeaf cospfshamlinkmetric; //type: int32
+        class Cospfshamlinkstate;
+
+}; // CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry
+
+
+class CISCOOSPFMIB::Cospfvirtlocallsdbtable : public ydk::Entity
 {
     public:
         Cospfvirtlocallsdbtable();
@@ -245,22 +367,23 @@ class CiscoOspfMib::Cospfvirtlocallsdbtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cospfvirtlocallsdbentry; //type: CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
+        class Cospfvirtlocallsdbentry; //type: CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry> > cospfvirtlocallsdbentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry> > cospfvirtlocallsdbentry;
         
-}; // CiscoOspfMib::Cospfvirtlocallsdbtable
+}; // CISCOOSPFMIB::Cospfvirtlocallsdbtable
 
 
-class CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry : public ydk::Entity
+class CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry : public ydk::Entity
 {
     public:
         Cospfvirtlocallsdbentry();
@@ -268,13 +391,14 @@ class CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cospfvirtlocallsdbtransitarea; //type: string
         ydk::YLeaf cospfvirtlocallsdbneighbor; //type: string
@@ -287,120 +411,16 @@ class CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry : public yd
         ydk::YLeaf cospfvirtlocallsdbadvertisement; //type: binary
         class Cospfvirtlocallsdbtype;
 
-}; // CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
+}; // CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
 
-
-class CiscoOspfMib::Cospfshamlinknbrtable : public ydk::Entity
+class CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::Cospflocallsdbtype : public ydk::Enum
 {
     public:
-        Cospfshamlinknbrtable();
-        ~Cospfshamlinknbrtable();
+        static const ydk::Enum::YLeaf localOpaqueLink;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Cospfshamlinknbrentry; //type: CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry
-
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry> > cospfshamlinknbrentry;
-        
-}; // CiscoOspfMib::Cospfshamlinknbrtable
-
-
-class CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry : public ydk::Entity
-{
-    public:
-        Cospfshamlinknbrentry();
-        ~Cospfshamlinknbrentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cospfshamlinkslocalipaddrtype; //type: Inetaddresstype
-        //type: binary (refers to CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry::cospfshamlinkslocalipaddr)
-        ydk::YLeaf cospfshamlinkslocalipaddr;
-        ydk::YLeaf cospfshamlinknbrarea; //type: string
-        ydk::YLeaf cospfshamlinknbripaddrtype; //type: Inetaddresstype
-        ydk::YLeaf cospfshamlinknbripaddr; //type: binary
-        ydk::YLeaf cospfshamlinknbrrtrid; //type: string
-        ydk::YLeaf cospfshamlinknbroptions; //type: int32
-        ydk::YLeaf cospfshamlinknbrstate; //type: Cospfshamlinknbrstate
-        ydk::YLeaf cospfshamlinknbrevents; //type: uint32
-        ydk::YLeaf cospfshamlinknbrlsretransqlen; //type: uint32
-        ydk::YLeaf cospfshamlinknbrhellosuppressed; //type: boolean
-        class Cospfshamlinknbrstate;
-
-}; // CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry
-
-
-class CiscoOspfMib::Cospfshamlinkstable : public ydk::Entity
-{
-    public:
-        Cospfshamlinkstable();
-        ~Cospfshamlinkstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cospfshamlinksentry; //type: CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry
-
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry> > cospfshamlinksentry;
-        
-}; // CiscoOspfMib::Cospfshamlinkstable
-
-
-class CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry : public ydk::Entity
-{
-    public:
-        Cospfshamlinksentry();
-        ~Cospfshamlinksentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cospfshamlinksareaid; //type: string
-        ydk::YLeaf cospfshamlinkslocalipaddrtype; //type: Inetaddresstype
-        ydk::YLeaf cospfshamlinkslocalipaddr; //type: binary
-        ydk::YLeaf cospfshamlinksremoteipaddrtype; //type: Inetaddresstype
-        ydk::YLeaf cospfshamlinksremoteipaddr; //type: binary
-        ydk::YLeaf cospfshamlinksretransinterval; //type: int32
-        ydk::YLeaf cospfshamlinkshellointerval; //type: int32
-        ydk::YLeaf cospfshamlinksrtrdeadinterval; //type: int32
-        ydk::YLeaf cospfshamlinksstate; //type: Cospfshamlinksstate
-        ydk::YLeaf cospfshamlinksevents; //type: uint32
-        ydk::YLeaf cospfshamlinksmetric; //type: int32
-        class Cospfshamlinksstate;
-
-}; // CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry
-
-class CiscoOspfMib::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype : public ydk::Enum
+class CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf areaOpaqueLink;
@@ -408,29 +428,7 @@ class CiscoOspfMib::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype : public ydk::
 
 };
 
-class CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf pointToPoint;
-
-};
-
-class CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry::Cospflocallsdbtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf localOpaqueLink;
-
-};
-
-class CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::Cospfvirtlocallsdbtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf localOpaqueLink;
-
-};
-
-class CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate : public ydk::Enum
+class CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -444,11 +442,26 @@ class CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinkn
 
 };
 
-class CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksstate : public ydk::Enum
+class CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf pointToPoint;
+
+};
+
+class CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkstate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf pointToPoint;
+
+};
+
+class CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::Cospfvirtlocallsdbtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 

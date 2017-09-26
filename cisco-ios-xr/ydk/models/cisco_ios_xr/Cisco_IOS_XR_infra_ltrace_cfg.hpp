@@ -10,14 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_ltrace_cfg {
 
-class InfraLtraceMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf dynamic;
-
-};
-
 class InfraLtraceScale : public ydk::Enum
 {
     public:
@@ -27,6 +19,14 @@ class InfraLtraceScale : public ydk::Enum
         static const ydk::Enum::YLeaf Y_4;
         static const ydk::Enum::YLeaf Y_8;
         static const ydk::Enum::YLeaf Y_16;
+
+};
+
+class InfraLtraceMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
 
 };
 

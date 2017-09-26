@@ -18,7 +18,7 @@ class Aaa : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class Aaa : public ydk::Entity
 
         class Usernames; //type: Aaa::Usernames
 
-        std::shared_ptr<Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames> usernames;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames> usernames;
         
 }; // Aaa
 
@@ -46,17 +46,18 @@ class Aaa::Usernames : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Username; //type: Aaa::Usernames::Username
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username> > username;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username> > username;
         
 }; // Aaa::Usernames
 
@@ -69,7 +70,34 @@ class Aaa::Usernames::Username : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        class UsergroupUnderUsernames; //type: Aaa::Usernames::Username::UsergroupUnderUsernames
+        class Secret; //type: Aaa::Usernames::Username::Secret
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username::Secret> secret;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username::UsergroupUnderUsernames> usergroup_under_usernames;
+        
+}; // Aaa::Usernames::Username
+
+
+class Aaa::Usernames::Username::Secret : public ydk::Entity
+{
+    public:
+        Secret();
+        ~Secret();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -77,13 +105,12 @@ class Aaa::Usernames::Username : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf secret; //type: string
-        class UsergroupUnderUsernames; //type: Aaa::Usernames::Username::UsergroupUnderUsernames
+        ydk::YLeaf type; //type: AaaAdminPassword
+        ydk::YLeaf secret5; //type: string
+        ydk::YLeaf secret8; //type: string
+        ydk::YLeaf secret9; //type: string
 
-        std::shared_ptr<Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username::UsergroupUnderUsernames> usergroup_under_usernames;
-        
-}; // Aaa::Usernames::Username
+}; // Aaa::Usernames::Username::Secret
 
 
 class Aaa::Usernames::Username::UsergroupUnderUsernames : public ydk::Entity
@@ -94,7 +121,7 @@ class Aaa::Usernames::Username::UsergroupUnderUsernames : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -104,7 +131,7 @@ class Aaa::Usernames::Username::UsergroupUnderUsernames : public ydk::Entity
 
         class UsergroupUnderUsername; //type: Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername> > usergroup_under_username;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername> > usergroup_under_username;
         
 }; // Aaa::Usernames::Username::UsergroupUnderUsernames
 
@@ -117,7 +144,7 @@ class Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -128,6 +155,15 @@ class Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername 
         ydk::YLeaf name; //type: string
 
 }; // Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername
+
+class AaaAdminPassword : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type5;
+        static const ydk::Enum::YLeaf type8;
+        static const ydk::Enum::YLeaf type9;
+
+};
 
 
 }

@@ -18,7 +18,7 @@ class Vservice : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -37,108 +37,13 @@ class Vservice : public ydk::Entity
         class MetadataTemplates; //type: Vservice::MetadataTemplates
         class ServiceFunctionPath; //type: Vservice::ServiceFunctionPath
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions> metadata_dispositions;
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataTemplates> metadata_templates;
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator> service_function_forward_locator;
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator> service_function_locator;
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath> service_function_path;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions> metadata_dispositions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataTemplates> metadata_templates;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator> service_function_forward_locator;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator> service_function_locator;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath> service_function_path;
         
 }; // Vservice
-
-
-class Vservice::ServiceFunctionLocator : public ydk::Entity
-{
-    public:
-        ServiceFunctionLocator();
-        ~ServiceFunctionLocator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Names; //type: Vservice::ServiceFunctionLocator::Names
-
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names> names;
-        
-}; // Vservice::ServiceFunctionLocator
-
-
-class Vservice::ServiceFunctionLocator::Names : public ydk::Entity
-{
-    public:
-        Names();
-        ~Names();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Name; //type: Vservice::ServiceFunctionLocator::Names::Name
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names::Name> > name;
-        
-}; // Vservice::ServiceFunctionLocator::Names
-
-
-class Vservice::ServiceFunctionLocator::Names::Name : public ydk::Entity
-{
-    public:
-        Name();
-        ~Name();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf function_name; //type: string
-        ydk::YLeaf locator_id; //type: uint32
-        class Node; //type: Vservice::ServiceFunctionLocator::Names::Name::Node
-
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names::Name::Node> node;
-        
-}; // Vservice::ServiceFunctionLocator::Names::Name
-
-
-class Vservice::ServiceFunctionLocator::Names::Name::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf transport; //type: SfcSfTransport
-        ydk::YLeaf ipv4_source_address; //type: string
-        ydk::YLeaf ipv4_destination_address; //type: string
-        ydk::YLeaf vni; //type: int32
-
-}; // Vservice::ServiceFunctionLocator::Names::Name::Node
 
 
 class Vservice::MetadataDispositions : public ydk::Entity
@@ -149,17 +54,18 @@ class Vservice::MetadataDispositions : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class MetadataDisposition; //type: Vservice::MetadataDispositions::MetadataDisposition
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition> > metadata_disposition;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition> > metadata_disposition;
         
 }; // Vservice::MetadataDispositions
 
@@ -172,19 +78,20 @@ class Vservice::MetadataDispositions::MetadataDisposition : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf disposition_name; //type: string
         ydk::YLeaf format; //type: SfcMetadataType1AllocFormat
         class MatchEntry; //type: Vservice::MetadataDispositions::MetadataDisposition::MatchEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition::MatchEntry> > match_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition::MatchEntry> > match_entry;
         
 }; // Vservice::MetadataDispositions::MetadataDisposition
 
@@ -197,7 +104,7 @@ class Vservice::MetadataDispositions::MetadataDisposition::MatchEntry : public y
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -208,7 +115,7 @@ class Vservice::MetadataDispositions::MetadataDisposition::MatchEntry : public y
         ydk::YLeaf match_entry_name; //type: string
         class Node; //type: Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node> node;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node> node;
         
 }; // Vservice::MetadataDispositions::MetadataDisposition::MatchEntry
 
@@ -221,7 +128,7 @@ class Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -238,6 +145,55 @@ class Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node : pu
 }; // Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node
 
 
+class Vservice::MetadataTemplates : public ydk::Entity
+{
+    public:
+        MetadataTemplates();
+        ~MetadataTemplates();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class MetadataTemplate; //type: Vservice::MetadataTemplates::MetadataTemplate
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataTemplates::MetadataTemplate> > metadata_template;
+        
+}; // Vservice::MetadataTemplates
+
+
+class Vservice::MetadataTemplates::MetadataTemplate : public ydk::Entity
+{
+    public:
+        MetadataTemplate();
+        ~MetadataTemplate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf metadata_name; //type: string
+        ydk::YLeaf type; //type: SfcMetadataAlloc
+        ydk::YLeaf format; //type: SfcMetadataType1AllocFormat
+        ydk::YLeaf tenant_id; //type: uint32
+
+}; // Vservice::MetadataTemplates::MetadataTemplate
+
+
 class Vservice::ServiceFunctionForwardLocator : public ydk::Entity
 {
     public:
@@ -246,17 +202,18 @@ class Vservice::ServiceFunctionForwardLocator : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Names; //type: Vservice::ServiceFunctionForwardLocator::Names
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names> names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names> names;
         
 }; // Vservice::ServiceFunctionForwardLocator
 
@@ -269,17 +226,18 @@ class Vservice::ServiceFunctionForwardLocator::Names : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Name; //type: Vservice::ServiceFunctionForwardLocator::Names::Name
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names::Name> > name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names::Name> > name;
         
 }; // Vservice::ServiceFunctionForwardLocator::Names
 
@@ -292,19 +250,20 @@ class Vservice::ServiceFunctionForwardLocator::Names::Name : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf function_name; //type: string
         ydk::YLeaf locator_id; //type: uint32
         class Node; //type: Vservice::ServiceFunctionForwardLocator::Names::Name::Node
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names::Name::Node> node;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names::Name::Node> node;
         
 }; // Vservice::ServiceFunctionForwardLocator::Names::Name
 
@@ -317,7 +276,7 @@ class Vservice::ServiceFunctionForwardLocator::Names::Name::Node : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -333,38 +292,89 @@ class Vservice::ServiceFunctionForwardLocator::Names::Name::Node : public ydk::E
 }; // Vservice::ServiceFunctionForwardLocator::Names::Name::Node
 
 
-class Vservice::MetadataTemplates : public ydk::Entity
+class Vservice::ServiceFunctionLocator : public ydk::Entity
 {
     public:
-        MetadataTemplates();
-        ~MetadataTemplates();
+        ServiceFunctionLocator();
+        ~ServiceFunctionLocator();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class MetadataTemplate; //type: Vservice::MetadataTemplates::MetadataTemplate
+        class Names; //type: Vservice::ServiceFunctionLocator::Names
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataTemplates::MetadataTemplate> > metadata_template;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names> names;
         
-}; // Vservice::MetadataTemplates
+}; // Vservice::ServiceFunctionLocator
 
 
-class Vservice::MetadataTemplates::MetadataTemplate : public ydk::Entity
+class Vservice::ServiceFunctionLocator::Names : public ydk::Entity
 {
     public:
-        MetadataTemplate();
-        ~MetadataTemplate();
+        Names();
+        ~Names();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Name; //type: Vservice::ServiceFunctionLocator::Names::Name
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names::Name> > name;
+        
+}; // Vservice::ServiceFunctionLocator::Names
+
+
+class Vservice::ServiceFunctionLocator::Names::Name : public ydk::Entity
+{
+    public:
+        Name();
+        ~Name();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf function_name; //type: string
+        ydk::YLeaf locator_id; //type: uint32
+        class Node; //type: Vservice::ServiceFunctionLocator::Names::Name::Node
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names::Name::Node> node;
+        
+}; // Vservice::ServiceFunctionLocator::Names::Name
+
+
+class Vservice::ServiceFunctionLocator::Names::Name::Node : public ydk::Entity
+{
+    public:
+        Node();
+        ~Node();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -372,12 +382,12 @@ class Vservice::MetadataTemplates::MetadataTemplate : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf metadata_name; //type: string
-        ydk::YLeaf type; //type: SfcMetadataAlloc
-        ydk::YLeaf format; //type: SfcMetadataType1AllocFormat
-        ydk::YLeaf tenant_id; //type: uint32
+        ydk::YLeaf transport; //type: SfcSfTransport
+        ydk::YLeaf ipv4_source_address; //type: string
+        ydk::YLeaf ipv4_destination_address; //type: string
+        ydk::YLeaf vni; //type: int32
 
-}; // Vservice::MetadataTemplates::MetadataTemplate
+}; // Vservice::ServiceFunctionLocator::Names::Name::Node
 
 
 class Vservice::ServiceFunctionPath : public ydk::Entity
@@ -388,17 +398,18 @@ class Vservice::ServiceFunctionPath : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Paths; //type: Vservice::ServiceFunctionPath::Paths
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths> paths;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths> paths;
         
 }; // Vservice::ServiceFunctionPath
 
@@ -411,17 +422,18 @@ class Vservice::ServiceFunctionPath::Paths : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Path; //type: Vservice::ServiceFunctionPath::Paths::Path
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path> > path;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path> > path;
         
 }; // Vservice::ServiceFunctionPath::Paths
 
@@ -434,18 +446,19 @@ class Vservice::ServiceFunctionPath::Paths::Path : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf path_id; //type: uint32
         class ServiceIndex; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex> > service_index;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex> > service_index;
         
 }; // Vservice::ServiceFunctionPath::Paths::Path
 
@@ -458,7 +471,7 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -471,11 +484,149 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex : public ydk::Ent
         class SffNames; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames
         class SfNames; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames> sf_names;
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames> sff_names;
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate> terminate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames> sf_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames> sff_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate> terminate;
         
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
+
+
+class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames : public ydk::Entity
+{
+    public:
+        SfNames();
+        ~SfNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SfName; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName> > sf_name;
+        
+}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames
+
+
+class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName : public ydk::Entity
+{
+    public:
+        SfName();
+        ~SfName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class Node; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node> node;
+        
+}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName
+
+
+class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node : public ydk::Entity
+{
+    public:
+        Node();
+        ~Node();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf reserved; //type: empty
+
+}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node
+
+
+class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames : public ydk::Entity
+{
+    public:
+        SffNames();
+        ~SffNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SffName; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName> > sff_name;
+        
+}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames
+
+
+class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName : public ydk::Entity
+{
+    public:
+        SffName();
+        ~SffName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class Node; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node> node;
+        
+}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
+
+
+class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node : public ydk::Entity
+{
+    public:
+        Node();
+        ~Node();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf reserved; //type: empty
+
+}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node
 
 
 class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate : public ydk::Entity
@@ -486,7 +637,7 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -496,7 +647,7 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate : publ
 
         class Node; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node
 
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node> node;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node> node;
         
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate
 
@@ -509,7 +660,7 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -524,151 +675,6 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node 
 
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node
 
-
-class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames : public ydk::Entity
-{
-    public:
-        SffNames();
-        ~SffNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SffName; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName> > sff_name;
-        
-}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames
-
-
-class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName : public ydk::Entity
-{
-    public:
-        SffName();
-        ~SffName();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        class Node; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node
-
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node> node;
-        
-}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
-
-
-class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf reserved; //type: empty
-
-}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node
-
-
-class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames : public ydk::Entity
-{
-    public:
-        SfNames();
-        ~SfNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SfName; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName> > sf_name;
-        
-}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames
-
-
-class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName : public ydk::Entity
-{
-    public:
-        SfName();
-        ~SfName();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        class Node; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node
-
-        std::shared_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node> node;
-        
-}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName
-
-
-class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf reserved; //type: empty
-
-}; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node
-
-class SfcMetadataDispositionAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf redirect_nexthop;
-
-};
-
 class SfcSfTransport : public ydk::Enum
 {
     public:
@@ -680,6 +686,13 @@ class SfcMetadataAlloc : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf type1;
+
+};
+
+class SfcMetadataDispositionAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf redirect_nexthop;
 
 };
 

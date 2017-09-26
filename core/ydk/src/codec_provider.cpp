@@ -24,6 +24,7 @@
 
 #include "codec_provider.hpp"
 #include "entity_lookup.hpp"
+#include "ietf_parser.hpp"
 #include "logger.hpp"
 
 namespace ydk
@@ -95,7 +96,13 @@ void CodecServiceProvider::initialize_root_schema(const std::string & bundle_nam
 {
     YLOG_DEBUG("Initializing root schema for {}", bundle_name);
     ly_verb(LY_LLSILENT); //turn off libyang logging at the beginning
-    auto root_schema = repo.create_root_schema(get_global_capabilities());
+
+    IetfCapabilitiesParser capabilities_parser{};
+    std::vector<std::string> empty_caps;
+    auto yang_caps = capabilities_parser.parse(empty_caps);
+
+    auto root_schema = repo.create_root_schema(get_global_capabilities_lookup_tables(), yang_caps);
+
     std::string s{bundle_name};
     std::pair<std::string, std::shared_ptr<path::RootSchemaNode>> entry {s, root_schema};
     m_root_schema_table.insert(entry);

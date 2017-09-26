@@ -11,22 +11,321 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_netconf_monitoring {
 
-SchemaFormat::SchemaFormat()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:schema-format")
+GetSchema::GetSchema()
+    :
+    input(std::make_shared<GetSchema::Input>())
+	,output(std::make_shared<GetSchema::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+GetSchema::~GetSchema()
 {
 }
 
-SchemaFormat::~SchemaFormat()
+bool GetSchema::has_data() const
+{
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool GetSchema::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string GetSchema::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:get-schema";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSchema::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<GetSchema::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<GetSchema::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void GetSchema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Transport::Transport()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:transport")
+void GetSchema::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-Transport::~Transport()
+std::shared_ptr<Entity> GetSchema::clone_ptr() const
 {
+    return std::make_shared<GetSchema>();
+}
+
+std::string GetSchema::get_bundle_yang_models_location() const
+{
+    return ydk_ietf_models_path;
+}
+
+std::string GetSchema::get_bundle_name() const
+{
+    return "ietf";
+}
+
+augment_capabilities_function GetSchema::get_augment_capabilities_function() const
+{
+    return ietf_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> GetSchema::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool GetSchema::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+GetSchema::Input::Input()
+    :
+    format{YType::identityref, "format"},
+    identifier{YType::str, "identifier"},
+    version{YType::str, "version"}
+{
+
+    yang_name = "input"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+GetSchema::Input::~Input()
+{
+}
+
+bool GetSchema::Input::has_data() const
+{
+    return format.is_set
+	|| identifier.is_set
+	|| version.is_set;
+}
+
+bool GetSchema::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(format.yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(version.yfilter);
+}
+
+std::string GetSchema::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSchema::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSchema::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void GetSchema::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "format")
+    {
+        format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "identifier")
+    {
+        identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GetSchema::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool GetSchema::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "format" || name == "identifier" || name == "version")
+        return true;
+    return false;
+}
+
+GetSchema::Output::Output()
+    :
+    data{YType::str, "data"}
+{
+
+    yang_name = "output"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+GetSchema::Output::~Output()
+{
+}
+
+bool GetSchema::Output::has_data() const
+{
+    return data.is_set;
+}
+
+bool GetSchema::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter);
+}
+
+std::string GetSchema::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSchema::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSchema::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void GetSchema::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GetSchema::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool GetSchema::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data")
+        return true;
+    return false;
 }
 
 NetconfState::NetconfState()
@@ -38,16 +337,12 @@ NetconfState::NetconfState()
 	,statistics(std::make_shared<NetconfState::Statistics>())
 {
     capabilities->parent = this;
-
     datastores->parent = this;
-
     schemas->parent = this;
-
     sessions->parent = this;
-
     statistics->parent = this;
 
-    yang_name = "netconf-state"; yang_parent_name = "ietf-netconf-monitoring";
+    yang_name = "netconf-state"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 NetconfState::~NetconfState()
@@ -77,26 +372,15 @@ std::string NetconfState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf-monitoring:netconf-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -225,7 +509,8 @@ NetconfState::Capabilities::Capabilities()
     :
     capability{YType::str, "capability"}
 {
-    yang_name = "capabilities"; yang_parent_name = "netconf-state";
+
+    yang_name = "capabilities"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Capabilities::~Capabilities()
@@ -253,35 +538,28 @@ bool NetconfState::Capabilities::has_operation() const
 	|| ydk::is_set(capability.yfilter);
 }
 
+std::string NetconfState::Capabilities::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Capabilities::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "capabilities";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Capabilities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Capabilities::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto capability_name_datas = capability.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), capability_name_datas.begin(), capability_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -321,7 +599,8 @@ bool NetconfState::Capabilities::has_leaf_or_child_of_name(const std::string & n
 
 NetconfState::Datastores::Datastores()
 {
-    yang_name = "datastores"; yang_parent_name = "netconf-state";
+
+    yang_name = "datastores"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Datastores::~Datastores()
@@ -348,33 +627,26 @@ bool NetconfState::Datastores::has_operation() const
     return is_set(yfilter);
 }
 
+std::string NetconfState::Datastores::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Datastores::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "datastores";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Datastores::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -431,7 +703,8 @@ NetconfState::Datastores::Datastore::Datastore()
     	,
     locks(nullptr) // presence node
 {
-    yang_name = "datastore"; yang_parent_name = "datastores";
+
+    yang_name = "datastore"; yang_parent_name = "datastores"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Datastores::Datastore::~Datastore()
@@ -451,34 +724,27 @@ bool NetconfState::Datastores::Datastore::has_operation() const
 	|| (locks !=  nullptr && locks->has_operation());
 }
 
+std::string NetconfState::Datastores::Datastore::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/datastores/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Datastores::Datastore::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "datastore" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Datastores::Datastore::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datastore::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/datastores/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -538,7 +804,7 @@ NetconfState::Datastores::Datastore::Locks::Locks()
 {
     global_lock->parent = this;
 
-    yang_name = "locks"; yang_parent_name = "datastore";
+    yang_name = "locks"; yang_parent_name = "datastore"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetconfState::Datastores::Datastore::Locks::~Locks()
@@ -570,29 +836,15 @@ std::string NetconfState::Datastores::Datastore::Locks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "locks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Datastores::Datastore::Locks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datastore::Locks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Locks' in ietf_netconf_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -662,7 +914,8 @@ NetconfState::Datastores::Datastore::Locks::GlobalLock::GlobalLock()
     locked_by_session{YType::uint32, "locked-by-session"},
     locked_time{YType::str, "locked-time"}
 {
-    yang_name = "global-lock"; yang_parent_name = "locks";
+
+    yang_name = "global-lock"; yang_parent_name = "locks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetconfState::Datastores::Datastore::Locks::GlobalLock::~GlobalLock()
@@ -686,31 +939,17 @@ std::string NetconfState::Datastores::Datastore::Locks::GlobalLock::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "global-lock";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Datastores::Datastore::Locks::GlobalLock::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datastore::Locks::GlobalLock::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GlobalLock' in ietf_netconf_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (locked_by_session.is_set || is_set(locked_by_session.yfilter)) leaf_name_data.push_back(locked_by_session.get_name_leafdata());
     if (locked_time.is_set || is_set(locked_time.yfilter)) leaf_name_data.push_back(locked_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -768,7 +1007,8 @@ NetconfState::Datastores::Datastore::Locks::PartialLock::PartialLock()
     locked_time{YType::str, "locked-time"},
     select{YType::str, "select"}
 {
-    yang_name = "partial-lock"; yang_parent_name = "locks";
+
+    yang_name = "partial-lock"; yang_parent_name = "locks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetconfState::Datastores::Datastore::Locks::PartialLock::~PartialLock()
@@ -816,23 +1056,11 @@ std::string NetconfState::Datastores::Datastore::Locks::PartialLock::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "partial-lock" <<"[lock-id='" <<lock_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datastore::Locks::PartialLock::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PartialLock' in ietf_netconf_monitoring cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (lock_id.is_set || is_set(lock_id.yfilter)) leaf_name_data.push_back(lock_id.get_name_leafdata());
@@ -843,9 +1071,7 @@ const EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_en
     leaf_name_data.insert(leaf_name_data.end(), locked_node_name_datas.begin(), locked_node_name_datas.end());
     auto select_name_datas = select.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), select_name_datas.begin(), select_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -923,7 +1149,8 @@ bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_leaf_or_child_
 
 NetconfState::Schemas::Schemas()
 {
-    yang_name = "schemas"; yang_parent_name = "netconf-state";
+
+    yang_name = "schemas"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Schemas::~Schemas()
@@ -950,33 +1177,26 @@ bool NetconfState::Schemas::has_operation() const
     return is_set(yfilter);
 }
 
+std::string NetconfState::Schemas::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Schemas::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "schemas";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Schemas::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Schemas::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1035,7 +1255,8 @@ NetconfState::Schemas::Schema::Schema()
     location{YType::str, "location"},
     namespace_{YType::str, "namespace"}
 {
-    yang_name = "schema"; yang_parent_name = "schemas";
+
+    yang_name = "schema"; yang_parent_name = "schemas"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Schemas::Schema::~Schema()
@@ -1070,27 +1291,22 @@ bool NetconfState::Schemas::Schema::has_operation() const
 	|| ydk::is_set(namespace_.yfilter);
 }
 
+std::string NetconfState::Schemas::Schema::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/schemas/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Schemas::Schema::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "schema" <<"[identifier='" <<identifier <<"']" <<"[version='" <<version <<"']" <<"[format='" <<format <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Schemas::Schema::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/schemas/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
@@ -1100,9 +1316,7 @@ const EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor
 
     auto location_name_datas = location.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), location_name_datas.begin(), location_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1182,7 +1396,8 @@ bool NetconfState::Schemas::Schema::has_leaf_or_child_of_name(const std::string 
 
 NetconfState::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "netconf-state";
+
+    yang_name = "sessions"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Sessions::~Sessions()
@@ -1209,33 +1424,26 @@ bool NetconfState::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
+std::string NetconfState::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1298,7 +1506,8 @@ NetconfState::Sessions::Session::Session()
     transport{YType::identityref, "transport"},
     username{YType::str, "username"}
 {
-    yang_name = "session"; yang_parent_name = "sessions";
+
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Sessions::Session::~Session()
@@ -1332,27 +1541,22 @@ bool NetconfState::Sessions::Session::has_operation() const
 	|| ydk::is_set(username.yfilter);
 }
 
+std::string NetconfState::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[session-id='" <<session_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Sessions::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Sessions::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
@@ -1365,9 +1569,7 @@ const EntityPath NetconfState::Sessions::Session::get_entity_path(Entity* ancest
     if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1498,7 +1700,8 @@ NetconfState::Statistics::Statistics()
     out_notifications{YType::uint32, "out-notifications"},
     out_rpc_errors{YType::uint32, "out-rpc-errors"}
 {
-    yang_name = "statistics"; yang_parent_name = "netconf-state";
+
+    yang_name = "statistics"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfState::Statistics::~Statistics()
@@ -1530,27 +1733,22 @@ bool NetconfState::Statistics::has_operation() const
 	|| ydk::is_set(out_rpc_errors.yfilter);
 }
 
+std::string NetconfState::Statistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfState::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfState::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfState::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:netconf-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dropped_sessions.is_set || is_set(dropped_sessions.yfilter)) leaf_name_data.push_back(dropped_sessions.get_name_leafdata());
@@ -1562,9 +1760,7 @@ const EntityPath NetconfState::Statistics::get_entity_path(Entity* ancestor) con
     if (out_notifications.is_set || is_set(out_notifications.yfilter)) leaf_name_data.push_back(out_notifications.get_name_leafdata());
     if (out_rpc_errors.is_set || is_set(out_rpc_errors.yfilter)) leaf_name_data.push_back(out_rpc_errors.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1674,368 +1870,30 @@ bool NetconfState::Statistics::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-GetSchema::GetSchema()
-    :
-    input(std::make_shared<GetSchema::Input>())
-	,output(std::make_shared<GetSchema::Output>())
+SchemaFormat::SchemaFormat()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:schema-format")
 {
-    input->parent = this;
-
-    output->parent = this;
-
-    yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring";
-}
-
-GetSchema::~GetSchema()
-{
-}
-
-bool GetSchema::has_data() const
-{
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool GetSchema::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string GetSchema::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-netconf-monitoring:get-schema";
-
-    return path_buffer.str();
 
 }
 
-const EntityPath GetSchema::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<GetSchema::Input>();
-        }
-        return input;
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output == nullptr)
-        {
-            output = std::make_shared<GetSchema::Output>();
-        }
-        return output;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    if(output != nullptr)
-    {
-        children["output"] = output;
-    }
-
-    return children;
-}
-
-void GetSchema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+SchemaFormat::~SchemaFormat()
 {
 }
 
-void GetSchema::set_filter(const std::string & value_path, YFilter yfilter)
+Transport::Transport()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:transport")
 {
-}
-
-std::shared_ptr<Entity> GetSchema::clone_ptr() const
-{
-    return std::make_shared<GetSchema>();
-}
-
-std::string GetSchema::get_bundle_yang_models_location() const
-{
-    return ydk_ietf_models_path;
-}
-
-std::string GetSchema::get_bundle_name() const
-{
-    return "ietf";
-}
-
-augment_capabilities_function GetSchema::get_augment_capabilities_function() const
-{
-    return ietf_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> GetSchema::get_namespace_identity_lookup() const
-{
-    return ietf_namespace_identity_lookup;
-}
-
-bool GetSchema::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-GetSchema::Input::Input()
-    :
-    format{YType::identityref, "format"},
-    identifier{YType::str, "identifier"},
-    version{YType::str, "version"}
-{
-    yang_name = "input"; yang_parent_name = "get-schema";
-}
-
-GetSchema::Input::~Input()
-{
-}
-
-bool GetSchema::Input::has_data() const
-{
-    return format.is_set
-	|| identifier.is_set
-	|| version.is_set;
-}
-
-bool GetSchema::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(format.yfilter)
-	|| ydk::is_set(identifier.yfilter)
-	|| ydk::is_set(version.yfilter);
-}
-
-std::string GetSchema::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-
-    return path_buffer.str();
 
 }
 
-const EntityPath GetSchema::Input::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
-    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void GetSchema::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "format")
-    {
-        format = value;
-        format.value_namespace = name_space;
-        format.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "identifier")
-    {
-        identifier = value;
-        identifier.value_namespace = name_space;
-        identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void GetSchema::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "format")
-    {
-        format.yfilter = yfilter;
-    }
-    if(value_path == "identifier")
-    {
-        identifier.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool GetSchema::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "format" || name == "identifier" || name == "version")
-        return true;
-    return false;
-}
-
-GetSchema::Output::Output()
-    :
-    data{YType::str, "data"}
-{
-    yang_name = "output"; yang_parent_name = "get-schema";
-}
-
-GetSchema::Output::~Output()
-{
-}
-
-bool GetSchema::Output::has_data() const
-{
-    return data.is_set;
-}
-
-bool GetSchema::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter);
-}
-
-std::string GetSchema::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath GetSchema::Output::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void GetSchema::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void GetSchema::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-}
-
-bool GetSchema::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data")
-        return true;
-    return false;
-}
-
-Rnc::Rnc()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
-{
-}
-
-Rnc::~Rnc()
-{
-}
-
-Yang::Yang()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
-{
-}
-
-Yang::~Yang()
+Transport::~Transport()
 {
 }
 
 NetconfBeep::NetconfBeep()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-beep")
 {
+
 }
 
 NetconfBeep::~NetconfBeep()
@@ -2045,63 +1903,90 @@ NetconfBeep::~NetconfBeep()
 NetconfSoapOverBeep::NetconfSoapOverBeep()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-beep")
 {
+
 }
 
 NetconfSoapOverBeep::~NetconfSoapOverBeep()
 {
 }
 
-NetconfSsh::NetconfSsh()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-ssh")
-{
-}
-
-NetconfSsh::~NetconfSsh()
-{
-}
-
 NetconfSoapOverHttps::NetconfSoapOverHttps()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-https")
 {
+
 }
 
 NetconfSoapOverHttps::~NetconfSoapOverHttps()
 {
 }
 
-Rng::Rng()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rng")
+NetconfSsh::NetconfSsh()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-ssh")
 {
+
 }
 
-Rng::~Rng()
+NetconfSsh::~NetconfSsh()
 {
 }
 
 NetconfTls::NetconfTls()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-tls")
 {
+
 }
 
 NetconfTls::~NetconfTls()
 {
 }
 
-Yin::Yin()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yin")
+Rnc::Rnc()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
+{
+
+}
+
+Rnc::~Rnc()
 {
 }
 
-Yin::~Yin()
+Rng::Rng()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rng")
+{
+
+}
+
+Rng::~Rng()
 {
 }
 
 Xsd::Xsd()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:xsd")
 {
+
 }
 
 Xsd::~Xsd()
+{
+}
+
+Yang::Yang()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
+{
+
+}
+
+Yang::~Yang()
+{
+}
+
+Yin::Yin()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yin")
+{
+
+}
+
+Yin::~Yin()
 {
 }
 

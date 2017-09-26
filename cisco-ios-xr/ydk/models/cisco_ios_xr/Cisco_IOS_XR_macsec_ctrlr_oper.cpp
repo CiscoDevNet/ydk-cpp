@@ -17,7 +17,7 @@ MacsecCtrlrOper::MacsecCtrlrOper()
 {
     macsec_ctrlr_ports->parent = this;
 
-    yang_name = "macsec-ctrlr-oper"; yang_parent_name = "Cisco-IOS-XR-macsec-ctrlr-oper";
+    yang_name = "macsec-ctrlr-oper"; yang_parent_name = "Cisco-IOS-XR-macsec-ctrlr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MacsecCtrlrOper::~MacsecCtrlrOper()
@@ -39,26 +39,15 @@ std::string MacsecCtrlrOper::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-macsec-ctrlr-oper:macsec-ctrlr-oper";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacsecCtrlrOper::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool MacsecCtrlrOper::has_leaf_or_child_of_name(const std::string & name) const
 
 MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPorts()
 {
-    yang_name = "macsec-ctrlr-ports"; yang_parent_name = "macsec-ctrlr-oper";
+
+    yang_name = "macsec-ctrlr-ports"; yang_parent_name = "macsec-ctrlr-oper"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MacsecCtrlrOper::MacsecCtrlrPorts::~MacsecCtrlrPorts()
@@ -156,33 +146,26 @@ bool MacsecCtrlrOper::MacsecCtrlrPorts::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MacsecCtrlrOper::MacsecCtrlrPorts::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-macsec-ctrlr-oper:macsec-ctrlr-oper/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MacsecCtrlrOper::MacsecCtrlrPorts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-ctrlr-ports";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-macsec-ctrlr-oper:macsec-ctrlr-oper/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrPort()
 {
     macsec_ctrlr_info->parent = this;
 
-    yang_name = "macsec-ctrlr-port"; yang_parent_name = "macsec-ctrlr-ports";
+    yang_name = "macsec-ctrlr-port"; yang_parent_name = "macsec-ctrlr-ports"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::~MacsecCtrlrPort()
@@ -261,34 +244,27 @@ bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::has_operation() const
 	|| (macsec_ctrlr_info !=  nullptr && macsec_ctrlr_info->has_operation());
 }
 
+std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-macsec-ctrlr-oper:macsec-ctrlr-oper/macsec-ctrlr-ports/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-ctrlr-port" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-macsec-ctrlr-oper:macsec-ctrlr-oper/macsec-ctrlr-ports/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -353,10 +329,9 @@ MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::MacsecCtrlr
 	,encrypt_sc_status(std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus>())
 {
     decrypt_sc_status->parent = this;
-
     encrypt_sc_status->parent = this;
 
-    yang_name = "macsec-ctrlr-info"; yang_parent_name = "macsec-ctrlr-port";
+    yang_name = "macsec-ctrlr-info"; yang_parent_name = "macsec-ctrlr-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::~MacsecCtrlrInfo()
@@ -388,23 +363,11 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-ctrlr-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MacsecCtrlrInfo' in Cisco_IOS_XR_macsec_ctrlr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (must_secure.is_set || is_set(must_secure.yfilter)) leaf_name_data.push_back(must_secure.get_name_leafdata());
@@ -412,9 +375,7 @@ const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlr
     if (secure_mode.is_set || is_set(secure_mode.yfilter)) leaf_name_data.push_back(secure_mode.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -512,299 +473,6 @@ bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::has_le
     return false;
 }
 
-MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::EncryptScStatus()
-    :
-    cipher_suite{YType::enumeration, "cipher-suite"},
-    confidentiality_offset{YType::uint32, "confidentiality-offset"},
-    max_packet_number{YType::uint64, "max-packet-number"},
-    protection_enabled{YType::boolean, "protection-enabled"},
-    recent_packet_number{YType::uint64, "recent-packet-number"},
-    secure_channel_id{YType::str, "secure-channel-id"}
-{
-    yang_name = "encrypt-sc-status"; yang_parent_name = "macsec-ctrlr-info";
-}
-
-MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::~EncryptScStatus()
-{
-}
-
-bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::has_data() const
-{
-    for (std::size_t index=0; index<active_association.size(); index++)
-    {
-        if(active_association[index]->has_data())
-            return true;
-    }
-    return cipher_suite.is_set
-	|| confidentiality_offset.is_set
-	|| max_packet_number.is_set
-	|| protection_enabled.is_set
-	|| recent_packet_number.is_set
-	|| secure_channel_id.is_set;
-}
-
-bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::has_operation() const
-{
-    for (std::size_t index=0; index<active_association.size(); index++)
-    {
-        if(active_association[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(cipher_suite.yfilter)
-	|| ydk::is_set(confidentiality_offset.yfilter)
-	|| ydk::is_set(max_packet_number.yfilter)
-	|| ydk::is_set(protection_enabled.yfilter)
-	|| ydk::is_set(recent_packet_number.yfilter)
-	|| ydk::is_set(secure_channel_id.yfilter);
-}
-
-std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "encrypt-sc-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EncryptScStatus' in Cisco_IOS_XR_macsec_ctrlr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
-    if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
-    if (max_packet_number.is_set || is_set(max_packet_number.yfilter)) leaf_name_data.push_back(max_packet_number.get_name_leafdata());
-    if (protection_enabled.is_set || is_set(protection_enabled.yfilter)) leaf_name_data.push_back(protection_enabled.get_name_leafdata());
-    if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
-    if (secure_channel_id.is_set || is_set(secure_channel_id.yfilter)) leaf_name_data.push_back(secure_channel_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "active-association")
-    {
-        for(auto const & c : active_association)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation>();
-        c->parent = this;
-        active_association.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : active_association)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipher-suite")
-    {
-        cipher_suite = value;
-        cipher_suite.value_namespace = name_space;
-        cipher_suite.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "confidentiality-offset")
-    {
-        confidentiality_offset = value;
-        confidentiality_offset.value_namespace = name_space;
-        confidentiality_offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-packet-number")
-    {
-        max_packet_number = value;
-        max_packet_number.value_namespace = name_space;
-        max_packet_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protection-enabled")
-    {
-        protection_enabled = value;
-        protection_enabled.value_namespace = name_space;
-        protection_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recent-packet-number")
-    {
-        recent_packet_number = value;
-        recent_packet_number.value_namespace = name_space;
-        recent_packet_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secure-channel-id")
-    {
-        secure_channel_id = value;
-        secure_channel_id.value_namespace = name_space;
-        secure_channel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipher-suite")
-    {
-        cipher_suite.yfilter = yfilter;
-    }
-    if(value_path == "confidentiality-offset")
-    {
-        confidentiality_offset.yfilter = yfilter;
-    }
-    if(value_path == "max-packet-number")
-    {
-        max_packet_number.yfilter = yfilter;
-    }
-    if(value_path == "protection-enabled")
-    {
-        protection_enabled.yfilter = yfilter;
-    }
-    if(value_path == "recent-packet-number")
-    {
-        recent_packet_number.yfilter = yfilter;
-    }
-    if(value_path == "secure-channel-id")
-    {
-        secure_channel_id.yfilter = yfilter;
-    }
-}
-
-bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-association" || name == "cipher-suite" || name == "confidentiality-offset" || name == "max-packet-number" || name == "protection-enabled" || name == "recent-packet-number" || name == "secure-channel-id")
-        return true;
-    return false;
-}
-
-MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::ActiveAssociation()
-    :
-    association_number{YType::uint8, "association-number"},
-    short_secure_channel_id{YType::uint32, "short-secure-channel-id"}
-{
-    yang_name = "active-association"; yang_parent_name = "encrypt-sc-status";
-}
-
-MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::~ActiveAssociation()
-{
-}
-
-bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::has_data() const
-{
-    return association_number.is_set
-	|| short_secure_channel_id.is_set;
-}
-
-bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(association_number.yfilter)
-	|| ydk::is_set(short_secure_channel_id.yfilter);
-}
-
-std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "active-association";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ActiveAssociation' in Cisco_IOS_XR_macsec_ctrlr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (association_number.is_set || is_set(association_number.yfilter)) leaf_name_data.push_back(association_number.get_name_leafdata());
-    if (short_secure_channel_id.is_set || is_set(short_secure_channel_id.yfilter)) leaf_name_data.push_back(short_secure_channel_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "association-number")
-    {
-        association_number = value;
-        association_number.value_namespace = name_space;
-        association_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "short-secure-channel-id")
-    {
-        short_secure_channel_id = value;
-        short_secure_channel_id.value_namespace = name_space;
-        short_secure_channel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "association-number")
-    {
-        association_number.yfilter = yfilter;
-    }
-    if(value_path == "short-secure-channel-id")
-    {
-        short_secure_channel_id.yfilter = yfilter;
-    }
-}
-
-bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "association-number" || name == "short-secure-channel-id")
-        return true;
-    return false;
-}
-
 MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::DecryptScStatus()
     :
     cipher_suite{YType::enumeration, "cipher-suite"},
@@ -814,7 +482,8 @@ MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScSt
     recent_packet_number{YType::uint64, "recent-packet-number"},
     secure_channel_id{YType::str, "secure-channel-id"}
 {
-    yang_name = "decrypt-sc-status"; yang_parent_name = "macsec-ctrlr-info";
+
+    yang_name = "decrypt-sc-status"; yang_parent_name = "macsec-ctrlr-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::~DecryptScStatus()
@@ -856,23 +525,11 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "decrypt-sc-status";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DecryptScStatus' in Cisco_IOS_XR_macsec_ctrlr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
@@ -882,9 +539,7 @@ const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlr
     if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
     if (secure_channel_id.is_set || is_set(secure_channel_id.yfilter)) leaf_name_data.push_back(secure_channel_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1000,7 +655,8 @@ MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScSt
     association_number{YType::uint8, "association-number"},
     short_secure_channel_id{YType::uint32, "short-secure-channel-id"}
 {
-    yang_name = "active-association"; yang_parent_name = "decrypt-sc-status";
+
+    yang_name = "active-association"; yang_parent_name = "decrypt-sc-status"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::~ActiveAssociation()
@@ -1024,31 +680,17 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "active-association";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ActiveAssociation' in Cisco_IOS_XR_macsec_ctrlr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (association_number.is_set || is_set(association_number.yfilter)) leaf_name_data.push_back(association_number.get_name_leafdata());
     if (short_secure_channel_id.is_set || is_set(short_secure_channel_id.yfilter)) leaf_name_data.push_back(short_secure_channel_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1098,13 +740,280 @@ bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::Decryp
     return false;
 }
 
-const Enum::YLeaf MacsecCtrlrState::macsec_ctrlr_state_up {0, "macsec-ctrlr-state-up"};
-const Enum::YLeaf MacsecCtrlrState::macsec_ctrlr_state_down {1, "macsec-ctrlr-state-down"};
-const Enum::YLeaf MacsecCtrlrState::macsec_ctrlr_state_admin_down {2, "macsec-ctrlr-state-admin-down"};
+MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::EncryptScStatus()
+    :
+    cipher_suite{YType::enumeration, "cipher-suite"},
+    confidentiality_offset{YType::uint32, "confidentiality-offset"},
+    max_packet_number{YType::uint64, "max-packet-number"},
+    protection_enabled{YType::boolean, "protection-enabled"},
+    recent_packet_number{YType::uint64, "recent-packet-number"},
+    secure_channel_id{YType::str, "secure-channel-id"}
+{
+
+    yang_name = "encrypt-sc-status"; yang_parent_name = "macsec-ctrlr-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::~EncryptScStatus()
+{
+}
+
+bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::has_data() const
+{
+    for (std::size_t index=0; index<active_association.size(); index++)
+    {
+        if(active_association[index]->has_data())
+            return true;
+    }
+    return cipher_suite.is_set
+	|| confidentiality_offset.is_set
+	|| max_packet_number.is_set
+	|| protection_enabled.is_set
+	|| recent_packet_number.is_set
+	|| secure_channel_id.is_set;
+}
+
+bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::has_operation() const
+{
+    for (std::size_t index=0; index<active_association.size(); index++)
+    {
+        if(active_association[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(cipher_suite.yfilter)
+	|| ydk::is_set(confidentiality_offset.yfilter)
+	|| ydk::is_set(max_packet_number.yfilter)
+	|| ydk::is_set(protection_enabled.yfilter)
+	|| ydk::is_set(recent_packet_number.yfilter)
+	|| ydk::is_set(secure_channel_id.yfilter);
+}
+
+std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "encrypt-sc-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
+    if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
+    if (max_packet_number.is_set || is_set(max_packet_number.yfilter)) leaf_name_data.push_back(max_packet_number.get_name_leafdata());
+    if (protection_enabled.is_set || is_set(protection_enabled.yfilter)) leaf_name_data.push_back(protection_enabled.get_name_leafdata());
+    if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
+    if (secure_channel_id.is_set || is_set(secure_channel_id.yfilter)) leaf_name_data.push_back(secure_channel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "active-association")
+    {
+        for(auto const & c : active_association)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation>();
+        c->parent = this;
+        active_association.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : active_association)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cipher-suite")
+    {
+        cipher_suite = value;
+        cipher_suite.value_namespace = name_space;
+        cipher_suite.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "confidentiality-offset")
+    {
+        confidentiality_offset = value;
+        confidentiality_offset.value_namespace = name_space;
+        confidentiality_offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-packet-number")
+    {
+        max_packet_number = value;
+        max_packet_number.value_namespace = name_space;
+        max_packet_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protection-enabled")
+    {
+        protection_enabled = value;
+        protection_enabled.value_namespace = name_space;
+        protection_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recent-packet-number")
+    {
+        recent_packet_number = value;
+        recent_packet_number.value_namespace = name_space;
+        recent_packet_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secure-channel-id")
+    {
+        secure_channel_id = value;
+        secure_channel_id.value_namespace = name_space;
+        secure_channel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cipher-suite")
+    {
+        cipher_suite.yfilter = yfilter;
+    }
+    if(value_path == "confidentiality-offset")
+    {
+        confidentiality_offset.yfilter = yfilter;
+    }
+    if(value_path == "max-packet-number")
+    {
+        max_packet_number.yfilter = yfilter;
+    }
+    if(value_path == "protection-enabled")
+    {
+        protection_enabled.yfilter = yfilter;
+    }
+    if(value_path == "recent-packet-number")
+    {
+        recent_packet_number.yfilter = yfilter;
+    }
+    if(value_path == "secure-channel-id")
+    {
+        secure_channel_id.yfilter = yfilter;
+    }
+}
+
+bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-association" || name == "cipher-suite" || name == "confidentiality-offset" || name == "max-packet-number" || name == "protection-enabled" || name == "recent-packet-number" || name == "secure-channel-id")
+        return true;
+    return false;
+}
+
+MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::ActiveAssociation()
+    :
+    association_number{YType::uint8, "association-number"},
+    short_secure_channel_id{YType::uint32, "short-secure-channel-id"}
+{
+
+    yang_name = "active-association"; yang_parent_name = "encrypt-sc-status"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::~ActiveAssociation()
+{
+}
+
+bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::has_data() const
+{
+    return association_number.is_set
+	|| short_secure_channel_id.is_set;
+}
+
+bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(association_number.yfilter)
+	|| ydk::is_set(short_secure_channel_id.yfilter);
+}
+
+std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "active-association";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (association_number.is_set || is_set(association_number.yfilter)) leaf_name_data.push_back(association_number.get_name_leafdata());
+    if (short_secure_channel_id.is_set || is_set(short_secure_channel_id.yfilter)) leaf_name_data.push_back(short_secure_channel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "association-number")
+    {
+        association_number = value;
+        association_number.value_namespace = name_space;
+        association_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "short-secure-channel-id")
+    {
+        short_secure_channel_id = value;
+        short_secure_channel_id.value_namespace = name_space;
+        short_secure_channel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "association-number")
+    {
+        association_number.yfilter = yfilter;
+    }
+    if(value_path == "short-secure-channel-id")
+    {
+        short_secure_channel_id.yfilter = yfilter;
+    }
+}
+
+bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-number" || name == "short-secure-channel-id")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf MacsecCtrlrCiphersuit::gcm_aes_256 {0, "gcm-aes-256"};
 const Enum::YLeaf MacsecCtrlrCiphersuit::gcm_aes_128 {1, "gcm-aes-128"};
 const Enum::YLeaf MacsecCtrlrCiphersuit::gcm_aes_xpn_256 {2, "gcm-aes-xpn-256"};
+
+const Enum::YLeaf MacsecCtrlrState::macsec_ctrlr_state_up {0, "macsec-ctrlr-state-up"};
+const Enum::YLeaf MacsecCtrlrState::macsec_ctrlr_state_down {1, "macsec-ctrlr-state-down"};
+const Enum::YLeaf MacsecCtrlrState::macsec_ctrlr_state_admin_down {2, "macsec-ctrlr-state-admin-down"};
 
 
 }

@@ -17,7 +17,7 @@ IpSubscriber::IpSubscriber()
 {
     nodes->parent = this;
 
-    yang_name = "ip-subscriber"; yang_parent_name = "Cisco-IOS-XR-subscriber-ipsub-oper";
+    yang_name = "ip-subscriber"; yang_parent_name = "Cisco-IOS-XR-subscriber-ipsub-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 IpSubscriber::~IpSubscriber()
@@ -39,26 +39,15 @@ std::string IpSubscriber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-subscriber-ipsub-oper:ip-subscriber";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool IpSubscriber::has_leaf_or_child_of_name(const std::string & name) const
 
 IpSubscriber::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "ip-subscriber";
+
+    yang_name = "nodes"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 IpSubscriber::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool IpSubscriber::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string IpSubscriber::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-ipsub-oper:ip-subscriber/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string IpSubscriber::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-ipsub-oper:ip-subscriber/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,12 +225,10 @@ IpSubscriber::Nodes::Node::Node()
 	,summary(std::make_shared<IpSubscriber::Nodes::Node::Summary>())
 {
     access_interfaces->parent = this;
-
     interfaces->parent = this;
-
     summary->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 IpSubscriber::Nodes::Node::~Node()
@@ -271,34 +252,27 @@ bool IpSubscriber::Nodes::Node::has_operation() const
 	|| (summary !=  nullptr && summary->has_operation());
 }
 
+std::string IpSubscriber::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-ipsub-oper:ip-subscriber/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string IpSubscriber::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-ipsub-oper:ip-subscriber/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -380,98 +354,57 @@ bool IpSubscriber::Nodes::Node::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::Summary()
-    :
-    access_interface_summary(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary>())
-	,interface_counts(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>())
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterfaces()
 {
-    access_interface_summary->parent = this;
 
-    interface_counts->parent = this;
-
-    yang_name = "summary"; yang_parent_name = "node";
+    yang_name = "access-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::~Summary()
+IpSubscriber::Nodes::Node::AccessInterfaces::~AccessInterfaces()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<access_interface.size(); index++)
     {
-        if(vrf[index]->has_data())
+        if(access_interface[index]->has_data())
             return true;
     }
-    return (access_interface_summary !=  nullptr && access_interface_summary->has_data())
-	|| (interface_counts !=  nullptr && interface_counts->has_data());
+    return false;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<access_interface.size(); index++)
     {
-        if(vrf[index]->has_operation())
+        if(access_interface[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| (access_interface_summary !=  nullptr && access_interface_summary->has_operation())
-	|| (interface_counts !=  nullptr && interface_counts->has_operation());
+    return is_set(yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary";
-
+    path_buffer << "access-interfaces";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Summary' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "access-interface-summary")
+    if(child_yang_name == "access-interface")
     {
-        if(access_interface_summary == nullptr)
-        {
-            access_interface_summary = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary>();
-        }
-        return access_interface_summary;
-    }
-
-    if(child_yang_name == "interface-counts")
-    {
-        if(interface_counts == nullptr)
-        {
-            interface_counts = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>();
-        }
-        return interface_counts;
-    }
-
-    if(child_yang_name == "vrf")
-    {
-        for(auto const & c : vrf)
+        for(auto const & c : access_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -479,29 +412,19 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(co
                 return c;
             }
         }
-        auto c = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
+        auto c = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
         c->parent = this;
-        vrf.push_back(c);
+        access_interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(access_interface_summary != nullptr)
-    {
-        children["access-interface-summary"] = access_interface_summary;
-    }
-
-    if(interface_counts != nullptr)
-    {
-        children["interface-counts"] = interface_counts;
-    }
-
-    for (auto const & c : vrf)
+    for (auto const & c : access_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -509,92 +432,105 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-interface-summary" || name == "interface-counts" || name == "vrf")
+    if(name == "access-interface")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::AccessInterfaceSummary()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::AccessInterface()
     :
-    interfaces{YType::uint32, "interfaces"}
+    interface_name{YType::str, "interface-name"},
+    age{YType::str, "age"},
+    interface_creation_time{YType::str, "interface-creation-time"},
+    interface_type{YType::str, "interface-type"},
+    ipv6_state{YType::enumeration, "ipv6-state"},
+    state{YType::enumeration, "state"},
+    vlan_type{YType::enumeration, "vlan-type"}
     	,
-    initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators>())
-	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>())
+    initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators>())
+	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>())
+	,session_limit(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>())
 {
     initiators->parent = this;
-
     ipv6_initiators->parent = this;
+    session_limit->parent = this;
 
-    yang_name = "access-interface-summary"; yang_parent_name = "summary";
+    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::~AccessInterfaceSummary()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::~AccessInterface()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_data() const
 {
-    return interfaces.is_set
+    return interface_name.is_set
+	|| age.is_set
+	|| interface_creation_time.is_set
+	|| interface_type.is_set
+	|| ipv6_state.is_set
+	|| state.is_set
+	|| vlan_type.is_set
 	|| (initiators !=  nullptr && initiators->has_data())
-	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data());
+	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data())
+	|| (session_limit !=  nullptr && session_limit->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(age.yfilter)
+	|| ydk::is_set(interface_creation_time.yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(ipv6_state.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(vlan_type.yfilter)
 	|| (initiators !=  nullptr && initiators->has_operation())
-	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation());
+	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation())
+	|| (session_limit !=  nullptr && session_limit->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-interface-summary";
-
+    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessInterfaceSummary' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (age.is_set || is_set(age.yfilter)) leaf_name_data.push_back(age.get_name_leafdata());
+    if (interface_creation_time.is_set || is_set(interface_creation_time.yfilter)) leaf_name_data.push_back(interface_creation_time.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (ipv6_state.is_set || is_set(ipv6_state.yfilter)) leaf_name_data.push_back(ipv6_state.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (vlan_type.is_set || is_set(vlan_type.yfilter)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "initiators")
     {
         if(initiators == nullptr)
         {
-            initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators>();
+            initiators = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators>();
         }
         return initiators;
     }
@@ -603,15 +539,24 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     {
         if(ipv6_initiators == nullptr)
         {
-            ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>();
+            ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>();
         }
         return ipv6_initiators;
+    }
+
+    if(child_yang_name == "session-limit")
+    {
+        if(session_limit == nullptr)
+        {
+            session_limit = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>();
+        }
+        return session_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(initiators != nullptr)
@@ -624,100 +569,150 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
         children["ipv6-initiators"] = ipv6_initiators;
     }
 
+    if(session_limit != nullptr)
+    {
+        children["session-limit"] = session_limit;
+    }
+
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interfaces")
+    if(value_path == "interface-name")
     {
-        interfaces = value;
-        interfaces.value_namespace = name_space;
-        interfaces.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "age")
+    {
+        age = value;
+        age.value_namespace = name_space;
+        age.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-creation-time")
+    {
+        interface_creation_time = value;
+        interface_creation_time.value_namespace = name_space;
+        interface_creation_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-state")
+    {
+        ipv6_state = value;
+        ipv6_state.value_namespace = name_space;
+        ipv6_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-type")
+    {
+        vlan_type = value;
+        vlan_type.value_namespace = name_space;
+        vlan_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interfaces")
+    if(value_path == "interface-name")
     {
-        interfaces.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "age")
+    {
+        age.yfilter = yfilter;
+    }
+    if(value_path == "interface-creation-time")
+    {
+        interface_creation_time.yfilter = yfilter;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-state")
+    {
+        ipv6_state.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "vlan-type")
+    {
+        vlan_type.yfilter = yfilter;
     }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "initiators" || name == "ipv6-initiators" || name == "interfaces")
+    if(name == "initiators" || name == "ipv6-initiators" || name == "session-limit" || name == "interface-name" || name == "age" || name == "interface-creation-time" || name == "interface-type" || name == "ipv6-state" || name == "state" || name == "vlan-type")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Initiators()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Initiators()
     :
-    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>())
+    dhcp(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp>())
+	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-
     packet_trigger->parent = this;
 
-    yang_name = "initiators"; yang_parent_name = "access-interface-summary";
+    yang_name = "initiators"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::~Initiators()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::~Initiators()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_data() const
 {
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_operation() const
 {
     return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "initiators";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Initiators' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
         if(dhcp == nullptr)
         {
-            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp>();
+            dhcp = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp>();
         }
         return dhcp;
     }
@@ -726,7 +721,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     {
         if(packet_trigger == nullptr)
         {
-            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>();
+            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>();
         }
         return packet_trigger;
     }
@@ -734,7 +729,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dhcp != nullptr)
@@ -750,90 +745,109 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp" || name == "packet-trigger")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::Dhcp()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::Dhcp()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_packets{YType::uint32, "fsol-packets"}
+    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
+    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
+    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
+    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
+    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
+    fsol_packets{YType::uint32, "fsol-packets"},
+    is_configured{YType::boolean, "is-configured"},
+    sessions{YType::uint32, "sessions"},
+    unique_ip_check{YType::boolean, "unique-ip-check"}
 {
-    yang_name = "dhcp"; yang_parent_name = "initiators";
+
+    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::~Dhcp()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::~Dhcp()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_packets.is_set;
+	|| fsol_dropped_bytes.is_set
+	|| fsol_dropped_packets.is_set
+	|| fsol_dropped_packets_dup_addr.is_set
+	|| fsol_dropped_packets_flow.is_set
+	|| fsol_dropped_packets_session_limit.is_set
+	|| fsol_packets.is_set
+	|| is_configured.is_set
+	|| sessions.is_set
+	|| unique_ip_check.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter);
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcp' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -841,102 +855,201 @@ void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhc
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessions")
+    {
+        sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-packets")
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::PacketTrigger()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::PacketTrigger()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_packets{YType::uint32, "fsol-packets"}
+    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
+    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
+    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
+    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
+    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
+    fsol_packets{YType::uint32, "fsol-packets"},
+    is_configured{YType::boolean, "is-configured"},
+    sessions{YType::uint32, "sessions"},
+    unique_ip_check{YType::boolean, "unique-ip-check"}
 {
-    yang_name = "packet-trigger"; yang_parent_name = "initiators";
+
+    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::~PacketTrigger()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::~PacketTrigger()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_packets.is_set;
+	|| fsol_dropped_bytes.is_set
+	|| fsol_dropped_packets.is_set
+	|| fsol_dropped_packets_dup_addr.is_set
+	|| fsol_dropped_packets_flow.is_set
+	|| fsol_dropped_packets_session_limit.is_set
+	|| fsol_packets.is_set
+	|| is_configured.is_set
+	|| sessions.is_set
+	|| unique_ip_check.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter);
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-trigger";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketTrigger' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -944,99 +1057,164 @@ void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Pac
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessions")
+    {
+        sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-packets")
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Ipv6Initiators()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Ipv6Initiators()
     :
-    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>())
+    dhcp(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp>())
+	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-
     packet_trigger->parent = this;
 
-    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface-summary";
+    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::~Ipv6Initiators()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::~Ipv6Initiators()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_data() const
 {
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_operation() const
 {
     return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-initiators";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Initiators' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
         if(dhcp == nullptr)
         {
-            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp>();
+            dhcp = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp>();
         }
         return dhcp;
     }
@@ -1045,7 +1223,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     {
         if(packet_trigger == nullptr)
         {
-            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>();
+            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>();
         }
         return packet_trigger;
     }
@@ -1053,7 +1231,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dhcp != nullptr)
@@ -1069,90 +1247,109 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp" || name == "packet-trigger")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::Dhcp()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::Dhcp()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_packets{YType::uint32, "fsol-packets"}
+    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
+    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
+    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
+    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
+    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
+    fsol_packets{YType::uint32, "fsol-packets"},
+    is_configured{YType::boolean, "is-configured"},
+    sessions{YType::uint32, "sessions"},
+    unique_ip_check{YType::boolean, "unique-ip-check"}
 {
-    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators";
+
+    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::~Dhcp()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::~Dhcp()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_packets.is_set;
+	|| fsol_dropped_bytes.is_set
+	|| fsol_dropped_packets.is_set
+	|| fsol_dropped_packets_dup_addr.is_set
+	|| fsol_dropped_packets_flow.is_set
+	|| fsol_dropped_packets_session_limit.is_set
+	|| fsol_packets.is_set
+	|| is_configured.is_set
+	|| sessions.is_set
+	|| unique_ip_check.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter);
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcp' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -1160,102 +1357,201 @@ void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators:
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessions")
+    {
+        sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-packets")
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::PacketTrigger()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::PacketTrigger()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_packets{YType::uint32, "fsol-packets"}
+    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
+    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
+    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
+    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
+    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
+    fsol_packets{YType::uint32, "fsol-packets"},
+    is_configured{YType::boolean, "is-configured"},
+    sessions{YType::uint32, "sessions"},
+    unique_ip_check{YType::boolean, "unique-ip-check"}
 {
-    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators";
+
+    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::~PacketTrigger()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::~PacketTrigger()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_packets.is_set;
+	|| fsol_dropped_bytes.is_set
+	|| fsol_dropped_packets.is_set
+	|| fsol_dropped_packets_dup_addr.is_set
+	|| fsol_dropped_packets_flow.is_set
+	|| fsol_dropped_packets_session_limit.is_set
+	|| fsol_packets.is_set
+	|| is_configured.is_set
+	|| sessions.is_set
+	|| unique_ip_check.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter);
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-trigger";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketTrigger' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -1263,1646 +1559,367 @@ void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators:
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessions")
+    {
+        sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-packets")
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::InterfaceCounts()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::SessionLimit()
     :
-    initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators>())
-	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>())
+    total(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>())
+	,unclassified_source(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>())
 {
-    initiators->parent = this;
+    total->parent = this;
+    unclassified_source->parent = this;
 
-    ipv6_initiators->parent = this;
-
-    yang_name = "interface-counts"; yang_parent_name = "summary";
+    yang_name = "session-limit"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::~InterfaceCounts()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::~SessionLimit()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_data() const
 {
-    return (initiators !=  nullptr && initiators->has_data())
-	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data());
+    return (total !=  nullptr && total->has_data())
+	|| (unclassified_source !=  nullptr && unclassified_source->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_operation() const
 {
     return is_set(yfilter)
-	|| (initiators !=  nullptr && initiators->has_operation())
-	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation());
+	|| (total !=  nullptr && total->has_operation())
+	|| (unclassified_source !=  nullptr && unclassified_source->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-counts";
-
+    path_buffer << "session-limit";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceCounts' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "initiators")
+    if(child_yang_name == "total")
     {
-        if(initiators == nullptr)
+        if(total == nullptr)
         {
-            initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators>();
+            total = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>();
         }
-        return initiators;
+        return total;
     }
 
-    if(child_yang_name == "ipv6-initiators")
+    if(child_yang_name == "unclassified-source")
     {
-        if(ipv6_initiators == nullptr)
+        if(unclassified_source == nullptr)
         {
-            ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>();
+            unclassified_source = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>();
         }
-        return ipv6_initiators;
+        return unclassified_source;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(initiators != nullptr)
+    if(total != nullptr)
     {
-        children["initiators"] = initiators;
+        children["total"] = total;
     }
 
-    if(ipv6_initiators != nullptr)
+    if(unclassified_source != nullptr)
     {
-        children["ipv6-initiators"] = ipv6_initiators;
+        children["unclassified-source"] = unclassified_source;
     }
 
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "initiators" || name == "ipv6-initiators")
+    if(name == "total" || name == "unclassified-source")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Initiators()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::Total()
     :
-    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>())
+    per_vlan{YType::uint32, "per-vlan"}
 {
-    dhcp->parent = this;
 
-    packet_trigger->parent = this;
-
-    yang_name = "initiators"; yang_parent_name = "interface-counts";
+    yang_name = "total"; yang_parent_name = "session-limit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::~Initiators()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::~Total()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_data() const
 {
-    return (dhcp !=  nullptr && dhcp->has_data())
-	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
+    return per_vlan.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_operation() const
 {
     return is_set(yfilter)
-	|| (dhcp !=  nullptr && dhcp->has_operation())
-	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
+	|| ydk::is_set(per_vlan.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "initiators";
-
+    path_buffer << "total";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Initiators' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (per_vlan.is_set || is_set(per_vlan.yfilter)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dhcp")
-    {
-        if(dhcp == nullptr)
-        {
-            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp>();
-        }
-        return dhcp;
-    }
-
-    if(child_yang_name == "packet-trigger")
-    {
-        if(packet_trigger == nullptr)
-        {
-            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>();
-        }
-        return packet_trigger;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dhcp != nullptr)
-    {
-        children["dhcp"] = dhcp;
-    }
-
-    if(packet_trigger != nullptr)
-    {
-        children["packet-trigger"] = packet_trigger;
-    }
-
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "per-vlan")
+    {
+        per_vlan = value;
+        per_vlan.value_namespace = name_space;
+        per_vlan.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "per-vlan")
+    {
+        per_vlan.yfilter = yfilter;
+    }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dhcp" || name == "packet-trigger")
+    if(name == "per-vlan")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::Dhcp()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::UnclassifiedSource()
     :
-    adding_adjacency{YType::uint32, "adding-adjacency"},
-    adjacency_added{YType::uint32, "adjacency-added"},
-    control_policy_executed{YType::uint32, "control-policy-executed"},
-    control_policy_executing{YType::uint32, "control-policy-executing"},
-    disconnected{YType::uint32, "disconnected"},
-    disconnecting{YType::uint32, "disconnecting"},
-    down{YType::uint32, "down"},
-    error{YType::uint32, "error"},
-    initialized{YType::uint32, "initialized"},
-    invalid{YType::uint32, "invalid"},
-    session_creation_started{YType::uint32, "session-creation-started"},
-    session_features_applied{YType::uint32, "session-features-applied"},
-    total_interfaces{YType::uint32, "total-interfaces"},
-    up{YType::uint32, "up"},
-    vrf_configured{YType::uint32, "vrf-configured"}
+    per_vlan{YType::uint32, "per-vlan"}
 {
-    yang_name = "dhcp"; yang_parent_name = "initiators";
+
+    yang_name = "unclassified-source"; yang_parent_name = "session-limit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::~Dhcp()
+IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::~UnclassifiedSource()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_data() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_data() const
 {
-    return adding_adjacency.is_set
-	|| adjacency_added.is_set
-	|| control_policy_executed.is_set
-	|| control_policy_executing.is_set
-	|| disconnected.is_set
-	|| disconnecting.is_set
-	|| down.is_set
-	|| error.is_set
-	|| initialized.is_set
-	|| invalid.is_set
-	|| session_creation_started.is_set
-	|| session_features_applied.is_set
-	|| total_interfaces.is_set
-	|| up.is_set
-	|| vrf_configured.is_set;
+    return per_vlan.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_operation() const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(adding_adjacency.yfilter)
-	|| ydk::is_set(adjacency_added.yfilter)
-	|| ydk::is_set(control_policy_executed.yfilter)
-	|| ydk::is_set(control_policy_executing.yfilter)
-	|| ydk::is_set(disconnected.yfilter)
-	|| ydk::is_set(disconnecting.yfilter)
-	|| ydk::is_set(down.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(initialized.yfilter)
-	|| ydk::is_set(invalid.yfilter)
-	|| ydk::is_set(session_creation_started.yfilter)
-	|| ydk::is_set(session_features_applied.yfilter)
-	|| ydk::is_set(total_interfaces.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(vrf_configured.yfilter);
+	|| ydk::is_set(per_vlan.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcp";
-
+    path_buffer << "unclassified-source";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcp' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+    if (per_vlan.is_set || is_set(per_vlan.yfilter)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "adding-adjacency")
+    if(value_path == "per-vlan")
     {
-        adding_adjacency = value;
-        adding_adjacency.value_namespace = name_space;
-        adding_adjacency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added = value;
-        adjacency_added.value_namespace = name_space;
-        adjacency_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed = value;
-        control_policy_executed.value_namespace = name_space;
-        control_policy_executed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing = value;
-        control_policy_executing.value_namespace = name_space;
-        control_policy_executing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected = value;
-        disconnected.value_namespace = name_space;
-        disconnected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting = value;
-        disconnecting.value_namespace = name_space;
-        disconnecting.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down")
-    {
-        down = value;
-        down.value_namespace = name_space;
-        down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized")
-    {
-        initialized = value;
-        initialized.value_namespace = name_space;
-        initialized.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "invalid")
-    {
-        invalid = value;
-        invalid.value_namespace = name_space;
-        invalid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started = value;
-        session_creation_started.value_namespace = name_space;
-        session_creation_started.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied = value;
-        session_features_applied.value_namespace = name_space;
-        session_features_applied.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces = value;
-        total_interfaces.value_namespace = name_space;
-        total_interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured = value;
-        vrf_configured.value_namespace = name_space;
-        vrf_configured.value_namespace_prefix = name_space_prefix;
+        per_vlan = value;
+        per_vlan.value_namespace = name_space;
+        per_vlan.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "adding-adjacency")
+    if(value_path == "per-vlan")
     {
-        adding_adjacency.yfilter = yfilter;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing.yfilter = yfilter;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting.yfilter = yfilter;
-    }
-    if(value_path == "down")
-    {
-        down.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "initialized")
-    {
-        initialized.yfilter = yfilter;
-    }
-    if(value_path == "invalid")
-    {
-        invalid.yfilter = yfilter;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started.yfilter = yfilter;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied.yfilter = yfilter;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured.yfilter = yfilter;
+        per_vlan.yfilter = yfilter;
     }
 }
 
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
-        return true;
-    return false;
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::PacketTrigger()
-    :
-    adding_adjacency{YType::uint32, "adding-adjacency"},
-    adjacency_added{YType::uint32, "adjacency-added"},
-    control_policy_executed{YType::uint32, "control-policy-executed"},
-    control_policy_executing{YType::uint32, "control-policy-executing"},
-    disconnected{YType::uint32, "disconnected"},
-    disconnecting{YType::uint32, "disconnecting"},
-    down{YType::uint32, "down"},
-    error{YType::uint32, "error"},
-    initialized{YType::uint32, "initialized"},
-    invalid{YType::uint32, "invalid"},
-    session_creation_started{YType::uint32, "session-creation-started"},
-    session_features_applied{YType::uint32, "session-features-applied"},
-    total_interfaces{YType::uint32, "total-interfaces"},
-    up{YType::uint32, "up"},
-    vrf_configured{YType::uint32, "vrf-configured"}
-{
-    yang_name = "packet-trigger"; yang_parent_name = "initiators";
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::~PacketTrigger()
-{
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_data() const
-{
-    return adding_adjacency.is_set
-	|| adjacency_added.is_set
-	|| control_policy_executed.is_set
-	|| control_policy_executing.is_set
-	|| disconnected.is_set
-	|| disconnecting.is_set
-	|| down.is_set
-	|| error.is_set
-	|| initialized.is_set
-	|| invalid.is_set
-	|| session_creation_started.is_set
-	|| session_features_applied.is_set
-	|| total_interfaces.is_set
-	|| up.is_set
-	|| vrf_configured.is_set;
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adding_adjacency.yfilter)
-	|| ydk::is_set(adjacency_added.yfilter)
-	|| ydk::is_set(control_policy_executed.yfilter)
-	|| ydk::is_set(control_policy_executing.yfilter)
-	|| ydk::is_set(disconnected.yfilter)
-	|| ydk::is_set(disconnecting.yfilter)
-	|| ydk::is_set(down.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(initialized.yfilter)
-	|| ydk::is_set(invalid.yfilter)
-	|| ydk::is_set(session_creation_started.yfilter)
-	|| ydk::is_set(session_features_applied.yfilter)
-	|| ydk::is_set(total_interfaces.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(vrf_configured.yfilter);
-}
-
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "packet-trigger";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketTrigger' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adding-adjacency")
-    {
-        adding_adjacency = value;
-        adding_adjacency.value_namespace = name_space;
-        adding_adjacency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added = value;
-        adjacency_added.value_namespace = name_space;
-        adjacency_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed = value;
-        control_policy_executed.value_namespace = name_space;
-        control_policy_executed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing = value;
-        control_policy_executing.value_namespace = name_space;
-        control_policy_executing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected = value;
-        disconnected.value_namespace = name_space;
-        disconnected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting = value;
-        disconnecting.value_namespace = name_space;
-        disconnecting.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down")
-    {
-        down = value;
-        down.value_namespace = name_space;
-        down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized")
-    {
-        initialized = value;
-        initialized.value_namespace = name_space;
-        initialized.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "invalid")
-    {
-        invalid = value;
-        invalid.value_namespace = name_space;
-        invalid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started = value;
-        session_creation_started.value_namespace = name_space;
-        session_creation_started.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied = value;
-        session_features_applied.value_namespace = name_space;
-        session_features_applied.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces = value;
-        total_interfaces.value_namespace = name_space;
-        total_interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured = value;
-        vrf_configured.value_namespace = name_space;
-        vrf_configured.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adding-adjacency")
-    {
-        adding_adjacency.yfilter = yfilter;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing.yfilter = yfilter;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting.yfilter = yfilter;
-    }
-    if(value_path == "down")
-    {
-        down.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "initialized")
-    {
-        initialized.yfilter = yfilter;
-    }
-    if(value_path == "invalid")
-    {
-        invalid.yfilter = yfilter;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started.yfilter = yfilter;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied.yfilter = yfilter;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured.yfilter = yfilter;
-    }
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
-        return true;
-    return false;
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Ipv6Initiators()
-    :
-    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>())
-{
-    dhcp->parent = this;
-
-    packet_trigger->parent = this;
-
-    yang_name = "ipv6-initiators"; yang_parent_name = "interface-counts";
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::~Ipv6Initiators()
-{
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_data() const
-{
-    return (dhcp !=  nullptr && dhcp->has_data())
-	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_operation() const
-{
-    return is_set(yfilter)
-	|| (dhcp !=  nullptr && dhcp->has_operation())
-	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
-}
-
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-initiators";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Initiators' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dhcp")
-    {
-        if(dhcp == nullptr)
-        {
-            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp>();
-        }
-        return dhcp;
-    }
-
-    if(child_yang_name == "packet-trigger")
-    {
-        if(packet_trigger == nullptr)
-        {
-            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>();
-        }
-        return packet_trigger;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dhcp != nullptr)
-    {
-        children["dhcp"] = dhcp;
-    }
-
-    if(packet_trigger != nullptr)
-    {
-        children["packet-trigger"] = packet_trigger;
-    }
-
-    return children;
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dhcp" || name == "packet-trigger")
-        return true;
-    return false;
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::Dhcp()
-    :
-    adding_adjacency{YType::uint32, "adding-adjacency"},
-    adjacency_added{YType::uint32, "adjacency-added"},
-    control_policy_executed{YType::uint32, "control-policy-executed"},
-    control_policy_executing{YType::uint32, "control-policy-executing"},
-    disconnected{YType::uint32, "disconnected"},
-    disconnecting{YType::uint32, "disconnecting"},
-    down{YType::uint32, "down"},
-    error{YType::uint32, "error"},
-    initialized{YType::uint32, "initialized"},
-    invalid{YType::uint32, "invalid"},
-    session_creation_started{YType::uint32, "session-creation-started"},
-    session_features_applied{YType::uint32, "session-features-applied"},
-    total_interfaces{YType::uint32, "total-interfaces"},
-    up{YType::uint32, "up"},
-    vrf_configured{YType::uint32, "vrf-configured"}
-{
-    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators";
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::~Dhcp()
-{
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_data() const
-{
-    return adding_adjacency.is_set
-	|| adjacency_added.is_set
-	|| control_policy_executed.is_set
-	|| control_policy_executing.is_set
-	|| disconnected.is_set
-	|| disconnecting.is_set
-	|| down.is_set
-	|| error.is_set
-	|| initialized.is_set
-	|| invalid.is_set
-	|| session_creation_started.is_set
-	|| session_features_applied.is_set
-	|| total_interfaces.is_set
-	|| up.is_set
-	|| vrf_configured.is_set;
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adding_adjacency.yfilter)
-	|| ydk::is_set(adjacency_added.yfilter)
-	|| ydk::is_set(control_policy_executed.yfilter)
-	|| ydk::is_set(control_policy_executing.yfilter)
-	|| ydk::is_set(disconnected.yfilter)
-	|| ydk::is_set(disconnecting.yfilter)
-	|| ydk::is_set(down.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(initialized.yfilter)
-	|| ydk::is_set(invalid.yfilter)
-	|| ydk::is_set(session_creation_started.yfilter)
-	|| ydk::is_set(session_features_applied.yfilter)
-	|| ydk::is_set(total_interfaces.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(vrf_configured.yfilter);
-}
-
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcp' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adding-adjacency")
-    {
-        adding_adjacency = value;
-        adding_adjacency.value_namespace = name_space;
-        adding_adjacency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added = value;
-        adjacency_added.value_namespace = name_space;
-        adjacency_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed = value;
-        control_policy_executed.value_namespace = name_space;
-        control_policy_executed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing = value;
-        control_policy_executing.value_namespace = name_space;
-        control_policy_executing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected = value;
-        disconnected.value_namespace = name_space;
-        disconnected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting = value;
-        disconnecting.value_namespace = name_space;
-        disconnecting.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down")
-    {
-        down = value;
-        down.value_namespace = name_space;
-        down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized")
-    {
-        initialized = value;
-        initialized.value_namespace = name_space;
-        initialized.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "invalid")
-    {
-        invalid = value;
-        invalid.value_namespace = name_space;
-        invalid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started = value;
-        session_creation_started.value_namespace = name_space;
-        session_creation_started.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied = value;
-        session_features_applied.value_namespace = name_space;
-        session_features_applied.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces = value;
-        total_interfaces.value_namespace = name_space;
-        total_interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured = value;
-        vrf_configured.value_namespace = name_space;
-        vrf_configured.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adding-adjacency")
-    {
-        adding_adjacency.yfilter = yfilter;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing.yfilter = yfilter;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting.yfilter = yfilter;
-    }
-    if(value_path == "down")
-    {
-        down.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "initialized")
-    {
-        initialized.yfilter = yfilter;
-    }
-    if(value_path == "invalid")
-    {
-        invalid.yfilter = yfilter;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started.yfilter = yfilter;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied.yfilter = yfilter;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured.yfilter = yfilter;
-    }
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
-        return true;
-    return false;
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::PacketTrigger()
-    :
-    adding_adjacency{YType::uint32, "adding-adjacency"},
-    adjacency_added{YType::uint32, "adjacency-added"},
-    control_policy_executed{YType::uint32, "control-policy-executed"},
-    control_policy_executing{YType::uint32, "control-policy-executing"},
-    disconnected{YType::uint32, "disconnected"},
-    disconnecting{YType::uint32, "disconnecting"},
-    down{YType::uint32, "down"},
-    error{YType::uint32, "error"},
-    initialized{YType::uint32, "initialized"},
-    invalid{YType::uint32, "invalid"},
-    session_creation_started{YType::uint32, "session-creation-started"},
-    session_features_applied{YType::uint32, "session-features-applied"},
-    total_interfaces{YType::uint32, "total-interfaces"},
-    up{YType::uint32, "up"},
-    vrf_configured{YType::uint32, "vrf-configured"}
-{
-    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators";
-}
-
-IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::~PacketTrigger()
-{
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_data() const
-{
-    return adding_adjacency.is_set
-	|| adjacency_added.is_set
-	|| control_policy_executed.is_set
-	|| control_policy_executing.is_set
-	|| disconnected.is_set
-	|| disconnecting.is_set
-	|| down.is_set
-	|| error.is_set
-	|| initialized.is_set
-	|| invalid.is_set
-	|| session_creation_started.is_set
-	|| session_features_applied.is_set
-	|| total_interfaces.is_set
-	|| up.is_set
-	|| vrf_configured.is_set;
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adding_adjacency.yfilter)
-	|| ydk::is_set(adjacency_added.yfilter)
-	|| ydk::is_set(control_policy_executed.yfilter)
-	|| ydk::is_set(control_policy_executing.yfilter)
-	|| ydk::is_set(disconnected.yfilter)
-	|| ydk::is_set(disconnecting.yfilter)
-	|| ydk::is_set(down.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(initialized.yfilter)
-	|| ydk::is_set(invalid.yfilter)
-	|| ydk::is_set(session_creation_started.yfilter)
-	|| ydk::is_set(session_features_applied.yfilter)
-	|| ydk::is_set(total_interfaces.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(vrf_configured.yfilter);
-}
-
-std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "packet-trigger";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketTrigger' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adding-adjacency")
-    {
-        adding_adjacency = value;
-        adding_adjacency.value_namespace = name_space;
-        adding_adjacency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added = value;
-        adjacency_added.value_namespace = name_space;
-        adjacency_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed = value;
-        control_policy_executed.value_namespace = name_space;
-        control_policy_executed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing = value;
-        control_policy_executing.value_namespace = name_space;
-        control_policy_executing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected = value;
-        disconnected.value_namespace = name_space;
-        disconnected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting = value;
-        disconnecting.value_namespace = name_space;
-        disconnecting.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down")
-    {
-        down = value;
-        down.value_namespace = name_space;
-        down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized")
-    {
-        initialized = value;
-        initialized.value_namespace = name_space;
-        initialized.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "invalid")
-    {
-        invalid = value;
-        invalid.value_namespace = name_space;
-        invalid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started = value;
-        session_creation_started.value_namespace = name_space;
-        session_creation_started.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied = value;
-        session_features_applied.value_namespace = name_space;
-        session_features_applied.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces = value;
-        total_interfaces.value_namespace = name_space;
-        total_interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured = value;
-        vrf_configured.value_namespace = name_space;
-        vrf_configured.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adding-adjacency")
-    {
-        adding_adjacency.yfilter = yfilter;
-    }
-    if(value_path == "adjacency-added")
-    {
-        adjacency_added.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executed")
-    {
-        control_policy_executed.yfilter = yfilter;
-    }
-    if(value_path == "control-policy-executing")
-    {
-        control_policy_executing.yfilter = yfilter;
-    }
-    if(value_path == "disconnected")
-    {
-        disconnected.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting")
-    {
-        disconnecting.yfilter = yfilter;
-    }
-    if(value_path == "down")
-    {
-        down.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "initialized")
-    {
-        initialized.yfilter = yfilter;
-    }
-    if(value_path == "invalid")
-    {
-        invalid.yfilter = yfilter;
-    }
-    if(value_path == "session-creation-started")
-    {
-        session_creation_started.yfilter = yfilter;
-    }
-    if(value_path == "session-features-applied")
-    {
-        session_features_applied.yfilter = yfilter;
-    }
-    if(value_path == "total-interfaces")
-    {
-        total_interfaces.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "vrf-configured")
-    {
-        vrf_configured.yfilter = yfilter;
-    }
-}
-
-bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
-        return true;
-    return false;
-}
-
-IpSubscriber::Nodes::Node::Summary::Vrf::Vrf()
-    :
-    interfaces{YType::uint64, "interfaces"},
-    ipv6_interfaces{YType::uint64, "ipv6-interfaces"},
-    ipv6vrf_name{YType::str, "ipv6vrf-name"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "vrf"; yang_parent_name = "summary";
-}
-
-IpSubscriber::Nodes::Node::Summary::Vrf::~Vrf()
-{
-}
-
-bool IpSubscriber::Nodes::Node::Summary::Vrf::has_data() const
-{
-    return interfaces.is_set
-	|| ipv6_interfaces.is_set
-	|| ipv6vrf_name.is_set
-	|| vrf_name.is_set;
-}
-
-bool IpSubscriber::Nodes::Node::Summary::Vrf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interfaces.yfilter)
-	|| ydk::is_set(ipv6_interfaces.yfilter)
-	|| ydk::is_set(ipv6vrf_name.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string IpSubscriber::Nodes::Node::Summary::Vrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpSubscriber::Nodes::Node::Summary::Vrf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrf' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
-    if (ipv6_interfaces.is_set || is_set(ipv6_interfaces.yfilter)) leaf_name_data.push_back(ipv6_interfaces.get_name_leafdata());
-    if (ipv6vrf_name.is_set || is_set(ipv6vrf_name.yfilter)) leaf_name_data.push_back(ipv6vrf_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpSubscriber::Nodes::Node::Summary::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interfaces")
-    {
-        interfaces = value;
-        interfaces.value_namespace = name_space;
-        interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-interfaces")
-    {
-        ipv6_interfaces = value;
-        ipv6_interfaces.value_namespace = name_space;
-        ipv6_interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vrf-name")
-    {
-        ipv6vrf_name = value;
-        ipv6vrf_name.value_namespace = name_space;
-        ipv6vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpSubscriber::Nodes::Node::Summary::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interfaces")
-    {
-        interfaces.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-interfaces")
-    {
-        ipv6_interfaces.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vrf-name")
-    {
-        ipv6vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool IpSubscriber::Nodes::Node::Summary::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interfaces" || name == "ipv6-interfaces" || name == "ipv6vrf-name" || name == "vrf-name")
+    if(name == "per-vlan")
         return true;
     return false;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "node";
+
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::~Interfaces()
@@ -2933,29 +1950,15 @@ std::string IpSubscriber::Nodes::Node::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3033,10 +2036,9 @@ IpSubscriber::Nodes::Node::Interfaces::Interface::Interface()
 	,vrf(std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf>())
 {
     ipv6vrf->parent = this;
-
     vrf->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::~Interface()
@@ -3100,23 +2102,11 @@ std::string IpSubscriber::Nodes::Node::Interfaces::Interface::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -3140,9 +2130,7 @@ const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::get_entity_pa
     if (subscriber_label.is_set || is_set(subscriber_label.yfilter)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
     if (subscriber_mac_addres.is_set || is_set(subscriber_mac_addres.yfilter)) leaf_name_data.push_back(subscriber_mac_addres.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3400,115 +2388,13 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name
     return false;
 }
 
-IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::Vrf()
-    :
-    table_name{YType::str, "table-name"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "vrf"; yang_parent_name = "interface";
-}
-
-IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::~Vrf()
-{
-}
-
-bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_data() const
-{
-    return table_name.is_set
-	|| vrf_name.is_set;
-}
-
-bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(table_name.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrf' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (table_name.is_set || is_set(table_name.yfilter)) leaf_name_data.push_back(table_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "table-name")
-    {
-        table_name = value;
-        table_name.value_namespace = name_space;
-        table_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "table-name")
-    {
-        table_name.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "table-name" || name == "vrf-name")
-        return true;
-    return false;
-}
-
 IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::Ipv6Vrf()
     :
     table_name{YType::str, "table-name"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "ipv6vrf"; yang_parent_name = "interface";
+
+    yang_name = "ipv6vrf"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::~Ipv6Vrf()
@@ -3532,31 +2418,17 @@ std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6vrf";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Vrf' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (table_name.is_set || is_set(table_name.yfilter)) leaf_name_data.push_back(table_name.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3606,70 +2478,173 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_leaf_or_chil
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterfaces()
+IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::Vrf()
+    :
+    table_name{YType::str, "table-name"},
+    vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "access-interfaces"; yang_parent_name = "node";
+
+    yang_name = "vrf"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::~AccessInterfaces()
+IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::~Vrf()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::has_data() const
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<access_interface.size(); index++)
+    return table_name.is_set
+	|| vrf_name.is_set;
+}
+
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(table_name.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (table_name.is_set || is_set(table_name.yfilter)) leaf_name_data.push_back(table_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "table-name")
     {
-        if(access_interface[index]->has_data())
-            return true;
+        table_name = value;
+        table_name.value_namespace = name_space;
+        table_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "table-name")
+    {
+        table_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "table-name" || name == "vrf-name")
+        return true;
     return false;
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::has_operation() const
+IpSubscriber::Nodes::Node::Summary::Summary()
+    :
+    access_interface_summary(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary>())
+	,interface_counts(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>())
 {
-    for (std::size_t index=0; index<access_interface.size(); index++)
+    access_interface_summary->parent = this;
+    interface_counts->parent = this;
+
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpSubscriber::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::has_data() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
     {
-        if(access_interface[index]->has_operation())
+        if(vrf[index]->has_data())
             return true;
     }
-    return is_set(yfilter);
+    return (access_interface_summary !=  nullptr && access_interface_summary->has_data())
+	|| (interface_counts !=  nullptr && interface_counts->has_data());
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::get_segment_path() const
+bool IpSubscriber::Nodes::Node::Summary::has_operation() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (access_interface_summary !=  nullptr && access_interface_summary->has_operation())
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
+}
+
+std::string IpSubscriber::Nodes::Node::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-interfaces";
-
+    path_buffer << "summary";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessInterfaces' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "access-interface")
+    if(child_yang_name == "access-interface-summary")
     {
-        for(auto const & c : access_interface)
+        if(access_interface_summary == nullptr)
+        {
+            access_interface_summary = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary>();
+        }
+        return access_interface_summary;
+    }
+
+    if(child_yang_name == "interface-counts")
+    {
+        if(interface_counts == nullptr)
+        {
+            interface_counts = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>();
+        }
+        return interface_counts;
+    }
+
+    if(child_yang_name == "vrf")
+    {
+        for(auto const & c : vrf)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3677,19 +2652,29 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_b
                 return c;
             }
         }
-        auto c = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
+        auto c = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
         c->parent = this;
-        access_interface.push_back(c);
+        vrf.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : access_interface)
+    if(access_interface_summary != nullptr)
+    {
+        children["access-interface-summary"] = access_interface_summary;
+    }
+
+    if(interface_counts != nullptr)
+    {
+        children["interface-counts"] = interface_counts;
+    }
+
+    for (auto const & c : vrf)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3697,121 +2682,77 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-interface")
+    if(name == "access-interface-summary" || name == "interface-counts" || name == "vrf")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::AccessInterface()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::AccessInterfaceSummary()
     :
-    interface_name{YType::str, "interface-name"},
-    age{YType::str, "age"},
-    interface_creation_time{YType::str, "interface-creation-time"},
-    interface_type{YType::str, "interface-type"},
-    ipv6_state{YType::enumeration, "ipv6-state"},
-    state{YType::enumeration, "state"},
-    vlan_type{YType::enumeration, "vlan-type"}
+    interfaces{YType::uint32, "interfaces"}
     	,
-    initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators>())
-	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>())
-	,session_limit(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>())
+    initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators>())
+	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>())
 {
     initiators->parent = this;
-
     ipv6_initiators->parent = this;
 
-    session_limit->parent = this;
-
-    yang_name = "access-interface"; yang_parent_name = "access-interfaces";
+    yang_name = "access-interface-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::~AccessInterface()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::~AccessInterfaceSummary()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_data() const
 {
-    return interface_name.is_set
-	|| age.is_set
-	|| interface_creation_time.is_set
-	|| interface_type.is_set
-	|| ipv6_state.is_set
-	|| state.is_set
-	|| vlan_type.is_set
+    return interfaces.is_set
 	|| (initiators !=  nullptr && initiators->has_data())
-	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data())
-	|| (session_limit !=  nullptr && session_limit->has_data());
+	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(age.yfilter)
-	|| ydk::is_set(interface_creation_time.yfilter)
-	|| ydk::is_set(interface_type.yfilter)
-	|| ydk::is_set(ipv6_state.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(vlan_type.yfilter)
+	|| ydk::is_set(interfaces.yfilter)
 	|| (initiators !=  nullptr && initiators->has_operation())
-	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation())
-	|| (session_limit !=  nullptr && session_limit->has_operation());
+	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
-
+    path_buffer << "access-interface-summary";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessInterface' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (age.is_set || is_set(age.yfilter)) leaf_name_data.push_back(age.get_name_leafdata());
-    if (interface_creation_time.is_set || is_set(interface_creation_time.yfilter)) leaf_name_data.push_back(interface_creation_time.get_name_leafdata());
-    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (ipv6_state.is_set || is_set(ipv6_state.yfilter)) leaf_name_data.push_back(ipv6_state.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (vlan_type.is_set || is_set(vlan_type.yfilter)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "initiators")
     {
         if(initiators == nullptr)
         {
-            initiators = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators>();
+            initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators>();
         }
         return initiators;
     }
@@ -3820,24 +2761,15 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     {
         if(ipv6_initiators == nullptr)
         {
-            ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>();
+            ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>();
         }
         return ipv6_initiators;
-    }
-
-    if(child_yang_name == "session-limit")
-    {
-        if(session_limit == nullptr)
-        {
-            session_limit = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>();
-        }
-        return session_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(initiators != nullptr)
@@ -3850,165 +2782,85 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
         children["ipv6-initiators"] = ipv6_initiators;
     }
 
-    if(session_limit != nullptr)
-    {
-        children["session-limit"] = session_limit;
-    }
-
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface-name")
+    if(value_path == "interfaces")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "age")
-    {
-        age = value;
-        age.value_namespace = name_space;
-        age.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-creation-time")
-    {
-        interface_creation_time = value;
-        interface_creation_time.value_namespace = name_space;
-        interface_creation_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-type")
-    {
-        interface_type = value;
-        interface_type.value_namespace = name_space;
-        interface_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-state")
-    {
-        ipv6_state = value;
-        ipv6_state.value_namespace = name_space;
-        ipv6_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan-type")
-    {
-        vlan_type = value;
-        vlan_type.value_namespace = name_space;
-        vlan_type.value_namespace_prefix = name_space_prefix;
+        interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interface-name")
+    if(value_path == "interfaces")
     {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "age")
-    {
-        age.yfilter = yfilter;
-    }
-    if(value_path == "interface-creation-time")
-    {
-        interface_creation_time.yfilter = yfilter;
-    }
-    if(value_path == "interface-type")
-    {
-        interface_type.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-state")
-    {
-        ipv6_state.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "vlan-type")
-    {
-        vlan_type.yfilter = yfilter;
+        interfaces.yfilter = yfilter;
     }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "initiators" || name == "ipv6-initiators" || name == "session-limit" || name == "interface-name" || name == "age" || name == "interface-creation-time" || name == "interface-type" || name == "ipv6-state" || name == "state" || name == "vlan-type")
+    if(name == "initiators" || name == "ipv6-initiators" || name == "interfaces")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Initiators()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Initiators()
     :
-    dhcp(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>())
+    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp>())
+	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-
     packet_trigger->parent = this;
 
-    yang_name = "initiators"; yang_parent_name = "access-interface";
+    yang_name = "initiators"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::~Initiators()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::~Initiators()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_data() const
 {
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_operation() const
 {
     return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "initiators";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Initiators' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
         if(dhcp == nullptr)
         {
-            dhcp = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp>();
+            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp>();
         }
         return dhcp;
     }
@@ -4017,7 +2869,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     {
         if(packet_trigger == nullptr)
         {
-            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>();
+            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>();
         }
         return packet_trigger;
     }
@@ -4025,7 +2877,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dhcp != nullptr)
@@ -4041,122 +2893,77 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp" || name == "packet-trigger")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::Dhcp()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::Dhcp()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
-    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
-    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
-    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
-    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
-    fsol_packets{YType::uint32, "fsol-packets"},
-    is_configured{YType::boolean, "is-configured"},
-    sessions{YType::uint32, "sessions"},
-    unique_ip_check{YType::boolean, "unique-ip-check"}
+    fsol_packets{YType::uint32, "fsol-packets"}
 {
-    yang_name = "dhcp"; yang_parent_name = "initiators";
+
+    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::~Dhcp()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::~Dhcp()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_dropped_bytes.is_set
-	|| fsol_dropped_packets.is_set
-	|| fsol_dropped_packets_dup_addr.is_set
-	|| fsol_dropped_packets_flow.is_set
-	|| fsol_dropped_packets_session_limit.is_set
-	|| fsol_packets.is_set
-	|| is_configured.is_set
-	|| sessions.is_set
-	|| unique_ip_check.is_set;
+	|| fsol_packets.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_packets.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter)
-	|| ydk::is_set(is_configured.yfilter)
-	|| ydk::is_set(sessions.yfilter)
-	|| ydk::is_set(unique_ip_check.yfilter);
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcp' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -4164,214 +2971,89 @@ void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::D
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes = value;
-        fsol_dropped_bytes.value_namespace = name_space;
-        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets = value;
-        fsol_dropped_packets.value_namespace = name_space;
-        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr = value;
-        fsol_dropped_packets_dup_addr.value_namespace = name_space;
-        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow = value;
-        fsol_dropped_packets_flow.value_namespace = name_space;
-        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit = value;
-        fsol_dropped_packets_session_limit.value_namespace = name_space;
-        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured = value;
-        is_configured.value_namespace = name_space;
-        is_configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sessions")
-    {
-        sessions = value;
-        sessions.value_namespace = name_space;
-        sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check = value;
-        unique_ip_check.value_namespace = name_space;
-        unique_ip_check.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit.yfilter = yfilter;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured.yfilter = yfilter;
-    }
-    if(value_path == "sessions")
-    {
-        sessions.yfilter = yfilter;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check.yfilter = yfilter;
-    }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+    if(name == "fsol-bytes" || name == "fsol-packets")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::PacketTrigger()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::PacketTrigger()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
-    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
-    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
-    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
-    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
-    fsol_packets{YType::uint32, "fsol-packets"},
-    is_configured{YType::boolean, "is-configured"},
-    sessions{YType::uint32, "sessions"},
-    unique_ip_check{YType::boolean, "unique-ip-check"}
+    fsol_packets{YType::uint32, "fsol-packets"}
 {
-    yang_name = "packet-trigger"; yang_parent_name = "initiators";
+
+    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::~PacketTrigger()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::~PacketTrigger()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_dropped_bytes.is_set
-	|| fsol_dropped_packets.is_set
-	|| fsol_dropped_packets_dup_addr.is_set
-	|| fsol_dropped_packets_flow.is_set
-	|| fsol_dropped_packets_session_limit.is_set
-	|| fsol_packets.is_set
-	|| is_configured.is_set
-	|| sessions.is_set
-	|| unique_ip_check.is_set;
+	|| fsol_packets.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_packets.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter)
-	|| ydk::is_set(is_configured.yfilter)
-	|| ydk::is_set(sessions.yfilter)
-	|| ydk::is_set(unique_ip_check.yfilter);
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-trigger";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketTrigger' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -4379,179 +3061,84 @@ void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::P
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes = value;
-        fsol_dropped_bytes.value_namespace = name_space;
-        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets = value;
-        fsol_dropped_packets.value_namespace = name_space;
-        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr = value;
-        fsol_dropped_packets_dup_addr.value_namespace = name_space;
-        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow = value;
-        fsol_dropped_packets_flow.value_namespace = name_space;
-        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit = value;
-        fsol_dropped_packets_session_limit.value_namespace = name_space;
-        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured = value;
-        is_configured.value_namespace = name_space;
-        is_configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sessions")
-    {
-        sessions = value;
-        sessions.value_namespace = name_space;
-        sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check = value;
-        unique_ip_check.value_namespace = name_space;
-        unique_ip_check.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit.yfilter = yfilter;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured.yfilter = yfilter;
-    }
-    if(value_path == "sessions")
-    {
-        sessions.yfilter = yfilter;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check.yfilter = yfilter;
-    }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+    if(name == "fsol-bytes" || name == "fsol-packets")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Ipv6Initiators()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Ipv6Initiators()
     :
-    dhcp(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>())
+    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp>())
+	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-
     packet_trigger->parent = this;
 
-    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface";
+    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::~Ipv6Initiators()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::~Ipv6Initiators()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_data() const
 {
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_operation() const
 {
     return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-initiators";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Initiators' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
         if(dhcp == nullptr)
         {
-            dhcp = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp>();
+            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp>();
         }
         return dhcp;
     }
@@ -4560,7 +3147,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     {
         if(packet_trigger == nullptr)
         {
-            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>();
+            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>();
         }
         return packet_trigger;
     }
@@ -4568,7 +3155,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dhcp != nullptr)
@@ -4584,122 +3171,77 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp" || name == "packet-trigger")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::Dhcp()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::Dhcp()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
-    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
-    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
-    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
-    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
-    fsol_packets{YType::uint32, "fsol-packets"},
-    is_configured{YType::boolean, "is-configured"},
-    sessions{YType::uint32, "sessions"},
-    unique_ip_check{YType::boolean, "unique-ip-check"}
+    fsol_packets{YType::uint32, "fsol-packets"}
 {
-    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators";
+
+    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::~Dhcp()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::~Dhcp()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_dropped_bytes.is_set
-	|| fsol_dropped_packets.is_set
-	|| fsol_dropped_packets_dup_addr.is_set
-	|| fsol_dropped_packets_flow.is_set
-	|| fsol_dropped_packets_session_limit.is_set
-	|| fsol_packets.is_set
-	|| is_configured.is_set
-	|| sessions.is_set
-	|| unique_ip_check.is_set;
+	|| fsol_packets.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_packets.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter)
-	|| ydk::is_set(is_configured.yfilter)
-	|| ydk::is_set(sessions.yfilter)
-	|| ydk::is_set(unique_ip_check.yfilter);
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcp' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -4707,214 +3249,89 @@ void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiator
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes = value;
-        fsol_dropped_bytes.value_namespace = name_space;
-        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets = value;
-        fsol_dropped_packets.value_namespace = name_space;
-        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr = value;
-        fsol_dropped_packets_dup_addr.value_namespace = name_space;
-        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow = value;
-        fsol_dropped_packets_flow.value_namespace = name_space;
-        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit = value;
-        fsol_dropped_packets_session_limit.value_namespace = name_space;
-        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured = value;
-        is_configured.value_namespace = name_space;
-        is_configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sessions")
-    {
-        sessions = value;
-        sessions.value_namespace = name_space;
-        sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check = value;
-        unique_ip_check.value_namespace = name_space;
-        unique_ip_check.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit.yfilter = yfilter;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured.yfilter = yfilter;
-    }
-    if(value_path == "sessions")
-    {
-        sessions.yfilter = yfilter;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check.yfilter = yfilter;
-    }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+    if(name == "fsol-bytes" || name == "fsol-packets")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::PacketTrigger()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::PacketTrigger()
     :
     fsol_bytes{YType::uint32, "fsol-bytes"},
-    fsol_dropped_bytes{YType::uint32, "fsol-dropped-bytes"},
-    fsol_dropped_packets{YType::uint32, "fsol-dropped-packets"},
-    fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"},
-    fsol_dropped_packets_flow{YType::uint32, "fsol-dropped-packets-flow"},
-    fsol_dropped_packets_session_limit{YType::uint32, "fsol-dropped-packets-session-limit"},
-    fsol_packets{YType::uint32, "fsol-packets"},
-    is_configured{YType::boolean, "is-configured"},
-    sessions{YType::uint32, "sessions"},
-    unique_ip_check{YType::boolean, "unique-ip-check"}
+    fsol_packets{YType::uint32, "fsol-packets"}
 {
-    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators";
+
+    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::~PacketTrigger()
+IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::~PacketTrigger()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_data() const
 {
     return fsol_bytes.is_set
-	|| fsol_dropped_bytes.is_set
-	|| fsol_dropped_packets.is_set
-	|| fsol_dropped_packets_dup_addr.is_set
-	|| fsol_dropped_packets_flow.is_set
-	|| fsol_dropped_packets_session_limit.is_set
-	|| fsol_packets.is_set
-	|| is_configured.is_set
-	|| sessions.is_set
-	|| unique_ip_check.is_set;
+	|| fsol_packets.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fsol_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_bytes.yfilter)
-	|| ydk::is_set(fsol_dropped_packets.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
-	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
-	|| ydk::is_set(fsol_packets.yfilter)
-	|| ydk::is_set(is_configured.yfilter)
-	|| ydk::is_set(sessions.yfilter)
-	|| ydk::is_set(unique_ip_check.yfilter);
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-trigger";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketTrigger' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
     if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
@@ -4922,410 +3339,1532 @@ void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiator
         fsol_bytes.value_namespace = name_space;
         fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes = value;
-        fsol_dropped_bytes.value_namespace = name_space;
-        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets = value;
-        fsol_dropped_packets.value_namespace = name_space;
-        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr = value;
-        fsol_dropped_packets_dup_addr.value_namespace = name_space;
-        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow = value;
-        fsol_dropped_packets_flow.value_namespace = name_space;
-        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit = value;
-        fsol_dropped_packets_session_limit.value_namespace = name_space;
-        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
         fsol_packets.value_namespace = name_space;
         fsol_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured = value;
-        is_configured.value_namespace = name_space;
-        is_configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sessions")
-    {
-        sessions = value;
-        sessions.value_namespace = name_space;
-        sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check = value;
-        unique_ip_check.value_namespace = name_space;
-        unique_ip_check.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes.yfilter = yfilter;
     }
-    if(value_path == "fsol-dropped-bytes")
-    {
-        fsol_dropped_bytes.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets")
-    {
-        fsol_dropped_packets.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-dup-addr")
-    {
-        fsol_dropped_packets_dup_addr.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-flow")
-    {
-        fsol_dropped_packets_flow.yfilter = yfilter;
-    }
-    if(value_path == "fsol-dropped-packets-session-limit")
-    {
-        fsol_dropped_packets_session_limit.yfilter = yfilter;
-    }
     if(value_path == "fsol-packets")
     {
         fsol_packets.yfilter = yfilter;
     }
-    if(value_path == "is-configured")
-    {
-        is_configured.yfilter = yfilter;
-    }
-    if(value_path == "sessions")
-    {
-        sessions.yfilter = yfilter;
-    }
-    if(value_path == "unique-ip-check")
-    {
-        unique_ip_check.yfilter = yfilter;
-    }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+    if(name == "fsol-bytes" || name == "fsol-packets")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::SessionLimit()
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::InterfaceCounts()
     :
-    total(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>())
-	,unclassified_source(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>())
+    initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators>())
+	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>())
 {
-    total->parent = this;
+    initiators->parent = this;
+    ipv6_initiators->parent = this;
 
-    unclassified_source->parent = this;
-
-    yang_name = "session-limit"; yang_parent_name = "access-interface";
+    yang_name = "interface-counts"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::~SessionLimit()
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::~InterfaceCounts()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_data() const
 {
-    return (total !=  nullptr && total->has_data())
-	|| (unclassified_source !=  nullptr && unclassified_source->has_data());
+    return (initiators !=  nullptr && initiators->has_data())
+	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_operation() const
 {
     return is_set(yfilter)
-	|| (total !=  nullptr && total->has_operation())
-	|| (unclassified_source !=  nullptr && unclassified_source->has_operation());
+	|| (initiators !=  nullptr && initiators->has_operation())
+	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session-limit";
-
+    path_buffer << "interface-counts";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SessionLimit' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "total")
+    if(child_yang_name == "initiators")
     {
-        if(total == nullptr)
+        if(initiators == nullptr)
         {
-            total = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>();
+            initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators>();
         }
-        return total;
+        return initiators;
     }
 
-    if(child_yang_name == "unclassified-source")
+    if(child_yang_name == "ipv6-initiators")
     {
-        if(unclassified_source == nullptr)
+        if(ipv6_initiators == nullptr)
         {
-            unclassified_source = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>();
+            ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>();
         }
-        return unclassified_source;
+        return ipv6_initiators;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(total != nullptr)
+    if(initiators != nullptr)
     {
-        children["total"] = total;
+        children["initiators"] = initiators;
     }
 
-    if(unclassified_source != nullptr)
+    if(ipv6_initiators != nullptr)
     {
-        children["unclassified-source"] = unclassified_source;
+        children["ipv6-initiators"] = ipv6_initiators;
     }
 
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "total" || name == "unclassified-source")
+    if(name == "initiators" || name == "ipv6-initiators")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::UnclassifiedSource()
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Initiators()
     :
-    per_vlan{YType::uint32, "per-vlan"}
+    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp>())
+	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>())
 {
-    yang_name = "unclassified-source"; yang_parent_name = "session-limit";
+    dhcp->parent = this;
+    packet_trigger->parent = this;
+
+    yang_name = "initiators"; yang_parent_name = "interface-counts"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::~UnclassifiedSource()
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::~Initiators()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_data() const
 {
-    return per_vlan.is_set;
+    return (dhcp !=  nullptr && dhcp->has_data())
+	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(per_vlan.yfilter);
+	|| (dhcp !=  nullptr && dhcp->has_operation())
+	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unclassified-source";
-
+    path_buffer << "initiators";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UnclassifiedSource' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (per_vlan.is_set || is_set(per_vlan.yfilter)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "dhcp")
+    {
+        if(dhcp == nullptr)
+        {
+            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp>();
+        }
+        return dhcp;
+    }
+
+    if(child_yang_name == "packet-trigger")
+    {
+        if(packet_trigger == nullptr)
+        {
+            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>();
+        }
+        return packet_trigger;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
+    {
+        children["dhcp"] = dhcp;
+    }
+
+    if(packet_trigger != nullptr)
+    {
+        children["packet-trigger"] = packet_trigger;
+    }
+
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "per-vlan")
-    {
-        per_vlan = value;
-        per_vlan.value_namespace = name_space;
-        per_vlan.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "per-vlan")
-    {
-        per_vlan.yfilter = yfilter;
-    }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "per-vlan")
+    if(name == "dhcp" || name == "packet-trigger")
         return true;
     return false;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::Total()
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::Dhcp()
     :
-    per_vlan{YType::uint32, "per-vlan"}
+    adding_adjacency{YType::uint32, "adding-adjacency"},
+    adjacency_added{YType::uint32, "adjacency-added"},
+    control_policy_executed{YType::uint32, "control-policy-executed"},
+    control_policy_executing{YType::uint32, "control-policy-executing"},
+    disconnected{YType::uint32, "disconnected"},
+    disconnecting{YType::uint32, "disconnecting"},
+    down{YType::uint32, "down"},
+    error{YType::uint32, "error"},
+    initialized{YType::uint32, "initialized"},
+    invalid{YType::uint32, "invalid"},
+    session_creation_started{YType::uint32, "session-creation-started"},
+    session_features_applied{YType::uint32, "session-features-applied"},
+    total_interfaces{YType::uint32, "total-interfaces"},
+    up{YType::uint32, "up"},
+    vrf_configured{YType::uint32, "vrf-configured"}
 {
-    yang_name = "total"; yang_parent_name = "session-limit";
+
+    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::~Total()
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::~Dhcp()
 {
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_data() const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_data() const
 {
-    return per_vlan.is_set;
+    return adding_adjacency.is_set
+	|| adjacency_added.is_set
+	|| control_policy_executed.is_set
+	|| control_policy_executing.is_set
+	|| disconnected.is_set
+	|| disconnecting.is_set
+	|| down.is_set
+	|| error.is_set
+	|| initialized.is_set
+	|| invalid.is_set
+	|| session_creation_started.is_set
+	|| session_features_applied.is_set
+	|| total_interfaces.is_set
+	|| up.is_set
+	|| vrf_configured.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_operation() const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(per_vlan.yfilter);
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "total";
-
+    path_buffer << "dhcp";
     return path_buffer.str();
-
 }
 
-const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Total' in Cisco_IOS_XR_subscriber_ipsub_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (per_vlan.is_set || is_set(per_vlan.yfilter)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "per-vlan")
+    if(value_path == "adding-adjacency")
     {
-        per_vlan = value;
-        per_vlan.value_namespace = name_space;
-        per_vlan.value_namespace_prefix = name_space_prefix;
+        adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down")
+    {
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized")
+    {
+        initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid")
+    {
+        invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "per-vlan")
+    if(value_path == "adding-adjacency")
     {
-        per_vlan.yfilter = yfilter;
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
     }
 }
 
-bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "per-vlan")
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
         return true;
     return false;
 }
 
-const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
-const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::PacketTrigger()
+    :
+    adding_adjacency{YType::uint32, "adding-adjacency"},
+    adjacency_added{YType::uint32, "adjacency-added"},
+    control_policy_executed{YType::uint32, "control-policy-executed"},
+    control_policy_executing{YType::uint32, "control-policy-executing"},
+    disconnected{YType::uint32, "disconnected"},
+    disconnecting{YType::uint32, "disconnecting"},
+    down{YType::uint32, "down"},
+    error{YType::uint32, "error"},
+    initialized{YType::uint32, "initialized"},
+    invalid{YType::uint32, "invalid"},
+    session_creation_started{YType::uint32, "session-creation-started"},
+    session_features_applied{YType::uint32, "session-features-applied"},
+    total_interfaces{YType::uint32, "total-interfaces"},
+    up{YType::uint32, "up"},
+    vrf_configured{YType::uint32, "vrf-configured"}
+{
 
-const Enum::YLeaf IpsubMaIntfInitiatorData::dhcp {0, "dhcp"};
-const Enum::YLeaf IpsubMaIntfInitiatorData::packet_trigger {1, "packet-trigger"};
-const Enum::YLeaf IpsubMaIntfInitiatorData::invalid_trigger {2, "invalid-trigger"};
+    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::~PacketTrigger()
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_data() const
+{
+    return adding_adjacency.is_set
+	|| adjacency_added.is_set
+	|| control_policy_executed.is_set
+	|| control_policy_executing.is_set
+	|| disconnected.is_set
+	|| disconnecting.is_set
+	|| down.is_set
+	|| error.is_set
+	|| initialized.is_set
+	|| invalid.is_set
+	|| session_creation_started.is_set
+	|| session_features_applied.is_set
+	|| total_interfaces.is_set
+	|| up.is_set
+	|| vrf_configured.is_set;
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
+}
+
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "packet-trigger";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down")
+    {
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized")
+    {
+        initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid")
+    {
+        invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Ipv6Initiators()
+    :
+    dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp>())
+	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>())
+{
+    dhcp->parent = this;
+    packet_trigger->parent = this;
+
+    yang_name = "ipv6-initiators"; yang_parent_name = "interface-counts"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::~Ipv6Initiators()
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_data() const
+{
+    return (dhcp !=  nullptr && dhcp->has_data())
+	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_operation() const
+{
+    return is_set(yfilter)
+	|| (dhcp !=  nullptr && dhcp->has_operation())
+	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
+}
+
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-initiators";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dhcp")
+    {
+        if(dhcp == nullptr)
+        {
+            dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp>();
+        }
+        return dhcp;
+    }
+
+    if(child_yang_name == "packet-trigger")
+    {
+        if(packet_trigger == nullptr)
+        {
+            packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>();
+        }
+        return packet_trigger;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
+    {
+        children["dhcp"] = dhcp;
+    }
+
+    if(packet_trigger != nullptr)
+    {
+        children["packet-trigger"] = packet_trigger;
+    }
+
+    return children;
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::Dhcp()
+    :
+    adding_adjacency{YType::uint32, "adding-adjacency"},
+    adjacency_added{YType::uint32, "adjacency-added"},
+    control_policy_executed{YType::uint32, "control-policy-executed"},
+    control_policy_executing{YType::uint32, "control-policy-executing"},
+    disconnected{YType::uint32, "disconnected"},
+    disconnecting{YType::uint32, "disconnecting"},
+    down{YType::uint32, "down"},
+    error{YType::uint32, "error"},
+    initialized{YType::uint32, "initialized"},
+    invalid{YType::uint32, "invalid"},
+    session_creation_started{YType::uint32, "session-creation-started"},
+    session_features_applied{YType::uint32, "session-features-applied"},
+    total_interfaces{YType::uint32, "total-interfaces"},
+    up{YType::uint32, "up"},
+    vrf_configured{YType::uint32, "vrf-configured"}
+{
+
+    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::~Dhcp()
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_data() const
+{
+    return adding_adjacency.is_set
+	|| adjacency_added.is_set
+	|| control_policy_executed.is_set
+	|| control_policy_executing.is_set
+	|| disconnected.is_set
+	|| disconnecting.is_set
+	|| down.is_set
+	|| error.is_set
+	|| initialized.is_set
+	|| invalid.is_set
+	|| session_creation_started.is_set
+	|| session_features_applied.is_set
+	|| total_interfaces.is_set
+	|| up.is_set
+	|| vrf_configured.is_set;
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
+}
+
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down")
+    {
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized")
+    {
+        initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid")
+    {
+        invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::PacketTrigger()
+    :
+    adding_adjacency{YType::uint32, "adding-adjacency"},
+    adjacency_added{YType::uint32, "adjacency-added"},
+    control_policy_executed{YType::uint32, "control-policy-executed"},
+    control_policy_executing{YType::uint32, "control-policy-executing"},
+    disconnected{YType::uint32, "disconnected"},
+    disconnecting{YType::uint32, "disconnecting"},
+    down{YType::uint32, "down"},
+    error{YType::uint32, "error"},
+    initialized{YType::uint32, "initialized"},
+    invalid{YType::uint32, "invalid"},
+    session_creation_started{YType::uint32, "session-creation-started"},
+    session_features_applied{YType::uint32, "session-features-applied"},
+    total_interfaces{YType::uint32, "total-interfaces"},
+    up{YType::uint32, "up"},
+    vrf_configured{YType::uint32, "vrf-configured"}
+{
+
+    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::~PacketTrigger()
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_data() const
+{
+    return adding_adjacency.is_set
+	|| adjacency_added.is_set
+	|| control_policy_executed.is_set
+	|| control_policy_executing.is_set
+	|| disconnected.is_set
+	|| disconnecting.is_set
+	|| down.is_set
+	|| error.is_set
+	|| initialized.is_set
+	|| invalid.is_set
+	|| session_creation_started.is_set
+	|| session_features_applied.is_set
+	|| total_interfaces.is_set
+	|| up.is_set
+	|| vrf_configured.is_set;
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
+}
+
+std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "packet-trigger";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down")
+    {
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized")
+    {
+        initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid")
+    {
+        invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
+}
+
+IpSubscriber::Nodes::Node::Summary::Vrf::Vrf()
+    :
+    interfaces{YType::uint64, "interfaces"},
+    ipv6_interfaces{YType::uint64, "ipv6-interfaces"},
+    ipv6vrf_name{YType::str, "ipv6vrf-name"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "vrf"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpSubscriber::Nodes::Node::Summary::Vrf::~Vrf()
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::Vrf::has_data() const
+{
+    return interfaces.is_set
+	|| ipv6_interfaces.is_set
+	|| ipv6vrf_name.is_set
+	|| vrf_name.is_set;
+}
+
+bool IpSubscriber::Nodes::Node::Summary::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(ipv6_interfaces.yfilter)
+	|| ydk::is_set(ipv6vrf_name.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string IpSubscriber::Nodes::Node::Summary::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summary::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (ipv6_interfaces.is_set || is_set(ipv6_interfaces.yfilter)) leaf_name_data.push_back(ipv6_interfaces.get_name_leafdata());
+    if (ipv6vrf_name.is_set || is_set(ipv6vrf_name.yfilter)) leaf_name_data.push_back(ipv6vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpSubscriber::Nodes::Node::Summary::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interfaces")
+    {
+        interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-interfaces")
+    {
+        ipv6_interfaces = value;
+        ipv6_interfaces.value_namespace = name_space;
+        ipv6_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vrf-name")
+    {
+        ipv6vrf_name = value;
+        ipv6vrf_name.value_namespace = name_space;
+        ipv6vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpSubscriber::Nodes::Node::Summary::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interfaces")
+    {
+        interfaces.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-interfaces")
+    {
+        ipv6_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vrf-name")
+    {
+        ipv6vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "ipv6-interfaces" || name == "ipv6vrf-name" || name == "vrf-name")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf IpsubMaIntfStateData::invalid {0, "invalid"};
 const Enum::YLeaf IpsubMaIntfStateData::initialized {1, "initialized"};
@@ -5347,6 +4886,13 @@ const Enum::YLeaf IpsubMaIntfStateData::error {15, "error"};
 const Enum::YLeaf IpsubMaParentIntfStateData::deleted {0, "deleted"};
 const Enum::YLeaf IpsubMaParentIntfStateData::down {1, "down"};
 const Enum::YLeaf IpsubMaParentIntfStateData::up {2, "up"};
+
+const Enum::YLeaf IpsubMaIntfInitiatorData::dhcp {0, "dhcp"};
+const Enum::YLeaf IpsubMaIntfInitiatorData::packet_trigger {1, "packet-trigger"};
+const Enum::YLeaf IpsubMaIntfInitiatorData::invalid_trigger {2, "invalid-trigger"};
+
+const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
+const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
 
 
 }

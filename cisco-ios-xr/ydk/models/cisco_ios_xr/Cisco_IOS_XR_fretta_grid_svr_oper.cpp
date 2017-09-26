@@ -17,7 +17,7 @@ Grid::Grid()
 {
     nodes->parent = this;
 
-    yang_name = "grid"; yang_parent_name = "Cisco-IOS-XR-fretta-grid-svr-oper";
+    yang_name = "grid"; yang_parent_name = "Cisco-IOS-XR-fretta-grid-svr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Grid::~Grid()
@@ -39,26 +39,15 @@ std::string Grid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-fretta-grid-svr-oper:grid";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Grid::has_leaf_or_child_of_name(const std::string & name) const
 
 Grid::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "grid";
+
+    yang_name = "nodes"; yang_parent_name = "grid"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Grid::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Grid::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Grid::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fretta-grid-svr-oper:grid/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Grid::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fretta-grid-svr-oper:grid/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,10 +224,9 @@ Grid::Nodes::Node::Node()
 	,clients(std::make_shared<Grid::Nodes::Node::Clients>())
 {
     client_xr->parent = this;
-
     clients->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Grid::Nodes::Node::~Node()
@@ -266,34 +248,27 @@ bool Grid::Nodes::Node::has_operation() const
 	|| (clients !=  nullptr && clients->has_operation());
 }
 
+std::string Grid::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fretta-grid-svr-oper:grid/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Grid::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fretta-grid-svr-oper:grid/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -363,7 +338,8 @@ bool Grid::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 
 Grid::Nodes::Node::ClientXr::ClientXr()
 {
-    yang_name = "client-xr"; yang_parent_name = "node";
+
+    yang_name = "client-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Grid::Nodes::Node::ClientXr::~ClientXr()
@@ -394,29 +370,15 @@ std::string Grid::Nodes::Node::ClientXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client-xr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::ClientXr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::ClientXr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClientXr' in Cisco_IOS_XR_fretta_grid_svr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -471,7 +433,8 @@ Grid::Nodes::Node::ClientXr::Client::Client()
     :
     client_name{YType::str, "client-name"}
 {
-    yang_name = "client"; yang_parent_name = "client-xr";
+
+    yang_name = "client"; yang_parent_name = "client-xr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Grid::Nodes::Node::ClientXr::Client::~Client()
@@ -503,30 +466,16 @@ std::string Grid::Nodes::Node::ClientXr::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client" <<"[client-name='" <<client_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::ClientXr::Client::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::ClientXr::Client::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Client' in Cisco_IOS_XR_fretta_grid_svr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -591,7 +540,8 @@ Grid::Nodes::Node::ClientXr::Client::ClientData::ClientData()
     :
     res_id{YType::uint32, "res-id"}
 {
-    yang_name = "client-data"; yang_parent_name = "client";
+
+    yang_name = "client-data"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Grid::Nodes::Node::ClientXr::Client::ClientData::~ClientData()
@@ -613,30 +563,16 @@ std::string Grid::Nodes::Node::ClientXr::Client::ClientData::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "client-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::ClientXr::Client::ClientData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::ClientXr::Client::ClientData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClientData' in Cisco_IOS_XR_fretta_grid_svr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (res_id.is_set || is_set(res_id.yfilter)) leaf_name_data.push_back(res_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -678,7 +614,8 @@ bool Grid::Nodes::Node::ClientXr::Client::ClientData::has_leaf_or_child_of_name(
 
 Grid::Nodes::Node::Clients::Clients()
 {
-    yang_name = "clients"; yang_parent_name = "node";
+
+    yang_name = "clients"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Grid::Nodes::Node::Clients::~Clients()
@@ -709,29 +646,15 @@ std::string Grid::Nodes::Node::Clients::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clients";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::Clients::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::Clients::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Clients' in Cisco_IOS_XR_fretta_grid_svr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -786,7 +709,8 @@ Grid::Nodes::Node::Clients::Client::Client()
     :
     client_name{YType::str, "client-name"}
 {
-    yang_name = "client"; yang_parent_name = "clients";
+
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Grid::Nodes::Node::Clients::Client::~Client()
@@ -818,30 +742,16 @@ std::string Grid::Nodes::Node::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client" <<"[client-name='" <<client_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::Clients::Client::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::Clients::Client::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Client' in Cisco_IOS_XR_fretta_grid_svr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -906,7 +816,8 @@ Grid::Nodes::Node::Clients::Client::ClientData::ClientData()
     :
     res_id{YType::uint32, "res-id"}
 {
-    yang_name = "client-data"; yang_parent_name = "client";
+
+    yang_name = "client-data"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Grid::Nodes::Node::Clients::Client::ClientData::~ClientData()
@@ -928,30 +839,16 @@ std::string Grid::Nodes::Node::Clients::Client::ClientData::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "client-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grid::Nodes::Node::Clients::Client::ClientData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grid::Nodes::Node::Clients::Client::ClientData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClientData' in Cisco_IOS_XR_fretta_grid_svr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (res_id.is_set || is_set(res_id.yfilter)) leaf_name_data.push_back(res_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

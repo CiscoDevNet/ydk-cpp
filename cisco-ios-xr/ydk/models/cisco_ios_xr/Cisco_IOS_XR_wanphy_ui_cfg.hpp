@@ -10,14 +10,14 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_wanphy_ui_cfg {
 
-class WanphyWanMode : public ydk::Enum
+class WanphyLanMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf on;
 
 };
 
-class WanphyLanMode : public ydk::Enum
+class WanphyWanMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf on;

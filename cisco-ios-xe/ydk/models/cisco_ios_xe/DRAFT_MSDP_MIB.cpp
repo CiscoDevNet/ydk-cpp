@@ -11,29 +11,26 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace DRAFT_MSDP_MIB {
 
-DraftMsdpMib::DraftMsdpMib()
+DRAFTMSDPMIB::DRAFTMSDPMIB()
     :
-    msdp(std::make_shared<DraftMsdpMib::Msdp>())
-	,msdppeertable(std::make_shared<DraftMsdpMib::Msdppeertable>())
-	,msdprequeststable(std::make_shared<DraftMsdpMib::Msdprequeststable>())
-	,msdpsacachetable(std::make_shared<DraftMsdpMib::Msdpsacachetable>())
+    msdp(std::make_shared<DRAFTMSDPMIB::Msdp>())
+	,msdppeertable(std::make_shared<DRAFTMSDPMIB::Msdppeertable>())
+	,msdprequeststable(std::make_shared<DRAFTMSDPMIB::Msdprequeststable>())
+	,msdpsacachetable(std::make_shared<DRAFTMSDPMIB::Msdpsacachetable>())
 {
     msdp->parent = this;
-
     msdppeertable->parent = this;
-
     msdprequeststable->parent = this;
-
     msdpsacachetable->parent = this;
 
-    yang_name = "DRAFT-MSDP-MIB"; yang_parent_name = "DRAFT-MSDP-MIB";
+    yang_name = "DRAFT-MSDP-MIB"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-DraftMsdpMib::~DraftMsdpMib()
+DRAFTMSDPMIB::~DRAFTMSDPMIB()
 {
 }
 
-bool DraftMsdpMib::has_data() const
+bool DRAFTMSDPMIB::has_data() const
 {
     return (msdp !=  nullptr && msdp->has_data())
 	|| (msdppeertable !=  nullptr && msdppeertable->has_data())
@@ -41,7 +38,7 @@ bool DraftMsdpMib::has_data() const
 	|| (msdpsacachetable !=  nullptr && msdpsacachetable->has_data());
 }
 
-bool DraftMsdpMib::has_operation() const
+bool DRAFTMSDPMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (msdp !=  nullptr && msdp->has_operation())
@@ -50,40 +47,29 @@ bool DraftMsdpMib::has_operation() const
 	|| (msdpsacachetable !=  nullptr && msdpsacachetable->has_operation());
 }
 
-std::string DraftMsdpMib::get_segment_path() const
+std::string DRAFTMSDPMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DraftMsdpMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdp")
     {
         if(msdp == nullptr)
         {
-            msdp = std::make_shared<DraftMsdpMib::Msdp>();
+            msdp = std::make_shared<DRAFTMSDPMIB::Msdp>();
         }
         return msdp;
     }
@@ -92,7 +78,7 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
     {
         if(msdppeertable == nullptr)
         {
-            msdppeertable = std::make_shared<DraftMsdpMib::Msdppeertable>();
+            msdppeertable = std::make_shared<DRAFTMSDPMIB::Msdppeertable>();
         }
         return msdppeertable;
     }
@@ -101,7 +87,7 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
     {
         if(msdprequeststable == nullptr)
         {
-            msdprequeststable = std::make_shared<DraftMsdpMib::Msdprequeststable>();
+            msdprequeststable = std::make_shared<DRAFTMSDPMIB::Msdprequeststable>();
         }
         return msdprequeststable;
     }
@@ -110,7 +96,7 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
     {
         if(msdpsacachetable == nullptr)
         {
-            msdpsacachetable = std::make_shared<DraftMsdpMib::Msdpsacachetable>();
+            msdpsacachetable = std::make_shared<DRAFTMSDPMIB::Msdpsacachetable>();
         }
         return msdpsacachetable;
     }
@@ -118,7 +104,7 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(msdp != nullptr)
@@ -144,61 +130,62 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::get_children() cons
     return children;
 }
 
-void DraftMsdpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DraftMsdpMib::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::clone_ptr() const
+std::shared_ptr<Entity> DRAFTMSDPMIB::clone_ptr() const
 {
-    return std::make_shared<DraftMsdpMib>();
+    return std::make_shared<DRAFTMSDPMIB>();
 }
 
-std::string DraftMsdpMib::get_bundle_yang_models_location() const
+std::string DRAFTMSDPMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string DraftMsdpMib::get_bundle_name() const
+std::string DRAFTMSDPMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function DraftMsdpMib::get_augment_capabilities_function() const
+augment_capabilities_function DRAFTMSDPMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> DraftMsdpMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> DRAFTMSDPMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool DraftMsdpMib::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdp" || name == "msdpPeerTable" || name == "msdpRequestsTable" || name == "msdpSACacheTable")
         return true;
     return false;
 }
 
-DraftMsdpMib::Msdp::Msdp()
+DRAFTMSDPMIB::Msdp::Msdp()
     :
     msdpcachelifetime{YType::uint32, "msdpCacheLifetime"},
     msdpenabled{YType::boolean, "msdpEnabled"},
     msdpnumsacacheentries{YType::uint32, "msdpNumSACacheEntries"},
     msdpsaholddownperiod{YType::int32, "msdpSAHoldDownPeriod"}
 {
-    yang_name = "msdp"; yang_parent_name = "DRAFT-MSDP-MIB";
+
+    yang_name = "msdp"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-DraftMsdpMib::Msdp::~Msdp()
+DRAFTMSDPMIB::Msdp::~Msdp()
 {
 }
 
-bool DraftMsdpMib::Msdp::has_data() const
+bool DRAFTMSDPMIB::Msdp::has_data() const
 {
     return msdpcachelifetime.is_set
 	|| msdpenabled.is_set
@@ -206,7 +193,7 @@ bool DraftMsdpMib::Msdp::has_data() const
 	|| msdpsaholddownperiod.is_set;
 }
 
-bool DraftMsdpMib::Msdp::has_operation() const
+bool DRAFTMSDPMIB::Msdp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msdpcachelifetime.yfilter)
@@ -215,27 +202,22 @@ bool DraftMsdpMib::Msdp::has_operation() const
 	|| ydk::is_set(msdpsaholddownperiod.yfilter);
 }
 
-std::string DraftMsdpMib::Msdp::get_segment_path() const
+std::string DRAFTMSDPMIB::Msdp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DraftMsdpMib::Msdp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (msdpcachelifetime.is_set || is_set(msdpcachelifetime.yfilter)) leaf_name_data.push_back(msdpcachelifetime.get_name_leafdata());
@@ -243,24 +225,22 @@ const EntityPath DraftMsdpMib::Msdp::get_entity_path(Entity* ancestor) const
     if (msdpnumsacacheentries.is_set || is_set(msdpnumsacacheentries.yfilter)) leaf_name_data.push_back(msdpnumsacacheentries.get_name_leafdata());
     if (msdpsaholddownperiod.is_set || is_set(msdpsaholddownperiod.yfilter)) leaf_name_data.push_back(msdpsaholddownperiod.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::Msdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DraftMsdpMib::Msdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::Msdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpCacheLifetime")
     {
@@ -288,7 +268,7 @@ void DraftMsdpMib::Msdp::set_value(const std::string & value_path, const std::st
     }
 }
 
-void DraftMsdpMib::Msdp::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::Msdp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msdpCacheLifetime")
     {
@@ -308,260 +288,24 @@ void DraftMsdpMib::Msdp::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool DraftMsdpMib::Msdp::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::Msdp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpCacheLifetime" || name == "msdpEnabled" || name == "msdpNumSACacheEntries" || name == "msdpSAHoldDownPeriod")
         return true;
     return false;
 }
 
-DraftMsdpMib::Msdprequeststable::Msdprequeststable()
+DRAFTMSDPMIB::Msdppeertable::Msdppeertable()
 {
-    yang_name = "msdpRequestsTable"; yang_parent_name = "DRAFT-MSDP-MIB";
+
+    yang_name = "msdpPeerTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-DraftMsdpMib::Msdprequeststable::~Msdprequeststable()
-{
-}
-
-bool DraftMsdpMib::Msdprequeststable::has_data() const
-{
-    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
-    {
-        if(msdprequestsentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool DraftMsdpMib::Msdprequeststable::has_operation() const
-{
-    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
-    {
-        if(msdprequestsentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string DraftMsdpMib::Msdprequeststable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "msdpRequestsTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath DraftMsdpMib::Msdprequeststable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "msdpRequestsEntry")
-    {
-        for(auto const & c : msdprequestsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<DraftMsdpMib::Msdprequeststable::Msdprequestsentry>();
-        c->parent = this;
-        msdprequestsentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdprequeststable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdprequestsentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void DraftMsdpMib::Msdprequeststable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+DRAFTMSDPMIB::Msdppeertable::~Msdppeertable()
 {
 }
 
-void DraftMsdpMib::Msdprequeststable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool DraftMsdpMib::Msdprequeststable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "msdpRequestsEntry")
-        return true;
-    return false;
-}
-
-DraftMsdpMib::Msdprequeststable::Msdprequestsentry::Msdprequestsentry()
-    :
-    msdprequestsgroupaddress{YType::str, "msdpRequestsGroupAddress"},
-    msdprequestsgroupmask{YType::str, "msdpRequestsGroupMask"},
-    msdprequestspeer{YType::str, "msdpRequestsPeer"},
-    msdprequestsstatus{YType::enumeration, "msdpRequestsStatus"}
-{
-    yang_name = "msdpRequestsEntry"; yang_parent_name = "msdpRequestsTable";
-}
-
-DraftMsdpMib::Msdprequeststable::Msdprequestsentry::~Msdprequestsentry()
-{
-}
-
-bool DraftMsdpMib::Msdprequeststable::Msdprequestsentry::has_data() const
-{
-    return msdprequestsgroupaddress.is_set
-	|| msdprequestsgroupmask.is_set
-	|| msdprequestspeer.is_set
-	|| msdprequestsstatus.is_set;
-}
-
-bool DraftMsdpMib::Msdprequeststable::Msdprequestsentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(msdprequestsgroupaddress.yfilter)
-	|| ydk::is_set(msdprequestsgroupmask.yfilter)
-	|| ydk::is_set(msdprequestspeer.yfilter)
-	|| ydk::is_set(msdprequestsstatus.yfilter);
-}
-
-std::string DraftMsdpMib::Msdprequeststable::Msdprequestsentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "msdpRequestsEntry" <<"[msdpRequestsGroupAddress='" <<msdprequestsgroupaddress <<"']" <<"[msdpRequestsGroupMask='" <<msdprequestsgroupmask <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath DraftMsdpMib::Msdprequeststable::Msdprequestsentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpRequestsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (msdprequestsgroupaddress.is_set || is_set(msdprequestsgroupaddress.yfilter)) leaf_name_data.push_back(msdprequestsgroupaddress.get_name_leafdata());
-    if (msdprequestsgroupmask.is_set || is_set(msdprequestsgroupmask.yfilter)) leaf_name_data.push_back(msdprequestsgroupmask.get_name_leafdata());
-    if (msdprequestspeer.is_set || is_set(msdprequestspeer.yfilter)) leaf_name_data.push_back(msdprequestspeer.get_name_leafdata());
-    if (msdprequestsstatus.is_set || is_set(msdprequestsstatus.yfilter)) leaf_name_data.push_back(msdprequestsstatus.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::Msdprequestsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdprequeststable::Msdprequestsentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void DraftMsdpMib::Msdprequeststable::Msdprequestsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "msdpRequestsGroupAddress")
-    {
-        msdprequestsgroupaddress = value;
-        msdprequestsgroupaddress.value_namespace = name_space;
-        msdprequestsgroupaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msdpRequestsGroupMask")
-    {
-        msdprequestsgroupmask = value;
-        msdprequestsgroupmask.value_namespace = name_space;
-        msdprequestsgroupmask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msdpRequestsPeer")
-    {
-        msdprequestspeer = value;
-        msdprequestspeer.value_namespace = name_space;
-        msdprequestspeer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msdpRequestsStatus")
-    {
-        msdprequestsstatus = value;
-        msdprequestsstatus.value_namespace = name_space;
-        msdprequestsstatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DraftMsdpMib::Msdprequeststable::Msdprequestsentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "msdpRequestsGroupAddress")
-    {
-        msdprequestsgroupaddress.yfilter = yfilter;
-    }
-    if(value_path == "msdpRequestsGroupMask")
-    {
-        msdprequestsgroupmask.yfilter = yfilter;
-    }
-    if(value_path == "msdpRequestsPeer")
-    {
-        msdprequestspeer.yfilter = yfilter;
-    }
-    if(value_path == "msdpRequestsStatus")
-    {
-        msdprequestsstatus.yfilter = yfilter;
-    }
-}
-
-bool DraftMsdpMib::Msdprequeststable::Msdprequestsentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "msdpRequestsGroupAddress" || name == "msdpRequestsGroupMask" || name == "msdpRequestsPeer" || name == "msdpRequestsStatus")
-        return true;
-    return false;
-}
-
-DraftMsdpMib::Msdppeertable::Msdppeertable()
-{
-    yang_name = "msdpPeerTable"; yang_parent_name = "DRAFT-MSDP-MIB";
-}
-
-DraftMsdpMib::Msdppeertable::~Msdppeertable()
-{
-}
-
-bool DraftMsdpMib::Msdppeertable::has_data() const
+bool DRAFTMSDPMIB::Msdppeertable::has_data() const
 {
     for (std::size_t index=0; index<msdppeerentry.size(); index++)
     {
@@ -571,7 +315,7 @@ bool DraftMsdpMib::Msdppeertable::has_data() const
     return false;
 }
 
-bool DraftMsdpMib::Msdppeertable::has_operation() const
+bool DRAFTMSDPMIB::Msdppeertable::has_operation() const
 {
     for (std::size_t index=0; index<msdppeerentry.size(); index++)
     {
@@ -581,37 +325,30 @@ bool DraftMsdpMib::Msdppeertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DraftMsdpMib::Msdppeertable::get_segment_path() const
+std::string DRAFTMSDPMIB::Msdppeertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdppeertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpPeerTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DraftMsdpMib::Msdppeertable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdppeertable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpPeerEntry")
     {
@@ -623,7 +360,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
                 return c;
             }
         }
-        auto c = std::make_shared<DraftMsdpMib::Msdppeertable::Msdppeerentry>();
+        auto c = std::make_shared<DRAFTMSDPMIB::Msdppeertable::Msdppeerentry>();
         c->parent = this;
         msdppeerentry.push_back(c);
         return c;
@@ -632,7 +369,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : msdppeerentry)
@@ -643,22 +380,22 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::get_
     return children;
 }
 
-void DraftMsdpMib::Msdppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::Msdppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DraftMsdpMib::Msdppeertable::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::Msdppeertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DraftMsdpMib::Msdppeertable::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::Msdppeertable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpPeerEntry")
         return true;
     return false;
 }
 
-DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerentry()
+DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerentry()
     :
     msdppeerremoteaddress{YType::str, "msdpPeerRemoteAddress"},
     msdppeerconnectionattempts{YType::uint32, "msdpPeerConnectionAttempts"},
@@ -693,14 +430,15 @@ DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerentry()
     msdppeerstate{YType::enumeration, "msdpPeerState"},
     msdppeerstatus{YType::enumeration, "msdpPeerStatus"}
 {
-    yang_name = "msdpPeerEntry"; yang_parent_name = "msdpPeerTable";
+
+    yang_name = "msdpPeerEntry"; yang_parent_name = "msdpPeerTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-DraftMsdpMib::Msdppeertable::Msdppeerentry::~Msdppeerentry()
+DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::~Msdppeerentry()
 {
 }
 
-bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_data() const
+bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_data() const
 {
     return msdppeerremoteaddress.is_set
 	|| msdppeerconnectionattempts.is_set
@@ -736,7 +474,7 @@ bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_data() const
 	|| msdppeerstatus.is_set;
 }
 
-bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_operation() const
+bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msdppeerremoteaddress.yfilter)
@@ -773,27 +511,22 @@ bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_operation() const
 	|| ydk::is_set(msdppeerstatus.yfilter);
 }
 
-std::string DraftMsdpMib::Msdppeertable::Msdppeerentry::get_segment_path() const
+std::string DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpPeerTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpPeerEntry" <<"[msdpPeerRemoteAddress='" <<msdppeerremoteaddress <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DraftMsdpMib::Msdppeertable::Msdppeerentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpPeerTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (msdppeerremoteaddress.is_set || is_set(msdppeerremoteaddress.yfilter)) leaf_name_data.push_back(msdppeerremoteaddress.get_name_leafdata());
@@ -829,24 +562,22 @@ const EntityPath DraftMsdpMib::Msdppeertable::Msdppeerentry::get_entity_path(Ent
     if (msdppeerstate.is_set || is_set(msdppeerstate.yfilter)) leaf_name_data.push_back(msdppeerstate.get_name_leafdata());
     if (msdppeerstatus.is_set || is_set(msdppeerstatus.yfilter)) leaf_name_data.push_back(msdppeerstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::Msdppeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::Msdppeerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpPeerRemoteAddress")
     {
@@ -1042,7 +773,7 @@ void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_value(const std::string & v
     }
 }
 
-void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msdpPeerRemoteAddress")
     {
@@ -1174,23 +905,249 @@ void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_filter(const std::string & 
     }
 }
 
-bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpPeerRemoteAddress" || name == "msdpPeerConnectionAttempts" || name == "msdpPeerConnectRetryInterval" || name == "msdpPeerDataTtl" || name == "msdpPeerEncapsulationState" || name == "msdpPeerEncapsulationType" || name == "msdpPeerFsmEstablishedTime" || name == "msdpPeerFsmEstablishedTransitions" || name == "msdpPeerHoldTimeConfigured" || name == "msdpPeerInControlMessages" || name == "msdpPeerInDataPackets" || name == "msdpPeerInMessageElapsedTime" || name == "msdpPeerInNotifications" || name == "msdpPeerInSARequests" || name == "msdpPeerInSAResponses" || name == "msdpPeerInSAs" || name == "msdpPeerKeepAliveConfigured" || name == "msdpPeerLastError" || name == "msdpPeerLocalAddress" || name == "msdpPeerLocalPort" || name == "msdpPeerOutControlMessages" || name == "msdpPeerOutDataPackets" || name == "msdpPeerOutNotifications" || name == "msdpPeerOutSARequests" || name == "msdpPeerOutSAResponses" || name == "msdpPeerOutSAs" || name == "msdpPeerProcessRequestsFrom" || name == "msdpPeerRemotePort" || name == "msdpPeerRPFFailures" || name == "msdpPeerSAAdvPeriod" || name == "msdpPeerState" || name == "msdpPeerStatus")
         return true;
     return false;
 }
 
-DraftMsdpMib::Msdpsacachetable::Msdpsacachetable()
+DRAFTMSDPMIB::Msdprequeststable::Msdprequeststable()
 {
-    yang_name = "msdpSACacheTable"; yang_parent_name = "DRAFT-MSDP-MIB";
+
+    yang_name = "msdpRequestsTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-DraftMsdpMib::Msdpsacachetable::~Msdpsacachetable()
+DRAFTMSDPMIB::Msdprequeststable::~Msdprequeststable()
 {
 }
 
-bool DraftMsdpMib::Msdpsacachetable::has_data() const
+bool DRAFTMSDPMIB::Msdprequeststable::has_data() const
+{
+    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
+    {
+        if(msdprequestsentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool DRAFTMSDPMIB::Msdprequeststable::has_operation() const
+{
+    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
+    {
+        if(msdprequestsentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string DRAFTMSDPMIB::Msdprequeststable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdprequeststable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "msdpRequestsTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdprequeststable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "msdpRequestsEntry")
+    {
+        for(auto const & c : msdprequestsentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry>();
+        c->parent = this;
+        msdprequestsentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : msdprequestsentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void DRAFTMSDPMIB::Msdprequeststable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DRAFTMSDPMIB::Msdprequeststable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DRAFTMSDPMIB::Msdprequeststable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpRequestsEntry")
+        return true;
+    return false;
+}
+
+DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::Msdprequestsentry()
+    :
+    msdprequestsgroupaddress{YType::str, "msdpRequestsGroupAddress"},
+    msdprequestsgroupmask{YType::str, "msdpRequestsGroupMask"},
+    msdprequestspeer{YType::str, "msdpRequestsPeer"},
+    msdprequestsstatus{YType::enumeration, "msdpRequestsStatus"}
+{
+
+    yang_name = "msdpRequestsEntry"; yang_parent_name = "msdpRequestsTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::~Msdprequestsentry()
+{
+}
+
+bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_data() const
+{
+    return msdprequestsgroupaddress.is_set
+	|| msdprequestsgroupmask.is_set
+	|| msdprequestspeer.is_set
+	|| msdprequestsstatus.is_set;
+}
+
+bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(msdprequestsgroupaddress.yfilter)
+	|| ydk::is_set(msdprequestsgroupmask.yfilter)
+	|| ydk::is_set(msdprequestspeer.yfilter)
+	|| ydk::is_set(msdprequestsstatus.yfilter);
+}
+
+std::string DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpRequestsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "msdpRequestsEntry" <<"[msdpRequestsGroupAddress='" <<msdprequestsgroupaddress <<"']" <<"[msdpRequestsGroupMask='" <<msdprequestsgroupmask <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (msdprequestsgroupaddress.is_set || is_set(msdprequestsgroupaddress.yfilter)) leaf_name_data.push_back(msdprequestsgroupaddress.get_name_leafdata());
+    if (msdprequestsgroupmask.is_set || is_set(msdprequestsgroupmask.yfilter)) leaf_name_data.push_back(msdprequestsgroupmask.get_name_leafdata());
+    if (msdprequestspeer.is_set || is_set(msdprequestspeer.yfilter)) leaf_name_data.push_back(msdprequestspeer.get_name_leafdata());
+    if (msdprequestsstatus.is_set || is_set(msdprequestsstatus.yfilter)) leaf_name_data.push_back(msdprequestsstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "msdpRequestsGroupAddress")
+    {
+        msdprequestsgroupaddress = value;
+        msdprequestsgroupaddress.value_namespace = name_space;
+        msdprequestsgroupaddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msdpRequestsGroupMask")
+    {
+        msdprequestsgroupmask = value;
+        msdprequestsgroupmask.value_namespace = name_space;
+        msdprequestsgroupmask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msdpRequestsPeer")
+    {
+        msdprequestspeer = value;
+        msdprequestspeer.value_namespace = name_space;
+        msdprequestspeer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msdpRequestsStatus")
+    {
+        msdprequestsstatus = value;
+        msdprequestsstatus.value_namespace = name_space;
+        msdprequestsstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msdpRequestsGroupAddress")
+    {
+        msdprequestsgroupaddress.yfilter = yfilter;
+    }
+    if(value_path == "msdpRequestsGroupMask")
+    {
+        msdprequestsgroupmask.yfilter = yfilter;
+    }
+    if(value_path == "msdpRequestsPeer")
+    {
+        msdprequestspeer.yfilter = yfilter;
+    }
+    if(value_path == "msdpRequestsStatus")
+    {
+        msdprequestsstatus.yfilter = yfilter;
+    }
+}
+
+bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpRequestsGroupAddress" || name == "msdpRequestsGroupMask" || name == "msdpRequestsPeer" || name == "msdpRequestsStatus")
+        return true;
+    return false;
+}
+
+DRAFTMSDPMIB::Msdpsacachetable::Msdpsacachetable()
+{
+
+    yang_name = "msdpSACacheTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+DRAFTMSDPMIB::Msdpsacachetable::~Msdpsacachetable()
+{
+}
+
+bool DRAFTMSDPMIB::Msdpsacachetable::has_data() const
 {
     for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
     {
@@ -1200,7 +1157,7 @@ bool DraftMsdpMib::Msdpsacachetable::has_data() const
     return false;
 }
 
-bool DraftMsdpMib::Msdpsacachetable::has_operation() const
+bool DRAFTMSDPMIB::Msdpsacachetable::has_operation() const
 {
     for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
     {
@@ -1210,37 +1167,30 @@ bool DraftMsdpMib::Msdpsacachetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DraftMsdpMib::Msdpsacachetable::get_segment_path() const
+std::string DRAFTMSDPMIB::Msdpsacachetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdpsacachetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpSACacheTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DraftMsdpMib::Msdpsacachetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdpsacachetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpSACacheEntry")
     {
@@ -1252,7 +1202,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
                 return c;
             }
         }
-        auto c = std::make_shared<DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry>();
+        auto c = std::make_shared<DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry>();
         c->parent = this;
         msdpsacacheentry.push_back(c);
         return c;
@@ -1261,7 +1211,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : msdpsacacheentry)
@@ -1272,22 +1222,22 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::g
     return children;
 }
 
-void DraftMsdpMib::Msdpsacachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::Msdpsacachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DraftMsdpMib::Msdpsacachetable::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::Msdpsacachetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DraftMsdpMib::Msdpsacachetable::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::Msdpsacachetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpSACacheEntry")
         return true;
     return false;
 }
 
-DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::Msdpsacacheentry()
+DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::Msdpsacacheentry()
     :
     msdpsacachegroupaddr{YType::str, "msdpSACacheGroupAddr"},
     msdpsacachesourceaddr{YType::str, "msdpSACacheSourceAddr"},
@@ -1300,14 +1250,15 @@ DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::Msdpsacacheentry()
     msdpsacachestatus{YType::enumeration, "msdpSACacheStatus"},
     msdpsacacheuptime{YType::uint32, "msdpSACacheUpTime"}
 {
-    yang_name = "msdpSACacheEntry"; yang_parent_name = "msdpSACacheTable";
+
+    yang_name = "msdpSACacheEntry"; yang_parent_name = "msdpSACacheTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::~Msdpsacacheentry()
+DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::~Msdpsacacheentry()
 {
 }
 
-bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_data() const
+bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_data() const
 {
     return msdpsacachegroupaddr.is_set
 	|| msdpsacachesourceaddr.is_set
@@ -1321,7 +1272,7 @@ bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_data() const
 	|| msdpsacacheuptime.is_set;
 }
 
-bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_operation() const
+bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msdpsacachegroupaddr.yfilter)
@@ -1336,27 +1287,22 @@ bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_operation() const
 	|| ydk::is_set(msdpsacacheuptime.yfilter);
 }
 
-std::string DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_segment_path() const
+std::string DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpSACacheTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpSACacheEntry" <<"[msdpSACacheGroupAddr='" <<msdpsacachegroupaddr <<"']" <<"[msdpSACacheSourceAddr='" <<msdpsacachesourceaddr <<"']" <<"[msdpSACacheOriginRP='" <<msdpsacacheoriginrp <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpSACacheTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (msdpsacachegroupaddr.is_set || is_set(msdpsacachegroupaddr.yfilter)) leaf_name_data.push_back(msdpsacachegroupaddr.get_name_leafdata());
@@ -1370,24 +1316,22 @@ const EntityPath DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_entity_pa
     if (msdpsacachestatus.is_set || is_set(msdpsacachestatus.yfilter)) leaf_name_data.push_back(msdpsacachestatus.get_name_leafdata());
     if (msdpsacacheuptime.is_set || is_set(msdpsacacheuptime.yfilter)) leaf_name_data.push_back(msdpsacacheuptime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpSACacheGroupAddr")
     {
@@ -1451,7 +1395,7 @@ void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_value(const std::stri
     }
 }
 
-void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msdpSACacheGroupAddr")
     {
@@ -1495,29 +1439,29 @@ void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_filter(const std::str
     }
 }
 
-bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpSACacheGroupAddr" || name == "msdpSACacheSourceAddr" || name == "msdpSACacheOriginRP" || name == "msdpSACacheExpiryTime" || name == "msdpSACacheInDataPackets" || name == "msdpSACacheInSAs" || name == "msdpSACachePeerLearnedFrom" || name == "msdpSACacheRPFPeer" || name == "msdpSACacheStatus" || name == "msdpSACacheUpTime")
         return true;
     return false;
 }
 
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::inactive {1, "inactive"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::listen {2, "listen"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::connecting {3, "connecting"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::established {4, "established"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::disabled {5, "disabled"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::inactive {1, "inactive"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::listen {2, "listen"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::connecting {3, "connecting"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::established {4, "established"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::disabled {5, "disabled"};
 
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::default_ {1, "default"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::received {2, "received"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::advertising {3, "advertising"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::sent {4, "sent"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::agreed {5, "agreed"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::failed {6, "failed"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::default_ {1, "default"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::received {2, "received"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::advertising {3, "advertising"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::sent {4, "sent"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::agreed {5, "agreed"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::failed {6, "failed"};
 
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::tcp {1, "tcp"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::udp {2, "udp"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::gre {3, "gre"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::tcp {1, "tcp"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::udp {2, "udp"};
+const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::gre {3, "gre"};
 
 
 }

@@ -10,7 +10,16 @@
 namespace cisco_ios_xe {
 namespace CISCO_FIREWALL_TC {
 
-class Cfwnetworkprotocol : public ydk::Enum
+class CFWUrlServerStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf online;
+        static const ydk::Enum::YLeaf offline;
+        static const ydk::Enum::YLeaf indeterminate;
+
+};
+
+class CFWNetworkProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -23,25 +32,7 @@ class Cfwnetworkprotocol : public ydk::Enum
 
 };
 
-class Cfwurlfvendorid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf websense;
-        static const ydk::Enum::YLeaf n2h2;
-
-};
-
-class Cfwurlserverstatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf online;
-        static const ydk::Enum::YLeaf offline;
-        static const ydk::Enum::YLeaf indeterminate;
-
-};
-
-class Cfwapplicationprotocol : public ydk::Enum
+class CFWApplicationProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -217,7 +208,16 @@ class Cfwapplicationprotocol : public ydk::Enum
 
 };
 
-class Cfwpolicytargettype : public ydk::Enum
+class CFWUrlfVendorId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf websense;
+        static const ydk::Enum::YLeaf n2h2;
+
+};
+
+class CFWPolicyTargetType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;

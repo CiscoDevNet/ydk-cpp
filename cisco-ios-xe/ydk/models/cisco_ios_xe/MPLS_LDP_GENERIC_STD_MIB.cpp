@@ -11,64 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace MPLS_LDP_GENERIC_STD_MIB {
 
-MplsLdpGenericStdMib::MplsLdpGenericStdMib()
+MPLSLDPGENERICSTDMIB::MPLSLDPGENERICSTDMIB()
     :
-    mplsldpentitygenericlrtable(std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable>())
+    mplsldpentitygenericlrtable(std::make_shared<MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable>())
 {
     mplsldpentitygenericlrtable->parent = this;
 
-    yang_name = "MPLS-LDP-GENERIC-STD-MIB"; yang_parent_name = "MPLS-LDP-GENERIC-STD-MIB";
+    yang_name = "MPLS-LDP-GENERIC-STD-MIB"; yang_parent_name = "MPLS-LDP-GENERIC-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-MplsLdpGenericStdMib::~MplsLdpGenericStdMib()
+MPLSLDPGENERICSTDMIB::~MPLSLDPGENERICSTDMIB()
 {
 }
 
-bool MplsLdpGenericStdMib::has_data() const
+bool MPLSLDPGENERICSTDMIB::has_data() const
 {
     return (mplsldpentitygenericlrtable !=  nullptr && mplsldpentitygenericlrtable->has_data());
 }
 
-bool MplsLdpGenericStdMib::has_operation() const
+bool MPLSLDPGENERICSTDMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (mplsldpentitygenericlrtable !=  nullptr && mplsldpentitygenericlrtable->has_operation());
 }
 
-std::string MplsLdpGenericStdMib::get_segment_path() const
+std::string MPLSLDPGENERICSTDMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-LDP-GENERIC-STD-MIB:MPLS-LDP-GENERIC-STD-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLdpGenericStdMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLdpGenericStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsLdpEntityGenericLRTable")
     {
         if(mplsldpentitygenericlrtable == nullptr)
         {
-            mplsldpentitygenericlrtable = std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable>();
+            mplsldpentitygenericlrtable = std::make_shared<MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable>();
         }
         return mplsldpentitygenericlrtable;
     }
@@ -76,7 +65,7 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLDPGENERICSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(mplsldpentitygenericlrtable != nullptr)
@@ -87,56 +76,57 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::get_childre
     return children;
 }
 
-void MplsLdpGenericStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLDPGENERICSTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLdpGenericStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLDPGENERICSTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsLdpGenericStdMib::clone_ptr() const
+std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::clone_ptr() const
 {
-    return std::make_shared<MplsLdpGenericStdMib>();
+    return std::make_shared<MPLSLDPGENERICSTDMIB>();
 }
 
-std::string MplsLdpGenericStdMib::get_bundle_yang_models_location() const
+std::string MPLSLDPGENERICSTDMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string MplsLdpGenericStdMib::get_bundle_name() const
+std::string MPLSLDPGENERICSTDMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function MplsLdpGenericStdMib::get_augment_capabilities_function() const
+augment_capabilities_function MPLSLDPGENERICSTDMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> MplsLdpGenericStdMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> MPLSLDPGENERICSTDMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool MplsLdpGenericStdMib::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLDPGENERICSTDMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsLdpEntityGenericLRTable")
         return true;
     return false;
 }
 
-MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrtable()
+MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrtable()
 {
-    yang_name = "mplsLdpEntityGenericLRTable"; yang_parent_name = "MPLS-LDP-GENERIC-STD-MIB";
+
+    yang_name = "mplsLdpEntityGenericLRTable"; yang_parent_name = "MPLS-LDP-GENERIC-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::~Mplsldpentitygenericlrtable()
+MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::~Mplsldpentitygenericlrtable()
 {
 }
 
-bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_data() const
+bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::has_data() const
 {
     for (std::size_t index=0; index<mplsldpentitygenericlrentry.size(); index++)
     {
@@ -146,7 +136,7 @@ bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_data() const
     return false;
 }
 
-bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_operation() const
+bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::has_operation() const
 {
     for (std::size_t index=0; index<mplsldpentitygenericlrentry.size(); index++)
     {
@@ -156,37 +146,30 @@ bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_segment_path() const
+std::string MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LDP-GENERIC-STD-MIB:MPLS-LDP-GENERIC-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsLdpEntityGenericLRTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LDP-GENERIC-STD-MIB:MPLS-LDP-GENERIC-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsLdpEntityGenericLREntry")
     {
@@ -198,7 +181,7 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_c
                 return c;
             }
         }
-        auto c = std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry>();
+        auto c = std::make_shared<MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry>();
         c->parent = this;
         mplsldpentitygenericlrentry.push_back(c);
         return c;
@@ -207,7 +190,7 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplsldpentitygenericlrentry)
@@ -218,22 +201,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::Mplsldpenti
     return children;
 }
 
-void MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsLdpEntityGenericLREntry")
         return true;
     return false;
 }
 
-MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlrentry()
+MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlrentry()
     :
     mplsldpentityldpid{YType::str, "mplsLdpEntityLdpId"},
     mplsldpentityindex{YType::str, "mplsLdpEntityIndex"},
@@ -244,14 +227,15 @@ MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::
     mplsldpentitygenericlrrowstatus{YType::enumeration, "mplsLdpEntityGenericLRRowStatus"},
     mplsldpentitygenericlrstoragetype{YType::enumeration, "mplsLdpEntityGenericLRStorageType"}
 {
-    yang_name = "mplsLdpEntityGenericLREntry"; yang_parent_name = "mplsLdpEntityGenericLRTable";
+
+    yang_name = "mplsLdpEntityGenericLREntry"; yang_parent_name = "mplsLdpEntityGenericLRTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::~Mplsldpentitygenericlrentry()
+MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::~Mplsldpentitygenericlrentry()
 {
 }
 
-bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_data() const
+bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_data() const
 {
     return mplsldpentityldpid.is_set
 	|| mplsldpentityindex.is_set
@@ -263,7 +247,7 @@ bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
 	|| mplsldpentitygenericlrstoragetype.is_set;
 }
 
-bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_operation() const
+bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsldpentityldpid.yfilter)
@@ -276,27 +260,22 @@ bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
 	|| ydk::is_set(mplsldpentitygenericlrstoragetype.yfilter);
 }
 
-std::string MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_segment_path() const
+std::string MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LDP-GENERIC-STD-MIB:MPLS-LDP-GENERIC-STD-MIB/mplsLdpEntityGenericLRTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsLdpEntityGenericLREntry" <<"[mplsLdpEntityLdpId='" <<mplsldpentityldpid <<"']" <<"[mplsLdpEntityIndex='" <<mplsldpentityindex <<"']" <<"[mplsLdpEntityGenericLRMin='" <<mplsldpentitygenericlrmin <<"']" <<"[mplsLdpEntityGenericLRMax='" <<mplsldpentitygenericlrmax <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LDP-GENERIC-STD-MIB:MPLS-LDP-GENERIC-STD-MIB/mplsLdpEntityGenericLRTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsldpentityldpid.is_set || is_set(mplsldpentityldpid.yfilter)) leaf_name_data.push_back(mplsldpentityldpid.get_name_leafdata());
@@ -308,24 +287,22 @@ const EntityPath MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentit
     if (mplsldpentitygenericlrrowstatus.is_set || is_set(mplsldpentitygenericlrrowstatus.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrrowstatus.get_name_leafdata());
     if (mplsldpentitygenericlrstoragetype.is_set || is_set(mplsldpentitygenericlrstoragetype.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrstoragetype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsLdpEntityLdpId")
     {
@@ -377,7 +354,7 @@ void MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
     }
 }
 
-void MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsLdpEntityLdpId")
     {
@@ -413,15 +390,15 @@ void MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
     }
 }
 
-bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsLdpEntityLdpId" || name == "mplsLdpEntityIndex" || name == "mplsLdpEntityGenericLRMin" || name == "mplsLdpEntityGenericLRMax" || name == "mplsLdpEntityGenericIfIndexOrZero" || name == "mplsLdpEntityGenericLabelSpace" || name == "mplsLdpEntityGenericLRRowStatus" || name == "mplsLdpEntityGenericLRStorageType")
         return true;
     return false;
 }
 
-const Enum::YLeaf MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlabelspace::perPlatform {1, "perPlatform"};
-const Enum::YLeaf MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlabelspace::perInterface {2, "perInterface"};
+const Enum::YLeaf MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlabelspace::perPlatform {1, "perPlatform"};
+const Enum::YLeaf MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlabelspace::perInterface {2, "perInterface"};
 
 
 }

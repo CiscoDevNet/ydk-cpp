@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_terminal_device_cfg {
 
 LogicalChannels::LogicalChannels()
 {
-    yang_name = "logical-channels"; yang_parent_name = "Cisco-IOS-XR-terminal-device-cfg";
+
+    yang_name = "logical-channels"; yang_parent_name = "Cisco-IOS-XR-terminal-device-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 LogicalChannels::~LogicalChannels()
@@ -44,26 +45,15 @@ std::string LogicalChannels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-terminal-device-cfg:logical-channels";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LogicalChannels::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LogicalChannels::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -155,10 +145,9 @@ LogicalChannels::Channel::Channel()
 	,otn(std::make_shared<LogicalChannels::Channel::Otn>())
 {
     logical_channel_assignments->parent = this;
-
     otn->parent = this;
 
-    yang_name = "channel"; yang_parent_name = "logical-channels";
+    yang_name = "channel"; yang_parent_name = "logical-channels"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 LogicalChannels::Channel::~Channel()
@@ -196,27 +185,22 @@ bool LogicalChannels::Channel::has_operation() const
 	|| (otn !=  nullptr && otn->has_operation());
 }
 
+std::string LogicalChannels::Channel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-cfg:logical-channels/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string LogicalChannels::Channel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "channel" <<"[channel-index='" <<channel_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LogicalChannels::Channel::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-cfg:logical-channels/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (channel_index.is_set || is_set(channel_index.yfilter)) leaf_name_data.push_back(channel_index.get_name_leafdata());
@@ -229,9 +213,7 @@ const EntityPath LogicalChannels::Channel::get_entity_path(Entity* ancestor) con
     if (rate_class.is_set || is_set(rate_class.yfilter)) leaf_name_data.push_back(rate_class.get_name_leafdata());
     if (trib_protocol.is_set || is_set(trib_protocol.yfilter)) leaf_name_data.push_back(trib_protocol.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -381,7 +363,8 @@ bool LogicalChannels::Channel::has_leaf_or_child_of_name(const std::string & nam
 
 LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignments()
 {
-    yang_name = "logical-channel-assignments"; yang_parent_name = "channel";
+
+    yang_name = "logical-channel-assignments"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LogicalChannels::Channel::LogicalChannelAssignments::~LogicalChannelAssignments()
@@ -412,29 +395,15 @@ std::string LogicalChannels::Channel::LogicalChannelAssignments::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "logical-channel-assignments";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LogicalChannels::Channel::LogicalChannelAssignments::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::LogicalChannelAssignments::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LogicalChannelAssignments' in Cisco_IOS_XR_terminal_device_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -494,7 +463,8 @@ LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::L
     logical_channel_id{YType::int32, "logical-channel-id"},
     optical_channel_id{YType::str, "optical-channel-id"}
 {
-    yang_name = "logical-channel-assignment"; yang_parent_name = "logical-channel-assignments";
+
+    yang_name = "logical-channel-assignment"; yang_parent_name = "logical-channel-assignments"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::~LogicalChannelAssignment()
@@ -526,23 +496,11 @@ std::string LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelA
 {
     std::ostringstream path_buffer;
     path_buffer << "logical-channel-assignment" <<"[assignment-index='" <<assignment_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LogicalChannelAssignment' in Cisco_IOS_XR_terminal_device_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (assignment_index.is_set || is_set(assignment_index.yfilter)) leaf_name_data.push_back(assignment_index.get_name_leafdata());
@@ -552,9 +510,7 @@ const EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalCha
     if (logical_channel_id.is_set || is_set(logical_channel_id.yfilter)) leaf_name_data.push_back(logical_channel_id.get_name_leafdata());
     if (optical_channel_id.is_set || is_set(optical_channel_id.yfilter)) leaf_name_data.push_back(optical_channel_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -650,7 +606,8 @@ LogicalChannels::Channel::Otn::Otn()
     tti_msg_expected{YType::str, "tti-msg-expected"},
     tti_msg_transmit{YType::str, "tti-msg-transmit"}
 {
-    yang_name = "otn"; yang_parent_name = "channel";
+
+    yang_name = "otn"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LogicalChannels::Channel::Otn::~Otn()
@@ -676,32 +633,18 @@ std::string LogicalChannels::Channel::Otn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "otn";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LogicalChannels::Channel::Otn::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::Otn::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Otn' in Cisco_IOS_XR_terminal_device_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (tti_msg_auto.is_set || is_set(tti_msg_auto.yfilter)) leaf_name_data.push_back(tti_msg_auto.get_name_leafdata());
     if (tti_msg_expected.is_set || is_set(tti_msg_expected.yfilter)) leaf_name_data.push_back(tti_msg_expected.get_name_leafdata());
     if (tti_msg_transmit.is_set || is_set(tti_msg_transmit.yfilter)) leaf_name_data.push_back(tti_msg_transmit.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -763,7 +706,8 @@ bool LogicalChannels::Channel::Otn::has_leaf_or_child_of_name(const std::string 
 
 OpticalChannels::OpticalChannels()
 {
-    yang_name = "optical-channels"; yang_parent_name = "Cisco-IOS-XR-terminal-device-cfg";
+
+    yang_name = "optical-channels"; yang_parent_name = "Cisco-IOS-XR-terminal-device-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 OpticalChannels::~OpticalChannels()
@@ -794,26 +738,15 @@ std::string OpticalChannels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-terminal-device-cfg:optical-channels";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalChannels::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalChannels::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -895,7 +828,8 @@ OpticalChannels::OpticalChannel::OpticalChannel()
     line_port{YType::str, "line-port"},
     operational_mode{YType::uint32, "operational-mode"}
 {
-    yang_name = "optical-channel"; yang_parent_name = "optical-channels";
+
+    yang_name = "optical-channel"; yang_parent_name = "optical-channels"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalChannels::OpticalChannel::~OpticalChannel()
@@ -917,36 +851,29 @@ bool OpticalChannels::OpticalChannel::has_operation() const
 	|| ydk::is_set(operational_mode.yfilter);
 }
 
+std::string OpticalChannels::OpticalChannel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-cfg:optical-channels/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalChannels::OpticalChannel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-channel" <<"[ifname='" <<ifname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalChannels::OpticalChannel::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalChannels::OpticalChannel::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-cfg:optical-channels/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ifname.is_set || is_set(ifname.yfilter)) leaf_name_data.push_back(ifname.get_name_leafdata());
     if (line_port.is_set || is_set(line_port.yfilter)) leaf_name_data.push_back(line_port.get_name_leafdata());
     if (operational_mode.is_set || is_set(operational_mode.yfilter)) leaf_name_data.push_back(operational_mode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1006,17 +933,9 @@ bool OpticalChannels::OpticalChannel::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
-const Enum::YLeaf LogicalTribRate::trib_rate1g {1, "trib-rate1g"};
-const Enum::YLeaf LogicalTribRate::trib_rate2_5g {2, "trib-rate2-5g"};
-const Enum::YLeaf LogicalTribRate::trib_rate10g {3, "trib-rate10g"};
-const Enum::YLeaf LogicalTribRate::trib_rate40g {4, "trib-rate40g"};
-const Enum::YLeaf LogicalTribRate::trib_rate100g {5, "trib-rate100g"};
-
-const Enum::YLeaf LogicalChannelOtnTtiAuto::false_ {0, "false"};
-const Enum::YLeaf LogicalChannelOtnTtiAuto::true_ {1, "true"};
-
-const Enum::YLeaf LogicalChannelAssignment::type_logical_channel {1, "type-logical-channel"};
-const Enum::YLeaf LogicalChannelAssignment::type_optical_channel {2, "type-optical-channel"};
+const Enum::YLeaf LogicalLoopbackMode::none {0, "none"};
+const Enum::YLeaf LogicalLoopbackMode::facility {1, "facility"};
+const Enum::YLeaf LogicalLoopbackMode::terminal {2, "terminal"};
 
 const Enum::YLeaf LogicalProtocol::type_ethernet {1, "type-ethernet"};
 const Enum::YLeaf LogicalProtocol::type_otn {2, "type-otn"};
@@ -1024,6 +943,18 @@ const Enum::YLeaf LogicalProtocol::type_otn {2, "type-otn"};
 const Enum::YLeaf LogicalAdminState::enable {1, "enable"};
 const Enum::YLeaf LogicalAdminState::disable {2, "disable"};
 const Enum::YLeaf LogicalAdminState::maintenance {3, "maintenance"};
+
+const Enum::YLeaf LogicalChannelOtnTtiAuto::false_ {0, "false"};
+const Enum::YLeaf LogicalChannelOtnTtiAuto::true_ {1, "true"};
+
+const Enum::YLeaf LogicalChannelAssignment::type_logical_channel {1, "type-logical-channel"};
+const Enum::YLeaf LogicalChannelAssignment::type_optical_channel {2, "type-optical-channel"};
+
+const Enum::YLeaf LogicalTribRate::trib_rate1g {1, "trib-rate1g"};
+const Enum::YLeaf LogicalTribRate::trib_rate2_5g {2, "trib-rate2-5g"};
+const Enum::YLeaf LogicalTribRate::trib_rate10g {3, "trib-rate10g"};
+const Enum::YLeaf LogicalTribRate::trib_rate40g {4, "trib-rate40g"};
+const Enum::YLeaf LogicalTribRate::trib_rate100g {5, "trib-rate100g"};
 
 const Enum::YLeaf LogicalTribProtocol::trib_proto_type1ge {1, "trib-proto-type1ge"};
 const Enum::YLeaf LogicalTribProtocol::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
@@ -1047,10 +978,6 @@ const Enum::YLeaf LogicalTribProtocol::trib_proto_type100g_mlg {19, "trib-proto-
 const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
 const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
 const Enum::YLeaf LogicalTribProtocol::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
-
-const Enum::YLeaf LogicalLoopbackMode::none {0, "none"};
-const Enum::YLeaf LogicalLoopbackMode::facility {1, "facility"};
-const Enum::YLeaf LogicalLoopbackMode::terminal {2, "terminal"};
 
 
 }

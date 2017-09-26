@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_lldp_oper {
 
 LldpEntries::LldpEntries()
 {
-    yang_name = "lldp-entries"; yang_parent_name = "Cisco-IOS-XE-lldp-oper";
+
+    yang_name = "lldp-entries"; yang_parent_name = "Cisco-IOS-XE-lldp-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 LldpEntries::~LldpEntries()
@@ -44,26 +45,15 @@ std::string LldpEntries::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-lldp-oper:lldp-entries";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LldpEntries::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LldpEntries::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -150,7 +140,7 @@ LldpEntries::LldpEntry::LldpEntry()
 {
     capabilities->parent = this;
 
-    yang_name = "lldp-entry"; yang_parent_name = "lldp-entries";
+    yang_name = "lldp-entry"; yang_parent_name = "lldp-entries"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 LldpEntries::LldpEntry::~LldpEntry()
@@ -176,27 +166,22 @@ bool LldpEntries::LldpEntry::has_operation() const
 	|| (capabilities !=  nullptr && capabilities->has_operation());
 }
 
+std::string LldpEntries::LldpEntry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-lldp-oper:lldp-entries/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string LldpEntries::LldpEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-entry" <<"[device-id='" <<device_id <<"']" <<"[local-interface='" <<local_interface <<"']" <<"[connecting-interface='" <<connecting_interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LldpEntries::LldpEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LldpEntries::LldpEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-lldp-oper:lldp-entries/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
@@ -204,9 +189,7 @@ const EntityPath LldpEntries::LldpEntry::get_entity_path(Entity* ancestor) const
     if (connecting_interface.is_set || is_set(connecting_interface.yfilter)) leaf_name_data.push_back(connecting_interface.get_name_leafdata());
     if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -301,7 +284,8 @@ LldpEntries::LldpEntry::Capabilities::Capabilities()
     station{YType::empty, "station"},
     telephone{YType::empty, "telephone"}
 {
-    yang_name = "capabilities"; yang_parent_name = "lldp-entry";
+
+    yang_name = "capabilities"; yang_parent_name = "lldp-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LldpEntries::LldpEntry::Capabilities::~Capabilities()
@@ -337,23 +321,11 @@ std::string LldpEntries::LldpEntry::Capabilities::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "capabilities";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LldpEntries::LldpEntry::Capabilities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LldpEntries::LldpEntry::Capabilities::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Capabilities' in Cisco_IOS_XE_lldp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (access_point.is_set || is_set(access_point.yfilter)) leaf_name_data.push_back(access_point.get_name_leafdata());
@@ -365,9 +337,7 @@ const EntityPath LldpEntries::LldpEntry::Capabilities::get_entity_path(Entity* a
     if (station.is_set || is_set(station.yfilter)) leaf_name_data.push_back(station.get_name_leafdata());
     if (telephone.is_set || is_set(telephone.yfilter)) leaf_name_data.push_back(telephone.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

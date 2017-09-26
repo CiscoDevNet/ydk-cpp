@@ -17,7 +17,7 @@ SubscriberAccounting::SubscriberAccounting()
 {
     prepaid_configurations->parent = this;
 
-    yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-cfg";
+    yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SubscriberAccounting::~SubscriberAccounting()
@@ -39,26 +39,15 @@ std::string SubscriberAccounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:subscriber-accounting";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberAccounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool SubscriberAccounting::has_leaf_or_child_of_name(const std::string & name) c
 
 SubscriberAccounting::PrepaidConfigurations::PrepaidConfigurations()
 {
-    yang_name = "prepaid-configurations"; yang_parent_name = "subscriber-accounting";
+
+    yang_name = "prepaid-configurations"; yang_parent_name = "subscriber-accounting"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SubscriberAccounting::PrepaidConfigurations::~PrepaidConfigurations()
@@ -156,33 +146,26 @@ bool SubscriberAccounting::PrepaidConfigurations::has_operation() const
     return is_set(yfilter);
 }
 
+std::string SubscriberAccounting::PrepaidConfigurations::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:subscriber-accounting/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SubscriberAccounting::PrepaidConfigurations::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prepaid-configurations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberAccounting::PrepaidConfigurations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::PrepaidConfigurations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:subscriber-accounting/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -245,7 +228,8 @@ SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::PrepaidConfig
     traffic_direction{YType::str, "traffic-direction"},
     volume_threshold{YType::int32, "volume-threshold"}
 {
-    yang_name = "prepaid-configuration"; yang_parent_name = "prepaid-configurations";
+
+    yang_name = "prepaid-configuration"; yang_parent_name = "prepaid-configurations"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::~PrepaidConfiguration()
@@ -279,27 +263,22 @@ bool SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::has_oper
 	|| ydk::is_set(volume_threshold.yfilter);
 }
 
+std::string SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:subscriber-accounting/prepaid-configurations/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prepaid-configuration" <<"[prepaid-config-name='" <<prepaid_config_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:subscriber-accounting/prepaid-configurations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (prepaid_config_name.is_set || is_set(prepaid_config_name.yfilter)) leaf_name_data.push_back(prepaid_config_name.get_name_leafdata());
@@ -312,9 +291,7 @@ const EntityPath SubscriberAccounting::PrepaidConfigurations::PrepaidConfigurati
     if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
     if (volume_threshold.is_set || is_set(volume_threshold.yfilter)) leaf_name_data.push_back(volume_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

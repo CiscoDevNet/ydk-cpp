@@ -11,32 +11,28 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace MPLS_L3VPN_STD_MIB {
 
-MplsL3VpnStdMib::MplsL3VpnStdMib()
+MPLSL3VPNSTDMIB::MPLSL3VPNSTDMIB()
     :
-    mplsl3vpnifconftable(std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnifconftable>())
-	,mplsl3vpnscalars(std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnscalars>())
-	,mplsl3vpnvrfrtetable(std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable>())
-	,mplsl3vpnvrfrttable(std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrfrttable>())
-	,mplsl3vpnvrftable(std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrftable>())
+    mplsl3vpnifconftable(std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable>())
+	,mplsl3vpnscalars(std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnscalars>())
+	,mplsl3vpnvrfrtetable(std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable>())
+	,mplsl3vpnvrfrttable(std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable>())
+	,mplsl3vpnvrftable(std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable>())
 {
     mplsl3vpnifconftable->parent = this;
-
     mplsl3vpnscalars->parent = this;
-
     mplsl3vpnvrfrtetable->parent = this;
-
     mplsl3vpnvrfrttable->parent = this;
-
     mplsl3vpnvrftable->parent = this;
 
-    yang_name = "MPLS-L3VPN-STD-MIB"; yang_parent_name = "MPLS-L3VPN-STD-MIB";
+    yang_name = "MPLS-L3VPN-STD-MIB"; yang_parent_name = "MPLS-L3VPN-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-MplsL3VpnStdMib::~MplsL3VpnStdMib()
+MPLSL3VPNSTDMIB::~MPLSL3VPNSTDMIB()
 {
 }
 
-bool MplsL3VpnStdMib::has_data() const
+bool MPLSL3VPNSTDMIB::has_data() const
 {
     return (mplsl3vpnifconftable !=  nullptr && mplsl3vpnifconftable->has_data())
 	|| (mplsl3vpnscalars !=  nullptr && mplsl3vpnscalars->has_data())
@@ -45,7 +41,7 @@ bool MplsL3VpnStdMib::has_data() const
 	|| (mplsl3vpnvrftable !=  nullptr && mplsl3vpnvrftable->has_data());
 }
 
-bool MplsL3VpnStdMib::has_operation() const
+bool MPLSL3VPNSTDMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (mplsl3vpnifconftable !=  nullptr && mplsl3vpnifconftable->has_operation())
@@ -55,40 +51,29 @@ bool MplsL3VpnStdMib::has_operation() const
 	|| (mplsl3vpnvrftable !=  nullptr && mplsl3vpnvrftable->has_operation());
 }
 
-std::string MplsL3VpnStdMib::get_segment_path() const
+std::string MPLSL3VPNSTDMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsL3VpnStdMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsL3VpnIfConfTable")
     {
         if(mplsl3vpnifconftable == nullptr)
         {
-            mplsl3vpnifconftable = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnifconftable>();
+            mplsl3vpnifconftable = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable>();
         }
         return mplsl3vpnifconftable;
     }
@@ -97,7 +82,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::get_child_by_name(const std::string & c
     {
         if(mplsl3vpnscalars == nullptr)
         {
-            mplsl3vpnscalars = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnscalars>();
+            mplsl3vpnscalars = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnscalars>();
         }
         return mplsl3vpnscalars;
     }
@@ -106,7 +91,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::get_child_by_name(const std::string & c
     {
         if(mplsl3vpnvrfrtetable == nullptr)
         {
-            mplsl3vpnvrfrtetable = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable>();
+            mplsl3vpnvrfrtetable = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable>();
         }
         return mplsl3vpnvrfrtetable;
     }
@@ -115,7 +100,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::get_child_by_name(const std::string & c
     {
         if(mplsl3vpnvrfrttable == nullptr)
         {
-            mplsl3vpnvrfrttable = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrfrttable>();
+            mplsl3vpnvrfrttable = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable>();
         }
         return mplsl3vpnvrfrttable;
     }
@@ -124,7 +109,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::get_child_by_name(const std::string & c
     {
         if(mplsl3vpnvrftable == nullptr)
         {
-            mplsl3vpnvrftable = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrftable>();
+            mplsl3vpnvrftable = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable>();
         }
         return mplsl3vpnvrftable;
     }
@@ -132,7 +117,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(mplsl3vpnifconftable != nullptr)
@@ -163,47 +148,298 @@ std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::get_children() c
     return children;
 }
 
-void MplsL3VpnStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSL3VPNSTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsL3VpnStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSL3VPNSTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::clone_ptr() const
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::clone_ptr() const
 {
-    return std::make_shared<MplsL3VpnStdMib>();
+    return std::make_shared<MPLSL3VPNSTDMIB>();
 }
 
-std::string MplsL3VpnStdMib::get_bundle_yang_models_location() const
+std::string MPLSL3VPNSTDMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string MplsL3VpnStdMib::get_bundle_name() const
+std::string MPLSL3VPNSTDMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function MplsL3VpnStdMib::get_augment_capabilities_function() const
+augment_capabilities_function MPLSL3VPNSTDMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> MplsL3VpnStdMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> MPLSL3VPNSTDMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool MplsL3VpnStdMib::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSL3VPNSTDMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsL3VpnIfConfTable" || name == "mplsL3VpnScalars" || name == "mplsL3VpnVrfRteTable" || name == "mplsL3VpnVrfRTTable" || name == "mplsL3VpnVrfTable")
         return true;
     return false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnscalars::Mplsl3Vpnscalars()
+MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconftable()
+{
+
+    yang_name = "mplsL3VpnIfConfTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::~Mplsl3Vpnifconftable()
+{
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::has_data() const
+{
+    for (std::size_t index=0; index<mplsl3vpnifconfentry.size(); index++)
+    {
+        if(mplsl3vpnifconfentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::has_operation() const
+{
+    for (std::size_t index=0; index<mplsl3vpnifconfentry.size(); index++)
+    {
+        if(mplsl3vpnifconfentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsL3VpnIfConfTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mplsL3VpnIfConfEntry")
+    {
+        for(auto const & c : mplsl3vpnifconfentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry>();
+        c->parent = this;
+        mplsl3vpnifconfentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mplsl3vpnifconfentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsL3VpnIfConfEntry")
+        return true;
+    return false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifconfentry()
+    :
+    mplsl3vpnvrfname{YType::str, "mplsL3VpnVrfName"},
+    mplsl3vpnifconfindex{YType::int32, "mplsL3VpnIfConfIndex"},
+    mplsl3vpnifconfrowstatus{YType::enumeration, "mplsL3VpnIfConfRowStatus"},
+    mplsl3vpnifconfstoragetype{YType::enumeration, "mplsL3VpnIfConfStorageType"},
+    mplsl3vpnifvpnclassification{YType::enumeration, "mplsL3VpnIfVpnClassification"},
+    mplsl3vpnifvpnroutedistprotocol{YType::bits, "mplsL3VpnIfVpnRouteDistProtocol"}
+{
+
+    yang_name = "mplsL3VpnIfConfEntry"; yang_parent_name = "mplsL3VpnIfConfTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::~Mplsl3Vpnifconfentry()
+{
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::has_data() const
+{
+    return mplsl3vpnvrfname.is_set
+	|| mplsl3vpnifconfindex.is_set
+	|| mplsl3vpnifconfrowstatus.is_set
+	|| mplsl3vpnifconfstoragetype.is_set
+	|| mplsl3vpnifvpnclassification.is_set
+	|| mplsl3vpnifvpnroutedistprotocol.is_set;
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mplsl3vpnvrfname.yfilter)
+	|| ydk::is_set(mplsl3vpnifconfindex.yfilter)
+	|| ydk::is_set(mplsl3vpnifconfrowstatus.yfilter)
+	|| ydk::is_set(mplsl3vpnifconfstoragetype.yfilter)
+	|| ydk::is_set(mplsl3vpnifvpnclassification.yfilter)
+	|| ydk::is_set(mplsl3vpnifvpnroutedistprotocol.yfilter);
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnIfConfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsL3VpnIfConfEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']" <<"[mplsL3VpnIfConfIndex='" <<mplsl3vpnifconfindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mplsl3vpnvrfname.is_set || is_set(mplsl3vpnvrfname.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfname.get_name_leafdata());
+    if (mplsl3vpnifconfindex.is_set || is_set(mplsl3vpnifconfindex.yfilter)) leaf_name_data.push_back(mplsl3vpnifconfindex.get_name_leafdata());
+    if (mplsl3vpnifconfrowstatus.is_set || is_set(mplsl3vpnifconfrowstatus.yfilter)) leaf_name_data.push_back(mplsl3vpnifconfrowstatus.get_name_leafdata());
+    if (mplsl3vpnifconfstoragetype.is_set || is_set(mplsl3vpnifconfstoragetype.yfilter)) leaf_name_data.push_back(mplsl3vpnifconfstoragetype.get_name_leafdata());
+    if (mplsl3vpnifvpnclassification.is_set || is_set(mplsl3vpnifvpnclassification.yfilter)) leaf_name_data.push_back(mplsl3vpnifvpnclassification.get_name_leafdata());
+    if (mplsl3vpnifvpnroutedistprotocol.is_set || is_set(mplsl3vpnifvpnroutedistprotocol.yfilter)) leaf_name_data.push_back(mplsl3vpnifvpnroutedistprotocol.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mplsL3VpnVrfName")
+    {
+        mplsl3vpnvrfname = value;
+        mplsl3vpnvrfname.value_namespace = name_space;
+        mplsl3vpnvrfname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnIfConfIndex")
+    {
+        mplsl3vpnifconfindex = value;
+        mplsl3vpnifconfindex.value_namespace = name_space;
+        mplsl3vpnifconfindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnIfConfRowStatus")
+    {
+        mplsl3vpnifconfrowstatus = value;
+        mplsl3vpnifconfrowstatus.value_namespace = name_space;
+        mplsl3vpnifconfrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnIfConfStorageType")
+    {
+        mplsl3vpnifconfstoragetype = value;
+        mplsl3vpnifconfstoragetype.value_namespace = name_space;
+        mplsl3vpnifconfstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnIfVpnClassification")
+    {
+        mplsl3vpnifvpnclassification = value;
+        mplsl3vpnifvpnclassification.value_namespace = name_space;
+        mplsl3vpnifvpnclassification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnIfVpnRouteDistProtocol")
+    {
+        mplsl3vpnifvpnroutedistprotocol[value] = true;
+    }
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsL3VpnVrfName")
+    {
+        mplsl3vpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnIfConfIndex")
+    {
+        mplsl3vpnifconfindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnIfConfRowStatus")
+    {
+        mplsl3vpnifconfrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnIfConfStorageType")
+    {
+        mplsl3vpnifconfstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnIfVpnClassification")
+    {
+        mplsl3vpnifvpnclassification.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnIfVpnRouteDistProtocol")
+    {
+        mplsl3vpnifvpnroutedistprotocol.yfilter = yfilter;
+    }
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnIfConfIndex" || name == "mplsL3VpnIfConfRowStatus" || name == "mplsL3VpnIfConfStorageType" || name == "mplsL3VpnIfVpnClassification" || name == "mplsL3VpnIfVpnRouteDistProtocol")
+        return true;
+    return false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::Mplsl3Vpnscalars()
     :
     mplsl3vpnactivevrfs{YType::uint32, "mplsL3VpnActiveVrfs"},
     mplsl3vpnconfiguredvrfs{YType::uint32, "mplsL3VpnConfiguredVrfs"},
@@ -213,14 +449,15 @@ MplsL3VpnStdMib::Mplsl3Vpnscalars::Mplsl3Vpnscalars()
     mplsl3vpnvrfconfmaxpossrts{YType::uint32, "mplsL3VpnVrfConfMaxPossRts"},
     mplsl3vpnvrfconfrtemxthrshtime{YType::uint32, "mplsL3VpnVrfConfRteMxThrshTime"}
 {
-    yang_name = "mplsL3VpnScalars"; yang_parent_name = "MPLS-L3VPN-STD-MIB";
+
+    yang_name = "mplsL3VpnScalars"; yang_parent_name = "MPLS-L3VPN-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnscalars::~Mplsl3Vpnscalars()
+MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::~Mplsl3Vpnscalars()
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnscalars::has_data() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::has_data() const
 {
     return mplsl3vpnactivevrfs.is_set
 	|| mplsl3vpnconfiguredvrfs.is_set
@@ -231,7 +468,7 @@ bool MplsL3VpnStdMib::Mplsl3Vpnscalars::has_data() const
 	|| mplsl3vpnvrfconfrtemxthrshtime.is_set;
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnscalars::has_operation() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsl3vpnactivevrfs.yfilter)
@@ -243,27 +480,22 @@ bool MplsL3VpnStdMib::Mplsl3Vpnscalars::has_operation() const
 	|| ydk::is_set(mplsl3vpnvrfconfrtemxthrshtime.yfilter);
 }
 
-std::string MplsL3VpnStdMib::Mplsl3Vpnscalars::get_segment_path() const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsL3VpnScalars";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnscalars::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsl3vpnactivevrfs.is_set || is_set(mplsl3vpnactivevrfs.yfilter)) leaf_name_data.push_back(mplsl3vpnactivevrfs.get_name_leafdata());
@@ -274,24 +506,22 @@ const EntityPath MplsL3VpnStdMib::Mplsl3Vpnscalars::get_entity_path(Entity* ance
     if (mplsl3vpnvrfconfmaxpossrts.is_set || is_set(mplsl3vpnvrfconfmaxpossrts.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfconfmaxpossrts.get_name_leafdata());
     if (mplsl3vpnvrfconfrtemxthrshtime.is_set || is_set(mplsl3vpnvrfconfrtemxthrshtime.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfconfrtemxthrshtime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnscalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnscalars::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnscalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsL3VpnActiveVrfs")
     {
@@ -337,7 +567,7 @@ void MplsL3VpnStdMib::Mplsl3Vpnscalars::set_value(const std::string & value_path
     }
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnscalars::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsL3VpnActiveVrfs")
     {
@@ -369,77 +599,71 @@ void MplsL3VpnStdMib::Mplsl3Vpnscalars::set_filter(const std::string & value_pat
     }
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnscalars::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnscalars::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsL3VpnActiveVrfs" || name == "mplsL3VpnConfiguredVrfs" || name == "mplsL3VpnConnectedInterfaces" || name == "mplsL3VpnIllLblRcvThrsh" || name == "mplsL3VpnNotificationEnable" || name == "mplsL3VpnVrfConfMaxPossRts" || name == "mplsL3VpnVrfConfRteMxThrshTime")
         return true;
     return false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconftable()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrtetable()
 {
-    yang_name = "mplsL3VpnIfConfTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB";
+
+    yang_name = "mplsL3VpnVrfRteTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnifconftable::~Mplsl3Vpnifconftable()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::~Mplsl3Vpnvrfrtetable()
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnifconftable::has_data() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::has_data() const
 {
-    for (std::size_t index=0; index<mplsl3vpnifconfentry.size(); index++)
+    for (std::size_t index=0; index<mplsl3vpnvrfrteentry.size(); index++)
     {
-        if(mplsl3vpnifconfentry[index]->has_data())
+        if(mplsl3vpnvrfrteentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnifconftable::has_operation() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsl3vpnifconfentry.size(); index++)
+    for (std::size_t index=0; index<mplsl3vpnvrfrteentry.size(); index++)
     {
-        if(mplsl3vpnifconfentry[index]->has_operation())
+        if(mplsl3vpnvrfrteentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string MplsL3VpnStdMib::Mplsl3Vpnifconftable::get_segment_path() const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsL3VpnIfConfTable";
-
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnifconftable::get_entity_path(Entity* ancestor) const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "mplsL3VpnVrfRteTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnifconftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mplsL3VpnIfConfEntry")
+    if(child_yang_name == "mplsL3VpnVrfRteEntry")
     {
-        for(auto const & c : mplsl3vpnifconfentry)
+        for(auto const & c : mplsl3vpnvrfrteentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -447,19 +671,19 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnifconftable::get_child_by_name
                 return c;
             }
         }
-        auto c = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry>();
+        auto c = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry>();
         c->parent = this;
-        mplsl3vpnifconfentry.push_back(c);
+        mplsl3vpnvrfrteentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnifconftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsl3vpnifconfentry)
+    for (auto const & c : mplsl3vpnvrfrteentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -467,106 +691,152 @@ std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnifconft
     return children;
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnifconftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnifconftable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnifconftable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsL3VpnIfConfEntry")
+    if(name == "mplsL3VpnVrfRteEntry")
         return true;
     return false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifconfentry()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteentry()
     :
     mplsl3vpnvrfname{YType::str, "mplsL3VpnVrfName"},
-    mplsl3vpnifconfindex{YType::int32, "mplsL3VpnIfConfIndex"},
-    mplsl3vpnifconfrowstatus{YType::enumeration, "mplsL3VpnIfConfRowStatus"},
-    mplsl3vpnifconfstoragetype{YType::enumeration, "mplsL3VpnIfConfStorageType"},
-    mplsl3vpnifvpnclassification{YType::enumeration, "mplsL3VpnIfVpnClassification"},
-    mplsl3vpnifvpnroutedistprotocol{YType::bits, "mplsL3VpnIfVpnRouteDistProtocol"}
+    mplsl3vpnvrfrteinetcidrdesttype{YType::enumeration, "mplsL3VpnVrfRteInetCidrDestType"},
+    mplsl3vpnvrfrteinetcidrdest{YType::str, "mplsL3VpnVrfRteInetCidrDest"},
+    mplsl3vpnvrfrteinetcidrpfxlen{YType::uint32, "mplsL3VpnVrfRteInetCidrPfxLen"},
+    mplsl3vpnvrfrteinetcidrpolicy{YType::str, "mplsL3VpnVrfRteInetCidrPolicy"},
+    mplsl3vpnvrfrteinetcidrnhoptype{YType::enumeration, "mplsL3VpnVrfRteInetCidrNHopType"},
+    mplsl3vpnvrfrteinetcidrnexthop{YType::str, "mplsL3VpnVrfRteInetCidrNextHop"},
+    mplsl3vpnvrfrteinetcidrage{YType::uint32, "mplsL3VpnVrfRteInetCidrAge"},
+    mplsl3vpnvrfrteinetcidrifindex{YType::int32, "mplsL3VpnVrfRteInetCidrIfIndex"},
+    mplsl3vpnvrfrteinetcidrmetric1{YType::int32, "mplsL3VpnVrfRteInetCidrMetric1"},
+    mplsl3vpnvrfrteinetcidrmetric2{YType::int32, "mplsL3VpnVrfRteInetCidrMetric2"},
+    mplsl3vpnvrfrteinetcidrmetric3{YType::int32, "mplsL3VpnVrfRteInetCidrMetric3"},
+    mplsl3vpnvrfrteinetcidrmetric4{YType::int32, "mplsL3VpnVrfRteInetCidrMetric4"},
+    mplsl3vpnvrfrteinetcidrmetric5{YType::int32, "mplsL3VpnVrfRteInetCidrMetric5"},
+    mplsl3vpnvrfrteinetcidrnexthopas{YType::uint32, "mplsL3VpnVrfRteInetCidrNextHopAS"},
+    mplsl3vpnvrfrteinetcidrproto{YType::enumeration, "mplsL3VpnVrfRteInetCidrProto"},
+    mplsl3vpnvrfrteinetcidrstatus{YType::enumeration, "mplsL3VpnVrfRteInetCidrStatus"},
+    mplsl3vpnvrfrteinetcidrtype{YType::enumeration, "mplsL3VpnVrfRteInetCidrType"},
+    mplsl3vpnvrfrtexcpointer{YType::str, "mplsL3VpnVrfRteXCPointer"}
 {
-    yang_name = "mplsL3VpnIfConfEntry"; yang_parent_name = "mplsL3VpnIfConfTable";
+
+    yang_name = "mplsL3VpnVrfRteEntry"; yang_parent_name = "mplsL3VpnVrfRteTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::~Mplsl3Vpnifconfentry()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::~Mplsl3Vpnvrfrteentry()
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::has_data() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::has_data() const
 {
     return mplsl3vpnvrfname.is_set
-	|| mplsl3vpnifconfindex.is_set
-	|| mplsl3vpnifconfrowstatus.is_set
-	|| mplsl3vpnifconfstoragetype.is_set
-	|| mplsl3vpnifvpnclassification.is_set
-	|| mplsl3vpnifvpnroutedistprotocol.is_set;
+	|| mplsl3vpnvrfrteinetcidrdesttype.is_set
+	|| mplsl3vpnvrfrteinetcidrdest.is_set
+	|| mplsl3vpnvrfrteinetcidrpfxlen.is_set
+	|| mplsl3vpnvrfrteinetcidrpolicy.is_set
+	|| mplsl3vpnvrfrteinetcidrnhoptype.is_set
+	|| mplsl3vpnvrfrteinetcidrnexthop.is_set
+	|| mplsl3vpnvrfrteinetcidrage.is_set
+	|| mplsl3vpnvrfrteinetcidrifindex.is_set
+	|| mplsl3vpnvrfrteinetcidrmetric1.is_set
+	|| mplsl3vpnvrfrteinetcidrmetric2.is_set
+	|| mplsl3vpnvrfrteinetcidrmetric3.is_set
+	|| mplsl3vpnvrfrteinetcidrmetric4.is_set
+	|| mplsl3vpnvrfrteinetcidrmetric5.is_set
+	|| mplsl3vpnvrfrteinetcidrnexthopas.is_set
+	|| mplsl3vpnvrfrteinetcidrproto.is_set
+	|| mplsl3vpnvrfrteinetcidrstatus.is_set
+	|| mplsl3vpnvrfrteinetcidrtype.is_set
+	|| mplsl3vpnvrfrtexcpointer.is_set;
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::has_operation() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsl3vpnvrfname.yfilter)
-	|| ydk::is_set(mplsl3vpnifconfindex.yfilter)
-	|| ydk::is_set(mplsl3vpnifconfrowstatus.yfilter)
-	|| ydk::is_set(mplsl3vpnifconfstoragetype.yfilter)
-	|| ydk::is_set(mplsl3vpnifvpnclassification.yfilter)
-	|| ydk::is_set(mplsl3vpnifvpnroutedistprotocol.yfilter);
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrdesttype.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrdest.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrpfxlen.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrpolicy.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrnhoptype.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrnexthop.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrage.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrifindex.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric1.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric2.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric3.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric4.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric5.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrnexthopas.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrproto.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrstatus.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrteinetcidrtype.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrtexcpointer.yfilter);
 }
 
-std::string MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_segment_path() const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsL3VpnIfConfEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']" <<"[mplsL3VpnIfConfIndex='" <<mplsl3vpnifconfindex <<"']";
-
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnVrfRteTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_entity_path(Entity* ancestor) const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnIfConfTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "mplsL3VpnVrfRteEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']" <<"[mplsL3VpnVrfRteInetCidrDestType='" <<mplsl3vpnvrfrteinetcidrdesttype <<"']" <<"[mplsL3VpnVrfRteInetCidrDest='" <<mplsl3vpnvrfrteinetcidrdest <<"']" <<"[mplsL3VpnVrfRteInetCidrPfxLen='" <<mplsl3vpnvrfrteinetcidrpfxlen <<"']" <<"[mplsL3VpnVrfRteInetCidrPolicy='" <<mplsl3vpnvrfrteinetcidrpolicy <<"']" <<"[mplsL3VpnVrfRteInetCidrNHopType='" <<mplsl3vpnvrfrteinetcidrnhoptype <<"']" <<"[mplsL3VpnVrfRteInetCidrNextHop='" <<mplsl3vpnvrfrteinetcidrnexthop <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsl3vpnvrfname.is_set || is_set(mplsl3vpnvrfname.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfname.get_name_leafdata());
-    if (mplsl3vpnifconfindex.is_set || is_set(mplsl3vpnifconfindex.yfilter)) leaf_name_data.push_back(mplsl3vpnifconfindex.get_name_leafdata());
-    if (mplsl3vpnifconfrowstatus.is_set || is_set(mplsl3vpnifconfrowstatus.yfilter)) leaf_name_data.push_back(mplsl3vpnifconfrowstatus.get_name_leafdata());
-    if (mplsl3vpnifconfstoragetype.is_set || is_set(mplsl3vpnifconfstoragetype.yfilter)) leaf_name_data.push_back(mplsl3vpnifconfstoragetype.get_name_leafdata());
-    if (mplsl3vpnifvpnclassification.is_set || is_set(mplsl3vpnifvpnclassification.yfilter)) leaf_name_data.push_back(mplsl3vpnifvpnclassification.get_name_leafdata());
-    if (mplsl3vpnifvpnroutedistprotocol.is_set || is_set(mplsl3vpnifvpnroutedistprotocol.yfilter)) leaf_name_data.push_back(mplsl3vpnifvpnroutedistprotocol.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrdesttype.is_set || is_set(mplsl3vpnvrfrteinetcidrdesttype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrdesttype.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrdest.is_set || is_set(mplsl3vpnvrfrteinetcidrdest.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrdest.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrpfxlen.is_set || is_set(mplsl3vpnvrfrteinetcidrpfxlen.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrpfxlen.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrpolicy.is_set || is_set(mplsl3vpnvrfrteinetcidrpolicy.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrpolicy.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrnhoptype.is_set || is_set(mplsl3vpnvrfrteinetcidrnhoptype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrnhoptype.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrnexthop.is_set || is_set(mplsl3vpnvrfrteinetcidrnexthop.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrnexthop.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrage.is_set || is_set(mplsl3vpnvrfrteinetcidrage.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrage.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrifindex.is_set || is_set(mplsl3vpnvrfrteinetcidrifindex.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrifindex.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrmetric1.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric1.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric1.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrmetric2.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric2.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric2.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrmetric3.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric3.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric3.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrmetric4.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric4.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric4.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrmetric5.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric5.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric5.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrnexthopas.is_set || is_set(mplsl3vpnvrfrteinetcidrnexthopas.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrnexthopas.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrproto.is_set || is_set(mplsl3vpnvrfrteinetcidrproto.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrproto.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrstatus.is_set || is_set(mplsl3vpnvrfrteinetcidrstatus.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrstatus.get_name_leafdata());
+    if (mplsl3vpnvrfrteinetcidrtype.is_set || is_set(mplsl3vpnvrfrteinetcidrtype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrtype.get_name_leafdata());
+    if (mplsl3vpnvrfrtexcpointer.is_set || is_set(mplsl3vpnvrfrtexcpointer.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtexcpointer.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsL3VpnVrfName")
     {
@@ -574,81 +844,481 @@ void MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::set_value(cons
         mplsl3vpnvrfname.value_namespace = name_space;
         mplsl3vpnvrfname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsL3VpnIfConfIndex")
+    if(value_path == "mplsL3VpnVrfRteInetCidrDestType")
     {
-        mplsl3vpnifconfindex = value;
-        mplsl3vpnifconfindex.value_namespace = name_space;
-        mplsl3vpnifconfindex.value_namespace_prefix = name_space_prefix;
+        mplsl3vpnvrfrteinetcidrdesttype = value;
+        mplsl3vpnvrfrteinetcidrdesttype.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrdesttype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsL3VpnIfConfRowStatus")
+    if(value_path == "mplsL3VpnVrfRteInetCidrDest")
     {
-        mplsl3vpnifconfrowstatus = value;
-        mplsl3vpnifconfrowstatus.value_namespace = name_space;
-        mplsl3vpnifconfrowstatus.value_namespace_prefix = name_space_prefix;
+        mplsl3vpnvrfrteinetcidrdest = value;
+        mplsl3vpnvrfrteinetcidrdest.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrdest.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsL3VpnIfConfStorageType")
+    if(value_path == "mplsL3VpnVrfRteInetCidrPfxLen")
     {
-        mplsl3vpnifconfstoragetype = value;
-        mplsl3vpnifconfstoragetype.value_namespace = name_space;
-        mplsl3vpnifconfstoragetype.value_namespace_prefix = name_space_prefix;
+        mplsl3vpnvrfrteinetcidrpfxlen = value;
+        mplsl3vpnvrfrteinetcidrpfxlen.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrpfxlen.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsL3VpnIfVpnClassification")
+    if(value_path == "mplsL3VpnVrfRteInetCidrPolicy")
     {
-        mplsl3vpnifvpnclassification = value;
-        mplsl3vpnifvpnclassification.value_namespace = name_space;
-        mplsl3vpnifvpnclassification.value_namespace_prefix = name_space_prefix;
+        mplsl3vpnvrfrteinetcidrpolicy = value;
+        mplsl3vpnvrfrteinetcidrpolicy.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrpolicy.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsL3VpnIfVpnRouteDistProtocol")
+    if(value_path == "mplsL3VpnVrfRteInetCidrNHopType")
     {
-        mplsl3vpnifvpnroutedistprotocol[value] = true;
+        mplsl3vpnvrfrteinetcidrnhoptype = value;
+        mplsl3vpnvrfrteinetcidrnhoptype.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrnhoptype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrNextHop")
+    {
+        mplsl3vpnvrfrteinetcidrnexthop = value;
+        mplsl3vpnvrfrteinetcidrnexthop.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrnexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrAge")
+    {
+        mplsl3vpnvrfrteinetcidrage = value;
+        mplsl3vpnvrfrteinetcidrage.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrIfIndex")
+    {
+        mplsl3vpnvrfrteinetcidrifindex = value;
+        mplsl3vpnvrfrteinetcidrifindex.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric1")
+    {
+        mplsl3vpnvrfrteinetcidrmetric1 = value;
+        mplsl3vpnvrfrteinetcidrmetric1.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrmetric1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric2")
+    {
+        mplsl3vpnvrfrteinetcidrmetric2 = value;
+        mplsl3vpnvrfrteinetcidrmetric2.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrmetric2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric3")
+    {
+        mplsl3vpnvrfrteinetcidrmetric3 = value;
+        mplsl3vpnvrfrteinetcidrmetric3.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrmetric3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric4")
+    {
+        mplsl3vpnvrfrteinetcidrmetric4 = value;
+        mplsl3vpnvrfrteinetcidrmetric4.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrmetric4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric5")
+    {
+        mplsl3vpnvrfrteinetcidrmetric5 = value;
+        mplsl3vpnvrfrteinetcidrmetric5.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrmetric5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrNextHopAS")
+    {
+        mplsl3vpnvrfrteinetcidrnexthopas = value;
+        mplsl3vpnvrfrteinetcidrnexthopas.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrnexthopas.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrProto")
+    {
+        mplsl3vpnvrfrteinetcidrproto = value;
+        mplsl3vpnvrfrteinetcidrproto.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrproto.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrStatus")
+    {
+        mplsl3vpnvrfrteinetcidrstatus = value;
+        mplsl3vpnvrfrteinetcidrstatus.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrType")
+    {
+        mplsl3vpnvrfrteinetcidrtype = value;
+        mplsl3vpnvrfrteinetcidrtype.value_namespace = name_space;
+        mplsl3vpnvrfrteinetcidrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRteXCPointer")
+    {
+        mplsl3vpnvrfrtexcpointer = value;
+        mplsl3vpnvrfrtexcpointer.value_namespace = name_space;
+        mplsl3vpnvrfrtexcpointer.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsL3VpnVrfName")
     {
         mplsl3vpnvrfname.yfilter = yfilter;
     }
-    if(value_path == "mplsL3VpnIfConfIndex")
+    if(value_path == "mplsL3VpnVrfRteInetCidrDestType")
     {
-        mplsl3vpnifconfindex.yfilter = yfilter;
+        mplsl3vpnvrfrteinetcidrdesttype.yfilter = yfilter;
     }
-    if(value_path == "mplsL3VpnIfConfRowStatus")
+    if(value_path == "mplsL3VpnVrfRteInetCidrDest")
     {
-        mplsl3vpnifconfrowstatus.yfilter = yfilter;
+        mplsl3vpnvrfrteinetcidrdest.yfilter = yfilter;
     }
-    if(value_path == "mplsL3VpnIfConfStorageType")
+    if(value_path == "mplsL3VpnVrfRteInetCidrPfxLen")
     {
-        mplsl3vpnifconfstoragetype.yfilter = yfilter;
+        mplsl3vpnvrfrteinetcidrpfxlen.yfilter = yfilter;
     }
-    if(value_path == "mplsL3VpnIfVpnClassification")
+    if(value_path == "mplsL3VpnVrfRteInetCidrPolicy")
     {
-        mplsl3vpnifvpnclassification.yfilter = yfilter;
+        mplsl3vpnvrfrteinetcidrpolicy.yfilter = yfilter;
     }
-    if(value_path == "mplsL3VpnIfVpnRouteDistProtocol")
+    if(value_path == "mplsL3VpnVrfRteInetCidrNHopType")
     {
-        mplsl3vpnifvpnroutedistprotocol.yfilter = yfilter;
+        mplsl3vpnvrfrteinetcidrnhoptype.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrNextHop")
+    {
+        mplsl3vpnvrfrteinetcidrnexthop.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrAge")
+    {
+        mplsl3vpnvrfrteinetcidrage.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrIfIndex")
+    {
+        mplsl3vpnvrfrteinetcidrifindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric1")
+    {
+        mplsl3vpnvrfrteinetcidrmetric1.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric2")
+    {
+        mplsl3vpnvrfrteinetcidrmetric2.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric3")
+    {
+        mplsl3vpnvrfrteinetcidrmetric3.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric4")
+    {
+        mplsl3vpnvrfrteinetcidrmetric4.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrMetric5")
+    {
+        mplsl3vpnvrfrteinetcidrmetric5.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrNextHopAS")
+    {
+        mplsl3vpnvrfrteinetcidrnexthopas.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrProto")
+    {
+        mplsl3vpnvrfrteinetcidrproto.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrStatus")
+    {
+        mplsl3vpnvrfrteinetcidrstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteInetCidrType")
+    {
+        mplsl3vpnvrfrteinetcidrtype.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRteXCPointer")
+    {
+        mplsl3vpnvrfrtexcpointer.yfilter = yfilter;
     }
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnIfConfIndex" || name == "mplsL3VpnIfConfRowStatus" || name == "mplsL3VpnIfConfStorageType" || name == "mplsL3VpnIfVpnClassification" || name == "mplsL3VpnIfVpnRouteDistProtocol")
+    if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnVrfRteInetCidrDestType" || name == "mplsL3VpnVrfRteInetCidrDest" || name == "mplsL3VpnVrfRteInetCidrPfxLen" || name == "mplsL3VpnVrfRteInetCidrPolicy" || name == "mplsL3VpnVrfRteInetCidrNHopType" || name == "mplsL3VpnVrfRteInetCidrNextHop" || name == "mplsL3VpnVrfRteInetCidrAge" || name == "mplsL3VpnVrfRteInetCidrIfIndex" || name == "mplsL3VpnVrfRteInetCidrMetric1" || name == "mplsL3VpnVrfRteInetCidrMetric2" || name == "mplsL3VpnVrfRteInetCidrMetric3" || name == "mplsL3VpnVrfRteInetCidrMetric4" || name == "mplsL3VpnVrfRteInetCidrMetric5" || name == "mplsL3VpnVrfRteInetCidrNextHopAS" || name == "mplsL3VpnVrfRteInetCidrProto" || name == "mplsL3VpnVrfRteInetCidrStatus" || name == "mplsL3VpnVrfRteInetCidrType" || name == "mplsL3VpnVrfRteXCPointer")
         return true;
     return false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrftable()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrttable()
 {
-    yang_name = "mplsL3VpnVrfTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB";
+
+    yang_name = "mplsL3VpnVrfRTTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnvrftable::~Mplsl3Vpnvrftable()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::~Mplsl3Vpnvrfrttable()
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::has_data() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::has_data() const
+{
+    for (std::size_t index=0; index<mplsl3vpnvrfrtentry.size(); index++)
+    {
+        if(mplsl3vpnvrfrtentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::has_operation() const
+{
+    for (std::size_t index=0; index<mplsl3vpnvrfrtentry.size(); index++)
+    {
+        if(mplsl3vpnvrfrtentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsL3VpnVrfRTTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mplsL3VpnVrfRTEntry")
+    {
+        for(auto const & c : mplsl3vpnvrfrtentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry>();
+        c->parent = this;
+        mplsl3vpnvrfrtentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mplsl3vpnvrfrtentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsL3VpnVrfRTEntry")
+        return true;
+    return false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::Mplsl3Vpnvrfrtentry()
+    :
+    mplsl3vpnvrfname{YType::str, "mplsL3VpnVrfName"},
+    mplsl3vpnvrfrtindex{YType::uint32, "mplsL3VpnVrfRTIndex"},
+    mplsl3vpnvrfrttype{YType::enumeration, "mplsL3VpnVrfRTType"},
+    mplsl3vpnvrfrt{YType::str, "mplsL3VpnVrfRT"},
+    mplsl3vpnvrfrtdescr{YType::str, "mplsL3VpnVrfRTDescr"},
+    mplsl3vpnvrfrtrowstatus{YType::enumeration, "mplsL3VpnVrfRTRowStatus"},
+    mplsl3vpnvrfrtstoragetype{YType::enumeration, "mplsL3VpnVrfRTStorageType"}
+{
+
+    yang_name = "mplsL3VpnVrfRTEntry"; yang_parent_name = "mplsL3VpnVrfRTTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::~Mplsl3Vpnvrfrtentry()
+{
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::has_data() const
+{
+    return mplsl3vpnvrfname.is_set
+	|| mplsl3vpnvrfrtindex.is_set
+	|| mplsl3vpnvrfrttype.is_set
+	|| mplsl3vpnvrfrt.is_set
+	|| mplsl3vpnvrfrtdescr.is_set
+	|| mplsl3vpnvrfrtrowstatus.is_set
+	|| mplsl3vpnvrfrtstoragetype.is_set;
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mplsl3vpnvrfname.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrtindex.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrttype.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrt.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrtdescr.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrtrowstatus.yfilter)
+	|| ydk::is_set(mplsl3vpnvrfrtstoragetype.yfilter);
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnVrfRTTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsL3VpnVrfRTEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']" <<"[mplsL3VpnVrfRTIndex='" <<mplsl3vpnvrfrtindex <<"']" <<"[mplsL3VpnVrfRTType='" <<mplsl3vpnvrfrttype <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mplsl3vpnvrfname.is_set || is_set(mplsl3vpnvrfname.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfname.get_name_leafdata());
+    if (mplsl3vpnvrfrtindex.is_set || is_set(mplsl3vpnvrfrtindex.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtindex.get_name_leafdata());
+    if (mplsl3vpnvrfrttype.is_set || is_set(mplsl3vpnvrfrttype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrttype.get_name_leafdata());
+    if (mplsl3vpnvrfrt.is_set || is_set(mplsl3vpnvrfrt.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrt.get_name_leafdata());
+    if (mplsl3vpnvrfrtdescr.is_set || is_set(mplsl3vpnvrfrtdescr.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtdescr.get_name_leafdata());
+    if (mplsl3vpnvrfrtrowstatus.is_set || is_set(mplsl3vpnvrfrtrowstatus.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtrowstatus.get_name_leafdata());
+    if (mplsl3vpnvrfrtstoragetype.is_set || is_set(mplsl3vpnvrfrtstoragetype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtstoragetype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mplsL3VpnVrfName")
+    {
+        mplsl3vpnvrfname = value;
+        mplsl3vpnvrfname.value_namespace = name_space;
+        mplsl3vpnvrfname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRTIndex")
+    {
+        mplsl3vpnvrfrtindex = value;
+        mplsl3vpnvrfrtindex.value_namespace = name_space;
+        mplsl3vpnvrfrtindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRTType")
+    {
+        mplsl3vpnvrfrttype = value;
+        mplsl3vpnvrfrttype.value_namespace = name_space;
+        mplsl3vpnvrfrttype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRT")
+    {
+        mplsl3vpnvrfrt = value;
+        mplsl3vpnvrfrt.value_namespace = name_space;
+        mplsl3vpnvrfrt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRTDescr")
+    {
+        mplsl3vpnvrfrtdescr = value;
+        mplsl3vpnvrfrtdescr.value_namespace = name_space;
+        mplsl3vpnvrfrtdescr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRTRowStatus")
+    {
+        mplsl3vpnvrfrtrowstatus = value;
+        mplsl3vpnvrfrtrowstatus.value_namespace = name_space;
+        mplsl3vpnvrfrtrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsL3VpnVrfRTStorageType")
+    {
+        mplsl3vpnvrfrtstoragetype = value;
+        mplsl3vpnvrfrtstoragetype.value_namespace = name_space;
+        mplsl3vpnvrfrtstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsL3VpnVrfName")
+    {
+        mplsl3vpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRTIndex")
+    {
+        mplsl3vpnvrfrtindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRTType")
+    {
+        mplsl3vpnvrfrttype.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRT")
+    {
+        mplsl3vpnvrfrt.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRTDescr")
+    {
+        mplsl3vpnvrfrtdescr.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRTRowStatus")
+    {
+        mplsl3vpnvrfrtrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsL3VpnVrfRTStorageType")
+    {
+        mplsl3vpnvrfrtstoragetype.yfilter = yfilter;
+    }
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnVrfRTIndex" || name == "mplsL3VpnVrfRTType" || name == "mplsL3VpnVrfRT" || name == "mplsL3VpnVrfRTDescr" || name == "mplsL3VpnVrfRTRowStatus" || name == "mplsL3VpnVrfRTStorageType")
+        return true;
+    return false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrftable()
+{
+
+    yang_name = "mplsL3VpnVrfTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::~Mplsl3Vpnvrftable()
+{
+}
+
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::has_data() const
 {
     for (std::size_t index=0; index<mplsl3vpnvrfentry.size(); index++)
     {
@@ -658,7 +1328,7 @@ bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::has_data() const
     return false;
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::has_operation() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::has_operation() const
 {
     for (std::size_t index=0; index<mplsl3vpnvrfentry.size(); index++)
     {
@@ -668,37 +1338,30 @@ bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MplsL3VpnStdMib::Mplsl3Vpnvrftable::get_segment_path() const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsL3VpnVrfTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrftable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsL3VpnVrfEntry")
     {
@@ -710,7 +1373,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrftable::get_child_by_name(co
                 return c;
             }
         }
-        auto c = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry>();
+        auto c = std::make_shared<MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry>();
         c->parent = this;
         mplsl3vpnvrfentry.push_back(c);
         return c;
@@ -719,7 +1382,7 @@ std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrftable::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplsl3vpnvrfentry)
@@ -730,22 +1393,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrftabl
     return children;
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnvrftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnvrftable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsL3VpnVrfEntry")
         return true;
     return false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfentry()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfentry()
     :
     mplsl3vpnvrfname{YType::str, "mplsL3VpnVrfName"},
     mplsl3vpnvrfactiveinterfaces{YType::uint32, "mplsL3VpnVrfActiveInterfaces"},
@@ -770,14 +1433,15 @@ MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfentry()
     mplsl3vpnvrfsecillegallblvltns{YType::uint32, "mplsL3VpnVrfSecIllegalLblVltns"},
     mplsl3vpnvrfvpnid{YType::str, "mplsL3VpnVrfVpnId"}
 {
-    yang_name = "mplsL3VpnVrfEntry"; yang_parent_name = "mplsL3VpnVrfTable";
+
+    yang_name = "mplsL3VpnVrfEntry"; yang_parent_name = "mplsL3VpnVrfTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::~Mplsl3Vpnvrfentry()
+MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::~Mplsl3Vpnvrfentry()
 {
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_data() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_data() const
 {
     return mplsl3vpnvrfname.is_set
 	|| mplsl3vpnvrfactiveinterfaces.is_set
@@ -803,7 +1467,7 @@ bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_data() const
 	|| mplsl3vpnvrfvpnid.is_set;
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_operation() const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsl3vpnvrfname.yfilter)
@@ -830,27 +1494,22 @@ bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_operation() cons
 	|| ydk::is_set(mplsl3vpnvrfvpnid.yfilter);
 }
 
-std::string MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_segment_path() const
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnVrfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsL3VpnVrfEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnVrfTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsl3vpnvrfname.is_set || is_set(mplsl3vpnvrfname.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfname.get_name_leafdata());
@@ -876,24 +1535,22 @@ const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_enti
     if (mplsl3vpnvrfsecillegallblvltns.is_set || is_set(mplsl3vpnvrfsecillegallblvltns.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfsecillegallblvltns.get_name_leafdata());
     if (mplsl3vpnvrfvpnid.is_set || is_set(mplsl3vpnvrfvpnid.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfvpnid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsL3VpnVrfName")
     {
@@ -1029,7 +1686,7 @@ void MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::set_value(const std:
     }
 }
 
-void MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsL3VpnVrfName")
     {
@@ -1121,759 +1778,33 @@ void MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::set_filter(const std
     }
 }
 
-bool MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnVrfActiveInterfaces" || name == "mplsL3VpnVrfAssociatedInterfaces" || name == "mplsL3VpnVrfConfAdminStatus" || name == "mplsL3VpnVrfConfHighRteThresh" || name == "mplsL3VpnVrfConfLastChanged" || name == "mplsL3VpnVrfConfMaxRoutes" || name == "mplsL3VpnVrfConfMidRteThresh" || name == "mplsL3VpnVrfConfRowStatus" || name == "mplsL3VpnVrfConfStorageType" || name == "mplsL3VpnVrfCreationTime" || name == "mplsL3VpnVrfDescription" || name == "mplsL3VpnVrfOperStatus" || name == "mplsL3VpnVrfPerfCurrNumRoutes" || name == "mplsL3VpnVrfPerfDiscTime" || name == "mplsL3VpnVrfPerfRoutesAdded" || name == "mplsL3VpnVrfPerfRoutesDeleted" || name == "mplsL3VpnVrfPerfRoutesDropped" || name == "mplsL3VpnVrfRD" || name == "mplsL3VpnVrfSecDiscontinuityTime" || name == "mplsL3VpnVrfSecIllegalLblVltns" || name == "mplsL3VpnVrfVpnId")
         return true;
     return false;
 }
 
-MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrttable()
-{
-    yang_name = "mplsL3VpnVrfRTTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB";
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::~Mplsl3Vpnvrfrttable()
-{
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::has_data() const
-{
-    for (std::size_t index=0; index<mplsl3vpnvrfrtentry.size(); index++)
-    {
-        if(mplsl3vpnvrfrtentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::has_operation() const
-{
-    for (std::size_t index=0; index<mplsl3vpnvrfrtentry.size(); index++)
-    {
-        if(mplsl3vpnvrfrtentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsL3VpnVrfRTTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mplsL3VpnVrfRTEntry")
-    {
-        for(auto const & c : mplsl3vpnvrfrtentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry>();
-        c->parent = this;
-        mplsl3vpnvrfrtentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsl3vpnvrfrtentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsL3VpnVrfRTEntry")
-        return true;
-    return false;
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::Mplsl3Vpnvrfrtentry()
-    :
-    mplsl3vpnvrfname{YType::str, "mplsL3VpnVrfName"},
-    mplsl3vpnvrfrtindex{YType::uint32, "mplsL3VpnVrfRTIndex"},
-    mplsl3vpnvrfrttype{YType::enumeration, "mplsL3VpnVrfRTType"},
-    mplsl3vpnvrfrt{YType::str, "mplsL3VpnVrfRT"},
-    mplsl3vpnvrfrtdescr{YType::str, "mplsL3VpnVrfRTDescr"},
-    mplsl3vpnvrfrtrowstatus{YType::enumeration, "mplsL3VpnVrfRTRowStatus"},
-    mplsl3vpnvrfrtstoragetype{YType::enumeration, "mplsL3VpnVrfRTStorageType"}
-{
-    yang_name = "mplsL3VpnVrfRTEntry"; yang_parent_name = "mplsL3VpnVrfRTTable";
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::~Mplsl3Vpnvrfrtentry()
-{
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::has_data() const
-{
-    return mplsl3vpnvrfname.is_set
-	|| mplsl3vpnvrfrtindex.is_set
-	|| mplsl3vpnvrfrttype.is_set
-	|| mplsl3vpnvrfrt.is_set
-	|| mplsl3vpnvrfrtdescr.is_set
-	|| mplsl3vpnvrfrtrowstatus.is_set
-	|| mplsl3vpnvrfrtstoragetype.is_set;
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mplsl3vpnvrfname.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrtindex.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrttype.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrt.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrtdescr.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrtrowstatus.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrtstoragetype.yfilter);
-}
-
-std::string MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsL3VpnVrfRTEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']" <<"[mplsL3VpnVrfRTIndex='" <<mplsl3vpnvrfrtindex <<"']" <<"[mplsL3VpnVrfRTType='" <<mplsl3vpnvrfrttype <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnVrfRTTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mplsl3vpnvrfname.is_set || is_set(mplsl3vpnvrfname.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfname.get_name_leafdata());
-    if (mplsl3vpnvrfrtindex.is_set || is_set(mplsl3vpnvrfrtindex.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtindex.get_name_leafdata());
-    if (mplsl3vpnvrfrttype.is_set || is_set(mplsl3vpnvrfrttype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrttype.get_name_leafdata());
-    if (mplsl3vpnvrfrt.is_set || is_set(mplsl3vpnvrfrt.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrt.get_name_leafdata());
-    if (mplsl3vpnvrfrtdescr.is_set || is_set(mplsl3vpnvrfrtdescr.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtdescr.get_name_leafdata());
-    if (mplsl3vpnvrfrtrowstatus.is_set || is_set(mplsl3vpnvrfrtrowstatus.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtrowstatus.get_name_leafdata());
-    if (mplsl3vpnvrfrtstoragetype.is_set || is_set(mplsl3vpnvrfrtstoragetype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtstoragetype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mplsL3VpnVrfName")
-    {
-        mplsl3vpnvrfname = value;
-        mplsl3vpnvrfname.value_namespace = name_space;
-        mplsl3vpnvrfname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRTIndex")
-    {
-        mplsl3vpnvrfrtindex = value;
-        mplsl3vpnvrfrtindex.value_namespace = name_space;
-        mplsl3vpnvrfrtindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRTType")
-    {
-        mplsl3vpnvrfrttype = value;
-        mplsl3vpnvrfrttype.value_namespace = name_space;
-        mplsl3vpnvrfrttype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRT")
-    {
-        mplsl3vpnvrfrt = value;
-        mplsl3vpnvrfrt.value_namespace = name_space;
-        mplsl3vpnvrfrt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRTDescr")
-    {
-        mplsl3vpnvrfrtdescr = value;
-        mplsl3vpnvrfrtdescr.value_namespace = name_space;
-        mplsl3vpnvrfrtdescr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRTRowStatus")
-    {
-        mplsl3vpnvrfrtrowstatus = value;
-        mplsl3vpnvrfrtrowstatus.value_namespace = name_space;
-        mplsl3vpnvrfrtrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRTStorageType")
-    {
-        mplsl3vpnvrfrtstoragetype = value;
-        mplsl3vpnvrfrtstoragetype.value_namespace = name_space;
-        mplsl3vpnvrfrtstoragetype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mplsL3VpnVrfName")
-    {
-        mplsl3vpnvrfname.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRTIndex")
-    {
-        mplsl3vpnvrfrtindex.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRTType")
-    {
-        mplsl3vpnvrfrttype.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRT")
-    {
-        mplsl3vpnvrfrt.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRTDescr")
-    {
-        mplsl3vpnvrfrtdescr.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRTRowStatus")
-    {
-        mplsl3vpnvrfrtrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRTStorageType")
-    {
-        mplsl3vpnvrfrtstoragetype.yfilter = yfilter;
-    }
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnVrfRTIndex" || name == "mplsL3VpnVrfRTType" || name == "mplsL3VpnVrfRT" || name == "mplsL3VpnVrfRTDescr" || name == "mplsL3VpnVrfRTRowStatus" || name == "mplsL3VpnVrfRTStorageType")
-        return true;
-    return false;
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrtetable()
-{
-    yang_name = "mplsL3VpnVrfRteTable"; yang_parent_name = "MPLS-L3VPN-STD-MIB";
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::~Mplsl3Vpnvrfrtetable()
-{
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::has_data() const
-{
-    for (std::size_t index=0; index<mplsl3vpnvrfrteentry.size(); index++)
-    {
-        if(mplsl3vpnvrfrteentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::has_operation() const
-{
-    for (std::size_t index=0; index<mplsl3vpnvrfrteentry.size(); index++)
-    {
-        if(mplsl3vpnvrfrteentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsL3VpnVrfRteTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mplsL3VpnVrfRteEntry")
-    {
-        for(auto const & c : mplsl3vpnvrfrteentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry>();
-        c->parent = this;
-        mplsl3vpnvrfrteentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsl3vpnvrfrteentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsL3VpnVrfRteEntry")
-        return true;
-    return false;
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteentry()
-    :
-    mplsl3vpnvrfname{YType::str, "mplsL3VpnVrfName"},
-    mplsl3vpnvrfrteinetcidrdesttype{YType::enumeration, "mplsL3VpnVrfRteInetCidrDestType"},
-    mplsl3vpnvrfrteinetcidrdest{YType::str, "mplsL3VpnVrfRteInetCidrDest"},
-    mplsl3vpnvrfrteinetcidrpfxlen{YType::uint32, "mplsL3VpnVrfRteInetCidrPfxLen"},
-    mplsl3vpnvrfrteinetcidrpolicy{YType::str, "mplsL3VpnVrfRteInetCidrPolicy"},
-    mplsl3vpnvrfrteinetcidrnhoptype{YType::enumeration, "mplsL3VpnVrfRteInetCidrNHopType"},
-    mplsl3vpnvrfrteinetcidrnexthop{YType::str, "mplsL3VpnVrfRteInetCidrNextHop"},
-    mplsl3vpnvrfrteinetcidrage{YType::uint32, "mplsL3VpnVrfRteInetCidrAge"},
-    mplsl3vpnvrfrteinetcidrifindex{YType::int32, "mplsL3VpnVrfRteInetCidrIfIndex"},
-    mplsl3vpnvrfrteinetcidrmetric1{YType::int32, "mplsL3VpnVrfRteInetCidrMetric1"},
-    mplsl3vpnvrfrteinetcidrmetric2{YType::int32, "mplsL3VpnVrfRteInetCidrMetric2"},
-    mplsl3vpnvrfrteinetcidrmetric3{YType::int32, "mplsL3VpnVrfRteInetCidrMetric3"},
-    mplsl3vpnvrfrteinetcidrmetric4{YType::int32, "mplsL3VpnVrfRteInetCidrMetric4"},
-    mplsl3vpnvrfrteinetcidrmetric5{YType::int32, "mplsL3VpnVrfRteInetCidrMetric5"},
-    mplsl3vpnvrfrteinetcidrnexthopas{YType::uint32, "mplsL3VpnVrfRteInetCidrNextHopAS"},
-    mplsl3vpnvrfrteinetcidrproto{YType::enumeration, "mplsL3VpnVrfRteInetCidrProto"},
-    mplsl3vpnvrfrteinetcidrstatus{YType::enumeration, "mplsL3VpnVrfRteInetCidrStatus"},
-    mplsl3vpnvrfrteinetcidrtype{YType::enumeration, "mplsL3VpnVrfRteInetCidrType"},
-    mplsl3vpnvrfrtexcpointer{YType::str, "mplsL3VpnVrfRteXCPointer"}
-{
-    yang_name = "mplsL3VpnVrfRteEntry"; yang_parent_name = "mplsL3VpnVrfRteTable";
-}
-
-MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::~Mplsl3Vpnvrfrteentry()
-{
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::has_data() const
-{
-    return mplsl3vpnvrfname.is_set
-	|| mplsl3vpnvrfrteinetcidrdesttype.is_set
-	|| mplsl3vpnvrfrteinetcidrdest.is_set
-	|| mplsl3vpnvrfrteinetcidrpfxlen.is_set
-	|| mplsl3vpnvrfrteinetcidrpolicy.is_set
-	|| mplsl3vpnvrfrteinetcidrnhoptype.is_set
-	|| mplsl3vpnvrfrteinetcidrnexthop.is_set
-	|| mplsl3vpnvrfrteinetcidrage.is_set
-	|| mplsl3vpnvrfrteinetcidrifindex.is_set
-	|| mplsl3vpnvrfrteinetcidrmetric1.is_set
-	|| mplsl3vpnvrfrteinetcidrmetric2.is_set
-	|| mplsl3vpnvrfrteinetcidrmetric3.is_set
-	|| mplsl3vpnvrfrteinetcidrmetric4.is_set
-	|| mplsl3vpnvrfrteinetcidrmetric5.is_set
-	|| mplsl3vpnvrfrteinetcidrnexthopas.is_set
-	|| mplsl3vpnvrfrteinetcidrproto.is_set
-	|| mplsl3vpnvrfrteinetcidrstatus.is_set
-	|| mplsl3vpnvrfrteinetcidrtype.is_set
-	|| mplsl3vpnvrfrtexcpointer.is_set;
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mplsl3vpnvrfname.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrdesttype.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrdest.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrpfxlen.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrpolicy.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrnhoptype.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrnexthop.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrage.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrifindex.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric1.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric2.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric3.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric4.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrmetric5.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrnexthopas.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrproto.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrstatus.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrteinetcidrtype.yfilter)
-	|| ydk::is_set(mplsl3vpnvrfrtexcpointer.yfilter);
-}
-
-std::string MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsL3VpnVrfRteEntry" <<"[mplsL3VpnVrfName='" <<mplsl3vpnvrfname <<"']" <<"[mplsL3VpnVrfRteInetCidrDestType='" <<mplsl3vpnvrfrteinetcidrdesttype <<"']" <<"[mplsL3VpnVrfRteInetCidrDest='" <<mplsl3vpnvrfrteinetcidrdest <<"']" <<"[mplsL3VpnVrfRteInetCidrPfxLen='" <<mplsl3vpnvrfrteinetcidrpfxlen <<"']" <<"[mplsL3VpnVrfRteInetCidrPolicy='" <<mplsl3vpnvrfrteinetcidrpolicy <<"']" <<"[mplsL3VpnVrfRteInetCidrNHopType='" <<mplsl3vpnvrfrteinetcidrnhoptype <<"']" <<"[mplsL3VpnVrfRteInetCidrNextHop='" <<mplsl3vpnvrfrteinetcidrnexthop <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-L3VPN-STD-MIB:MPLS-L3VPN-STD-MIB/mplsL3VpnVrfRteTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mplsl3vpnvrfname.is_set || is_set(mplsl3vpnvrfname.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfname.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrdesttype.is_set || is_set(mplsl3vpnvrfrteinetcidrdesttype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrdesttype.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrdest.is_set || is_set(mplsl3vpnvrfrteinetcidrdest.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrdest.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrpfxlen.is_set || is_set(mplsl3vpnvrfrteinetcidrpfxlen.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrpfxlen.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrpolicy.is_set || is_set(mplsl3vpnvrfrteinetcidrpolicy.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrpolicy.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrnhoptype.is_set || is_set(mplsl3vpnvrfrteinetcidrnhoptype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrnhoptype.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrnexthop.is_set || is_set(mplsl3vpnvrfrteinetcidrnexthop.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrnexthop.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrage.is_set || is_set(mplsl3vpnvrfrteinetcidrage.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrage.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrifindex.is_set || is_set(mplsl3vpnvrfrteinetcidrifindex.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrifindex.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrmetric1.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric1.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric1.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrmetric2.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric2.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric2.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrmetric3.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric3.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric3.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrmetric4.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric4.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric4.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrmetric5.is_set || is_set(mplsl3vpnvrfrteinetcidrmetric5.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrmetric5.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrnexthopas.is_set || is_set(mplsl3vpnvrfrteinetcidrnexthopas.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrnexthopas.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrproto.is_set || is_set(mplsl3vpnvrfrteinetcidrproto.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrproto.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrstatus.is_set || is_set(mplsl3vpnvrfrteinetcidrstatus.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrstatus.get_name_leafdata());
-    if (mplsl3vpnvrfrteinetcidrtype.is_set || is_set(mplsl3vpnvrfrteinetcidrtype.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrteinetcidrtype.get_name_leafdata());
-    if (mplsl3vpnvrfrtexcpointer.is_set || is_set(mplsl3vpnvrfrtexcpointer.yfilter)) leaf_name_data.push_back(mplsl3vpnvrfrtexcpointer.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mplsL3VpnVrfName")
-    {
-        mplsl3vpnvrfname = value;
-        mplsl3vpnvrfname.value_namespace = name_space;
-        mplsl3vpnvrfname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrDestType")
-    {
-        mplsl3vpnvrfrteinetcidrdesttype = value;
-        mplsl3vpnvrfrteinetcidrdesttype.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrdesttype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrDest")
-    {
-        mplsl3vpnvrfrteinetcidrdest = value;
-        mplsl3vpnvrfrteinetcidrdest.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrdest.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrPfxLen")
-    {
-        mplsl3vpnvrfrteinetcidrpfxlen = value;
-        mplsl3vpnvrfrteinetcidrpfxlen.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrpfxlen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrPolicy")
-    {
-        mplsl3vpnvrfrteinetcidrpolicy = value;
-        mplsl3vpnvrfrteinetcidrpolicy.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrpolicy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrNHopType")
-    {
-        mplsl3vpnvrfrteinetcidrnhoptype = value;
-        mplsl3vpnvrfrteinetcidrnhoptype.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrnhoptype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrNextHop")
-    {
-        mplsl3vpnvrfrteinetcidrnexthop = value;
-        mplsl3vpnvrfrteinetcidrnexthop.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrnexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrAge")
-    {
-        mplsl3vpnvrfrteinetcidrage = value;
-        mplsl3vpnvrfrteinetcidrage.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrIfIndex")
-    {
-        mplsl3vpnvrfrteinetcidrifindex = value;
-        mplsl3vpnvrfrteinetcidrifindex.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric1")
-    {
-        mplsl3vpnvrfrteinetcidrmetric1 = value;
-        mplsl3vpnvrfrteinetcidrmetric1.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrmetric1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric2")
-    {
-        mplsl3vpnvrfrteinetcidrmetric2 = value;
-        mplsl3vpnvrfrteinetcidrmetric2.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrmetric2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric3")
-    {
-        mplsl3vpnvrfrteinetcidrmetric3 = value;
-        mplsl3vpnvrfrteinetcidrmetric3.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrmetric3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric4")
-    {
-        mplsl3vpnvrfrteinetcidrmetric4 = value;
-        mplsl3vpnvrfrteinetcidrmetric4.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrmetric4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric5")
-    {
-        mplsl3vpnvrfrteinetcidrmetric5 = value;
-        mplsl3vpnvrfrteinetcidrmetric5.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrmetric5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrNextHopAS")
-    {
-        mplsl3vpnvrfrteinetcidrnexthopas = value;
-        mplsl3vpnvrfrteinetcidrnexthopas.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrnexthopas.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrProto")
-    {
-        mplsl3vpnvrfrteinetcidrproto = value;
-        mplsl3vpnvrfrteinetcidrproto.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrproto.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrStatus")
-    {
-        mplsl3vpnvrfrteinetcidrstatus = value;
-        mplsl3vpnvrfrteinetcidrstatus.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrType")
-    {
-        mplsl3vpnvrfrteinetcidrtype = value;
-        mplsl3vpnvrfrteinetcidrtype.value_namespace = name_space;
-        mplsl3vpnvrfrteinetcidrtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsL3VpnVrfRteXCPointer")
-    {
-        mplsl3vpnvrfrtexcpointer = value;
-        mplsl3vpnvrfrtexcpointer.value_namespace = name_space;
-        mplsl3vpnvrfrtexcpointer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mplsL3VpnVrfName")
-    {
-        mplsl3vpnvrfname.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrDestType")
-    {
-        mplsl3vpnvrfrteinetcidrdesttype.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrDest")
-    {
-        mplsl3vpnvrfrteinetcidrdest.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrPfxLen")
-    {
-        mplsl3vpnvrfrteinetcidrpfxlen.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrPolicy")
-    {
-        mplsl3vpnvrfrteinetcidrpolicy.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrNHopType")
-    {
-        mplsl3vpnvrfrteinetcidrnhoptype.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrNextHop")
-    {
-        mplsl3vpnvrfrteinetcidrnexthop.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrAge")
-    {
-        mplsl3vpnvrfrteinetcidrage.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrIfIndex")
-    {
-        mplsl3vpnvrfrteinetcidrifindex.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric1")
-    {
-        mplsl3vpnvrfrteinetcidrmetric1.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric2")
-    {
-        mplsl3vpnvrfrteinetcidrmetric2.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric3")
-    {
-        mplsl3vpnvrfrteinetcidrmetric3.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric4")
-    {
-        mplsl3vpnvrfrteinetcidrmetric4.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrMetric5")
-    {
-        mplsl3vpnvrfrteinetcidrmetric5.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrNextHopAS")
-    {
-        mplsl3vpnvrfrteinetcidrnexthopas.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrProto")
-    {
-        mplsl3vpnvrfrteinetcidrproto.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrStatus")
-    {
-        mplsl3vpnvrfrteinetcidrstatus.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteInetCidrType")
-    {
-        mplsl3vpnvrfrteinetcidrtype.yfilter = yfilter;
-    }
-    if(value_path == "mplsL3VpnVrfRteXCPointer")
-    {
-        mplsl3vpnvrfrtexcpointer.yfilter = yfilter;
-    }
-}
-
-bool MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsL3VpnVrfName" || name == "mplsL3VpnVrfRteInetCidrDestType" || name == "mplsL3VpnVrfRteInetCidrDest" || name == "mplsL3VpnVrfRteInetCidrPfxLen" || name == "mplsL3VpnVrfRteInetCidrPolicy" || name == "mplsL3VpnVrfRteInetCidrNHopType" || name == "mplsL3VpnVrfRteInetCidrNextHop" || name == "mplsL3VpnVrfRteInetCidrAge" || name == "mplsL3VpnVrfRteInetCidrIfIndex" || name == "mplsL3VpnVrfRteInetCidrMetric1" || name == "mplsL3VpnVrfRteInetCidrMetric2" || name == "mplsL3VpnVrfRteInetCidrMetric3" || name == "mplsL3VpnVrfRteInetCidrMetric4" || name == "mplsL3VpnVrfRteInetCidrMetric5" || name == "mplsL3VpnVrfRteInetCidrNextHopAS" || name == "mplsL3VpnVrfRteInetCidrProto" || name == "mplsL3VpnVrfRteInetCidrStatus" || name == "mplsL3VpnVrfRteInetCidrType" || name == "mplsL3VpnVrfRteXCPointer")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf Mplsl3Vpnrttype::import {1, "import"};
-const Enum::YLeaf Mplsl3Vpnrttype::export_ {2, "export"};
-const Enum::YLeaf Mplsl3Vpnrttype::both {3, "both"};
-
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifvpnclassification::carrierOfCarrier {1, "carrierOfCarrier"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifvpnclassification::enterprise {2, "enterprise"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifvpnclassification::interProvider {3, "interProvider"};
-
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfoperstatus::up {1, "up"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfoperstatus::down {2, "down"};
-
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfconfadminstatus::up {1, "up"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfconfadminstatus::down {2, "down"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfconfadminstatus::testing {3, "testing"};
-
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::other {1, "other"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::reject {2, "reject"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::local {3, "local"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::remote {4, "remote"};
-const Enum::YLeaf MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::blackhole {5, "blackhole"};
+const Enum::YLeaf MplsL3VpnRtType::import {1, "import"};
+const Enum::YLeaf MplsL3VpnRtType::export_ {2, "export"};
+const Enum::YLeaf MplsL3VpnRtType::both {3, "both"};
+
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifvpnclassification::carrierOfCarrier {1, "carrierOfCarrier"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifvpnclassification::enterprise {2, "enterprise"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry::Mplsl3Vpnifvpnclassification::interProvider {3, "interProvider"};
+
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::other {1, "other"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::reject {2, "reject"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::local {3, "local"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::remote {4, "remote"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry::Mplsl3Vpnvrfrteinetcidrtype::blackhole {5, "blackhole"};
+
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfoperstatus::up {1, "up"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfoperstatus::down {2, "down"};
+
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfconfadminstatus::up {1, "up"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfconfadminstatus::down {2, "down"};
+const Enum::YLeaf MPLSL3VPNSTDMIB::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry::Mplsl3Vpnvrfconfadminstatus::testing {3, "testing"};
 
 
 }

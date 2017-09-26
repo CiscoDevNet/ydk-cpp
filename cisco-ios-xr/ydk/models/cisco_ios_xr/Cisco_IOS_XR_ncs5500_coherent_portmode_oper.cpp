@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_ncs5500_coherent_portmode_oper {
 
 ControllerPortMode::ControllerPortMode()
 {
-    yang_name = "controller-port-mode"; yang_parent_name = "Cisco-IOS-XR-ncs5500-coherent-portmode-oper";
+
+    yang_name = "controller-port-mode"; yang_parent_name = "Cisco-IOS-XR-ncs5500-coherent-portmode-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ControllerPortMode::~ControllerPortMode()
@@ -44,26 +45,15 @@ std::string ControllerPortMode::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs5500-coherent-portmode-oper:controller-port-mode";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ControllerPortMode::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ControllerPortMode::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -147,7 +137,7 @@ ControllerPortMode::OpticsName::OpticsName()
 {
     port_mode_info->parent = this;
 
-    yang_name = "optics-name"; yang_parent_name = "controller-port-mode";
+    yang_name = "optics-name"; yang_parent_name = "controller-port-mode"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ControllerPortMode::OpticsName::~OpticsName()
@@ -167,34 +157,27 @@ bool ControllerPortMode::OpticsName::has_operation() const
 	|| (port_mode_info !=  nullptr && port_mode_info->has_operation());
 }
 
+std::string ControllerPortMode::OpticsName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs5500-coherent-portmode-oper:controller-port-mode/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ControllerPortMode::OpticsName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-name" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ControllerPortMode::OpticsName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ControllerPortMode::OpticsName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs5500-coherent-portmode-oper:controller-port-mode/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -256,7 +239,8 @@ ControllerPortMode::OpticsName::PortModeInfo::PortModeInfo()
     modulation{YType::str, "modulation"},
     speed{YType::str, "speed"}
 {
-    yang_name = "port-mode-info"; yang_parent_name = "optics-name";
+
+    yang_name = "port-mode-info"; yang_parent_name = "optics-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ControllerPortMode::OpticsName::PortModeInfo::~PortModeInfo()
@@ -286,23 +270,11 @@ std::string ControllerPortMode::OpticsName::PortModeInfo::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "port-mode-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ControllerPortMode::OpticsName::PortModeInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ControllerPortMode::OpticsName::PortModeInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortModeInfo' in Cisco_IOS_XR_ncs5500_coherent_portmode_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (diff.is_set || is_set(diff.yfilter)) leaf_name_data.push_back(diff.get_name_leafdata());
@@ -311,9 +283,7 @@ const EntityPath ControllerPortMode::OpticsName::PortModeInfo::get_entity_path(E
     if (modulation.is_set || is_set(modulation.yfilter)) leaf_name_data.push_back(modulation.get_name_leafdata());
     if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

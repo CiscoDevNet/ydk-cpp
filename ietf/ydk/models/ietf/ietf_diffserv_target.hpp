@@ -19,16 +19,7 @@ class Direction : public virtual ydk::Identity
 
 }; // Direction
 
-class Outbound : public ietf_diffserv_target::Direction, virtual ydk::Identity
-{
-    public:
-        Outbound();
-        ~Outbound();
-
-
-}; // Outbound
-
-class Inbound : public ietf_diffserv_target::Direction, virtual ydk::Identity
+class Inbound : public ietf::ietf_diffserv_target::Direction, virtual ydk::Identity
 {
     public:
         Inbound();
@@ -36,6 +27,15 @@ class Inbound : public ietf_diffserv_target::Direction, virtual ydk::Identity
 
 
 }; // Inbound
+
+class Outbound : public ietf::ietf_diffserv_target::Direction, virtual ydk::Identity
+{
+    public:
+        Outbound();
+        ~Outbound();
+
+
+}; // Outbound
 
 
 }

@@ -17,10 +17,9 @@ Grpc::Grpc()
 	,status(std::make_shared<Grpc::Status>())
 {
     statistics->parent = this;
-
     status->parent = this;
 
-    yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-oper";
+    yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Grpc::~Grpc()
@@ -44,26 +43,15 @@ std::string Grpc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-ems-oper:grpc";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grpc::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grpc::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,9 +136,12 @@ bool Grpc::has_leaf_or_child_of_name(const std::string & name) const
 
 Grpc::Statistics::Statistics()
     :
-    address_family{YType::str, "address-family"},
+    ct_action_json_req_recv{YType::uint64, "ct-action-json-req-recv"},
+    ct_action_json_res_sent{YType::uint64, "ct-action-json-res-sent"},
     ct_cli_config_req_recv{YType::uint64, "ct-cli-config-req-recv"},
     ct_cli_config_res_sent{YType::uint64, "ct-cli-config-res-sent"},
+    ct_commit_config_req_recv{YType::uint64, "ct-commit-config-req-recv"},
+    ct_commit_config_res_sent{YType::uint64, "ct-commit-config-res-sent"},
     ct_commit_replace_req_recv{YType::uint64, "ct-commit-replace-req-recv"},
     ct_commit_replace_res_sent{YType::uint64, "ct-commit-replace-res-sent"},
     ct_delete_config_req_recv{YType::uint64, "ct-delete-config-req-recv"},
@@ -165,15 +156,10 @@ Grpc::Statistics::Statistics()
     ct_replace_config_req_recv{YType::uint64, "ct-replace-config-req-recv"},
     ct_replace_config_res_sent{YType::uint64, "ct-replace-config-res-sent"},
     ct_show_cmd_txt_req_recv{YType::uint64, "ct-show-cmd-txt-req-recv"},
-    ct_show_cmd_txt_res_sent{YType::uint64, "ct-show-cmd-txt-res-sent"},
-    listening_port{YType::int32, "listening-port"},
-    max_req_per_user{YType::uint32, "max-req-per-user"},
-    max_req_total{YType::uint32, "max-req-total"},
-    tls{YType::str, "tls"},
-    transport{YType::str, "transport"},
-    trustpoint{YType::str, "trustpoint"}
+    ct_show_cmd_txt_res_sent{YType::uint64, "ct-show-cmd-txt-res-sent"}
 {
-    yang_name = "statistics"; yang_parent_name = "grpc";
+
+    yang_name = "statistics"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Grpc::Statistics::~Statistics()
@@ -182,9 +168,12 @@ Grpc::Statistics::~Statistics()
 
 bool Grpc::Statistics::has_data() const
 {
-    return address_family.is_set
+    return ct_action_json_req_recv.is_set
+	|| ct_action_json_res_sent.is_set
 	|| ct_cli_config_req_recv.is_set
 	|| ct_cli_config_res_sent.is_set
+	|| ct_commit_config_req_recv.is_set
+	|| ct_commit_config_res_sent.is_set
 	|| ct_commit_replace_req_recv.is_set
 	|| ct_commit_replace_res_sent.is_set
 	|| ct_delete_config_req_recv.is_set
@@ -199,21 +188,18 @@ bool Grpc::Statistics::has_data() const
 	|| ct_replace_config_req_recv.is_set
 	|| ct_replace_config_res_sent.is_set
 	|| ct_show_cmd_txt_req_recv.is_set
-	|| ct_show_cmd_txt_res_sent.is_set
-	|| listening_port.is_set
-	|| max_req_per_user.is_set
-	|| max_req_total.is_set
-	|| tls.is_set
-	|| transport.is_set
-	|| trustpoint.is_set;
+	|| ct_show_cmd_txt_res_sent.is_set;
 }
 
 bool Grpc::Statistics::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ct_action_json_req_recv.yfilter)
+	|| ydk::is_set(ct_action_json_res_sent.yfilter)
 	|| ydk::is_set(ct_cli_config_req_recv.yfilter)
 	|| ydk::is_set(ct_cli_config_res_sent.yfilter)
+	|| ydk::is_set(ct_commit_config_req_recv.yfilter)
+	|| ydk::is_set(ct_commit_config_res_sent.yfilter)
 	|| ydk::is_set(ct_commit_replace_req_recv.yfilter)
 	|| ydk::is_set(ct_commit_replace_res_sent.yfilter)
 	|| ydk::is_set(ct_delete_config_req_recv.yfilter)
@@ -228,41 +214,33 @@ bool Grpc::Statistics::has_operation() const
 	|| ydk::is_set(ct_replace_config_req_recv.yfilter)
 	|| ydk::is_set(ct_replace_config_res_sent.yfilter)
 	|| ydk::is_set(ct_show_cmd_txt_req_recv.yfilter)
-	|| ydk::is_set(ct_show_cmd_txt_res_sent.yfilter)
-	|| ydk::is_set(listening_port.yfilter)
-	|| ydk::is_set(max_req_per_user.yfilter)
-	|| ydk::is_set(max_req_total.yfilter)
-	|| ydk::is_set(tls.yfilter)
-	|| ydk::is_set(transport.yfilter)
-	|| ydk::is_set(trustpoint.yfilter);
+	|| ydk::is_set(ct_show_cmd_txt_res_sent.yfilter);
+}
+
+std::string Grpc::Statistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-ems-oper:grpc/" << get_segment_path();
+    return path_buffer.str();
 }
 
 std::string Grpc::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grpc::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grpc::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-ems-oper:grpc/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ct_action_json_req_recv.is_set || is_set(ct_action_json_req_recv.yfilter)) leaf_name_data.push_back(ct_action_json_req_recv.get_name_leafdata());
+    if (ct_action_json_res_sent.is_set || is_set(ct_action_json_res_sent.yfilter)) leaf_name_data.push_back(ct_action_json_res_sent.get_name_leafdata());
     if (ct_cli_config_req_recv.is_set || is_set(ct_cli_config_req_recv.yfilter)) leaf_name_data.push_back(ct_cli_config_req_recv.get_name_leafdata());
     if (ct_cli_config_res_sent.is_set || is_set(ct_cli_config_res_sent.yfilter)) leaf_name_data.push_back(ct_cli_config_res_sent.get_name_leafdata());
+    if (ct_commit_config_req_recv.is_set || is_set(ct_commit_config_req_recv.yfilter)) leaf_name_data.push_back(ct_commit_config_req_recv.get_name_leafdata());
+    if (ct_commit_config_res_sent.is_set || is_set(ct_commit_config_res_sent.yfilter)) leaf_name_data.push_back(ct_commit_config_res_sent.get_name_leafdata());
     if (ct_commit_replace_req_recv.is_set || is_set(ct_commit_replace_req_recv.yfilter)) leaf_name_data.push_back(ct_commit_replace_req_recv.get_name_leafdata());
     if (ct_commit_replace_res_sent.is_set || is_set(ct_commit_replace_res_sent.yfilter)) leaf_name_data.push_back(ct_commit_replace_res_sent.get_name_leafdata());
     if (ct_delete_config_req_recv.is_set || is_set(ct_delete_config_req_recv.yfilter)) leaf_name_data.push_back(ct_delete_config_req_recv.get_name_leafdata());
@@ -278,16 +256,8 @@ const EntityPath Grpc::Statistics::get_entity_path(Entity* ancestor) const
     if (ct_replace_config_res_sent.is_set || is_set(ct_replace_config_res_sent.yfilter)) leaf_name_data.push_back(ct_replace_config_res_sent.get_name_leafdata());
     if (ct_show_cmd_txt_req_recv.is_set || is_set(ct_show_cmd_txt_req_recv.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_req_recv.get_name_leafdata());
     if (ct_show_cmd_txt_res_sent.is_set || is_set(ct_show_cmd_txt_res_sent.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_res_sent.get_name_leafdata());
-    if (listening_port.is_set || is_set(listening_port.yfilter)) leaf_name_data.push_back(listening_port.get_name_leafdata());
-    if (max_req_per_user.is_set || is_set(max_req_per_user.yfilter)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
-    if (max_req_total.is_set || is_set(max_req_total.yfilter)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
-    if (tls.is_set || is_set(tls.yfilter)) leaf_name_data.push_back(tls.get_name_leafdata());
-    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
-    if (trustpoint.is_set || is_set(trustpoint.yfilter)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -304,11 +274,17 @@ std::map<std::string, std::shared_ptr<Entity>> Grpc::Statistics::get_children() 
 
 void Grpc::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address-family")
+    if(value_path == "ct-action-json-req-recv")
     {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
+        ct_action_json_req_recv = value;
+        ct_action_json_req_recv.value_namespace = name_space;
+        ct_action_json_req_recv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ct-action-json-res-sent")
+    {
+        ct_action_json_res_sent = value;
+        ct_action_json_res_sent.value_namespace = name_space;
+        ct_action_json_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-cli-config-req-recv")
     {
@@ -321,6 +297,18 @@ void Grpc::Statistics::set_value(const std::string & value_path, const std::stri
         ct_cli_config_res_sent = value;
         ct_cli_config_res_sent.value_namespace = name_space;
         ct_cli_config_res_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ct-commit-config-req-recv")
+    {
+        ct_commit_config_req_recv = value;
+        ct_commit_config_req_recv.value_namespace = name_space;
+        ct_commit_config_req_recv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ct-commit-config-res-sent")
+    {
+        ct_commit_config_res_sent = value;
+        ct_commit_config_res_sent.value_namespace = name_space;
+        ct_commit_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-commit-replace-req-recv")
     {
@@ -412,49 +400,17 @@ void Grpc::Statistics::set_value(const std::string & value_path, const std::stri
         ct_show_cmd_txt_res_sent.value_namespace = name_space;
         ct_show_cmd_txt_res_sent.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "listening-port")
-    {
-        listening_port = value;
-        listening_port.value_namespace = name_space;
-        listening_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-req-per-user")
-    {
-        max_req_per_user = value;
-        max_req_per_user.value_namespace = name_space;
-        max_req_per_user.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-req-total")
-    {
-        max_req_total = value;
-        max_req_total.value_namespace = name_space;
-        max_req_total.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tls")
-    {
-        tls = value;
-        tls.value_namespace = name_space;
-        tls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "transport")
-    {
-        transport = value;
-        transport.value_namespace = name_space;
-        transport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trustpoint")
-    {
-        trustpoint = value;
-        trustpoint.value_namespace = name_space;
-        trustpoint.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Grpc::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address-family")
+    if(value_path == "ct-action-json-req-recv")
     {
-        address_family.yfilter = yfilter;
+        ct_action_json_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-action-json-res-sent")
+    {
+        ct_action_json_res_sent.yfilter = yfilter;
     }
     if(value_path == "ct-cli-config-req-recv")
     {
@@ -463,6 +419,14 @@ void Grpc::Statistics::set_filter(const std::string & value_path, YFilter yfilte
     if(value_path == "ct-cli-config-res-sent")
     {
         ct_cli_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-commit-config-req-recv")
+    {
+        ct_commit_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-commit-config-res-sent")
+    {
+        ct_commit_config_res_sent.yfilter = yfilter;
     }
     if(value_path == "ct-commit-replace-req-recv")
     {
@@ -524,35 +488,11 @@ void Grpc::Statistics::set_filter(const std::string & value_path, YFilter yfilte
     {
         ct_show_cmd_txt_res_sent.yfilter = yfilter;
     }
-    if(value_path == "listening-port")
-    {
-        listening_port.yfilter = yfilter;
-    }
-    if(value_path == "max-req-per-user")
-    {
-        max_req_per_user.yfilter = yfilter;
-    }
-    if(value_path == "max-req-total")
-    {
-        max_req_total.yfilter = yfilter;
-    }
-    if(value_path == "tls")
-    {
-        tls.yfilter = yfilter;
-    }
-    if(value_path == "transport")
-    {
-        transport.yfilter = yfilter;
-    }
-    if(value_path == "trustpoint")
-    {
-        trustpoint.yfilter = yfilter;
-    }
 }
 
 bool Grpc::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-family" || name == "ct-cli-config-req-recv" || name == "ct-cli-config-res-sent" || name == "ct-commit-replace-req-recv" || name == "ct-commit-replace-res-sent" || name == "ct-delete-config-req-recv" || name == "ct-delete-config-res-sent" || name == "ct-get-config-req-recv" || name == "ct-get-config-res-sent" || name == "ct-get-current-session" || name == "ct-get-oper-req-recv" || name == "ct-get-oper-res-sent" || name == "ct-merge-config-req-recv" || name == "ct-merge-config-res-sent" || name == "ct-replace-config-req-recv" || name == "ct-replace-config-res-sent" || name == "ct-show-cmd-txt-req-recv" || name == "ct-show-cmd-txt-res-sent" || name == "listening-port" || name == "max-req-per-user" || name == "max-req-total" || name == "tls" || name == "transport" || name == "trustpoint")
+    if(name == "ct-action-json-req-recv" || name == "ct-action-json-res-sent" || name == "ct-cli-config-req-recv" || name == "ct-cli-config-res-sent" || name == "ct-commit-config-req-recv" || name == "ct-commit-config-res-sent" || name == "ct-commit-replace-req-recv" || name == "ct-commit-replace-res-sent" || name == "ct-delete-config-req-recv" || name == "ct-delete-config-res-sent" || name == "ct-get-config-req-recv" || name == "ct-get-config-res-sent" || name == "ct-get-current-session" || name == "ct-get-oper-req-recv" || name == "ct-get-oper-res-sent" || name == "ct-merge-config-req-recv" || name == "ct-merge-config-res-sent" || name == "ct-replace-config-req-recv" || name == "ct-replace-config-res-sent" || name == "ct-show-cmd-txt-req-recv" || name == "ct-show-cmd-txt-res-sent")
         return true;
     return false;
 }
@@ -560,31 +500,16 @@ bool Grpc::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 Grpc::Status::Status()
     :
     address_family{YType::str, "address-family"},
-    ct_cli_config_req_recv{YType::uint64, "ct-cli-config-req-recv"},
-    ct_cli_config_res_sent{YType::uint64, "ct-cli-config-res-sent"},
-    ct_commit_replace_req_recv{YType::uint64, "ct-commit-replace-req-recv"},
-    ct_commit_replace_res_sent{YType::uint64, "ct-commit-replace-res-sent"},
-    ct_delete_config_req_recv{YType::uint64, "ct-delete-config-req-recv"},
-    ct_delete_config_res_sent{YType::uint64, "ct-delete-config-res-sent"},
-    ct_get_config_req_recv{YType::uint64, "ct-get-config-req-recv"},
-    ct_get_config_res_sent{YType::uint64, "ct-get-config-res-sent"},
-    ct_get_current_session{YType::uint32, "ct-get-current-session"},
-    ct_get_oper_req_recv{YType::uint64, "ct-get-oper-req-recv"},
-    ct_get_oper_res_sent{YType::uint64, "ct-get-oper-res-sent"},
-    ct_merge_config_req_recv{YType::uint64, "ct-merge-config-req-recv"},
-    ct_merge_config_res_sent{YType::uint64, "ct-merge-config-res-sent"},
-    ct_replace_config_req_recv{YType::uint64, "ct-replace-config-req-recv"},
-    ct_replace_config_res_sent{YType::uint64, "ct-replace-config-res-sent"},
-    ct_show_cmd_txt_req_recv{YType::uint64, "ct-show-cmd-txt-req-recv"},
-    ct_show_cmd_txt_res_sent{YType::uint64, "ct-show-cmd-txt-res-sent"},
     listening_port{YType::int32, "listening-port"},
     max_req_per_user{YType::uint32, "max-req-per-user"},
     max_req_total{YType::uint32, "max-req-total"},
     tls{YType::str, "tls"},
     transport{YType::str, "transport"},
-    trustpoint{YType::str, "trustpoint"}
+    trustpoint{YType::str, "trustpoint"},
+    vrf_socket_ns_path{YType::str, "vrf-socket-ns-path"}
 {
-    yang_name = "status"; yang_parent_name = "grpc";
+
+    yang_name = "status"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Grpc::Status::~Status()
@@ -594,111 +519,56 @@ Grpc::Status::~Status()
 bool Grpc::Status::has_data() const
 {
     return address_family.is_set
-	|| ct_cli_config_req_recv.is_set
-	|| ct_cli_config_res_sent.is_set
-	|| ct_commit_replace_req_recv.is_set
-	|| ct_commit_replace_res_sent.is_set
-	|| ct_delete_config_req_recv.is_set
-	|| ct_delete_config_res_sent.is_set
-	|| ct_get_config_req_recv.is_set
-	|| ct_get_config_res_sent.is_set
-	|| ct_get_current_session.is_set
-	|| ct_get_oper_req_recv.is_set
-	|| ct_get_oper_res_sent.is_set
-	|| ct_merge_config_req_recv.is_set
-	|| ct_merge_config_res_sent.is_set
-	|| ct_replace_config_req_recv.is_set
-	|| ct_replace_config_res_sent.is_set
-	|| ct_show_cmd_txt_req_recv.is_set
-	|| ct_show_cmd_txt_res_sent.is_set
 	|| listening_port.is_set
 	|| max_req_per_user.is_set
 	|| max_req_total.is_set
 	|| tls.is_set
 	|| transport.is_set
-	|| trustpoint.is_set;
+	|| trustpoint.is_set
+	|| vrf_socket_ns_path.is_set;
 }
 
 bool Grpc::Status::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ct_cli_config_req_recv.yfilter)
-	|| ydk::is_set(ct_cli_config_res_sent.yfilter)
-	|| ydk::is_set(ct_commit_replace_req_recv.yfilter)
-	|| ydk::is_set(ct_commit_replace_res_sent.yfilter)
-	|| ydk::is_set(ct_delete_config_req_recv.yfilter)
-	|| ydk::is_set(ct_delete_config_res_sent.yfilter)
-	|| ydk::is_set(ct_get_config_req_recv.yfilter)
-	|| ydk::is_set(ct_get_config_res_sent.yfilter)
-	|| ydk::is_set(ct_get_current_session.yfilter)
-	|| ydk::is_set(ct_get_oper_req_recv.yfilter)
-	|| ydk::is_set(ct_get_oper_res_sent.yfilter)
-	|| ydk::is_set(ct_merge_config_req_recv.yfilter)
-	|| ydk::is_set(ct_merge_config_res_sent.yfilter)
-	|| ydk::is_set(ct_replace_config_req_recv.yfilter)
-	|| ydk::is_set(ct_replace_config_res_sent.yfilter)
-	|| ydk::is_set(ct_show_cmd_txt_req_recv.yfilter)
-	|| ydk::is_set(ct_show_cmd_txt_res_sent.yfilter)
 	|| ydk::is_set(listening_port.yfilter)
 	|| ydk::is_set(max_req_per_user.yfilter)
 	|| ydk::is_set(max_req_total.yfilter)
 	|| ydk::is_set(tls.yfilter)
 	|| ydk::is_set(transport.yfilter)
-	|| ydk::is_set(trustpoint.yfilter);
+	|| ydk::is_set(trustpoint.yfilter)
+	|| ydk::is_set(vrf_socket_ns_path.yfilter);
+}
+
+std::string Grpc::Status::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-ems-oper:grpc/" << get_segment_path();
+    return path_buffer.str();
 }
 
 std::string Grpc::Status::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "status";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grpc::Status::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grpc::Status::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-ems-oper:grpc/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ct_cli_config_req_recv.is_set || is_set(ct_cli_config_req_recv.yfilter)) leaf_name_data.push_back(ct_cli_config_req_recv.get_name_leafdata());
-    if (ct_cli_config_res_sent.is_set || is_set(ct_cli_config_res_sent.yfilter)) leaf_name_data.push_back(ct_cli_config_res_sent.get_name_leafdata());
-    if (ct_commit_replace_req_recv.is_set || is_set(ct_commit_replace_req_recv.yfilter)) leaf_name_data.push_back(ct_commit_replace_req_recv.get_name_leafdata());
-    if (ct_commit_replace_res_sent.is_set || is_set(ct_commit_replace_res_sent.yfilter)) leaf_name_data.push_back(ct_commit_replace_res_sent.get_name_leafdata());
-    if (ct_delete_config_req_recv.is_set || is_set(ct_delete_config_req_recv.yfilter)) leaf_name_data.push_back(ct_delete_config_req_recv.get_name_leafdata());
-    if (ct_delete_config_res_sent.is_set || is_set(ct_delete_config_res_sent.yfilter)) leaf_name_data.push_back(ct_delete_config_res_sent.get_name_leafdata());
-    if (ct_get_config_req_recv.is_set || is_set(ct_get_config_req_recv.yfilter)) leaf_name_data.push_back(ct_get_config_req_recv.get_name_leafdata());
-    if (ct_get_config_res_sent.is_set || is_set(ct_get_config_res_sent.yfilter)) leaf_name_data.push_back(ct_get_config_res_sent.get_name_leafdata());
-    if (ct_get_current_session.is_set || is_set(ct_get_current_session.yfilter)) leaf_name_data.push_back(ct_get_current_session.get_name_leafdata());
-    if (ct_get_oper_req_recv.is_set || is_set(ct_get_oper_req_recv.yfilter)) leaf_name_data.push_back(ct_get_oper_req_recv.get_name_leafdata());
-    if (ct_get_oper_res_sent.is_set || is_set(ct_get_oper_res_sent.yfilter)) leaf_name_data.push_back(ct_get_oper_res_sent.get_name_leafdata());
-    if (ct_merge_config_req_recv.is_set || is_set(ct_merge_config_req_recv.yfilter)) leaf_name_data.push_back(ct_merge_config_req_recv.get_name_leafdata());
-    if (ct_merge_config_res_sent.is_set || is_set(ct_merge_config_res_sent.yfilter)) leaf_name_data.push_back(ct_merge_config_res_sent.get_name_leafdata());
-    if (ct_replace_config_req_recv.is_set || is_set(ct_replace_config_req_recv.yfilter)) leaf_name_data.push_back(ct_replace_config_req_recv.get_name_leafdata());
-    if (ct_replace_config_res_sent.is_set || is_set(ct_replace_config_res_sent.yfilter)) leaf_name_data.push_back(ct_replace_config_res_sent.get_name_leafdata());
-    if (ct_show_cmd_txt_req_recv.is_set || is_set(ct_show_cmd_txt_req_recv.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_req_recv.get_name_leafdata());
-    if (ct_show_cmd_txt_res_sent.is_set || is_set(ct_show_cmd_txt_res_sent.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_res_sent.get_name_leafdata());
     if (listening_port.is_set || is_set(listening_port.yfilter)) leaf_name_data.push_back(listening_port.get_name_leafdata());
     if (max_req_per_user.is_set || is_set(max_req_per_user.yfilter)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
     if (max_req_total.is_set || is_set(max_req_total.yfilter)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
     if (tls.is_set || is_set(tls.yfilter)) leaf_name_data.push_back(tls.get_name_leafdata());
     if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
     if (trustpoint.is_set || is_set(trustpoint.yfilter)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
+    if (vrf_socket_ns_path.is_set || is_set(vrf_socket_ns_path.yfilter)) leaf_name_data.push_back(vrf_socket_ns_path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -721,108 +591,6 @@ void Grpc::Status::set_value(const std::string & value_path, const std::string &
         address_family.value_namespace = name_space;
         address_family.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ct-cli-config-req-recv")
-    {
-        ct_cli_config_req_recv = value;
-        ct_cli_config_req_recv.value_namespace = name_space;
-        ct_cli_config_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-cli-config-res-sent")
-    {
-        ct_cli_config_res_sent = value;
-        ct_cli_config_res_sent.value_namespace = name_space;
-        ct_cli_config_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-commit-replace-req-recv")
-    {
-        ct_commit_replace_req_recv = value;
-        ct_commit_replace_req_recv.value_namespace = name_space;
-        ct_commit_replace_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-commit-replace-res-sent")
-    {
-        ct_commit_replace_res_sent = value;
-        ct_commit_replace_res_sent.value_namespace = name_space;
-        ct_commit_replace_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-delete-config-req-recv")
-    {
-        ct_delete_config_req_recv = value;
-        ct_delete_config_req_recv.value_namespace = name_space;
-        ct_delete_config_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-delete-config-res-sent")
-    {
-        ct_delete_config_res_sent = value;
-        ct_delete_config_res_sent.value_namespace = name_space;
-        ct_delete_config_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-get-config-req-recv")
-    {
-        ct_get_config_req_recv = value;
-        ct_get_config_req_recv.value_namespace = name_space;
-        ct_get_config_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-get-config-res-sent")
-    {
-        ct_get_config_res_sent = value;
-        ct_get_config_res_sent.value_namespace = name_space;
-        ct_get_config_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-get-current-session")
-    {
-        ct_get_current_session = value;
-        ct_get_current_session.value_namespace = name_space;
-        ct_get_current_session.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-get-oper-req-recv")
-    {
-        ct_get_oper_req_recv = value;
-        ct_get_oper_req_recv.value_namespace = name_space;
-        ct_get_oper_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-get-oper-res-sent")
-    {
-        ct_get_oper_res_sent = value;
-        ct_get_oper_res_sent.value_namespace = name_space;
-        ct_get_oper_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-merge-config-req-recv")
-    {
-        ct_merge_config_req_recv = value;
-        ct_merge_config_req_recv.value_namespace = name_space;
-        ct_merge_config_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-merge-config-res-sent")
-    {
-        ct_merge_config_res_sent = value;
-        ct_merge_config_res_sent.value_namespace = name_space;
-        ct_merge_config_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-replace-config-req-recv")
-    {
-        ct_replace_config_req_recv = value;
-        ct_replace_config_req_recv.value_namespace = name_space;
-        ct_replace_config_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-replace-config-res-sent")
-    {
-        ct_replace_config_res_sent = value;
-        ct_replace_config_res_sent.value_namespace = name_space;
-        ct_replace_config_res_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-show-cmd-txt-req-recv")
-    {
-        ct_show_cmd_txt_req_recv = value;
-        ct_show_cmd_txt_req_recv.value_namespace = name_space;
-        ct_show_cmd_txt_req_recv.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ct-show-cmd-txt-res-sent")
-    {
-        ct_show_cmd_txt_res_sent = value;
-        ct_show_cmd_txt_res_sent.value_namespace = name_space;
-        ct_show_cmd_txt_res_sent.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "listening-port")
     {
         listening_port = value;
@@ -859,6 +627,12 @@ void Grpc::Status::set_value(const std::string & value_path, const std::string &
         trustpoint.value_namespace = name_space;
         trustpoint.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-socket-ns-path")
+    {
+        vrf_socket_ns_path = value;
+        vrf_socket_ns_path.value_namespace = name_space;
+        vrf_socket_ns_path.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Grpc::Status::set_filter(const std::string & value_path, YFilter yfilter)
@@ -866,74 +640,6 @@ void Grpc::Status::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "address-family")
     {
         address_family.yfilter = yfilter;
-    }
-    if(value_path == "ct-cli-config-req-recv")
-    {
-        ct_cli_config_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-cli-config-res-sent")
-    {
-        ct_cli_config_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-commit-replace-req-recv")
-    {
-        ct_commit_replace_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-commit-replace-res-sent")
-    {
-        ct_commit_replace_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-delete-config-req-recv")
-    {
-        ct_delete_config_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-delete-config-res-sent")
-    {
-        ct_delete_config_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-get-config-req-recv")
-    {
-        ct_get_config_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-get-config-res-sent")
-    {
-        ct_get_config_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-get-current-session")
-    {
-        ct_get_current_session.yfilter = yfilter;
-    }
-    if(value_path == "ct-get-oper-req-recv")
-    {
-        ct_get_oper_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-get-oper-res-sent")
-    {
-        ct_get_oper_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-merge-config-req-recv")
-    {
-        ct_merge_config_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-merge-config-res-sent")
-    {
-        ct_merge_config_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-replace-config-req-recv")
-    {
-        ct_replace_config_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-replace-config-res-sent")
-    {
-        ct_replace_config_res_sent.yfilter = yfilter;
-    }
-    if(value_path == "ct-show-cmd-txt-req-recv")
-    {
-        ct_show_cmd_txt_req_recv.yfilter = yfilter;
-    }
-    if(value_path == "ct-show-cmd-txt-res-sent")
-    {
-        ct_show_cmd_txt_res_sent.yfilter = yfilter;
     }
     if(value_path == "listening-port")
     {
@@ -959,11 +665,15 @@ void Grpc::Status::set_filter(const std::string & value_path, YFilter yfilter)
     {
         trustpoint.yfilter = yfilter;
     }
+    if(value_path == "vrf-socket-ns-path")
+    {
+        vrf_socket_ns_path.yfilter = yfilter;
+    }
 }
 
 bool Grpc::Status::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-family" || name == "ct-cli-config-req-recv" || name == "ct-cli-config-res-sent" || name == "ct-commit-replace-req-recv" || name == "ct-commit-replace-res-sent" || name == "ct-delete-config-req-recv" || name == "ct-delete-config-res-sent" || name == "ct-get-config-req-recv" || name == "ct-get-config-res-sent" || name == "ct-get-current-session" || name == "ct-get-oper-req-recv" || name == "ct-get-oper-res-sent" || name == "ct-merge-config-req-recv" || name == "ct-merge-config-res-sent" || name == "ct-replace-config-req-recv" || name == "ct-replace-config-res-sent" || name == "ct-show-cmd-txt-req-recv" || name == "ct-show-cmd-txt-res-sent" || name == "listening-port" || name == "max-req-per-user" || name == "max-req-total" || name == "tls" || name == "transport" || name == "trustpoint")
+    if(name == "address-family" || name == "listening-port" || name == "max-req-per-user" || name == "max-req-total" || name == "tls" || name == "transport" || name == "trustpoint" || name == "vrf-socket-ns-path")
         return true;
     return false;
 }

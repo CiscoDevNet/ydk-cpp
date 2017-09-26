@@ -27,30 +27,30 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	vector<string> args = parse_args(argc, argv);
-	if(args.empty()) return 1;
+    vector<string> args = parse_args(argc, argv);
+    if(args.empty()) return 1;
 
-	string host, username, password;
-	int port;
+    string host, username, password;
+    int port;
 
-	username = args[0]; password = args[1]; host = args[2]; port = stoi(args[3]);
+    username = args[0]; password = args[1]; host = args[2]; port = stoi(args[3]);
 
-	bool verbose=(args[4]=="--verbose");
-	if(verbose)
-	{
-	    auto logger = spdlog::stdout_color_mt("ydk");
-	    logger->set_level(spdlog::level::info);
-	}
+    bool verbose=(args[4]=="--verbose");
+    if(verbose)
+    {
+        auto logger = spdlog::stdout_color_mt("ydk");
+        logger->set_level(spdlog::level::info);
+    }
 
-	NetconfServiceProvider provider{host, username, password, port};
-	CrudService crud{};
+    NetconfServiceProvider provider{host, username, password, port};
+    CrudService crud{};
 
-	auto bgp = make_unique<openconfig_bgp::Bgp>();
-	try
-	{
+    auto bgp = make_unique<openconfig_bgp::Bgp>();
+    try
+    {
         bool reply = crud.delete_(provider, *bgp);
-        if(reply) cout << "Delete operation success" << endl; else cout << "Operation failed" << endl;
-	}
+        if(reply) cout << "Delete yfilter success" << endl; else cout << "Operation failed" << endl;
+    }
     catch(YCPPError & e)
     {
         cerr << e<<endl;

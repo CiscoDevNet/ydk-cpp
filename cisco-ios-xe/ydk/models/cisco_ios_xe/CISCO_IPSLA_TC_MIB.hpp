@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_IPSLA_TC_MIB {
 
-class Ipslaopertype : public ydk::Enum
+class IpSlaOperType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf icmpEcho;
@@ -21,7 +21,17 @@ class Ipslaopertype : public ydk::Enum
 
 };
 
-class Ipslareactvar : public ydk::Enum
+class IpSlaCodecType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf notApplicable;
+        static const ydk::Enum::YLeaf g711ulaw;
+        static const ydk::Enum::YLeaf g711alaw;
+        static const ydk::Enum::YLeaf g729a;
+
+};
+
+class IpSlaReactVar : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf rtt;
@@ -48,16 +58,6 @@ class Ipslareactvar : public ydk::Enum
         static const ydk::Enum::YLeaf latencyDSAvg;
         static const ydk::Enum::YLeaf latencySDAvg;
         static const ydk::Enum::YLeaf packetLoss;
-
-};
-
-class Ipslacodectype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf notApplicable;
-        static const ydk::Enum::YLeaf g711ulaw;
-        static const ydk::Enum::YLeaf g711alaw;
-        static const ydk::Enum::YLeaf g729a;
 
 };
 

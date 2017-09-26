@@ -11,51 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace cisco_pw {
 
-PwEncapsulationType::PwEncapsulationType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encapsulation-type")
-{
-}
-
-PwEncapsulationType::~PwEncapsulationType()
-{
-}
-
-PwLoadBalanceType::PwLoadBalanceType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
-{
-}
-
-PwLoadBalanceType::~PwLoadBalanceType()
-{
-}
-
-PwSequencingType::PwSequencingType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-type")
-{
-}
-
-PwSequencingType::~PwSequencingType()
-{
-}
-
-PwSignalingProtocolType::PwSignalingProtocolType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
-{
-}
-
-PwSignalingProtocolType::~PwSignalingProtocolType()
-{
-}
-
-PwVcType::PwVcType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type")
-{
-}
-
-PwVcType::~PwVcType()
-{
-}
-
 PseudowireConfig::PseudowireConfig()
     :
     global(std::make_shared<PseudowireConfig::Global>())
@@ -63,12 +18,10 @@ PseudowireConfig::PseudowireConfig()
 	,pw_templates(std::make_shared<PseudowireConfig::PwTemplates>())
 {
     global->parent = this;
-
     pw_static_oam_classes->parent = this;
-
     pw_templates->parent = this;
 
-    yang_name = "pseudowire-config"; yang_parent_name = "cisco-pw";
+    yang_name = "pseudowire-config"; yang_parent_name = "cisco-pw"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PseudowireConfig::~PseudowireConfig()
@@ -94,26 +47,15 @@ std::string PseudowireConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-pw:pseudowire-config";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -220,7 +162,8 @@ PseudowireConfig::Global::Global()
     vc_state_notification_enabled{YType::boolean, "vc-state-notification-enabled"},
     vc_state_notification_rate{YType::uint32, "vc-state-notification-rate"}
 {
-    yang_name = "global"; yang_parent_name = "pseudowire-config";
+
+    yang_name = "global"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PseudowireConfig::Global::~Global()
@@ -250,27 +193,22 @@ bool PseudowireConfig::Global::has_operation() const
 	|| ydk::is_set(vc_state_notification_rate.yfilter);
 }
 
+std::string PseudowireConfig::Global::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-pw:pseudowire-config/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PseudowireConfig::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::Global::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::Global::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-pw:pseudowire-config/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (predictive_redundancy.is_set || is_set(predictive_redundancy.yfilter)) leaf_name_data.push_back(predictive_redundancy.get_name_leafdata());
@@ -281,9 +219,7 @@ const EntityPath PseudowireConfig::Global::get_entity_path(Entity* ancestor) con
     if (vc_state_notification_enabled.is_set || is_set(vc_state_notification_enabled.yfilter)) leaf_name_data.push_back(vc_state_notification_enabled.get_name_leafdata());
     if (vc_state_notification_rate.is_set || is_set(vc_state_notification_rate.yfilter)) leaf_name_data.push_back(vc_state_notification_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -383,9 +319,249 @@ bool PseudowireConfig::Global::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
+PseudowireConfig::PwStaticOamClasses::PwStaticOamClasses()
+{
+
+    yang_name = "pw-static-oam-classes"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PseudowireConfig::PwStaticOamClasses::~PwStaticOamClasses()
+{
+}
+
+bool PseudowireConfig::PwStaticOamClasses::has_data() const
+{
+    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
+    {
+        if(pw_static_oam_class[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PseudowireConfig::PwStaticOamClasses::has_operation() const
+{
+    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
+    {
+        if(pw_static_oam_class[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PseudowireConfig::PwStaticOamClasses::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-pw:pseudowire-config/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PseudowireConfig::PwStaticOamClasses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pw-static-oam-classes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwStaticOamClasses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pw-static-oam-class")
+    {
+        for(auto const & c : pw_static_oam_class)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
+        c->parent = this;
+        pw_static_oam_class.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : pw_static_oam_class)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PseudowireConfig::PwStaticOamClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PseudowireConfig::PwStaticOamClasses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PseudowireConfig::PwStaticOamClasses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-static-oam-class")
+        return true;
+    return false;
+}
+
+PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::PwStaticOamClass()
+    :
+    name{YType::str, "name"},
+    ack{YType::boolean, "ack"},
+    keepalive{YType::uint32, "keepalive"},
+    timeout_refresh_ack{YType::uint32, "timeout-refresh-ack"},
+    timeout_refresh_send{YType::uint32, "timeout-refresh-send"}
+{
+
+    yang_name = "pw-static-oam-class"; yang_parent_name = "pw-static-oam-classes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::~PwStaticOamClass()
+{
+}
+
+bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_data() const
+{
+    return name.is_set
+	|| ack.is_set
+	|| keepalive.is_set
+	|| timeout_refresh_ack.is_set
+	|| timeout_refresh_send.is_set;
+}
+
+bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(ack.yfilter)
+	|| ydk::is_set(keepalive.yfilter)
+	|| ydk::is_set(timeout_refresh_ack.yfilter)
+	|| ydk::is_set(timeout_refresh_send.yfilter);
+}
+
+std::string PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-pw:pseudowire-config/pw-static-oam-classes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pw-static-oam-class" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
+    if (keepalive.is_set || is_set(keepalive.yfilter)) leaf_name_data.push_back(keepalive.get_name_leafdata());
+    if (timeout_refresh_ack.is_set || is_set(timeout_refresh_ack.yfilter)) leaf_name_data.push_back(timeout_refresh_ack.get_name_leafdata());
+    if (timeout_refresh_send.is_set || is_set(timeout_refresh_send.yfilter)) leaf_name_data.push_back(timeout_refresh_send.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ack")
+    {
+        ack = value;
+        ack.value_namespace = name_space;
+        ack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "keepalive")
+    {
+        keepalive = value;
+        keepalive.value_namespace = name_space;
+        keepalive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout-refresh-ack")
+    {
+        timeout_refresh_ack = value;
+        timeout_refresh_ack.value_namespace = name_space;
+        timeout_refresh_ack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout-refresh-send")
+    {
+        timeout_refresh_send = value;
+        timeout_refresh_send.value_namespace = name_space;
+        timeout_refresh_send.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "ack")
+    {
+        ack.yfilter = yfilter;
+    }
+    if(value_path == "keepalive")
+    {
+        keepalive.yfilter = yfilter;
+    }
+    if(value_path == "timeout-refresh-ack")
+    {
+        timeout_refresh_ack.yfilter = yfilter;
+    }
+    if(value_path == "timeout-refresh-send")
+    {
+        timeout_refresh_send.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "ack" || name == "keepalive" || name == "timeout-refresh-ack" || name == "timeout-refresh-send")
+        return true;
+    return false;
+}
+
 PseudowireConfig::PwTemplates::PwTemplates()
 {
-    yang_name = "pw-templates"; yang_parent_name = "pseudowire-config";
+
+    yang_name = "pw-templates"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PseudowireConfig::PwTemplates::~PwTemplates()
@@ -412,33 +588,26 @@ bool PseudowireConfig::PwTemplates::has_operation() const
     return is_set(yfilter);
 }
 
+std::string PseudowireConfig::PwTemplates::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-pw:pseudowire-config/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PseudowireConfig::PwTemplates::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pw-templates";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwTemplates::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-pw:pseudowire-config/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -510,20 +679,14 @@ PseudowireConfig::PwTemplates::PwTemplate::PwTemplate()
 	,vccv(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
 {
     load_balance->parent = this;
-
     port_profile_spec->parent = this;
-
     preferred_path->parent = this;
-
     sequencing->parent = this;
-
     status->parent = this;
-
     switchover_delay->parent = this;
-
     vccv->parent = this;
 
-    yang_name = "pw-template"; yang_parent_name = "pw-templates";
+    yang_name = "pw-template"; yang_parent_name = "pw-templates"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::~PwTemplate()
@@ -571,27 +734,22 @@ bool PseudowireConfig::PwTemplates::PwTemplate::has_operation() const
 	|| (vccv !=  nullptr && vccv->has_operation());
 }
 
+std::string PseudowireConfig::PwTemplates::PwTemplate::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-pw:pseudowire-config/pw-templates/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PseudowireConfig::PwTemplates::PwTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pw-template" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-pw:pseudowire-config/pw-templates/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -604,9 +762,7 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::get_entity_path(Enti
     if (tag_rewrite_ingress_vlan.is_set || is_set(tag_rewrite_ingress_vlan.yfilter)) leaf_name_data.push_back(tag_rewrite_ingress_vlan.get_name_leafdata());
     if (vc_type.is_set || is_set(vc_type.yfilter)) leaf_name_data.push_back(vc_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -833,7 +989,7 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::LoadBalance()
 {
     flow_label->parent = this;
 
-    yang_name = "load-balance"; yang_parent_name = "pw-template";
+    yang_name = "load-balance"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::~LoadBalance()
@@ -859,31 +1015,17 @@ std::string PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "load-balance";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LoadBalance' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ethernet.is_set || is_set(ethernet.yfilter)) leaf_name_data.push_back(ethernet.get_name_leafdata());
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -953,7 +1095,8 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::FlowLabel()
     static_{YType::boolean, "static"},
     tlv_code_17{YType::boolean, "tlv-code-17"}
 {
-    yang_name = "flow-label"; yang_parent_name = "load-balance";
+
+    yang_name = "flow-label"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::~FlowLabel()
@@ -979,32 +1122,18 @@ std::string PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::g
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-label";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FlowLabel' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
     if (static_.is_set || is_set(static_.yfilter)) leaf_name_data.push_back(static_.get_name_leafdata());
     if (tlv_code_17.is_set || is_set(tlv_code_17.yfilter)) leaf_name_data.push_back(tlv_code_17.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1064,591 +1193,6 @@ bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::has_leaf
     return false;
 }
 
-PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::PreferredPath()
-    :
-    address{YType::str, "address"},
-    disable_fallback{YType::boolean, "disable-fallback"},
-    hostname{YType::str, "hostname"},
-    interface{YType::str, "interface"}
-{
-    yang_name = "preferred-path"; yang_parent_name = "pw-template";
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::~PreferredPath()
-{
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_data() const
-{
-    return address.is_set
-	|| disable_fallback.is_set
-	|| hostname.is_set
-	|| interface.is_set;
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(disable_fallback.yfilter)
-	|| ydk::is_set(hostname.yfilter)
-	|| ydk::is_set(interface.yfilter);
-}
-
-std::string PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "preferred-path";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PreferredPath' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (disable_fallback.is_set || is_set(disable_fallback.yfilter)) leaf_name_data.push_back(disable_fallback.get_name_leafdata());
-    if (hostname.is_set || is_set(hostname.yfilter)) leaf_name_data.push_back(hostname.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable-fallback")
-    {
-        disable_fallback = value;
-        disable_fallback.value_namespace = name_space;
-        disable_fallback.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hostname")
-    {
-        hostname = value;
-        hostname.value_namespace = name_space;
-        hostname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "disable-fallback")
-    {
-        disable_fallback.yfilter = yfilter;
-    }
-    if(value_path == "hostname")
-    {
-        hostname.yfilter = yfilter;
-    }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "disable-fallback" || name == "hostname" || name == "interface")
-        return true;
-    return false;
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::Sequencing::Sequencing()
-    :
-    direction{YType::identityref, "direction"},
-    resync{YType::int32, "resync"}
-{
-    yang_name = "sequencing"; yang_parent_name = "pw-template";
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::Sequencing::~Sequencing()
-{
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_data() const
-{
-    return direction.is_set
-	|| resync.is_set;
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(resync.yfilter);
-}
-
-std::string PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sequencing";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sequencing' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (resync.is_set || is_set(resync.yfilter)) leaf_name_data.push_back(resync.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "resync")
-    {
-        resync = value;
-        resync.value_namespace = name_space;
-        resync.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "resync")
-    {
-        resync.yfilter = yfilter;
-    }
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "resync")
-        return true;
-    return false;
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::Vccv::Vccv()
-    :
-    control_word{YType::boolean, "control-word"}
-{
-    yang_name = "vccv"; yang_parent_name = "pw-template";
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::Vccv::~Vccv()
-{
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_data() const
-{
-    return control_word.is_set;
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(control_word.yfilter);
-}
-
-std::string PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vccv";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vccv' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (control_word.is_set || is_set(control_word.yfilter)) leaf_name_data.push_back(control_word.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "control-word")
-    {
-        control_word = value;
-        control_word.value_namespace = name_space;
-        control_word.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "control-word")
-    {
-        control_word.yfilter = yfilter;
-    }
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "control-word")
-        return true;
-    return false;
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::SwitchoverDelay()
-    :
-    never{YType::boolean, "never"},
-    switchover_timer{YType::uint8, "switchover-timer"},
-    timer{YType::uint8, "timer"}
-{
-    yang_name = "switchover-delay"; yang_parent_name = "pw-template";
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::~SwitchoverDelay()
-{
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_data() const
-{
-    return never.is_set
-	|| switchover_timer.is_set
-	|| timer.is_set;
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(never.yfilter)
-	|| ydk::is_set(switchover_timer.yfilter)
-	|| ydk::is_set(timer.yfilter);
-}
-
-std::string PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "switchover-delay";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SwitchoverDelay' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (never.is_set || is_set(never.yfilter)) leaf_name_data.push_back(never.get_name_leafdata());
-    if (switchover_timer.is_set || is_set(switchover_timer.yfilter)) leaf_name_data.push_back(switchover_timer.get_name_leafdata());
-    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "never")
-    {
-        never = value;
-        never.value_namespace = name_space;
-        never.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "switchover-timer")
-    {
-        switchover_timer = value;
-        switchover_timer.value_namespace = name_space;
-        switchover_timer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timer")
-    {
-        timer = value;
-        timer.value_namespace = name_space;
-        timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "never")
-    {
-        never.yfilter = yfilter;
-    }
-    if(value_path == "switchover-timer")
-    {
-        switchover_timer.yfilter = yfilter;
-    }
-    if(value_path == "timer")
-    {
-        timer.yfilter = yfilter;
-    }
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "never" || name == "switchover-timer" || name == "timer")
-        return true;
-    return false;
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::Status::Status()
-    :
-    decoupled{YType::boolean, "decoupled"},
-    disable{YType::boolean, "disable"},
-    peer_topo_dual_homed{YType::boolean, "peer-topo-dual-homed"},
-    redundancy_master{YType::boolean, "redundancy-master"},
-    route_watch_disable{YType::boolean, "route-watch-disable"}
-{
-    yang_name = "status"; yang_parent_name = "pw-template";
-}
-
-PseudowireConfig::PwTemplates::PwTemplate::Status::~Status()
-{
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_data() const
-{
-    return decoupled.is_set
-	|| disable.is_set
-	|| peer_topo_dual_homed.is_set
-	|| redundancy_master.is_set
-	|| route_watch_disable.is_set;
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(decoupled.yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(peer_topo_dual_homed.yfilter)
-	|| ydk::is_set(redundancy_master.yfilter)
-	|| ydk::is_set(route_watch_disable.yfilter);
-}
-
-std::string PseudowireConfig::PwTemplates::PwTemplate::Status::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::Status::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Status' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (decoupled.is_set || is_set(decoupled.yfilter)) leaf_name_data.push_back(decoupled.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (peer_topo_dual_homed.is_set || is_set(peer_topo_dual_homed.yfilter)) leaf_name_data.push_back(peer_topo_dual_homed.get_name_leafdata());
-    if (redundancy_master.is_set || is_set(redundancy_master.yfilter)) leaf_name_data.push_back(redundancy_master.get_name_leafdata());
-    if (route_watch_disable.is_set || is_set(route_watch_disable.yfilter)) leaf_name_data.push_back(route_watch_disable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Status::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "decoupled")
-    {
-        decoupled = value;
-        decoupled.value_namespace = name_space;
-        decoupled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peer-topo-dual-homed")
-    {
-        peer_topo_dual_homed = value;
-        peer_topo_dual_homed.value_namespace = name_space;
-        peer_topo_dual_homed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redundancy-master")
-    {
-        redundancy_master = value;
-        redundancy_master.value_namespace = name_space;
-        redundancy_master.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-watch-disable")
-    {
-        route_watch_disable = value;
-        route_watch_disable.value_namespace = name_space;
-        route_watch_disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PseudowireConfig::PwTemplates::PwTemplate::Status::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "decoupled")
-    {
-        decoupled.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-    if(value_path == "peer-topo-dual-homed")
-    {
-        peer_topo_dual_homed.yfilter = yfilter;
-    }
-    if(value_path == "redundancy-master")
-    {
-        redundancy_master.yfilter = yfilter;
-    }
-    if(value_path == "route-watch-disable")
-    {
-        route_watch_disable.yfilter = yfilter;
-    }
-}
-
-bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "decoupled" || name == "disable" || name == "peer-topo-dual-homed" || name == "redundancy-master" || name == "route-watch-disable")
-        return true;
-    return false;
-}
-
 PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::PortProfileSpec()
     :
     description{YType::str, "description"},
@@ -1658,7 +1202,8 @@ PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::PortProfileSpec()
     shut_force{YType::boolean, "shut-force"},
     shutdown{YType::boolean, "shutdown"}
 {
-    yang_name = "port-profile-spec"; yang_parent_name = "pw-template";
+
+    yang_name = "port-profile-spec"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::~PortProfileSpec()
@@ -1690,23 +1235,11 @@ std::string PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "port-profile-spec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortProfileSpec' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
@@ -1716,9 +1249,7 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get
     if (shut_force.is_set || is_set(shut_force.yfilter)) leaf_name_data.push_back(shut_force.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1808,260 +1339,530 @@ bool PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::has_leaf_or_chi
     return false;
 }
 
-PseudowireConfig::PwStaticOamClasses::PwStaticOamClasses()
+PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::PreferredPath()
+    :
+    address{YType::str, "address"},
+    disable_fallback{YType::boolean, "disable-fallback"},
+    hostname{YType::str, "hostname"},
+    interface{YType::str, "interface"}
 {
-    yang_name = "pw-static-oam-classes"; yang_parent_name = "pseudowire-config";
+
+    yang_name = "preferred-path"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PseudowireConfig::PwStaticOamClasses::~PwStaticOamClasses()
+PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::~PreferredPath()
 {
 }
 
-bool PseudowireConfig::PwStaticOamClasses::has_data() const
+bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_data() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
-    {
-        if(pw_static_oam_class[index]->has_data())
-            return true;
-    }
-    return false;
+    return address.is_set
+	|| disable_fallback.is_set
+	|| hostname.is_set
+	|| interface.is_set;
 }
 
-bool PseudowireConfig::PwStaticOamClasses::has_operation() const
+bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_operation() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
-    {
-        if(pw_static_oam_class[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(disable_fallback.yfilter)
+	|| ydk::is_set(hostname.yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
-std::string PseudowireConfig::PwStaticOamClasses::get_segment_path() const
+std::string PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pw-static-oam-classes";
-
+    path_buffer << "preferred-path";
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwStaticOamClasses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-pw:pseudowire-config/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (disable_fallback.is_set || is_set(disable_fallback.yfilter)) leaf_name_data.push_back(disable_fallback.get_name_leafdata());
+    if (hostname.is_set || is_set(hostname.yfilter)) leaf_name_data.push_back(hostname.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "pw-static-oam-class")
-    {
-        for(auto const & c : pw_static_oam_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
-        c->parent = this;
-        pw_static_oam_class.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pw_static_oam_class)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void PseudowireConfig::PwStaticOamClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable-fallback")
+    {
+        disable_fallback = value;
+        disable_fallback.value_namespace = name_space;
+        disable_fallback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hostname")
+    {
+        hostname = value;
+        hostname.value_namespace = name_space;
+        hostname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void PseudowireConfig::PwStaticOamClasses::set_filter(const std::string & value_path, YFilter yfilter)
+void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "disable-fallback")
+    {
+        disable_fallback.yfilter = yfilter;
+    }
+    if(value_path == "hostname")
+    {
+        hostname.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
 }
 
-bool PseudowireConfig::PwStaticOamClasses::has_leaf_or_child_of_name(const std::string & name) const
+bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pw-static-oam-class")
+    if(name == "address" || name == "disable-fallback" || name == "hostname" || name == "interface")
         return true;
     return false;
 }
 
-PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::PwStaticOamClass()
+PseudowireConfig::PwTemplates::PwTemplate::Sequencing::Sequencing()
     :
-    name{YType::str, "name"},
-    ack{YType::boolean, "ack"},
-    keepalive{YType::uint32, "keepalive"},
-    timeout_refresh_ack{YType::uint32, "timeout-refresh-ack"},
-    timeout_refresh_send{YType::uint32, "timeout-refresh-send"}
+    direction{YType::identityref, "direction"},
+    resync{YType::int32, "resync"}
 {
-    yang_name = "pw-static-oam-class"; yang_parent_name = "pw-static-oam-classes";
+
+    yang_name = "sequencing"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::~PwStaticOamClass()
+PseudowireConfig::PwTemplates::PwTemplate::Sequencing::~Sequencing()
 {
 }
 
-bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_data() const
+bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_data() const
 {
-    return name.is_set
-	|| ack.is_set
-	|| keepalive.is_set
-	|| timeout_refresh_ack.is_set
-	|| timeout_refresh_send.is_set;
+    return direction.is_set
+	|| resync.is_set;
 }
 
-bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_operation() const
+bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(ack.yfilter)
-	|| ydk::is_set(keepalive.yfilter)
-	|| ydk::is_set(timeout_refresh_ack.yfilter)
-	|| ydk::is_set(timeout_refresh_send.yfilter);
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(resync.yfilter);
 }
 
-std::string PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_segment_path() const
+std::string PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pw-static-oam-class" <<"[name='" <<name <<"']";
-
+    path_buffer << "sequencing";
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-pw:pseudowire-config/pw-static-oam-classes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
-    if (keepalive.is_set || is_set(keepalive.yfilter)) leaf_name_data.push_back(keepalive.get_name_leafdata());
-    if (timeout_refresh_ack.is_set || is_set(timeout_refresh_ack.yfilter)) leaf_name_data.push_back(timeout_refresh_ack.get_name_leafdata());
-    if (timeout_refresh_send.is_set || is_set(timeout_refresh_send.yfilter)) leaf_name_data.push_back(timeout_refresh_send.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (resync.is_set || is_set(resync.yfilter)) leaf_name_data.push_back(resync.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
+    if(value_path == "direction")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ack")
+    if(value_path == "resync")
     {
-        ack = value;
-        ack.value_namespace = name_space;
-        ack.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "keepalive")
-    {
-        keepalive = value;
-        keepalive.value_namespace = name_space;
-        keepalive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout-refresh-ack")
-    {
-        timeout_refresh_ack = value;
-        timeout_refresh_ack.value_namespace = name_space;
-        timeout_refresh_ack.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout-refresh-send")
-    {
-        timeout_refresh_send = value;
-        timeout_refresh_send.value_namespace = name_space;
-        timeout_refresh_send.value_namespace_prefix = name_space_prefix;
+        resync = value;
+        resync.value_namespace = name_space;
+        resync.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_filter(const std::string & value_path, YFilter yfilter)
+void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
+    if(value_path == "direction")
     {
-        name.yfilter = yfilter;
+        direction.yfilter = yfilter;
     }
-    if(value_path == "ack")
+    if(value_path == "resync")
     {
-        ack.yfilter = yfilter;
-    }
-    if(value_path == "keepalive")
-    {
-        keepalive.yfilter = yfilter;
-    }
-    if(value_path == "timeout-refresh-ack")
-    {
-        timeout_refresh_ack.yfilter = yfilter;
-    }
-    if(value_path == "timeout-refresh-send")
-    {
-        timeout_refresh_send.yfilter = yfilter;
+        resync.yfilter = yfilter;
     }
 }
 
-bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_leaf_or_child_of_name(const std::string & name) const
+bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "ack" || name == "keepalive" || name == "timeout-refresh-ack" || name == "timeout-refresh-send")
+    if(name == "direction" || name == "resync")
+        return true;
+    return false;
+}
+
+PseudowireConfig::PwTemplates::PwTemplate::Status::Status()
+    :
+    decoupled{YType::boolean, "decoupled"},
+    disable{YType::boolean, "disable"},
+    peer_topo_dual_homed{YType::boolean, "peer-topo-dual-homed"},
+    redundancy_master{YType::boolean, "redundancy-master"},
+    route_watch_disable{YType::boolean, "route-watch-disable"}
+{
+
+    yang_name = "status"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PseudowireConfig::PwTemplates::PwTemplate::Status::~Status()
+{
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_data() const
+{
+    return decoupled.is_set
+	|| disable.is_set
+	|| peer_topo_dual_homed.is_set
+	|| redundancy_master.is_set
+	|| route_watch_disable.is_set;
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(decoupled.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(peer_topo_dual_homed.yfilter)
+	|| ydk::is_set(redundancy_master.yfilter)
+	|| ydk::is_set(route_watch_disable.yfilter);
+}
+
+std::string PseudowireConfig::PwTemplates::PwTemplate::Status::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::Status::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (decoupled.is_set || is_set(decoupled.yfilter)) leaf_name_data.push_back(decoupled.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (peer_topo_dual_homed.is_set || is_set(peer_topo_dual_homed.yfilter)) leaf_name_data.push_back(peer_topo_dual_homed.get_name_leafdata());
+    if (redundancy_master.is_set || is_set(redundancy_master.yfilter)) leaf_name_data.push_back(redundancy_master.get_name_leafdata());
+    if (route_watch_disable.is_set || is_set(route_watch_disable.yfilter)) leaf_name_data.push_back(route_watch_disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Status::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "decoupled")
+    {
+        decoupled = value;
+        decoupled.value_namespace = name_space;
+        decoupled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-topo-dual-homed")
+    {
+        peer_topo_dual_homed = value;
+        peer_topo_dual_homed.value_namespace = name_space;
+        peer_topo_dual_homed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-master")
+    {
+        redundancy_master = value;
+        redundancy_master.value_namespace = name_space;
+        redundancy_master.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-watch-disable")
+    {
+        route_watch_disable = value;
+        route_watch_disable.value_namespace = name_space;
+        route_watch_disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Status::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "decoupled")
+    {
+        decoupled.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "peer-topo-dual-homed")
+    {
+        peer_topo_dual_homed.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-master")
+    {
+        redundancy_master.yfilter = yfilter;
+    }
+    if(value_path == "route-watch-disable")
+    {
+        route_watch_disable.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "decoupled" || name == "disable" || name == "peer-topo-dual-homed" || name == "redundancy-master" || name == "route-watch-disable")
+        return true;
+    return false;
+}
+
+PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::SwitchoverDelay()
+    :
+    never{YType::boolean, "never"},
+    switchover_timer{YType::uint8, "switchover-timer"},
+    timer{YType::uint8, "timer"}
+{
+
+    yang_name = "switchover-delay"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::~SwitchoverDelay()
+{
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_data() const
+{
+    return never.is_set
+	|| switchover_timer.is_set
+	|| timer.is_set;
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(never.yfilter)
+	|| ydk::is_set(switchover_timer.yfilter)
+	|| ydk::is_set(timer.yfilter);
+}
+
+std::string PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "switchover-delay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (never.is_set || is_set(never.yfilter)) leaf_name_data.push_back(never.get_name_leafdata());
+    if (switchover_timer.is_set || is_set(switchover_timer.yfilter)) leaf_name_data.push_back(switchover_timer.get_name_leafdata());
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "never")
+    {
+        never = value;
+        never.value_namespace = name_space;
+        never.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "switchover-timer")
+    {
+        switchover_timer = value;
+        switchover_timer.value_namespace = name_space;
+        switchover_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timer")
+    {
+        timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "never")
+    {
+        never.yfilter = yfilter;
+    }
+    if(value_path == "switchover-timer")
+    {
+        switchover_timer.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "never" || name == "switchover-timer" || name == "timer")
+        return true;
+    return false;
+}
+
+PseudowireConfig::PwTemplates::PwTemplate::Vccv::Vccv()
+    :
+    control_word{YType::boolean, "control-word"}
+{
+
+    yang_name = "vccv"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PseudowireConfig::PwTemplates::PwTemplate::Vccv::~Vccv()
+{
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_data() const
+{
+    return control_word.is_set;
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(control_word.yfilter);
+}
+
+std::string PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vccv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (control_word.is_set || is_set(control_word.yfilter)) leaf_name_data.push_back(control_word.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "control-word")
+    {
+        control_word = value;
+        control_word.value_namespace = name_space;
+        control_word.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "control-word")
+    {
+        control_word.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control-word")
         return true;
     return false;
 }
 
 PseudowireState::PseudowireState()
 {
-    yang_name = "pseudowire-state"; yang_parent_name = "cisco-pw";
+
+    yang_name = "pseudowire-state"; yang_parent_name = "cisco-pw"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PseudowireState::~PseudowireState()
@@ -2092,26 +1893,15 @@ std::string PseudowireState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-pw:pseudowire-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2213,7 +2003,7 @@ PseudowireState::Pseudowires::Pseudowires()
 {
     statistics->parent = this;
 
-    yang_name = "pseudowires"; yang_parent_name = "pseudowire-state";
+    yang_name = "pseudowires"; yang_parent_name = "pseudowire-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PseudowireState::Pseudowires::~Pseudowires()
@@ -2269,27 +2059,22 @@ bool PseudowireState::Pseudowires::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string PseudowireState::Pseudowires::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-pw:pseudowire-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PseudowireState::Pseudowires::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowires" <<"[vc-peer-address='" <<vc_peer_address <<"']" <<"[vc-id='" <<vc_id <<"']" <<"[vc-owner-type='" <<vc_owner_type <<"']" <<"[vc-name='" <<vc_name <<"']" <<"[vc-index='" <<vc_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireState::Pseudowires::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireState::Pseudowires::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-pw:pseudowire-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vc_peer_address.is_set || is_set(vc_peer_address.yfilter)) leaf_name_data.push_back(vc_peer_address.get_name_leafdata());
@@ -2312,9 +2097,7 @@ const EntityPath PseudowireState::Pseudowires::get_entity_path(Entity* ancestor)
     if (vc_remote_if_mtu.is_set || is_set(vc_remote_if_mtu.yfilter)) leaf_name_data.push_back(vc_remote_if_mtu.get_name_leafdata());
     if (vc_type.is_set || is_set(vc_type.yfilter)) leaf_name_data.push_back(vc_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2560,7 +2343,8 @@ PseudowireState::Pseudowires::Statistics::Statistics()
     vc_create_time{YType::uint32, "vc-create-time"},
     vc_up_time{YType::uint32, "vc-up-time"}
 {
-    yang_name = "statistics"; yang_parent_name = "pseudowires";
+
+    yang_name = "statistics"; yang_parent_name = "pseudowires"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PseudowireState::Pseudowires::Statistics::~Statistics()
@@ -2598,23 +2382,11 @@ std::string PseudowireState::Pseudowires::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PseudowireState::Pseudowires::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PseudowireState::Pseudowires::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in cisco_pw cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (discontinuity_time.is_set || is_set(discontinuity_time.yfilter)) leaf_name_data.push_back(discontinuity_time.get_name_leafdata());
@@ -2627,9 +2399,7 @@ const EntityPath PseudowireState::Pseudowires::Statistics::get_entity_path(Entit
     if (vc_create_time.is_set || is_set(vc_create_time.yfilter)) leaf_name_data.push_back(vc_create_time.get_name_leafdata());
     if (vc_up_time.is_set || is_set(vc_up_time.yfilter)) leaf_name_data.push_back(vc_up_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2749,81 +2519,60 @@ bool PseudowireState::Pseudowires::Statistics::has_leaf_or_child_of_name(const s
     return false;
 }
 
-PwSequencingReceive::PwSequencingReceive()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
+PwEncapsulationType::PwEncapsulationType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encapsulation-type")
+{
+
+}
+
+PwEncapsulationType::~PwEncapsulationType()
 {
 }
 
-PwSequencingReceive::~PwSequencingReceive()
+PwLoadBalanceType::PwLoadBalanceType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
+{
+
+}
+
+PwLoadBalanceType::~PwLoadBalanceType()
 {
 }
 
-PwSignalingProtocolBgp::PwSignalingProtocolBgp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
+PwSequencingType::PwSequencingType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-type")
+{
+
+}
+
+PwSequencingType::~PwSequencingType()
 {
 }
 
-PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
+PwSignalingProtocolType::PwSignalingProtocolType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
+{
+
+}
+
+PwSignalingProtocolType::~PwSignalingProtocolType()
 {
 }
 
-PwSignalingProtocolLdp::PwSignalingProtocolLdp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
+PwVcType::PwVcType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type")
 {
+
 }
 
-PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
-{
-}
-
-PwLbIpType::PwLbIpType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
-{
-}
-
-PwLbIpType::~PwLbIpType()
-{
-}
-
-PwSignalingProtocolNone::PwSignalingProtocolNone()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
-{
-}
-
-PwSignalingProtocolNone::~PwSignalingProtocolNone()
-{
-}
-
-PwSequencingBoth::PwSequencingBoth()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-both")
-{
-}
-
-PwSequencingBoth::~PwSequencingBoth()
-{
-}
-
-PwVcTypeEther::PwVcTypeEther()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-ether")
-{
-}
-
-PwVcTypeEther::~PwVcTypeEther()
-{
-}
-
-PwLbIpDstIp::PwLbIpDstIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
-{
-}
-
-PwLbIpDstIp::~PwLbIpDstIp()
+PwVcType::~PwVcType()
 {
 }
 
 PwEncapMpls::PwEncapMpls()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encap-mpls")
 {
+
 }
 
 PwEncapMpls::~PwEncapMpls()
@@ -2833,33 +2582,107 @@ PwEncapMpls::~PwEncapMpls()
 PwLbEthernetType::PwLbEthernetType()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ethernet-type")
 {
+
 }
 
 PwLbEthernetType::~PwLbEthernetType()
 {
 }
 
+PwLbIpDstIp::PwLbIpDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
+{
+
+}
+
+PwLbIpDstIp::~PwLbIpDstIp()
+{
+}
+
+PwLbIpType::PwLbIpType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
+{
+
+}
+
+PwLbIpType::~PwLbIpType()
+{
+}
+
+PwSequencingBoth::PwSequencingBoth()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-both")
+{
+
+}
+
+PwSequencingBoth::~PwSequencingBoth()
+{
+}
+
+PwSequencingReceive::PwSequencingReceive()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
+{
+
+}
+
+PwSequencingReceive::~PwSequencingReceive()
+{
+}
+
 PwSequencingTransmit::PwSequencingTransmit()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-transmit")
 {
+
 }
 
 PwSequencingTransmit::~PwSequencingTransmit()
 {
 }
 
-PwLbEthSrcDstMac::PwLbEthSrcDstMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
+PwSignalingProtocolBgp::PwSignalingProtocolBgp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
+{
+
+}
+
+PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
 {
 }
 
-PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
+PwSignalingProtocolLdp::PwSignalingProtocolLdp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
+{
+
+}
+
+PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
+{
+}
+
+PwSignalingProtocolNone::PwSignalingProtocolNone()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
+{
+
+}
+
+PwSignalingProtocolNone::~PwSignalingProtocolNone()
+{
+}
+
+PwVcTypeEther::PwVcTypeEther()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-ether")
+{
+
+}
+
+PwVcTypeEther::~PwVcTypeEther()
 {
 }
 
 PwVcTypeVlan::PwVcTypeVlan()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan")
 {
+
 }
 
 PwVcTypeVlan::~PwVcTypeVlan()
@@ -2869,45 +2692,60 @@ PwVcTypeVlan::~PwVcTypeVlan()
 PwVcTypeVlanPassthrough::PwVcTypeVlanPassthrough()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan-passthrough")
 {
+
 }
 
 PwVcTypeVlanPassthrough::~PwVcTypeVlanPassthrough()
 {
 }
 
-PwLbIpSrcDstIp::PwLbIpSrcDstIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
+PwLbEthDstMac::PwLbEthDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
+{
+
+}
+
+PwLbEthDstMac::~PwLbEthDstMac()
 {
 }
 
-PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
+PwLbEthSrcDstMac::PwLbEthSrcDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
+{
+
+}
+
+PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
 {
 }
 
 PwLbEthSrcMac::PwLbEthSrcMac()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-mac")
 {
+
 }
 
 PwLbEthSrcMac::~PwLbEthSrcMac()
 {
 }
 
+PwLbIpSrcDstIp::PwLbIpSrcDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
+{
+
+}
+
+PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
+{
+}
+
 PwLbIpSrcIp::PwLbIpSrcIp()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-ip")
 {
+
 }
 
 PwLbIpSrcIp::~PwLbIpSrcIp()
-{
-}
-
-PwLbEthDstMac::PwLbEthDstMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
-{
-}
-
-PwLbEthDstMac::~PwLbEthDstMac()
 {
 }
 

@@ -12,14 +12,14 @@
 namespace cisco_ios_xe {
 namespace cisco_xe_openconfig_if_ethernet_ext {
 
-class Auto_ : public openconfig::openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class AUTO_ : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Auto_();
-        ~Auto_();
+        AUTO_();
+        ~AUTO_();
 
 
-}; // Auto_
+}; // AUTO_
 
 
 }

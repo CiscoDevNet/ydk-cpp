@@ -10,15 +10,6 @@
 namespace ietf {
 namespace ietf_diffserv_classifier {
 
-class FilterType : public virtual ydk::Identity
-{
-    public:
-        FilterType();
-        ~FilterType();
-
-
-}; // FilterType
-
 class ClassifierEntryFilterOperationType : public virtual ydk::Identity
 {
     public:
@@ -36,7 +27,7 @@ class Classifiers : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -51,7 +42,7 @@ class Classifiers : public ydk::Entity
 
         class ClassifierEntry; //type: Classifiers::ClassifierEntry
 
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry> > classifier_entry;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry> > classifier_entry;
         
 }; // Classifiers
 
@@ -64,20 +55,21 @@ class Classifiers::ClassifierEntry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf classifier_entry_name; //type: string
         ydk::YLeaf classifier_entry_descr; //type: string
         ydk::YLeaf classifier_entry_filter_operation; //type: ClassifierEntryFilterOperationType
         class FilterEntry; //type: Classifiers::ClassifierEntry::FilterEntry
 
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry> > filter_entry;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry> > filter_entry;
         
 }; // Classifiers::ClassifierEntry
 
@@ -90,7 +82,7 @@ class Classifiers::ClassifierEntry::FilterEntry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -107,57 +99,14 @@ class Classifiers::ClassifierEntry::FilterEntry : public ydk::Entity
         class DestinationPortCfg; //type: Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg
         class ProtocolCfg; //type: Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg
 
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg> > destination_ip_address_cfg;
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg> > destination_port_cfg;
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::DscpCfg> > dscp_cfg;
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg> > protocol_cfg;
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg> > source_ip_address_cfg;
-        std::vector<std::shared_ptr<ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg> > source_port_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg> > destination_ip_address_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg> > destination_port_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::DscpCfg> > dscp_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg> > protocol_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg> > source_ip_address_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_classifier::Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg> > source_port_cfg;
         
 }; // Classifiers::ClassifierEntry::FilterEntry
-
-
-class Classifiers::ClassifierEntry::FilterEntry::DscpCfg : public ydk::Entity
-{
-    public:
-        DscpCfg();
-        ~DscpCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dscp_min; //type: uint8
-        ydk::YLeaf dscp_max; //type: uint8
-
-}; // Classifiers::ClassifierEntry::FilterEntry::DscpCfg
-
-
-class Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg : public ydk::Entity
-{
-    public:
-        SourceIpAddressCfg();
-        ~SourceIpAddressCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_ip_addr; //type: string
-
-}; // Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg
 
 
 class Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg : public ydk::Entity
@@ -168,7 +117,7 @@ class Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -181,28 +130,6 @@ class Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg : publi
 }; // Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg
 
 
-class Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg : public ydk::Entity
-{
-    public:
-        SourcePortCfg();
-        ~SourcePortCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_port_min; //type: uint16
-        ydk::YLeaf source_port_max; //type: uint16
-
-}; // Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg
-
-
 class Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg : public ydk::Entity
 {
     public:
@@ -211,7 +138,7 @@ class Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -225,6 +152,28 @@ class Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg : public ydk
 }; // Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg
 
 
+class Classifiers::ClassifierEntry::FilterEntry::DscpCfg : public ydk::Entity
+{
+    public:
+        DscpCfg();
+        ~DscpCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dscp_min; //type: uint8
+        ydk::YLeaf dscp_max; //type: uint8
+
+}; // Classifiers::ClassifierEntry::FilterEntry::DscpCfg
+
+
 class Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg : public ydk::Entity
 {
     public:
@@ -233,7 +182,7 @@ class Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -246,16 +195,59 @@ class Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg : public ydk::Entit
 
 }; // Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg
 
-class DestinationPort : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+
+class Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg : public ydk::Entity
 {
     public:
-        DestinationPort();
-        ~DestinationPort();
+        SourceIpAddressCfg();
+        ~SourceIpAddressCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_ip_addr; //type: string
+
+}; // Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg
 
 
-}; // DestinationPort
+class Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg : public ydk::Entity
+{
+    public:
+        SourcePortCfg();
+        ~SourcePortCfg();
 
-class DestinationIpAddress : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_port_min; //type: uint16
+        ydk::YLeaf source_port_max; //type: uint16
+
+}; // Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg
+
+class FilterType : public virtual ydk::Identity
+{
+    public:
+        FilterType();
+        ~FilterType();
+
+
+}; // FilterType
+
+class DestinationIpAddress : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         DestinationIpAddress();
@@ -264,34 +256,25 @@ class DestinationIpAddress : public ietf_diffserv_classifier::FilterType, virtua
 
 }; // DestinationIpAddress
 
-class SourcePort : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DestinationPort : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        SourcePort();
-        ~SourcePort();
+        DestinationPort();
+        ~DestinationPort();
 
 
-}; // SourcePort
+}; // DestinationPort
 
-class Protocol : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Dscp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Protocol();
-        ~Protocol();
+        Dscp();
+        ~Dscp();
 
 
-}; // Protocol
+}; // Dscp
 
-class SourceIpAddress : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        SourceIpAddress();
-        ~SourceIpAddress();
-
-
-}; // SourceIpAddress
-
-class MatchAllFilter : public ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
+class MatchAllFilter : public ietf::ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
 {
     public:
         MatchAllFilter();
@@ -300,7 +283,7 @@ class MatchAllFilter : public ietf_diffserv_classifier::ClassifierEntryFilterOpe
 
 }; // MatchAllFilter
 
-class MatchAnyFilter : public ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
+class MatchAnyFilter : public ietf::ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
 {
     public:
         MatchAnyFilter();
@@ -309,14 +292,32 @@ class MatchAnyFilter : public ietf_diffserv_classifier::ClassifierEntryFilterOpe
 
 }; // MatchAnyFilter
 
-class Dscp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Protocol : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Dscp();
-        ~Dscp();
+        Protocol();
+        ~Protocol();
 
 
-}; // Dscp
+}; // Protocol
+
+class SourceIpAddress : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SourceIpAddress();
+        ~SourceIpAddress();
+
+
+}; // SourceIpAddress
+
+class SourcePort : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SourcePort();
+        ~SourcePort();
+
+
+}; // SourcePort
 
 
 }

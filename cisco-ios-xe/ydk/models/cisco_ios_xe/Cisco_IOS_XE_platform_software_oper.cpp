@@ -17,7 +17,7 @@ CiscoPlatformSoftware::CiscoPlatformSoftware()
 {
     control_processes->parent = this;
 
-    yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper";
+    yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 CiscoPlatformSoftware::~CiscoPlatformSoftware()
@@ -39,26 +39,15 @@ std::string CiscoPlatformSoftware::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool CiscoPlatformSoftware::has_leaf_or_child_of_name(const std::string & name) 
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcesses()
 {
-    yang_name = "control-processes"; yang_parent_name = "cisco-platform-software";
+
+    yang_name = "control-processes"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CiscoPlatformSoftware::ControlProcesses::~ControlProcesses()
@@ -156,33 +146,26 @@ bool CiscoPlatformSoftware::ControlProcesses::has_operation() const
     return is_set(yfilter);
 }
 
+std::string CiscoPlatformSoftware::ControlProcesses::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CiscoPlatformSoftware::ControlProcesses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control-processes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -248,14 +231,11 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::ControlProcess()
 	,per_core_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats>())
 {
     load_average_stats->parent = this;
-
     load_avg_minutes->parent = this;
-
     memory_stats->parent = this;
-
     per_core_stats->parent = this;
 
-    yang_name = "control-process"; yang_parent_name = "control-processes";
+    yang_name = "control-process"; yang_parent_name = "control-processes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::~ControlProcess()
@@ -291,27 +271,22 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::has_operation() co
 	|| (per_core_stats !=  nullptr && per_core_stats->has_operation());
 }
 
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/control-processes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control-process" <<"[fru='" <<fru <<"']" <<"[slotnum='" <<slotnum <<"']" <<"[baynum='" <<baynum <<"']" <<"[chassisnum='" <<chassisnum <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/control-processes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fru.is_set || is_set(fru.yfilter)) leaf_name_data.push_back(fru.get_name_leafdata());
@@ -321,9 +296,7 @@ const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_en
     if (control_process_status.is_set || is_set(control_process_status.yfilter)) leaf_name_data.push_back(control_process_status.get_name_leafdata());
     if (updated.is_set || is_set(updated.yfilter)) leaf_name_data.push_back(updated.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -473,7 +446,8 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::LoadA
     :
     load_average_status{YType::str, "load-average-status"}
 {
-    yang_name = "load-average-stats"; yang_parent_name = "control-process";
+
+    yang_name = "load-average-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::~LoadAverageStats()
@@ -495,30 +469,16 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverage
 {
     std::ostringstream path_buffer;
     path_buffer << "load-average-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LoadAverageStats' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (load_average_status.is_set || is_set(load_average_status.yfilter)) leaf_name_data.push_back(load_average_status.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -560,7 +520,8 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinutes()
 {
-    yang_name = "load-avg-minutes"; yang_parent_name = "control-process";
+
+    yang_name = "load-avg-minutes"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::~LoadAvgMinutes()
@@ -591,29 +552,15 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinu
 {
     std::ostringstream path_buffer;
     path_buffer << "load-avg-minutes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LoadAvgMinutes' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -673,7 +620,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvg
 {
     status->parent = this;
 
-    yang_name = "load-avg-minute"; yang_parent_name = "load-avg-minutes";
+    yang_name = "load-avg-minute"; yang_parent_name = "load-avg-minutes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::~LoadAvgMinute()
@@ -699,31 +646,17 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinu
 {
     std::ostringstream path_buffer;
     path_buffer << "load-avg-minute" <<"[number='" <<number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LoadAvgMinute' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -793,7 +726,8 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvg
     threshold_status{YType::str, "threshold-status"},
     threshold_value{YType::str, "threshold-value"}
 {
-    yang_name = "status"; yang_parent_name = "load-avg-minute";
+
+    yang_name = "status"; yang_parent_name = "load-avg-minute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::~Status()
@@ -819,32 +753,18 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinu
 {
     std::ostringstream path_buffer;
     path_buffer << "status";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Status' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (condition.is_set || is_set(condition.yfilter)) leaf_name_data.push_back(condition.get_name_leafdata());
     if (threshold_status.is_set || is_set(threshold_status.yfilter)) leaf_name_data.push_back(threshold_status.get_name_leafdata());
     if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -921,7 +841,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::MemoryStat
 {
     status->parent = this;
 
-    yang_name = "memory-stats"; yang_parent_name = "control-process";
+    yang_name = "memory-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::~MemoryStats()
@@ -963,23 +883,11 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats
 {
     std::ostringstream path_buffer;
     path_buffer << "memory-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemoryStats' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (available_number.is_set || is_set(available_number.yfilter)) leaf_name_data.push_back(available_number.get_name_leafdata());
@@ -993,9 +901,7 @@ const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::Memory
     if (used_number.is_set || is_set(used_number.yfilter)) leaf_name_data.push_back(used_number.get_name_leafdata());
     if (used_percent.is_set || is_set(used_percent.yfilter)) leaf_name_data.push_back(used_percent.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1144,7 +1050,8 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::St
     critical_threshold_percent{YType::uint32, "critical-threshold-percent"},
     warning_threshold_percent{YType::uint32, "warning-threshold-percent"}
 {
-    yang_name = "status"; yang_parent_name = "memory-stats";
+
+    yang_name = "status"; yang_parent_name = "memory-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::~Status()
@@ -1168,31 +1075,17 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats
 {
     std::ostringstream path_buffer;
     path_buffer << "status";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Status' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (critical_threshold_percent.is_set || is_set(critical_threshold_percent.yfilter)) leaf_name_data.push_back(critical_threshold_percent.get_name_leafdata());
     if (warning_threshold_percent.is_set || is_set(warning_threshold_percent.yfilter)) leaf_name_data.push_back(warning_threshold_percent.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1244,7 +1137,8 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Statu
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStats()
 {
-    yang_name = "per-core-stats"; yang_parent_name = "control-process";
+
+    yang_name = "per-core-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::~PerCoreStats()
@@ -1275,29 +1169,15 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStat
 {
     std::ostringstream path_buffer;
     path_buffer << "per-core-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PerCoreStats' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1359,7 +1239,8 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreSt
     system{YType::str, "system"},
     user{YType::str, "user"}
 {
-    yang_name = "per-core-stat"; yang_parent_name = "per-core-stats";
+
+    yang_name = "per-core-stat"; yang_parent_name = "per-core-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::~PerCoreStat()
@@ -1395,23 +1276,11 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStat
 {
     std::ostringstream path_buffer;
     path_buffer << "per-core-stat" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PerCoreStat' in Cisco_IOS_XE_platform_software_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -1423,9 +1292,7 @@ const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCor
     if (system.is_set || is_set(system.yfilter)) leaf_name_data.push_back(system.get_name_leafdata());
     if (user.is_set || is_set(user.yfilter)) leaf_name_data.push_back(user.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

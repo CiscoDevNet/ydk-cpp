@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_ETHER_CFM_MIB {
 
-class CiscoEtherCfmMib : public ydk::Entity
+class CISCOETHERCFMMIB : public ydk::Entity
 {
     public:
-        CiscoEtherCfmMib();
-        ~CiscoEtherCfmMib();
+        CISCOETHERCFMMIB();
+        ~CISCOETHERCFMMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,16 +31,16 @@ class CiscoEtherCfmMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceccfmevents; //type: CiscoEtherCfmMib::Ceccfmevents
-        class Cethercfmeventtable; //type: CiscoEtherCfmMib::Cethercfmeventtable
+        class Ceccfmevents; //type: CISCOETHERCFMMIB::Ceccfmevents
+        class Cethercfmeventtable; //type: CISCOETHERCFMMIB::Cethercfmeventtable
 
-        std::shared_ptr<CISCO_ETHER_CFM_MIB::CiscoEtherCfmMib::Ceccfmevents> ceccfmevents;
-        std::shared_ptr<CISCO_ETHER_CFM_MIB::CiscoEtherCfmMib::Cethercfmeventtable> cethercfmeventtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::Ceccfmevents> ceccfmevents;
+        std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::Cethercfmeventtable> cethercfmeventtable;
         
-}; // CiscoEtherCfmMib
+}; // CISCOETHERCFMMIB
 
 
-class CiscoEtherCfmMib::Ceccfmevents : public ydk::Entity
+class CISCOETHERCFMMIB::Ceccfmevents : public ydk::Entity
 {
     public:
         Ceccfmevents();
@@ -48,20 +48,21 @@ class CiscoEtherCfmMib::Ceccfmevents : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cethercfmmaxeventindex; //type: uint32
 
-}; // CiscoEtherCfmMib::Ceccfmevents
+}; // CISCOETHERCFMMIB::Ceccfmevents
 
 
-class CiscoEtherCfmMib::Cethercfmeventtable : public ydk::Entity
+class CISCOETHERCFMMIB::Cethercfmeventtable : public ydk::Entity
 {
     public:
         Cethercfmeventtable();
@@ -69,22 +70,23 @@ class CiscoEtherCfmMib::Cethercfmeventtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cethercfmevententry; //type: CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry
+        class Cethercfmevententry; //type: CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry
 
-        std::vector<std::shared_ptr<CISCO_ETHER_CFM_MIB::CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry> > cethercfmevententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry> > cethercfmevententry;
         
-}; // CiscoEtherCfmMib::Cethercfmeventtable
+}; // CISCOETHERCFMMIB::Cethercfmeventtable
 
 
-class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry : public ydk::Entity
+class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry : public ydk::Entity
 {
     public:
         Cethercfmevententry();
@@ -92,13 +94,14 @@ class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cethercfmeventdomainindex; //type: uint32
         ydk::YLeaf cethercfmeventsvlan; //type: int32
@@ -122,9 +125,9 @@ class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry : public ydk::E
         class Cethercfmeventcode;
         class Cethercfmeventdeleterow;
 
-}; // CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry
+}; // CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry
 
-class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype : public ydk::Enum
+class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf mepUp;
@@ -138,7 +141,7 @@ class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmevent
 
 };
 
-class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate : public ydk::Enum
+class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -151,7 +154,7 @@ class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmevent
 
 };
 
-class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode : public ydk::Enum
+class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf new_;
@@ -166,7 +169,7 @@ class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmevent
 
 };
 
-class CiscoEtherCfmMib::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventdeleterow : public ydk::Enum
+class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventdeleterow : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noop;

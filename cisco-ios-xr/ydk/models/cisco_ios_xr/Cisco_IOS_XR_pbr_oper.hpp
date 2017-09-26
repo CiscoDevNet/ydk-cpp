@@ -18,7 +18,7 @@ class Pbr : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class Pbr : public ydk::Entity
 
         class Nodes; //type: Pbr::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes> nodes;
         
 }; // Pbr
 
@@ -46,17 +46,18 @@ class Pbr::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: Pbr::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node> > node;
         
 }; // Pbr::Nodes
 
@@ -69,18 +70,19 @@ class Pbr::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
         class PolicyMap; //type: Pbr::Nodes::Node::PolicyMap
 
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap> policy_map;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap> policy_map;
         
 }; // Pbr::Nodes::Node
 
@@ -93,7 +95,7 @@ class Pbr::Nodes::Node::PolicyMap : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -103,7 +105,7 @@ class Pbr::Nodes::Node::PolicyMap : public ydk::Entity
 
         class Interfaces; //type: Pbr::Nodes::Node::PolicyMap::Interfaces
 
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces> interfaces;
         
 }; // Pbr::Nodes::Node::PolicyMap
 
@@ -116,7 +118,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -126,7 +128,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces : public ydk::Entity
 
         class Interface; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface> > interface;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces
 
@@ -139,7 +141,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -150,7 +152,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class Direction; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction
 
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction> direction;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction> direction;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface
 
@@ -163,7 +165,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -173,7 +175,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction : public ydk
 
         class Input; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input> input;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction
 
@@ -186,7 +188,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -200,7 +202,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input : pub
         ydk::YLeaf state_description; //type: string
         class ClassStat; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat> > class_stat;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat> > class_stat;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
@@ -213,7 +215,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -227,8 +229,8 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
         class GeneralStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats
         class HttprStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats
 
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats> httpr_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats> general_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats> httpr_stats;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat
 
@@ -241,7 +243,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -270,7 +272,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

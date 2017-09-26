@@ -10,127 +10,127 @@
 namespace openconfig {
 namespace openconfig_policy_types {
 
-class Install_Protocol_Type : public virtual ydk::Identity
+class ATTRIBUTECOMPARISON : public virtual ydk::Identity
 {
     public:
-        Install_Protocol_Type();
-        ~Install_Protocol_Type();
+        ATTRIBUTECOMPARISON();
+        ~ATTRIBUTECOMPARISON();
 
 
-}; // Install_Protocol_Type
+}; // ATTRIBUTECOMPARISON
 
-class Attribute_Comparison : public virtual ydk::Identity
+class INSTALLPROTOCOLTYPE : public virtual ydk::Identity
 {
     public:
-        Attribute_Comparison();
-        ~Attribute_Comparison();
+        INSTALLPROTOCOLTYPE();
+        ~INSTALLPROTOCOLTYPE();
 
 
-}; // Attribute_Comparison
+}; // INSTALLPROTOCOLTYPE
 
-class Ospf3 : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class ATTRIBUTEEQ : public openconfig::openconfig_policy_types::ATTRIBUTECOMPARISON, virtual ydk::Identity
 {
     public:
-        Ospf3();
-        ~Ospf3();
+        ATTRIBUTEEQ();
+        ~ATTRIBUTEEQ();
 
 
-}; // Ospf3
+}; // ATTRIBUTEEQ
 
-class Static_ : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class ATTRIBUTEGE : public openconfig::openconfig_policy_types::ATTRIBUTECOMPARISON, virtual ydk::Identity
 {
     public:
-        Static_();
-        ~Static_();
+        ATTRIBUTEGE();
+        ~ATTRIBUTEGE();
 
 
-}; // Static_
+}; // ATTRIBUTEGE
 
-class Ospf : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class ATTRIBUTELE : public openconfig::openconfig_policy_types::ATTRIBUTECOMPARISON, virtual ydk::Identity
 {
     public:
-        Ospf();
-        ~Ospf();
+        ATTRIBUTELE();
+        ~ATTRIBUTELE();
 
 
-}; // Ospf
+}; // ATTRIBUTELE
 
-class Isis : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class BGP : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Isis();
-        ~Isis();
+        BGP();
+        ~BGP();
 
 
-}; // Isis
+}; // BGP
 
-class Attribute_Eq : public openconfig_policy_types::Attribute_Comparison, virtual ydk::Identity
+class DIRECTLYCONNECTED : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Attribute_Eq();
-        ~Attribute_Eq();
+        DIRECTLYCONNECTED();
+        ~DIRECTLYCONNECTED();
 
 
-}; // Attribute_Eq
+}; // DIRECTLYCONNECTED
 
-class Attribute_Ge : public openconfig_policy_types::Attribute_Comparison, virtual ydk::Identity
+class ISIS : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Attribute_Ge();
-        ~Attribute_Ge();
+        ISIS();
+        ~ISIS();
 
 
-}; // Attribute_Ge
+}; // ISIS
 
-class Local_Aggregate : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class LOCALAGGREGATE : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Local_Aggregate();
-        ~Local_Aggregate();
+        LOCALAGGREGATE();
+        ~LOCALAGGREGATE();
 
 
-}; // Local_Aggregate
+}; // LOCALAGGREGATE
 
-class Bgp : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class OSPF : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Bgp();
-        ~Bgp();
+        OSPF();
+        ~OSPF();
 
 
-}; // Bgp
+}; // OSPF
 
-class Directly_Connected : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
+class OSPF3 : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Directly_Connected();
-        ~Directly_Connected();
+        OSPF3();
+        ~OSPF3();
 
 
-}; // Directly_Connected
+}; // OSPF3
 
-class Attribute_Le : public openconfig_policy_types::Attribute_Comparison, virtual ydk::Identity
+class STATIC_ : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        Attribute_Le();
-        ~Attribute_Le();
+        STATIC_();
+        ~STATIC_();
 
 
-}; // Attribute_Le
-
-class MatchSetOptionsRestrictedType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ANY;
-        static const ydk::Enum::YLeaf INVERT;
-
-};
+}; // STATIC_
 
 class MatchSetOptionsType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ANY;
         static const ydk::Enum::YLeaf ALL;
+        static const ydk::Enum::YLeaf INVERT;
+
+};
+
+class MatchSetOptionsRestrictedType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ANY;
         static const ydk::Enum::YLeaf INVERT;
 
 };

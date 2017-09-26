@@ -21,18 +21,13 @@ Sam::Sam()
 	,system_information(std::make_shared<Sam::SystemInformation>())
 {
     certificate_revocation_list_summary->parent = this;
-
     certificate_revocations->parent = this;
-
     devices->parent = this;
-
     log_contents->parent = this;
-
     packages->parent = this;
-
     system_information->parent = this;
 
-    yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-oper";
+    yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Sam::~Sam()
@@ -64,26 +59,15 @@ std::string Sam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -222,126 +206,1594 @@ bool Sam::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Sam::SystemInformation::SystemInformation()
+Sam::CertificateRevocationListSummary::CertificateRevocationListSummary()
     :
-    is_default_response{YType::boolean, "is-default-response"},
-    is_running{YType::boolean, "is-running"},
-    prompt_interval{YType::uint32, "prompt-interval"}
+    crl_index{YType::uint16, "crl-index"},
+    updates{YType::str, "updates"}
+    	,
+    issuer(std::make_shared<Sam::CertificateRevocationListSummary::Issuer>())
 {
-    yang_name = "system-information"; yang_parent_name = "sam";
+    issuer->parent = this;
+
+    yang_name = "certificate-revocation-list-summary"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Sam::SystemInformation::~SystemInformation()
+Sam::CertificateRevocationListSummary::~CertificateRevocationListSummary()
 {
 }
 
-bool Sam::SystemInformation::has_data() const
+bool Sam::CertificateRevocationListSummary::has_data() const
 {
-    return is_default_response.is_set
-	|| is_running.is_set
-	|| prompt_interval.is_set;
+    return crl_index.is_set
+	|| updates.is_set
+	|| (issuer !=  nullptr && issuer->has_data());
 }
 
-bool Sam::SystemInformation::has_operation() const
+bool Sam::CertificateRevocationListSummary::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(is_default_response.yfilter)
-	|| ydk::is_set(is_running.yfilter)
-	|| ydk::is_set(prompt_interval.yfilter);
+	|| ydk::is_set(crl_index.yfilter)
+	|| ydk::is_set(updates.yfilter)
+	|| (issuer !=  nullptr && issuer->has_operation());
 }
 
-std::string Sam::SystemInformation::get_segment_path() const
+std::string Sam::CertificateRevocationListSummary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "system-information";
-
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::SystemInformation::get_entity_path(Entity* ancestor) const
+std::string Sam::CertificateRevocationListSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "certificate-revocation-list-summary";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocationListSummary::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_default_response.is_set || is_set(is_default_response.yfilter)) leaf_name_data.push_back(is_default_response.get_name_leafdata());
-    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (prompt_interval.is_set || is_set(prompt_interval.yfilter)) leaf_name_data.push_back(prompt_interval.get_name_leafdata());
+    if (crl_index.is_set || is_set(crl_index.yfilter)) leaf_name_data.push_back(crl_index.get_name_leafdata());
+    if (updates.is_set || is_set(updates.yfilter)) leaf_name_data.push_back(updates.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Sam::SystemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "issuer")
+    {
+        if(issuer == nullptr)
+        {
+            issuer = std::make_shared<Sam::CertificateRevocationListSummary::Issuer>();
+        }
+        return issuer;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(issuer != nullptr)
+    {
+        children["issuer"] = issuer;
+    }
+
+    return children;
+}
+
+void Sam::CertificateRevocationListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "crl-index")
+    {
+        crl_index = value;
+        crl_index.value_namespace = name_space;
+        crl_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "updates")
+    {
+        updates = value;
+        updates.value_namespace = name_space;
+        updates.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::CertificateRevocationListSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "crl-index")
+    {
+        crl_index.yfilter = yfilter;
+    }
+    if(value_path == "updates")
+    {
+        updates.yfilter = yfilter;
+    }
+}
+
+bool Sam::CertificateRevocationListSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "issuer" || name == "crl-index" || name == "updates")
+        return true;
+    return false;
+}
+
+Sam::CertificateRevocationListSummary::Issuer::Issuer()
+    :
+    common_name{YType::str, "common-name"},
+    country{YType::str, "country"},
+    organization{YType::str, "organization"}
+{
+
+    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-summary"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sam::CertificateRevocationListSummary::Issuer::~Issuer()
+{
+}
+
+bool Sam::CertificateRevocationListSummary::Issuer::has_data() const
+{
+    return common_name.is_set
+	|| country.is_set
+	|| organization.is_set;
+}
+
+bool Sam::CertificateRevocationListSummary::Issuer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(common_name.yfilter)
+	|| ydk::is_set(country.yfilter)
+	|| ydk::is_set(organization.yfilter);
+}
+
+std::string Sam::CertificateRevocationListSummary::Issuer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/certificate-revocation-list-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sam::CertificateRevocationListSummary::Issuer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "issuer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocationListSummary::Issuer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (common_name.is_set || is_set(common_name.yfilter)) leaf_name_data.push_back(common_name.get_name_leafdata());
+    if (country.is_set || is_set(country.yfilter)) leaf_name_data.push_back(country.get_name_leafdata());
+    if (organization.is_set || is_set(organization.yfilter)) leaf_name_data.push_back(organization.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::SystemInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::Issuer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Sam::SystemInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Sam::CertificateRevocationListSummary::Issuer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "is-default-response")
+    if(value_path == "common-name")
     {
-        is_default_response = value;
-        is_default_response.value_namespace = name_space;
-        is_default_response.value_namespace_prefix = name_space_prefix;
+        common_name = value;
+        common_name.value_namespace = name_space;
+        common_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-running")
+    if(value_path == "country")
     {
-        is_running = value;
-        is_running.value_namespace = name_space;
-        is_running.value_namespace_prefix = name_space_prefix;
+        country = value;
+        country.value_namespace = name_space;
+        country.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prompt-interval")
+    if(value_path == "organization")
     {
-        prompt_interval = value;
-        prompt_interval.value_namespace = name_space;
-        prompt_interval.value_namespace_prefix = name_space_prefix;
+        organization = value;
+        organization.value_namespace = name_space;
+        organization.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Sam::SystemInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Sam::CertificateRevocationListSummary::Issuer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "is-default-response")
+    if(value_path == "common-name")
     {
-        is_default_response.yfilter = yfilter;
+        common_name.yfilter = yfilter;
     }
-    if(value_path == "is-running")
+    if(value_path == "country")
     {
-        is_running.yfilter = yfilter;
+        country.yfilter = yfilter;
     }
-    if(value_path == "prompt-interval")
+    if(value_path == "organization")
     {
-        prompt_interval.yfilter = yfilter;
+        organization.yfilter = yfilter;
     }
 }
 
-bool Sam::SystemInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Sam::CertificateRevocationListSummary::Issuer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "is-default-response" || name == "is-running" || name == "prompt-interval")
+    if(name == "common-name" || name == "country" || name == "organization")
+        return true;
+    return false;
+}
+
+Sam::CertificateRevocations::CertificateRevocations()
+{
+
+    yang_name = "certificate-revocations"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sam::CertificateRevocations::~CertificateRevocations()
+{
+}
+
+bool Sam::CertificateRevocations::has_data() const
+{
+    for (std::size_t index=0; index<certificate_revocation.size(); index++)
+    {
+        if(certificate_revocation[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sam::CertificateRevocations::has_operation() const
+{
+    for (std::size_t index=0; index<certificate_revocation.size(); index++)
+    {
+        if(certificate_revocation[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sam::CertificateRevocations::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sam::CertificateRevocations::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-revocations";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "certificate-revocation")
+    {
+        for(auto const & c : certificate_revocation)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
+        c->parent = this;
+        certificate_revocation.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : certificate_revocation)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Sam::CertificateRevocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sam::CertificateRevocations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sam::CertificateRevocations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "certificate-revocation")
+        return true;
+    return false;
+}
+
+Sam::CertificateRevocations::CertificateRevocation::CertificateRevocation()
+    :
+    crl_index{YType::int32, "crl-index"}
+    	,
+    certificate_revocation_list_detail(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>())
+{
+    certificate_revocation_list_detail->parent = this;
+
+    yang_name = "certificate-revocation"; yang_parent_name = "certificate-revocations"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sam::CertificateRevocations::CertificateRevocation::~CertificateRevocation()
+{
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::has_data() const
+{
+    return crl_index.is_set
+	|| (certificate_revocation_list_detail !=  nullptr && certificate_revocation_list_detail->has_data());
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(crl_index.yfilter)
+	|| (certificate_revocation_list_detail !=  nullptr && certificate_revocation_list_detail->has_operation());
+}
+
+std::string Sam::CertificateRevocations::CertificateRevocation::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/certificate-revocations/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sam::CertificateRevocations::CertificateRevocation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-revocation" <<"[crl-index='" <<crl_index <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::CertificateRevocation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (crl_index.is_set || is_set(crl_index.yfilter)) leaf_name_data.push_back(crl_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "certificate-revocation-list-detail")
+    {
+        if(certificate_revocation_list_detail == nullptr)
+        {
+            certificate_revocation_list_detail = std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>();
+        }
+        return certificate_revocation_list_detail;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_revocation_list_detail != nullptr)
+    {
+        children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
+    }
+
+    return children;
+}
+
+void Sam::CertificateRevocations::CertificateRevocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "crl-index")
+    {
+        crl_index = value;
+        crl_index.value_namespace = name_space;
+        crl_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::CertificateRevocations::CertificateRevocation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "crl-index")
+    {
+        crl_index.yfilter = yfilter;
+    }
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "certificate-revocation-list-detail" || name == "crl-index")
+        return true;
+    return false;
+}
+
+Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::CertificateRevocationListDetail()
+    :
+    crl_index{YType::uint16, "crl-index"},
+    updates{YType::str, "updates"}
+    	,
+    issuer(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>())
+{
+    issuer->parent = this;
+
+    yang_name = "certificate-revocation-list-detail"; yang_parent_name = "certificate-revocation"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::~CertificateRevocationListDetail()
+{
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_data() const
+{
+    return crl_index.is_set
+	|| updates.is_set
+	|| (issuer !=  nullptr && issuer->has_data());
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(crl_index.yfilter)
+	|| ydk::is_set(updates.yfilter)
+	|| (issuer !=  nullptr && issuer->has_operation());
+}
+
+std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-revocation-list-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (crl_index.is_set || is_set(crl_index.yfilter)) leaf_name_data.push_back(crl_index.get_name_leafdata());
+    if (updates.is_set || is_set(updates.yfilter)) leaf_name_data.push_back(updates.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "issuer")
+    {
+        if(issuer == nullptr)
+        {
+            issuer = std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>();
+        }
+        return issuer;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(issuer != nullptr)
+    {
+        children["issuer"] = issuer;
+    }
+
+    return children;
+}
+
+void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "crl-index")
+    {
+        crl_index = value;
+        crl_index.value_namespace = name_space;
+        crl_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "updates")
+    {
+        updates = value;
+        updates.value_namespace = name_space;
+        updates.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "crl-index")
+    {
+        crl_index.yfilter = yfilter;
+    }
+    if(value_path == "updates")
+    {
+        updates.yfilter = yfilter;
+    }
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "issuer" || name == "crl-index" || name == "updates")
+        return true;
+    return false;
+}
+
+Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::Issuer()
+    :
+    common_name{YType::str, "common-name"},
+    country{YType::str, "country"},
+    organization{YType::str, "organization"}
+{
+
+    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::~Issuer()
+{
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_data() const
+{
+    return common_name.is_set
+	|| country.is_set
+	|| organization.is_set;
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(common_name.yfilter)
+	|| ydk::is_set(country.yfilter)
+	|| ydk::is_set(organization.yfilter);
+}
+
+std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "issuer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (common_name.is_set || is_set(common_name.yfilter)) leaf_name_data.push_back(common_name.get_name_leafdata());
+    if (country.is_set || is_set(country.yfilter)) leaf_name_data.push_back(country.get_name_leafdata());
+    if (organization.is_set || is_set(organization.yfilter)) leaf_name_data.push_back(organization.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "common-name")
+    {
+        common_name = value;
+        common_name.value_namespace = name_space;
+        common_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "country")
+    {
+        country = value;
+        country.value_namespace = name_space;
+        country.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "organization")
+    {
+        organization = value;
+        organization.value_namespace = name_space;
+        organization.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-name")
+    {
+        common_name.yfilter = yfilter;
+    }
+    if(value_path == "country")
+    {
+        country.yfilter = yfilter;
+    }
+    if(value_path == "organization")
+    {
+        organization.yfilter = yfilter;
+    }
+}
+
+bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-name" || name == "country" || name == "organization")
+        return true;
+    return false;
+}
+
+Sam::Devices::Devices()
+{
+
+    yang_name = "devices"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sam::Devices::~Devices()
+{
+}
+
+bool Sam::Devices::has_data() const
+{
+    for (std::size_t index=0; index<device.size(); index++)
+    {
+        if(device[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sam::Devices::has_operation() const
+{
+    for (std::size_t index=0; index<device.size(); index++)
+    {
+        if(device[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sam::Devices::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sam::Devices::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "devices";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "device")
+    {
+        for(auto const & c : device)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Sam::Devices::Device>();
+        c->parent = this;
+        device.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : device)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Sam::Devices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sam::Devices::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sam::Devices::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "device")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Device()
+    :
+    device_name{YType::str, "device-name"}
+    	,
+    certificate(std::make_shared<Sam::Devices::Device::Certificate>())
+{
+    certificate->parent = this;
+
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sam::Devices::Device::~Device()
+{
+}
+
+bool Sam::Devices::Device::has_data() const
+{
+    return device_name.is_set
+	|| (certificate !=  nullptr && certificate->has_data());
+}
+
+bool Sam::Devices::Device::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(device_name.yfilter)
+	|| (certificate !=  nullptr && certificate->has_operation());
+}
+
+std::string Sam::Devices::Device::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/devices/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sam::Devices::Device::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "device" <<"[device-name='" <<device_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (device_name.is_set || is_set(device_name.yfilter)) leaf_name_data.push_back(device_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "certificate")
+    {
+        if(certificate == nullptr)
+        {
+            certificate = std::make_shared<Sam::Devices::Device::Certificate>();
+        }
+        return certificate;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate != nullptr)
+    {
+        children["certificate"] = certificate;
+    }
+
+    return children;
+}
+
+void Sam::Devices::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "device-name")
+    {
+        device_name = value;
+        device_name.value_namespace = name_space;
+        device_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::Devices::Device::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "device-name")
+    {
+        device_name.yfilter = yfilter;
+    }
+}
+
+bool Sam::Devices::Device::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "certificate" || name == "device-name")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::Certificate()
+    :
+    brief(std::make_shared<Sam::Devices::Device::Certificate::Brief>())
+	,certificate_indexes(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>())
+{
+    brief->parent = this;
+    certificate_indexes->parent = this;
+
+    yang_name = "certificate"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::~Certificate()
+{
+}
+
+bool Sam::Devices::Device::Certificate::has_data() const
+{
+    return (brief !=  nullptr && brief->has_data())
+	|| (certificate_indexes !=  nullptr && certificate_indexes->has_data());
+}
+
+bool Sam::Devices::Device::Certificate::has_operation() const
+{
+    return is_set(yfilter)
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (certificate_indexes !=  nullptr && certificate_indexes->has_operation());
+}
+
+std::string Sam::Devices::Device::Certificate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "brief")
+    {
+        if(brief == nullptr)
+        {
+            brief = std::make_shared<Sam::Devices::Device::Certificate::Brief>();
+        }
+        return brief;
+    }
+
+    if(child_yang_name == "certificate-indexes")
+    {
+        if(certificate_indexes == nullptr)
+        {
+            certificate_indexes = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>();
+        }
+        return certificate_indexes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
+    {
+        children["brief"] = brief;
+    }
+
+    if(certificate_indexes != nullptr)
+    {
+        children["certificate-indexes"] = certificate_indexes;
+    }
+
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sam::Devices::Device::Certificate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sam::Devices::Device::Certificate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "certificate-indexes")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::Brief::Brief()
+    :
+    certificate_index{YType::uint16, "certificate-index"},
+    location{YType::str, "location"}
+    	,
+    certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>())
+{
+    certificate_flags->parent = this;
+
+    yang_name = "brief"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::Brief::~Brief()
+{
+}
+
+bool Sam::Devices::Device::Certificate::Brief::has_data() const
+{
+    return certificate_index.is_set
+	|| location.is_set
+	|| (certificate_flags !=  nullptr && certificate_flags->has_data());
+}
+
+bool Sam::Devices::Device::Certificate::Brief::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(certificate_index.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
+}
+
+std::string Sam::Devices::Device::Certificate::Brief::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "brief";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::Brief::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (certificate_index.is_set || is_set(certificate_index.yfilter)) leaf_name_data.push_back(certificate_index.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "certificate-flags")
+    {
+        if(certificate_flags == nullptr)
+        {
+            certificate_flags = std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>();
+        }
+        return certificate_flags;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_flags != nullptr)
+    {
+        children["certificate-flags"] = certificate_flags;
+    }
+
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "certificate-index")
+    {
+        certificate_index = value;
+        certificate_index.value_namespace = name_space;
+        certificate_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::Devices::Device::Certificate::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "certificate-index")
+    {
+        certificate_index.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Sam::Devices::Device::Certificate::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "certificate-flags" || name == "certificate-index" || name == "location")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::Brief::CertificateFlags::CertificateFlags()
+    :
+    is_expired{YType::boolean, "is-expired"},
+    is_revoked{YType::boolean, "is-revoked"},
+    is_trusted{YType::boolean, "is-trusted"},
+    is_validated{YType::boolean, "is-validated"}
+{
+
+    yang_name = "certificate-flags"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::Brief::CertificateFlags::~CertificateFlags()
+{
+}
+
+bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_data() const
+{
+    return is_expired.is_set
+	|| is_revoked.is_set
+	|| is_trusted.is_set
+	|| is_validated.is_set;
+}
+
+bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_expired.yfilter)
+	|| ydk::is_set(is_revoked.yfilter)
+	|| ydk::is_set(is_trusted.yfilter)
+	|| ydk::is_set(is_validated.yfilter);
+}
+
+std::string Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-flags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_expired.is_set || is_set(is_expired.yfilter)) leaf_name_data.push_back(is_expired.get_name_leafdata());
+    if (is_revoked.is_set || is_set(is_revoked.yfilter)) leaf_name_data.push_back(is_revoked.get_name_leafdata());
+    if (is_trusted.is_set || is_set(is_trusted.yfilter)) leaf_name_data.push_back(is_trusted.get_name_leafdata());
+    if (is_validated.is_set || is_set(is_validated.yfilter)) leaf_name_data.push_back(is_validated.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::Brief::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-expired")
+    {
+        is_expired = value;
+        is_expired.value_namespace = name_space;
+        is_expired.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-revoked")
+    {
+        is_revoked = value;
+        is_revoked.value_namespace = name_space;
+        is_revoked.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-trusted")
+    {
+        is_trusted = value;
+        is_trusted.value_namespace = name_space;
+        is_trusted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-validated")
+    {
+        is_validated = value;
+        is_validated.value_namespace = name_space;
+        is_validated.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::Devices::Device::Certificate::Brief::CertificateFlags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-expired")
+    {
+        is_expired.yfilter = yfilter;
+    }
+    if(value_path == "is-revoked")
+    {
+        is_revoked.yfilter = yfilter;
+    }
+    if(value_path == "is-trusted")
+    {
+        is_trusted.yfilter = yfilter;
+    }
+    if(value_path == "is-validated")
+    {
+        is_validated.yfilter = yfilter;
+    }
+}
+
+bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-expired" || name == "is-revoked" || name == "is-trusted" || name == "is-validated")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndexes()
+{
+
+    yang_name = "certificate-indexes"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::~CertificateIndexes()
+{
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::has_data() const
+{
+    for (std::size_t index=0; index<certificate_index.size(); index++)
+    {
+        if(certificate_index[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::has_operation() const
+{
+    for (std::size_t index=0; index<certificate_index.size(); index++)
+    {
+        if(certificate_index[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sam::Devices::Device::Certificate::CertificateIndexes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-indexes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::CertificateIndexes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "certificate-index")
+    {
+        for(auto const & c : certificate_index)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
+        c->parent = this;
+        certificate_index.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : certificate_index)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "certificate-index")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::CertificateIndex()
+    :
+    index_{YType::int32, "index"}
+    	,
+    detail(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>())
+{
+    detail->parent = this;
+
+    yang_name = "certificate-index"; yang_parent_name = "certificate-indexes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::~CertificateIndex()
+{
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_data() const
+{
+    return index_.is_set
+	|| (detail !=  nullptr && detail->has_data());
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| (detail !=  nullptr && detail->has_operation());
+}
+
+std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-index" <<"[index='" <<index_ <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "detail")
+    {
+        if(detail == nullptr)
+        {
+            detail = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>();
+        }
+        return detail;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
+    {
+        children["detail"] = detail;
+    }
+
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "index")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::Detail()
+    :
+    certificate_index{YType::uint16, "certificate-index"},
+    location{YType::str, "location"}
+    	,
+    certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>())
+{
+    certificate_flags->parent = this;
+
+    yang_name = "detail"; yang_parent_name = "certificate-index"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::~Detail()
+{
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_data() const
+{
+    return certificate_index.is_set
+	|| location.is_set
+	|| (certificate_flags !=  nullptr && certificate_flags->has_data());
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(certificate_index.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
+}
+
+std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (certificate_index.is_set || is_set(certificate_index.yfilter)) leaf_name_data.push_back(certificate_index.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "certificate-flags")
+    {
+        if(certificate_flags == nullptr)
+        {
+            certificate_flags = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>();
+        }
+        return certificate_flags;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_flags != nullptr)
+    {
+        children["certificate-flags"] = certificate_flags;
+    }
+
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "certificate-index")
+    {
+        certificate_index = value;
+        certificate_index.value_namespace = name_space;
+        certificate_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "certificate-index")
+    {
+        certificate_index.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "certificate-flags" || name == "certificate-index" || name == "location")
+        return true;
+    return false;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::CertificateFlags()
+    :
+    is_expired{YType::boolean, "is-expired"},
+    is_revoked{YType::boolean, "is-revoked"},
+    is_trusted{YType::boolean, "is-trusted"},
+    is_validated{YType::boolean, "is-validated"}
+{
+
+    yang_name = "certificate-flags"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::~CertificateFlags()
+{
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_data() const
+{
+    return is_expired.is_set
+	|| is_revoked.is_set
+	|| is_trusted.is_set
+	|| is_validated.is_set;
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_expired.yfilter)
+	|| ydk::is_set(is_revoked.yfilter)
+	|| ydk::is_set(is_trusted.yfilter)
+	|| ydk::is_set(is_validated.yfilter);
+}
+
+std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "certificate-flags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_expired.is_set || is_set(is_expired.yfilter)) leaf_name_data.push_back(is_expired.get_name_leafdata());
+    if (is_revoked.is_set || is_set(is_revoked.yfilter)) leaf_name_data.push_back(is_revoked.get_name_leafdata());
+    if (is_trusted.is_set || is_set(is_trusted.yfilter)) leaf_name_data.push_back(is_trusted.get_name_leafdata());
+    if (is_validated.is_set || is_set(is_validated.yfilter)) leaf_name_data.push_back(is_validated.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-expired")
+    {
+        is_expired = value;
+        is_expired.value_namespace = name_space;
+        is_expired.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-revoked")
+    {
+        is_revoked = value;
+        is_revoked.value_namespace = name_space;
+        is_revoked.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-trusted")
+    {
+        is_trusted = value;
+        is_trusted.value_namespace = name_space;
+        is_trusted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-validated")
+    {
+        is_validated = value;
+        is_validated.value_namespace = name_space;
+        is_validated.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-expired")
+    {
+        is_expired.yfilter = yfilter;
+    }
+    if(value_path == "is-revoked")
+    {
+        is_revoked.yfilter = yfilter;
+    }
+    if(value_path == "is-trusted")
+    {
+        is_trusted.yfilter = yfilter;
+    }
+    if(value_path == "is-validated")
+    {
+        is_validated.yfilter = yfilter;
+    }
+}
+
+bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-expired" || name == "is-revoked" || name == "is-trusted" || name == "is-validated")
         return true;
     return false;
 }
 
 Sam::LogContents::LogContents()
 {
-    yang_name = "log-contents"; yang_parent_name = "sam";
+
+    yang_name = "log-contents"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sam::LogContents::~LogContents()
@@ -368,33 +1820,26 @@ bool Sam::LogContents::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Sam::LogContents::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sam::LogContents::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "log-contents";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::LogContents::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::LogContents::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -451,7 +1896,8 @@ Sam::LogContents::LogContent::LogContent()
     entries_shown{YType::uint32, "entries-shown"},
     total_entries{YType::uint32, "total-entries"}
 {
-    yang_name = "log-content"; yang_parent_name = "log-contents";
+
+    yang_name = "log-content"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sam::LogContents::LogContent::~LogContent()
@@ -483,36 +1929,29 @@ bool Sam::LogContents::LogContent::has_operation() const
 	|| ydk::is_set(total_entries.yfilter);
 }
 
+std::string Sam::LogContents::LogContent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/log-contents/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sam::LogContents::LogContent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "log-content" <<"[number-of-lines='" <<number_of_lines <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::LogContents::LogContent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::LogContents::LogContent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/log-contents/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (number_of_lines.is_set || is_set(number_of_lines.yfilter)) leaf_name_data.push_back(number_of_lines.get_name_leafdata());
     if (entries_shown.is_set || is_set(entries_shown.yfilter)) leaf_name_data.push_back(entries_shown.get_name_leafdata());
     if (total_entries.is_set || is_set(total_entries.yfilter)) leaf_name_data.push_back(total_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -607,7 +2046,8 @@ Sam::LogContents::LogContent::Logs::Logs()
     time{YType::str, "time"},
     update_time{YType::str, "update-time"}
 {
-    yang_name = "logs"; yang_parent_name = "log-content";
+
+    yang_name = "logs"; yang_parent_name = "log-content"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Sam::LogContents::LogContent::Logs::~Logs()
@@ -649,23 +2089,11 @@ std::string Sam::LogContents::LogContent::Logs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::LogContents::LogContent::Logs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::LogContents::LogContent::Logs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Logs' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
@@ -680,9 +2108,7 @@ const EntityPath Sam::LogContents::LogContent::Logs::get_entity_path(Entity* anc
     if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
     if (update_time.is_set || is_set(update_time.yfilter)) leaf_name_data.push_back(update_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -822,1060 +2248,10 @@ bool Sam::LogContents::LogContent::Logs::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Sam::Devices::Devices()
-{
-    yang_name = "devices"; yang_parent_name = "sam";
-}
-
-Sam::Devices::~Devices()
-{
-}
-
-bool Sam::Devices::has_data() const
-{
-    for (std::size_t index=0; index<device.size(); index++)
-    {
-        if(device[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Sam::Devices::has_operation() const
-{
-    for (std::size_t index=0; index<device.size(); index++)
-    {
-        if(device[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Sam::Devices::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "devices";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "device")
-    {
-        for(auto const & c : device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Sam::Devices::Device>();
-        c->parent = this;
-        device.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : device)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Sam::Devices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Sam::Devices::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Sam::Devices::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "device")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Device()
-    :
-    device_name{YType::str, "device-name"}
-    	,
-    certificate(std::make_shared<Sam::Devices::Device::Certificate>())
-{
-    certificate->parent = this;
-
-    yang_name = "device"; yang_parent_name = "devices";
-}
-
-Sam::Devices::Device::~Device()
-{
-}
-
-bool Sam::Devices::Device::has_data() const
-{
-    return device_name.is_set
-	|| (certificate !=  nullptr && certificate->has_data());
-}
-
-bool Sam::Devices::Device::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(device_name.yfilter)
-	|| (certificate !=  nullptr && certificate->has_operation());
-}
-
-std::string Sam::Devices::Device::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "device" <<"[device-name='" <<device_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/devices/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (device_name.is_set || is_set(device_name.yfilter)) leaf_name_data.push_back(device_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "certificate")
-    {
-        if(certificate == nullptr)
-        {
-            certificate = std::make_shared<Sam::Devices::Device::Certificate>();
-        }
-        return certificate;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(certificate != nullptr)
-    {
-        children["certificate"] = certificate;
-    }
-
-    return children;
-}
-
-void Sam::Devices::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "device-name")
-    {
-        device_name = value;
-        device_name.value_namespace = name_space;
-        device_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::Devices::Device::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "device-name")
-    {
-        device_name.yfilter = yfilter;
-    }
-}
-
-bool Sam::Devices::Device::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "certificate" || name == "device-name")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::Certificate()
-    :
-    brief(std::make_shared<Sam::Devices::Device::Certificate::Brief>())
-	,certificate_indexes(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>())
-{
-    brief->parent = this;
-
-    certificate_indexes->parent = this;
-
-    yang_name = "certificate"; yang_parent_name = "device";
-}
-
-Sam::Devices::Device::Certificate::~Certificate()
-{
-}
-
-bool Sam::Devices::Device::Certificate::has_data() const
-{
-    return (brief !=  nullptr && brief->has_data())
-	|| (certificate_indexes !=  nullptr && certificate_indexes->has_data());
-}
-
-bool Sam::Devices::Device::Certificate::has_operation() const
-{
-    return is_set(yfilter)
-	|| (brief !=  nullptr && brief->has_operation())
-	|| (certificate_indexes !=  nullptr && certificate_indexes->has_operation());
-}
-
-std::string Sam::Devices::Device::Certificate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Certificate' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "brief")
-    {
-        if(brief == nullptr)
-        {
-            brief = std::make_shared<Sam::Devices::Device::Certificate::Brief>();
-        }
-        return brief;
-    }
-
-    if(child_yang_name == "certificate-indexes")
-    {
-        if(certificate_indexes == nullptr)
-        {
-            certificate_indexes = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>();
-        }
-        return certificate_indexes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(brief != nullptr)
-    {
-        children["brief"] = brief;
-    }
-
-    if(certificate_indexes != nullptr)
-    {
-        children["certificate-indexes"] = certificate_indexes;
-    }
-
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Sam::Devices::Device::Certificate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Sam::Devices::Device::Certificate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "brief" || name == "certificate-indexes")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::Brief::Brief()
-    :
-    certificate_index{YType::uint16, "certificate-index"},
-    location{YType::str, "location"}
-    	,
-    certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>())
-{
-    certificate_flags->parent = this;
-
-    yang_name = "brief"; yang_parent_name = "certificate";
-}
-
-Sam::Devices::Device::Certificate::Brief::~Brief()
-{
-}
-
-bool Sam::Devices::Device::Certificate::Brief::has_data() const
-{
-    return certificate_index.is_set
-	|| location.is_set
-	|| (certificate_flags !=  nullptr && certificate_flags->has_data());
-}
-
-bool Sam::Devices::Device::Certificate::Brief::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(certificate_index.yfilter)
-	|| ydk::is_set(location.yfilter)
-	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
-}
-
-std::string Sam::Devices::Device::Certificate::Brief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "brief";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::Brief::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Brief' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (certificate_index.is_set || is_set(certificate_index.yfilter)) leaf_name_data.push_back(certificate_index.get_name_leafdata());
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "certificate-flags")
-    {
-        if(certificate_flags == nullptr)
-        {
-            certificate_flags = std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>();
-        }
-        return certificate_flags;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(certificate_flags != nullptr)
-    {
-        children["certificate-flags"] = certificate_flags;
-    }
-
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "certificate-index")
-    {
-        certificate_index = value;
-        certificate_index.value_namespace = name_space;
-        certificate_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::Devices::Device::Certificate::Brief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "certificate-index")
-    {
-        certificate_index.yfilter = yfilter;
-    }
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
-}
-
-bool Sam::Devices::Device::Certificate::Brief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "certificate-flags" || name == "certificate-index" || name == "location")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::Brief::CertificateFlags::CertificateFlags()
-    :
-    is_expired{YType::boolean, "is-expired"},
-    is_revoked{YType::boolean, "is-revoked"},
-    is_trusted{YType::boolean, "is-trusted"},
-    is_validated{YType::boolean, "is-validated"}
-{
-    yang_name = "certificate-flags"; yang_parent_name = "brief";
-}
-
-Sam::Devices::Device::Certificate::Brief::CertificateFlags::~CertificateFlags()
-{
-}
-
-bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_data() const
-{
-    return is_expired.is_set
-	|| is_revoked.is_set
-	|| is_trusted.is_set
-	|| is_validated.is_set;
-}
-
-bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_expired.yfilter)
-	|| ydk::is_set(is_revoked.yfilter)
-	|| ydk::is_set(is_trusted.yfilter)
-	|| ydk::is_set(is_validated.yfilter);
-}
-
-std::string Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-flags";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CertificateFlags' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_expired.is_set || is_set(is_expired.yfilter)) leaf_name_data.push_back(is_expired.get_name_leafdata());
-    if (is_revoked.is_set || is_set(is_revoked.yfilter)) leaf_name_data.push_back(is_revoked.get_name_leafdata());
-    if (is_trusted.is_set || is_set(is_trusted.yfilter)) leaf_name_data.push_back(is_trusted.get_name_leafdata());
-    if (is_validated.is_set || is_set(is_validated.yfilter)) leaf_name_data.push_back(is_validated.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::Brief::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-expired")
-    {
-        is_expired = value;
-        is_expired.value_namespace = name_space;
-        is_expired.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-revoked")
-    {
-        is_revoked = value;
-        is_revoked.value_namespace = name_space;
-        is_revoked.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-trusted")
-    {
-        is_trusted = value;
-        is_trusted.value_namespace = name_space;
-        is_trusted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-validated")
-    {
-        is_validated = value;
-        is_validated.value_namespace = name_space;
-        is_validated.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::Devices::Device::Certificate::Brief::CertificateFlags::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-expired")
-    {
-        is_expired.yfilter = yfilter;
-    }
-    if(value_path == "is-revoked")
-    {
-        is_revoked.yfilter = yfilter;
-    }
-    if(value_path == "is-trusted")
-    {
-        is_trusted.yfilter = yfilter;
-    }
-    if(value_path == "is-validated")
-    {
-        is_validated.yfilter = yfilter;
-    }
-}
-
-bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-expired" || name == "is-revoked" || name == "is-trusted" || name == "is-validated")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndexes()
-{
-    yang_name = "certificate-indexes"; yang_parent_name = "certificate";
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::~CertificateIndexes()
-{
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::has_data() const
-{
-    for (std::size_t index=0; index<certificate_index.size(); index++)
-    {
-        if(certificate_index[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::has_operation() const
-{
-    for (std::size_t index=0; index<certificate_index.size(); index++)
-    {
-        if(certificate_index[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Sam::Devices::Device::Certificate::CertificateIndexes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-indexes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CertificateIndexes' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "certificate-index")
-    {
-        for(auto const & c : certificate_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
-        c->parent = this;
-        certificate_index.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : certificate_index)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "certificate-index")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::CertificateIndex()
-    :
-    index_{YType::int32, "index"}
-    	,
-    detail(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>())
-{
-    detail->parent = this;
-
-    yang_name = "certificate-index"; yang_parent_name = "certificate-indexes";
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::~CertificateIndex()
-{
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_data() const
-{
-    return index_.is_set
-	|| (detail !=  nullptr && detail->has_data());
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| (detail !=  nullptr && detail->has_operation());
-}
-
-std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-index" <<"[index='" <<index_ <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CertificateIndex' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "detail")
-    {
-        if(detail == nullptr)
-        {
-            detail = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>();
-        }
-        return detail;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(detail != nullptr)
-    {
-        children["detail"] = detail;
-    }
-
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "detail" || name == "index")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::Detail()
-    :
-    certificate_index{YType::uint16, "certificate-index"},
-    location{YType::str, "location"}
-    	,
-    certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>())
-{
-    certificate_flags->parent = this;
-
-    yang_name = "detail"; yang_parent_name = "certificate-index";
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::~Detail()
-{
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_data() const
-{
-    return certificate_index.is_set
-	|| location.is_set
-	|| (certificate_flags !=  nullptr && certificate_flags->has_data());
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(certificate_index.yfilter)
-	|| ydk::is_set(location.yfilter)
-	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
-}
-
-std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Detail' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (certificate_index.is_set || is_set(certificate_index.yfilter)) leaf_name_data.push_back(certificate_index.get_name_leafdata());
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "certificate-flags")
-    {
-        if(certificate_flags == nullptr)
-        {
-            certificate_flags = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>();
-        }
-        return certificate_flags;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(certificate_flags != nullptr)
-    {
-        children["certificate-flags"] = certificate_flags;
-    }
-
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "certificate-index")
-    {
-        certificate_index = value;
-        certificate_index.value_namespace = name_space;
-        certificate_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "certificate-index")
-    {
-        certificate_index.yfilter = yfilter;
-    }
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "certificate-flags" || name == "certificate-index" || name == "location")
-        return true;
-    return false;
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::CertificateFlags()
-    :
-    is_expired{YType::boolean, "is-expired"},
-    is_revoked{YType::boolean, "is-revoked"},
-    is_trusted{YType::boolean, "is-trusted"},
-    is_validated{YType::boolean, "is-validated"}
-{
-    yang_name = "certificate-flags"; yang_parent_name = "detail";
-}
-
-Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::~CertificateFlags()
-{
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_data() const
-{
-    return is_expired.is_set
-	|| is_revoked.is_set
-	|| is_trusted.is_set
-	|| is_validated.is_set;
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_expired.yfilter)
-	|| ydk::is_set(is_revoked.yfilter)
-	|| ydk::is_set(is_trusted.yfilter)
-	|| ydk::is_set(is_validated.yfilter);
-}
-
-std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-flags";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CertificateFlags' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_expired.is_set || is_set(is_expired.yfilter)) leaf_name_data.push_back(is_expired.get_name_leafdata());
-    if (is_revoked.is_set || is_set(is_revoked.yfilter)) leaf_name_data.push_back(is_revoked.get_name_leafdata());
-    if (is_trusted.is_set || is_set(is_trusted.yfilter)) leaf_name_data.push_back(is_trusted.get_name_leafdata());
-    if (is_validated.is_set || is_set(is_validated.yfilter)) leaf_name_data.push_back(is_validated.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-expired")
-    {
-        is_expired = value;
-        is_expired.value_namespace = name_space;
-        is_expired.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-revoked")
-    {
-        is_revoked = value;
-        is_revoked.value_namespace = name_space;
-        is_revoked.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-trusted")
-    {
-        is_trusted = value;
-        is_trusted.value_namespace = name_space;
-        is_trusted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-validated")
-    {
-        is_validated = value;
-        is_validated.value_namespace = name_space;
-        is_validated.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-expired")
-    {
-        is_expired.yfilter = yfilter;
-    }
-    if(value_path == "is-revoked")
-    {
-        is_revoked.yfilter = yfilter;
-    }
-    if(value_path == "is-trusted")
-    {
-        is_trusted.yfilter = yfilter;
-    }
-    if(value_path == "is-validated")
-    {
-        is_validated.yfilter = yfilter;
-    }
-}
-
-bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-expired" || name == "is-revoked" || name == "is-trusted" || name == "is-validated")
-        return true;
-    return false;
-}
-
 Sam::Packages::Packages()
 {
-    yang_name = "packages"; yang_parent_name = "sam";
+
+    yang_name = "packages"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sam::Packages::~Packages()
@@ -1902,33 +2278,26 @@ bool Sam::Packages::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Sam::Packages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sam::Packages::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packages";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::Packages::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::Packages::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1989,7 +2358,7 @@ Sam::Packages::Package::Package()
 {
     certificate_flags->parent = this;
 
-    yang_name = "package"; yang_parent_name = "packages";
+    yang_name = "package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sam::Packages::Package::~Package()
@@ -2013,36 +2382,29 @@ bool Sam::Packages::Package::has_operation() const
 	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
 }
 
+std::string Sam::Packages::Package::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/packages/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sam::Packages::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "package" <<"[package-name='" <<package_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::Packages::Package::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::Packages::Package::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/packages/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (package_name.is_set || is_set(package_name.yfilter)) leaf_name_data.push_back(package_name.get_name_leafdata());
     if (certificate_index.is_set || is_set(certificate_index.yfilter)) leaf_name_data.push_back(certificate_index.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2123,7 +2485,8 @@ Sam::Packages::Package::CertificateFlags::CertificateFlags()
     is_trusted{YType::boolean, "is-trusted"},
     is_validated{YType::boolean, "is-validated"}
 {
-    yang_name = "certificate-flags"; yang_parent_name = "package";
+
+    yang_name = "certificate-flags"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Sam::Packages::Package::CertificateFlags::~CertificateFlags()
@@ -2151,23 +2514,11 @@ std::string Sam::Packages::Package::CertificateFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "certificate-flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::Packages::Package::CertificateFlags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sam::Packages::Package::CertificateFlags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CertificateFlags' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_expired.is_set || is_set(is_expired.yfilter)) leaf_name_data.push_back(is_expired.get_name_leafdata());
@@ -2175,9 +2526,7 @@ const EntityPath Sam::Packages::Package::CertificateFlags::get_entity_path(Entit
     if (is_trusted.is_set || is_set(is_trusted.yfilter)) leaf_name_data.push_back(is_trusted.get_name_leafdata());
     if (is_validated.is_set || is_set(is_validated.yfilter)) leaf_name_data.push_back(is_validated.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2247,707 +2596,124 @@ bool Sam::Packages::Package::CertificateFlags::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Sam::CertificateRevocations::CertificateRevocations()
-{
-    yang_name = "certificate-revocations"; yang_parent_name = "sam";
-}
-
-Sam::CertificateRevocations::~CertificateRevocations()
-{
-}
-
-bool Sam::CertificateRevocations::has_data() const
-{
-    for (std::size_t index=0; index<certificate_revocation.size(); index++)
-    {
-        if(certificate_revocation[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Sam::CertificateRevocations::has_operation() const
-{
-    for (std::size_t index=0; index<certificate_revocation.size(); index++)
-    {
-        if(certificate_revocation[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Sam::CertificateRevocations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-revocations";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::CertificateRevocations::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "certificate-revocation")
-    {
-        for(auto const & c : certificate_revocation)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
-        c->parent = this;
-        certificate_revocation.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : certificate_revocation)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Sam::CertificateRevocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Sam::CertificateRevocations::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Sam::CertificateRevocations::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "certificate-revocation")
-        return true;
-    return false;
-}
-
-Sam::CertificateRevocations::CertificateRevocation::CertificateRevocation()
+Sam::SystemInformation::SystemInformation()
     :
-    crl_index{YType::int32, "crl-index"}
-    	,
-    certificate_revocation_list_detail(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>())
+    is_default_response{YType::boolean, "is-default-response"},
+    is_running{YType::boolean, "is-running"},
+    prompt_interval{YType::uint32, "prompt-interval"}
 {
-    certificate_revocation_list_detail->parent = this;
 
-    yang_name = "certificate-revocation"; yang_parent_name = "certificate-revocations";
+    yang_name = "system-information"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Sam::CertificateRevocations::CertificateRevocation::~CertificateRevocation()
+Sam::SystemInformation::~SystemInformation()
 {
 }
 
-bool Sam::CertificateRevocations::CertificateRevocation::has_data() const
+bool Sam::SystemInformation::has_data() const
 {
-    return crl_index.is_set
-	|| (certificate_revocation_list_detail !=  nullptr && certificate_revocation_list_detail->has_data());
+    return is_default_response.is_set
+	|| is_running.is_set
+	|| prompt_interval.is_set;
 }
 
-bool Sam::CertificateRevocations::CertificateRevocation::has_operation() const
+bool Sam::SystemInformation::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(crl_index.yfilter)
-	|| (certificate_revocation_list_detail !=  nullptr && certificate_revocation_list_detail->has_operation());
+	|| ydk::is_set(is_default_response.yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(prompt_interval.yfilter);
 }
 
-std::string Sam::CertificateRevocations::CertificateRevocation::get_segment_path() const
+std::string Sam::SystemInformation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "certificate-revocation" <<"[crl-index='" <<crl_index <<"']";
-
+    path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Sam::CertificateRevocations::CertificateRevocation::get_entity_path(Entity* ancestor) const
+std::string Sam::SystemInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/certificate-revocations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "system-information";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Sam::SystemInformation::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (crl_index.is_set || is_set(crl_index.yfilter)) leaf_name_data.push_back(crl_index.get_name_leafdata());
+    if (is_default_response.is_set || is_set(is_default_response.yfilter)) leaf_name_data.push_back(is_default_response.get_name_leafdata());
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (prompt_interval.is_set || is_set(prompt_interval.yfilter)) leaf_name_data.push_back(prompt_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "certificate-revocation-list-detail")
-    {
-        if(certificate_revocation_list_detail == nullptr)
-        {
-            certificate_revocation_list_detail = std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>();
-        }
-        return certificate_revocation_list_detail;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(certificate_revocation_list_detail != nullptr)
-    {
-        children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
-    }
-
-    return children;
-}
-
-void Sam::CertificateRevocations::CertificateRevocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "crl-index")
-    {
-        crl_index = value;
-        crl_index.value_namespace = name_space;
-        crl_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::CertificateRevocations::CertificateRevocation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "crl-index")
-    {
-        crl_index.yfilter = yfilter;
-    }
-}
-
-bool Sam::CertificateRevocations::CertificateRevocation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "certificate-revocation-list-detail" || name == "crl-index")
-        return true;
-    return false;
-}
-
-Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::CertificateRevocationListDetail()
-    :
-    crl_index{YType::uint16, "crl-index"},
-    updates{YType::str, "updates"}
-    	,
-    issuer(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>())
-{
-    issuer->parent = this;
-
-    yang_name = "certificate-revocation-list-detail"; yang_parent_name = "certificate-revocation";
-}
-
-Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::~CertificateRevocationListDetail()
-{
-}
-
-bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_data() const
-{
-    return crl_index.is_set
-	|| updates.is_set
-	|| (issuer !=  nullptr && issuer->has_data());
-}
-
-bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(crl_index.yfilter)
-	|| ydk::is_set(updates.yfilter)
-	|| (issuer !=  nullptr && issuer->has_operation());
-}
-
-std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-revocation-list-detail";
-
-    return path_buffer.str();
+    return leaf_name_data;
 
 }
 
-const EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CertificateRevocationListDetail' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (crl_index.is_set || is_set(crl_index.yfilter)) leaf_name_data.push_back(crl_index.get_name_leafdata());
-    if (updates.is_set || is_set(updates.yfilter)) leaf_name_data.push_back(updates.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "issuer")
-    {
-        if(issuer == nullptr)
-        {
-            issuer = std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>();
-        }
-        return issuer;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(issuer != nullptr)
-    {
-        children["issuer"] = issuer;
-    }
-
-    return children;
-}
-
-void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "crl-index")
-    {
-        crl_index = value;
-        crl_index.value_namespace = name_space;
-        crl_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "updates")
-    {
-        updates = value;
-        updates.value_namespace = name_space;
-        updates.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "crl-index")
-    {
-        crl_index.yfilter = yfilter;
-    }
-    if(value_path == "updates")
-    {
-        updates.yfilter = yfilter;
-    }
-}
-
-bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "issuer" || name == "crl-index" || name == "updates")
-        return true;
-    return false;
-}
-
-Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::Issuer()
-    :
-    common_name{YType::str, "common-name"},
-    country{YType::str, "country"},
-    organization{YType::str, "organization"}
-{
-    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-detail";
-}
-
-Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::~Issuer()
-{
-}
-
-bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_data() const
-{
-    return common_name.is_set
-	|| country.is_set
-	|| organization.is_set;
-}
-
-bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(common_name.yfilter)
-	|| ydk::is_set(country.yfilter)
-	|| ydk::is_set(organization.yfilter);
-}
-
-std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "issuer";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Issuer' in Cisco_IOS_XR_crypto_sam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (common_name.is_set || is_set(common_name.yfilter)) leaf_name_data.push_back(common_name.get_name_leafdata());
-    if (country.is_set || is_set(country.yfilter)) leaf_name_data.push_back(country.get_name_leafdata());
-    if (organization.is_set || is_set(organization.yfilter)) leaf_name_data.push_back(organization.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Sam::SystemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Sam::SystemInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Sam::SystemInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "common-name")
+    if(value_path == "is-default-response")
     {
-        common_name = value;
-        common_name.value_namespace = name_space;
-        common_name.value_namespace_prefix = name_space_prefix;
+        is_default_response = value;
+        is_default_response.value_namespace = name_space;
+        is_default_response.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "country")
+    if(value_path == "is-running")
     {
-        country = value;
-        country.value_namespace = name_space;
-        country.value_namespace_prefix = name_space_prefix;
+        is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "organization")
+    if(value_path == "prompt-interval")
     {
-        organization = value;
-        organization.value_namespace = name_space;
-        organization.value_namespace_prefix = name_space_prefix;
+        prompt_interval = value;
+        prompt_interval.value_namespace = name_space;
+        prompt_interval.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::set_filter(const std::string & value_path, YFilter yfilter)
+void Sam::SystemInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "common-name")
+    if(value_path == "is-default-response")
     {
-        common_name.yfilter = yfilter;
+        is_default_response.yfilter = yfilter;
     }
-    if(value_path == "country")
+    if(value_path == "is-running")
     {
-        country.yfilter = yfilter;
+        is_running.yfilter = yfilter;
     }
-    if(value_path == "organization")
+    if(value_path == "prompt-interval")
     {
-        organization.yfilter = yfilter;
+        prompt_interval.yfilter = yfilter;
     }
 }
 
-bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_leaf_or_child_of_name(const std::string & name) const
+bool Sam::SystemInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "common-name" || name == "country" || name == "organization")
+    if(name == "is-default-response" || name == "is-running" || name == "prompt-interval")
         return true;
     return false;
 }
-
-Sam::CertificateRevocationListSummary::CertificateRevocationListSummary()
-    :
-    crl_index{YType::uint16, "crl-index"},
-    updates{YType::str, "updates"}
-    	,
-    issuer(std::make_shared<Sam::CertificateRevocationListSummary::Issuer>())
-{
-    issuer->parent = this;
-
-    yang_name = "certificate-revocation-list-summary"; yang_parent_name = "sam";
-}
-
-Sam::CertificateRevocationListSummary::~CertificateRevocationListSummary()
-{
-}
-
-bool Sam::CertificateRevocationListSummary::has_data() const
-{
-    return crl_index.is_set
-	|| updates.is_set
-	|| (issuer !=  nullptr && issuer->has_data());
-}
-
-bool Sam::CertificateRevocationListSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(crl_index.yfilter)
-	|| ydk::is_set(updates.yfilter)
-	|| (issuer !=  nullptr && issuer->has_operation());
-}
-
-std::string Sam::CertificateRevocationListSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "certificate-revocation-list-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::CertificateRevocationListSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (crl_index.is_set || is_set(crl_index.yfilter)) leaf_name_data.push_back(crl_index.get_name_leafdata());
-    if (updates.is_set || is_set(updates.yfilter)) leaf_name_data.push_back(updates.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "issuer")
-    {
-        if(issuer == nullptr)
-        {
-            issuer = std::make_shared<Sam::CertificateRevocationListSummary::Issuer>();
-        }
-        return issuer;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(issuer != nullptr)
-    {
-        children["issuer"] = issuer;
-    }
-
-    return children;
-}
-
-void Sam::CertificateRevocationListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "crl-index")
-    {
-        crl_index = value;
-        crl_index.value_namespace = name_space;
-        crl_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "updates")
-    {
-        updates = value;
-        updates.value_namespace = name_space;
-        updates.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::CertificateRevocationListSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "crl-index")
-    {
-        crl_index.yfilter = yfilter;
-    }
-    if(value_path == "updates")
-    {
-        updates.yfilter = yfilter;
-    }
-}
-
-bool Sam::CertificateRevocationListSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "issuer" || name == "crl-index" || name == "updates")
-        return true;
-    return false;
-}
-
-Sam::CertificateRevocationListSummary::Issuer::Issuer()
-    :
-    common_name{YType::str, "common-name"},
-    country{YType::str, "country"},
-    organization{YType::str, "organization"}
-{
-    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-summary";
-}
-
-Sam::CertificateRevocationListSummary::Issuer::~Issuer()
-{
-}
-
-bool Sam::CertificateRevocationListSummary::Issuer::has_data() const
-{
-    return common_name.is_set
-	|| country.is_set
-	|| organization.is_set;
-}
-
-bool Sam::CertificateRevocationListSummary::Issuer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(common_name.yfilter)
-	|| ydk::is_set(country.yfilter)
-	|| ydk::is_set(organization.yfilter);
-}
-
-std::string Sam::CertificateRevocationListSummary::Issuer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "issuer";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sam::CertificateRevocationListSummary::Issuer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-oper:sam/certificate-revocation-list-summary/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (common_name.is_set || is_set(common_name.yfilter)) leaf_name_data.push_back(common_name.get_name_leafdata());
-    if (country.is_set || is_set(country.yfilter)) leaf_name_data.push_back(country.get_name_leafdata());
-    if (organization.is_set || is_set(organization.yfilter)) leaf_name_data.push_back(organization.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::Issuer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Sam::CertificateRevocationListSummary::Issuer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "common-name")
-    {
-        common_name = value;
-        common_name.value_namespace = name_space;
-        common_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "country")
-    {
-        country = value;
-        country.value_namespace = name_space;
-        country.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "organization")
-    {
-        organization = value;
-        organization.value_namespace = name_space;
-        organization.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sam::CertificateRevocationListSummary::Issuer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "common-name")
-    {
-        common_name.yfilter = yfilter;
-    }
-    if(value_path == "country")
-    {
-        country.yfilter = yfilter;
-    }
-    if(value_path == "organization")
-    {
-        organization.yfilter = yfilter;
-    }
-}
-
-bool Sam::CertificateRevocationListSummary::Issuer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "common-name" || name == "country" || name == "organization")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf LogError::unknown {0, "unknown"};
-const Enum::YLeaf LogError::log_message_error {1, "log-message-error"};
-const Enum::YLeaf LogError::get_issuer_name_failed {2, "get-issuer-name-failed"};
 
 const Enum::YLeaf CertificateIssuer::unknown {0, "unknown"};
 const Enum::YLeaf CertificateIssuer::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
+
+const Enum::YLeaf LogTables::unkown {0, "unkown"};
+const Enum::YLeaf LogTables::memory_digest_table {1, "memory-digest-table"};
+const Enum::YLeaf LogTables::system_database_digest {2, "system-database-digest"};
+const Enum::YLeaf LogTables::sam_tables {3, "sam-tables"};
 
 const Enum::YLeaf LogCode::unknown {0, "unknown"};
 const Enum::YLeaf LogCode::sam_server_restared_router_reboot {1, "sam-server-restared-router-reboot"};
@@ -2971,10 +2737,9 @@ const Enum::YLeaf LogCode::sam_log_file_recovered_from_system_database {18, "sam
 const Enum::YLeaf LogCode::validated_elf {19, "validated-elf"};
 const Enum::YLeaf LogCode::namespace_deleted_recovered_by_sam {20, "namespace-deleted-recovered-by-sam"};
 
-const Enum::YLeaf LogTables::unkown {0, "unkown"};
-const Enum::YLeaf LogTables::memory_digest_table {1, "memory-digest-table"};
-const Enum::YLeaf LogTables::system_database_digest {2, "system-database-digest"};
-const Enum::YLeaf LogTables::sam_tables {3, "sam-tables"};
+const Enum::YLeaf LogError::unknown {0, "unknown"};
+const Enum::YLeaf LogError::log_message_error {1, "log-message-error"};
+const Enum::YLeaf LogError::get_issuer_name_failed {2, "get-issuer-name-failed"};
 
 
 }

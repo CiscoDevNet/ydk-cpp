@@ -17,7 +17,7 @@ CpuUsage::CpuUsage()
 {
     cpu_utilization->parent = this;
 
-    yang_name = "cpu-usage"; yang_parent_name = "Cisco-IOS-XE-process-cpu-oper";
+    yang_name = "cpu-usage"; yang_parent_name = "Cisco-IOS-XE-process-cpu-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 CpuUsage::~CpuUsage()
@@ -39,26 +39,15 @@ std::string CpuUsage::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CpuUsage::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CpuUsage::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -138,7 +127,7 @@ CpuUsage::CpuUtilization::CpuUtilization()
 {
     cpu_usage_processes->parent = this;
 
-    yang_name = "cpu-utilization"; yang_parent_name = "cpu-usage";
+    yang_name = "cpu-utilization"; yang_parent_name = "cpu-usage"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CpuUsage::CpuUtilization::~CpuUtilization()
@@ -164,27 +153,22 @@ bool CpuUsage::CpuUtilization::has_operation() const
 	|| (cpu_usage_processes !=  nullptr && cpu_usage_processes->has_operation());
 }
 
+std::string CpuUsage::CpuUtilization::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CpuUsage::CpuUtilization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu-utilization";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CpuUsage::CpuUtilization::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CpuUsage::CpuUtilization::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (five_minutes.is_set || is_set(five_minutes.yfilter)) leaf_name_data.push_back(five_minutes.get_name_leafdata());
@@ -192,9 +176,7 @@ const EntityPath CpuUsage::CpuUtilization::get_entity_path(Entity* ancestor) con
     if (five_seconds_intr.is_set || is_set(five_seconds_intr.yfilter)) leaf_name_data.push_back(five_seconds_intr.get_name_leafdata());
     if (one_minute.is_set || is_set(one_minute.yfilter)) leaf_name_data.push_back(one_minute.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -280,7 +262,8 @@ bool CpuUsage::CpuUtilization::has_leaf_or_child_of_name(const std::string & nam
 
 CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcesses()
 {
-    yang_name = "cpu-usage-processes"; yang_parent_name = "cpu-utilization";
+
+    yang_name = "cpu-usage-processes"; yang_parent_name = "cpu-utilization"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CpuUsage::CpuUtilization::CpuUsageProcesses::~CpuUsageProcesses()
@@ -307,33 +290,26 @@ bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_operation() const
     return is_set(yfilter);
 }
 
+std::string CpuUsage::CpuUtilization::CpuUsageProcesses::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage/cpu-utilization/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CpuUsage::CpuUtilization::CpuUsageProcesses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu-usage-processes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CpuUsage::CpuUtilization::CpuUsageProcesses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CpuUsage::CpuUtilization::CpuUsageProcesses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage/cpu-utilization/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -396,7 +372,8 @@ CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::CpuUsageProcess()
     total_run_time{YType::uint64, "total-run-time"},
     tty{YType::uint16, "tty"}
 {
-    yang_name = "cpu-usage-process"; yang_parent_name = "cpu-usage-processes";
+
+    yang_name = "cpu-usage-process"; yang_parent_name = "cpu-usage-processes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::~CpuUsageProcess()
@@ -430,27 +407,22 @@ bool CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::has_operation
 	|| ydk::is_set(tty.yfilter);
 }
 
+std::string CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage/cpu-utilization/cpu-usage-processes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu-usage-process" <<"[pid='" <<pid <<"']" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-process-cpu-oper:cpu-usage/cpu-utilization/cpu-usage-processes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
@@ -463,9 +435,7 @@ const EntityPath CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::g
     if (total_run_time.is_set || is_set(total_run_time.yfilter)) leaf_name_data.push_back(total_run_time.get_name_leafdata());
     if (tty.is_set || is_set(tty.yfilter)) leaf_name_data.push_back(tty.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

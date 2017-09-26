@@ -17,7 +17,7 @@ Radius::Radius()
 {
     nodes->parent = this;
 
-    yang_name = "radius"; yang_parent_name = "Cisco-IOS-XR-aaa-protocol-radius-oper";
+    yang_name = "radius"; yang_parent_name = "Cisco-IOS-XR-aaa-protocol-radius-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Radius::~Radius()
@@ -39,26 +39,15 @@ std::string Radius::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Radius::has_leaf_or_child_of_name(const std::string & name) const
 
 Radius::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "radius";
+
+    yang_name = "nodes"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Radius::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Radius::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Radius::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Radius::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -245,18 +228,13 @@ Radius::Nodes::Node::Node()
 	,server_groups(std::make_shared<Radius::Nodes::Node::ServerGroups>())
 {
     accounting->parent = this;
-
     authentication->parent = this;
-
     client->parent = this;
-
     dead_criteria->parent = this;
-
     dynamic_authorization->parent = this;
-
     server_groups->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Radius::Nodes::Node::~Node()
@@ -286,34 +264,27 @@ bool Radius::Nodes::Node::has_operation() const
 	|| (server_groups !=  nullptr && server_groups->has_operation());
 }
 
+std::string Radius::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Radius::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -437,281 +408,57 @@ bool Radius::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
-Radius::Nodes::Node::Client::Client()
-    :
-    authentication_nas_id{YType::str, "authentication-nas-id"},
-    unknown_accounting_responses{YType::uint32, "unknown-accounting-responses"},
-    unknown_authentication_responses{YType::uint32, "unknown-authentication-responses"}
+Radius::Nodes::Node::Accounting::Accounting()
 {
-    yang_name = "client"; yang_parent_name = "node";
+
+    yang_name = "accounting"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Radius::Nodes::Node::Client::~Client()
+Radius::Nodes::Node::Accounting::~Accounting()
 {
 }
 
-bool Radius::Nodes::Node::Client::has_data() const
+bool Radius::Nodes::Node::Accounting::has_data() const
 {
-    return authentication_nas_id.is_set
-	|| unknown_accounting_responses.is_set
-	|| unknown_authentication_responses.is_set;
-}
-
-bool Radius::Nodes::Node::Client::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(authentication_nas_id.yfilter)
-	|| ydk::is_set(unknown_accounting_responses.yfilter)
-	|| ydk::is_set(unknown_authentication_responses.yfilter);
-}
-
-std::string Radius::Nodes::Node::Client::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "client";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Radius::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<accounting_group.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Client' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (authentication_nas_id.is_set || is_set(authentication_nas_id.yfilter)) leaf_name_data.push_back(authentication_nas_id.get_name_leafdata());
-    if (unknown_accounting_responses.is_set || is_set(unknown_accounting_responses.yfilter)) leaf_name_data.push_back(unknown_accounting_responses.get_name_leafdata());
-    if (unknown_authentication_responses.is_set || is_set(unknown_authentication_responses.yfilter)) leaf_name_data.push_back(unknown_authentication_responses.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Radius::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Client::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Radius::Nodes::Node::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "authentication-nas-id")
-    {
-        authentication_nas_id = value;
-        authentication_nas_id.value_namespace = name_space;
-        authentication_nas_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-accounting-responses")
-    {
-        unknown_accounting_responses = value;
-        unknown_accounting_responses.value_namespace = name_space;
-        unknown_accounting_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-authentication-responses")
-    {
-        unknown_authentication_responses = value;
-        unknown_authentication_responses.value_namespace = name_space;
-        unknown_authentication_responses.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Radius::Nodes::Node::Client::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "authentication-nas-id")
-    {
-        authentication_nas_id.yfilter = yfilter;
-    }
-    if(value_path == "unknown-accounting-responses")
-    {
-        unknown_accounting_responses.yfilter = yfilter;
-    }
-    if(value_path == "unknown-authentication-responses")
-    {
-        unknown_authentication_responses.yfilter = yfilter;
-    }
-}
-
-bool Radius::Nodes::Node::Client::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "authentication-nas-id" || name == "unknown-accounting-responses" || name == "unknown-authentication-responses")
-        return true;
-    return false;
-}
-
-Radius::Nodes::Node::DeadCriteria::DeadCriteria()
-    :
-    hosts(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts>())
-{
-    hosts->parent = this;
-
-    yang_name = "dead-criteria"; yang_parent_name = "node";
-}
-
-Radius::Nodes::Node::DeadCriteria::~DeadCriteria()
-{
-}
-
-bool Radius::Nodes::Node::DeadCriteria::has_data() const
-{
-    return (hosts !=  nullptr && hosts->has_data());
-}
-
-bool Radius::Nodes::Node::DeadCriteria::has_operation() const
-{
-    return is_set(yfilter)
-	|| (hosts !=  nullptr && hosts->has_operation());
-}
-
-std::string Radius::Nodes::Node::DeadCriteria::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dead-criteria";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Radius::Nodes::Node::DeadCriteria::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DeadCriteria' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hosts")
-    {
-        if(hosts == nullptr)
-        {
-            hosts = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts>();
-        }
-        return hosts;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(hosts != nullptr)
-    {
-        children["hosts"] = hosts;
-    }
-
-    return children;
-}
-
-void Radius::Nodes::Node::DeadCriteria::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Radius::Nodes::Node::DeadCriteria::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Radius::Nodes::Node::DeadCriteria::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hosts")
-        return true;
-    return false;
-}
-
-Radius::Nodes::Node::DeadCriteria::Hosts::Hosts()
-{
-    yang_name = "hosts"; yang_parent_name = "dead-criteria";
-}
-
-Radius::Nodes::Node::DeadCriteria::Hosts::~Hosts()
-{
-}
-
-bool Radius::Nodes::Node::DeadCriteria::Hosts::has_data() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_data())
+        if(accounting_group[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::has_operation() const
+bool Radius::Nodes::Node::Accounting::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<accounting_group.size(); index++)
     {
-        if(host[index]->has_operation())
+        if(accounting_group[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Radius::Nodes::Node::DeadCriteria::Hosts::get_segment_path() const
+std::string Radius::Nodes::Node::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hosts";
-
+    path_buffer << "accounting";
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hosts' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "host")
+    if(child_yang_name == "accounting-group")
     {
-        for(auto const & c : host)
+        for(auto const & c : accounting_group)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -719,19 +466,19 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_n
                 return c;
             }
         }
-        auto c = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
+        auto c = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
         c->parent = this;
-        host.push_back(c);
+        accounting_group.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : host)
+    for (auto const & c : accounting_group)
     {
         children[c->get_segment_path()] = c;
     }
@@ -739,145 +486,110 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria
     return children;
 }
 
-void Radius::Nodes::Node::DeadCriteria::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Radius::Nodes::Node::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Radius::Nodes::Node::DeadCriteria::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
+void Radius::Nodes::Node::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::has_leaf_or_child_of_name(const std::string & name) const
+bool Radius::Nodes::Node::Accounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "host")
+    if(name == "accounting-group")
         return true;
     return false;
 }
 
-Radius::Nodes::Node::DeadCriteria::Hosts::Host::Host()
+Radius::Nodes::Node::Accounting::AccountingGroup::AccountingGroup()
     :
-    acct_port_number{YType::uint32, "acct-port-number"},
-    auth_port_number{YType::uint32, "auth-port-number"},
-    ip_address{YType::str, "ip-address"}
+    family{YType::str, "family"},
+    ip_address{YType::str, "ip-address"},
+    port{YType::uint32, "port"},
+    server_address{YType::str, "server-address"}
     	,
-    time(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time>())
-	,tries(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>())
+    accounting(std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>())
 {
-    time->parent = this;
+    accounting->parent = this;
 
-    tries->parent = this;
-
-    yang_name = "host"; yang_parent_name = "hosts";
+    yang_name = "accounting-group"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Radius::Nodes::Node::DeadCriteria::Hosts::Host::~Host()
+Radius::Nodes::Node::Accounting::AccountingGroup::~AccountingGroup()
 {
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_data() const
+bool Radius::Nodes::Node::Accounting::AccountingGroup::has_data() const
 {
-    return acct_port_number.is_set
-	|| auth_port_number.is_set
+    return family.is_set
 	|| ip_address.is_set
-	|| (time !=  nullptr && time->has_data())
-	|| (tries !=  nullptr && tries->has_data());
+	|| port.is_set
+	|| server_address.is_set
+	|| (accounting !=  nullptr && accounting->has_data());
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_operation() const
+bool Radius::Nodes::Node::Accounting::AccountingGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(acct_port_number.yfilter)
-	|| ydk::is_set(auth_port_number.yfilter)
+	|| ydk::is_set(family.yfilter)
 	|| ydk::is_set(ip_address.yfilter)
-	|| (time !=  nullptr && time->has_operation())
-	|| (tries !=  nullptr && tries->has_operation());
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(server_address.yfilter)
+	|| (accounting !=  nullptr && accounting->has_operation());
 }
 
-std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_segment_path() const
+std::string Radius::Nodes::Node::Accounting::AccountingGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host";
-
+    path_buffer << "accounting-group";
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::AccountingGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Host' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acct_port_number.is_set || is_set(acct_port_number.yfilter)) leaf_name_data.push_back(acct_port_number.get_name_leafdata());
-    if (auth_port_number.is_set || is_set(auth_port_number.yfilter)) leaf_name_data.push_back(auth_port_number.get_name_leafdata());
+    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "time")
+    if(child_yang_name == "accounting")
     {
-        if(time == nullptr)
+        if(accounting == nullptr)
         {
-            time = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time>();
+            accounting = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>();
         }
-        return time;
-    }
-
-    if(child_yang_name == "tries")
-    {
-        if(tries == nullptr)
-        {
-            tries = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>();
-        }
-        return tries;
+        return accounting;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(time != nullptr)
+    if(accounting != nullptr)
     {
-        children["time"] = time;
-    }
-
-    if(tries != nullptr)
-    {
-        children["tries"] = tries;
+        children["accounting"] = accounting;
     }
 
     return children;
 }
 
-void Radius::Nodes::Node::DeadCriteria::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Radius::Nodes::Node::Accounting::AccountingGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "acct-port-number")
+    if(value_path == "family")
     {
-        acct_port_number = value;
-        acct_port_number.value_namespace = name_space;
-        acct_port_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "auth-port-number")
-    {
-        auth_port_number = value;
-        auth_port_number.value_namespace = name_space;
-        auth_port_number.value_namespace_prefix = name_space_prefix;
+        family = value;
+        family.value_namespace = name_space;
+        family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
@@ -885,240 +597,337 @@ void Radius::Nodes::Node::DeadCriteria::Hosts::Host::set_value(const std::string
         ip_address.value_namespace = name_space;
         ip_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "server-address")
+    {
+        server_address = value;
+        server_address.value_namespace = name_space;
+        server_address.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Radius::Nodes::Node::DeadCriteria::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
+void Radius::Nodes::Node::Accounting::AccountingGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "acct-port-number")
+    if(value_path == "family")
     {
-        acct_port_number.yfilter = yfilter;
-    }
-    if(value_path == "auth-port-number")
-    {
-        auth_port_number.yfilter = yfilter;
+        family.yfilter = yfilter;
     }
     if(value_path == "ip-address")
     {
         ip_address.yfilter = yfilter;
     }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "server-address")
+    {
+        server_address.yfilter = yfilter;
+    }
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
+bool Radius::Nodes::Node::Accounting::AccountingGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "time" || name == "tries" || name == "acct-port-number" || name == "auth-port-number" || name == "ip-address")
+    if(name == "accounting" || name == "family" || name == "ip-address" || name == "port" || name == "server-address")
         return true;
     return false;
 }
 
-Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::Time()
+Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::Accounting_()
     :
-    is_computed{YType::boolean, "is-computed"},
-    value_{YType::uint32, "value"}
+    acct_incorrect_responses{YType::uint32, "acct-incorrect-responses"},
+    acct_response_time{YType::uint32, "acct-response-time"},
+    acct_server_error_responses{YType::uint32, "acct-server-error-responses"},
+    acct_transaction_failure{YType::uint32, "acct-transaction-failure"},
+    acct_transaction_successess{YType::uint32, "acct-transaction-successess"},
+    acct_unexpected_responses{YType::uint32, "acct-unexpected-responses"},
+    bad_authenticators{YType::uint32, "bad-authenticators"},
+    bad_responses{YType::uint32, "bad-responses"},
+    dropped_responses{YType::uint32, "dropped-responses"},
+    pending_requests{YType::uint32, "pending-requests"},
+    requests{YType::uint32, "requests"},
+    responses{YType::uint32, "responses"},
+    retransmits{YType::uint32, "retransmits"},
+    rtt{YType::uint32, "rtt"},
+    timeouts{YType::uint32, "timeouts"},
+    unknown_packet_types{YType::uint32, "unknown-packet-types"}
 {
-    yang_name = "time"; yang_parent_name = "host";
+
+    yang_name = "accounting"; yang_parent_name = "accounting-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::~Time()
+Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::~Accounting_()
 {
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_data() const
+bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_data() const
 {
-    return is_computed.is_set
-	|| value_.is_set;
+    return acct_incorrect_responses.is_set
+	|| acct_response_time.is_set
+	|| acct_server_error_responses.is_set
+	|| acct_transaction_failure.is_set
+	|| acct_transaction_successess.is_set
+	|| acct_unexpected_responses.is_set
+	|| bad_authenticators.is_set
+	|| bad_responses.is_set
+	|| dropped_responses.is_set
+	|| pending_requests.is_set
+	|| requests.is_set
+	|| responses.is_set
+	|| retransmits.is_set
+	|| rtt.is_set
+	|| timeouts.is_set
+	|| unknown_packet_types.is_set;
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_operation() const
+bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(is_computed.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(acct_incorrect_responses.yfilter)
+	|| ydk::is_set(acct_response_time.yfilter)
+	|| ydk::is_set(acct_server_error_responses.yfilter)
+	|| ydk::is_set(acct_transaction_failure.yfilter)
+	|| ydk::is_set(acct_transaction_successess.yfilter)
+	|| ydk::is_set(acct_unexpected_responses.yfilter)
+	|| ydk::is_set(bad_authenticators.yfilter)
+	|| ydk::is_set(bad_responses.yfilter)
+	|| ydk::is_set(dropped_responses.yfilter)
+	|| ydk::is_set(pending_requests.yfilter)
+	|| ydk::is_set(requests.yfilter)
+	|| ydk::is_set(responses.yfilter)
+	|| ydk::is_set(retransmits.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(timeouts.yfilter)
+	|| ydk::is_set(unknown_packet_types.yfilter);
 }
 
-std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_segment_path() const
+std::string Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "time";
-
+    path_buffer << "accounting";
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Time' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_computed.is_set || is_set(is_computed.yfilter)) leaf_name_data.push_back(is_computed.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
+    if (acct_response_time.is_set || is_set(acct_response_time.yfilter)) leaf_name_data.push_back(acct_response_time.get_name_leafdata());
+    if (acct_server_error_responses.is_set || is_set(acct_server_error_responses.yfilter)) leaf_name_data.push_back(acct_server_error_responses.get_name_leafdata());
+    if (acct_transaction_failure.is_set || is_set(acct_transaction_failure.yfilter)) leaf_name_data.push_back(acct_transaction_failure.get_name_leafdata());
+    if (acct_transaction_successess.is_set || is_set(acct_transaction_successess.yfilter)) leaf_name_data.push_back(acct_transaction_successess.get_name_leafdata());
+    if (acct_unexpected_responses.is_set || is_set(acct_unexpected_responses.yfilter)) leaf_name_data.push_back(acct_unexpected_responses.get_name_leafdata());
+    if (bad_authenticators.is_set || is_set(bad_authenticators.yfilter)) leaf_name_data.push_back(bad_authenticators.get_name_leafdata());
+    if (bad_responses.is_set || is_set(bad_responses.yfilter)) leaf_name_data.push_back(bad_responses.get_name_leafdata());
+    if (dropped_responses.is_set || is_set(dropped_responses.yfilter)) leaf_name_data.push_back(dropped_responses.get_name_leafdata());
+    if (pending_requests.is_set || is_set(pending_requests.yfilter)) leaf_name_data.push_back(pending_requests.get_name_leafdata());
+    if (requests.is_set || is_set(requests.yfilter)) leaf_name_data.push_back(requests.get_name_leafdata());
+    if (responses.is_set || is_set(responses.yfilter)) leaf_name_data.push_back(responses.get_name_leafdata());
+    if (retransmits.is_set || is_set(retransmits.yfilter)) leaf_name_data.push_back(retransmits.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
+    if (unknown_packet_types.is_set || is_set(unknown_packet_types.yfilter)) leaf_name_data.push_back(unknown_packet_types.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "is-computed")
+    if(value_path == "acct-incorrect-responses")
     {
-        is_computed = value;
-        is_computed.value_namespace = name_space;
-        is_computed.value_namespace_prefix = name_space_prefix;
+        acct_incorrect_responses = value;
+        acct_incorrect_responses.value_namespace = name_space;
+        acct_incorrect_responses.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "acct-response-time")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        acct_response_time = value;
+        acct_response_time.value_namespace = name_space;
+        acct_response_time.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-computed")
+    if(value_path == "acct-server-error-responses")
     {
-        is_computed.yfilter = yfilter;
+        acct_server_error_responses = value;
+        acct_server_error_responses.value_namespace = name_space;
+        acct_server_error_responses.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "acct-transaction-failure")
     {
-        value_.yfilter = yfilter;
+        acct_transaction_failure = value;
+        acct_transaction_failure.value_namespace = name_space;
+        acct_transaction_failure.value_namespace_prefix = name_space_prefix;
     }
-}
-
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-computed" || name == "value")
-        return true;
-    return false;
-}
-
-Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::Tries()
-    :
-    is_computed{YType::boolean, "is-computed"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "tries"; yang_parent_name = "host";
-}
-
-Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::~Tries()
-{
-}
-
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_data() const
-{
-    return is_computed.is_set
-	|| value_.is_set;
-}
-
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_computed.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "acct-transaction-successess")
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tries' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
+        acct_transaction_successess = value;
+        acct_transaction_successess.value_namespace = name_space;
+        acct_transaction_successess.value_namespace_prefix = name_space_prefix;
     }
-    else
+    if(value_path == "acct-unexpected-responses")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+        acct_unexpected_responses = value;
+        acct_unexpected_responses.value_namespace = name_space;
+        acct_unexpected_responses.value_namespace_prefix = name_space_prefix;
     }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_computed.is_set || is_set(is_computed.yfilter)) leaf_name_data.push_back(is_computed.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-computed")
+    if(value_path == "bad-authenticators")
     {
-        is_computed = value;
-        is_computed.value_namespace = name_space;
-        is_computed.value_namespace_prefix = name_space_prefix;
+        bad_authenticators = value;
+        bad_authenticators.value_namespace = name_space;
+        bad_authenticators.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "bad-responses")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        bad_responses = value;
+        bad_responses.value_namespace = name_space;
+        bad_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped-responses")
+    {
+        dropped_responses = value;
+        dropped_responses.value_namespace = name_space;
+        dropped_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pending-requests")
+    {
+        pending_requests = value;
+        pending_requests.value_namespace = name_space;
+        pending_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "requests")
+    {
+        requests = value;
+        requests.value_namespace = name_space;
+        requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "responses")
+    {
+        responses = value;
+        responses.value_namespace = name_space;
+        responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retransmits")
+    {
+        retransmits = value;
+        retransmits.value_namespace = name_space;
+        retransmits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeouts")
+    {
+        timeouts = value;
+        timeouts.value_namespace = name_space;
+        timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-packet-types")
+    {
+        unknown_packet_types = value;
+        unknown_packet_types.value_namespace = name_space;
+        unknown_packet_types.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::set_filter(const std::string & value_path, YFilter yfilter)
+void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "is-computed")
+    if(value_path == "acct-incorrect-responses")
     {
-        is_computed.yfilter = yfilter;
+        acct_incorrect_responses.yfilter = yfilter;
     }
-    if(value_path == "value")
+    if(value_path == "acct-response-time")
     {
-        value_.yfilter = yfilter;
+        acct_response_time.yfilter = yfilter;
+    }
+    if(value_path == "acct-server-error-responses")
+    {
+        acct_server_error_responses.yfilter = yfilter;
+    }
+    if(value_path == "acct-transaction-failure")
+    {
+        acct_transaction_failure.yfilter = yfilter;
+    }
+    if(value_path == "acct-transaction-successess")
+    {
+        acct_transaction_successess.yfilter = yfilter;
+    }
+    if(value_path == "acct-unexpected-responses")
+    {
+        acct_unexpected_responses.yfilter = yfilter;
+    }
+    if(value_path == "bad-authenticators")
+    {
+        bad_authenticators.yfilter = yfilter;
+    }
+    if(value_path == "bad-responses")
+    {
+        bad_responses.yfilter = yfilter;
+    }
+    if(value_path == "dropped-responses")
+    {
+        dropped_responses.yfilter = yfilter;
+    }
+    if(value_path == "pending-requests")
+    {
+        pending_requests.yfilter = yfilter;
+    }
+    if(value_path == "requests")
+    {
+        requests.yfilter = yfilter;
+    }
+    if(value_path == "responses")
+    {
+        responses.yfilter = yfilter;
+    }
+    if(value_path == "retransmits")
+    {
+        retransmits.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "timeouts")
+    {
+        timeouts.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packet-types")
+    {
+        unknown_packet_types.yfilter = yfilter;
     }
 }
 
-bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_leaf_or_child_of_name(const std::string & name) const
+bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "is-computed" || name == "value")
+    if(name == "acct-incorrect-responses" || name == "acct-response-time" || name == "acct-server-error-responses" || name == "acct-transaction-failure" || name == "acct-transaction-successess" || name == "acct-unexpected-responses" || name == "bad-authenticators" || name == "bad-responses" || name == "dropped-responses" || name == "pending-requests" || name == "requests" || name == "responses" || name == "retransmits" || name == "rtt" || name == "timeouts" || name == "unknown-packet-types")
         return true;
     return false;
 }
 
 Radius::Nodes::Node::Authentication::Authentication()
 {
-    yang_name = "authentication"; yang_parent_name = "node";
+
+    yang_name = "authentication"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::Authentication::~Authentication()
@@ -1149,29 +958,15 @@ std::string Radius::Nodes::Node::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::Authentication::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authentication::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authentication' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1233,7 +1028,7 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::AuthenticationGroup()
 {
     authentication->parent = this;
 
-    yang_name = "authentication-group"; yang_parent_name = "authentication";
+    yang_name = "authentication-group"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::Authentication::AuthenticationGroup::~AuthenticationGroup()
@@ -1263,23 +1058,11 @@ std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication-group";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authentication::AuthenticationGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthenticationGroup' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
@@ -1287,9 +1070,7 @@ const EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::get_e
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1394,7 +1175,8 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::Authe
     rtt{YType::uint32, "rtt"},
     unknown_access_types{YType::uint32, "unknown-access-types"}
 {
-    yang_name = "authentication"; yang_parent_name = "authentication-group";
+
+    yang_name = "authentication"; yang_parent_name = "authentication-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::~Authentication_()
@@ -1450,23 +1232,11 @@ std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentica
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authentication_' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (access_accepts.is_set || is_set(access_accepts.yfilter)) leaf_name_data.push_back(access_accepts.get_name_leafdata());
@@ -1488,9 +1258,7 @@ const EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::Authe
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1700,70 +1468,241 @@ bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
     return false;
 }
 
-Radius::Nodes::Node::Accounting::Accounting()
+Radius::Nodes::Node::Client::Client()
+    :
+    authentication_nas_id{YType::str, "authentication-nas-id"},
+    unknown_accounting_responses{YType::uint32, "unknown-accounting-responses"},
+    unknown_authentication_responses{YType::uint32, "unknown-authentication-responses"}
 {
-    yang_name = "accounting"; yang_parent_name = "node";
+
+    yang_name = "client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Radius::Nodes::Node::Accounting::~Accounting()
+Radius::Nodes::Node::Client::~Client()
 {
 }
 
-bool Radius::Nodes::Node::Accounting::has_data() const
+bool Radius::Nodes::Node::Client::has_data() const
 {
-    for (std::size_t index=0; index<accounting_group.size(); index++)
+    return authentication_nas_id.is_set
+	|| unknown_accounting_responses.is_set
+	|| unknown_authentication_responses.is_set;
+}
+
+bool Radius::Nodes::Node::Client::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_nas_id.yfilter)
+	|| ydk::is_set(unknown_accounting_responses.yfilter)
+	|| ydk::is_set(unknown_authentication_responses.yfilter);
+}
+
+std::string Radius::Nodes::Node::Client::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Client::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (authentication_nas_id.is_set || is_set(authentication_nas_id.yfilter)) leaf_name_data.push_back(authentication_nas_id.get_name_leafdata());
+    if (unknown_accounting_responses.is_set || is_set(unknown_accounting_responses.yfilter)) leaf_name_data.push_back(unknown_accounting_responses.get_name_leafdata());
+    if (unknown_authentication_responses.is_set || is_set(unknown_authentication_responses.yfilter)) leaf_name_data.push_back(unknown_authentication_responses.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Radius::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Client::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Radius::Nodes::Node::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "authentication-nas-id")
     {
-        if(accounting_group[index]->has_data())
+        authentication_nas_id = value;
+        authentication_nas_id.value_namespace = name_space;
+        authentication_nas_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-accounting-responses")
+    {
+        unknown_accounting_responses = value;
+        unknown_accounting_responses.value_namespace = name_space;
+        unknown_accounting_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-authentication-responses")
+    {
+        unknown_authentication_responses = value;
+        unknown_authentication_responses.value_namespace = name_space;
+        unknown_authentication_responses.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Radius::Nodes::Node::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-nas-id")
+    {
+        authentication_nas_id.yfilter = yfilter;
+    }
+    if(value_path == "unknown-accounting-responses")
+    {
+        unknown_accounting_responses.yfilter = yfilter;
+    }
+    if(value_path == "unknown-authentication-responses")
+    {
+        unknown_authentication_responses.yfilter = yfilter;
+    }
+}
+
+bool Radius::Nodes::Node::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-nas-id" || name == "unknown-accounting-responses" || name == "unknown-authentication-responses")
+        return true;
+    return false;
+}
+
+Radius::Nodes::Node::DeadCriteria::DeadCriteria()
+    :
+    hosts(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts>())
+{
+    hosts->parent = this;
+
+    yang_name = "dead-criteria"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Radius::Nodes::Node::DeadCriteria::~DeadCriteria()
+{
+}
+
+bool Radius::Nodes::Node::DeadCriteria::has_data() const
+{
+    return (hosts !=  nullptr && hosts->has_data());
+}
+
+bool Radius::Nodes::Node::DeadCriteria::has_operation() const
+{
+    return is_set(yfilter)
+	|| (hosts !=  nullptr && hosts->has_operation());
+}
+
+std::string Radius::Nodes::Node::DeadCriteria::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dead-criteria";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hosts")
+    {
+        if(hosts == nullptr)
+        {
+            hosts = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts>();
+        }
+        return hosts;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hosts != nullptr)
+    {
+        children["hosts"] = hosts;
+    }
+
+    return children;
+}
+
+void Radius::Nodes::Node::DeadCriteria::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Radius::Nodes::Node::DeadCriteria::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Radius::Nodes::Node::DeadCriteria::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hosts")
+        return true;
+    return false;
+}
+
+Radius::Nodes::Node::DeadCriteria::Hosts::Hosts()
+{
+
+    yang_name = "hosts"; yang_parent_name = "dead-criteria"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Radius::Nodes::Node::DeadCriteria::Hosts::~Hosts()
+{
+}
+
+bool Radius::Nodes::Node::DeadCriteria::Hosts::has_data() const
+{
+    for (std::size_t index=0; index<host.size(); index++)
+    {
+        if(host[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Radius::Nodes::Node::Accounting::has_operation() const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<accounting_group.size(); index++)
+    for (std::size_t index=0; index<host.size(); index++)
     {
-        if(accounting_group[index]->has_operation())
+        if(host[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Radius::Nodes::Node::Accounting::get_segment_path() const
+std::string Radius::Nodes::Node::DeadCriteria::Hosts::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "accounting";
-
+    path_buffer << "hosts";
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::Accounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria::Hosts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Accounting' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "accounting-group")
+    if(child_yang_name == "host")
     {
-        for(auto const & c : accounting_group)
+        for(auto const & c : host)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1771,19 +1710,19 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const
                 return c;
             }
         }
-        auto c = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
+        auto c = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
         c->parent = this;
-        accounting_group.push_back(c);
+        host.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : accounting_group)
+    for (auto const & c : host)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1791,124 +1730,130 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::
     return children;
 }
 
-void Radius::Nodes::Node::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Radius::Nodes::Node::DeadCriteria::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Radius::Nodes::Node::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+void Radius::Nodes::Node::DeadCriteria::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Radius::Nodes::Node::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "accounting-group")
+    if(name == "host")
         return true;
     return false;
 }
 
-Radius::Nodes::Node::Accounting::AccountingGroup::AccountingGroup()
+Radius::Nodes::Node::DeadCriteria::Hosts::Host::Host()
     :
-    family{YType::str, "family"},
-    ip_address{YType::str, "ip-address"},
-    port{YType::uint32, "port"},
-    server_address{YType::str, "server-address"}
+    acct_port_number{YType::uint32, "acct-port-number"},
+    auth_port_number{YType::uint32, "auth-port-number"},
+    ip_address{YType::str, "ip-address"}
     	,
-    accounting(std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>())
+    time(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time>())
+	,tries(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>())
 {
-    accounting->parent = this;
+    time->parent = this;
+    tries->parent = this;
 
-    yang_name = "accounting-group"; yang_parent_name = "accounting";
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Radius::Nodes::Node::Accounting::AccountingGroup::~AccountingGroup()
+Radius::Nodes::Node::DeadCriteria::Hosts::Host::~Host()
 {
 }
 
-bool Radius::Nodes::Node::Accounting::AccountingGroup::has_data() const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_data() const
 {
-    return family.is_set
+    return acct_port_number.is_set
+	|| auth_port_number.is_set
 	|| ip_address.is_set
-	|| port.is_set
-	|| server_address.is_set
-	|| (accounting !=  nullptr && accounting->has_data());
+	|| (time !=  nullptr && time->has_data())
+	|| (tries !=  nullptr && tries->has_data());
 }
 
-bool Radius::Nodes::Node::Accounting::AccountingGroup::has_operation() const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(family.yfilter)
+	|| ydk::is_set(acct_port_number.yfilter)
+	|| ydk::is_set(auth_port_number.yfilter)
 	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(server_address.yfilter)
-	|| (accounting !=  nullptr && accounting->has_operation());
+	|| (time !=  nullptr && time->has_operation())
+	|| (tries !=  nullptr && tries->has_operation());
 }
 
-std::string Radius::Nodes::Node::Accounting::AccountingGroup::get_segment_path() const
+std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "accounting-group";
-
+    path_buffer << "host";
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccountingGroup' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
+    if (acct_port_number.is_set || is_set(acct_port_number.yfilter)) leaf_name_data.push_back(acct_port_number.get_name_leafdata());
+    if (auth_port_number.is_set || is_set(auth_port_number.yfilter)) leaf_name_data.push_back(auth_port_number.get_name_leafdata());
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "accounting")
+    if(child_yang_name == "time")
     {
-        if(accounting == nullptr)
+        if(time == nullptr)
         {
-            accounting = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>();
+            time = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time>();
         }
-        return accounting;
+        return time;
+    }
+
+    if(child_yang_name == "tries")
+    {
+        if(tries == nullptr)
+        {
+            tries = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>();
+        }
+        return tries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(accounting != nullptr)
+    if(time != nullptr)
     {
-        children["accounting"] = accounting;
+        children["time"] = time;
+    }
+
+    if(tries != nullptr)
+    {
+        children["tries"] = tries;
     }
 
     return children;
 }
 
-void Radius::Nodes::Node::Accounting::AccountingGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Radius::Nodes::Node::DeadCriteria::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "family")
+    if(value_path == "acct-port-number")
     {
-        family = value;
-        family.value_namespace = name_space;
-        family.value_namespace_prefix = name_space_prefix;
+        acct_port_number = value;
+        acct_port_number.value_namespace = name_space;
+        acct_port_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-port-number")
+    {
+        auth_port_number = value;
+        auth_port_number.value_namespace = name_space;
+        auth_port_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
@@ -1916,349 +1861,305 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::set_value(const std::stri
         ip_address.value_namespace = name_space;
         ip_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "server-address")
-    {
-        server_address = value;
-        server_address.value_namespace = name_space;
-        server_address.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Radius::Nodes::Node::Accounting::AccountingGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void Radius::Nodes::Node::DeadCriteria::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "family")
+    if(value_path == "acct-port-number")
     {
-        family.yfilter = yfilter;
+        acct_port_number.yfilter = yfilter;
+    }
+    if(value_path == "auth-port-number")
+    {
+        auth_port_number.yfilter = yfilter;
     }
     if(value_path == "ip-address")
     {
         ip_address.yfilter = yfilter;
     }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "server-address")
-    {
-        server_address.yfilter = yfilter;
-    }
 }
 
-bool Radius::Nodes::Node::Accounting::AccountingGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "accounting" || name == "family" || name == "ip-address" || name == "port" || name == "server-address")
+    if(name == "time" || name == "tries" || name == "acct-port-number" || name == "auth-port-number" || name == "ip-address")
         return true;
     return false;
 }
 
-Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::Accounting_()
+Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::Time()
     :
-    acct_incorrect_responses{YType::uint32, "acct-incorrect-responses"},
-    acct_response_time{YType::uint32, "acct-response-time"},
-    acct_server_error_responses{YType::uint32, "acct-server-error-responses"},
-    acct_transaction_failure{YType::uint32, "acct-transaction-failure"},
-    acct_transaction_successess{YType::uint32, "acct-transaction-successess"},
-    acct_unexpected_responses{YType::uint32, "acct-unexpected-responses"},
-    bad_authenticators{YType::uint32, "bad-authenticators"},
-    bad_responses{YType::uint32, "bad-responses"},
-    dropped_responses{YType::uint32, "dropped-responses"},
-    pending_requests{YType::uint32, "pending-requests"},
-    requests{YType::uint32, "requests"},
-    responses{YType::uint32, "responses"},
-    retransmits{YType::uint32, "retransmits"},
-    rtt{YType::uint32, "rtt"},
-    timeouts{YType::uint32, "timeouts"},
-    unknown_packet_types{YType::uint32, "unknown-packet-types"}
+    is_computed{YType::boolean, "is-computed"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "accounting"; yang_parent_name = "accounting-group";
+
+    yang_name = "time"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::~Accounting_()
+Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::~Time()
 {
 }
 
-bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_data() const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_data() const
 {
-    return acct_incorrect_responses.is_set
-	|| acct_response_time.is_set
-	|| acct_server_error_responses.is_set
-	|| acct_transaction_failure.is_set
-	|| acct_transaction_successess.is_set
-	|| acct_unexpected_responses.is_set
-	|| bad_authenticators.is_set
-	|| bad_responses.is_set
-	|| dropped_responses.is_set
-	|| pending_requests.is_set
-	|| requests.is_set
-	|| responses.is_set
-	|| retransmits.is_set
-	|| rtt.is_set
-	|| timeouts.is_set
-	|| unknown_packet_types.is_set;
+    return is_computed.is_set
+	|| value_.is_set;
 }
 
-bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_operation() const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(acct_incorrect_responses.yfilter)
-	|| ydk::is_set(acct_response_time.yfilter)
-	|| ydk::is_set(acct_server_error_responses.yfilter)
-	|| ydk::is_set(acct_transaction_failure.yfilter)
-	|| ydk::is_set(acct_transaction_successess.yfilter)
-	|| ydk::is_set(acct_unexpected_responses.yfilter)
-	|| ydk::is_set(bad_authenticators.yfilter)
-	|| ydk::is_set(bad_responses.yfilter)
-	|| ydk::is_set(dropped_responses.yfilter)
-	|| ydk::is_set(pending_requests.yfilter)
-	|| ydk::is_set(requests.yfilter)
-	|| ydk::is_set(responses.yfilter)
-	|| ydk::is_set(retransmits.yfilter)
-	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(timeouts.yfilter)
-	|| ydk::is_set(unknown_packet_types.yfilter);
+	|| ydk::is_set(is_computed.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_segment_path() const
+std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "accounting";
-
+    path_buffer << "time";
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Accounting_' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
-    if (acct_response_time.is_set || is_set(acct_response_time.yfilter)) leaf_name_data.push_back(acct_response_time.get_name_leafdata());
-    if (acct_server_error_responses.is_set || is_set(acct_server_error_responses.yfilter)) leaf_name_data.push_back(acct_server_error_responses.get_name_leafdata());
-    if (acct_transaction_failure.is_set || is_set(acct_transaction_failure.yfilter)) leaf_name_data.push_back(acct_transaction_failure.get_name_leafdata());
-    if (acct_transaction_successess.is_set || is_set(acct_transaction_successess.yfilter)) leaf_name_data.push_back(acct_transaction_successess.get_name_leafdata());
-    if (acct_unexpected_responses.is_set || is_set(acct_unexpected_responses.yfilter)) leaf_name_data.push_back(acct_unexpected_responses.get_name_leafdata());
-    if (bad_authenticators.is_set || is_set(bad_authenticators.yfilter)) leaf_name_data.push_back(bad_authenticators.get_name_leafdata());
-    if (bad_responses.is_set || is_set(bad_responses.yfilter)) leaf_name_data.push_back(bad_responses.get_name_leafdata());
-    if (dropped_responses.is_set || is_set(dropped_responses.yfilter)) leaf_name_data.push_back(dropped_responses.get_name_leafdata());
-    if (pending_requests.is_set || is_set(pending_requests.yfilter)) leaf_name_data.push_back(pending_requests.get_name_leafdata());
-    if (requests.is_set || is_set(requests.yfilter)) leaf_name_data.push_back(requests.get_name_leafdata());
-    if (responses.is_set || is_set(responses.yfilter)) leaf_name_data.push_back(responses.get_name_leafdata());
-    if (retransmits.is_set || is_set(retransmits.yfilter)) leaf_name_data.push_back(retransmits.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-    if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
-    if (unknown_packet_types.is_set || is_set(unknown_packet_types.yfilter)) leaf_name_data.push_back(unknown_packet_types.get_name_leafdata());
+    if (is_computed.is_set || is_set(is_computed.yfilter)) leaf_name_data.push_back(is_computed.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "acct-incorrect-responses")
+    if(value_path == "is-computed")
     {
-        acct_incorrect_responses = value;
-        acct_incorrect_responses.value_namespace = name_space;
-        acct_incorrect_responses.value_namespace_prefix = name_space_prefix;
+        is_computed = value;
+        is_computed.value_namespace = name_space;
+        is_computed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "acct-response-time")
+    if(value_path == "value")
     {
-        acct_response_time = value;
-        acct_response_time.value_namespace = name_space;
-        acct_response_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses = value;
-        acct_server_error_responses.value_namespace = name_space;
-        acct_server_error_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-transaction-failure")
-    {
-        acct_transaction_failure = value;
-        acct_transaction_failure.value_namespace = name_space;
-        acct_transaction_failure.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-transaction-successess")
-    {
-        acct_transaction_successess = value;
-        acct_transaction_successess.value_namespace = name_space;
-        acct_transaction_successess.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-unexpected-responses")
-    {
-        acct_unexpected_responses = value;
-        acct_unexpected_responses.value_namespace = name_space;
-        acct_unexpected_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-authenticators")
-    {
-        bad_authenticators = value;
-        bad_authenticators.value_namespace = name_space;
-        bad_authenticators.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-responses")
-    {
-        bad_responses = value;
-        bad_responses.value_namespace = name_space;
-        bad_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dropped-responses")
-    {
-        dropped_responses = value;
-        dropped_responses.value_namespace = name_space;
-        dropped_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pending-requests")
-    {
-        pending_requests = value;
-        pending_requests.value_namespace = name_space;
-        pending_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "requests")
-    {
-        requests = value;
-        requests.value_namespace = name_space;
-        requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "responses")
-    {
-        responses = value;
-        responses.value_namespace = name_space;
-        responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retransmits")
-    {
-        retransmits = value;
-        retransmits.value_namespace = name_space;
-        retransmits.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeouts")
-    {
-        timeouts = value;
-        timeouts.value_namespace = name_space;
-        timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-packet-types")
-    {
-        unknown_packet_types = value;
-        unknown_packet_types.value_namespace = name_space;
-        unknown_packet_types.value_namespace_prefix = name_space_prefix;
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_filter(const std::string & value_path, YFilter yfilter)
+void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "acct-incorrect-responses")
+    if(value_path == "is-computed")
     {
-        acct_incorrect_responses.yfilter = yfilter;
+        is_computed.yfilter = yfilter;
     }
-    if(value_path == "acct-response-time")
+    if(value_path == "value")
     {
-        acct_response_time.yfilter = yfilter;
-    }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-transaction-failure")
-    {
-        acct_transaction_failure.yfilter = yfilter;
-    }
-    if(value_path == "acct-transaction-successess")
-    {
-        acct_transaction_successess.yfilter = yfilter;
-    }
-    if(value_path == "acct-unexpected-responses")
-    {
-        acct_unexpected_responses.yfilter = yfilter;
-    }
-    if(value_path == "bad-authenticators")
-    {
-        bad_authenticators.yfilter = yfilter;
-    }
-    if(value_path == "bad-responses")
-    {
-        bad_responses.yfilter = yfilter;
-    }
-    if(value_path == "dropped-responses")
-    {
-        dropped_responses.yfilter = yfilter;
-    }
-    if(value_path == "pending-requests")
-    {
-        pending_requests.yfilter = yfilter;
-    }
-    if(value_path == "requests")
-    {
-        requests.yfilter = yfilter;
-    }
-    if(value_path == "responses")
-    {
-        responses.yfilter = yfilter;
-    }
-    if(value_path == "retransmits")
-    {
-        retransmits.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-    if(value_path == "timeouts")
-    {
-        timeouts.yfilter = yfilter;
-    }
-    if(value_path == "unknown-packet-types")
-    {
-        unknown_packet_types.yfilter = yfilter;
+        value_.yfilter = yfilter;
     }
 }
 
-bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_leaf_or_child_of_name(const std::string & name) const
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acct-incorrect-responses" || name == "acct-response-time" || name == "acct-server-error-responses" || name == "acct-transaction-failure" || name == "acct-transaction-successess" || name == "acct-unexpected-responses" || name == "bad-authenticators" || name == "bad-responses" || name == "dropped-responses" || name == "pending-requests" || name == "requests" || name == "responses" || name == "retransmits" || name == "rtt" || name == "timeouts" || name == "unknown-packet-types")
+    if(name == "is-computed" || name == "value")
+        return true;
+    return false;
+}
+
+Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::Tries()
+    :
+    is_computed{YType::boolean, "is-computed"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "tries"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::~Tries()
+{
+}
+
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_data() const
+{
+    return is_computed.is_set
+	|| value_.is_set;
+}
+
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_computed.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_computed.is_set || is_set(is_computed.yfilter)) leaf_name_data.push_back(is_computed.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-computed")
+    {
+        is_computed = value;
+        is_computed.value_namespace = name_space;
+        is_computed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-computed")
+    {
+        is_computed.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-computed" || name == "value")
+        return true;
+    return false;
+}
+
+Radius::Nodes::Node::DynamicAuthorization::DynamicAuthorization()
+    :
+    disconnected_invalid_requests{YType::uint32, "disconnected-invalid-requests"},
+    invalid_coa_requests{YType::uint32, "invalid-coa-requests"}
+{
+
+    yang_name = "dynamic-authorization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Radius::Nodes::Node::DynamicAuthorization::~DynamicAuthorization()
+{
+}
+
+bool Radius::Nodes::Node::DynamicAuthorization::has_data() const
+{
+    return disconnected_invalid_requests.is_set
+	|| invalid_coa_requests.is_set;
+}
+
+bool Radius::Nodes::Node::DynamicAuthorization::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disconnected_invalid_requests.yfilter)
+	|| ydk::is_set(invalid_coa_requests.yfilter);
+}
+
+std::string Radius::Nodes::Node::DynamicAuthorization::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic-authorization";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAuthorization::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disconnected_invalid_requests.is_set || is_set(disconnected_invalid_requests.yfilter)) leaf_name_data.push_back(disconnected_invalid_requests.get_name_leafdata());
+    if (invalid_coa_requests.is_set || is_set(invalid_coa_requests.yfilter)) leaf_name_data.push_back(invalid_coa_requests.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorization::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Radius::Nodes::Node::DynamicAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disconnected-invalid-requests")
+    {
+        disconnected_invalid_requests = value;
+        disconnected_invalid_requests.value_namespace = name_space;
+        disconnected_invalid_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-coa-requests")
+    {
+        invalid_coa_requests = value;
+        invalid_coa_requests.value_namespace = name_space;
+        invalid_coa_requests.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Radius::Nodes::Node::DynamicAuthorization::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disconnected-invalid-requests")
+    {
+        disconnected_invalid_requests.yfilter = yfilter;
+    }
+    if(value_path == "invalid-coa-requests")
+    {
+        invalid_coa_requests.yfilter = yfilter;
+    }
+}
+
+bool Radius::Nodes::Node::DynamicAuthorization::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disconnected-invalid-requests" || name == "invalid-coa-requests")
         return true;
     return false;
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroups()
 {
-    yang_name = "server-groups"; yang_parent_name = "node";
+
+    yang_name = "server-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::ServerGroups::~ServerGroups()
@@ -2289,29 +2190,15 @@ std::string Radius::Nodes::Node::ServerGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server-groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::ServerGroups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ServerGroups' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2370,7 +2257,8 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup()
     servers{YType::uint32, "servers"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "server-group"; yang_parent_name = "server-groups";
+
+    yang_name = "server-group"; yang_parent_name = "server-groups"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::~ServerGroup()
@@ -2410,23 +2298,11 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "server-group" <<"[server-group-name='" <<server_group_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups::ServerGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ServerGroup' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (server_group_name.is_set || is_set(server_group_name.yfilter)) leaf_name_data.push_back(server_group_name.get_name_leafdata());
@@ -2435,9 +2311,7 @@ const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::get_entity_path
     if (servers.is_set || is_set(servers.yfilter)) leaf_name_data.push_back(servers.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2552,12 +2426,10 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::ServerGroup_()
 	,authorization(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization>())
 {
     accounting->parent = this;
-
     authentication->parent = this;
-
     authorization->parent = this;
 
-    yang_name = "server-group"; yang_parent_name = "server-group";
+    yang_name = "server-group"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::~ServerGroup_()
@@ -2595,23 +2467,11 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "server-group";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ServerGroup_' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (accounting_port.is_set || is_set(accounting_port.yfilter)) leaf_name_data.push_back(accounting_port.get_name_leafdata());
@@ -2621,9 +2481,7 @@ const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::g
     if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
     if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2774,7 +2632,8 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::Accoun
     timeouts{YType::uint32, "timeouts"},
     unknown_packet_types{YType::uint32, "unknown-packet-types"}
 {
-    yang_name = "accounting"; yang_parent_name = "server-group";
+
+    yang_name = "accounting"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::~Accounting()
@@ -2826,23 +2685,11 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accoun
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Accounting' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
@@ -2862,9 +2709,7 @@ const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::A
     if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
     if (unknown_packet_types.is_set || is_set(unknown_packet_types.yfilter)) leaf_name_data.push_back(unknown_packet_types.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3075,7 +2920,8 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::Au
     rtt{YType::uint32, "rtt"},
     unknown_access_types{YType::uint32, "unknown-access-types"}
 {
-    yang_name = "authentication"; yang_parent_name = "server-group";
+
+    yang_name = "authentication"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::~Authentication()
@@ -3131,23 +2977,11 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authen
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authentication' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (access_accepts.is_set || is_set(access_accepts.yfilter)) leaf_name_data.push_back(access_accepts.get_name_leafdata());
@@ -3169,9 +3003,7 @@ const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::A
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3392,7 +3224,8 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::Aut
     author_transaction_successess{YType::uint32, "author-transaction-successess"},
     author_unexpected_responses{YType::uint32, "author-unexpected-responses"}
 {
-    yang_name = "authorization"; yang_parent_name = "server-group";
+
+    yang_name = "authorization"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::~Authorization()
@@ -3428,23 +3261,11 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Author
 {
     std::ostringstream path_buffer;
     path_buffer << "authorization";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authorization' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (author_incorrect_responses.is_set || is_set(author_incorrect_responses.yfilter)) leaf_name_data.push_back(author_incorrect_responses.get_name_leafdata());
@@ -3456,9 +3277,7 @@ const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::A
     if (author_transaction_successess.is_set || is_set(author_transaction_successess.yfilter)) leaf_name_data.push_back(author_transaction_successess.get_name_leafdata());
     if (author_unexpected_responses.is_set || is_set(author_unexpected_responses.yfilter)) leaf_name_data.push_back(author_unexpected_responses.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3564,109 +3383,6 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "author-incorrect-responses" || name == "author-request-timeouts" || name == "author-requests" || name == "author-response-time" || name == "author-server-error-responses" || name == "author-transaction-failure" || name == "author-transaction-successess" || name == "author-unexpected-responses")
-        return true;
-    return false;
-}
-
-Radius::Nodes::Node::DynamicAuthorization::DynamicAuthorization()
-    :
-    disconnected_invalid_requests{YType::uint32, "disconnected-invalid-requests"},
-    invalid_coa_requests{YType::uint32, "invalid-coa-requests"}
-{
-    yang_name = "dynamic-authorization"; yang_parent_name = "node";
-}
-
-Radius::Nodes::Node::DynamicAuthorization::~DynamicAuthorization()
-{
-}
-
-bool Radius::Nodes::Node::DynamicAuthorization::has_data() const
-{
-    return disconnected_invalid_requests.is_set
-	|| invalid_coa_requests.is_set;
-}
-
-bool Radius::Nodes::Node::DynamicAuthorization::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disconnected_invalid_requests.yfilter)
-	|| ydk::is_set(invalid_coa_requests.yfilter);
-}
-
-std::string Radius::Nodes::Node::DynamicAuthorization::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dynamic-authorization";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Radius::Nodes::Node::DynamicAuthorization::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DynamicAuthorization' in Cisco_IOS_XR_aaa_protocol_radius_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disconnected_invalid_requests.is_set || is_set(disconnected_invalid_requests.yfilter)) leaf_name_data.push_back(disconnected_invalid_requests.get_name_leafdata());
-    if (invalid_coa_requests.is_set || is_set(invalid_coa_requests.yfilter)) leaf_name_data.push_back(invalid_coa_requests.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorization::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Radius::Nodes::Node::DynamicAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disconnected-invalid-requests")
-    {
-        disconnected_invalid_requests = value;
-        disconnected_invalid_requests.value_namespace = name_space;
-        disconnected_invalid_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "invalid-coa-requests")
-    {
-        invalid_coa_requests = value;
-        invalid_coa_requests.value_namespace = name_space;
-        invalid_coa_requests.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Radius::Nodes::Node::DynamicAuthorization::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disconnected-invalid-requests")
-    {
-        disconnected_invalid_requests.yfilter = yfilter;
-    }
-    if(value_path == "invalid-coa-requests")
-    {
-        invalid_coa_requests.yfilter = yfilter;
-    }
-}
-
-bool Radius::Nodes::Node::DynamicAuthorization::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disconnected-invalid-requests" || name == "invalid-coa-requests")
         return true;
     return false;
 }

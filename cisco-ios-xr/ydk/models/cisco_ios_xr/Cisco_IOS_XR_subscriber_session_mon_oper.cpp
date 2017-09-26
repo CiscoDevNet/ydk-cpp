@@ -17,7 +17,7 @@ SessionMon::SessionMon()
 {
     nodes->parent = this;
 
-    yang_name = "session-mon"; yang_parent_name = "Cisco-IOS-XR-subscriber-session-mon-oper";
+    yang_name = "session-mon"; yang_parent_name = "Cisco-IOS-XR-subscriber-session-mon-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SessionMon::~SessionMon()
@@ -39,26 +39,15 @@ std::string SessionMon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-subscriber-session-mon-oper:session-mon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionMon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionMon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool SessionMon::has_leaf_or_child_of_name(const std::string & name) const
 
 SessionMon::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "session-mon";
+
+    yang_name = "nodes"; yang_parent_name = "session-mon"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SessionMon::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool SessionMon::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string SessionMon::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-session-mon-oper:session-mon/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SessionMon::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionMon::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-session-mon-oper:session-mon/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,12 +225,10 @@ SessionMon::Nodes::Node::Node()
 	,session_mon_statistics(std::make_shared<SessionMon::Nodes::Node::SessionMonStatistics>())
 {
     interface_all_statistics->parent = this;
-
     license_statistics->parent = this;
-
     session_mon_statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SessionMon::Nodes::Node::~Node()
@@ -271,34 +252,27 @@ bool SessionMon::Nodes::Node::has_operation() const
 	|| (session_mon_statistics !=  nullptr && session_mon_statistics->has_operation());
 }
 
+std::string SessionMon::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-session-mon-oper:session-mon/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SessionMon::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-id='" <<node_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionMon::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-session-mon-oper:session-mon/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -380,266 +354,10 @@ bool SessionMon::Nodes::Node::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-SessionMon::Nodes::Node::SessionMonStatistics::SessionMonStatistics()
-    :
-    active_sessions{YType::uint32, "active-sessions"},
-    dhcp_ds{YType::uint32, "dhcp-ds"},
-    dhcpv4{YType::uint32, "dhcpv4"},
-    dhcpv6{YType::uint32, "dhcpv6"},
-    ippkt{YType::uint32, "ippkt"},
-    peak_active_sessions{YType::uint32, "peak-active-sessions"},
-    peak_standby_sessions{YType::uint32, "peak-standby-sessions"},
-    peak_start_time{YType::uint32, "peak-start-time"},
-    pppoe{YType::uint32, "pppoe"},
-    pppoe_ds{YType::uint32, "pppoe-ds"},
-    standby_sessions{YType::uint32, "standby-sessions"},
-    timeout_value{YType::uint32, "timeout-value"},
-    total{YType::uint32, "total"}
-{
-    yang_name = "session-mon-statistics"; yang_parent_name = "node";
-}
-
-SessionMon::Nodes::Node::SessionMonStatistics::~SessionMonStatistics()
-{
-}
-
-bool SessionMon::Nodes::Node::SessionMonStatistics::has_data() const
-{
-    return active_sessions.is_set
-	|| dhcp_ds.is_set
-	|| dhcpv4.is_set
-	|| dhcpv6.is_set
-	|| ippkt.is_set
-	|| peak_active_sessions.is_set
-	|| peak_standby_sessions.is_set
-	|| peak_start_time.is_set
-	|| pppoe.is_set
-	|| pppoe_ds.is_set
-	|| standby_sessions.is_set
-	|| timeout_value.is_set
-	|| total.is_set;
-}
-
-bool SessionMon::Nodes::Node::SessionMonStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(active_sessions.yfilter)
-	|| ydk::is_set(dhcp_ds.yfilter)
-	|| ydk::is_set(dhcpv4.yfilter)
-	|| ydk::is_set(dhcpv6.yfilter)
-	|| ydk::is_set(ippkt.yfilter)
-	|| ydk::is_set(peak_active_sessions.yfilter)
-	|| ydk::is_set(peak_standby_sessions.yfilter)
-	|| ydk::is_set(peak_start_time.yfilter)
-	|| ydk::is_set(pppoe.yfilter)
-	|| ydk::is_set(pppoe_ds.yfilter)
-	|| ydk::is_set(standby_sessions.yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string SessionMon::Nodes::Node::SessionMonStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session-mon-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SessionMon::Nodes::Node::SessionMonStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SessionMonStatistics' in Cisco_IOS_XR_subscriber_session_mon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
-    if (dhcpv4.is_set || is_set(dhcpv4.yfilter)) leaf_name_data.push_back(dhcpv4.get_name_leafdata());
-    if (dhcpv6.is_set || is_set(dhcpv6.yfilter)) leaf_name_data.push_back(dhcpv6.get_name_leafdata());
-    if (ippkt.is_set || is_set(ippkt.yfilter)) leaf_name_data.push_back(ippkt.get_name_leafdata());
-    if (peak_active_sessions.is_set || is_set(peak_active_sessions.yfilter)) leaf_name_data.push_back(peak_active_sessions.get_name_leafdata());
-    if (peak_standby_sessions.is_set || is_set(peak_standby_sessions.yfilter)) leaf_name_data.push_back(peak_standby_sessions.get_name_leafdata());
-    if (peak_start_time.is_set || is_set(peak_start_time.yfilter)) leaf_name_data.push_back(peak_start_time.get_name_leafdata());
-    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
-    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
-    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
-    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SessionMon::Nodes::Node::SessionMonStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "active-sessions")
-    {
-        active_sessions = value;
-        active_sessions.value_namespace = name_space;
-        active_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcp-ds")
-    {
-        dhcp_ds = value;
-        dhcp_ds.value_namespace = name_space;
-        dhcp_ds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv4")
-    {
-        dhcpv4 = value;
-        dhcpv4.value_namespace = name_space;
-        dhcpv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv6")
-    {
-        dhcpv6 = value;
-        dhcpv6.value_namespace = name_space;
-        dhcpv6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ippkt")
-    {
-        ippkt = value;
-        ippkt.value_namespace = name_space;
-        ippkt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peak-active-sessions")
-    {
-        peak_active_sessions = value;
-        peak_active_sessions.value_namespace = name_space;
-        peak_active_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peak-standby-sessions")
-    {
-        peak_standby_sessions = value;
-        peak_standby_sessions.value_namespace = name_space;
-        peak_standby_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peak-start-time")
-    {
-        peak_start_time = value;
-        peak_start_time.value_namespace = name_space;
-        peak_start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pppoe")
-    {
-        pppoe = value;
-        pppoe.value_namespace = name_space;
-        pppoe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds = value;
-        pppoe_ds.value_namespace = name_space;
-        pppoe_ds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions = value;
-        standby_sessions.value_namespace = name_space;
-        standby_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout-value")
-    {
-        timeout_value = value;
-        timeout_value.value_namespace = name_space;
-        timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SessionMon::Nodes::Node::SessionMonStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "active-sessions")
-    {
-        active_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dhcp-ds")
-    {
-        dhcp_ds.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv4")
-    {
-        dhcpv4.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv6")
-    {
-        dhcpv6.yfilter = yfilter;
-    }
-    if(value_path == "ippkt")
-    {
-        ippkt.yfilter = yfilter;
-    }
-    if(value_path == "peak-active-sessions")
-    {
-        peak_active_sessions.yfilter = yfilter;
-    }
-    if(value_path == "peak-standby-sessions")
-    {
-        peak_standby_sessions.yfilter = yfilter;
-    }
-    if(value_path == "peak-start-time")
-    {
-        peak_start_time.yfilter = yfilter;
-    }
-    if(value_path == "pppoe")
-    {
-        pppoe.yfilter = yfilter;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds.yfilter = yfilter;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions.yfilter = yfilter;
-    }
-    if(value_path == "timeout-value")
-    {
-        timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool SessionMon::Nodes::Node::SessionMonStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-sessions" || name == "dhcp-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "ippkt" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "pppoe" || name == "pppoe-ds" || name == "standby-sessions" || name == "timeout-value" || name == "total")
-        return true;
-    return false;
-}
-
 SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistics()
 {
-    yang_name = "interface-all-statistics"; yang_parent_name = "node";
+
+    yang_name = "interface-all-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionMon::Nodes::Node::InterfaceAllStatistics::~InterfaceAllStatistics()
@@ -670,29 +388,15 @@ std::string SessionMon::Nodes::Node::InterfaceAllStatistics::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-all-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionMon::Nodes::Node::InterfaceAllStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::InterfaceAllStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceAllStatistics' in Cisco_IOS_XR_subscriber_session_mon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -760,7 +464,8 @@ SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::Interfac
     timeout_value{YType::uint32, "timeout-value"},
     total{YType::uint32, "total"}
 {
-    yang_name = "interface-all-statistic"; yang_parent_name = "interface-all-statistics";
+
+    yang_name = "interface-all-statistic"; yang_parent_name = "interface-all-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::~InterfaceAllStatistic()
@@ -808,23 +513,11 @@ std::string SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatist
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-all-statistic" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceAllStatistic' in Cisco_IOS_XR_subscriber_session_mon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -842,9 +535,7 @@ const EntityPath SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllSt
     if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1030,7 +721,8 @@ SessionMon::Nodes::Node::LicenseStatistics::LicenseStatistics()
     timeout_value{YType::uint32, "timeout-value"},
     total{YType::uint32, "total"}
 {
-    yang_name = "license-statistics"; yang_parent_name = "node";
+
+    yang_name = "license-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SessionMon::Nodes::Node::LicenseStatistics::~LicenseStatistics()
@@ -1076,23 +768,11 @@ std::string SessionMon::Nodes::Node::LicenseStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "license-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SessionMon::Nodes::Node::LicenseStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::LicenseStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LicenseStatistics' in Cisco_IOS_XR_subscriber_session_mon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
@@ -1109,9 +789,7 @@ const EntityPath SessionMon::Nodes::Node::LicenseStatistics::get_entity_path(Ent
     if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1265,6 +943,250 @@ void SessionMon::Nodes::Node::LicenseStatistics::set_filter(const std::string & 
 }
 
 bool SessionMon::Nodes::Node::LicenseStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-sessions" || name == "dhcp-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "ippkt" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "pppoe" || name == "pppoe-ds" || name == "standby-sessions" || name == "timeout-value" || name == "total")
+        return true;
+    return false;
+}
+
+SessionMon::Nodes::Node::SessionMonStatistics::SessionMonStatistics()
+    :
+    active_sessions{YType::uint32, "active-sessions"},
+    dhcp_ds{YType::uint32, "dhcp-ds"},
+    dhcpv4{YType::uint32, "dhcpv4"},
+    dhcpv6{YType::uint32, "dhcpv6"},
+    ippkt{YType::uint32, "ippkt"},
+    peak_active_sessions{YType::uint32, "peak-active-sessions"},
+    peak_standby_sessions{YType::uint32, "peak-standby-sessions"},
+    peak_start_time{YType::uint32, "peak-start-time"},
+    pppoe{YType::uint32, "pppoe"},
+    pppoe_ds{YType::uint32, "pppoe-ds"},
+    standby_sessions{YType::uint32, "standby-sessions"},
+    timeout_value{YType::uint32, "timeout-value"},
+    total{YType::uint32, "total"}
+{
+
+    yang_name = "session-mon-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SessionMon::Nodes::Node::SessionMonStatistics::~SessionMonStatistics()
+{
+}
+
+bool SessionMon::Nodes::Node::SessionMonStatistics::has_data() const
+{
+    return active_sessions.is_set
+	|| dhcp_ds.is_set
+	|| dhcpv4.is_set
+	|| dhcpv6.is_set
+	|| ippkt.is_set
+	|| peak_active_sessions.is_set
+	|| peak_standby_sessions.is_set
+	|| peak_start_time.is_set
+	|| pppoe.is_set
+	|| pppoe_ds.is_set
+	|| standby_sessions.is_set
+	|| timeout_value.is_set
+	|| total.is_set;
+}
+
+bool SessionMon::Nodes::Node::SessionMonStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(dhcp_ds.yfilter)
+	|| ydk::is_set(dhcpv4.yfilter)
+	|| ydk::is_set(dhcpv6.yfilter)
+	|| ydk::is_set(ippkt.yfilter)
+	|| ydk::is_set(peak_active_sessions.yfilter)
+	|| ydk::is_set(peak_standby_sessions.yfilter)
+	|| ydk::is_set(peak_start_time.yfilter)
+	|| ydk::is_set(pppoe.yfilter)
+	|| ydk::is_set(pppoe_ds.yfilter)
+	|| ydk::is_set(standby_sessions.yfilter)
+	|| ydk::is_set(timeout_value.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string SessionMon::Nodes::Node::SessionMonStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-mon-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::SessionMonStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
+    if (dhcpv4.is_set || is_set(dhcpv4.yfilter)) leaf_name_data.push_back(dhcpv4.get_name_leafdata());
+    if (dhcpv6.is_set || is_set(dhcpv6.yfilter)) leaf_name_data.push_back(dhcpv6.get_name_leafdata());
+    if (ippkt.is_set || is_set(ippkt.yfilter)) leaf_name_data.push_back(ippkt.get_name_leafdata());
+    if (peak_active_sessions.is_set || is_set(peak_active_sessions.yfilter)) leaf_name_data.push_back(peak_active_sessions.get_name_leafdata());
+    if (peak_standby_sessions.is_set || is_set(peak_standby_sessions.yfilter)) leaf_name_data.push_back(peak_standby_sessions.get_name_leafdata());
+    if (peak_start_time.is_set || is_set(peak_start_time.yfilter)) leaf_name_data.push_back(peak_start_time.get_name_leafdata());
+    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
+    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
+    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SessionMon::Nodes::Node::SessionMonStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "active-sessions")
+    {
+        active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds = value;
+        dhcp_ds.value_namespace = name_space;
+        dhcp_ds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcpv4")
+    {
+        dhcpv4 = value;
+        dhcpv4.value_namespace = name_space;
+        dhcpv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcpv6")
+    {
+        dhcpv6 = value;
+        dhcpv6.value_namespace = name_space;
+        dhcpv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ippkt")
+    {
+        ippkt = value;
+        ippkt.value_namespace = name_space;
+        ippkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-active-sessions")
+    {
+        peak_active_sessions = value;
+        peak_active_sessions.value_namespace = name_space;
+        peak_active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-standby-sessions")
+    {
+        peak_standby_sessions = value;
+        peak_standby_sessions.value_namespace = name_space;
+        peak_standby_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-start-time")
+    {
+        peak_start_time = value;
+        peak_start_time.value_namespace = name_space;
+        peak_start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pppoe")
+    {
+        pppoe = value;
+        pppoe.value_namespace = name_space;
+        pppoe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds = value;
+        pppoe_ds.value_namespace = name_space;
+        pppoe_ds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions = value;
+        standby_sessions.value_namespace = name_space;
+        standby_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionMon::Nodes::Node::SessionMonStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds.yfilter = yfilter;
+    }
+    if(value_path == "dhcpv4")
+    {
+        dhcpv4.yfilter = yfilter;
+    }
+    if(value_path == "dhcpv6")
+    {
+        dhcpv6.yfilter = yfilter;
+    }
+    if(value_path == "ippkt")
+    {
+        ippkt.yfilter = yfilter;
+    }
+    if(value_path == "peak-active-sessions")
+    {
+        peak_active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "peak-standby-sessions")
+    {
+        peak_standby_sessions.yfilter = yfilter;
+    }
+    if(value_path == "peak-start-time")
+    {
+        peak_start_time.yfilter = yfilter;
+    }
+    if(value_path == "pppoe")
+    {
+        pppoe.yfilter = yfilter;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds.yfilter = yfilter;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions.yfilter = yfilter;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool SessionMon::Nodes::Node::SessionMonStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "active-sessions" || name == "dhcp-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "ippkt" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "pppoe" || name == "pppoe-ds" || name == "standby-sessions" || name == "timeout-value" || name == "total")
         return true;

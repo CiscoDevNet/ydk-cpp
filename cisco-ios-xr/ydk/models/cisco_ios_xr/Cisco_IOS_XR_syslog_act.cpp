@@ -17,7 +17,7 @@ Logmsg::Logmsg()
 {
     input->parent = this;
 
-    yang_name = "logmsg"; yang_parent_name = "Cisco-IOS-XR-syslog-act";
+    yang_name = "logmsg"; yang_parent_name = "Cisco-IOS-XR-syslog-act"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Logmsg::~Logmsg()
@@ -39,26 +39,15 @@ std::string Logmsg::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-syslog-act:logmsg";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Logmsg::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Logmsg::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -132,7 +121,8 @@ Logmsg::Input::Input()
     message{YType::str, "message"},
     severity{YType::enumeration, "severity"}
 {
-    yang_name = "input"; yang_parent_name = "logmsg";
+
+    yang_name = "input"; yang_parent_name = "logmsg"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Logmsg::Input::~Input()
@@ -152,35 +142,28 @@ bool Logmsg::Input::has_operation() const
 	|| ydk::is_set(severity.yfilter);
 }
 
+std::string Logmsg::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-syslog-act:logmsg/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Logmsg::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Logmsg::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Logmsg::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-syslog-act:logmsg/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
     if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

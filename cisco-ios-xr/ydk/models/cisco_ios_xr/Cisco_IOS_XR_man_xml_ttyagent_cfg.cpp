@@ -11,13 +11,519 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_man_xml_ttyagent_cfg {
 
+Netconf::Netconf()
+    :
+    agent(std::make_shared<Netconf::Agent>())
+{
+    agent->parent = this;
+
+    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+Netconf::~Netconf()
+{
+}
+
+bool Netconf::has_data() const
+{
+    return (agent !=  nullptr && agent->has_data());
+}
+
+bool Netconf::has_operation() const
+{
+    return is_set(yfilter)
+	|| (agent !=  nullptr && agent->has_operation());
+}
+
+std::string Netconf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Netconf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "agent")
+    {
+        if(agent == nullptr)
+        {
+            agent = std::make_shared<Netconf::Agent>();
+        }
+        return agent;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(agent != nullptr)
+    {
+        children["agent"] = agent;
+    }
+
+    return children;
+}
+
+void Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Netconf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Netconf::clone_ptr() const
+{
+    return std::make_shared<Netconf>();
+}
+
+std::string Netconf::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string Netconf::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function Netconf::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Netconf::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Netconf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "agent")
+        return true;
+    return false;
+}
+
+Netconf::Agent::Agent()
+    :
+    tty(std::make_shared<Netconf::Agent::Tty>())
+{
+    tty->parent = this;
+
+    yang_name = "agent"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Netconf::Agent::~Agent()
+{
+}
+
+bool Netconf::Agent::has_data() const
+{
+    return (tty !=  nullptr && tty->has_data());
+}
+
+bool Netconf::Agent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (tty !=  nullptr && tty->has_operation());
+}
+
+std::string Netconf::Agent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Netconf::Agent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "agent";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Netconf::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tty")
+    {
+        if(tty == nullptr)
+        {
+            tty = std::make_shared<Netconf::Agent::Tty>();
+        }
+        return tty;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tty != nullptr)
+    {
+        children["tty"] = tty;
+    }
+
+    return children;
+}
+
+void Netconf::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Netconf::Agent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Netconf::Agent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tty")
+        return true;
+    return false;
+}
+
+Netconf::Agent::Tty::Tty()
+    :
+    enable{YType::empty, "enable"}
+    	,
+    session(std::make_shared<Netconf::Agent::Tty::Session>())
+	,throttle(std::make_shared<Netconf::Agent::Tty::Throttle>())
+{
+    session->parent = this;
+    throttle->parent = this;
+
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Netconf::Agent::Tty::~Tty()
+{
+}
+
+bool Netconf::Agent::Tty::has_data() const
+{
+    return enable.is_set
+	|| (session !=  nullptr && session->has_data())
+	|| (throttle !=  nullptr && throttle->has_data());
+}
+
+bool Netconf::Agent::Tty::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (session !=  nullptr && session->has_operation())
+	|| (throttle !=  nullptr && throttle->has_operation());
+}
+
+std::string Netconf::Agent::Tty::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Netconf::Agent::Tty::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tty";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session")
+    {
+        if(session == nullptr)
+        {
+            session = std::make_shared<Netconf::Agent::Tty::Session>();
+        }
+        return session;
+    }
+
+    if(child_yang_name == "throttle")
+    {
+        if(throttle == nullptr)
+        {
+            throttle = std::make_shared<Netconf::Agent::Tty::Throttle>();
+        }
+        return throttle;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
+    {
+        children["session"] = session;
+    }
+
+    if(throttle != nullptr)
+    {
+        children["throttle"] = throttle;
+    }
+
+    return children;
+}
+
+void Netconf::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Netconf::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "throttle" || name == "enable")
+        return true;
+    return false;
+}
+
+Netconf::Agent::Tty::Session::Session()
+    :
+    timeout{YType::uint32, "timeout"}
+{
+
+    yang_name = "session"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Netconf::Agent::Tty::Session::~Session()
+{
+}
+
+bool Netconf::Agent::Tty::Session::has_data() const
+{
+    return timeout.is_set;
+}
+
+bool Netconf::Agent::Tty::Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string Netconf::Agent::Tty::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/agent/tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Netconf::Agent::Tty::Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Netconf::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Netconf::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Netconf::Agent::Tty::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout")
+        return true;
+    return false;
+}
+
+Netconf::Agent::Tty::Throttle::Throttle()
+    :
+    memory{YType::uint32, "memory"},
+    offload_memory{YType::uint32, "offload-memory"},
+    process_rate{YType::uint32, "process-rate"}
+{
+
+    yang_name = "throttle"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Netconf::Agent::Tty::Throttle::~Throttle()
+{
+}
+
+bool Netconf::Agent::Tty::Throttle::has_data() const
+{
+    return memory.is_set
+	|| offload_memory.is_set
+	|| process_rate.is_set;
+}
+
+bool Netconf::Agent::Tty::Throttle::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(memory.yfilter)
+	|| ydk::is_set(offload_memory.yfilter)
+	|| ydk::is_set(process_rate.yfilter);
+}
+
+std::string Netconf::Agent::Tty::Throttle::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/agent/tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Netconf::Agent::Tty::Throttle::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "throttle";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::Throttle::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
+    if (offload_memory.is_set || is_set(offload_memory.yfilter)) leaf_name_data.push_back(offload_memory.get_name_leafdata());
+    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Netconf::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Throttle::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Netconf::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "memory")
+    {
+        memory = value;
+        memory.value_namespace = name_space;
+        memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offload-memory")
+    {
+        offload_memory = value;
+        offload_memory.value_namespace = name_space;
+        offload_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate = value;
+        process_rate.value_namespace = name_space;
+        process_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Netconf::Agent::Tty::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "memory")
+    {
+        memory.yfilter = yfilter;
+    }
+    if(value_path == "offload-memory")
+    {
+        offload_memory.yfilter = yfilter;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory" || name == "offload-memory" || name == "process-rate")
+        return true;
+    return false;
+}
+
 XrXml::XrXml()
     :
     agent(std::make_shared<XrXml::Agent>())
 {
     agent->parent = this;
 
-    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg";
+    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 XrXml::~XrXml()
@@ -39,26 +545,15 @@ std::string XrXml::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -134,12 +629,10 @@ XrXml::Agent::Agent()
 	,tty(std::make_shared<XrXml::Agent::Tty>())
 {
     default_->parent = this;
-
     ssl->parent = this;
-
     tty->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "xr-xml";
+    yang_name = "agent"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::~Agent()
@@ -161,33 +654,26 @@ bool XrXml::Agent::has_operation() const
 	|| (tty !=  nullptr && tty->has_operation());
 }
 
+std::string XrXml::Agent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "agent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -272,12 +758,10 @@ XrXml::Agent::Default_::Default_()
 	,vrfs(std::make_shared<XrXml::Agent::Default_::Vrfs>())
 {
     session->parent = this;
-
     throttle->parent = this;
-
     vrfs->parent = this;
 
-    yang_name = "default"; yang_parent_name = "agent";
+    yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::~Default_()
@@ -309,27 +793,22 @@ bool XrXml::Agent::Default_::has_operation() const
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
+std::string XrXml::Agent::Default_::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
@@ -338,9 +817,7 @@ const EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
     if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
     if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -466,7 +943,8 @@ XrXml::Agent::Default_::Session::Session()
     :
     timeout{YType::uint32, "timeout"}
 {
-    yang_name = "session"; yang_parent_name = "default";
+
+    yang_name = "session"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::Session::~Session()
@@ -484,34 +962,27 @@ bool XrXml::Agent::Default_::Session::has_operation() const
 	|| ydk::is_set(timeout.yfilter);
 }
 
+std::string XrXml::Agent::Default_::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -556,7 +1027,8 @@ XrXml::Agent::Default_::Throttle::Throttle()
     memory{YType::uint32, "memory"},
     process_rate{YType::uint32, "process-rate"}
 {
-    yang_name = "throttle"; yang_parent_name = "default";
+
+    yang_name = "throttle"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::Throttle::~Throttle()
@@ -576,35 +1048,28 @@ bool XrXml::Agent::Default_::Throttle::has_operation() const
 	|| ydk::is_set(process_rate.yfilter);
 }
 
+std::string XrXml::Agent::Default_::Throttle::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::Throttle::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throttle";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::Throttle::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Throttle::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
     if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -656,7 +1121,8 @@ bool XrXml::Agent::Default_::Throttle::has_leaf_or_child_of_name(const std::stri
 
 XrXml::Agent::Default_::Vrfs::Vrfs()
 {
-    yang_name = "vrfs"; yang_parent_name = "default";
+
+    yang_name = "vrfs"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::Vrfs::~Vrfs()
@@ -683,33 +1149,26 @@ bool XrXml::Agent::Default_::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string XrXml::Agent::Default_::Vrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::Vrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Vrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -768,7 +1227,8 @@ XrXml::Agent::Default_::Vrfs::Vrf::Vrf()
     ipv6_access_list{YType::str, "ipv6-access-list"},
     shutdown{YType::empty, "shutdown"}
 {
-    yang_name = "vrf"; yang_parent_name = "vrfs";
+
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::Vrfs::Vrf::~Vrf()
@@ -794,27 +1254,22 @@ bool XrXml::Agent::Default_::Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(shutdown.yfilter);
 }
 
+std::string XrXml::Agent::Default_::Vrfs::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Vrfs::Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
@@ -823,9 +1278,7 @@ const EntityPath XrXml::Agent::Default_::Vrfs::Vrf::get_entity_path(Entity* ance
     if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -905,354 +1358,6 @@ bool XrXml::Agent::Default_::Vrfs::Vrf::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-XrXml::Agent::Tty::Tty()
-    :
-    enable{YType::empty, "enable"},
-    iteration_size{YType::uint32, "iteration-size"},
-    streaming_size{YType::uint32, "streaming-size"}
-    	,
-    session(std::make_shared<XrXml::Agent::Tty::Session>())
-	,throttle(std::make_shared<XrXml::Agent::Tty::Throttle>())
-{
-    session->parent = this;
-
-    throttle->parent = this;
-
-    yang_name = "tty"; yang_parent_name = "agent";
-}
-
-XrXml::Agent::Tty::~Tty()
-{
-}
-
-bool XrXml::Agent::Tty::has_data() const
-{
-    return enable.is_set
-	|| iteration_size.is_set
-	|| streaming_size.is_set
-	|| (session !=  nullptr && session->has_data())
-	|| (throttle !=  nullptr && throttle->has_data());
-}
-
-bool XrXml::Agent::Tty::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(iteration_size.yfilter)
-	|| ydk::is_set(streaming_size.yfilter)
-	|| (session !=  nullptr && session->has_operation())
-	|| (throttle !=  nullptr && throttle->has_operation());
-}
-
-std::string XrXml::Agent::Tty::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tty";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath XrXml::Agent::Tty::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
-    if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "session")
-    {
-        if(session == nullptr)
-        {
-            session = std::make_shared<XrXml::Agent::Tty::Session>();
-        }
-        return session;
-    }
-
-    if(child_yang_name == "throttle")
-    {
-        if(throttle == nullptr)
-        {
-            throttle = std::make_shared<XrXml::Agent::Tty::Throttle>();
-        }
-        return throttle;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(session != nullptr)
-    {
-        children["session"] = session;
-    }
-
-    if(throttle != nullptr)
-    {
-        children["throttle"] = throttle;
-    }
-
-    return children;
-}
-
-void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "iteration-size")
-    {
-        iteration_size = value;
-        iteration_size.value_namespace = name_space;
-        iteration_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "streaming-size")
-    {
-        streaming_size = value;
-        streaming_size.value_namespace = name_space;
-        streaming_size.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void XrXml::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "iteration-size")
-    {
-        iteration_size.yfilter = yfilter;
-    }
-    if(value_path == "streaming-size")
-    {
-        streaming_size.yfilter = yfilter;
-    }
-}
-
-bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session" || name == "throttle" || name == "enable" || name == "iteration-size" || name == "streaming-size")
-        return true;
-    return false;
-}
-
-XrXml::Agent::Tty::Session::Session()
-    :
-    timeout{YType::uint32, "timeout"}
-{
-    yang_name = "session"; yang_parent_name = "tty";
-}
-
-XrXml::Agent::Tty::Session::~Session()
-{
-}
-
-bool XrXml::Agent::Tty::Session::has_data() const
-{
-    return timeout.is_set;
-}
-
-bool XrXml::Agent::Tty::Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timeout.yfilter);
-}
-
-std::string XrXml::Agent::Tty::Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath XrXml::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> XrXml::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void XrXml::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void XrXml::Agent::Tty::Session::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool XrXml::Agent::Tty::Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "timeout")
-        return true;
-    return false;
-}
-
-XrXml::Agent::Tty::Throttle::Throttle()
-    :
-    memory{YType::uint32, "memory"},
-    process_rate{YType::uint32, "process-rate"}
-{
-    yang_name = "throttle"; yang_parent_name = "tty";
-}
-
-XrXml::Agent::Tty::Throttle::~Throttle()
-{
-}
-
-bool XrXml::Agent::Tty::Throttle::has_data() const
-{
-    return memory.is_set
-	|| process_rate.is_set;
-}
-
-bool XrXml::Agent::Tty::Throttle::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(memory.yfilter)
-	|| ydk::is_set(process_rate.yfilter);
-}
-
-std::string XrXml::Agent::Tty::Throttle::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "throttle";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath XrXml::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
-    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> XrXml::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Throttle::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void XrXml::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "memory")
-    {
-        memory = value;
-        memory.value_namespace = name_space;
-        memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-rate")
-    {
-        process_rate = value;
-        process_rate.value_namespace = name_space;
-        process_rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void XrXml::Agent::Tty::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "memory")
-    {
-        memory.yfilter = yfilter;
-    }
-    if(value_path == "process-rate")
-    {
-        process_rate.yfilter = yfilter;
-    }
-}
-
-bool XrXml::Agent::Tty::Throttle::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "memory" || name == "process-rate")
-        return true;
-    return false;
-}
-
 XrXml::Agent::Ssl::Ssl()
     :
     enable{YType::empty, "enable"},
@@ -1264,12 +1369,10 @@ XrXml::Agent::Ssl::Ssl()
 	,vrfs(std::make_shared<XrXml::Agent::Ssl::Vrfs>())
 {
     session->parent = this;
-
     throttle->parent = this;
-
     vrfs->parent = this;
 
-    yang_name = "ssl"; yang_parent_name = "agent";
+    yang_name = "ssl"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::~Ssl()
@@ -1297,36 +1400,29 @@ bool XrXml::Agent::Ssl::has_operation() const
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
+std::string XrXml::Agent::Ssl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
     if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1432,7 +1528,8 @@ XrXml::Agent::Ssl::Session::Session()
     :
     timeout{YType::uint32, "timeout"}
 {
-    yang_name = "session"; yang_parent_name = "ssl";
+
+    yang_name = "session"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::Session::~Session()
@@ -1450,34 +1547,27 @@ bool XrXml::Agent::Ssl::Session::has_operation() const
 	|| ydk::is_set(timeout.yfilter);
 }
 
+std::string XrXml::Agent::Ssl::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1522,7 +1612,8 @@ XrXml::Agent::Ssl::Throttle::Throttle()
     memory{YType::uint32, "memory"},
     process_rate{YType::uint32, "process-rate"}
 {
-    yang_name = "throttle"; yang_parent_name = "ssl";
+
+    yang_name = "throttle"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::Throttle::~Throttle()
@@ -1542,35 +1633,28 @@ bool XrXml::Agent::Ssl::Throttle::has_operation() const
 	|| ydk::is_set(process_rate.yfilter);
 }
 
+std::string XrXml::Agent::Ssl::Throttle::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::Throttle::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throttle";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::Throttle::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Throttle::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
     if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1622,7 +1706,8 @@ bool XrXml::Agent::Ssl::Throttle::has_leaf_or_child_of_name(const std::string & 
 
 XrXml::Agent::Ssl::Vrfs::Vrfs()
 {
-    yang_name = "vrfs"; yang_parent_name = "ssl";
+
+    yang_name = "vrfs"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::Vrfs::~Vrfs()
@@ -1649,33 +1734,26 @@ bool XrXml::Agent::Ssl::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string XrXml::Agent::Ssl::Vrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::Vrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Vrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1734,7 +1812,8 @@ XrXml::Agent::Ssl::Vrfs::Vrf::Vrf()
     ipv6_access_list{YType::str, "ipv6-access-list"},
     shutdown{YType::empty, "shutdown"}
 {
-    yang_name = "vrf"; yang_parent_name = "vrfs";
+
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::Vrfs::Vrf::~Vrf()
@@ -1760,27 +1839,22 @@ bool XrXml::Agent::Ssl::Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(shutdown.yfilter);
 }
 
+std::string XrXml::Agent::Ssl::Vrfs::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Vrfs::Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/ssl/vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
@@ -1789,9 +1863,7 @@ const EntityPath XrXml::Agent::Ssl::Vrfs::Vrf::get_entity_path(Entity* ancestor)
     if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1871,287 +1943,77 @@ bool XrXml::Agent::Ssl::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-Netconf::Netconf()
+XrXml::Agent::Tty::Tty()
     :
-    agent(std::make_shared<Netconf::Agent>())
-{
-    agent->parent = this;
-
-    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg";
-}
-
-Netconf::~Netconf()
-{
-}
-
-bool Netconf::has_data() const
-{
-    return (agent !=  nullptr && agent->has_data());
-}
-
-bool Netconf::has_operation() const
-{
-    return is_set(yfilter)
-	|| (agent !=  nullptr && agent->has_operation());
-}
-
-std::string Netconf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Netconf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "agent")
-    {
-        if(agent == nullptr)
-        {
-            agent = std::make_shared<Netconf::Agent>();
-        }
-        return agent;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(agent != nullptr)
-    {
-        children["agent"] = agent;
-    }
-
-    return children;
-}
-
-void Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Netconf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> Netconf::clone_ptr() const
-{
-    return std::make_shared<Netconf>();
-}
-
-std::string Netconf::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string Netconf::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function Netconf::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> Netconf::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool Netconf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "agent")
-        return true;
-    return false;
-}
-
-Netconf::Agent::Agent()
-    :
-    tty(std::make_shared<Netconf::Agent::Tty>())
-{
-    tty->parent = this;
-
-    yang_name = "agent"; yang_parent_name = "netconf";
-}
-
-Netconf::Agent::~Agent()
-{
-}
-
-bool Netconf::Agent::has_data() const
-{
-    return (tty !=  nullptr && tty->has_data());
-}
-
-bool Netconf::Agent::has_operation() const
-{
-    return is_set(yfilter)
-	|| (tty !=  nullptr && tty->has_operation());
-}
-
-std::string Netconf::Agent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "agent";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Netconf::Agent::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Netconf::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tty")
-    {
-        if(tty == nullptr)
-        {
-            tty = std::make_shared<Netconf::Agent::Tty>();
-        }
-        return tty;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tty != nullptr)
-    {
-        children["tty"] = tty;
-    }
-
-    return children;
-}
-
-void Netconf::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Netconf::Agent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Netconf::Agent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tty")
-        return true;
-    return false;
-}
-
-Netconf::Agent::Tty::Tty()
-    :
-    enable{YType::empty, "enable"}
+    enable{YType::empty, "enable"},
+    iteration_size{YType::uint32, "iteration-size"},
+    streaming_size{YType::uint32, "streaming-size"}
     	,
-    session(std::make_shared<Netconf::Agent::Tty::Session>())
-	,throttle(std::make_shared<Netconf::Agent::Tty::Throttle>())
+    session(std::make_shared<XrXml::Agent::Tty::Session>())
+	,throttle(std::make_shared<XrXml::Agent::Tty::Throttle>())
 {
     session->parent = this;
-
     throttle->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "agent";
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Netconf::Agent::Tty::~Tty()
+XrXml::Agent::Tty::~Tty()
 {
 }
 
-bool Netconf::Agent::Tty::has_data() const
+bool XrXml::Agent::Tty::has_data() const
 {
     return enable.is_set
+	|| iteration_size.is_set
+	|| streaming_size.is_set
 	|| (session !=  nullptr && session->has_data())
 	|| (throttle !=  nullptr && throttle->has_data());
 }
 
-bool Netconf::Agent::Tty::has_operation() const
+bool XrXml::Agent::Tty::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(iteration_size.yfilter)
+	|| ydk::is_set(streaming_size.yfilter)
 	|| (session !=  nullptr && session->has_operation())
 	|| (throttle !=  nullptr && throttle->has_operation());
 }
 
-std::string Netconf::Agent::Tty::get_segment_path() const
+std::string XrXml::Agent::Tty::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string XrXml::Agent::Tty::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tty";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::Agent::Tty::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
+    if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
         if(session == nullptr)
         {
-            session = std::make_shared<Netconf::Agent::Tty::Session>();
+            session = std::make_shared<XrXml::Agent::Tty::Session>();
         }
         return session;
     }
@@ -2160,7 +2022,7 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string
     {
         if(throttle == nullptr)
         {
-            throttle = std::make_shared<Netconf::Agent::Tty::Throttle>();
+            throttle = std::make_shared<XrXml::Agent::Tty::Throttle>();
         }
         return throttle;
     }
@@ -2168,7 +2030,7 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(session != nullptr)
@@ -2184,7 +2046,7 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children
     return children;
 }
 
-void Netconf::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -2192,205 +2054,102 @@ void Netconf::Agent::Tty::set_value(const std::string & value_path, const std::s
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "iteration-size")
+    {
+        iteration_size = value;
+        iteration_size.value_namespace = name_space;
+        iteration_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "streaming-size")
+    {
+        streaming_size = value;
+        streaming_size.value_namespace = name_space;
+        streaming_size.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Netconf::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
     }
+    if(value_path == "iteration-size")
+    {
+        iteration_size.yfilter = yfilter;
+    }
+    if(value_path == "streaming-size")
+    {
+        streaming_size.yfilter = yfilter;
+    }
 }
 
-bool Netconf::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session" || name == "throttle" || name == "enable")
+    if(name == "session" || name == "throttle" || name == "enable" || name == "iteration-size" || name == "streaming-size")
         return true;
     return false;
 }
 
-Netconf::Agent::Tty::Throttle::Throttle()
-    :
-    memory{YType::uint32, "memory"},
-    offload_memory{YType::uint32, "offload-memory"},
-    process_rate{YType::uint32, "process-rate"}
-{
-    yang_name = "throttle"; yang_parent_name = "tty";
-}
-
-Netconf::Agent::Tty::Throttle::~Throttle()
-{
-}
-
-bool Netconf::Agent::Tty::Throttle::has_data() const
-{
-    return memory.is_set
-	|| offload_memory.is_set
-	|| process_rate.is_set;
-}
-
-bool Netconf::Agent::Tty::Throttle::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(memory.yfilter)
-	|| ydk::is_set(offload_memory.yfilter)
-	|| ydk::is_set(process_rate.yfilter);
-}
-
-std::string Netconf::Agent::Tty::Throttle::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "throttle";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Netconf::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/agent/tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
-    if (offload_memory.is_set || is_set(offload_memory.yfilter)) leaf_name_data.push_back(offload_memory.get_name_leafdata());
-    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Netconf::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Throttle::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Netconf::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "memory")
-    {
-        memory = value;
-        memory.value_namespace = name_space;
-        memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "offload-memory")
-    {
-        offload_memory = value;
-        offload_memory.value_namespace = name_space;
-        offload_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-rate")
-    {
-        process_rate = value;
-        process_rate.value_namespace = name_space;
-        process_rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Netconf::Agent::Tty::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "memory")
-    {
-        memory.yfilter = yfilter;
-    }
-    if(value_path == "offload-memory")
-    {
-        offload_memory.yfilter = yfilter;
-    }
-    if(value_path == "process-rate")
-    {
-        process_rate.yfilter = yfilter;
-    }
-}
-
-bool Netconf::Agent::Tty::Throttle::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "memory" || name == "offload-memory" || name == "process-rate")
-        return true;
-    return false;
-}
-
-Netconf::Agent::Tty::Session::Session()
+XrXml::Agent::Tty::Session::Session()
     :
     timeout{YType::uint32, "timeout"}
 {
-    yang_name = "session"; yang_parent_name = "tty";
+
+    yang_name = "session"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Netconf::Agent::Tty::Session::~Session()
+XrXml::Agent::Tty::Session::~Session()
 {
 }
 
-bool Netconf::Agent::Tty::Session::has_data() const
+bool XrXml::Agent::Tty::Session::has_data() const
 {
     return timeout.is_set;
 }
 
-bool Netconf::Agent::Tty::Session::has_operation() const
+bool XrXml::Agent::Tty::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timeout.yfilter);
 }
 
-std::string Netconf::Agent::Tty::Session::get_segment_path() const
+std::string XrXml::Agent::Tty::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string XrXml::Agent::Tty::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf/agent/tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Netconf::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Netconf::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
@@ -2400,7 +2159,7 @@ void Netconf::Agent::Tty::Session::set_value(const std::string & value_path, con
     }
 }
 
-void Netconf::Agent::Tty::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Tty::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timeout")
     {
@@ -2408,9 +2167,106 @@ void Netconf::Agent::Tty::Session::set_filter(const std::string & value_path, YF
     }
 }
 
-bool Netconf::Agent::Tty::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Tty::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout")
+        return true;
+    return false;
+}
+
+XrXml::Agent::Tty::Throttle::Throttle()
+    :
+    memory{YType::uint32, "memory"},
+    process_rate{YType::uint32, "process-rate"}
+{
+
+    yang_name = "throttle"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+XrXml::Agent::Tty::Throttle::~Throttle()
+{
+}
+
+bool XrXml::Agent::Tty::Throttle::has_data() const
+{
+    return memory.is_set
+	|| process_rate.is_set;
+}
+
+bool XrXml::Agent::Tty::Throttle::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(memory.yfilter)
+	|| ydk::is_set(process_rate.yfilter);
+}
+
+std::string XrXml::Agent::Tty::Throttle::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string XrXml::Agent::Tty::Throttle::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "throttle";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::Throttle::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
+    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> XrXml::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Throttle::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void XrXml::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "memory")
+    {
+        memory = value;
+        memory.value_namespace = name_space;
+        memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate = value;
+        process_rate.value_namespace = name_space;
+        process_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void XrXml::Agent::Tty::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "memory")
+    {
+        memory.yfilter = yfilter;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Tty::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory" || name == "process-rate")
         return true;
     return false;
 }

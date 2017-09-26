@@ -11,228 +11,201 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_installmgr_admin_oper {
 
-Install::Logs::Log::Communication::LogContents::V3::V3()
+Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::LoadPath()
     :
-    category{YType::enumeration, "category"},
-    message{YType::str, "message"}
+    build_information{YType::str, "build-information"},
+    version{YType::str, "version"}
     	,
-    scope(std::make_shared<Install::Logs::Log::Communication::LogContents::V3::Scope>())
+    package(std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package>())
 {
-    scope->parent = this;
+    package->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents";
+    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Install::Logs::Log::Communication::LogContents::V3::~V3()
+Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::~LoadPath()
 {
 }
 
-bool Install::Logs::Log::Communication::LogContents::V3::has_data() const
+bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::has_data() const
 {
-    return category.is_set
-	|| message.is_set
-	|| (scope !=  nullptr && scope->has_data());
+    return build_information.is_set
+	|| version.is_set
+	|| (package !=  nullptr && package->has_data());
 }
 
-bool Install::Logs::Log::Communication::LogContents::V3::has_operation() const
+bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(category.yfilter)
-	|| ydk::is_set(message.yfilter)
-	|| (scope !=  nullptr && scope->has_operation());
+	|| ydk::is_set(build_information.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| (package !=  nullptr && package->has_operation());
 }
 
-std::string Install::Logs::Log::Communication::LogContents::V3::get_segment_path() const
+std::string Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "v3";
-
+    path_buffer << "load-path";
     return path_buffer.str();
-
 }
 
-const EntityPath Install::Logs::Log::Communication::LogContents::V3::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'V3' in Cisco_IOS_XR_installmgr_admin_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+    if (build_information.is_set || is_set(build_information.yfilter)) leaf_name_data.push_back(build_information.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::V3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "scope")
+    if(child_yang_name == "package")
     {
-        if(scope == nullptr)
+        if(package == nullptr)
         {
-            scope = std::make_shared<Install::Logs::Log::Communication::LogContents::V3::Scope>();
+            package = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package>();
         }
-        return scope;
+        return package;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::V3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(scope != nullptr)
+    if(package != nullptr)
     {
-        children["scope"] = scope;
+        children["package"] = package;
     }
 
     return children;
 }
 
-void Install::Logs::Log::Communication::LogContents::V3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "category")
+    if(value_path == "build-information")
     {
-        category = value;
-        category.value_namespace = name_space;
-        category.value_namespace_prefix = name_space_prefix;
+        build_information = value;
+        build_information.value_namespace = name_space;
+        build_information.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "message")
+    if(value_path == "version")
     {
-        message = value;
-        message.value_namespace = name_space;
-        message.value_namespace_prefix = name_space_prefix;
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Install::Logs::Log::Communication::LogContents::V3::set_filter(const std::string & value_path, YFilter yfilter)
+void Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "category")
+    if(value_path == "build-information")
     {
-        category.yfilter = yfilter;
+        build_information.yfilter = yfilter;
     }
-    if(value_path == "message")
+    if(value_path == "version")
     {
-        message.yfilter = yfilter;
+        version.yfilter = yfilter;
     }
 }
 
-bool Install::Logs::Log::Communication::LogContents::V3::has_leaf_or_child_of_name(const std::string & name) const
+bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "scope" || name == "category" || name == "message")
+    if(name == "package" || name == "build-information" || name == "version")
         return true;
     return false;
 }
 
-Install::Logs::Log::Communication::LogContents::V3::Scope::Scope()
+Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::Package()
     :
-    admin_read{YType::boolean, "admin-read"},
-    affected_sd_rs{YType::uint32, "affected-sd-rs"}
+    device_name{YType::str, "device-name"},
+    name{YType::str, "name"}
 {
-    yang_name = "scope"; yang_parent_name = "v3";
+
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Install::Logs::Log::Communication::LogContents::V3::Scope::~Scope()
+Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::~Package()
 {
 }
 
-bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_data() const
+bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::has_data() const
 {
-    return admin_read.is_set
-	|| affected_sd_rs.is_set;
+    return device_name.is_set
+	|| name.is_set;
 }
 
-bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_operation() const
+bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(admin_read.yfilter)
-	|| ydk::is_set(affected_sd_rs.yfilter);
+	|| ydk::is_set(device_name.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
-std::string Install::Logs::Log::Communication::LogContents::V3::Scope::get_segment_path() const
+std::string Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "scope";
-
+    path_buffer << "package";
     return path_buffer.str();
-
 }
 
-const EntityPath Install::Logs::Log::Communication::LogContents::V3::Scope::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Scope' in Cisco_IOS_XR_installmgr_admin_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_read.is_set || is_set(admin_read.yfilter)) leaf_name_data.push_back(admin_read.get_name_leafdata());
-    if (affected_sd_rs.is_set || is_set(affected_sd_rs.yfilter)) leaf_name_data.push_back(affected_sd_rs.get_name_leafdata());
+    if (device_name.is_set || is_set(device_name.yfilter)) leaf_name_data.push_back(device_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::V3::Scope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::V3::Scope::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Install::Logs::Log::Communication::LogContents::V3::Scope::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "admin-read")
+    if(value_path == "device-name")
     {
-        admin_read = value;
-        admin_read.value_namespace = name_space;
-        admin_read.value_namespace_prefix = name_space_prefix;
+        device_name = value;
+        device_name.value_namespace = name_space;
+        device_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "affected-sd-rs")
+    if(value_path == "name")
     {
-        affected_sd_rs = value;
-        affected_sd_rs.value_namespace = name_space;
-        affected_sd_rs.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Install::Logs::Log::Communication::LogContents::V3::Scope::set_filter(const std::string & value_path, YFilter yfilter)
+void Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "admin-read")
+    if(value_path == "device-name")
     {
-        admin_read.yfilter = yfilter;
+        device_name.yfilter = yfilter;
     }
-    if(value_path == "affected-sd-rs")
+    if(value_path == "name")
     {
-        affected_sd_rs.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
 }
 
-bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_leaf_or_child_of_name(const std::string & name) const
+bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-read" || name == "affected-sd-rs")
+    if(name == "device-name" || name == "name")
         return true;
     return false;
 }

@@ -11,47 +11,38 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_PROCESS_MIB {
 
-CiscoProcessMib::CiscoProcessMib()
+CISCOPROCESSMIB::CISCOPROCESSMIB()
     :
-    cpmcoretable(std::make_shared<CiscoProcessMib::Cpmcoretable>())
-	,cpmcpuhistory(std::make_shared<CiscoProcessMib::Cpmcpuhistory>())
-	,cpmcpuhistorytable(std::make_shared<CiscoProcessMib::Cpmcpuhistorytable>())
-	,cpmcpuprocesshistorytable(std::make_shared<CiscoProcessMib::Cpmcpuprocesshistorytable>())
-	,cpmcputhresholdtable(std::make_shared<CiscoProcessMib::Cpmcputhresholdtable>())
-	,cpmcputotaltable(std::make_shared<CiscoProcessMib::Cpmcputotaltable>())
-	,cpmprocessextrevtable(std::make_shared<CiscoProcessMib::Cpmprocessextrevtable>())
-	,cpmprocesstable(std::make_shared<CiscoProcessMib::Cpmprocesstable>())
-	,cpmthreadtable(std::make_shared<CiscoProcessMib::Cpmthreadtable>())
-	,cpmvirtualprocesstable(std::make_shared<CiscoProcessMib::Cpmvirtualprocesstable>())
+    cpmcoretable(std::make_shared<CISCOPROCESSMIB::Cpmcoretable>())
+	,cpmcpuhistory(std::make_shared<CISCOPROCESSMIB::Cpmcpuhistory>())
+	,cpmcpuhistorytable(std::make_shared<CISCOPROCESSMIB::Cpmcpuhistorytable>())
+	,cpmcpuprocesshistorytable(std::make_shared<CISCOPROCESSMIB::Cpmcpuprocesshistorytable>())
+	,cpmcputhresholdtable(std::make_shared<CISCOPROCESSMIB::Cpmcputhresholdtable>())
+	,cpmcputotaltable(std::make_shared<CISCOPROCESSMIB::Cpmcputotaltable>())
+	,cpmprocessextrevtable(std::make_shared<CISCOPROCESSMIB::Cpmprocessextrevtable>())
+	,cpmprocesstable(std::make_shared<CISCOPROCESSMIB::Cpmprocesstable>())
+	,cpmthreadtable(std::make_shared<CISCOPROCESSMIB::Cpmthreadtable>())
+	,cpmvirtualprocesstable(std::make_shared<CISCOPROCESSMIB::Cpmvirtualprocesstable>())
 {
     cpmcoretable->parent = this;
-
     cpmcpuhistory->parent = this;
-
     cpmcpuhistorytable->parent = this;
-
     cpmcpuprocesshistorytable->parent = this;
-
     cpmcputhresholdtable->parent = this;
-
     cpmcputotaltable->parent = this;
-
     cpmprocessextrevtable->parent = this;
-
     cpmprocesstable->parent = this;
-
     cpmthreadtable->parent = this;
-
     cpmvirtualprocesstable->parent = this;
 
-    yang_name = "CISCO-PROCESS-MIB"; yang_parent_name = "CISCO-PROCESS-MIB";
+    yang_name = "CISCO-PROCESS-MIB"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoProcessMib::~CiscoProcessMib()
+CISCOPROCESSMIB::~CISCOPROCESSMIB()
 {
 }
 
-bool CiscoProcessMib::has_data() const
+bool CISCOPROCESSMIB::has_data() const
 {
     return (cpmcoretable !=  nullptr && cpmcoretable->has_data())
 	|| (cpmcpuhistory !=  nullptr && cpmcpuhistory->has_data())
@@ -65,7 +56,7 @@ bool CiscoProcessMib::has_data() const
 	|| (cpmvirtualprocesstable !=  nullptr && cpmvirtualprocesstable->has_data());
 }
 
-bool CiscoProcessMib::has_operation() const
+bool CISCOPROCESSMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cpmcoretable !=  nullptr && cpmcoretable->has_operation())
@@ -80,40 +71,29 @@ bool CiscoProcessMib::has_operation() const
 	|| (cpmvirtualprocesstable !=  nullptr && cpmvirtualprocesstable->has_operation());
 }
 
-std::string CiscoProcessMib::get_segment_path() const
+std::string CISCOPROCESSMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCoreTable")
     {
         if(cpmcoretable == nullptr)
         {
-            cpmcoretable = std::make_shared<CiscoProcessMib::Cpmcoretable>();
+            cpmcoretable = std::make_shared<CISCOPROCESSMIB::Cpmcoretable>();
         }
         return cpmcoretable;
     }
@@ -122,7 +102,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmcpuhistory == nullptr)
         {
-            cpmcpuhistory = std::make_shared<CiscoProcessMib::Cpmcpuhistory>();
+            cpmcpuhistory = std::make_shared<CISCOPROCESSMIB::Cpmcpuhistory>();
         }
         return cpmcpuhistory;
     }
@@ -131,7 +111,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmcpuhistorytable == nullptr)
         {
-            cpmcpuhistorytable = std::make_shared<CiscoProcessMib::Cpmcpuhistorytable>();
+            cpmcpuhistorytable = std::make_shared<CISCOPROCESSMIB::Cpmcpuhistorytable>();
         }
         return cpmcpuhistorytable;
     }
@@ -140,7 +120,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmcpuprocesshistorytable == nullptr)
         {
-            cpmcpuprocesshistorytable = std::make_shared<CiscoProcessMib::Cpmcpuprocesshistorytable>();
+            cpmcpuprocesshistorytable = std::make_shared<CISCOPROCESSMIB::Cpmcpuprocesshistorytable>();
         }
         return cpmcpuprocesshistorytable;
     }
@@ -149,7 +129,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmcputhresholdtable == nullptr)
         {
-            cpmcputhresholdtable = std::make_shared<CiscoProcessMib::Cpmcputhresholdtable>();
+            cpmcputhresholdtable = std::make_shared<CISCOPROCESSMIB::Cpmcputhresholdtable>();
         }
         return cpmcputhresholdtable;
     }
@@ -158,7 +138,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmcputotaltable == nullptr)
         {
-            cpmcputotaltable = std::make_shared<CiscoProcessMib::Cpmcputotaltable>();
+            cpmcputotaltable = std::make_shared<CISCOPROCESSMIB::Cpmcputotaltable>();
         }
         return cpmcputotaltable;
     }
@@ -167,7 +147,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmprocessextrevtable == nullptr)
         {
-            cpmprocessextrevtable = std::make_shared<CiscoProcessMib::Cpmprocessextrevtable>();
+            cpmprocessextrevtable = std::make_shared<CISCOPROCESSMIB::Cpmprocessextrevtable>();
         }
         return cpmprocessextrevtable;
     }
@@ -176,7 +156,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmprocesstable == nullptr)
         {
-            cpmprocesstable = std::make_shared<CiscoProcessMib::Cpmprocesstable>();
+            cpmprocesstable = std::make_shared<CISCOPROCESSMIB::Cpmprocesstable>();
         }
         return cpmprocesstable;
     }
@@ -185,7 +165,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmthreadtable == nullptr)
         {
-            cpmthreadtable = std::make_shared<CiscoProcessMib::Cpmthreadtable>();
+            cpmthreadtable = std::make_shared<CISCOPROCESSMIB::Cpmthreadtable>();
         }
         return cpmthreadtable;
     }
@@ -194,7 +174,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     {
         if(cpmvirtualprocesstable == nullptr)
         {
-            cpmvirtualprocesstable = std::make_shared<CiscoProcessMib::Cpmvirtualprocesstable>();
+            cpmvirtualprocesstable = std::make_shared<CISCOPROCESSMIB::Cpmvirtualprocesstable>();
         }
         return cpmvirtualprocesstable;
     }
@@ -202,7 +182,7 @@ std::shared_ptr<Entity> CiscoProcessMib::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cpmcoretable != nullptr)
@@ -258,115 +238,404 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::get_children() c
     return children;
 }
 
-void CiscoProcessMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoProcessMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOPROCESSMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoProcessMib>();
+    return std::make_shared<CISCOPROCESSMIB>();
 }
 
-std::string CiscoProcessMib::get_bundle_yang_models_location() const
+std::string CISCOPROCESSMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoProcessMib::get_bundle_name() const
+std::string CISCOPROCESSMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoProcessMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOPROCESSMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoProcessMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOPROCESSMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoProcessMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCoreTable" || name == "cpmCPUHistory" || name == "cpmCPUHistoryTable" || name == "cpmCPUProcessHistoryTable" || name == "cpmCPUThresholdTable" || name == "cpmCPUTotalTable" || name == "cpmProcessExtRevTable" || name == "cpmProcessTable" || name == "cpmThreadTable" || name == "cpmVirtualProcessTable")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcpuhistory::Cpmcpuhistory()
+CISCOPROCESSMIB::Cpmcoretable::Cpmcoretable()
+{
+
+    yang_name = "cpmCoreTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcoretable::~Cpmcoretable()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcoretable::has_data() const
+{
+    for (std::size_t index=0; index<cpmcoreentry.size(); index++)
+    {
+        if(cpmcoreentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOPROCESSMIB::Cpmcoretable::has_operation() const
+{
+    for (std::size_t index=0; index<cpmcoreentry.size(); index++)
+    {
+        if(cpmcoreentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcoretable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcoretable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCoreTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcoretable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcoretable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cpmCoreEntry")
+    {
+        for(auto const & c : cpmcoreentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry>();
+        c->parent = this;
+        cpmcoreentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcoretable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cpmcoreentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcoretable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOPROCESSMIB::Cpmcoretable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcoretable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCoreEntry")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::Cpmcoreentry()
+    :
+    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
+    cpmcoreindex{YType::uint32, "cpmCoreIndex"},
+    cpmcore1min{YType::uint32, "cpmCore1min"},
+    cpmcore5min{YType::uint32, "cpmCore5min"},
+    cpmcore5sec{YType::uint32, "cpmCore5sec"},
+    cpmcoreloadavg15min{YType::uint32, "cpmCoreLoadAvg15min"},
+    cpmcoreloadavg1min{YType::uint32, "cpmCoreLoadAvg1min"},
+    cpmcoreloadavg5min{YType::uint32, "cpmCoreLoadAvg5min"},
+    cpmcorephysicalindex{YType::int32, "cpmCorePhysicalIndex"}
+{
+
+    yang_name = "cpmCoreEntry"; yang_parent_name = "cpmCoreTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::~Cpmcoreentry()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::has_data() const
+{
+    return cpmcputotalindex.is_set
+	|| cpmcoreindex.is_set
+	|| cpmcore1min.is_set
+	|| cpmcore5min.is_set
+	|| cpmcore5sec.is_set
+	|| cpmcoreloadavg15min.is_set
+	|| cpmcoreloadavg1min.is_set
+	|| cpmcoreloadavg5min.is_set
+	|| cpmcorephysicalindex.is_set;
+}
+
+bool CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cpmcputotalindex.yfilter)
+	|| ydk::is_set(cpmcoreindex.yfilter)
+	|| ydk::is_set(cpmcore1min.yfilter)
+	|| ydk::is_set(cpmcore5min.yfilter)
+	|| ydk::is_set(cpmcore5sec.yfilter)
+	|| ydk::is_set(cpmcoreloadavg15min.yfilter)
+	|| ydk::is_set(cpmcoreloadavg1min.yfilter)
+	|| ydk::is_set(cpmcoreloadavg5min.yfilter)
+	|| ydk::is_set(cpmcorephysicalindex.yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCoreTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCoreEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCoreIndex='" <<cpmcoreindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
+    if (cpmcoreindex.is_set || is_set(cpmcoreindex.yfilter)) leaf_name_data.push_back(cpmcoreindex.get_name_leafdata());
+    if (cpmcore1min.is_set || is_set(cpmcore1min.yfilter)) leaf_name_data.push_back(cpmcore1min.get_name_leafdata());
+    if (cpmcore5min.is_set || is_set(cpmcore5min.yfilter)) leaf_name_data.push_back(cpmcore5min.get_name_leafdata());
+    if (cpmcore5sec.is_set || is_set(cpmcore5sec.yfilter)) leaf_name_data.push_back(cpmcore5sec.get_name_leafdata());
+    if (cpmcoreloadavg15min.is_set || is_set(cpmcoreloadavg15min.yfilter)) leaf_name_data.push_back(cpmcoreloadavg15min.get_name_leafdata());
+    if (cpmcoreloadavg1min.is_set || is_set(cpmcoreloadavg1min.yfilter)) leaf_name_data.push_back(cpmcoreloadavg1min.get_name_leafdata());
+    if (cpmcoreloadavg5min.is_set || is_set(cpmcoreloadavg5min.yfilter)) leaf_name_data.push_back(cpmcoreloadavg5min.get_name_leafdata());
+    if (cpmcorephysicalindex.is_set || is_set(cpmcorephysicalindex.yfilter)) leaf_name_data.push_back(cpmcorephysicalindex.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex = value;
+        cpmcputotalindex.value_namespace = name_space;
+        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCoreIndex")
+    {
+        cpmcoreindex = value;
+        cpmcoreindex.value_namespace = name_space;
+        cpmcoreindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCore1min")
+    {
+        cpmcore1min = value;
+        cpmcore1min.value_namespace = name_space;
+        cpmcore1min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCore5min")
+    {
+        cpmcore5min = value;
+        cpmcore5min.value_namespace = name_space;
+        cpmcore5min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCore5sec")
+    {
+        cpmcore5sec = value;
+        cpmcore5sec.value_namespace = name_space;
+        cpmcore5sec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCoreLoadAvg15min")
+    {
+        cpmcoreloadavg15min = value;
+        cpmcoreloadavg15min.value_namespace = name_space;
+        cpmcoreloadavg15min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCoreLoadAvg1min")
+    {
+        cpmcoreloadavg1min = value;
+        cpmcoreloadavg1min.value_namespace = name_space;
+        cpmcoreloadavg1min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCoreLoadAvg5min")
+    {
+        cpmcoreloadavg5min = value;
+        cpmcoreloadavg5min.value_namespace = name_space;
+        cpmcoreloadavg5min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCorePhysicalIndex")
+    {
+        cpmcorephysicalindex = value;
+        cpmcorephysicalindex.value_namespace = name_space;
+        cpmcorephysicalindex.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex.yfilter = yfilter;
+    }
+    if(value_path == "cpmCoreIndex")
+    {
+        cpmcoreindex.yfilter = yfilter;
+    }
+    if(value_path == "cpmCore1min")
+    {
+        cpmcore1min.yfilter = yfilter;
+    }
+    if(value_path == "cpmCore5min")
+    {
+        cpmcore5min.yfilter = yfilter;
+    }
+    if(value_path == "cpmCore5sec")
+    {
+        cpmcore5sec.yfilter = yfilter;
+    }
+    if(value_path == "cpmCoreLoadAvg15min")
+    {
+        cpmcoreloadavg15min.yfilter = yfilter;
+    }
+    if(value_path == "cpmCoreLoadAvg1min")
+    {
+        cpmcoreloadavg1min.yfilter = yfilter;
+    }
+    if(value_path == "cpmCoreLoadAvg5min")
+    {
+        cpmcoreloadavg5min.yfilter = yfilter;
+    }
+    if(value_path == "cpmCorePhysicalIndex")
+    {
+        cpmcorephysicalindex.yfilter = yfilter;
+    }
+}
+
+bool CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUTotalIndex" || name == "cpmCoreIndex" || name == "cpmCore1min" || name == "cpmCore5min" || name == "cpmCore5sec" || name == "cpmCoreLoadAvg15min" || name == "cpmCoreLoadAvg1min" || name == "cpmCoreLoadAvg5min" || name == "cpmCorePhysicalIndex")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcpuhistory::Cpmcpuhistory()
     :
     cpmcpuhistorysize{YType::uint32, "cpmCPUHistorySize"},
     cpmcpuhistorythreshold{YType::uint32, "cpmCPUHistoryThreshold"}
 {
-    yang_name = "cpmCPUHistory"; yang_parent_name = "CISCO-PROCESS-MIB";
+
+    yang_name = "cpmCPUHistory"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcpuhistory::~Cpmcpuhistory()
+CISCOPROCESSMIB::Cpmcpuhistory::~Cpmcpuhistory()
 {
 }
 
-bool CiscoProcessMib::Cpmcpuhistory::has_data() const
+bool CISCOPROCESSMIB::Cpmcpuhistory::has_data() const
 {
     return cpmcpuhistorysize.is_set
 	|| cpmcpuhistorythreshold.is_set;
 }
 
-bool CiscoProcessMib::Cpmcpuhistory::has_operation() const
+bool CISCOPROCESSMIB::Cpmcpuhistory::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpmcpuhistorysize.yfilter)
 	|| ydk::is_set(cpmcpuhistorythreshold.yfilter);
 }
 
-std::string CiscoProcessMib::Cpmcpuhistory::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmcpuhistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuhistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmCPUHistory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmcpuhistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcpuhistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpmcpuhistorysize.is_set || is_set(cpmcpuhistorysize.yfilter)) leaf_name_data.push_back(cpmcpuhistorysize.get_name_leafdata());
     if (cpmcpuhistorythreshold.is_set || is_set(cpmcpuhistorythreshold.yfilter)) leaf_name_data.push_back(cpmcpuhistorythreshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcpuhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcpuhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcpuhistory::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcpuhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoProcessMib::Cpmcpuhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmcpuhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpmCPUHistorySize")
     {
@@ -382,7 +651,7 @@ void CiscoProcessMib::Cpmcpuhistory::set_value(const std::string & value_path, c
     }
 }
 
-void CiscoProcessMib::Cpmcpuhistory::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmcpuhistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpmCPUHistorySize")
     {
@@ -394,23 +663,811 @@ void CiscoProcessMib::Cpmcpuhistory::set_filter(const std::string & value_path, 
     }
 }
 
-bool CiscoProcessMib::Cpmcpuhistory::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmcpuhistory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCPUHistorySize" || name == "cpmCPUHistoryThreshold")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcputotaltable::Cpmcputotaltable()
+CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistorytable()
 {
-    yang_name = "cpmCPUTotalTable"; yang_parent_name = "CISCO-PROCESS-MIB";
+
+    yang_name = "cpmCPUHistoryTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcputotaltable::~Cpmcputotaltable()
+CISCOPROCESSMIB::Cpmcpuhistorytable::~Cpmcpuhistorytable()
 {
 }
 
-bool CiscoProcessMib::Cpmcputotaltable::has_data() const
+bool CISCOPROCESSMIB::Cpmcpuhistorytable::has_data() const
+{
+    for (std::size_t index=0; index<cpmcpuhistoryentry.size(); index++)
+    {
+        if(cpmcpuhistoryentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOPROCESSMIB::Cpmcpuhistorytable::has_operation() const
+{
+    for (std::size_t index=0; index<cpmcpuhistoryentry.size(); index++)
+    {
+        if(cpmcpuhistoryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuhistorytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuhistorytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCPUHistoryTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcpuhistorytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcpuhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cpmCPUHistoryEntry")
+    {
+        for(auto const & c : cpmcpuhistoryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry>();
+        c->parent = this;
+        cpmcpuhistoryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcpuhistorytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cpmcpuhistoryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcpuhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOPROCESSMIB::Cpmcpuhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcpuhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUHistoryEntry")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::Cpmcpuhistoryentry()
+    :
+    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
+    cpmcpuhistoryreportid{YType::uint32, "cpmCPUHistoryReportId"},
+    cpmcpuhistorycreatedtime{YType::uint32, "cpmCPUHistoryCreatedTime"},
+    cpmcpuhistoryinterruptutil{YType::uint32, "cpmCPUHistoryInterruptUtil"},
+    cpmcpuhistoryreportsize{YType::uint32, "cpmCPUHistoryReportSize"},
+    cpmcpuhistorytotalutil{YType::uint32, "cpmCPUHistoryTotalUtil"}
+{
+
+    yang_name = "cpmCPUHistoryEntry"; yang_parent_name = "cpmCPUHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::~Cpmcpuhistoryentry()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::has_data() const
+{
+    return cpmcputotalindex.is_set
+	|| cpmcpuhistoryreportid.is_set
+	|| cpmcpuhistorycreatedtime.is_set
+	|| cpmcpuhistoryinterruptutil.is_set
+	|| cpmcpuhistoryreportsize.is_set
+	|| cpmcpuhistorytotalutil.is_set;
+}
+
+bool CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cpmcputotalindex.yfilter)
+	|| ydk::is_set(cpmcpuhistoryreportid.yfilter)
+	|| ydk::is_set(cpmcpuhistorycreatedtime.yfilter)
+	|| ydk::is_set(cpmcpuhistoryinterruptutil.yfilter)
+	|| ydk::is_set(cpmcpuhistoryreportsize.yfilter)
+	|| ydk::is_set(cpmcpuhistorytotalutil.yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUHistoryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCPUHistoryEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCPUHistoryReportId='" <<cpmcpuhistoryreportid <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
+    if (cpmcpuhistoryreportid.is_set || is_set(cpmcpuhistoryreportid.yfilter)) leaf_name_data.push_back(cpmcpuhistoryreportid.get_name_leafdata());
+    if (cpmcpuhistorycreatedtime.is_set || is_set(cpmcpuhistorycreatedtime.yfilter)) leaf_name_data.push_back(cpmcpuhistorycreatedtime.get_name_leafdata());
+    if (cpmcpuhistoryinterruptutil.is_set || is_set(cpmcpuhistoryinterruptutil.yfilter)) leaf_name_data.push_back(cpmcpuhistoryinterruptutil.get_name_leafdata());
+    if (cpmcpuhistoryreportsize.is_set || is_set(cpmcpuhistoryreportsize.yfilter)) leaf_name_data.push_back(cpmcpuhistoryreportsize.get_name_leafdata());
+    if (cpmcpuhistorytotalutil.is_set || is_set(cpmcpuhistorytotalutil.yfilter)) leaf_name_data.push_back(cpmcpuhistorytotalutil.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex = value;
+        cpmcputotalindex.value_namespace = name_space;
+        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryReportId")
+    {
+        cpmcpuhistoryreportid = value;
+        cpmcpuhistoryreportid.value_namespace = name_space;
+        cpmcpuhistoryreportid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryCreatedTime")
+    {
+        cpmcpuhistorycreatedtime = value;
+        cpmcpuhistorycreatedtime.value_namespace = name_space;
+        cpmcpuhistorycreatedtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryInterruptUtil")
+    {
+        cpmcpuhistoryinterruptutil = value;
+        cpmcpuhistoryinterruptutil.value_namespace = name_space;
+        cpmcpuhistoryinterruptutil.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryReportSize")
+    {
+        cpmcpuhistoryreportsize = value;
+        cpmcpuhistoryreportsize.value_namespace = name_space;
+        cpmcpuhistoryreportsize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryTotalUtil")
+    {
+        cpmcpuhistorytotalutil = value;
+        cpmcpuhistorytotalutil.value_namespace = name_space;
+        cpmcpuhistorytotalutil.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryReportId")
+    {
+        cpmcpuhistoryreportid.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryCreatedTime")
+    {
+        cpmcpuhistorycreatedtime.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryInterruptUtil")
+    {
+        cpmcpuhistoryinterruptutil.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryReportSize")
+    {
+        cpmcpuhistoryreportsize.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryTotalUtil")
+    {
+        cpmcpuhistorytotalutil.yfilter = yfilter;
+    }
+}
+
+bool CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUTotalIndex" || name == "cpmCPUHistoryReportId" || name == "cpmCPUHistoryCreatedTime" || name == "cpmCPUHistoryInterruptUtil" || name == "cpmCPUHistoryReportSize" || name == "cpmCPUHistoryTotalUtil")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistorytable()
+{
+
+    yang_name = "cpmCPUProcessHistoryTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcpuprocesshistorytable::~Cpmcpuprocesshistorytable()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcpuprocesshistorytable::has_data() const
+{
+    for (std::size_t index=0; index<cpmcpuprocesshistoryentry.size(); index++)
+    {
+        if(cpmcpuprocesshistoryentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOPROCESSMIB::Cpmcpuprocesshistorytable::has_operation() const
+{
+    for (std::size_t index=0; index<cpmcpuprocesshistoryentry.size(); index++)
+    {
+        if(cpmcpuprocesshistoryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuprocesshistorytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuprocesshistorytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCPUProcessHistoryTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcpuprocesshistorytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcpuprocesshistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cpmCPUProcessHistoryEntry")
+    {
+        for(auto const & c : cpmcpuprocesshistoryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry>();
+        c->parent = this;
+        cpmcpuprocesshistoryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcpuprocesshistorytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cpmcpuprocesshistoryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcpuprocesshistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOPROCESSMIB::Cpmcpuprocesshistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcpuprocesshistorytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUProcessHistoryEntry")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::Cpmcpuprocesshistoryentry()
+    :
+    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
+    cpmcpuhistoryreportid{YType::str, "cpmCPUHistoryReportId"},
+    cpmcpuprocesshistoryindex{YType::uint32, "cpmCPUProcessHistoryIndex"},
+    cpmcpuhistoryproccreated{YType::uint32, "cpmCPUHistoryProcCreated"},
+    cpmcpuhistoryprocid{YType::uint32, "cpmCPUHistoryProcId"},
+    cpmcpuhistoryprocname{YType::str, "cpmCPUHistoryProcName"},
+    cpmcpuhistoryprocutil{YType::uint32, "cpmCPUHistoryProcUtil"}
+{
+
+    yang_name = "cpmCPUProcessHistoryEntry"; yang_parent_name = "cpmCPUProcessHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::~Cpmcpuprocesshistoryentry()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::has_data() const
+{
+    return cpmcputotalindex.is_set
+	|| cpmcpuhistoryreportid.is_set
+	|| cpmcpuprocesshistoryindex.is_set
+	|| cpmcpuhistoryproccreated.is_set
+	|| cpmcpuhistoryprocid.is_set
+	|| cpmcpuhistoryprocname.is_set
+	|| cpmcpuhistoryprocutil.is_set;
+}
+
+bool CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cpmcputotalindex.yfilter)
+	|| ydk::is_set(cpmcpuhistoryreportid.yfilter)
+	|| ydk::is_set(cpmcpuprocesshistoryindex.yfilter)
+	|| ydk::is_set(cpmcpuhistoryproccreated.yfilter)
+	|| ydk::is_set(cpmcpuhistoryprocid.yfilter)
+	|| ydk::is_set(cpmcpuhistoryprocname.yfilter)
+	|| ydk::is_set(cpmcpuhistoryprocutil.yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUProcessHistoryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCPUProcessHistoryEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCPUHistoryReportId='" <<cpmcpuhistoryreportid <<"']" <<"[cpmCPUProcessHistoryIndex='" <<cpmcpuprocesshistoryindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
+    if (cpmcpuhistoryreportid.is_set || is_set(cpmcpuhistoryreportid.yfilter)) leaf_name_data.push_back(cpmcpuhistoryreportid.get_name_leafdata());
+    if (cpmcpuprocesshistoryindex.is_set || is_set(cpmcpuprocesshistoryindex.yfilter)) leaf_name_data.push_back(cpmcpuprocesshistoryindex.get_name_leafdata());
+    if (cpmcpuhistoryproccreated.is_set || is_set(cpmcpuhistoryproccreated.yfilter)) leaf_name_data.push_back(cpmcpuhistoryproccreated.get_name_leafdata());
+    if (cpmcpuhistoryprocid.is_set || is_set(cpmcpuhistoryprocid.yfilter)) leaf_name_data.push_back(cpmcpuhistoryprocid.get_name_leafdata());
+    if (cpmcpuhistoryprocname.is_set || is_set(cpmcpuhistoryprocname.yfilter)) leaf_name_data.push_back(cpmcpuhistoryprocname.get_name_leafdata());
+    if (cpmcpuhistoryprocutil.is_set || is_set(cpmcpuhistoryprocutil.yfilter)) leaf_name_data.push_back(cpmcpuhistoryprocutil.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex = value;
+        cpmcputotalindex.value_namespace = name_space;
+        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryReportId")
+    {
+        cpmcpuhistoryreportid = value;
+        cpmcpuhistoryreportid.value_namespace = name_space;
+        cpmcpuhistoryreportid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUProcessHistoryIndex")
+    {
+        cpmcpuprocesshistoryindex = value;
+        cpmcpuprocesshistoryindex.value_namespace = name_space;
+        cpmcpuprocesshistoryindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryProcCreated")
+    {
+        cpmcpuhistoryproccreated = value;
+        cpmcpuhistoryproccreated.value_namespace = name_space;
+        cpmcpuhistoryproccreated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryProcId")
+    {
+        cpmcpuhistoryprocid = value;
+        cpmcpuhistoryprocid.value_namespace = name_space;
+        cpmcpuhistoryprocid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryProcName")
+    {
+        cpmcpuhistoryprocname = value;
+        cpmcpuhistoryprocname.value_namespace = name_space;
+        cpmcpuhistoryprocname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUHistoryProcUtil")
+    {
+        cpmcpuhistoryprocutil = value;
+        cpmcpuhistoryprocutil.value_namespace = name_space;
+        cpmcpuhistoryprocutil.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryReportId")
+    {
+        cpmcpuhistoryreportid.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUProcessHistoryIndex")
+    {
+        cpmcpuprocesshistoryindex.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryProcCreated")
+    {
+        cpmcpuhistoryproccreated.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryProcId")
+    {
+        cpmcpuhistoryprocid.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryProcName")
+    {
+        cpmcpuhistoryprocname.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUHistoryProcUtil")
+    {
+        cpmcpuhistoryprocutil.yfilter = yfilter;
+    }
+}
+
+bool CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUTotalIndex" || name == "cpmCPUHistoryReportId" || name == "cpmCPUProcessHistoryIndex" || name == "cpmCPUHistoryProcCreated" || name == "cpmCPUHistoryProcId" || name == "cpmCPUHistoryProcName" || name == "cpmCPUHistoryProcUtil")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdtable()
+{
+
+    yang_name = "cpmCPUThresholdTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcputhresholdtable::~Cpmcputhresholdtable()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcputhresholdtable::has_data() const
+{
+    for (std::size_t index=0; index<cpmcputhresholdentry.size(); index++)
+    {
+        if(cpmcputhresholdentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOPROCESSMIB::Cpmcputhresholdtable::has_operation() const
+{
+    for (std::size_t index=0; index<cpmcputhresholdentry.size(); index++)
+    {
+        if(cpmcputhresholdentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcputhresholdtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcputhresholdtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCPUThresholdTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcputhresholdtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcputhresholdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cpmCPUThresholdEntry")
+    {
+        for(auto const & c : cpmcputhresholdentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry>();
+        c->parent = this;
+        cpmcputhresholdentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcputhresholdtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cpmcputhresholdentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcputhresholdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOPROCESSMIB::Cpmcputhresholdtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcputhresholdtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUThresholdEntry")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdentry()
+    :
+    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
+    cpmcputhresholdclass{YType::enumeration, "cpmCPUThresholdClass"},
+    cpmcpufallingthresholdperiod{YType::uint32, "cpmCPUFallingThresholdPeriod"},
+    cpmcpufallingthresholdvalue{YType::uint32, "cpmCPUFallingThresholdValue"},
+    cpmcpurisingthresholdperiod{YType::uint32, "cpmCPURisingThresholdPeriod"},
+    cpmcpurisingthresholdvalue{YType::uint32, "cpmCPURisingThresholdValue"},
+    cpmcputhresholdentrystatus{YType::enumeration, "cpmCPUThresholdEntryStatus"}
+{
+
+    yang_name = "cpmCPUThresholdEntry"; yang_parent_name = "cpmCPUThresholdTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::~Cpmcputhresholdentry()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::has_data() const
+{
+    return cpmcputotalindex.is_set
+	|| cpmcputhresholdclass.is_set
+	|| cpmcpufallingthresholdperiod.is_set
+	|| cpmcpufallingthresholdvalue.is_set
+	|| cpmcpurisingthresholdperiod.is_set
+	|| cpmcpurisingthresholdvalue.is_set
+	|| cpmcputhresholdentrystatus.is_set;
+}
+
+bool CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cpmcputotalindex.yfilter)
+	|| ydk::is_set(cpmcputhresholdclass.yfilter)
+	|| ydk::is_set(cpmcpufallingthresholdperiod.yfilter)
+	|| ydk::is_set(cpmcpufallingthresholdvalue.yfilter)
+	|| ydk::is_set(cpmcpurisingthresholdperiod.yfilter)
+	|| ydk::is_set(cpmcpurisingthresholdvalue.yfilter)
+	|| ydk::is_set(cpmcputhresholdentrystatus.yfilter);
+}
+
+std::string CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUThresholdTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cpmCPUThresholdEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCPUThresholdClass='" <<cpmcputhresholdclass <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
+    if (cpmcputhresholdclass.is_set || is_set(cpmcputhresholdclass.yfilter)) leaf_name_data.push_back(cpmcputhresholdclass.get_name_leafdata());
+    if (cpmcpufallingthresholdperiod.is_set || is_set(cpmcpufallingthresholdperiod.yfilter)) leaf_name_data.push_back(cpmcpufallingthresholdperiod.get_name_leafdata());
+    if (cpmcpufallingthresholdvalue.is_set || is_set(cpmcpufallingthresholdvalue.yfilter)) leaf_name_data.push_back(cpmcpufallingthresholdvalue.get_name_leafdata());
+    if (cpmcpurisingthresholdperiod.is_set || is_set(cpmcpurisingthresholdperiod.yfilter)) leaf_name_data.push_back(cpmcpurisingthresholdperiod.get_name_leafdata());
+    if (cpmcpurisingthresholdvalue.is_set || is_set(cpmcpurisingthresholdvalue.yfilter)) leaf_name_data.push_back(cpmcpurisingthresholdvalue.get_name_leafdata());
+    if (cpmcputhresholdentrystatus.is_set || is_set(cpmcputhresholdentrystatus.yfilter)) leaf_name_data.push_back(cpmcputhresholdentrystatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex = value;
+        cpmcputotalindex.value_namespace = name_space;
+        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUThresholdClass")
+    {
+        cpmcputhresholdclass = value;
+        cpmcputhresholdclass.value_namespace = name_space;
+        cpmcputhresholdclass.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUFallingThresholdPeriod")
+    {
+        cpmcpufallingthresholdperiod = value;
+        cpmcpufallingthresholdperiod.value_namespace = name_space;
+        cpmcpufallingthresholdperiod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUFallingThresholdValue")
+    {
+        cpmcpufallingthresholdvalue = value;
+        cpmcpufallingthresholdvalue.value_namespace = name_space;
+        cpmcpufallingthresholdvalue.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPURisingThresholdPeriod")
+    {
+        cpmcpurisingthresholdperiod = value;
+        cpmcpurisingthresholdperiod.value_namespace = name_space;
+        cpmcpurisingthresholdperiod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPURisingThresholdValue")
+    {
+        cpmcpurisingthresholdvalue = value;
+        cpmcpurisingthresholdvalue.value_namespace = name_space;
+        cpmcpurisingthresholdvalue.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmCPUThresholdEntryStatus")
+    {
+        cpmcputhresholdentrystatus = value;
+        cpmcputhresholdentrystatus.value_namespace = name_space;
+        cpmcputhresholdentrystatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cpmCPUTotalIndex")
+    {
+        cpmcputotalindex.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUThresholdClass")
+    {
+        cpmcputhresholdclass.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUFallingThresholdPeriod")
+    {
+        cpmcpufallingthresholdperiod.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUFallingThresholdValue")
+    {
+        cpmcpufallingthresholdvalue.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPURisingThresholdPeriod")
+    {
+        cpmcpurisingthresholdperiod.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPURisingThresholdValue")
+    {
+        cpmcpurisingthresholdvalue.yfilter = yfilter;
+    }
+    if(value_path == "cpmCPUThresholdEntryStatus")
+    {
+        cpmcputhresholdentrystatus.yfilter = yfilter;
+    }
+}
+
+bool CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpmCPUTotalIndex" || name == "cpmCPUThresholdClass" || name == "cpmCPUFallingThresholdPeriod" || name == "cpmCPUFallingThresholdValue" || name == "cpmCPURisingThresholdPeriod" || name == "cpmCPURisingThresholdValue" || name == "cpmCPUThresholdEntryStatus")
+        return true;
+    return false;
+}
+
+CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotaltable()
+{
+
+    yang_name = "cpmCPUTotalTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPROCESSMIB::Cpmcputotaltable::~Cpmcputotaltable()
+{
+}
+
+bool CISCOPROCESSMIB::Cpmcputotaltable::has_data() const
 {
     for (std::size_t index=0; index<cpmcputotalentry.size(); index++)
     {
@@ -420,7 +1477,7 @@ bool CiscoProcessMib::Cpmcputotaltable::has_data() const
     return false;
 }
 
-bool CiscoProcessMib::Cpmcputotaltable::has_operation() const
+bool CISCOPROCESSMIB::Cpmcputotaltable::has_operation() const
 {
     for (std::size_t index=0; index<cpmcputotalentry.size(); index++)
     {
@@ -430,37 +1487,30 @@ bool CiscoProcessMib::Cpmcputotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoProcessMib::Cpmcputotaltable::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmcputotaltable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcputotaltable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmCPUTotalTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmcputotaltable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcputotaltable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcputotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcputotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCPUTotalEntry")
     {
@@ -472,7 +1522,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmcputotaltable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry>();
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry>();
         c->parent = this;
         cpmcputotalentry.push_back(c);
         return c;
@@ -481,7 +1531,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmcputotaltable::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcputotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcputotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cpmcputotalentry)
@@ -492,22 +1542,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcputotaltable
     return children;
 }
 
-void CiscoProcessMib::Cpmcputotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmcputotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoProcessMib::Cpmcputotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmcputotaltable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoProcessMib::Cpmcputotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmcputotaltable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCPUTotalEntry")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::Cpmcputotalentry()
+CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::Cpmcputotalentry()
     :
     cpmcputotalindex{YType::uint32, "cpmCPUTotalIndex"},
     cpmcpuinterruptmonintervalvalue{YType::uint32, "cpmCPUInterruptMonIntervalValue"},
@@ -539,14 +1589,15 @@ CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::Cpmcputotalentry()
     cpmcputotalmonintervalvalue{YType::uint32, "cpmCPUTotalMonIntervalValue"},
     cpmcputotalphysicalindex{YType::int32, "cpmCPUTotalPhysicalIndex"}
 {
-    yang_name = "cpmCPUTotalEntry"; yang_parent_name = "cpmCPUTotalTable";
+
+    yang_name = "cpmCPUTotalEntry"; yang_parent_name = "cpmCPUTotalTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::~Cpmcputotalentry()
+CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::~Cpmcputotalentry()
 {
 }
 
-bool CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::has_data() const
+bool CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::has_data() const
 {
     return cpmcputotalindex.is_set
 	|| cpmcpuinterruptmonintervalvalue.is_set
@@ -579,7 +1630,7 @@ bool CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::has_data() const
 	|| cpmcputotalphysicalindex.is_set;
 }
 
-bool CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::has_operation() const
+bool CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpmcputotalindex.yfilter)
@@ -613,27 +1664,22 @@ bool CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::has_operation() const
 	|| ydk::is_set(cpmcputotalphysicalindex.yfilter);
 }
 
-std::string CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUTotalTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmCPUTotalEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUTotalTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
@@ -666,24 +1712,22 @@ const EntityPath CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::get_entity
     if (cpmcputotalmonintervalvalue.is_set || is_set(cpmcputotalmonintervalvalue.yfilter)) leaf_name_data.push_back(cpmcputotalmonintervalvalue.get_name_leafdata());
     if (cpmcputotalphysicalindex.is_set || is_set(cpmcputotalphysicalindex.yfilter)) leaf_name_data.push_back(cpmcputotalphysicalindex.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -861,7 +1905,7 @@ void CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::set_value(const std::s
     }
 }
 
-void CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -981,707 +2025,24 @@ void CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::set_filter(const std::
     }
 }
 
-bool CiscoProcessMib::Cpmcputotaltable::Cpmcputotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCPUTotalIndex" || name == "cpmCPUInterruptMonIntervalValue" || name == "cpmCPULoadAvg15min" || name == "cpmCPULoadAvg1min" || name == "cpmCPULoadAvg5min" || name == "cpmCPUMemoryCommitted" || name == "cpmCPUMemoryCommittedOvrflw" || name == "cpmCPUMemoryFree" || name == "cpmCPUMemoryFreeOvrflw" || name == "cpmCPUMemoryHCCommitted" || name == "cpmCPUMemoryHCFree" || name == "cpmCPUMemoryHCKernelReserved" || name == "cpmCPUMemoryHCLowest" || name == "cpmCPUMemoryHCUsed" || name == "cpmCPUMemoryKernelReserved" || name == "cpmCPUMemoryKernelReservedOvrflw" || name == "cpmCPUMemoryLowest" || name == "cpmCPUMemoryLowestOvrflw" || name == "cpmCPUMemoryUsed" || name == "cpmCPUMemoryUsedOvrflw" || name == "cpmCPUMonInterval" || name == "cpmCPUTotal1min" || name == "cpmCPUTotal1minRev" || name == "cpmCPUTotal5min" || name == "cpmCPUTotal5minRev" || name == "cpmCPUTotal5sec" || name == "cpmCPUTotal5secRev" || name == "cpmCPUTotalMonIntervalValue" || name == "cpmCPUTotalPhysicalIndex")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcoretable::Cpmcoretable()
+CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextrevtable()
 {
-    yang_name = "cpmCoreTable"; yang_parent_name = "CISCO-PROCESS-MIB";
+
+    yang_name = "cpmProcessExtRevTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcoretable::~Cpmcoretable()
-{
-}
-
-bool CiscoProcessMib::Cpmcoretable::has_data() const
-{
-    for (std::size_t index=0; index<cpmcoreentry.size(); index++)
-    {
-        if(cpmcoreentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoProcessMib::Cpmcoretable::has_operation() const
-{
-    for (std::size_t index=0; index<cpmcoreentry.size(); index++)
-    {
-        if(cpmcoreentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoProcessMib::Cpmcoretable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmCoreTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmcoretable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcoretable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cpmCoreEntry")
-    {
-        for(auto const & c : cpmcoreentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoProcessMib::Cpmcoretable::Cpmcoreentry>();
-        c->parent = this;
-        cpmcoreentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcoretable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpmcoreentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoProcessMib::Cpmcoretable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCOPROCESSMIB::Cpmprocessextrevtable::~Cpmprocessextrevtable()
 {
 }
 
-void CiscoProcessMib::Cpmcoretable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoProcessMib::Cpmcoretable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCoreEntry")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmcoretable::Cpmcoreentry::Cpmcoreentry()
-    :
-    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
-    cpmcoreindex{YType::uint32, "cpmCoreIndex"},
-    cpmcore1min{YType::uint32, "cpmCore1min"},
-    cpmcore5min{YType::uint32, "cpmCore5min"},
-    cpmcore5sec{YType::uint32, "cpmCore5sec"},
-    cpmcoreloadavg15min{YType::uint32, "cpmCoreLoadAvg15min"},
-    cpmcoreloadavg1min{YType::uint32, "cpmCoreLoadAvg1min"},
-    cpmcoreloadavg5min{YType::uint32, "cpmCoreLoadAvg5min"},
-    cpmcorephysicalindex{YType::int32, "cpmCorePhysicalIndex"}
-{
-    yang_name = "cpmCoreEntry"; yang_parent_name = "cpmCoreTable";
-}
-
-CiscoProcessMib::Cpmcoretable::Cpmcoreentry::~Cpmcoreentry()
-{
-}
-
-bool CiscoProcessMib::Cpmcoretable::Cpmcoreentry::has_data() const
-{
-    return cpmcputotalindex.is_set
-	|| cpmcoreindex.is_set
-	|| cpmcore1min.is_set
-	|| cpmcore5min.is_set
-	|| cpmcore5sec.is_set
-	|| cpmcoreloadavg15min.is_set
-	|| cpmcoreloadavg1min.is_set
-	|| cpmcoreloadavg5min.is_set
-	|| cpmcorephysicalindex.is_set;
-}
-
-bool CiscoProcessMib::Cpmcoretable::Cpmcoreentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cpmcputotalindex.yfilter)
-	|| ydk::is_set(cpmcoreindex.yfilter)
-	|| ydk::is_set(cpmcore1min.yfilter)
-	|| ydk::is_set(cpmcore5min.yfilter)
-	|| ydk::is_set(cpmcore5sec.yfilter)
-	|| ydk::is_set(cpmcoreloadavg15min.yfilter)
-	|| ydk::is_set(cpmcoreloadavg1min.yfilter)
-	|| ydk::is_set(cpmcoreloadavg5min.yfilter)
-	|| ydk::is_set(cpmcorephysicalindex.yfilter);
-}
-
-std::string CiscoProcessMib::Cpmcoretable::Cpmcoreentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmCoreEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCoreIndex='" <<cpmcoreindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmcoretable::Cpmcoreentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCoreTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
-    if (cpmcoreindex.is_set || is_set(cpmcoreindex.yfilter)) leaf_name_data.push_back(cpmcoreindex.get_name_leafdata());
-    if (cpmcore1min.is_set || is_set(cpmcore1min.yfilter)) leaf_name_data.push_back(cpmcore1min.get_name_leafdata());
-    if (cpmcore5min.is_set || is_set(cpmcore5min.yfilter)) leaf_name_data.push_back(cpmcore5min.get_name_leafdata());
-    if (cpmcore5sec.is_set || is_set(cpmcore5sec.yfilter)) leaf_name_data.push_back(cpmcore5sec.get_name_leafdata());
-    if (cpmcoreloadavg15min.is_set || is_set(cpmcoreloadavg15min.yfilter)) leaf_name_data.push_back(cpmcoreloadavg15min.get_name_leafdata());
-    if (cpmcoreloadavg1min.is_set || is_set(cpmcoreloadavg1min.yfilter)) leaf_name_data.push_back(cpmcoreloadavg1min.get_name_leafdata());
-    if (cpmcoreloadavg5min.is_set || is_set(cpmcoreloadavg5min.yfilter)) leaf_name_data.push_back(cpmcoreloadavg5min.get_name_leafdata());
-    if (cpmcorephysicalindex.is_set || is_set(cpmcorephysicalindex.yfilter)) leaf_name_data.push_back(cpmcorephysicalindex.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcoretable::Cpmcoreentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcoretable::Cpmcoreentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoProcessMib::Cpmcoretable::Cpmcoreentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex = value;
-        cpmcputotalindex.value_namespace = name_space;
-        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCoreIndex")
-    {
-        cpmcoreindex = value;
-        cpmcoreindex.value_namespace = name_space;
-        cpmcoreindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCore1min")
-    {
-        cpmcore1min = value;
-        cpmcore1min.value_namespace = name_space;
-        cpmcore1min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCore5min")
-    {
-        cpmcore5min = value;
-        cpmcore5min.value_namespace = name_space;
-        cpmcore5min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCore5sec")
-    {
-        cpmcore5sec = value;
-        cpmcore5sec.value_namespace = name_space;
-        cpmcore5sec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCoreLoadAvg15min")
-    {
-        cpmcoreloadavg15min = value;
-        cpmcoreloadavg15min.value_namespace = name_space;
-        cpmcoreloadavg15min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCoreLoadAvg1min")
-    {
-        cpmcoreloadavg1min = value;
-        cpmcoreloadavg1min.value_namespace = name_space;
-        cpmcoreloadavg1min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCoreLoadAvg5min")
-    {
-        cpmcoreloadavg5min = value;
-        cpmcoreloadavg5min.value_namespace = name_space;
-        cpmcoreloadavg5min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCorePhysicalIndex")
-    {
-        cpmcorephysicalindex = value;
-        cpmcorephysicalindex.value_namespace = name_space;
-        cpmcorephysicalindex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoProcessMib::Cpmcoretable::Cpmcoreentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex.yfilter = yfilter;
-    }
-    if(value_path == "cpmCoreIndex")
-    {
-        cpmcoreindex.yfilter = yfilter;
-    }
-    if(value_path == "cpmCore1min")
-    {
-        cpmcore1min.yfilter = yfilter;
-    }
-    if(value_path == "cpmCore5min")
-    {
-        cpmcore5min.yfilter = yfilter;
-    }
-    if(value_path == "cpmCore5sec")
-    {
-        cpmcore5sec.yfilter = yfilter;
-    }
-    if(value_path == "cpmCoreLoadAvg15min")
-    {
-        cpmcoreloadavg15min.yfilter = yfilter;
-    }
-    if(value_path == "cpmCoreLoadAvg1min")
-    {
-        cpmcoreloadavg1min.yfilter = yfilter;
-    }
-    if(value_path == "cpmCoreLoadAvg5min")
-    {
-        cpmcoreloadavg5min.yfilter = yfilter;
-    }
-    if(value_path == "cpmCorePhysicalIndex")
-    {
-        cpmcorephysicalindex.yfilter = yfilter;
-    }
-}
-
-bool CiscoProcessMib::Cpmcoretable::Cpmcoreentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCPUTotalIndex" || name == "cpmCoreIndex" || name == "cpmCore1min" || name == "cpmCore5min" || name == "cpmCore5sec" || name == "cpmCoreLoadAvg15min" || name == "cpmCoreLoadAvg1min" || name == "cpmCoreLoadAvg5min" || name == "cpmCorePhysicalIndex")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmprocesstable::Cpmprocesstable()
-{
-    yang_name = "cpmProcessTable"; yang_parent_name = "CISCO-PROCESS-MIB";
-}
-
-CiscoProcessMib::Cpmprocesstable::~Cpmprocesstable()
-{
-}
-
-bool CiscoProcessMib::Cpmprocesstable::has_data() const
-{
-    for (std::size_t index=0; index<cpmprocessentry.size(); index++)
-    {
-        if(cpmprocessentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoProcessMib::Cpmprocesstable::has_operation() const
-{
-    for (std::size_t index=0; index<cpmprocessentry.size(); index++)
-    {
-        if(cpmprocessentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoProcessMib::Cpmprocesstable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmProcessTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmprocesstable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmprocesstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cpmProcessEntry")
-    {
-        for(auto const & c : cpmprocessentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoProcessMib::Cpmprocesstable::Cpmprocessentry>();
-        c->parent = this;
-        cpmprocessentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmprocesstable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpmprocessentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoProcessMib::Cpmprocesstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoProcessMib::Cpmprocesstable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoProcessMib::Cpmprocesstable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmProcessEntry")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::Cpmprocessentry()
-    :
-    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
-    cpmprocesspid{YType::uint32, "cpmProcessPID"},
-    cpmprocessaverageusecs{YType::uint32, "cpmProcessAverageUSecs"},
-    cpmprocessname{YType::str, "cpmProcessName"},
-    cpmprocesstimecreated{YType::uint32, "cpmProcessTimeCreated"},
-    cpmprocessusecs{YType::uint32, "cpmProcessuSecs"},
-    cpmprocextinvoked{YType::uint32, "cpmProcExtInvoked"},
-    cpmprocextmemallocated{YType::uint32, "cpmProcExtMemAllocated"},
-    cpmprocextmemfreed{YType::uint32, "cpmProcExtMemFreed"},
-    cpmprocextpriority{YType::enumeration, "cpmProcExtPriority"},
-    cpmprocextruntime{YType::uint32, "cpmProcExtRuntime"},
-    cpmprocextutil1min{YType::uint32, "cpmProcExtUtil1Min"},
-    cpmprocextutil5min{YType::uint32, "cpmProcExtUtil5Min"},
-    cpmprocextutil5sec{YType::uint32, "cpmProcExtUtil5Sec"}
-{
-    yang_name = "cpmProcessEntry"; yang_parent_name = "cpmProcessTable";
-}
-
-CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::~Cpmprocessentry()
-{
-}
-
-bool CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::has_data() const
-{
-    return cpmcputotalindex.is_set
-	|| cpmprocesspid.is_set
-	|| cpmprocessaverageusecs.is_set
-	|| cpmprocessname.is_set
-	|| cpmprocesstimecreated.is_set
-	|| cpmprocessusecs.is_set
-	|| cpmprocextinvoked.is_set
-	|| cpmprocextmemallocated.is_set
-	|| cpmprocextmemfreed.is_set
-	|| cpmprocextpriority.is_set
-	|| cpmprocextruntime.is_set
-	|| cpmprocextutil1min.is_set
-	|| cpmprocextutil5min.is_set
-	|| cpmprocextutil5sec.is_set;
-}
-
-bool CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cpmcputotalindex.yfilter)
-	|| ydk::is_set(cpmprocesspid.yfilter)
-	|| ydk::is_set(cpmprocessaverageusecs.yfilter)
-	|| ydk::is_set(cpmprocessname.yfilter)
-	|| ydk::is_set(cpmprocesstimecreated.yfilter)
-	|| ydk::is_set(cpmprocessusecs.yfilter)
-	|| ydk::is_set(cpmprocextinvoked.yfilter)
-	|| ydk::is_set(cpmprocextmemallocated.yfilter)
-	|| ydk::is_set(cpmprocextmemfreed.yfilter)
-	|| ydk::is_set(cpmprocextpriority.yfilter)
-	|| ydk::is_set(cpmprocextruntime.yfilter)
-	|| ydk::is_set(cpmprocextutil1min.yfilter)
-	|| ydk::is_set(cpmprocextutil5min.yfilter)
-	|| ydk::is_set(cpmprocextutil5sec.yfilter);
-}
-
-std::string CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmProcessEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmProcessPID='" <<cpmprocesspid <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmProcessTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
-    if (cpmprocesspid.is_set || is_set(cpmprocesspid.yfilter)) leaf_name_data.push_back(cpmprocesspid.get_name_leafdata());
-    if (cpmprocessaverageusecs.is_set || is_set(cpmprocessaverageusecs.yfilter)) leaf_name_data.push_back(cpmprocessaverageusecs.get_name_leafdata());
-    if (cpmprocessname.is_set || is_set(cpmprocessname.yfilter)) leaf_name_data.push_back(cpmprocessname.get_name_leafdata());
-    if (cpmprocesstimecreated.is_set || is_set(cpmprocesstimecreated.yfilter)) leaf_name_data.push_back(cpmprocesstimecreated.get_name_leafdata());
-    if (cpmprocessusecs.is_set || is_set(cpmprocessusecs.yfilter)) leaf_name_data.push_back(cpmprocessusecs.get_name_leafdata());
-    if (cpmprocextinvoked.is_set || is_set(cpmprocextinvoked.yfilter)) leaf_name_data.push_back(cpmprocextinvoked.get_name_leafdata());
-    if (cpmprocextmemallocated.is_set || is_set(cpmprocextmemallocated.yfilter)) leaf_name_data.push_back(cpmprocextmemallocated.get_name_leafdata());
-    if (cpmprocextmemfreed.is_set || is_set(cpmprocextmemfreed.yfilter)) leaf_name_data.push_back(cpmprocextmemfreed.get_name_leafdata());
-    if (cpmprocextpriority.is_set || is_set(cpmprocextpriority.yfilter)) leaf_name_data.push_back(cpmprocextpriority.get_name_leafdata());
-    if (cpmprocextruntime.is_set || is_set(cpmprocextruntime.yfilter)) leaf_name_data.push_back(cpmprocextruntime.get_name_leafdata());
-    if (cpmprocextutil1min.is_set || is_set(cpmprocextutil1min.yfilter)) leaf_name_data.push_back(cpmprocextutil1min.get_name_leafdata());
-    if (cpmprocextutil5min.is_set || is_set(cpmprocextutil5min.yfilter)) leaf_name_data.push_back(cpmprocextutil5min.get_name_leafdata());
-    if (cpmprocextutil5sec.is_set || is_set(cpmprocextutil5sec.yfilter)) leaf_name_data.push_back(cpmprocextutil5sec.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex = value;
-        cpmcputotalindex.value_namespace = name_space;
-        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcessPID")
-    {
-        cpmprocesspid = value;
-        cpmprocesspid.value_namespace = name_space;
-        cpmprocesspid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcessAverageUSecs")
-    {
-        cpmprocessaverageusecs = value;
-        cpmprocessaverageusecs.value_namespace = name_space;
-        cpmprocessaverageusecs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcessName")
-    {
-        cpmprocessname = value;
-        cpmprocessname.value_namespace = name_space;
-        cpmprocessname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcessTimeCreated")
-    {
-        cpmprocesstimecreated = value;
-        cpmprocesstimecreated.value_namespace = name_space;
-        cpmprocesstimecreated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcessuSecs")
-    {
-        cpmprocessusecs = value;
-        cpmprocessusecs.value_namespace = name_space;
-        cpmprocessusecs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtInvoked")
-    {
-        cpmprocextinvoked = value;
-        cpmprocextinvoked.value_namespace = name_space;
-        cpmprocextinvoked.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtMemAllocated")
-    {
-        cpmprocextmemallocated = value;
-        cpmprocextmemallocated.value_namespace = name_space;
-        cpmprocextmemallocated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtMemFreed")
-    {
-        cpmprocextmemfreed = value;
-        cpmprocextmemfreed.value_namespace = name_space;
-        cpmprocextmemfreed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtPriority")
-    {
-        cpmprocextpriority = value;
-        cpmprocextpriority.value_namespace = name_space;
-        cpmprocextpriority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtRuntime")
-    {
-        cpmprocextruntime = value;
-        cpmprocextruntime.value_namespace = name_space;
-        cpmprocextruntime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtUtil1Min")
-    {
-        cpmprocextutil1min = value;
-        cpmprocextutil1min.value_namespace = name_space;
-        cpmprocextutil1min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtUtil5Min")
-    {
-        cpmprocextutil5min = value;
-        cpmprocextutil5min.value_namespace = name_space;
-        cpmprocextutil5min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmProcExtUtil5Sec")
-    {
-        cpmprocextutil5sec = value;
-        cpmprocextutil5sec.value_namespace = name_space;
-        cpmprocextutil5sec.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcessPID")
-    {
-        cpmprocesspid.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcessAverageUSecs")
-    {
-        cpmprocessaverageusecs.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcessName")
-    {
-        cpmprocessname.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcessTimeCreated")
-    {
-        cpmprocesstimecreated.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcessuSecs")
-    {
-        cpmprocessusecs.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtInvoked")
-    {
-        cpmprocextinvoked.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtMemAllocated")
-    {
-        cpmprocextmemallocated.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtMemFreed")
-    {
-        cpmprocextmemfreed.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtPriority")
-    {
-        cpmprocextpriority.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtRuntime")
-    {
-        cpmprocextruntime.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtUtil1Min")
-    {
-        cpmprocextutil1min.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtUtil5Min")
-    {
-        cpmprocextutil5min.yfilter = yfilter;
-    }
-    if(value_path == "cpmProcExtUtil5Sec")
-    {
-        cpmprocextutil5sec.yfilter = yfilter;
-    }
-}
-
-bool CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCPUTotalIndex" || name == "cpmProcessPID" || name == "cpmProcessAverageUSecs" || name == "cpmProcessName" || name == "cpmProcessTimeCreated" || name == "cpmProcessuSecs" || name == "cpmProcExtInvoked" || name == "cpmProcExtMemAllocated" || name == "cpmProcExtMemFreed" || name == "cpmProcExtPriority" || name == "cpmProcExtRuntime" || name == "cpmProcExtUtil1Min" || name == "cpmProcExtUtil5Min" || name == "cpmProcExtUtil5Sec")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextrevtable()
-{
-    yang_name = "cpmProcessExtRevTable"; yang_parent_name = "CISCO-PROCESS-MIB";
-}
-
-CiscoProcessMib::Cpmprocessextrevtable::~Cpmprocessextrevtable()
-{
-}
-
-bool CiscoProcessMib::Cpmprocessextrevtable::has_data() const
+bool CISCOPROCESSMIB::Cpmprocessextrevtable::has_data() const
 {
     for (std::size_t index=0; index<cpmprocessextreventry.size(); index++)
     {
@@ -1691,7 +2052,7 @@ bool CiscoProcessMib::Cpmprocessextrevtable::has_data() const
     return false;
 }
 
-bool CiscoProcessMib::Cpmprocessextrevtable::has_operation() const
+bool CISCOPROCESSMIB::Cpmprocessextrevtable::has_operation() const
 {
     for (std::size_t index=0; index<cpmprocessextreventry.size(); index++)
     {
@@ -1701,37 +2062,30 @@ bool CiscoProcessMib::Cpmprocessextrevtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoProcessMib::Cpmprocessextrevtable::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmprocessextrevtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmprocessextrevtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmProcessExtRevTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmprocessextrevtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmprocessextrevtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmprocessextrevtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmprocessextrevtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmProcessExtRevEntry")
     {
@@ -1743,7 +2097,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmprocessextrevtable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry>();
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry>();
         c->parent = this;
         cpmprocessextreventry.push_back(c);
         return c;
@@ -1752,7 +2106,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmprocessextrevtable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmprocessextrevtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmprocessextrevtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cpmprocessextreventry)
@@ -1763,22 +2117,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmprocessextrev
     return children;
 }
 
-void CiscoProcessMib::Cpmprocessextrevtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmprocessextrevtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoProcessMib::Cpmprocessextrevtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmprocessextrevtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoProcessMib::Cpmprocessextrevtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmprocessextrevtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmProcessExtRevEntry")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessextreventry()
+CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessextreventry()
     :
     cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
     cpmprocesspid{YType::str, "cpmProcessPID"},
@@ -1813,14 +2167,15 @@ CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessextreve
     cpmprocextutil5minrev{YType::uint32, "cpmProcExtUtil5MinRev"},
     cpmprocextutil5secrev{YType::uint32, "cpmProcExtUtil5SecRev"}
 {
-    yang_name = "cpmProcessExtRevEntry"; yang_parent_name = "cpmProcessExtRevTable";
+
+    yang_name = "cpmProcessExtRevEntry"; yang_parent_name = "cpmProcessExtRevTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::~Cpmprocessextreventry()
+CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::~Cpmprocessextreventry()
 {
 }
 
-bool CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::has_data() const
+bool CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::has_data() const
 {
     return cpmcputotalindex.is_set
 	|| cpmprocesspid.is_set
@@ -1856,7 +2211,7 @@ bool CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::has_data() c
 	|| cpmprocextutil5secrev.is_set;
 }
 
-bool CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::has_operation() const
+bool CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpmcputotalindex.yfilter)
@@ -1893,27 +2248,22 @@ bool CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::has_operatio
 	|| ydk::is_set(cpmprocextutil5secrev.yfilter);
 }
 
-std::string CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmProcessExtRevTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmProcessExtRevEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmProcessPID='" <<cpmprocesspid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmProcessExtRevTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
@@ -1949,24 +2299,22 @@ const EntityPath CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::
     if (cpmprocextutil5minrev.is_set || is_set(cpmprocextutil5minrev.yfilter)) leaf_name_data.push_back(cpmprocextutil5minrev.get_name_leafdata());
     if (cpmprocextutil5secrev.is_set || is_set(cpmprocextutil5secrev.yfilter)) leaf_name_data.push_back(cpmprocextutil5secrev.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -2162,7 +2510,7 @@ void CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::set_value(co
     }
 }
 
-void CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -2294,77 +2642,71 @@ void CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::set_filter(c
     }
 }
 
-bool CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCPUTotalIndex" || name == "cpmProcessPID" || name == "cpmProcessDataSegmentSize" || name == "cpmProcessDataSegmentSizeOvrflw" || name == "cpmProcessDynamicMemorySize" || name == "cpmProcessDynamicMemorySizeOvrflw" || name == "cpmProcessHCDataSegmentSize" || name == "cpmProcessHCDynamicMemorySize" || name == "cpmProcessHCStackSize" || name == "cpmProcessHCTextSegmentSize" || name == "cpmProcessLastRestartUser" || name == "cpmProcessMemoryCore" || name == "cpmProcessRespawn" || name == "cpmProcessRespawnAfterLastPatch" || name == "cpmProcessRespawnCount" || name == "cpmProcessStackSize" || name == "cpmProcessStackSizeOvrflw" || name == "cpmProcessTextSegmentSize" || name == "cpmProcessTextSegmentSizeOvrflw" || name == "cpmProcessType" || name == "cpmProcExtHCMemAllocatedRev" || name == "cpmProcExtHCMemFreedRev" || name == "cpmProcExtInvokedRev" || name == "cpmProcExtMemAllocatedRev" || name == "cpmProcExtMemAllocatedRevOvrflw" || name == "cpmProcExtMemFreedRev" || name == "cpmProcExtMemFreedRevOvrflw" || name == "cpmProcExtPriorityRev" || name == "cpmProcExtRuntimeRev" || name == "cpmProcExtUtil1MinRev" || name == "cpmProcExtUtil5MinRev" || name == "cpmProcExtUtil5SecRev")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdtable()
+CISCOPROCESSMIB::Cpmprocesstable::Cpmprocesstable()
 {
-    yang_name = "cpmCPUThresholdTable"; yang_parent_name = "CISCO-PROCESS-MIB";
+
+    yang_name = "cpmProcessTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcputhresholdtable::~Cpmcputhresholdtable()
+CISCOPROCESSMIB::Cpmprocesstable::~Cpmprocesstable()
 {
 }
 
-bool CiscoProcessMib::Cpmcputhresholdtable::has_data() const
+bool CISCOPROCESSMIB::Cpmprocesstable::has_data() const
 {
-    for (std::size_t index=0; index<cpmcputhresholdentry.size(); index++)
+    for (std::size_t index=0; index<cpmprocessentry.size(); index++)
     {
-        if(cpmcputhresholdentry[index]->has_data())
+        if(cpmprocessentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CiscoProcessMib::Cpmcputhresholdtable::has_operation() const
+bool CISCOPROCESSMIB::Cpmprocesstable::has_operation() const
 {
-    for (std::size_t index=0; index<cpmcputhresholdentry.size(); index++)
+    for (std::size_t index=0; index<cpmprocessentry.size(); index++)
     {
-        if(cpmcputhresholdentry[index]->has_operation())
+        if(cpmprocessentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string CiscoProcessMib::Cpmcputhresholdtable::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmprocesstable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpmCPUThresholdTable";
-
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmcputhresholdtable::get_entity_path(Entity* ancestor) const
+std::string CISCOPROCESSMIB::Cpmprocesstable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cpmProcessTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmprocesstable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcputhresholdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmprocesstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cpmCPUThresholdEntry")
+    if(child_yang_name == "cpmProcessEntry")
     {
-        for(auto const & c : cpmcputhresholdentry)
+        for(auto const & c : cpmprocessentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2372,19 +2714,19 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmcputhresholdtable::get_child_by_name
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry>();
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry>();
         c->parent = this;
-        cpmcputhresholdentry.push_back(c);
+        cpmprocessentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcputhresholdtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmprocesstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpmcputhresholdentry)
+    for (auto const & c : cpmprocessentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2392,110 +2734,132 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcputhresholdt
     return children;
 }
 
-void CiscoProcessMib::Cpmcputhresholdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmprocesstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoProcessMib::Cpmcputhresholdtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmprocesstable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoProcessMib::Cpmcputhresholdtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmprocesstable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cpmCPUThresholdEntry")
+    if(name == "cpmProcessEntry")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdentry()
+CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocessentry()
     :
     cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
-    cpmcputhresholdclass{YType::enumeration, "cpmCPUThresholdClass"},
-    cpmcpufallingthresholdperiod{YType::uint32, "cpmCPUFallingThresholdPeriod"},
-    cpmcpufallingthresholdvalue{YType::uint32, "cpmCPUFallingThresholdValue"},
-    cpmcpurisingthresholdperiod{YType::uint32, "cpmCPURisingThresholdPeriod"},
-    cpmcpurisingthresholdvalue{YType::uint32, "cpmCPURisingThresholdValue"},
-    cpmcputhresholdentrystatus{YType::enumeration, "cpmCPUThresholdEntryStatus"}
+    cpmprocesspid{YType::uint32, "cpmProcessPID"},
+    cpmprocessaverageusecs{YType::uint32, "cpmProcessAverageUSecs"},
+    cpmprocessname{YType::str, "cpmProcessName"},
+    cpmprocesstimecreated{YType::uint32, "cpmProcessTimeCreated"},
+    cpmprocessusecs{YType::uint32, "cpmProcessuSecs"},
+    cpmprocextinvoked{YType::uint32, "cpmProcExtInvoked"},
+    cpmprocextmemallocated{YType::uint32, "cpmProcExtMemAllocated"},
+    cpmprocextmemfreed{YType::uint32, "cpmProcExtMemFreed"},
+    cpmprocextpriority{YType::enumeration, "cpmProcExtPriority"},
+    cpmprocextruntime{YType::uint32, "cpmProcExtRuntime"},
+    cpmprocextutil1min{YType::uint32, "cpmProcExtUtil1Min"},
+    cpmprocextutil5min{YType::uint32, "cpmProcExtUtil5Min"},
+    cpmprocextutil5sec{YType::uint32, "cpmProcExtUtil5Sec"}
 {
-    yang_name = "cpmCPUThresholdEntry"; yang_parent_name = "cpmCPUThresholdTable";
+
+    yang_name = "cpmProcessEntry"; yang_parent_name = "cpmProcessTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::~Cpmcputhresholdentry()
+CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::~Cpmprocessentry()
 {
 }
 
-bool CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::has_data() const
+bool CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::has_data() const
 {
     return cpmcputotalindex.is_set
-	|| cpmcputhresholdclass.is_set
-	|| cpmcpufallingthresholdperiod.is_set
-	|| cpmcpufallingthresholdvalue.is_set
-	|| cpmcpurisingthresholdperiod.is_set
-	|| cpmcpurisingthresholdvalue.is_set
-	|| cpmcputhresholdentrystatus.is_set;
+	|| cpmprocesspid.is_set
+	|| cpmprocessaverageusecs.is_set
+	|| cpmprocessname.is_set
+	|| cpmprocesstimecreated.is_set
+	|| cpmprocessusecs.is_set
+	|| cpmprocextinvoked.is_set
+	|| cpmprocextmemallocated.is_set
+	|| cpmprocextmemfreed.is_set
+	|| cpmprocextpriority.is_set
+	|| cpmprocextruntime.is_set
+	|| cpmprocextutil1min.is_set
+	|| cpmprocextutil5min.is_set
+	|| cpmprocextutil5sec.is_set;
 }
 
-bool CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::has_operation() const
+bool CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpmcputotalindex.yfilter)
-	|| ydk::is_set(cpmcputhresholdclass.yfilter)
-	|| ydk::is_set(cpmcpufallingthresholdperiod.yfilter)
-	|| ydk::is_set(cpmcpufallingthresholdvalue.yfilter)
-	|| ydk::is_set(cpmcpurisingthresholdperiod.yfilter)
-	|| ydk::is_set(cpmcpurisingthresholdvalue.yfilter)
-	|| ydk::is_set(cpmcputhresholdentrystatus.yfilter);
+	|| ydk::is_set(cpmprocesspid.yfilter)
+	|| ydk::is_set(cpmprocessaverageusecs.yfilter)
+	|| ydk::is_set(cpmprocessname.yfilter)
+	|| ydk::is_set(cpmprocesstimecreated.yfilter)
+	|| ydk::is_set(cpmprocessusecs.yfilter)
+	|| ydk::is_set(cpmprocextinvoked.yfilter)
+	|| ydk::is_set(cpmprocextmemallocated.yfilter)
+	|| ydk::is_set(cpmprocextmemfreed.yfilter)
+	|| ydk::is_set(cpmprocextpriority.yfilter)
+	|| ydk::is_set(cpmprocextruntime.yfilter)
+	|| ydk::is_set(cpmprocextutil1min.yfilter)
+	|| ydk::is_set(cpmprocextutil5min.yfilter)
+	|| ydk::is_set(cpmprocextutil5sec.yfilter);
 }
 
-std::string CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpmCPUThresholdEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCPUThresholdClass='" <<cpmcputhresholdclass <<"']";
-
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmProcessTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::get_entity_path(Entity* ancestor) const
+std::string CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUThresholdTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cpmProcessEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmProcessPID='" <<cpmprocesspid <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
-    if (cpmcputhresholdclass.is_set || is_set(cpmcputhresholdclass.yfilter)) leaf_name_data.push_back(cpmcputhresholdclass.get_name_leafdata());
-    if (cpmcpufallingthresholdperiod.is_set || is_set(cpmcpufallingthresholdperiod.yfilter)) leaf_name_data.push_back(cpmcpufallingthresholdperiod.get_name_leafdata());
-    if (cpmcpufallingthresholdvalue.is_set || is_set(cpmcpufallingthresholdvalue.yfilter)) leaf_name_data.push_back(cpmcpufallingthresholdvalue.get_name_leafdata());
-    if (cpmcpurisingthresholdperiod.is_set || is_set(cpmcpurisingthresholdperiod.yfilter)) leaf_name_data.push_back(cpmcpurisingthresholdperiod.get_name_leafdata());
-    if (cpmcpurisingthresholdvalue.is_set || is_set(cpmcpurisingthresholdvalue.yfilter)) leaf_name_data.push_back(cpmcpurisingthresholdvalue.get_name_leafdata());
-    if (cpmcputhresholdentrystatus.is_set || is_set(cpmcputhresholdentrystatus.yfilter)) leaf_name_data.push_back(cpmcputhresholdentrystatus.get_name_leafdata());
+    if (cpmprocesspid.is_set || is_set(cpmprocesspid.yfilter)) leaf_name_data.push_back(cpmprocesspid.get_name_leafdata());
+    if (cpmprocessaverageusecs.is_set || is_set(cpmprocessaverageusecs.yfilter)) leaf_name_data.push_back(cpmprocessaverageusecs.get_name_leafdata());
+    if (cpmprocessname.is_set || is_set(cpmprocessname.yfilter)) leaf_name_data.push_back(cpmprocessname.get_name_leafdata());
+    if (cpmprocesstimecreated.is_set || is_set(cpmprocesstimecreated.yfilter)) leaf_name_data.push_back(cpmprocesstimecreated.get_name_leafdata());
+    if (cpmprocessusecs.is_set || is_set(cpmprocessusecs.yfilter)) leaf_name_data.push_back(cpmprocessusecs.get_name_leafdata());
+    if (cpmprocextinvoked.is_set || is_set(cpmprocextinvoked.yfilter)) leaf_name_data.push_back(cpmprocextinvoked.get_name_leafdata());
+    if (cpmprocextmemallocated.is_set || is_set(cpmprocextmemallocated.yfilter)) leaf_name_data.push_back(cpmprocextmemallocated.get_name_leafdata());
+    if (cpmprocextmemfreed.is_set || is_set(cpmprocextmemfreed.yfilter)) leaf_name_data.push_back(cpmprocextmemfreed.get_name_leafdata());
+    if (cpmprocextpriority.is_set || is_set(cpmprocextpriority.yfilter)) leaf_name_data.push_back(cpmprocextpriority.get_name_leafdata());
+    if (cpmprocextruntime.is_set || is_set(cpmprocextruntime.yfilter)) leaf_name_data.push_back(cpmprocextruntime.get_name_leafdata());
+    if (cpmprocextutil1min.is_set || is_set(cpmprocextutil1min.yfilter)) leaf_name_data.push_back(cpmprocextutil1min.get_name_leafdata());
+    if (cpmprocextutil5min.is_set || is_set(cpmprocextutil5min.yfilter)) leaf_name_data.push_back(cpmprocextutil5min.get_name_leafdata());
+    if (cpmprocextutil5sec.is_set || is_set(cpmprocextutil5sec.yfilter)) leaf_name_data.push_back(cpmprocextutil5sec.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -2503,637 +2867,164 @@ void CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::set_value(cons
         cpmcputotalindex.value_namespace = name_space;
         cpmcputotalindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cpmCPUThresholdClass")
+    if(value_path == "cpmProcessPID")
     {
-        cpmcputhresholdclass = value;
-        cpmcputhresholdclass.value_namespace = name_space;
-        cpmcputhresholdclass.value_namespace_prefix = name_space_prefix;
+        cpmprocesspid = value;
+        cpmprocesspid.value_namespace = name_space;
+        cpmprocesspid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cpmCPUFallingThresholdPeriod")
+    if(value_path == "cpmProcessAverageUSecs")
     {
-        cpmcpufallingthresholdperiod = value;
-        cpmcpufallingthresholdperiod.value_namespace = name_space;
-        cpmcpufallingthresholdperiod.value_namespace_prefix = name_space_prefix;
+        cpmprocessaverageusecs = value;
+        cpmprocessaverageusecs.value_namespace = name_space;
+        cpmprocessaverageusecs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cpmCPUFallingThresholdValue")
+    if(value_path == "cpmProcessName")
     {
-        cpmcpufallingthresholdvalue = value;
-        cpmcpufallingthresholdvalue.value_namespace = name_space;
-        cpmcpufallingthresholdvalue.value_namespace_prefix = name_space_prefix;
+        cpmprocessname = value;
+        cpmprocessname.value_namespace = name_space;
+        cpmprocessname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cpmCPURisingThresholdPeriod")
+    if(value_path == "cpmProcessTimeCreated")
     {
-        cpmcpurisingthresholdperiod = value;
-        cpmcpurisingthresholdperiod.value_namespace = name_space;
-        cpmcpurisingthresholdperiod.value_namespace_prefix = name_space_prefix;
+        cpmprocesstimecreated = value;
+        cpmprocesstimecreated.value_namespace = name_space;
+        cpmprocesstimecreated.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cpmCPURisingThresholdValue")
+    if(value_path == "cpmProcessuSecs")
     {
-        cpmcpurisingthresholdvalue = value;
-        cpmcpurisingthresholdvalue.value_namespace = name_space;
-        cpmcpurisingthresholdvalue.value_namespace_prefix = name_space_prefix;
+        cpmprocessusecs = value;
+        cpmprocessusecs.value_namespace = name_space;
+        cpmprocessusecs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cpmCPUThresholdEntryStatus")
+    if(value_path == "cpmProcExtInvoked")
     {
-        cpmcputhresholdentrystatus = value;
-        cpmcputhresholdentrystatus.value_namespace = name_space;
-        cpmcputhresholdentrystatus.value_namespace_prefix = name_space_prefix;
+        cpmprocextinvoked = value;
+        cpmprocextinvoked.value_namespace = name_space;
+        cpmprocextinvoked.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtMemAllocated")
+    {
+        cpmprocextmemallocated = value;
+        cpmprocextmemallocated.value_namespace = name_space;
+        cpmprocextmemallocated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtMemFreed")
+    {
+        cpmprocextmemfreed = value;
+        cpmprocextmemfreed.value_namespace = name_space;
+        cpmprocextmemfreed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtPriority")
+    {
+        cpmprocextpriority = value;
+        cpmprocextpriority.value_namespace = name_space;
+        cpmprocextpriority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtRuntime")
+    {
+        cpmprocextruntime = value;
+        cpmprocextruntime.value_namespace = name_space;
+        cpmprocextruntime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtUtil1Min")
+    {
+        cpmprocextutil1min = value;
+        cpmprocextutil1min.value_namespace = name_space;
+        cpmprocextutil1min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtUtil5Min")
+    {
+        cpmprocextutil5min = value;
+        cpmprocextutil5min.value_namespace = name_space;
+        cpmprocextutil5min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpmProcExtUtil5Sec")
+    {
+        cpmprocextutil5sec = value;
+        cpmprocextutil5sec.value_namespace = name_space;
+        cpmprocextutil5sec.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
         cpmcputotalindex.yfilter = yfilter;
     }
-    if(value_path == "cpmCPUThresholdClass")
+    if(value_path == "cpmProcessPID")
     {
-        cpmcputhresholdclass.yfilter = yfilter;
+        cpmprocesspid.yfilter = yfilter;
     }
-    if(value_path == "cpmCPUFallingThresholdPeriod")
+    if(value_path == "cpmProcessAverageUSecs")
     {
-        cpmcpufallingthresholdperiod.yfilter = yfilter;
+        cpmprocessaverageusecs.yfilter = yfilter;
     }
-    if(value_path == "cpmCPUFallingThresholdValue")
+    if(value_path == "cpmProcessName")
     {
-        cpmcpufallingthresholdvalue.yfilter = yfilter;
+        cpmprocessname.yfilter = yfilter;
     }
-    if(value_path == "cpmCPURisingThresholdPeriod")
+    if(value_path == "cpmProcessTimeCreated")
     {
-        cpmcpurisingthresholdperiod.yfilter = yfilter;
+        cpmprocesstimecreated.yfilter = yfilter;
     }
-    if(value_path == "cpmCPURisingThresholdValue")
+    if(value_path == "cpmProcessuSecs")
     {
-        cpmcpurisingthresholdvalue.yfilter = yfilter;
+        cpmprocessusecs.yfilter = yfilter;
     }
-    if(value_path == "cpmCPUThresholdEntryStatus")
+    if(value_path == "cpmProcExtInvoked")
     {
-        cpmcputhresholdentrystatus.yfilter = yfilter;
+        cpmprocextinvoked.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtMemAllocated")
+    {
+        cpmprocextmemallocated.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtMemFreed")
+    {
+        cpmprocextmemfreed.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtPriority")
+    {
+        cpmprocextpriority.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtRuntime")
+    {
+        cpmprocextruntime.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtUtil1Min")
+    {
+        cpmprocextutil1min.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtUtil5Min")
+    {
+        cpmprocextutil5min.yfilter = yfilter;
+    }
+    if(value_path == "cpmProcExtUtil5Sec")
+    {
+        cpmprocextutil5sec.yfilter = yfilter;
     }
 }
 
-bool CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cpmCPUTotalIndex" || name == "cpmCPUThresholdClass" || name == "cpmCPUFallingThresholdPeriod" || name == "cpmCPUFallingThresholdValue" || name == "cpmCPURisingThresholdPeriod" || name == "cpmCPURisingThresholdValue" || name == "cpmCPUThresholdEntryStatus")
+    if(name == "cpmCPUTotalIndex" || name == "cpmProcessPID" || name == "cpmProcessAverageUSecs" || name == "cpmProcessName" || name == "cpmProcessTimeCreated" || name == "cpmProcessuSecs" || name == "cpmProcExtInvoked" || name == "cpmProcExtMemAllocated" || name == "cpmProcExtMemFreed" || name == "cpmProcExtPriority" || name == "cpmProcExtRuntime" || name == "cpmProcExtUtil1Min" || name == "cpmProcExtUtil5Min" || name == "cpmProcExtUtil5Sec")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistorytable()
+CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadtable()
 {
-    yang_name = "cpmCPUHistoryTable"; yang_parent_name = "CISCO-PROCESS-MIB";
+
+    yang_name = "cpmThreadTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmcpuhistorytable::~Cpmcpuhistorytable()
-{
-}
-
-bool CiscoProcessMib::Cpmcpuhistorytable::has_data() const
-{
-    for (std::size_t index=0; index<cpmcpuhistoryentry.size(); index++)
-    {
-        if(cpmcpuhistoryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoProcessMib::Cpmcpuhistorytable::has_operation() const
-{
-    for (std::size_t index=0; index<cpmcpuhistoryentry.size(); index++)
-    {
-        if(cpmcpuhistoryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoProcessMib::Cpmcpuhistorytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmCPUHistoryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmcpuhistorytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcpuhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cpmCPUHistoryEntry")
-    {
-        for(auto const & c : cpmcpuhistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry>();
-        c->parent = this;
-        cpmcpuhistoryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcpuhistorytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpmcpuhistoryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoProcessMib::Cpmcpuhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCOPROCESSMIB::Cpmthreadtable::~Cpmthreadtable()
 {
 }
 
-void CiscoProcessMib::Cpmcpuhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoProcessMib::Cpmcpuhistorytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCPUHistoryEntry")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::Cpmcpuhistoryentry()
-    :
-    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
-    cpmcpuhistoryreportid{YType::uint32, "cpmCPUHistoryReportId"},
-    cpmcpuhistorycreatedtime{YType::uint32, "cpmCPUHistoryCreatedTime"},
-    cpmcpuhistoryinterruptutil{YType::uint32, "cpmCPUHistoryInterruptUtil"},
-    cpmcpuhistoryreportsize{YType::uint32, "cpmCPUHistoryReportSize"},
-    cpmcpuhistorytotalutil{YType::uint32, "cpmCPUHistoryTotalUtil"}
-{
-    yang_name = "cpmCPUHistoryEntry"; yang_parent_name = "cpmCPUHistoryTable";
-}
-
-CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::~Cpmcpuhistoryentry()
-{
-}
-
-bool CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::has_data() const
-{
-    return cpmcputotalindex.is_set
-	|| cpmcpuhistoryreportid.is_set
-	|| cpmcpuhistorycreatedtime.is_set
-	|| cpmcpuhistoryinterruptutil.is_set
-	|| cpmcpuhistoryreportsize.is_set
-	|| cpmcpuhistorytotalutil.is_set;
-}
-
-bool CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cpmcputotalindex.yfilter)
-	|| ydk::is_set(cpmcpuhistoryreportid.yfilter)
-	|| ydk::is_set(cpmcpuhistorycreatedtime.yfilter)
-	|| ydk::is_set(cpmcpuhistoryinterruptutil.yfilter)
-	|| ydk::is_set(cpmcpuhistoryreportsize.yfilter)
-	|| ydk::is_set(cpmcpuhistorytotalutil.yfilter);
-}
-
-std::string CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmCPUHistoryEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCPUHistoryReportId='" <<cpmcpuhistoryreportid <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUHistoryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
-    if (cpmcpuhistoryreportid.is_set || is_set(cpmcpuhistoryreportid.yfilter)) leaf_name_data.push_back(cpmcpuhistoryreportid.get_name_leafdata());
-    if (cpmcpuhistorycreatedtime.is_set || is_set(cpmcpuhistorycreatedtime.yfilter)) leaf_name_data.push_back(cpmcpuhistorycreatedtime.get_name_leafdata());
-    if (cpmcpuhistoryinterruptutil.is_set || is_set(cpmcpuhistoryinterruptutil.yfilter)) leaf_name_data.push_back(cpmcpuhistoryinterruptutil.get_name_leafdata());
-    if (cpmcpuhistoryreportsize.is_set || is_set(cpmcpuhistoryreportsize.yfilter)) leaf_name_data.push_back(cpmcpuhistoryreportsize.get_name_leafdata());
-    if (cpmcpuhistorytotalutil.is_set || is_set(cpmcpuhistorytotalutil.yfilter)) leaf_name_data.push_back(cpmcpuhistorytotalutil.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex = value;
-        cpmcputotalindex.value_namespace = name_space;
-        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryReportId")
-    {
-        cpmcpuhistoryreportid = value;
-        cpmcpuhistoryreportid.value_namespace = name_space;
-        cpmcpuhistoryreportid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryCreatedTime")
-    {
-        cpmcpuhistorycreatedtime = value;
-        cpmcpuhistorycreatedtime.value_namespace = name_space;
-        cpmcpuhistorycreatedtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryInterruptUtil")
-    {
-        cpmcpuhistoryinterruptutil = value;
-        cpmcpuhistoryinterruptutil.value_namespace = name_space;
-        cpmcpuhistoryinterruptutil.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryReportSize")
-    {
-        cpmcpuhistoryreportsize = value;
-        cpmcpuhistoryreportsize.value_namespace = name_space;
-        cpmcpuhistoryreportsize.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryTotalUtil")
-    {
-        cpmcpuhistorytotalutil = value;
-        cpmcpuhistorytotalutil.value_namespace = name_space;
-        cpmcpuhistorytotalutil.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryReportId")
-    {
-        cpmcpuhistoryreportid.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryCreatedTime")
-    {
-        cpmcpuhistorycreatedtime.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryInterruptUtil")
-    {
-        cpmcpuhistoryinterruptutil.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryReportSize")
-    {
-        cpmcpuhistoryreportsize.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryTotalUtil")
-    {
-        cpmcpuhistorytotalutil.yfilter = yfilter;
-    }
-}
-
-bool CiscoProcessMib::Cpmcpuhistorytable::Cpmcpuhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCPUTotalIndex" || name == "cpmCPUHistoryReportId" || name == "cpmCPUHistoryCreatedTime" || name == "cpmCPUHistoryInterruptUtil" || name == "cpmCPUHistoryReportSize" || name == "cpmCPUHistoryTotalUtil")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistorytable()
-{
-    yang_name = "cpmCPUProcessHistoryTable"; yang_parent_name = "CISCO-PROCESS-MIB";
-}
-
-CiscoProcessMib::Cpmcpuprocesshistorytable::~Cpmcpuprocesshistorytable()
-{
-}
-
-bool CiscoProcessMib::Cpmcpuprocesshistorytable::has_data() const
-{
-    for (std::size_t index=0; index<cpmcpuprocesshistoryentry.size(); index++)
-    {
-        if(cpmcpuprocesshistoryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoProcessMib::Cpmcpuprocesshistorytable::has_operation() const
-{
-    for (std::size_t index=0; index<cpmcpuprocesshistoryentry.size(); index++)
-    {
-        if(cpmcpuprocesshistoryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoProcessMib::Cpmcpuprocesshistorytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmCPUProcessHistoryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmcpuprocesshistorytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcpuprocesshistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cpmCPUProcessHistoryEntry")
-    {
-        for(auto const & c : cpmcpuprocesshistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry>();
-        c->parent = this;
-        cpmcpuprocesshistoryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcpuprocesshistorytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpmcpuprocesshistoryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoProcessMib::Cpmcpuprocesshistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoProcessMib::Cpmcpuprocesshistorytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoProcessMib::Cpmcpuprocesshistorytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCPUProcessHistoryEntry")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::Cpmcpuprocesshistoryentry()
-    :
-    cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
-    cpmcpuhistoryreportid{YType::str, "cpmCPUHistoryReportId"},
-    cpmcpuprocesshistoryindex{YType::uint32, "cpmCPUProcessHistoryIndex"},
-    cpmcpuhistoryproccreated{YType::uint32, "cpmCPUHistoryProcCreated"},
-    cpmcpuhistoryprocid{YType::uint32, "cpmCPUHistoryProcId"},
-    cpmcpuhistoryprocname{YType::str, "cpmCPUHistoryProcName"},
-    cpmcpuhistoryprocutil{YType::uint32, "cpmCPUHistoryProcUtil"}
-{
-    yang_name = "cpmCPUProcessHistoryEntry"; yang_parent_name = "cpmCPUProcessHistoryTable";
-}
-
-CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::~Cpmcpuprocesshistoryentry()
-{
-}
-
-bool CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::has_data() const
-{
-    return cpmcputotalindex.is_set
-	|| cpmcpuhistoryreportid.is_set
-	|| cpmcpuprocesshistoryindex.is_set
-	|| cpmcpuhistoryproccreated.is_set
-	|| cpmcpuhistoryprocid.is_set
-	|| cpmcpuhistoryprocname.is_set
-	|| cpmcpuhistoryprocutil.is_set;
-}
-
-bool CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cpmcputotalindex.yfilter)
-	|| ydk::is_set(cpmcpuhistoryreportid.yfilter)
-	|| ydk::is_set(cpmcpuprocesshistoryindex.yfilter)
-	|| ydk::is_set(cpmcpuhistoryproccreated.yfilter)
-	|| ydk::is_set(cpmcpuhistoryprocid.yfilter)
-	|| ydk::is_set(cpmcpuhistoryprocname.yfilter)
-	|| ydk::is_set(cpmcpuhistoryprocutil.yfilter);
-}
-
-std::string CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cpmCPUProcessHistoryEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmCPUHistoryReportId='" <<cpmcpuhistoryreportid <<"']" <<"[cpmCPUProcessHistoryIndex='" <<cpmcpuprocesshistoryindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmCPUProcessHistoryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
-    if (cpmcpuhistoryreportid.is_set || is_set(cpmcpuhistoryreportid.yfilter)) leaf_name_data.push_back(cpmcpuhistoryreportid.get_name_leafdata());
-    if (cpmcpuprocesshistoryindex.is_set || is_set(cpmcpuprocesshistoryindex.yfilter)) leaf_name_data.push_back(cpmcpuprocesshistoryindex.get_name_leafdata());
-    if (cpmcpuhistoryproccreated.is_set || is_set(cpmcpuhistoryproccreated.yfilter)) leaf_name_data.push_back(cpmcpuhistoryproccreated.get_name_leafdata());
-    if (cpmcpuhistoryprocid.is_set || is_set(cpmcpuhistoryprocid.yfilter)) leaf_name_data.push_back(cpmcpuhistoryprocid.get_name_leafdata());
-    if (cpmcpuhistoryprocname.is_set || is_set(cpmcpuhistoryprocname.yfilter)) leaf_name_data.push_back(cpmcpuhistoryprocname.get_name_leafdata());
-    if (cpmcpuhistoryprocutil.is_set || is_set(cpmcpuhistoryprocutil.yfilter)) leaf_name_data.push_back(cpmcpuhistoryprocutil.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex = value;
-        cpmcputotalindex.value_namespace = name_space;
-        cpmcputotalindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryReportId")
-    {
-        cpmcpuhistoryreportid = value;
-        cpmcpuhistoryreportid.value_namespace = name_space;
-        cpmcpuhistoryreportid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUProcessHistoryIndex")
-    {
-        cpmcpuprocesshistoryindex = value;
-        cpmcpuprocesshistoryindex.value_namespace = name_space;
-        cpmcpuprocesshistoryindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryProcCreated")
-    {
-        cpmcpuhistoryproccreated = value;
-        cpmcpuhistoryproccreated.value_namespace = name_space;
-        cpmcpuhistoryproccreated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryProcId")
-    {
-        cpmcpuhistoryprocid = value;
-        cpmcpuhistoryprocid.value_namespace = name_space;
-        cpmcpuhistoryprocid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryProcName")
-    {
-        cpmcpuhistoryprocname = value;
-        cpmcpuhistoryprocname.value_namespace = name_space;
-        cpmcpuhistoryprocname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpmCPUHistoryProcUtil")
-    {
-        cpmcpuhistoryprocutil = value;
-        cpmcpuhistoryprocutil.value_namespace = name_space;
-        cpmcpuhistoryprocutil.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cpmCPUTotalIndex")
-    {
-        cpmcputotalindex.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryReportId")
-    {
-        cpmcpuhistoryreportid.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUProcessHistoryIndex")
-    {
-        cpmcpuprocesshistoryindex.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryProcCreated")
-    {
-        cpmcpuhistoryproccreated.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryProcId")
-    {
-        cpmcpuhistoryprocid.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryProcName")
-    {
-        cpmcpuhistoryprocname.yfilter = yfilter;
-    }
-    if(value_path == "cpmCPUHistoryProcUtil")
-    {
-        cpmcpuhistoryprocutil.yfilter = yfilter;
-    }
-}
-
-bool CiscoProcessMib::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpmCPUTotalIndex" || name == "cpmCPUHistoryReportId" || name == "cpmCPUProcessHistoryIndex" || name == "cpmCPUHistoryProcCreated" || name == "cpmCPUHistoryProcId" || name == "cpmCPUHistoryProcName" || name == "cpmCPUHistoryProcUtil")
-        return true;
-    return false;
-}
-
-CiscoProcessMib::Cpmthreadtable::Cpmthreadtable()
-{
-    yang_name = "cpmThreadTable"; yang_parent_name = "CISCO-PROCESS-MIB";
-}
-
-CiscoProcessMib::Cpmthreadtable::~Cpmthreadtable()
-{
-}
-
-bool CiscoProcessMib::Cpmthreadtable::has_data() const
+bool CISCOPROCESSMIB::Cpmthreadtable::has_data() const
 {
     for (std::size_t index=0; index<cpmthreadentry.size(); index++)
     {
@@ -3143,7 +3034,7 @@ bool CiscoProcessMib::Cpmthreadtable::has_data() const
     return false;
 }
 
-bool CiscoProcessMib::Cpmthreadtable::has_operation() const
+bool CISCOPROCESSMIB::Cpmthreadtable::has_operation() const
 {
     for (std::size_t index=0; index<cpmthreadentry.size(); index++)
     {
@@ -3153,37 +3044,30 @@ bool CiscoProcessMib::Cpmthreadtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoProcessMib::Cpmthreadtable::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmthreadtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmthreadtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmThreadTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmthreadtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmthreadtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmthreadtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmthreadtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmThreadEntry")
     {
@@ -3195,7 +3079,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmthreadtable::get_child_by_name(const
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoProcessMib::Cpmthreadtable::Cpmthreadentry>();
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry>();
         c->parent = this;
         cpmthreadentry.push_back(c);
         return c;
@@ -3204,7 +3088,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmthreadtable::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmthreadtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmthreadtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cpmthreadentry)
@@ -3215,22 +3099,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmthreadtable::
     return children;
 }
 
-void CiscoProcessMib::Cpmthreadtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmthreadtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoProcessMib::Cpmthreadtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmthreadtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoProcessMib::Cpmthreadtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmthreadtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmThreadEntry")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadentry()
+CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadentry()
     :
     cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
     cpmprocesspid{YType::str, "cpmProcessPID"},
@@ -3244,14 +3128,15 @@ CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadentry()
     cpmthreadstacksizeovrflw{YType::uint32, "cpmThreadStackSizeOvrflw"},
     cpmthreadstate{YType::enumeration, "cpmThreadState"}
 {
-    yang_name = "cpmThreadEntry"; yang_parent_name = "cpmThreadTable";
+
+    yang_name = "cpmThreadEntry"; yang_parent_name = "cpmThreadTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::~Cpmthreadentry()
+CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::~Cpmthreadentry()
 {
 }
 
-bool CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::has_data() const
+bool CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::has_data() const
 {
     return cpmcputotalindex.is_set
 	|| cpmprocesspid.is_set
@@ -3266,7 +3151,7 @@ bool CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::has_data() const
 	|| cpmthreadstate.is_set;
 }
 
-bool CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::has_operation() const
+bool CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpmcputotalindex.yfilter)
@@ -3282,27 +3167,22 @@ bool CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::has_operation() const
 	|| ydk::is_set(cpmthreadstate.yfilter);
 }
 
-std::string CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmThreadTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmThreadEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmProcessPID='" <<cpmprocesspid <<"']" <<"[cpmThreadID='" <<cpmthreadid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmThreadTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
@@ -3317,24 +3197,22 @@ const EntityPath CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::get_entity_pat
     if (cpmthreadstacksizeovrflw.is_set || is_set(cpmthreadstacksizeovrflw.yfilter)) leaf_name_data.push_back(cpmthreadstacksizeovrflw.get_name_leafdata());
     if (cpmthreadstate.is_set || is_set(cpmthreadstate.yfilter)) leaf_name_data.push_back(cpmthreadstate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -3404,7 +3282,7 @@ void CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::set_value(const std::strin
     }
 }
 
-void CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -3452,23 +3330,24 @@ void CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::set_filter(const std::stri
     }
 }
 
-bool CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCPUTotalIndex" || name == "cpmProcessPID" || name == "cpmThreadID" || name == "cpmThreadBlockingProcess" || name == "cpmThreadCpuUtilization" || name == "cpmThreadHCStackSize" || name == "cpmThreadName" || name == "cpmThreadPriority" || name == "cpmThreadStackSize" || name == "cpmThreadStackSizeOvrflw" || name == "cpmThreadState")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocesstable()
+CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocesstable()
 {
-    yang_name = "cpmVirtualProcessTable"; yang_parent_name = "CISCO-PROCESS-MIB";
+
+    yang_name = "cpmVirtualProcessTable"; yang_parent_name = "CISCO-PROCESS-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmvirtualprocesstable::~Cpmvirtualprocesstable()
+CISCOPROCESSMIB::Cpmvirtualprocesstable::~Cpmvirtualprocesstable()
 {
 }
 
-bool CiscoProcessMib::Cpmvirtualprocesstable::has_data() const
+bool CISCOPROCESSMIB::Cpmvirtualprocesstable::has_data() const
 {
     for (std::size_t index=0; index<cpmvirtualprocessentry.size(); index++)
     {
@@ -3478,7 +3357,7 @@ bool CiscoProcessMib::Cpmvirtualprocesstable::has_data() const
     return false;
 }
 
-bool CiscoProcessMib::Cpmvirtualprocesstable::has_operation() const
+bool CISCOPROCESSMIB::Cpmvirtualprocesstable::has_operation() const
 {
     for (std::size_t index=0; index<cpmvirtualprocessentry.size(); index++)
     {
@@ -3488,37 +3367,30 @@ bool CiscoProcessMib::Cpmvirtualprocesstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoProcessMib::Cpmvirtualprocesstable::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmvirtualprocesstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmvirtualprocesstable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmVirtualProcessTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmvirtualprocesstable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmvirtualprocesstable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmvirtualprocesstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmvirtualprocesstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmVirtualProcessEntry")
     {
@@ -3530,7 +3402,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmvirtualprocesstable::get_child_by_na
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry>();
+        auto c = std::make_shared<CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry>();
         c->parent = this;
         cpmvirtualprocessentry.push_back(c);
         return c;
@@ -3539,7 +3411,7 @@ std::shared_ptr<Entity> CiscoProcessMib::Cpmvirtualprocesstable::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmvirtualprocesstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmvirtualprocesstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cpmvirtualprocessentry)
@@ -3550,22 +3422,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmvirtualproces
     return children;
 }
 
-void CiscoProcessMib::Cpmvirtualprocesstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmvirtualprocesstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoProcessMib::Cpmvirtualprocesstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmvirtualprocesstable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoProcessMib::Cpmvirtualprocesstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmvirtualprocesstable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmVirtualProcessEntry")
         return true;
     return false;
 }
 
-CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::Cpmvirtualprocessentry()
+CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::Cpmvirtualprocessentry()
     :
     cpmcputotalindex{YType::str, "cpmCPUTotalIndex"},
     cpmprocesspid{YType::str, "cpmProcessPID"},
@@ -3583,14 +3455,15 @@ CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::Cpmvirtualproce
     cpmvirtualprocessutil5min{YType::uint32, "cpmVirtualProcessUtil5Min"},
     cpmvirtualprocessutil5sec{YType::uint32, "cpmVirtualProcessUtil5Sec"}
 {
-    yang_name = "cpmVirtualProcessEntry"; yang_parent_name = "cpmVirtualProcessTable";
+
+    yang_name = "cpmVirtualProcessEntry"; yang_parent_name = "cpmVirtualProcessTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::~Cpmvirtualprocessentry()
+CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::~Cpmvirtualprocessentry()
 {
 }
 
-bool CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_data() const
+bool CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_data() const
 {
     return cpmcputotalindex.is_set
 	|| cpmprocesspid.is_set
@@ -3609,7 +3482,7 @@ bool CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_data()
 	|| cpmvirtualprocessutil5sec.is_set;
 }
 
-bool CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_operation() const
+bool CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpmcputotalindex.yfilter)
@@ -3629,27 +3502,22 @@ bool CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_operat
 	|| ydk::is_set(cpmvirtualprocessutil5sec.yfilter);
 }
 
-std::string CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_segment_path() const
+std::string CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmVirtualProcessTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpmVirtualProcessEntry" <<"[cpmCPUTotalIndex='" <<cpmcputotalindex <<"']" <<"[cpmProcessPID='" <<cpmprocesspid <<"']" <<"[cpmVirtualProcessID='" <<cpmvirtualprocessid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PROCESS-MIB:CISCO-PROCESS-MIB/cpmVirtualProcessTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpmcputotalindex.is_set || is_set(cpmcputotalindex.yfilter)) leaf_name_data.push_back(cpmcputotalindex.get_name_leafdata());
@@ -3668,24 +3536,22 @@ const EntityPath CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry
     if (cpmvirtualprocessutil5min.is_set || is_set(cpmvirtualprocessutil5min.yfilter)) leaf_name_data.push_back(cpmvirtualprocessutil5min.get_name_leafdata());
     if (cpmvirtualprocessutil5sec.is_set || is_set(cpmvirtualprocessutil5sec.yfilter)) leaf_name_data.push_back(cpmvirtualprocessutil5sec.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -3779,7 +3645,7 @@ void CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::set_value(
     }
 }
 
-void CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpmCPUTotalIndex")
     {
@@ -3843,62 +3709,62 @@ void CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::set_filter
     }
 }
 
-bool CiscoProcessMib::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpmCPUTotalIndex" || name == "cpmProcessPID" || name == "cpmVirtualProcessID" || name == "cpmVirtualProcessHCMemAllocated" || name == "cpmVirtualProcessHCMemFreed" || name == "cpmVirtualProcessInvokeCount" || name == "cpmVirtualProcessMemAllocated" || name == "cpmVirtualProcessMemAllocatedOvrflw" || name == "cpmVirtualProcessMemFreed" || name == "cpmVirtualProcessMemFreedOvrflw" || name == "cpmVirtualProcessName" || name == "cpmVirtualProcessRuntime" || name == "cpmVirtualProcessUtil1Min" || name == "cpmVirtualProcessUtil5Min" || name == "cpmVirtualProcessUtil5Sec")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::critical {1, "critical"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::high {2, "high"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::normal {3, "normal"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::low {4, "low"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::notAssigned {5, "notAssigned"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass::total {1, "total"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass::interrupt {2, "interrupt"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass::process {3, "process"};
 
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::critical {1, "critical"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::high {2, "high"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::normal {3, "normal"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::low {4, "low"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::notAssigned {5, "notAssigned"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::critical {1, "critical"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::high {2, "high"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::normal {3, "normal"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::low {4, "low"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev::notAssigned {5, "notAssigned"};
 
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::none {0, "none"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::other {1, "other"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::posix {2, "posix"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::ios {3, "ios"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::none {0, "none"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::other {1, "other"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::posix {2, "posix"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype::ios {3, "ios"};
 
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::none {0, "none"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::other {1, "other"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmem {2, "mainmem"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmemSharedmem {3, "mainmemSharedmem"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmemText {4, "mainmemText"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmemTextSharedmem {5, "mainmemTextSharedmem"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::sharedmem {6, "sharedmem"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::sparse {7, "sparse"};
-const Enum::YLeaf CiscoProcessMib::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::off {8, "off"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::none {0, "none"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::other {1, "other"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmem {2, "mainmem"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmemSharedmem {3, "mainmemSharedmem"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmemText {4, "mainmemText"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::mainmemTextSharedmem {5, "mainmemTextSharedmem"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::sharedmem {6, "sharedmem"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::sparse {7, "sparse"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore::off {8, "off"};
 
-const Enum::YLeaf CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass::total {1, "total"};
-const Enum::YLeaf CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass::interrupt {2, "interrupt"};
-const Enum::YLeaf CiscoProcessMib::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass::process {3, "process"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::critical {1, "critical"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::high {2, "high"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::normal {3, "normal"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::low {4, "low"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority::notAssigned {5, "notAssigned"};
 
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::other {1, "other"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::dead {2, "dead"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::running {3, "running"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::ready {4, "ready"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::stopped {5, "stopped"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::send {6, "send"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::receive {7, "receive"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::reply {8, "reply"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::stack {9, "stack"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::waitpage {10, "waitpage"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::sigsuspend {11, "sigsuspend"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::sigwaitinfo {12, "sigwaitinfo"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::nanosleep {13, "nanosleep"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::mutex {14, "mutex"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::condvar {15, "condvar"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::join {16, "join"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::intr {17, "intr"};
-const Enum::YLeaf CiscoProcessMib::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::sem {18, "sem"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::other {1, "other"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::dead {2, "dead"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::running {3, "running"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::ready {4, "ready"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::stopped {5, "stopped"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::send {6, "send"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::receive {7, "receive"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::reply {8, "reply"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::stack {9, "stack"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::waitpage {10, "waitpage"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::sigsuspend {11, "sigsuspend"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::sigwaitinfo {12, "sigwaitinfo"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::nanosleep {13, "nanosleep"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::mutex {14, "mutex"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::condvar {15, "condvar"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::join {16, "join"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::intr {17, "intr"};
+const Enum::YLeaf CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate::sem {18, "sem"};
 
 
 }

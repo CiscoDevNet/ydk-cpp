@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_crypto_macsec_mka_cfg {
 
 Macsec::Macsec()
 {
-    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-cfg";
+
+    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Macsec::~Macsec()
@@ -44,26 +45,15 @@ std::string Macsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-cfg:macsec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -153,7 +143,8 @@ Macsec::Policy::Policy()
     vlan_tags_in_clear{YType::uint32, "vlan-tags-in-clear"},
     window_size{YType::uint32, "window-size"}
 {
-    yang_name = "policy"; yang_parent_name = "macsec";
+
+    yang_name = "policy"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Policy::~Policy()
@@ -191,27 +182,22 @@ bool Macsec::Policy::has_operation() const
 	|| ydk::is_set(window_size.yfilter);
 }
 
+std::string Macsec::Policy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-cfg:macsec/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Policy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "policy" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Policy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Policy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-cfg:macsec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -226,9 +212,7 @@ const EntityPath Macsec::Policy::get_entity_path(Entity* ancestor) const
     if (vlan_tags_in_clear.is_set || is_set(vlan_tags_in_clear.yfilter)) leaf_name_data.push_back(vlan_tags_in_clear.get_name_leafdata());
     if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -368,6 +352,9 @@ bool Macsec::Policy::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+const Enum::YLeaf MacsecMkaSecurityPolicy::should_secure {0, "should-secure"};
+const Enum::YLeaf MacsecMkaSecurityPolicy::must_secure {1, "must-secure"};
+
 const Enum::YLeaf MacsecMkaPolicyException::lacp_in_clear {1, "lacp-in-clear"};
 
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_128 {1, "gcm-aes-128"};
@@ -378,9 +365,6 @@ const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_xpn_256 {4, "gcm-aes-xpn-256"};
 const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_0 {0, "conf-off-set-0"};
 const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_30 {30, "conf-off-set-30"};
 const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_50 {50, "conf-off-set-50"};
-
-const Enum::YLeaf MacsecMkaSecurityPolicy::should_secure {0, "should-secure"};
-const Enum::YLeaf MacsecMkaSecurityPolicy::must_secure {1, "must-secure"};
 
 
 }

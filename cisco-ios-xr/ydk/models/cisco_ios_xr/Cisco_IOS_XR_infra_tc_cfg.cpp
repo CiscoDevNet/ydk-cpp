@@ -19,10 +19,9 @@ TrafficCollector::TrafficCollector()
 	,statistics(std::make_shared<TrafficCollector::Statistics>())
 {
     external_interfaces->parent = this;
-
     statistics->parent = this;
 
-    yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-cfg";
+    yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 TrafficCollector::~TrafficCollector()
@@ -48,27 +47,16 @@ std::string TrafficCollector::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrafficCollector::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable_traffic_collector.is_set || is_set(enable_traffic_collector.yfilter)) leaf_name_data.push_back(enable_traffic_collector.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -163,7 +151,8 @@ bool TrafficCollector::has_leaf_or_child_of_name(const std::string & name) const
 
 TrafficCollector::ExternalInterfaces::ExternalInterfaces()
 {
-    yang_name = "external-interfaces"; yang_parent_name = "traffic-collector";
+
+    yang_name = "external-interfaces"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrafficCollector::ExternalInterfaces::~ExternalInterfaces()
@@ -190,33 +179,26 @@ bool TrafficCollector::ExternalInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string TrafficCollector::ExternalInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrafficCollector::ExternalInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "external-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrafficCollector::ExternalInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -272,7 +254,8 @@ TrafficCollector::ExternalInterfaces::ExternalInterface::ExternalInterface()
     interface_name{YType::str, "interface-name"},
     enable{YType::empty, "enable"}
 {
-    yang_name = "external-interface"; yang_parent_name = "external-interfaces";
+
+    yang_name = "external-interface"; yang_parent_name = "external-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterface::~ExternalInterface()
@@ -292,35 +275,28 @@ bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_operation() co
 	|| ydk::is_set(enable.yfilter);
 }
 
+std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector/external-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "external-interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrafficCollector::ExternalInterfaces::ExternalInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector/external-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -377,7 +353,8 @@ TrafficCollector::Statistics::Statistics()
     history_size{YType::str, "history-size"},
     history_timeout{YType::str, "history-timeout"}
 {
-    yang_name = "statistics"; yang_parent_name = "traffic-collector";
+
+    yang_name = "statistics"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrafficCollector::Statistics::~Statistics()
@@ -401,27 +378,22 @@ bool TrafficCollector::Statistics::has_operation() const
 	|| ydk::is_set(history_timeout.yfilter);
 }
 
+std::string TrafficCollector::Statistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrafficCollector::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrafficCollector::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrafficCollector::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-tc-cfg:traffic-collector/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (collection_interval.is_set || is_set(collection_interval.yfilter)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
@@ -429,9 +401,7 @@ const EntityPath TrafficCollector::Statistics::get_entity_path(Entity* ancestor)
     if (history_size.is_set || is_set(history_size.yfilter)) leaf_name_data.push_back(history_size.get_name_leafdata());
     if (history_timeout.is_set || is_set(history_timeout.yfilter)) leaf_name_data.push_back(history_timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -501,10 +471,6 @@ bool TrafficCollector::Statistics::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-const Enum::YLeaf HistoryTimeout::max {720, "max"};
-
-const Enum::YLeaf HistorySize::max {10, "max"};
-
 const Enum::YLeaf CollectIonInterval::Y_1_minute {1, "1-minute"};
 const Enum::YLeaf CollectIonInterval::Y_2_minutes {2, "2-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_3_minutes {3, "3-minutes"};
@@ -517,6 +483,10 @@ const Enum::YLeaf CollectIonInterval::Y_15_minutes {15, "15-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_20_minutes {20, "20-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_30_minutes {30, "30-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_60_minutes {60, "60-minutes"};
+
+const Enum::YLeaf HistoryTimeout::max {720, "max"};
+
+const Enum::YLeaf HistorySize::max {10, "max"};
 
 
 }

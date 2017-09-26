@@ -20,15 +20,13 @@
 #include <memory>
 #include <string>
 
-#include "types.hpp"
-#include "path_api.hpp"
 #include "netconf_client.hpp"
+#include "path_api.hpp"
+#include "service_provider.hpp"
 
 namespace ydk {
 
-class NetconfClient;
-
-class NetconfServiceProvider : public path::ServiceProvider {
+class NetconfServiceProvider : public ServiceProvider {
 public:
         NetconfServiceProvider(path::Repository & repo,
                                const std::string& address,
@@ -36,33 +34,23 @@ public:
                                const std::string& password,
                                int port = 830,
                                const std::string& protocol = "ssh",
-                               bool on_demand = true);
+                               bool on_demand = true,
+                               int timeout = -1);
         NetconfServiceProvider(const std::string& address,
                                const std::string& username,
                                const std::string& password,
                                int port = 830,
                                const std::string& protocol = "ssh",
                                bool on_demand = true,
-                               bool common_cache = false);
+                               bool common_cache = false,
+                               int timeout = -1);
         ~NetconfServiceProvider();
-        path::RootSchemaNode& get_root_schema() const;
-        std::shared_ptr<path::DataNode> invoke(path::Rpc& rpc) const;
         EncodingFormat get_encoding() const;
+        const path::Session& get_session() const;
+        std::vector<std::string> get_capabilities() const;
 
 private:
-        std::shared_ptr<path::DataNode> handle_edit(path::Rpc& rpc, path::Annotation ann) const;
-        std::shared_ptr<path::DataNode> handle_netconf_operation(path::Rpc& ydk_rpc) const;
-        std::shared_ptr<path::DataNode> handle_read(path::Rpc& rpc) const;
-        void initialize(path::Repository& repo, bool on_demand);
-        void initialize_client(const std::string& address, const std::string& username, const std::string& password, int port, const std::string& protocol);
-        std::string execute_payload(const std::string & payload) const;
-
-private:
-        std::unique_ptr<NetconfClient> client;
-        std::unique_ptr<path::ModelProvider> model_provider;
-        std::shared_ptr<ydk::path::RootSchemaNode> root_schema;
-
-        std::vector<std::string> server_capabilities;
+        const path::NetconfSession session;
 };
 }
 

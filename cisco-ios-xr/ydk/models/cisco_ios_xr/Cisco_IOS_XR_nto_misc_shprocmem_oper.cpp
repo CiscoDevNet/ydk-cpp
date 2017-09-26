@@ -17,7 +17,7 @@ ProcessesMemory::ProcessesMemory()
 {
     nodes->parent = this;
 
-    yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shprocmem-oper";
+    yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shprocmem-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ProcessesMemory::~ProcessesMemory()
@@ -39,26 +39,15 @@ std::string ProcessesMemory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-nto-misc-shprocmem-oper:processes-memory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ProcessesMemory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ProcessesMemory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool ProcessesMemory::has_leaf_or_child_of_name(const std::string & name) const
 
 ProcessesMemory::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "processes-memory";
+
+    yang_name = "nodes"; yang_parent_name = "processes-memory"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ProcessesMemory::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool ProcessesMemory::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ProcessesMemory::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-nto-misc-shprocmem-oper:processes-memory/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ProcessesMemory::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ProcessesMemory::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-nto-misc-shprocmem-oper:processes-memory/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ ProcessesMemory::Nodes::Node::Node()
 {
     job_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ProcessesMemory::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool ProcessesMemory::Nodes::Node::has_operation() const
 	|| (job_ids !=  nullptr && job_ids->has_operation());
 }
 
+std::string ProcessesMemory::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-nto-misc-shprocmem-oper:processes-memory/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ProcessesMemory::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ProcessesMemory::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-nto-misc-shprocmem-oper:processes-memory/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool ProcessesMemory::Nodes::Node::has_leaf_or_child_of_name(const std::string &
 
 ProcessesMemory::Nodes::Node::JobIds::JobIds()
 {
-    yang_name = "job-ids"; yang_parent_name = "node";
+
+    yang_name = "job-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ProcessesMemory::Nodes::Node::JobIds::~JobIds()
@@ -375,29 +352,15 @@ std::string ProcessesMemory::Nodes::Node::JobIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "job-ids";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ProcessesMemory::Nodes::Node::JobIds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::JobIds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'JobIds' in Cisco_IOS_XR_nto_misc_shprocmem_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -458,7 +421,8 @@ ProcessesMemory::Nodes::Node::JobIds::JobId::JobId()
     stack_seg_size{YType::uint32, "stack-seg-size"},
     text_seg_size{YType::uint32, "text-seg-size"}
 {
-    yang_name = "job-id"; yang_parent_name = "job-ids";
+
+    yang_name = "job-id"; yang_parent_name = "job-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ProcessesMemory::Nodes::Node::JobIds::JobId::~JobId()
@@ -492,23 +456,11 @@ std::string ProcessesMemory::Nodes::Node::JobIds::JobId::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "job-id" <<"[job-id='" <<job_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ProcessesMemory::Nodes::Node::JobIds::JobId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::JobIds::JobId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'JobId' in Cisco_IOS_XR_nto_misc_shprocmem_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (job_id.is_set || is_set(job_id.yfilter)) leaf_name_data.push_back(job_id.get_name_leafdata());
@@ -519,9 +471,7 @@ const EntityPath ProcessesMemory::Nodes::Node::JobIds::JobId::get_entity_path(En
     if (stack_seg_size.is_set || is_set(stack_seg_size.yfilter)) leaf_name_data.push_back(stack_seg_size.get_name_leafdata());
     if (text_seg_size.is_set || is_set(text_seg_size.yfilter)) leaf_name_data.push_back(text_seg_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IPMROUTE_MIB {
 
-CiscoIpmrouteMib::CiscoIpmrouteMib()
+CISCOIPMROUTEMIB::CISCOIPMROUTEMIB()
     :
-    ciscoipmroute(std::make_shared<CiscoIpmrouteMib::Ciscoipmroute>())
-	,ciscoipmrouteheartbeattable(std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable>())
+    ciscoipmroute(std::make_shared<CISCOIPMROUTEMIB::Ciscoipmroute>())
+	,ciscoipmrouteheartbeattable(std::make_shared<CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable>())
 {
     ciscoipmroute->parent = this;
-
     ciscoipmrouteheartbeattable->parent = this;
 
-    yang_name = "CISCO-IPMROUTE-MIB"; yang_parent_name = "CISCO-IPMROUTE-MIB";
+    yang_name = "CISCO-IPMROUTE-MIB"; yang_parent_name = "CISCO-IPMROUTE-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoIpmrouteMib::~CiscoIpmrouteMib()
+CISCOIPMROUTEMIB::~CISCOIPMROUTEMIB()
 {
 }
 
-bool CiscoIpmrouteMib::has_data() const
+bool CISCOIPMROUTEMIB::has_data() const
 {
     return (ciscoipmroute !=  nullptr && ciscoipmroute->has_data())
 	|| (ciscoipmrouteheartbeattable !=  nullptr && ciscoipmrouteheartbeattable->has_data());
 }
 
-bool CiscoIpmrouteMib::has_operation() const
+bool CISCOIPMROUTEMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ciscoipmroute !=  nullptr && ciscoipmroute->has_operation())
 	|| (ciscoipmrouteheartbeattable !=  nullptr && ciscoipmrouteheartbeattable->has_operation());
 }
 
-std::string CiscoIpmrouteMib::get_segment_path() const
+std::string CISCOIPMROUTEMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpmrouteMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpmrouteMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPMROUTEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoIpMRoute")
     {
         if(ciscoipmroute == nullptr)
         {
-            ciscoipmroute = std::make_shared<CiscoIpmrouteMib::Ciscoipmroute>();
+            ciscoipmroute = std::make_shared<CISCOIPMROUTEMIB::Ciscoipmroute>();
         }
         return ciscoipmroute;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::get_child_by_name(const std::string & 
     {
         if(ciscoipmrouteheartbeattable == nullptr)
         {
-            ciscoipmrouteheartbeattable = std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable>();
+            ciscoipmrouteheartbeattable = std::make_shared<CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable>();
         }
         return ciscoipmrouteheartbeattable;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ciscoipmroute != nullptr)
@@ -106,111 +94,105 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::get_children() 
     return children;
 }
 
-void CiscoIpmrouteMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPMROUTEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpmrouteMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPMROUTEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoIpmrouteMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOIPMROUTEMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoIpmrouteMib>();
+    return std::make_shared<CISCOIPMROUTEMIB>();
 }
 
-std::string CiscoIpmrouteMib::get_bundle_yang_models_location() const
+std::string CISCOIPMROUTEMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoIpmrouteMib::get_bundle_name() const
+std::string CISCOIPMROUTEMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoIpmrouteMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIPMROUTEMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoIpmrouteMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIPMROUTEMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoIpmrouteMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPMROUTEMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoIpMRoute" || name == "ciscoIpMRouteHeartBeatTable")
         return true;
     return false;
 }
 
-CiscoIpmrouteMib::Ciscoipmroute::Ciscoipmroute()
+CISCOIPMROUTEMIB::Ciscoipmroute::Ciscoipmroute()
     :
     ciscoipmroutenumberofentries{YType::uint32, "ciscoIpMRouteNumberOfEntries"}
 {
-    yang_name = "ciscoIpMRoute"; yang_parent_name = "CISCO-IPMROUTE-MIB";
+
+    yang_name = "ciscoIpMRoute"; yang_parent_name = "CISCO-IPMROUTE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpmrouteMib::Ciscoipmroute::~Ciscoipmroute()
+CISCOIPMROUTEMIB::Ciscoipmroute::~Ciscoipmroute()
 {
 }
 
-bool CiscoIpmrouteMib::Ciscoipmroute::has_data() const
+bool CISCOIPMROUTEMIB::Ciscoipmroute::has_data() const
 {
     return ciscoipmroutenumberofentries.is_set;
 }
 
-bool CiscoIpmrouteMib::Ciscoipmroute::has_operation() const
+bool CISCOIPMROUTEMIB::Ciscoipmroute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscoipmroutenumberofentries.yfilter);
 }
 
-std::string CiscoIpmrouteMib::Ciscoipmroute::get_segment_path() const
+std::string CISCOIPMROUTEMIB::Ciscoipmroute::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPMROUTEMIB::Ciscoipmroute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoIpMRoute";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpmrouteMib::Ciscoipmroute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::Ciscoipmroute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ciscoipmroutenumberofentries.is_set || is_set(ciscoipmroutenumberofentries.yfilter)) leaf_name_data.push_back(ciscoipmroutenumberofentries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPMROUTEMIB::Ciscoipmroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::Ciscoipmroute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::Ciscoipmroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpmrouteMib::Ciscoipmroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPMROUTEMIB::Ciscoipmroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoIpMRouteNumberOfEntries")
     {
@@ -220,7 +202,7 @@ void CiscoIpmrouteMib::Ciscoipmroute::set_value(const std::string & value_path, 
     }
 }
 
-void CiscoIpmrouteMib::Ciscoipmroute::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPMROUTEMIB::Ciscoipmroute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoIpMRouteNumberOfEntries")
     {
@@ -228,23 +210,24 @@ void CiscoIpmrouteMib::Ciscoipmroute::set_filter(const std::string & value_path,
     }
 }
 
-bool CiscoIpmrouteMib::Ciscoipmroute::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPMROUTEMIB::Ciscoipmroute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoIpMRouteNumberOfEntries")
         return true;
     return false;
 }
 
-CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeattable()
+CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeattable()
 {
-    yang_name = "ciscoIpMRouteHeartBeatTable"; yang_parent_name = "CISCO-IPMROUTE-MIB";
+
+    yang_name = "ciscoIpMRouteHeartBeatTable"; yang_parent_name = "CISCO-IPMROUTE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::~Ciscoipmrouteheartbeattable()
+CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::~Ciscoipmrouteheartbeattable()
 {
 }
 
-bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_data() const
+bool CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::has_data() const
 {
     for (std::size_t index=0; index<ciscoipmrouteheartbeatentry.size(); index++)
     {
@@ -254,7 +237,7 @@ bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_data() const
     return false;
 }
 
-bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_operation() const
+bool CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::has_operation() const
 {
     for (std::size_t index=0; index<ciscoipmrouteheartbeatentry.size(); index++)
     {
@@ -264,37 +247,30 @@ bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_segment_path() const
+std::string CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoIpMRouteHeartBeatTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoIpMRouteHeartBeatEntry")
     {
@@ -306,7 +282,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_child
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry>();
+        auto c = std::make_shared<CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry>();
         c->parent = this;
         ciscoipmrouteheartbeatentry.push_back(c);
         return c;
@@ -315,7 +291,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ciscoipmrouteheartbeatentry)
@@ -326,22 +302,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::Ciscoipmroutehe
     return children;
 }
 
-void CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoIpMRouteHeartBeatEntry")
         return true;
     return false;
 }
 
-CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::Ciscoipmrouteheartbeatentry()
+CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::Ciscoipmrouteheartbeatentry()
     :
     ciscoipmrouteheartbeatgroupaddr{YType::str, "ciscoIpMRouteHeartBeatGroupAddr"},
     ciscoipmrouteheartbeatalerttime{YType::uint32, "ciscoIpMRouteHeartBeatAlertTime"},
@@ -352,14 +328,15 @@ CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::Cisc
     ciscoipmrouteheartbeatstatus{YType::enumeration, "ciscoIpMRouteHeartBeatStatus"},
     ciscoipmrouteheartbeatwindowsize{YType::int32, "ciscoIpMRouteHeartBeatWindowSize"}
 {
-    yang_name = "ciscoIpMRouteHeartBeatEntry"; yang_parent_name = "ciscoIpMRouteHeartBeatTable";
+
+    yang_name = "ciscoIpMRouteHeartBeatEntry"; yang_parent_name = "ciscoIpMRouteHeartBeatTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::~Ciscoipmrouteheartbeatentry()
+CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::~Ciscoipmrouteheartbeatentry()
 {
 }
 
-bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::has_data() const
+bool CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::has_data() const
 {
     return ciscoipmrouteheartbeatgroupaddr.is_set
 	|| ciscoipmrouteheartbeatalerttime.is_set
@@ -371,7 +348,7 @@ bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry:
 	|| ciscoipmrouteheartbeatwindowsize.is_set;
 }
 
-bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::has_operation() const
+bool CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscoipmrouteheartbeatgroupaddr.yfilter)
@@ -384,27 +361,22 @@ bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry:
 	|| ydk::is_set(ciscoipmrouteheartbeatwindowsize.yfilter);
 }
 
-std::string CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_segment_path() const
+std::string CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB/ciscoIpMRouteHeartBeatTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoIpMRouteHeartBeatEntry" <<"[ciscoIpMRouteHeartBeatGroupAddr='" <<ciscoipmrouteheartbeatgroupaddr <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPMROUTE-MIB:CISCO-IPMROUTE-MIB/ciscoIpMRouteHeartBeatTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ciscoipmrouteheartbeatgroupaddr.is_set || is_set(ciscoipmrouteheartbeatgroupaddr.yfilter)) leaf_name_data.push_back(ciscoipmrouteheartbeatgroupaddr.get_name_leafdata());
@@ -416,24 +388,22 @@ const EntityPath CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmroutehea
     if (ciscoipmrouteheartbeatstatus.is_set || is_set(ciscoipmrouteheartbeatstatus.yfilter)) leaf_name_data.push_back(ciscoipmrouteheartbeatstatus.get_name_leafdata());
     if (ciscoipmrouteheartbeatwindowsize.is_set || is_set(ciscoipmrouteheartbeatwindowsize.yfilter)) leaf_name_data.push_back(ciscoipmrouteheartbeatwindowsize.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoIpMRouteHeartBeatGroupAddr")
     {
@@ -485,7 +455,7 @@ void CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry:
     }
 }
 
-void CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoIpMRouteHeartBeatGroupAddr")
     {
@@ -521,7 +491,7 @@ void CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry:
     }
 }
 
-bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoIpMRouteHeartBeatGroupAddr" || name == "ciscoIpMRouteHeartBeatAlertTime" || name == "ciscoIpMRouteHeartBeatCount" || name == "ciscoIpMRouteHeartBeatInterval" || name == "ciscoIpMRouteHeartBeatMinimum" || name == "ciscoIpMRouteHeartBeatSourceAddr" || name == "ciscoIpMRouteHeartBeatStatus" || name == "ciscoIpMRouteHeartBeatWindowSize")
         return true;

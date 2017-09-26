@@ -20,7 +20,7 @@ MplsOam::MplsOam()
 {
     reply_mode->parent = this;
 
-    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-cfg";
+    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MplsOam::~MplsOam()
@@ -46,28 +46,17 @@ std::string MplsOam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-oam-cfg:mpls-oam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (disable_vendor_extension.is_set || is_set(disable_vendor_extension.yfilter)) leaf_name_data.push_back(disable_vendor_extension.get_name_leafdata());
     if (enable_oam.is_set || is_set(enable_oam.yfilter)) leaf_name_data.push_back(enable_oam.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -162,7 +151,7 @@ MplsOam::ReplyMode::ReplyMode()
 {
     control_channel->parent = this;
 
-    yang_name = "reply-mode"; yang_parent_name = "mpls-oam";
+    yang_name = "reply-mode"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::ReplyMode::~ReplyMode()
@@ -180,33 +169,26 @@ bool MplsOam::ReplyMode::has_operation() const
 	|| (control_channel !=  nullptr && control_channel->has_operation());
 }
 
+std::string MplsOam::ReplyMode::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-cfg:mpls-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::ReplyMode::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reply-mode";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::ReplyMode::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::ReplyMode::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-cfg:mpls-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -254,7 +236,8 @@ MplsOam::ReplyMode::ControlChannel::ControlChannel()
     :
     allow_reverse_lsp{YType::empty, "allow-reverse-lsp"}
 {
-    yang_name = "control-channel"; yang_parent_name = "reply-mode";
+
+    yang_name = "control-channel"; yang_parent_name = "reply-mode"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::ReplyMode::ControlChannel::~ControlChannel()
@@ -272,34 +255,27 @@ bool MplsOam::ReplyMode::ControlChannel::has_operation() const
 	|| ydk::is_set(allow_reverse_lsp.yfilter);
 }
 
+std::string MplsOam::ReplyMode::ControlChannel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-cfg:mpls-oam/reply-mode/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::ReplyMode::ControlChannel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control-channel";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::ReplyMode::ControlChannel::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::ReplyMode::ControlChannel::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-cfg:mpls-oam/reply-mode/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (allow_reverse_lsp.is_set || is_set(allow_reverse_lsp.yfilter)) leaf_name_data.push_back(allow_reverse_lsp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

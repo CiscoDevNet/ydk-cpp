@@ -10,53 +10,12 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_types {
 
-class Prec_ValueType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cos;
-        static const ydk::Enum::YLeaf dscp;
-        static const ydk::Enum::YLeaf exp;
-        static const ydk::Enum::YLeaf precedence;
-
-};
-
-class CommunityWellKnownType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf gshut;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf local_AS;
-        static const ydk::Enum::YLeaf no_advertise;
-        static const ydk::Enum::YLeaf no_export;
-
-};
-
-class AccessListInOutType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
-
-};
-
-class Exp_ValueType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cos;
-        static const ydk::Enum::YLeaf dscp;
-        static const ydk::Enum::YLeaf exp;
-        static const ydk::Enum::YLeaf precedence;
-
-};
-
-class Bgp_Ipv4_Af_Type : public ydk::Enum
+class BgpIpv6AfType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf mdt;
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf labeled_unicast;
         static const ydk::Enum::YLeaf flowspec;
         static const ydk::Enum::YLeaf mvpn;
 
@@ -91,46 +50,72 @@ class DscpType : public ydk::Enum
 
 };
 
-class Bgp_Ipv6_Af_Type : public ydk::Enum
+class MobilityType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bind_acknowledgement;
+        static const ydk::Enum::YLeaf bind_error;
+        static const ydk::Enum::YLeaf bind_refresh;
+        static const ydk::Enum::YLeaf bind_update;
+        static const ydk::Enum::YLeaf cot;
+        static const ydk::Enum::YLeaf coti;
+        static const ydk::Enum::YLeaf hot;
+        static const ydk::Enum::YLeaf hoti;
+
+};
+
+class CommunityWellKnownAddType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gshut;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf local_AS;
+        static const ydk::Enum::YLeaf no_advertise;
+        static const ydk::Enum::YLeaf no_export;
+        static const ydk::Enum::YLeaf additive;
+
+};
+
+class AccessListInOutType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class BgpIpv4AfType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf mdt;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf labeled_unicast;
         static const ydk::Enum::YLeaf flowspec;
         static const ydk::Enum::YLeaf mvpn;
 
 };
 
-class InterfaceType : public ydk::Enum
+class RedistOspfExternalType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf BDI;
-        static const ydk::Enum::YLeaf FastEthernet;
-        static const ydk::Enum::YLeaf GigabitEthernet;
-        static const ydk::Enum::YLeaf Loopback;
-        static const ydk::Enum::YLeaf Port_channel;
-        static const ydk::Enum::YLeaf Serial;
-        static const ydk::Enum::YLeaf TenGigabitEthernet;
-        static const ydk::Enum::YLeaf Vlan;
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
 
 };
 
-class MonthType : public ydk::Enum
+class PrecedenceType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Jan;
-        static const ydk::Enum::YLeaf Feb;
-        static const ydk::Enum::YLeaf Mar;
-        static const ydk::Enum::YLeaf Apr;
-        static const ydk::Enum::YLeaf May;
-        static const ydk::Enum::YLeaf Jun;
-        static const ydk::Enum::YLeaf Jul;
-        static const ydk::Enum::YLeaf Aug;
-        static const ydk::Enum::YLeaf Sep;
-        static const ydk::Enum::YLeaf Oct;
-        static const ydk::Enum::YLeaf Nov;
-        static const ydk::Enum::YLeaf Dec;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf routine;
 
 };
 
@@ -168,31 +153,52 @@ class AclUdpPortType : public ydk::Enum
 
 };
 
-class Cos_ValueType : public ydk::Enum
+class WeekdayType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cos;
-        static const ydk::Enum::YLeaf dscp;
-        static const ydk::Enum::YLeaf exp;
-        static const ydk::Enum::YLeaf precedence;
+        static const ydk::Enum::YLeaf Mon;
+        static const ydk::Enum::YLeaf Tue;
+        static const ydk::Enum::YLeaf Wed;
+        static const ydk::Enum::YLeaf Thu;
+        static const ydk::Enum::YLeaf Fri;
+        static const ydk::Enum::YLeaf Sat;
+        static const ydk::Enum::YLeaf Sun;
 
 };
 
-class Qos_ValueType : public ydk::Enum
+class LimitDcNonDcType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cos;
-        static const ydk::Enum::YLeaf dscp;
-        static const ydk::Enum::YLeaf exp;
-        static const ydk::Enum::YLeaf precedence;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class RedistOspfExternalType : public ydk::Enum
+class MonthType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_1;
-        static const ydk::Enum::YLeaf Y_2;
+        static const ydk::Enum::YLeaf Jan;
+        static const ydk::Enum::YLeaf Feb;
+        static const ydk::Enum::YLeaf Mar;
+        static const ydk::Enum::YLeaf Apr;
+        static const ydk::Enum::YLeaf May;
+        static const ydk::Enum::YLeaf Jun;
+        static const ydk::Enum::YLeaf Jul;
+        static const ydk::Enum::YLeaf Aug;
+        static const ydk::Enum::YLeaf Sep;
+        static const ydk::Enum::YLeaf Oct;
+        static const ydk::Enum::YLeaf Nov;
+        static const ydk::Enum::YLeaf Dec;
+
+};
+
+class CommunityWellKnownType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gshut;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf local_AS;
+        static const ydk::Enum::YLeaf no_advertise;
+        static const ydk::Enum::YLeaf no_export;
 
 };
 
@@ -235,63 +241,57 @@ class AclTcpPortType : public ydk::Enum
 
 };
 
-class CommunityWellKnownAddType : public ydk::Enum
+class InterfaceType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf gshut;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf local_AS;
-        static const ydk::Enum::YLeaf no_advertise;
-        static const ydk::Enum::YLeaf no_export;
-        static const ydk::Enum::YLeaf additive;
+        static const ydk::Enum::YLeaf BDI;
+        static const ydk::Enum::YLeaf FastEthernet;
+        static const ydk::Enum::YLeaf GigabitEthernet;
+        static const ydk::Enum::YLeaf Loopback;
+        static const ydk::Enum::YLeaf Port_channel;
+        static const ydk::Enum::YLeaf Serial;
+        static const ydk::Enum::YLeaf TenGigabitEthernet;
+        static const ydk::Enum::YLeaf Vlan;
 
 };
 
-class WeekdayType : public ydk::Enum
+class CosValueType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Mon;
-        static const ydk::Enum::YLeaf Tue;
-        static const ydk::Enum::YLeaf Wed;
-        static const ydk::Enum::YLeaf Thu;
-        static const ydk::Enum::YLeaf Fri;
-        static const ydk::Enum::YLeaf Sat;
-        static const ydk::Enum::YLeaf Sun;
+        static const ydk::Enum::YLeaf cos;
+        static const ydk::Enum::YLeaf dscp;
+        static const ydk::Enum::YLeaf exp;
+        static const ydk::Enum::YLeaf precedence;
 
 };
 
-class PrecedenceType : public ydk::Enum
+class ExpValueType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf flash;
-        static const ydk::Enum::YLeaf flash_override;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf priority;
-        static const ydk::Enum::YLeaf routine;
+        static const ydk::Enum::YLeaf cos;
+        static const ydk::Enum::YLeaf dscp;
+        static const ydk::Enum::YLeaf exp;
+        static const ydk::Enum::YLeaf precedence;
 
 };
 
-class MobilityType : public ydk::Enum
+class PrecValueType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bind_acknowledgement;
-        static const ydk::Enum::YLeaf bind_error;
-        static const ydk::Enum::YLeaf bind_refresh;
-        static const ydk::Enum::YLeaf bind_update;
-        static const ydk::Enum::YLeaf cot;
-        static const ydk::Enum::YLeaf coti;
-        static const ydk::Enum::YLeaf hot;
-        static const ydk::Enum::YLeaf hoti;
+        static const ydk::Enum::YLeaf cos;
+        static const ydk::Enum::YLeaf dscp;
+        static const ydk::Enum::YLeaf exp;
+        static const ydk::Enum::YLeaf precedence;
 
 };
 
-class LimitDcNonDcType : public ydk::Enum
+class QosValueType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf cos;
+        static const ydk::Enum::YLeaf dscp;
+        static const ydk::Enum::YLeaf exp;
+        static const ydk::Enum::YLeaf precedence;
 
 };
 

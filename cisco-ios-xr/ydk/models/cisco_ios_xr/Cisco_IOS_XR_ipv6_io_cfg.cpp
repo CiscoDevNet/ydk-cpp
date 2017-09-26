@@ -23,7 +23,7 @@ Ipv6Configuration::Ipv6Configuration()
 {
     ipv6_assembler->parent = this;
 
-    yang_name = "ipv6-configuration"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-cfg";
+    yang_name = "ipv6-configuration"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ipv6Configuration::~Ipv6Configuration()
@@ -55,20 +55,11 @@ std::string Ipv6Configuration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv6-io-cfg:ipv6-configuration";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Configuration::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipv6_hop_limit.is_set || is_set(ipv6_hop_limit.yfilter)) leaf_name_data.push_back(ipv6_hop_limit.get_name_leafdata());
@@ -76,9 +67,7 @@ const EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
     if (ipv6_pmtu_time_out.is_set || is_set(ipv6_pmtu_time_out.yfilter)) leaf_name_data.push_back(ipv6_pmtu_time_out.get_name_leafdata());
     if (ipv6_source_route.is_set || is_set(ipv6_source_route.yfilter)) leaf_name_data.push_back(ipv6_source_route.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -206,7 +195,8 @@ Ipv6Configuration::Ipv6Assembler::Ipv6Assembler()
     max_packets{YType::uint32, "max-packets"},
     timeout{YType::uint32, "timeout"}
 {
-    yang_name = "ipv6-assembler"; yang_parent_name = "ipv6-configuration";
+
+    yang_name = "ipv6-assembler"; yang_parent_name = "ipv6-configuration"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6Configuration::Ipv6Assembler::~Ipv6Assembler()
@@ -226,35 +216,28 @@ bool Ipv6Configuration::Ipv6Assembler::has_operation() const
 	|| ydk::is_set(timeout.yfilter);
 }
 
+std::string Ipv6Configuration::Ipv6Assembler::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-io-cfg:ipv6-configuration/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6Configuration::Ipv6Assembler::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-assembler";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Configuration::Ipv6Assembler::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Configuration::Ipv6Assembler::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-io-cfg:ipv6-configuration/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_packets.is_set || is_set(max_packets.yfilter)) leaf_name_data.push_back(max_packets.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -309,7 +292,8 @@ Ipv6Configuration::Ipv6Icmp::Ipv6Icmp()
     bucket_size{YType::uint32, "bucket-size"},
     error_interval{YType::uint32, "error-interval"}
 {
-    yang_name = "ipv6icmp"; yang_parent_name = "ipv6-configuration";
+
+    yang_name = "ipv6icmp"; yang_parent_name = "ipv6-configuration"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6Configuration::Ipv6Icmp::~Ipv6Icmp()
@@ -329,35 +313,28 @@ bool Ipv6Configuration::Ipv6Icmp::has_operation() const
 	|| ydk::is_set(error_interval.yfilter);
 }
 
+std::string Ipv6Configuration::Ipv6Icmp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-io-cfg:ipv6-configuration/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6Configuration::Ipv6Icmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6icmp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Configuration::Ipv6Icmp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Configuration::Ipv6Icmp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-io-cfg:ipv6-configuration/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
     if (error_interval.is_set || is_set(error_interval.yfilter)) leaf_name_data.push_back(error_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_EIGRP_MIB {
 
-class CiscoEigrpMib : public ydk::Entity
+class CISCOEIGRPMIB : public ydk::Entity
 {
     public:
-        CiscoEigrpMib();
-        ~CiscoEigrpMib();
+        CISCOEIGRPMIB();
+        ~CISCOEIGRPMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,257 +32,22 @@ class CiscoEigrpMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceigrpvpntable; //type: CiscoEigrpMib::Ceigrpvpntable
-        class Ceigrptraffstatstable; //type: CiscoEigrpMib::Ceigrptraffstatstable
-        class Ceigrptopotable; //type: CiscoEigrpMib::Ceigrptopotable
-        class Ceigrppeertable; //type: CiscoEigrpMib::Ceigrppeertable
-        class Ceigrpinterfacetable; //type: CiscoEigrpMib::Ceigrpinterfacetable
+        class Ceigrpvpntable; //type: CISCOEIGRPMIB::Ceigrpvpntable
+        class Ceigrptraffstatstable; //type: CISCOEIGRPMIB::Ceigrptraffstatstable
+        class Ceigrptopotable; //type: CISCOEIGRPMIB::Ceigrptopotable
+        class Ceigrppeertable; //type: CISCOEIGRPMIB::Ceigrppeertable
+        class Ceigrpinterfacetable; //type: CISCOEIGRPMIB::Ceigrpinterfacetable
 
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpinterfacetable> ceigrpinterfacetable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrppeertable> ceigrppeertable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptopotable> ceigrptopotable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable> ceigrptraffstatstable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable> ceigrpvpntable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpinterfacetable> ceigrpinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrppeertable> ceigrppeertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptopotable> ceigrptopotable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable> ceigrptraffstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable> ceigrpvpntable;
         
-}; // CiscoEigrpMib
+}; // CISCOEIGRPMIB
 
 
-class CiscoEigrpMib::Ceigrpvpntable : public ydk::Entity
-{
-    public:
-        Ceigrpvpntable();
-        ~Ceigrpvpntable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ceigrpvpnentry; //type: CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry
-
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry> > ceigrpvpnentry;
-        
-}; // CiscoEigrpMib::Ceigrpvpntable
-
-
-class CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry : public ydk::Entity
-{
-    public:
-        Ceigrpvpnentry();
-        ~Ceigrpvpnentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ceigrpvpnid; //type: uint32
-        ydk::YLeaf ceigrpvpnname; //type: string
-
-}; // CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry
-
-
-class CiscoEigrpMib::Ceigrptraffstatstable : public ydk::Entity
-{
-    public:
-        Ceigrptraffstatstable();
-        ~Ceigrptraffstatstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ceigrptraffstatsentry; //type: CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry
-
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry> > ceigrptraffstatsentry;
-        
-}; // CiscoEigrpMib::Ceigrptraffstatstable
-
-
-class CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry : public ydk::Entity
-{
-    public:
-        Ceigrptraffstatsentry();
-        ~Ceigrptraffstatsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
-        ydk::YLeaf ceigrpvpnid;
-        ydk::YLeaf ceigrpasnumber; //type: uint32
-        ydk::YLeaf ceigrpnbrcount; //type: uint32
-        ydk::YLeaf ceigrphellossent; //type: uint32
-        ydk::YLeaf ceigrphellosrcvd; //type: uint32
-        ydk::YLeaf ceigrpupdatessent; //type: uint32
-        ydk::YLeaf ceigrpupdatesrcvd; //type: uint32
-        ydk::YLeaf ceigrpqueriessent; //type: uint32
-        ydk::YLeaf ceigrpqueriesrcvd; //type: uint32
-        ydk::YLeaf ceigrprepliessent; //type: uint32
-        ydk::YLeaf ceigrprepliesrcvd; //type: uint32
-        ydk::YLeaf ceigrpackssent; //type: uint32
-        ydk::YLeaf ceigrpacksrcvd; //type: uint32
-        ydk::YLeaf ceigrpinputqhighmark; //type: uint32
-        ydk::YLeaf ceigrpinputqdrops; //type: uint32
-        ydk::YLeaf ceigrpsiaqueriessent; //type: uint32
-        ydk::YLeaf ceigrpsiaqueriesrcvd; //type: uint32
-        ydk::YLeaf ceigrpasrouteridtype; //type: Inetaddresstype
-        ydk::YLeaf ceigrpasrouterid; //type: binary
-        ydk::YLeaf ceigrptoporoutes; //type: uint32
-        ydk::YLeaf ceigrpheadserial; //type: uint64
-        ydk::YLeaf ceigrpnextserial; //type: uint64
-        ydk::YLeaf ceigrpxmitpendreplies; //type: uint32
-        ydk::YLeaf ceigrpxmitdummies; //type: uint32
-
-}; // CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry
-
-
-class CiscoEigrpMib::Ceigrptopotable : public ydk::Entity
-{
-    public:
-        Ceigrptopotable();
-        ~Ceigrptopotable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ceigrptopoentry; //type: CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry
-
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry> > ceigrptopoentry;
-        
-}; // CiscoEigrpMib::Ceigrptopotable
-
-
-class CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry : public ydk::Entity
-{
-    public:
-        Ceigrptopoentry();
-        ~Ceigrptopoentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
-        ydk::YLeaf ceigrpvpnid;
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
-        ydk::YLeaf ceigrpasnumber;
-        ydk::YLeaf ceigrpdestnettype; //type: Inetaddresstype
-        ydk::YLeaf ceigrpdestnet; //type: binary
-        ydk::YLeaf ceigrpdestnetprefixlen; //type: uint32
-        ydk::YLeaf ceigrpactive; //type: boolean
-        ydk::YLeaf ceigrpstuckinactive; //type: boolean
-        ydk::YLeaf ceigrpdestsuccessors; //type: uint32
-        ydk::YLeaf ceigrpfdistance; //type: uint32
-        ydk::YLeaf ceigrprouteorigintype; //type: string
-        ydk::YLeaf ceigrprouteoriginaddrtype; //type: Inetaddresstype
-        ydk::YLeaf ceigrprouteoriginaddr; //type: binary
-        ydk::YLeaf ceigrpnexthopaddresstype; //type: Inetaddresstype
-        ydk::YLeaf ceigrpnexthopaddress; //type: binary
-        ydk::YLeaf ceigrpnexthopinterface; //type: string
-        ydk::YLeaf ceigrpdistance; //type: uint32
-        ydk::YLeaf ceigrpreportdistance; //type: uint32
-
-}; // CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry
-
-
-class CiscoEigrpMib::Ceigrppeertable : public ydk::Entity
-{
-    public:
-        Ceigrppeertable();
-        ~Ceigrppeertable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ceigrppeerentry; //type: CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry
-
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry> > ceigrppeerentry;
-        
-}; // CiscoEigrpMib::Ceigrppeertable
-
-
-class CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry : public ydk::Entity
-{
-    public:
-        Ceigrppeerentry();
-        ~Ceigrppeerentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
-        ydk::YLeaf ceigrpvpnid;
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
-        ydk::YLeaf ceigrpasnumber;
-        ydk::YLeaf ceigrphandle; //type: uint32
-        ydk::YLeaf ceigrppeeraddrtype; //type: Inetaddresstype
-        ydk::YLeaf ceigrppeeraddr; //type: binary
-        ydk::YLeaf ceigrppeerifindex; //type: int32
-        ydk::YLeaf ceigrpholdtime; //type: uint32
-        ydk::YLeaf ceigrpuptime; //type: string
-        ydk::YLeaf ceigrpsrtt; //type: uint32
-        ydk::YLeaf ceigrprto; //type: uint32
-        ydk::YLeaf ceigrppktsenqueued; //type: uint32
-        ydk::YLeaf ceigrplastseq; //type: uint32
-        ydk::YLeaf ceigrpversion; //type: string
-        ydk::YLeaf ceigrpretrans; //type: uint32
-        ydk::YLeaf ceigrpretries; //type: uint32
-
-}; // CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry
-
-
-class CiscoEigrpMib::Ceigrpinterfacetable : public ydk::Entity
+class CISCOEIGRPMIB::Ceigrpinterfacetable : public ydk::Entity
 {
     public:
         Ceigrpinterfacetable();
@@ -290,22 +55,23 @@ class CiscoEigrpMib::Ceigrpinterfacetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Ceigrpinterfaceentry; //type: CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry
+        class Ceigrpinterfaceentry; //type: CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry
 
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry> > ceigrpinterfaceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry> > ceigrpinterfaceentry;
         
-}; // CiscoEigrpMib::Ceigrpinterfacetable
+}; // CISCOEIGRPMIB::Ceigrpinterfacetable
 
 
-class CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::Entity
+class CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::Entity
 {
     public:
         Ceigrpinterfaceentry();
@@ -313,19 +79,20 @@ class CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
         ydk::YLeaf ceigrpvpnid;
-        //type: uint32 (refers to CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
         ydk::YLeaf ceigrpasnumber;
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf ceigrppeercount; //type: uint32
         ydk::YLeaf ceigrpxmitreliableq; //type: uint32
@@ -350,9 +117,252 @@ class CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::En
         ydk::YLeaf ceigrpauthkeychain; //type: string
         class Ceigrpauthmode;
 
-}; // CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry
+}; // CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry
 
-class CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpauthmode : public ydk::Enum
+
+class CISCOEIGRPMIB::Ceigrppeertable : public ydk::Entity
+{
+    public:
+        Ceigrppeertable();
+        ~Ceigrppeertable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ceigrppeerentry; //type: CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry> > ceigrppeerentry;
+        
+}; // CISCOEIGRPMIB::Ceigrppeertable
+
+
+class CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry : public ydk::Entity
+{
+    public:
+        Ceigrppeerentry();
+        ~Ceigrppeerentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        ydk::YLeaf ceigrpvpnid;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
+        ydk::YLeaf ceigrpasnumber;
+        ydk::YLeaf ceigrphandle; //type: uint32
+        ydk::YLeaf ceigrppeeraddrtype; //type: InetAddressType
+        ydk::YLeaf ceigrppeeraddr; //type: binary
+        ydk::YLeaf ceigrppeerifindex; //type: int32
+        ydk::YLeaf ceigrpholdtime; //type: uint32
+        ydk::YLeaf ceigrpuptime; //type: string
+        ydk::YLeaf ceigrpsrtt; //type: uint32
+        ydk::YLeaf ceigrprto; //type: uint32
+        ydk::YLeaf ceigrppktsenqueued; //type: uint32
+        ydk::YLeaf ceigrplastseq; //type: uint32
+        ydk::YLeaf ceigrpversion; //type: string
+        ydk::YLeaf ceigrpretrans; //type: uint32
+        ydk::YLeaf ceigrpretries; //type: uint32
+
+}; // CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry
+
+
+class CISCOEIGRPMIB::Ceigrptopotable : public ydk::Entity
+{
+    public:
+        Ceigrptopotable();
+        ~Ceigrptopotable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ceigrptopoentry; //type: CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry> > ceigrptopoentry;
+        
+}; // CISCOEIGRPMIB::Ceigrptopotable
+
+
+class CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry : public ydk::Entity
+{
+    public:
+        Ceigrptopoentry();
+        ~Ceigrptopoentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        ydk::YLeaf ceigrpvpnid;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
+        ydk::YLeaf ceigrpasnumber;
+        ydk::YLeaf ceigrpdestnettype; //type: InetAddressType
+        ydk::YLeaf ceigrpdestnet; //type: binary
+        ydk::YLeaf ceigrpdestnetprefixlen; //type: uint32
+        ydk::YLeaf ceigrpactive; //type: boolean
+        ydk::YLeaf ceigrpstuckinactive; //type: boolean
+        ydk::YLeaf ceigrpdestsuccessors; //type: uint32
+        ydk::YLeaf ceigrpfdistance; //type: uint32
+        ydk::YLeaf ceigrprouteorigintype; //type: string
+        ydk::YLeaf ceigrprouteoriginaddrtype; //type: InetAddressType
+        ydk::YLeaf ceigrprouteoriginaddr; //type: binary
+        ydk::YLeaf ceigrpnexthopaddresstype; //type: InetAddressType
+        ydk::YLeaf ceigrpnexthopaddress; //type: binary
+        ydk::YLeaf ceigrpnexthopinterface; //type: string
+        ydk::YLeaf ceigrpdistance; //type: uint32
+        ydk::YLeaf ceigrpreportdistance; //type: uint32
+
+}; // CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry
+
+
+class CISCOEIGRPMIB::Ceigrptraffstatstable : public ydk::Entity
+{
+    public:
+        Ceigrptraffstatstable();
+        ~Ceigrptraffstatstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ceigrptraffstatsentry; //type: CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry> > ceigrptraffstatsentry;
+        
+}; // CISCOEIGRPMIB::Ceigrptraffstatstable
+
+
+class CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry : public ydk::Entity
+{
+    public:
+        Ceigrptraffstatsentry();
+        ~Ceigrptraffstatsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        ydk::YLeaf ceigrpvpnid;
+        ydk::YLeaf ceigrpasnumber; //type: uint32
+        ydk::YLeaf ceigrpnbrcount; //type: uint32
+        ydk::YLeaf ceigrphellossent; //type: uint32
+        ydk::YLeaf ceigrphellosrcvd; //type: uint32
+        ydk::YLeaf ceigrpupdatessent; //type: uint32
+        ydk::YLeaf ceigrpupdatesrcvd; //type: uint32
+        ydk::YLeaf ceigrpqueriessent; //type: uint32
+        ydk::YLeaf ceigrpqueriesrcvd; //type: uint32
+        ydk::YLeaf ceigrprepliessent; //type: uint32
+        ydk::YLeaf ceigrprepliesrcvd; //type: uint32
+        ydk::YLeaf ceigrpackssent; //type: uint32
+        ydk::YLeaf ceigrpacksrcvd; //type: uint32
+        ydk::YLeaf ceigrpinputqhighmark; //type: uint32
+        ydk::YLeaf ceigrpinputqdrops; //type: uint32
+        ydk::YLeaf ceigrpsiaqueriessent; //type: uint32
+        ydk::YLeaf ceigrpsiaqueriesrcvd; //type: uint32
+        ydk::YLeaf ceigrpasrouteridtype; //type: InetAddressType
+        ydk::YLeaf ceigrpasrouterid; //type: binary
+        ydk::YLeaf ceigrptoporoutes; //type: uint32
+        ydk::YLeaf ceigrpheadserial; //type: uint64
+        ydk::YLeaf ceigrpnextserial; //type: uint64
+        ydk::YLeaf ceigrpxmitpendreplies; //type: uint32
+        ydk::YLeaf ceigrpxmitdummies; //type: uint32
+
+}; // CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry
+
+
+class CISCOEIGRPMIB::Ceigrpvpntable : public ydk::Entity
+{
+    public:
+        Ceigrpvpntable();
+        ~Ceigrpvpntable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ceigrpvpnentry; //type: CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry> > ceigrpvpnentry;
+        
+}; // CISCOEIGRPMIB::Ceigrpvpntable
+
+
+class CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry : public ydk::Entity
+{
+    public:
+        Ceigrpvpnentry();
+        ~Ceigrpvpnentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ceigrpvpnid; //type: uint32
+        ydk::YLeaf ceigrpvpnname; //type: string
+
+}; // CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry
+
+class CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpauthmode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

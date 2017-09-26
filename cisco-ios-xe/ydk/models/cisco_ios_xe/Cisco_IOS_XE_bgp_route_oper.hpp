@@ -26,6 +26,15 @@ class BgpRouteFilters : public ydk::Enum
 
 };
 
+class BgpOriginCode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf origin_igp;
+        static const ydk::Enum::YLeaf origin_egp;
+        static const ydk::Enum::YLeaf origin_incomplete;
+
+};
+
 class BgpRpkiStatus : public ydk::Enum
 {
     public:
@@ -34,15 +43,6 @@ class BgpRpkiStatus : public ydk::Enum
         static const ydk::Enum::YLeaf rpki_not_found;
         static const ydk::Enum::YLeaf rpki_not_enabled;
         static const ydk::Enum::YLeaf rpki_illegal;
-
-};
-
-class BgpOriginCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf origin_igp;
-        static const ydk::Enum::YLeaf origin_egp;
-        static const ydk::Enum::YLeaf origin_incomplete;
 
 };
 

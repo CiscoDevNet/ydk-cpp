@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_AAA_SERVER_MIB {
 
-class CiscoAaaServerMib : public ydk::Entity
+class CISCOAAASERVERMIB : public ydk::Entity
 {
     public:
-        CiscoAaaServerMib();
-        ~CiscoAaaServerMib();
+        CISCOAAASERVERMIB();
+        ~CISCOAAASERVERMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,16 +32,16 @@ class CiscoAaaServerMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Casconfig; //type: CiscoAaaServerMib::Casconfig
-        class Casconfigtable; //type: CiscoAaaServerMib::Casconfigtable
+        class Casconfig; //type: CISCOAAASERVERMIB::Casconfig
+        class Casconfigtable; //type: CISCOAAASERVERMIB::Casconfigtable
 
-        std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfig> casconfig;
-        std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfigtable> casconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::Casconfig> casconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::Casconfigtable> casconfigtable;
         
-}; // CiscoAaaServerMib
+}; // CISCOAAASERVERMIB
 
 
-class CiscoAaaServerMib::Casconfig : public ydk::Entity
+class CISCOAAASERVERMIB::Casconfig : public ydk::Entity
 {
     public:
         Casconfig();
@@ -49,20 +49,21 @@ class CiscoAaaServerMib::Casconfig : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf casserverstatechangeenable; //type: boolean
 
-}; // CiscoAaaServerMib::Casconfig
+}; // CISCOAAASERVERMIB::Casconfig
 
 
-class CiscoAaaServerMib::Casconfigtable : public ydk::Entity
+class CISCOAAASERVERMIB::Casconfigtable : public ydk::Entity
 {
     public:
         Casconfigtable();
@@ -70,22 +71,23 @@ class CiscoAaaServerMib::Casconfigtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Casconfigentry; //type: CiscoAaaServerMib::Casconfigtable::Casconfigentry
+        class Casconfigentry; //type: CISCOAAASERVERMIB::Casconfigtable::Casconfigentry
 
-        std::vector<std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfigtable::Casconfigentry> > casconfigentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::Casconfigtable::Casconfigentry> > casconfigentry;
         
-}; // CiscoAaaServerMib::Casconfigtable
+}; // CISCOAAASERVERMIB::Casconfigtable
 
 
-class CiscoAaaServerMib::Casconfigtable::Casconfigentry : public ydk::Entity
+class CISCOAAASERVERMIB::Casconfigtable::Casconfigentry : public ydk::Entity
 {
     public:
         Casconfigentry();
@@ -93,22 +95,23 @@ class CiscoAaaServerMib::Casconfigtable::Casconfigentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf casprotocol; //type: Ciscoaaaprotocol
+        ydk::YLeaf casprotocol; //type: CiscoAAAProtocol
         ydk::YLeaf casindex; //type: uint32
         ydk::YLeaf casaddress; //type: string
         ydk::YLeaf casauthenport; //type: int32
         ydk::YLeaf casacctport; //type: int32
         ydk::YLeaf caskey; //type: string
         ydk::YLeaf caspriority; //type: uint32
-        ydk::YLeaf casconfigrowstatus; //type: Rowstatus
+        ydk::YLeaf casconfigrowstatus; //type: RowStatus
         ydk::YLeaf casauthenrequests; //type: uint32
         ydk::YLeaf casauthenrequesttimeouts; //type: uint32
         ydk::YLeaf casauthenunexpectedresponses; //type: uint32
@@ -140,9 +143,9 @@ class CiscoAaaServerMib::Casconfigtable::Casconfigentry : public ydk::Entity
         ydk::YLeaf casdeadcount; //type: uint32
         class Casstate;
 
-}; // CiscoAaaServerMib::Casconfigtable::Casconfigentry
+}; // CISCOAAASERVERMIB::Casconfigtable::Casconfigentry
 
-class Ciscoaaaprotocol : public ydk::Enum
+class CiscoAAAProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf tacacsplus;
@@ -155,7 +158,7 @@ class Ciscoaaaprotocol : public ydk::Enum
 
 };
 
-class CiscoAaaServerMib::Casconfigtable::Casconfigentry::Casstate : public ydk::Enum
+class CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::Casstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;

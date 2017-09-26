@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace PIM_MIB {
 
-class PimMib : public ydk::Entity
+class PIMMIB : public ydk::Entity
 {
     public:
-        PimMib();
-        ~PimMib();
+        PIMMIB();
+        ~PIMMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,30 +32,30 @@ class PimMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Pim; //type: PimMib::Pim
-        class Piminterfacetable; //type: PimMib::Piminterfacetable
-        class Pimneighbortable; //type: PimMib::Pimneighbortable
-        class Pimipmroutetable; //type: PimMib::Pimipmroutetable
-        class Pimrptable; //type: PimMib::Pimrptable
-        class Pimrpsettable; //type: PimMib::Pimrpsettable
-        class Pimipmroutenexthoptable; //type: PimMib::Pimipmroutenexthoptable
-        class Pimcandidaterptable; //type: PimMib::Pimcandidaterptable
-        class Pimcomponenttable; //type: PimMib::Pimcomponenttable
+        class Pim; //type: PIMMIB::Pim
+        class Piminterfacetable; //type: PIMMIB::Piminterfacetable
+        class Pimneighbortable; //type: PIMMIB::Pimneighbortable
+        class Pimipmroutetable; //type: PIMMIB::Pimipmroutetable
+        class Pimrptable; //type: PIMMIB::Pimrptable
+        class Pimrpsettable; //type: PIMMIB::Pimrpsettable
+        class Pimipmroutenexthoptable; //type: PIMMIB::Pimipmroutenexthoptable
+        class Pimcandidaterptable; //type: PIMMIB::Pimcandidaterptable
+        class Pimcomponenttable; //type: PIMMIB::Pimcomponenttable
 
-        std::shared_ptr<PIM_MIB::PimMib::Pim> pim;
-        std::shared_ptr<PIM_MIB::PimMib::Pimcandidaterptable> pimcandidaterptable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimcomponenttable> pimcomponenttable;
-        std::shared_ptr<PIM_MIB::PimMib::Piminterfacetable> piminterfacetable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimipmroutenexthoptable> pimipmroutenexthoptable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimipmroutetable> pimipmroutetable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimneighbortable> pimneighbortable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimrpsettable> pimrpsettable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimrptable> pimrptable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pim> pim;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcandidaterptable> pimcandidaterptable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcomponenttable> pimcomponenttable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Piminterfacetable> piminterfacetable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutenexthoptable> pimipmroutenexthoptable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutetable> pimipmroutetable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimneighbortable> pimneighbortable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrpsettable> pimrpsettable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrptable> pimrptable;
         
-}; // PimMib
+}; // PIMMIB
 
 
-class PimMib::Pim : public ydk::Entity
+class PIMMIB::Pim : public ydk::Entity
 {
     public:
         Pim();
@@ -63,20 +63,120 @@ class PimMib::Pim : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf pimjoinpruneinterval; //type: int32
 
-}; // PimMib::Pim
+}; // PIMMIB::Pim
 
 
-class PimMib::Piminterfacetable : public ydk::Entity
+class PIMMIB::Pimcandidaterptable : public ydk::Entity
+{
+    public:
+        Pimcandidaterptable();
+        ~Pimcandidaterptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Pimcandidaterpentry; //type: PIMMIB::Pimcandidaterptable::Pimcandidaterpentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcandidaterptable::Pimcandidaterpentry> > pimcandidaterpentry;
+        
+}; // PIMMIB::Pimcandidaterptable
+
+
+class PIMMIB::Pimcandidaterptable::Pimcandidaterpentry : public ydk::Entity
+{
+    public:
+        Pimcandidaterpentry();
+        ~Pimcandidaterpentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pimcandidaterpgroupaddress; //type: string
+        ydk::YLeaf pimcandidaterpgroupmask; //type: string
+        ydk::YLeaf pimcandidaterpaddress; //type: string
+        ydk::YLeaf pimcandidaterprowstatus; //type: RowStatus
+
+}; // PIMMIB::Pimcandidaterptable::Pimcandidaterpentry
+
+
+class PIMMIB::Pimcomponenttable : public ydk::Entity
+{
+    public:
+        Pimcomponenttable();
+        ~Pimcomponenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Pimcomponententry; //type: PIMMIB::Pimcomponenttable::Pimcomponententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcomponenttable::Pimcomponententry> > pimcomponententry;
+        
+}; // PIMMIB::Pimcomponenttable
+
+
+class PIMMIB::Pimcomponenttable::Pimcomponententry : public ydk::Entity
+{
+    public:
+        Pimcomponententry();
+        ~Pimcomponententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pimcomponentindex; //type: int32
+        ydk::YLeaf pimcomponentbsraddress; //type: string
+        ydk::YLeaf pimcomponentbsrexpirytime; //type: uint32
+        ydk::YLeaf pimcomponentcrpholdtime; //type: int32
+        ydk::YLeaf pimcomponentstatus; //type: RowStatus
+
+}; // PIMMIB::Pimcomponenttable::Pimcomponententry
+
+
+class PIMMIB::Piminterfacetable : public ydk::Entity
 {
     public:
         Piminterfacetable();
@@ -84,22 +184,23 @@ class PimMib::Piminterfacetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Piminterfaceentry; //type: PimMib::Piminterfacetable::Piminterfaceentry
+        class Piminterfaceentry; //type: PIMMIB::Piminterfacetable::Piminterfaceentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Piminterfacetable::Piminterfaceentry> > piminterfaceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Piminterfacetable::Piminterfaceentry> > piminterfaceentry;
         
-}; // PimMib::Piminterfacetable
+}; // PIMMIB::Piminterfacetable
 
 
-class PimMib::Piminterfacetable::Piminterfaceentry : public ydk::Entity
+class PIMMIB::Piminterfacetable::Piminterfaceentry : public ydk::Entity
 {
     public:
         Piminterfaceentry();
@@ -107,13 +208,14 @@ class PimMib::Piminterfacetable::Piminterfaceentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf piminterfaceifindex; //type: int32
         ydk::YLeaf piminterfaceaddress; //type: string
@@ -121,15 +223,128 @@ class PimMib::Piminterfacetable::Piminterfaceentry : public ydk::Entity
         ydk::YLeaf piminterfacemode; //type: Piminterfacemode
         ydk::YLeaf piminterfacedr; //type: string
         ydk::YLeaf piminterfacehellointerval; //type: int32
-        ydk::YLeaf piminterfacestatus; //type: Rowstatus
+        ydk::YLeaf piminterfacestatus; //type: RowStatus
         ydk::YLeaf piminterfacejoinpruneinterval; //type: int32
         ydk::YLeaf piminterfacecbsrpreference; //type: int32
         class Piminterfacemode;
 
-}; // PimMib::Piminterfacetable::Piminterfaceentry
+}; // PIMMIB::Piminterfacetable::Piminterfaceentry
 
 
-class PimMib::Pimneighbortable : public ydk::Entity
+class PIMMIB::Pimipmroutenexthoptable : public ydk::Entity
+{
+    public:
+        Pimipmroutenexthoptable();
+        ~Pimipmroutenexthoptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Pimipmroutenexthopentry; //type: PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry> > pimipmroutenexthopentry;
+        
+}; // PIMMIB::Pimipmroutenexthoptable
+
+
+class PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry : public ydk::Entity
+{
+    public:
+        Pimipmroutenexthopentry();
+        ~Pimipmroutenexthopentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopgroup)
+        ydk::YLeaf ipmroutenexthopgroup;
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopsource)
+        ydk::YLeaf ipmroutenexthopsource;
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopsourcemask)
+        ydk::YLeaf ipmroutenexthopsourcemask;
+        //type: int32 (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopifindex)
+        ydk::YLeaf ipmroutenexthopifindex;
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopaddress)
+        ydk::YLeaf ipmroutenexthopaddress;
+        ydk::YLeaf pimipmroutenexthopprunereason; //type: Pimipmroutenexthopprunereason
+        class Pimipmroutenexthopprunereason;
+
+}; // PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry
+
+
+class PIMMIB::Pimipmroutetable : public ydk::Entity
+{
+    public:
+        Pimipmroutetable();
+        ~Pimipmroutetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Pimipmrouteentry; //type: PIMMIB::Pimipmroutetable::Pimipmrouteentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutetable::Pimipmrouteentry> > pimipmrouteentry;
+        
+}; // PIMMIB::Pimipmroutetable
+
+
+class PIMMIB::Pimipmroutetable::Pimipmrouteentry : public ydk::Entity
+{
+    public:
+        Pimipmrouteentry();
+        ~Pimipmrouteentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::ipmroutegroup)
+        ydk::YLeaf ipmroutegroup;
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::ipmroutesource)
+        ydk::YLeaf ipmroutesource;
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::ipmroutesourcemask)
+        ydk::YLeaf ipmroutesourcemask;
+        ydk::YLeaf pimipmrouteupstreamasserttimer; //type: uint32
+        ydk::YLeaf pimipmrouteassertmetric; //type: int32
+        ydk::YLeaf pimipmrouteassertmetricpref; //type: int32
+        ydk::YLeaf pimipmrouteassertrptbit; //type: boolean
+        ydk::YLeaf pimipmrouteflags; //type: binary
+
+}; // PIMMIB::Pimipmroutetable::Pimipmrouteentry
+
+
+class PIMMIB::Pimneighbortable : public ydk::Entity
 {
     public:
         Pimneighbortable();
@@ -137,22 +352,23 @@ class PimMib::Pimneighbortable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Pimneighborentry; //type: PimMib::Pimneighbortable::Pimneighborentry
+        class Pimneighborentry; //type: PIMMIB::Pimneighbortable::Pimneighborentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimneighbortable::Pimneighborentry> > pimneighborentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimneighbortable::Pimneighborentry> > pimneighborentry;
         
-}; // PimMib::Pimneighbortable
+}; // PIMMIB::Pimneighbortable
 
 
-class PimMib::Pimneighbortable::Pimneighborentry : public ydk::Entity
+class PIMMIB::Pimneighbortable::Pimneighborentry : public ydk::Entity
 {
     public:
         Pimneighborentry();
@@ -160,13 +376,14 @@ class PimMib::Pimneighbortable::Pimneighborentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf pimneighboraddress; //type: string
         ydk::YLeaf pimneighborifindex; //type: int32
@@ -175,114 +392,10 @@ class PimMib::Pimneighbortable::Pimneighborentry : public ydk::Entity
         ydk::YLeaf pimneighbormode; //type: Pimneighbormode
         class Pimneighbormode;
 
-}; // PimMib::Pimneighbortable::Pimneighborentry
+}; // PIMMIB::Pimneighbortable::Pimneighborentry
 
 
-class PimMib::Pimipmroutetable : public ydk::Entity
-{
-    public:
-        Pimipmroutetable();
-        ~Pimipmroutetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Pimipmrouteentry; //type: PimMib::Pimipmroutetable::Pimipmrouteentry
-
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimipmroutetable::Pimipmrouteentry> > pimipmrouteentry;
-        
-}; // PimMib::Pimipmroutetable
-
-
-class PimMib::Pimipmroutetable::Pimipmrouteentry : public ydk::Entity
-{
-    public:
-        Pimipmrouteentry();
-        ~Pimipmrouteentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::ipmroutegroup)
-        ydk::YLeaf ipmroutegroup;
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::ipmroutesource)
-        ydk::YLeaf ipmroutesource;
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::ipmroutesourcemask)
-        ydk::YLeaf ipmroutesourcemask;
-        ydk::YLeaf pimipmrouteupstreamasserttimer; //type: uint32
-        ydk::YLeaf pimipmrouteassertmetric; //type: int32
-        ydk::YLeaf pimipmrouteassertmetricpref; //type: int32
-        ydk::YLeaf pimipmrouteassertrptbit; //type: boolean
-        ydk::YLeaf pimipmrouteflags; //type: binary
-
-}; // PimMib::Pimipmroutetable::Pimipmrouteentry
-
-
-class PimMib::Pimrptable : public ydk::Entity
-{
-    public:
-        Pimrptable();
-        ~Pimrptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Pimrpentry; //type: PimMib::Pimrptable::Pimrpentry
-
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimrptable::Pimrpentry> > pimrpentry;
-        
-}; // PimMib::Pimrptable
-
-
-class PimMib::Pimrptable::Pimrpentry : public ydk::Entity
-{
-    public:
-        Pimrpentry();
-        ~Pimrpentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pimrpgroupaddress; //type: string
-        ydk::YLeaf pimrpaddress; //type: string
-        ydk::YLeaf pimrpstate; //type: Pimrpstate
-        ydk::YLeaf pimrpstatetimer; //type: uint32
-        ydk::YLeaf pimrplastchange; //type: uint32
-        ydk::YLeaf pimrprowstatus; //type: Rowstatus
-        class Pimrpstate;
-
-}; // PimMib::Pimrptable::Pimrpentry
-
-
-class PimMib::Pimrpsettable : public ydk::Entity
+class PIMMIB::Pimrpsettable : public ydk::Entity
 {
     public:
         Pimrpsettable();
@@ -290,22 +403,23 @@ class PimMib::Pimrpsettable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Pimrpsetentry; //type: PimMib::Pimrpsettable::Pimrpsetentry
+        class Pimrpsetentry; //type: PIMMIB::Pimrpsettable::Pimrpsetentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimrpsettable::Pimrpsetentry> > pimrpsetentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrpsettable::Pimrpsetentry> > pimrpsetentry;
         
-}; // PimMib::Pimrpsettable
+}; // PIMMIB::Pimrpsettable
 
 
-class PimMib::Pimrpsettable::Pimrpsetentry : public ydk::Entity
+class PIMMIB::Pimrpsettable::Pimrpsetentry : public ydk::Entity
 {
     public:
         Pimrpsetentry();
@@ -313,13 +427,14 @@ class PimMib::Pimrpsettable::Pimrpsetentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf pimrpsetcomponent; //type: int32
         ydk::YLeaf pimrpsetgroupaddress; //type: string
@@ -328,159 +443,61 @@ class PimMib::Pimrpsettable::Pimrpsetentry : public ydk::Entity
         ydk::YLeaf pimrpsetholdtime; //type: int32
         ydk::YLeaf pimrpsetexpirytime; //type: uint32
 
-}; // PimMib::Pimrpsettable::Pimrpsetentry
+}; // PIMMIB::Pimrpsettable::Pimrpsetentry
 
 
-class PimMib::Pimipmroutenexthoptable : public ydk::Entity
+class PIMMIB::Pimrptable : public ydk::Entity
 {
     public:
-        Pimipmroutenexthoptable();
-        ~Pimipmroutenexthoptable();
+        Pimrptable();
+        ~Pimrptable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Pimipmroutenexthopentry; //type: PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry
+        class Pimrpentry; //type: PIMMIB::Pimrptable::Pimrpentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry> > pimipmroutenexthopentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrptable::Pimrpentry> > pimrpentry;
         
-}; // PimMib::Pimipmroutenexthoptable
+}; // PIMMIB::Pimrptable
 
 
-class PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry : public ydk::Entity
+class PIMMIB::Pimrptable::Pimrpentry : public ydk::Entity
 {
     public:
-        Pimipmroutenexthopentry();
-        ~Pimipmroutenexthopentry();
+        Pimrpentry();
+        ~Pimrpentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopgroup)
-        ydk::YLeaf ipmroutenexthopgroup;
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopsource)
-        ydk::YLeaf ipmroutenexthopsource;
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopsourcemask)
-        ydk::YLeaf ipmroutenexthopsourcemask;
-        //type: int32 (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopifindex)
-        ydk::YLeaf ipmroutenexthopifindex;
-        //type: string (refers to IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopaddress)
-        ydk::YLeaf ipmroutenexthopaddress;
-        ydk::YLeaf pimipmroutenexthopprunereason; //type: Pimipmroutenexthopprunereason
-        class Pimipmroutenexthopprunereason;
+        ydk::YLeaf pimrpgroupaddress; //type: string
+        ydk::YLeaf pimrpaddress; //type: string
+        ydk::YLeaf pimrpstate; //type: Pimrpstate
+        ydk::YLeaf pimrpstatetimer; //type: uint32
+        ydk::YLeaf pimrplastchange; //type: uint32
+        ydk::YLeaf pimrprowstatus; //type: RowStatus
+        class Pimrpstate;
 
-}; // PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry
+}; // PIMMIB::Pimrptable::Pimrpentry
 
-
-class PimMib::Pimcandidaterptable : public ydk::Entity
-{
-    public:
-        Pimcandidaterptable();
-        ~Pimcandidaterptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Pimcandidaterpentry; //type: PimMib::Pimcandidaterptable::Pimcandidaterpentry
-
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimcandidaterptable::Pimcandidaterpentry> > pimcandidaterpentry;
-        
-}; // PimMib::Pimcandidaterptable
-
-
-class PimMib::Pimcandidaterptable::Pimcandidaterpentry : public ydk::Entity
-{
-    public:
-        Pimcandidaterpentry();
-        ~Pimcandidaterpentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pimcandidaterpgroupaddress; //type: string
-        ydk::YLeaf pimcandidaterpgroupmask; //type: string
-        ydk::YLeaf pimcandidaterpaddress; //type: string
-        ydk::YLeaf pimcandidaterprowstatus; //type: Rowstatus
-
-}; // PimMib::Pimcandidaterptable::Pimcandidaterpentry
-
-
-class PimMib::Pimcomponenttable : public ydk::Entity
-{
-    public:
-        Pimcomponenttable();
-        ~Pimcomponenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Pimcomponententry; //type: PimMib::Pimcomponenttable::Pimcomponententry
-
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimcomponenttable::Pimcomponententry> > pimcomponententry;
-        
-}; // PimMib::Pimcomponenttable
-
-
-class PimMib::Pimcomponenttable::Pimcomponententry : public ydk::Entity
-{
-    public:
-        Pimcomponententry();
-        ~Pimcomponententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pimcomponentindex; //type: int32
-        ydk::YLeaf pimcomponentbsraddress; //type: string
-        ydk::YLeaf pimcomponentbsrexpirytime; //type: uint32
-        ydk::YLeaf pimcomponentcrpholdtime; //type: int32
-        ydk::YLeaf pimcomponentstatus; //type: Rowstatus
-
-}; // PimMib::Pimcomponenttable::Pimcomponententry
-
-class PimMib::Piminterfacetable::Piminterfaceentry::Piminterfacemode : public ydk::Enum
+class PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfacemode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dense;
@@ -489,7 +506,16 @@ class PimMib::Piminterfacetable::Piminterfaceentry::Piminterfacemode : public yd
 
 };
 
-class PimMib::Pimneighbortable::Pimneighborentry::Pimneighbormode : public ydk::Enum
+class PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopprunereason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf prune;
+        static const ydk::Enum::YLeaf assert;
+
+};
+
+class PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighbormode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dense;
@@ -497,20 +523,11 @@ class PimMib::Pimneighbortable::Pimneighborentry::Pimneighbormode : public ydk::
 
 };
 
-class PimMib::Pimrptable::Pimrpentry::Pimrpstate : public ydk::Enum
+class PIMMIB::Pimrptable::Pimrpentry::Pimrpstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
-
-};
-
-class PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopprunereason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf prune;
-        static const ydk::Enum::YLeaf assert;
 
 };
 

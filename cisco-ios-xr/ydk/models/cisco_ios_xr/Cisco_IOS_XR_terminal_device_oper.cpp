@@ -20,16 +20,12 @@ OpticalInterface::OpticalInterface()
 	,optical_logical_interfaces(std::make_shared<OpticalInterface::OpticalLogicalInterfaces>())
 {
     config_status->parent = this;
-
     graph->parent = this;
-
     operational_modes->parent = this;
-
     optical_channel_interfaces->parent = this;
-
     optical_logical_interfaces->parent = this;
 
-    yang_name = "optical-interface"; yang_parent_name = "Cisco-IOS-XR-terminal-device-oper";
+    yang_name = "optical-interface"; yang_parent_name = "Cisco-IOS-XR-terminal-device-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 OpticalInterface::~OpticalInterface()
@@ -59,26 +55,15 @@ std::string OpticalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -209,10 +194,9 @@ OpticalInterface::ConfigStatus::ConfigStatus()
 	,slice_tables(std::make_shared<OpticalInterface::ConfigStatus::SliceTables>())
 {
     partial_config->parent = this;
-
     slice_tables->parent = this;
 
-    yang_name = "config-status"; yang_parent_name = "optical-interface";
+    yang_name = "config-status"; yang_parent_name = "optical-interface"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::ConfigStatus::~ConfigStatus()
@@ -232,33 +216,26 @@ bool OpticalInterface::ConfigStatus::has_operation() const
 	|| (slice_tables !=  nullptr && slice_tables->has_operation());
 }
 
+std::string OpticalInterface::ConfigStatus::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::ConfigStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config-status";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::ConfigStatus::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -320,7 +297,8 @@ OpticalInterface::ConfigStatus::PartialConfig::PartialConfig()
     :
     partial_config{YType::uint8, "partial-config"}
 {
-    yang_name = "partial-config"; yang_parent_name = "config-status";
+
+    yang_name = "partial-config"; yang_parent_name = "config-status"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::ConfigStatus::PartialConfig::~PartialConfig()
@@ -338,34 +316,27 @@ bool OpticalInterface::ConfigStatus::PartialConfig::has_operation() const
 	|| ydk::is_set(partial_config.yfilter);
 }
 
+std::string OpticalInterface::ConfigStatus::PartialConfig::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/config-status/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::ConfigStatus::PartialConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "partial-config";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::ConfigStatus::PartialConfig::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::PartialConfig::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/config-status/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (partial_config.is_set || is_set(partial_config.yfilter)) leaf_name_data.push_back(partial_config.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -407,7 +378,8 @@ bool OpticalInterface::ConfigStatus::PartialConfig::has_leaf_or_child_of_name(co
 
 OpticalInterface::ConfigStatus::SliceTables::SliceTables()
 {
-    yang_name = "slice-tables"; yang_parent_name = "config-status";
+
+    yang_name = "slice-tables"; yang_parent_name = "config-status"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::ConfigStatus::SliceTables::~SliceTables()
@@ -434,33 +406,26 @@ bool OpticalInterface::ConfigStatus::SliceTables::has_operation() const
     return is_set(yfilter);
 }
 
+std::string OpticalInterface::ConfigStatus::SliceTables::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/config-status/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::ConfigStatus::SliceTables::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slice-tables";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::ConfigStatus::SliceTables::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::SliceTables::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/config-status/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -519,7 +484,7 @@ OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceTable()
 {
     slice_status_attr->parent = this;
 
-    yang_name = "slice-table"; yang_parent_name = "slice-tables";
+    yang_name = "slice-table"; yang_parent_name = "slice-tables"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::ConfigStatus::SliceTables::SliceTable::~SliceTable()
@@ -539,34 +504,27 @@ bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::has_operation() co
 	|| (slice_status_attr !=  nullptr && slice_status_attr->has_operation());
 }
 
+std::string OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/config-status/slice-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slice-table" <<"[index='" <<index_ <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/config-status/slice-tables/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -631,7 +589,8 @@ OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::SliceS
     prov_status{YType::str, "prov-status"},
     slice{YType::uint8, "slice"}
 {
-    yang_name = "slice-status-attr"; yang_parent_name = "slice-table";
+
+    yang_name = "slice-status-attr"; yang_parent_name = "slice-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::~SliceStatusAttr()
@@ -667,23 +626,11 @@ std::string OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatus
 {
     std::ostringstream path_buffer;
     path_buffer << "slice-status-attr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SliceStatusAttr' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (err_str.is_set || is_set(err_str.yfilter)) leaf_name_data.push_back(err_str.get_name_leafdata());
@@ -695,9 +642,7 @@ const EntityPath OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceS
     if (prov_status.is_set || is_set(prov_status.yfilter)) leaf_name_data.push_back(prov_status.get_name_leafdata());
     if (slice.is_set || is_set(slice.yfilter)) leaf_name_data.push_back(slice.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -807,9 +752,573 @@ bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::h
     return false;
 }
 
+OpticalInterface::Graph::Graph()
+    :
+    adj_list_path(std::make_shared<OpticalInterface::Graph::AdjListPath>())
+	,graph_structure_path(std::make_shared<OpticalInterface::Graph::GraphStructurePath>())
+{
+    adj_list_path->parent = this;
+    graph_structure_path->parent = this;
+
+    yang_name = "graph"; yang_parent_name = "optical-interface"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+OpticalInterface::Graph::~Graph()
+{
+}
+
+bool OpticalInterface::Graph::has_data() const
+{
+    return (adj_list_path !=  nullptr && adj_list_path->has_data())
+	|| (graph_structure_path !=  nullptr && graph_structure_path->has_data());
+}
+
+bool OpticalInterface::Graph::has_operation() const
+{
+    return is_set(yfilter)
+	|| (adj_list_path !=  nullptr && adj_list_path->has_operation())
+	|| (graph_structure_path !=  nullptr && graph_structure_path->has_operation());
+}
+
+std::string OpticalInterface::Graph::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string OpticalInterface::Graph::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "graph";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::Graph::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticalInterface::Graph::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "adj-list-path")
+    {
+        if(adj_list_path == nullptr)
+        {
+            adj_list_path = std::make_shared<OpticalInterface::Graph::AdjListPath>();
+        }
+        return adj_list_path;
+    }
+
+    if(child_yang_name == "graph-structure-path")
+    {
+        if(graph_structure_path == nullptr)
+        {
+            graph_structure_path = std::make_shared<OpticalInterface::Graph::GraphStructurePath>();
+        }
+        return graph_structure_path;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adj_list_path != nullptr)
+    {
+        children["adj-list-path"] = adj_list_path;
+    }
+
+    if(graph_structure_path != nullptr)
+    {
+        children["graph-structure-path"] = graph_structure_path;
+    }
+
+    return children;
+}
+
+void OpticalInterface::Graph::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticalInterface::Graph::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::Graph::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adj-list-path" || name == "graph-structure-path")
+        return true;
+    return false;
+}
+
+OpticalInterface::Graph::AdjListPath::AdjListPath()
+    :
+    path{YType::str, "path"}
+{
+
+    yang_name = "adj-list-path"; yang_parent_name = "graph"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+OpticalInterface::Graph::AdjListPath::~AdjListPath()
+{
+}
+
+bool OpticalInterface::Graph::AdjListPath::has_data() const
+{
+    return path.is_set;
+}
+
+bool OpticalInterface::Graph::AdjListPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
+}
+
+std::string OpticalInterface::Graph::AdjListPath::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/graph/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string OpticalInterface::Graph::AdjListPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adj-list-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::Graph::AdjListPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticalInterface::Graph::AdjListPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::AdjListPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticalInterface::Graph::AdjListPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticalInterface::Graph::AdjListPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::Graph::AdjListPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
+}
+
+OpticalInterface::Graph::GraphStructurePath::GraphStructurePath()
+    :
+    path{YType::str, "path"}
+{
+
+    yang_name = "graph-structure-path"; yang_parent_name = "graph"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+OpticalInterface::Graph::GraphStructurePath::~GraphStructurePath()
+{
+}
+
+bool OpticalInterface::Graph::GraphStructurePath::has_data() const
+{
+    return path.is_set;
+}
+
+bool OpticalInterface::Graph::GraphStructurePath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
+}
+
+std::string OpticalInterface::Graph::GraphStructurePath::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/graph/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string OpticalInterface::Graph::GraphStructurePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "graph-structure-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::Graph::GraphStructurePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticalInterface::Graph::GraphStructurePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::GraphStructurePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticalInterface::Graph::GraphStructurePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticalInterface::Graph::GraphStructurePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::Graph::GraphStructurePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
+}
+
+OpticalInterface::OperationalModes::OperationalModes()
+{
+
+    yang_name = "operational-modes"; yang_parent_name = "optical-interface"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+OpticalInterface::OperationalModes::~OperationalModes()
+{
+}
+
+bool OpticalInterface::OperationalModes::has_data() const
+{
+    for (std::size_t index=0; index<operational_mode.size(); index++)
+    {
+        if(operational_mode[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OpticalInterface::OperationalModes::has_operation() const
+{
+    for (std::size_t index=0; index<operational_mode.size(); index++)
+    {
+        if(operational_mode[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OpticalInterface::OperationalModes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string OpticalInterface::OperationalModes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operational-modes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OperationalModes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticalInterface::OperationalModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "operational-mode")
+    {
+        for(auto const & c : operational_mode)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<OpticalInterface::OperationalModes::OperationalMode>();
+        c->parent = this;
+        operational_mode.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : operational_mode)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void OpticalInterface::OperationalModes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticalInterface::OperationalModes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::OperationalModes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operational-mode")
+        return true;
+    return false;
+}
+
+OpticalInterface::OperationalModes::OperationalMode::OperationalMode()
+    :
+    mode_id{YType::int32, "mode-id"}
+    	,
+    operational_mode_attributes(std::make_shared<OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes>())
+{
+    operational_mode_attributes->parent = this;
+
+    yang_name = "operational-mode"; yang_parent_name = "operational-modes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+OpticalInterface::OperationalModes::OperationalMode::~OperationalMode()
+{
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::has_data() const
+{
+    return mode_id.is_set
+	|| (operational_mode_attributes !=  nullptr && operational_mode_attributes->has_data());
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mode_id.yfilter)
+	|| (operational_mode_attributes !=  nullptr && operational_mode_attributes->has_operation());
+}
+
+std::string OpticalInterface::OperationalModes::OperationalMode::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/operational-modes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string OpticalInterface::OperationalModes::OperationalMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operational-mode" <<"[mode-id='" <<mode_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OperationalModes::OperationalMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mode_id.is_set || is_set(mode_id.yfilter)) leaf_name_data.push_back(mode_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "operational-mode-attributes")
+    {
+        if(operational_mode_attributes == nullptr)
+        {
+            operational_mode_attributes = std::make_shared<OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes>();
+        }
+        return operational_mode_attributes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::OperationalMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(operational_mode_attributes != nullptr)
+    {
+        children["operational-mode-attributes"] = operational_mode_attributes;
+    }
+
+    return children;
+}
+
+void OpticalInterface::OperationalModes::OperationalMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mode-id")
+    {
+        mode_id = value;
+        mode_id.value_namespace = name_space;
+        mode_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticalInterface::OperationalModes::OperationalMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode-id")
+    {
+        mode_id.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operational-mode-attributes" || name == "mode-id")
+        return true;
+    return false;
+}
+
+OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::OperationalModeAttributes()
+    :
+    description{YType::str, "description"},
+    vendor_id{YType::str, "vendor-id"}
+{
+
+    yang_name = "operational-mode-attributes"; yang_parent_name = "operational-mode"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::~OperationalModeAttributes()
+{
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_data() const
+{
+    return description.is_set
+	|| vendor_id.is_set;
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_id.yfilter);
+}
+
+std::string OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operational-mode-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_id.is_set || is_set(vendor_id.yfilter)) leaf_name_data.push_back(vendor_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-id")
+    {
+        vendor_id = value;
+        vendor_id.value_namespace = name_space;
+        vendor_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-id")
+    {
+        vendor_id.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-id")
+        return true;
+    return false;
+}
+
 OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterfaces()
 {
-    yang_name = "optical-channel-interfaces"; yang_parent_name = "optical-interface";
+
+    yang_name = "optical-channel-interfaces"; yang_parent_name = "optical-interface"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::OpticalChannelInterfaces::~OpticalChannelInterfaces()
@@ -836,33 +1345,26 @@ bool OpticalInterface::OpticalChannelInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string OpticalInterface::OpticalChannelInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::OpticalChannelInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-channel-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalChannelInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalChannelInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -921,7 +1423,7 @@ OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChan
 {
     optical_channel_interface_attr->parent = this;
 
-    yang_name = "optical-channel-interface"; yang_parent_name = "optical-channel-interfaces";
+    yang_name = "optical-channel-interface"; yang_parent_name = "optical-channel-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::~OpticalChannelInterface()
@@ -941,34 +1443,27 @@ bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::has_op
 	|| (optical_channel_interface_attr !=  nullptr && optical_channel_interface_attr->has_operation());
 }
 
+std::string OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/optical-channel-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-channel-interface" <<"[location='" <<location <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/optical-channel-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1031,7 +1526,8 @@ OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChan
     oper_mode{YType::uint32, "oper-mode"},
     power{YType::uint64, "power"}
 {
-    yang_name = "optical-channel-interface-attr"; yang_parent_name = "optical-channel-interface";
+
+    yang_name = "optical-channel-interface-attr"; yang_parent_name = "optical-channel-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::~OpticalChannelInterfaceAttr()
@@ -1063,23 +1559,11 @@ std::string OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface:
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-channel-interface-attr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticalChannelInterfaceAttr' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (frequency.is_set || is_set(frequency.yfilter)) leaf_name_data.push_back(frequency.get_name_leafdata());
@@ -1089,9 +1573,7 @@ const EntityPath OpticalInterface::OpticalChannelInterfaces::OpticalChannelInter
     if (oper_mode.is_set || is_set(oper_mode.yfilter)) leaf_name_data.push_back(oper_mode.get_name_leafdata());
     if (power.is_set || is_set(power.yfilter)) leaf_name_data.push_back(power.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1181,618 +1663,10 @@ bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::Optica
     return false;
 }
 
-OpticalInterface::Graph::Graph()
-    :
-    adj_list_path(std::make_shared<OpticalInterface::Graph::AdjListPath>())
-	,graph_structure_path(std::make_shared<OpticalInterface::Graph::GraphStructurePath>())
-{
-    adj_list_path->parent = this;
-
-    graph_structure_path->parent = this;
-
-    yang_name = "graph"; yang_parent_name = "optical-interface";
-}
-
-OpticalInterface::Graph::~Graph()
-{
-}
-
-bool OpticalInterface::Graph::has_data() const
-{
-    return (adj_list_path !=  nullptr && adj_list_path->has_data())
-	|| (graph_structure_path !=  nullptr && graph_structure_path->has_data());
-}
-
-bool OpticalInterface::Graph::has_operation() const
-{
-    return is_set(yfilter)
-	|| (adj_list_path !=  nullptr && adj_list_path->has_operation())
-	|| (graph_structure_path !=  nullptr && graph_structure_path->has_operation());
-}
-
-std::string OpticalInterface::Graph::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "graph";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticalInterface::Graph::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticalInterface::Graph::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adj-list-path")
-    {
-        if(adj_list_path == nullptr)
-        {
-            adj_list_path = std::make_shared<OpticalInterface::Graph::AdjListPath>();
-        }
-        return adj_list_path;
-    }
-
-    if(child_yang_name == "graph-structure-path")
-    {
-        if(graph_structure_path == nullptr)
-        {
-            graph_structure_path = std::make_shared<OpticalInterface::Graph::GraphStructurePath>();
-        }
-        return graph_structure_path;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(adj_list_path != nullptr)
-    {
-        children["adj-list-path"] = adj_list_path;
-    }
-
-    if(graph_structure_path != nullptr)
-    {
-        children["graph-structure-path"] = graph_structure_path;
-    }
-
-    return children;
-}
-
-void OpticalInterface::Graph::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OpticalInterface::Graph::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OpticalInterface::Graph::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adj-list-path" || name == "graph-structure-path")
-        return true;
-    return false;
-}
-
-OpticalInterface::Graph::AdjListPath::AdjListPath()
-    :
-    path{YType::str, "path"}
-{
-    yang_name = "adj-list-path"; yang_parent_name = "graph";
-}
-
-OpticalInterface::Graph::AdjListPath::~AdjListPath()
-{
-}
-
-bool OpticalInterface::Graph::AdjListPath::has_data() const
-{
-    return path.is_set;
-}
-
-bool OpticalInterface::Graph::AdjListPath::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(path.yfilter);
-}
-
-std::string OpticalInterface::Graph::AdjListPath::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adj-list-path";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticalInterface::Graph::AdjListPath::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/graph/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticalInterface::Graph::AdjListPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::AdjListPath::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticalInterface::Graph::AdjListPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticalInterface::Graph::AdjListPath::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool OpticalInterface::Graph::AdjListPath::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path")
-        return true;
-    return false;
-}
-
-OpticalInterface::Graph::GraphStructurePath::GraphStructurePath()
-    :
-    path{YType::str, "path"}
-{
-    yang_name = "graph-structure-path"; yang_parent_name = "graph";
-}
-
-OpticalInterface::Graph::GraphStructurePath::~GraphStructurePath()
-{
-}
-
-bool OpticalInterface::Graph::GraphStructurePath::has_data() const
-{
-    return path.is_set;
-}
-
-bool OpticalInterface::Graph::GraphStructurePath::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(path.yfilter);
-}
-
-std::string OpticalInterface::Graph::GraphStructurePath::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "graph-structure-path";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticalInterface::Graph::GraphStructurePath::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/graph/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticalInterface::Graph::GraphStructurePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::GraphStructurePath::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticalInterface::Graph::GraphStructurePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticalInterface::Graph::GraphStructurePath::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool OpticalInterface::Graph::GraphStructurePath::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path")
-        return true;
-    return false;
-}
-
-OpticalInterface::OperationalModes::OperationalModes()
-{
-    yang_name = "operational-modes"; yang_parent_name = "optical-interface";
-}
-
-OpticalInterface::OperationalModes::~OperationalModes()
-{
-}
-
-bool OpticalInterface::OperationalModes::has_data() const
-{
-    for (std::size_t index=0; index<operational_mode.size(); index++)
-    {
-        if(operational_mode[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool OpticalInterface::OperationalModes::has_operation() const
-{
-    for (std::size_t index=0; index<operational_mode.size(); index++)
-    {
-        if(operational_mode[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string OpticalInterface::OperationalModes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "operational-modes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticalInterface::OperationalModes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticalInterface::OperationalModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "operational-mode")
-    {
-        for(auto const & c : operational_mode)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<OpticalInterface::OperationalModes::OperationalMode>();
-        c->parent = this;
-        operational_mode.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : operational_mode)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void OpticalInterface::OperationalModes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OpticalInterface::OperationalModes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OpticalInterface::OperationalModes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "operational-mode")
-        return true;
-    return false;
-}
-
-OpticalInterface::OperationalModes::OperationalMode::OperationalMode()
-    :
-    mode_id{YType::int32, "mode-id"}
-    	,
-    operational_mode_attributes(std::make_shared<OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes>())
-{
-    operational_mode_attributes->parent = this;
-
-    yang_name = "operational-mode"; yang_parent_name = "operational-modes";
-}
-
-OpticalInterface::OperationalModes::OperationalMode::~OperationalMode()
-{
-}
-
-bool OpticalInterface::OperationalModes::OperationalMode::has_data() const
-{
-    return mode_id.is_set
-	|| (operational_mode_attributes !=  nullptr && operational_mode_attributes->has_data());
-}
-
-bool OpticalInterface::OperationalModes::OperationalMode::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mode_id.yfilter)
-	|| (operational_mode_attributes !=  nullptr && operational_mode_attributes->has_operation());
-}
-
-std::string OpticalInterface::OperationalModes::OperationalMode::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "operational-mode" <<"[mode-id='" <<mode_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticalInterface::OperationalModes::OperationalMode::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/operational-modes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mode_id.is_set || is_set(mode_id.yfilter)) leaf_name_data.push_back(mode_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "operational-mode-attributes")
-    {
-        if(operational_mode_attributes == nullptr)
-        {
-            operational_mode_attributes = std::make_shared<OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes>();
-        }
-        return operational_mode_attributes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::OperationalMode::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(operational_mode_attributes != nullptr)
-    {
-        children["operational-mode-attributes"] = operational_mode_attributes;
-    }
-
-    return children;
-}
-
-void OpticalInterface::OperationalModes::OperationalMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mode-id")
-    {
-        mode_id = value;
-        mode_id.value_namespace = name_space;
-        mode_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticalInterface::OperationalModes::OperationalMode::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mode-id")
-    {
-        mode_id.yfilter = yfilter;
-    }
-}
-
-bool OpticalInterface::OperationalModes::OperationalMode::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "operational-mode-attributes" || name == "mode-id")
-        return true;
-    return false;
-}
-
-OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::OperationalModeAttributes()
-    :
-    description{YType::str, "description"},
-    vendor_id{YType::str, "vendor-id"}
-{
-    yang_name = "operational-mode-attributes"; yang_parent_name = "operational-mode";
-}
-
-OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::~OperationalModeAttributes()
-{
-}
-
-bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_data() const
-{
-    return description.is_set
-	|| vendor_id.is_set;
-}
-
-bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(vendor_id.yfilter);
-}
-
-std::string OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "operational-mode-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OperationalModeAttributes' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (vendor_id.is_set || is_set(vendor_id.yfilter)) leaf_name_data.push_back(vendor_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-id")
-    {
-        vendor_id = value;
-        vendor_id.value_namespace = name_space;
-        vendor_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "vendor-id")
-    {
-        vendor_id.yfilter = yfilter;
-    }
-}
-
-bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "description" || name == "vendor-id")
-        return true;
-    return false;
-}
-
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterfaces()
 {
-    yang_name = "optical-logical-interfaces"; yang_parent_name = "optical-interface";
+
+    yang_name = "optical-logical-interfaces"; yang_parent_name = "optical-interface"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::~OpticalLogicalInterfaces()
@@ -1819,33 +1693,26 @@ bool OpticalInterface::OpticalLogicalInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string OpticalInterface::OpticalLogicalInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::OpticalLogicalInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-logical-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalLogicalInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1904,10 +1771,9 @@ OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogi
 	,optical_logical_interface_logical_channel_assignments(std::make_shared<OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments>())
 {
     optical_logical_interface_attr->parent = this;
-
     optical_logical_interface_logical_channel_assignments->parent = this;
 
-    yang_name = "optical-logical-interface"; yang_parent_name = "optical-logical-interfaces";
+    yang_name = "optical-logical-interface"; yang_parent_name = "optical-logical-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::~OpticalLogicalInterface()
@@ -1929,34 +1795,27 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::has_op
 	|| (optical_logical_interface_logical_channel_assignments !=  nullptr && optical_logical_interface_logical_channel_assignments->has_operation());
 }
 
+std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/optical-logical-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-logical-interface" <<"[index='" <<index_ <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-terminal-device-oper:optical-interface/optical-logical-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2039,7 +1898,8 @@ OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogi
     tti_transmit{YType::str, "tti-transmit"},
     type{YType::str, "type"}
 {
-    yang_name = "optical-logical-interface-attr"; yang_parent_name = "optical-logical-interface";
+
+    yang_name = "optical-logical-interface-attr"; yang_parent_name = "optical-logical-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::~OpticalLogicalInterfaceAttr()
@@ -2083,23 +1943,11 @@ std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface:
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-logical-interface-attr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticalLogicalInterfaceAttr' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
@@ -2115,9 +1963,7 @@ const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInter
     if (tti_transmit.is_set || is_set(tti_transmit.yfilter)) leaf_name_data.push_back(tti_transmit.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2269,7 +2115,8 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optica
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignments()
 {
-    yang_name = "optical-logical-interface-logical-channel-assignments"; yang_parent_name = "optical-logical-interface";
+
+    yang_name = "optical-logical-interface-logical-channel-assignments"; yang_parent_name = "optical-logical-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::~OpticalLogicalInterfaceLogicalChannelAssignments()
@@ -2300,29 +2147,15 @@ std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface:
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-logical-interface-logical-channel-assignments";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticalLogicalInterfaceLogicalChannelAssignments' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2381,7 +2214,7 @@ OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogi
 {
     optical_logical_interface_logical_channel_assignment_attr->parent = this;
 
-    yang_name = "optical-logical-interface-logical-channel-assignment"; yang_parent_name = "optical-logical-interface-logical-channel-assignments";
+    yang_name = "optical-logical-interface-logical-channel-assignment"; yang_parent_name = "optical-logical-interface-logical-channel-assignments"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::~OpticalLogicalInterfaceLogicalChannelAssignment()
@@ -2405,30 +2238,16 @@ std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface:
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-logical-interface-logical-channel-assignment" <<"[index='" <<index_ <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticalLogicalInterfaceLogicalChannelAssignment' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2492,7 +2311,8 @@ OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogi
     name{YType::str, "name"},
     optical_channel{YType::str, "optical-channel"}
 {
-    yang_name = "optical-logical-interface-logical-channel-assignment-attr"; yang_parent_name = "optical-logical-interface-logical-channel-assignment";
+
+    yang_name = "optical-logical-interface-logical-channel-assignment-attr"; yang_parent_name = "optical-logical-interface-logical-channel-assignment"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::~OpticalLogicalInterfaceLogicalChannelAssignmentAttr()
@@ -2526,23 +2346,11 @@ std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface:
 {
     std::ostringstream path_buffer;
     path_buffer << "optical-logical-interface-logical-channel-assignment-attr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticalLogicalInterfaceLogicalChannelAssignmentAttr' in Cisco_IOS_XR_terminal_device_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (allocation.is_set || is_set(allocation.yfilter)) leaf_name_data.push_back(allocation.get_name_leafdata());
@@ -2553,9 +2361,7 @@ const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInter
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (optical_channel.is_set || is_set(optical_channel.yfilter)) leaf_name_data.push_back(optical_channel.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2655,17 +2461,6 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optica
     return false;
 }
 
-const Enum::YLeaf TribRateClass::trib_rate_unknown {0, "trib-rate-unknown"};
-const Enum::YLeaf TribRateClass::trib_rate1g {1, "trib-rate1g"};
-const Enum::YLeaf TribRateClass::trib_rate25g {2, "trib-rate25g"};
-const Enum::YLeaf TribRateClass::trib_rate10g {3, "trib-rate10g"};
-const Enum::YLeaf TribRateClass::trib_rate40g {4, "trib-rate40g"};
-const Enum::YLeaf TribRateClass::trib_rate100g {5, "trib-rate100g"};
-
-const Enum::YLeaf LogicalProtocol::proto_type_unknown {0, "proto-type-unknown"};
-const Enum::YLeaf LogicalProtocol::proto_type_ethernet {1, "proto-type-ethernet"};
-const Enum::YLeaf LogicalProtocol::proto_type_otn {2, "proto-type-otn"};
-
 const Enum::YLeaf TribProtocol::trib_proto_type_unknown {0, "trib-proto-type-unknown"};
 const Enum::YLeaf TribProtocol::trib_proto_type1ge {1, "trib-proto-type1ge"};
 const Enum::YLeaf TribProtocol::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
@@ -2689,6 +2484,17 @@ const Enum::YLeaf TribProtocol::trib_proto_type100g_mlg {19, "trib-proto-type100
 const Enum::YLeaf TribProtocol::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
 const Enum::YLeaf TribProtocol::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
 const Enum::YLeaf TribProtocol::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
+
+const Enum::YLeaf LogicalProtocol::proto_type_unknown {0, "proto-type-unknown"};
+const Enum::YLeaf LogicalProtocol::proto_type_ethernet {1, "proto-type-ethernet"};
+const Enum::YLeaf LogicalProtocol::proto_type_otn {2, "proto-type-otn"};
+
+const Enum::YLeaf TribRateClass::trib_rate_unknown {0, "trib-rate-unknown"};
+const Enum::YLeaf TribRateClass::trib_rate1g {1, "trib-rate1g"};
+const Enum::YLeaf TribRateClass::trib_rate25g {2, "trib-rate25g"};
+const Enum::YLeaf TribRateClass::trib_rate10g {3, "trib-rate10g"};
+const Enum::YLeaf TribRateClass::trib_rate40g {4, "trib-rate40g"};
+const Enum::YLeaf TribRateClass::trib_rate100g {5, "trib-rate100g"};
 
 
 }

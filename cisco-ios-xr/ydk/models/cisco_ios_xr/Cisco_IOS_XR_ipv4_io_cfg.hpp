@@ -18,19 +18,19 @@ class Ipv4SelfPing : public ydk::Enum
 
 };
 
-class Ipv4DefaultPing : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
-
-};
-
 class Ipv4Reachable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf received;
+
+};
+
+class Ipv4DefaultPing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 

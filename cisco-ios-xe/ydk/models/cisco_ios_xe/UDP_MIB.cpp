@@ -11,33 +11,31 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace UDP_MIB {
 
-UdpMib::UdpMib()
+UDPMIB::UDPMIB()
     :
-    udp(std::make_shared<UdpMib::Udp>())
-	,udpendpointtable(std::make_shared<UdpMib::Udpendpointtable>())
-	,udptable(std::make_shared<UdpMib::Udptable>())
+    udp(std::make_shared<UDPMIB::Udp>())
+	,udpendpointtable(std::make_shared<UDPMIB::Udpendpointtable>())
+	,udptable(std::make_shared<UDPMIB::Udptable>())
 {
     udp->parent = this;
-
     udpendpointtable->parent = this;
-
     udptable->parent = this;
 
-    yang_name = "UDP-MIB"; yang_parent_name = "UDP-MIB";
+    yang_name = "UDP-MIB"; yang_parent_name = "UDP-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-UdpMib::~UdpMib()
+UDPMIB::~UDPMIB()
 {
 }
 
-bool UdpMib::has_data() const
+bool UDPMIB::has_data() const
 {
     return (udp !=  nullptr && udp->has_data())
 	|| (udpendpointtable !=  nullptr && udpendpointtable->has_data())
 	|| (udptable !=  nullptr && udptable->has_data());
 }
 
-bool UdpMib::has_operation() const
+bool UDPMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (udp !=  nullptr && udp->has_operation())
@@ -45,40 +43,29 @@ bool UdpMib::has_operation() const
 	|| (udptable !=  nullptr && udptable->has_operation());
 }
 
-std::string UdpMib::get_segment_path() const
+std::string UDPMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "UDP-MIB:UDP-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath UdpMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > UDPMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> UdpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> UDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
         if(udp == nullptr)
         {
-            udp = std::make_shared<UdpMib::Udp>();
+            udp = std::make_shared<UDPMIB::Udp>();
         }
         return udp;
     }
@@ -87,7 +74,7 @@ std::shared_ptr<Entity> UdpMib::get_child_by_name(const std::string & child_yang
     {
         if(udpendpointtable == nullptr)
         {
-            udpendpointtable = std::make_shared<UdpMib::Udpendpointtable>();
+            udpendpointtable = std::make_shared<UDPMIB::Udpendpointtable>();
         }
         return udpendpointtable;
     }
@@ -96,7 +83,7 @@ std::shared_ptr<Entity> UdpMib::get_child_by_name(const std::string & child_yang
     {
         if(udptable == nullptr)
         {
-            udptable = std::make_shared<UdpMib::Udptable>();
+            udptable = std::make_shared<UDPMIB::Udptable>();
         }
         return udptable;
     }
@@ -104,7 +91,7 @@ std::shared_ptr<Entity> UdpMib::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UdpMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> UDPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(udp != nullptr)
@@ -125,47 +112,47 @@ std::map<std::string, std::shared_ptr<Entity>> UdpMib::get_children() const
     return children;
 }
 
-void UdpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void UDPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void UdpMib::set_filter(const std::string & value_path, YFilter yfilter)
+void UDPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> UdpMib::clone_ptr() const
+std::shared_ptr<Entity> UDPMIB::clone_ptr() const
 {
-    return std::make_shared<UdpMib>();
+    return std::make_shared<UDPMIB>();
 }
 
-std::string UdpMib::get_bundle_yang_models_location() const
+std::string UDPMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string UdpMib::get_bundle_name() const
+std::string UDPMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function UdpMib::get_augment_capabilities_function() const
+augment_capabilities_function UDPMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> UdpMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> UDPMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool UdpMib::has_leaf_or_child_of_name(const std::string & name) const
+bool UDPMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udp" || name == "udpEndpointTable" || name == "udpTable")
         return true;
     return false;
 }
 
-UdpMib::Udp::Udp()
+UDPMIB::Udp::Udp()
     :
     udphcindatagrams{YType::uint64, "udpHCInDatagrams"},
     udphcoutdatagrams{YType::uint64, "udpHCOutDatagrams"},
@@ -174,14 +161,15 @@ UdpMib::Udp::Udp()
     udpnoports{YType::uint32, "udpNoPorts"},
     udpoutdatagrams{YType::uint32, "udpOutDatagrams"}
 {
-    yang_name = "udp"; yang_parent_name = "UDP-MIB";
+
+    yang_name = "udp"; yang_parent_name = "UDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-UdpMib::Udp::~Udp()
+UDPMIB::Udp::~Udp()
 {
 }
 
-bool UdpMib::Udp::has_data() const
+bool UDPMIB::Udp::has_data() const
 {
     return udphcindatagrams.is_set
 	|| udphcoutdatagrams.is_set
@@ -191,7 +179,7 @@ bool UdpMib::Udp::has_data() const
 	|| udpoutdatagrams.is_set;
 }
 
-bool UdpMib::Udp::has_operation() const
+bool UDPMIB::Udp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(udphcindatagrams.yfilter)
@@ -202,27 +190,22 @@ bool UdpMib::Udp::has_operation() const
 	|| ydk::is_set(udpoutdatagrams.yfilter);
 }
 
-std::string UdpMib::Udp::get_segment_path() const
+std::string UDPMIB::Udp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "UDP-MIB:UDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string UDPMIB::Udp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "udp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath UdpMib::Udp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > UDPMIB::Udp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "UDP-MIB:UDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (udphcindatagrams.is_set || is_set(udphcindatagrams.yfilter)) leaf_name_data.push_back(udphcindatagrams.get_name_leafdata());
@@ -232,24 +215,22 @@ const EntityPath UdpMib::Udp::get_entity_path(Entity* ancestor) const
     if (udpnoports.is_set || is_set(udpnoports.yfilter)) leaf_name_data.push_back(udpnoports.get_name_leafdata());
     if (udpoutdatagrams.is_set || is_set(udpoutdatagrams.yfilter)) leaf_name_data.push_back(udpoutdatagrams.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> UdpMib::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> UDPMIB::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void UdpMib::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void UDPMIB::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "udpHCInDatagrams")
     {
@@ -289,7 +270,7 @@ void UdpMib::Udp::set_value(const std::string & value_path, const std::string & 
     }
 }
 
-void UdpMib::Udp::set_filter(const std::string & value_path, YFilter yfilter)
+void UDPMIB::Udp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "udpHCInDatagrams")
     {
@@ -317,232 +298,24 @@ void UdpMib::Udp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-bool UdpMib::Udp::has_leaf_or_child_of_name(const std::string & name) const
+bool UDPMIB::Udp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udpHCInDatagrams" || name == "udpHCOutDatagrams" || name == "udpInDatagrams" || name == "udpInErrors" || name == "udpNoPorts" || name == "udpOutDatagrams")
         return true;
     return false;
 }
 
-UdpMib::Udptable::Udptable()
+UDPMIB::Udpendpointtable::Udpendpointtable()
 {
-    yang_name = "udpTable"; yang_parent_name = "UDP-MIB";
+
+    yang_name = "udpEndpointTable"; yang_parent_name = "UDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-UdpMib::Udptable::~Udptable()
-{
-}
-
-bool UdpMib::Udptable::has_data() const
-{
-    for (std::size_t index=0; index<udpentry.size(); index++)
-    {
-        if(udpentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool UdpMib::Udptable::has_operation() const
-{
-    for (std::size_t index=0; index<udpentry.size(); index++)
-    {
-        if(udpentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string UdpMib::Udptable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "udpTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath UdpMib::Udptable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "UDP-MIB:UDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> UdpMib::Udptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "udpEntry")
-    {
-        for(auto const & c : udpentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<UdpMib::Udptable::Udpentry>();
-        c->parent = this;
-        udpentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udptable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : udpentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void UdpMib::Udptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+UDPMIB::Udpendpointtable::~Udpendpointtable()
 {
 }
 
-void UdpMib::Udptable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool UdpMib::Udptable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "udpEntry")
-        return true;
-    return false;
-}
-
-UdpMib::Udptable::Udpentry::Udpentry()
-    :
-    udplocaladdress{YType::str, "udpLocalAddress"},
-    udplocalport{YType::int32, "udpLocalPort"}
-{
-    yang_name = "udpEntry"; yang_parent_name = "udpTable";
-}
-
-UdpMib::Udptable::Udpentry::~Udpentry()
-{
-}
-
-bool UdpMib::Udptable::Udpentry::has_data() const
-{
-    return udplocaladdress.is_set
-	|| udplocalport.is_set;
-}
-
-bool UdpMib::Udptable::Udpentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(udplocaladdress.yfilter)
-	|| ydk::is_set(udplocalport.yfilter);
-}
-
-std::string UdpMib::Udptable::Udpentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "udpEntry" <<"[udpLocalAddress='" <<udplocaladdress <<"']" <<"[udpLocalPort='" <<udplocalport <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath UdpMib::Udptable::Udpentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "UDP-MIB:UDP-MIB/udpTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (udplocaladdress.is_set || is_set(udplocaladdress.yfilter)) leaf_name_data.push_back(udplocaladdress.get_name_leafdata());
-    if (udplocalport.is_set || is_set(udplocalport.yfilter)) leaf_name_data.push_back(udplocalport.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> UdpMib::Udptable::Udpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udptable::Udpentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void UdpMib::Udptable::Udpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "udpLocalAddress")
-    {
-        udplocaladdress = value;
-        udplocaladdress.value_namespace = name_space;
-        udplocaladdress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "udpLocalPort")
-    {
-        udplocalport = value;
-        udplocalport.value_namespace = name_space;
-        udplocalport.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void UdpMib::Udptable::Udpentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "udpLocalAddress")
-    {
-        udplocaladdress.yfilter = yfilter;
-    }
-    if(value_path == "udpLocalPort")
-    {
-        udplocalport.yfilter = yfilter;
-    }
-}
-
-bool UdpMib::Udptable::Udpentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "udpLocalAddress" || name == "udpLocalPort")
-        return true;
-    return false;
-}
-
-UdpMib::Udpendpointtable::Udpendpointtable()
-{
-    yang_name = "udpEndpointTable"; yang_parent_name = "UDP-MIB";
-}
-
-UdpMib::Udpendpointtable::~Udpendpointtable()
-{
-}
-
-bool UdpMib::Udpendpointtable::has_data() const
+bool UDPMIB::Udpendpointtable::has_data() const
 {
     for (std::size_t index=0; index<udpendpointentry.size(); index++)
     {
@@ -552,7 +325,7 @@ bool UdpMib::Udpendpointtable::has_data() const
     return false;
 }
 
-bool UdpMib::Udpendpointtable::has_operation() const
+bool UDPMIB::Udpendpointtable::has_operation() const
 {
     for (std::size_t index=0; index<udpendpointentry.size(); index++)
     {
@@ -562,37 +335,30 @@ bool UdpMib::Udpendpointtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string UdpMib::Udpendpointtable::get_segment_path() const
+std::string UDPMIB::Udpendpointtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "UDP-MIB:UDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string UDPMIB::Udpendpointtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "udpEndpointTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath UdpMib::Udpendpointtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > UDPMIB::Udpendpointtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "UDP-MIB:UDP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> UdpMib::Udpendpointtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> UDPMIB::Udpendpointtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udpEndpointEntry")
     {
@@ -604,7 +370,7 @@ std::shared_ptr<Entity> UdpMib::Udpendpointtable::get_child_by_name(const std::s
                 return c;
             }
         }
-        auto c = std::make_shared<UdpMib::Udpendpointtable::Udpendpointentry>();
+        auto c = std::make_shared<UDPMIB::Udpendpointtable::Udpendpointentry>();
         c->parent = this;
         udpendpointentry.push_back(c);
         return c;
@@ -613,7 +379,7 @@ std::shared_ptr<Entity> UdpMib::Udpendpointtable::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udpendpointtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udpendpointtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : udpendpointentry)
@@ -624,22 +390,22 @@ std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udpendpointtable::get_chi
     return children;
 }
 
-void UdpMib::Udpendpointtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void UDPMIB::Udpendpointtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void UdpMib::Udpendpointtable::set_filter(const std::string & value_path, YFilter yfilter)
+void UDPMIB::Udpendpointtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool UdpMib::Udpendpointtable::has_leaf_or_child_of_name(const std::string & name) const
+bool UDPMIB::Udpendpointtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udpEndpointEntry")
         return true;
     return false;
 }
 
-UdpMib::Udpendpointtable::Udpendpointentry::Udpendpointentry()
+UDPMIB::Udpendpointtable::Udpendpointentry::Udpendpointentry()
     :
     udpendpointlocaladdresstype{YType::enumeration, "udpEndpointLocalAddressType"},
     udpendpointlocaladdress{YType::str, "udpEndpointLocalAddress"},
@@ -650,14 +416,15 @@ UdpMib::Udpendpointtable::Udpendpointentry::Udpendpointentry()
     udpendpointinstance{YType::uint32, "udpEndpointInstance"},
     udpendpointprocess{YType::uint32, "udpEndpointProcess"}
 {
-    yang_name = "udpEndpointEntry"; yang_parent_name = "udpEndpointTable";
+
+    yang_name = "udpEndpointEntry"; yang_parent_name = "udpEndpointTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-UdpMib::Udpendpointtable::Udpendpointentry::~Udpendpointentry()
+UDPMIB::Udpendpointtable::Udpendpointentry::~Udpendpointentry()
 {
 }
 
-bool UdpMib::Udpendpointtable::Udpendpointentry::has_data() const
+bool UDPMIB::Udpendpointtable::Udpendpointentry::has_data() const
 {
     return udpendpointlocaladdresstype.is_set
 	|| udpendpointlocaladdress.is_set
@@ -669,7 +436,7 @@ bool UdpMib::Udpendpointtable::Udpendpointentry::has_data() const
 	|| udpendpointprocess.is_set;
 }
 
-bool UdpMib::Udpendpointtable::Udpendpointentry::has_operation() const
+bool UDPMIB::Udpendpointtable::Udpendpointentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(udpendpointlocaladdresstype.yfilter)
@@ -682,27 +449,22 @@ bool UdpMib::Udpendpointtable::Udpendpointentry::has_operation() const
 	|| ydk::is_set(udpendpointprocess.yfilter);
 }
 
-std::string UdpMib::Udpendpointtable::Udpendpointentry::get_segment_path() const
+std::string UDPMIB::Udpendpointtable::Udpendpointentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "UDP-MIB:UDP-MIB/udpEndpointTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string UDPMIB::Udpendpointtable::Udpendpointentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "udpEndpointEntry" <<"[udpEndpointLocalAddressType='" <<udpendpointlocaladdresstype <<"']" <<"[udpEndpointLocalAddress='" <<udpendpointlocaladdress <<"']" <<"[udpEndpointLocalPort='" <<udpendpointlocalport <<"']" <<"[udpEndpointRemoteAddressType='" <<udpendpointremoteaddresstype <<"']" <<"[udpEndpointRemoteAddress='" <<udpendpointremoteaddress <<"']" <<"[udpEndpointRemotePort='" <<udpendpointremoteport <<"']" <<"[udpEndpointInstance='" <<udpendpointinstance <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath UdpMib::Udpendpointtable::Udpendpointentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > UDPMIB::Udpendpointtable::Udpendpointentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "UDP-MIB:UDP-MIB/udpEndpointTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (udpendpointlocaladdresstype.is_set || is_set(udpendpointlocaladdresstype.yfilter)) leaf_name_data.push_back(udpendpointlocaladdresstype.get_name_leafdata());
@@ -714,24 +476,22 @@ const EntityPath UdpMib::Udpendpointtable::Udpendpointentry::get_entity_path(Ent
     if (udpendpointinstance.is_set || is_set(udpendpointinstance.yfilter)) leaf_name_data.push_back(udpendpointinstance.get_name_leafdata());
     if (udpendpointprocess.is_set || is_set(udpendpointprocess.yfilter)) leaf_name_data.push_back(udpendpointprocess.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> UdpMib::Udpendpointtable::Udpendpointentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> UDPMIB::Udpendpointtable::Udpendpointentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udpendpointtable::Udpendpointentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udpendpointtable::Udpendpointentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void UdpMib::Udpendpointtable::Udpendpointentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void UDPMIB::Udpendpointtable::Udpendpointentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "udpEndpointLocalAddressType")
     {
@@ -783,7 +543,7 @@ void UdpMib::Udpendpointtable::Udpendpointentry::set_value(const std::string & v
     }
 }
 
-void UdpMib::Udpendpointtable::Udpendpointentry::set_filter(const std::string & value_path, YFilter yfilter)
+void UDPMIB::Udpendpointtable::Udpendpointentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "udpEndpointLocalAddressType")
     {
@@ -819,9 +579,206 @@ void UdpMib::Udpendpointtable::Udpendpointentry::set_filter(const std::string & 
     }
 }
 
-bool UdpMib::Udpendpointtable::Udpendpointentry::has_leaf_or_child_of_name(const std::string & name) const
+bool UDPMIB::Udpendpointtable::Udpendpointentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udpEndpointLocalAddressType" || name == "udpEndpointLocalAddress" || name == "udpEndpointLocalPort" || name == "udpEndpointRemoteAddressType" || name == "udpEndpointRemoteAddress" || name == "udpEndpointRemotePort" || name == "udpEndpointInstance" || name == "udpEndpointProcess")
+        return true;
+    return false;
+}
+
+UDPMIB::Udptable::Udptable()
+{
+
+    yang_name = "udpTable"; yang_parent_name = "UDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+UDPMIB::Udptable::~Udptable()
+{
+}
+
+bool UDPMIB::Udptable::has_data() const
+{
+    for (std::size_t index=0; index<udpentry.size(); index++)
+    {
+        if(udpentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool UDPMIB::Udptable::has_operation() const
+{
+    for (std::size_t index=0; index<udpentry.size(); index++)
+    {
+        if(udpentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string UDPMIB::Udptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "UDP-MIB:UDP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string UDPMIB::Udptable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "udpTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > UDPMIB::Udptable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> UDPMIB::Udptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "udpEntry")
+    {
+        for(auto const & c : udpentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<UDPMIB::Udptable::Udpentry>();
+        c->parent = this;
+        udpentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udptable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : udpentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void UDPMIB::Udptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void UDPMIB::Udptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool UDPMIB::Udptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udpEntry")
+        return true;
+    return false;
+}
+
+UDPMIB::Udptable::Udpentry::Udpentry()
+    :
+    udplocaladdress{YType::str, "udpLocalAddress"},
+    udplocalport{YType::int32, "udpLocalPort"}
+{
+
+    yang_name = "udpEntry"; yang_parent_name = "udpTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+UDPMIB::Udptable::Udpentry::~Udpentry()
+{
+}
+
+bool UDPMIB::Udptable::Udpentry::has_data() const
+{
+    return udplocaladdress.is_set
+	|| udplocalport.is_set;
+}
+
+bool UDPMIB::Udptable::Udpentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(udplocaladdress.yfilter)
+	|| ydk::is_set(udplocalport.yfilter);
+}
+
+std::string UDPMIB::Udptable::Udpentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "UDP-MIB:UDP-MIB/udpTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string UDPMIB::Udptable::Udpentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "udpEntry" <<"[udpLocalAddress='" <<udplocaladdress <<"']" <<"[udpLocalPort='" <<udplocalport <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > UDPMIB::Udptable::Udpentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (udplocaladdress.is_set || is_set(udplocaladdress.yfilter)) leaf_name_data.push_back(udplocaladdress.get_name_leafdata());
+    if (udplocalport.is_set || is_set(udplocalport.yfilter)) leaf_name_data.push_back(udplocalport.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> UDPMIB::Udptable::Udpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udptable::Udpentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void UDPMIB::Udptable::Udpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "udpLocalAddress")
+    {
+        udplocaladdress = value;
+        udplocaladdress.value_namespace = name_space;
+        udplocaladdress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udpLocalPort")
+    {
+        udplocalport = value;
+        udplocalport.value_namespace = name_space;
+        udplocalport.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void UDPMIB::Udptable::Udpentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "udpLocalAddress")
+    {
+        udplocaladdress.yfilter = yfilter;
+    }
+    if(value_path == "udpLocalPort")
+    {
+        udplocalport.yfilter = yfilter;
+    }
+}
+
+bool UDPMIB::Udptable::Udpentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udpLocalAddress" || name == "udpLocalPort")
         return true;
     return false;
 }

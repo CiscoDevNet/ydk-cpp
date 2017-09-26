@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_wdsysmon_fd_oper {
 
 SystemMonitoring::SystemMonitoring()
 {
-    yang_name = "system-monitoring"; yang_parent_name = "Cisco-IOS-XR-wdsysmon-fd-oper";
+
+    yang_name = "system-monitoring"; yang_parent_name = "Cisco-IOS-XR-wdsysmon-fd-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SystemMonitoring::~SystemMonitoring()
@@ -44,26 +45,15 @@ std::string SystemMonitoring::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SystemMonitoring::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SystemMonitoring::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -146,7 +136,8 @@ SystemMonitoring::CpuUtilization::CpuUtilization()
     total_cpu_five_minute{YType::uint32, "total-cpu-five-minute"},
     total_cpu_one_minute{YType::uint32, "total-cpu-one-minute"}
 {
-    yang_name = "cpu-utilization"; yang_parent_name = "system-monitoring";
+
+    yang_name = "cpu-utilization"; yang_parent_name = "system-monitoring"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SystemMonitoring::CpuUtilization::~CpuUtilization()
@@ -180,27 +171,22 @@ bool SystemMonitoring::CpuUtilization::has_operation() const
 	|| ydk::is_set(total_cpu_one_minute.yfilter);
 }
 
+std::string SystemMonitoring::CpuUtilization::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SystemMonitoring::CpuUtilization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu-utilization" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SystemMonitoring::CpuUtilization::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SystemMonitoring::CpuUtilization::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
@@ -208,9 +194,7 @@ const EntityPath SystemMonitoring::CpuUtilization::get_entity_path(Entity* ances
     if (total_cpu_five_minute.is_set || is_set(total_cpu_five_minute.yfilter)) leaf_name_data.push_back(total_cpu_five_minute.get_name_leafdata());
     if (total_cpu_one_minute.is_set || is_set(total_cpu_one_minute.yfilter)) leaf_name_data.push_back(total_cpu_one_minute.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -309,7 +293,8 @@ SystemMonitoring::CpuUtilization::ProcessCpu::ProcessCpu()
     process_id{YType::uint32, "process-id"},
     process_name{YType::str, "process-name"}
 {
-    yang_name = "process-cpu"; yang_parent_name = "cpu-utilization";
+
+    yang_name = "process-cpu"; yang_parent_name = "cpu-utilization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SystemMonitoring::CpuUtilization::ProcessCpu::~ProcessCpu()
@@ -339,23 +324,11 @@ std::string SystemMonitoring::CpuUtilization::ProcessCpu::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "process-cpu";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SystemMonitoring::CpuUtilization::ProcessCpu::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SystemMonitoring::CpuUtilization::ProcessCpu::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProcessCpu' in Cisco_IOS_XR_wdsysmon_fd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (process_cpu_fifteen_minute.is_set || is_set(process_cpu_fifteen_minute.yfilter)) leaf_name_data.push_back(process_cpu_fifteen_minute.get_name_leafdata());
@@ -364,9 +337,7 @@ const EntityPath SystemMonitoring::CpuUtilization::ProcessCpu::get_entity_path(E
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
     if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

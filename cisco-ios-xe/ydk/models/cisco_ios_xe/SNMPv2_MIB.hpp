@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace SNMPv2_MIB {
 
-class Snmpv2Mib : public ydk::Entity
+class SNMPv2MIB : public ydk::Entity
 {
     public:
-        Snmpv2Mib();
-        ~Snmpv2Mib();
+        SNMPv2MIB();
+        ~SNMPv2MIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,48 +31,20 @@ class Snmpv2Mib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class System; //type: Snmpv2Mib::System
-        class Snmp; //type: Snmpv2Mib::Snmp
-        class Snmpset; //type: Snmpv2Mib::Snmpset
-        class Sysortable; //type: Snmpv2Mib::Sysortable
+        class System; //type: SNMPv2MIB::System
+        class Snmp; //type: SNMPv2MIB::Snmp
+        class Snmpset; //type: SNMPv2MIB::Snmpset
+        class Sysortable; //type: SNMPv2MIB::Sysortable
 
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Snmp> snmp;
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Snmpset> snmpset;
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Sysortable> sysortable;
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::System> system;
+        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Snmpset> snmpset;
+        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Sysortable> sysortable;
+        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::System> system;
         
-}; // Snmpv2Mib
+}; // SNMPv2MIB
 
 
-class Snmpv2Mib::System : public ydk::Entity
-{
-    public:
-        System();
-        ~System();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sysdescr; //type: string
-        ydk::YLeaf sysobjectid; //type: string
-        ydk::YLeaf sysuptime; //type: uint32
-        ydk::YLeaf syscontact; //type: string
-        ydk::YLeaf sysname; //type: string
-        ydk::YLeaf syslocation; //type: string
-        ydk::YLeaf sysservices; //type: int32
-        ydk::YLeaf sysorlastchange; //type: uint32
-
-}; // Snmpv2Mib::System
-
-
-class Snmpv2Mib::Snmp : public ydk::Entity
+class SNMPv2MIB::Snmp : public ydk::Entity
 {
     public:
         Snmp();
@@ -80,13 +52,14 @@ class Snmpv2Mib::Snmp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf snmpinpkts; //type: uint32
         ydk::YLeaf snmpoutpkts; //type: uint32
@@ -120,10 +93,10 @@ class Snmpv2Mib::Snmp : public ydk::Entity
         ydk::YLeaf snmpproxydrops; //type: uint32
         class Snmpenableauthentraps;
 
-}; // Snmpv2Mib::Snmp
+}; // SNMPv2MIB::Snmp
 
 
-class Snmpv2Mib::Snmpset : public ydk::Entity
+class SNMPv2MIB::Snmpset : public ydk::Entity
 {
     public:
         Snmpset();
@@ -131,20 +104,21 @@ class Snmpv2Mib::Snmpset : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf snmpsetserialno; //type: int32
 
-}; // Snmpv2Mib::Snmpset
+}; // SNMPv2MIB::Snmpset
 
 
-class Snmpv2Mib::Sysortable : public ydk::Entity
+class SNMPv2MIB::Sysortable : public ydk::Entity
 {
     public:
         Sysortable();
@@ -152,22 +126,23 @@ class Snmpv2Mib::Sysortable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sysorentry; //type: Snmpv2Mib::Sysortable::Sysorentry
+        class Sysorentry; //type: SNMPv2MIB::Sysortable::Sysorentry
 
-        std::vector<std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Sysortable::Sysorentry> > sysorentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Sysortable::Sysorentry> > sysorentry;
         
-}; // Snmpv2Mib::Sysortable
+}; // SNMPv2MIB::Sysortable
 
 
-class Snmpv2Mib::Sysortable::Sysorentry : public ydk::Entity
+class SNMPv2MIB::Sysortable::Sysorentry : public ydk::Entity
 {
     public:
         Sysorentry();
@@ -175,22 +150,52 @@ class Snmpv2Mib::Sysortable::Sysorentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf sysorindex; //type: int32
         ydk::YLeaf sysorid; //type: string
         ydk::YLeaf sysordescr; //type: string
         ydk::YLeaf sysoruptime; //type: uint32
 
-}; // Snmpv2Mib::Sysortable::Sysorentry
+}; // SNMPv2MIB::Sysortable::Sysorentry
 
-class Snmpv2Mib::Snmp::Snmpenableauthentraps : public ydk::Enum
+
+class SNMPv2MIB::System : public ydk::Entity
+{
+    public:
+        System();
+        ~System();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf sysdescr; //type: string
+        ydk::YLeaf sysobjectid; //type: string
+        ydk::YLeaf sysuptime; //type: uint32
+        ydk::YLeaf syscontact; //type: string
+        ydk::YLeaf sysname; //type: string
+        ydk::YLeaf syslocation; //type: string
+        ydk::YLeaf sysservices; //type: int32
+        ydk::YLeaf sysorlastchange; //type: uint32
+
+}; // SNMPv2MIB::System
+
+class SNMPv2MIB::Snmp::Snmpenableauthentraps : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;

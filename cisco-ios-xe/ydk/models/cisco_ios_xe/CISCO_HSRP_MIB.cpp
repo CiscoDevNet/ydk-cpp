@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_HSRP_MIB {
 
-CiscoHsrpMib::CiscoHsrpMib()
+CISCOHSRPMIB::CISCOHSRPMIB()
     :
-    chsrpglobalconfig(std::make_shared<CiscoHsrpMib::Chsrpglobalconfig>())
-	,chsrpgrptable(std::make_shared<CiscoHsrpMib::Chsrpgrptable>())
+    chsrpglobalconfig(std::make_shared<CISCOHSRPMIB::Chsrpglobalconfig>())
+	,chsrpgrptable(std::make_shared<CISCOHSRPMIB::Chsrpgrptable>())
 {
     chsrpglobalconfig->parent = this;
-
     chsrpgrptable->parent = this;
 
-    yang_name = "CISCO-HSRP-MIB"; yang_parent_name = "CISCO-HSRP-MIB";
+    yang_name = "CISCO-HSRP-MIB"; yang_parent_name = "CISCO-HSRP-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoHsrpMib::~CiscoHsrpMib()
+CISCOHSRPMIB::~CISCOHSRPMIB()
 {
 }
 
-bool CiscoHsrpMib::has_data() const
+bool CISCOHSRPMIB::has_data() const
 {
     return (chsrpglobalconfig !=  nullptr && chsrpglobalconfig->has_data())
 	|| (chsrpgrptable !=  nullptr && chsrpgrptable->has_data());
 }
 
-bool CiscoHsrpMib::has_operation() const
+bool CISCOHSRPMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (chsrpglobalconfig !=  nullptr && chsrpglobalconfig->has_operation())
 	|| (chsrpgrptable !=  nullptr && chsrpgrptable->has_operation());
 }
 
-std::string CiscoHsrpMib::get_segment_path() const
+std::string CISCOHSRPMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoHsrpMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoHsrpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cHsrpGlobalConfig")
     {
         if(chsrpglobalconfig == nullptr)
         {
-            chsrpglobalconfig = std::make_shared<CiscoHsrpMib::Chsrpglobalconfig>();
+            chsrpglobalconfig = std::make_shared<CISCOHSRPMIB::Chsrpglobalconfig>();
         }
         return chsrpglobalconfig;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::get_child_by_name(const std::string & chil
     {
         if(chsrpgrptable == nullptr)
         {
-            chsrpgrptable = std::make_shared<CiscoHsrpMib::Chsrpgrptable>();
+            chsrpgrptable = std::make_shared<CISCOHSRPMIB::Chsrpgrptable>();
         }
         return chsrpgrptable;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(chsrpglobalconfig != nullptr)
@@ -106,111 +94,105 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::get_children() cons
     return children;
 }
 
-void CiscoHsrpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoHsrpMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoHsrpMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOHSRPMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoHsrpMib>();
+    return std::make_shared<CISCOHSRPMIB>();
 }
 
-std::string CiscoHsrpMib::get_bundle_yang_models_location() const
+std::string CISCOHSRPMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoHsrpMib::get_bundle_name() const
+std::string CISCOHSRPMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoHsrpMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOHSRPMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoHsrpMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOHSRPMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoHsrpMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpGlobalConfig" || name == "cHsrpGrpTable")
         return true;
     return false;
 }
 
-CiscoHsrpMib::Chsrpglobalconfig::Chsrpglobalconfig()
+CISCOHSRPMIB::Chsrpglobalconfig::Chsrpglobalconfig()
     :
     chsrpconfigtimeout{YType::uint32, "cHsrpConfigTimeout"}
 {
-    yang_name = "cHsrpGlobalConfig"; yang_parent_name = "CISCO-HSRP-MIB";
+
+    yang_name = "cHsrpGlobalConfig"; yang_parent_name = "CISCO-HSRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoHsrpMib::Chsrpglobalconfig::~Chsrpglobalconfig()
+CISCOHSRPMIB::Chsrpglobalconfig::~Chsrpglobalconfig()
 {
 }
 
-bool CiscoHsrpMib::Chsrpglobalconfig::has_data() const
+bool CISCOHSRPMIB::Chsrpglobalconfig::has_data() const
 {
     return chsrpconfigtimeout.is_set;
 }
 
-bool CiscoHsrpMib::Chsrpglobalconfig::has_operation() const
+bool CISCOHSRPMIB::Chsrpglobalconfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(chsrpconfigtimeout.yfilter);
 }
 
-std::string CiscoHsrpMib::Chsrpglobalconfig::get_segment_path() const
+std::string CISCOHSRPMIB::Chsrpglobalconfig::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOHSRPMIB::Chsrpglobalconfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpGlobalConfig";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoHsrpMib::Chsrpglobalconfig::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPMIB::Chsrpglobalconfig::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (chsrpconfigtimeout.is_set || is_set(chsrpconfigtimeout.yfilter)) leaf_name_data.push_back(chsrpconfigtimeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoHsrpMib::Chsrpglobalconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpglobalconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::Chsrpglobalconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::Chsrpglobalconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoHsrpMib::Chsrpglobalconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPMIB::Chsrpglobalconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cHsrpConfigTimeout")
     {
@@ -220,7 +202,7 @@ void CiscoHsrpMib::Chsrpglobalconfig::set_value(const std::string & value_path, 
     }
 }
 
-void CiscoHsrpMib::Chsrpglobalconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPMIB::Chsrpglobalconfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cHsrpConfigTimeout")
     {
@@ -228,23 +210,24 @@ void CiscoHsrpMib::Chsrpglobalconfig::set_filter(const std::string & value_path,
     }
 }
 
-bool CiscoHsrpMib::Chsrpglobalconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPMIB::Chsrpglobalconfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpConfigTimeout")
         return true;
     return false;
 }
 
-CiscoHsrpMib::Chsrpgrptable::Chsrpgrptable()
+CISCOHSRPMIB::Chsrpgrptable::Chsrpgrptable()
 {
-    yang_name = "cHsrpGrpTable"; yang_parent_name = "CISCO-HSRP-MIB";
+
+    yang_name = "cHsrpGrpTable"; yang_parent_name = "CISCO-HSRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoHsrpMib::Chsrpgrptable::~Chsrpgrptable()
+CISCOHSRPMIB::Chsrpgrptable::~Chsrpgrptable()
 {
 }
 
-bool CiscoHsrpMib::Chsrpgrptable::has_data() const
+bool CISCOHSRPMIB::Chsrpgrptable::has_data() const
 {
     for (std::size_t index=0; index<chsrpgrpentry.size(); index++)
     {
@@ -254,7 +237,7 @@ bool CiscoHsrpMib::Chsrpgrptable::has_data() const
     return false;
 }
 
-bool CiscoHsrpMib::Chsrpgrptable::has_operation() const
+bool CISCOHSRPMIB::Chsrpgrptable::has_operation() const
 {
     for (std::size_t index=0; index<chsrpgrpentry.size(); index++)
     {
@@ -264,37 +247,30 @@ bool CiscoHsrpMib::Chsrpgrptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoHsrpMib::Chsrpgrptable::get_segment_path() const
+std::string CISCOHSRPMIB::Chsrpgrptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOHSRPMIB::Chsrpgrptable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpGrpTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoHsrpMib::Chsrpgrptable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPMIB::Chsrpgrptable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpgrptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cHsrpGrpEntry")
     {
@@ -306,7 +282,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::get_child_by_name(const std
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry>();
+        auto c = std::make_shared<CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry>();
         c->parent = this;
         chsrpgrpentry.push_back(c);
         return c;
@@ -315,7 +291,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::Chsrpgrptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::Chsrpgrptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : chsrpgrpentry)
@@ -326,22 +302,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::Chsrpgrptable::get_
     return children;
 }
 
-void CiscoHsrpMib::Chsrpgrptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPMIB::Chsrpgrptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoHsrpMib::Chsrpgrptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPMIB::Chsrpgrptable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoHsrpMib::Chsrpgrptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPMIB::Chsrpgrptable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpGrpEntry")
         return true;
     return false;
 }
 
-CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::Chsrpgrpentry()
+CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::Chsrpgrpentry()
     :
     ifindex{YType::str, "ifIndex"},
     chsrpgrpnumber{YType::uint32, "cHsrpGrpNumber"},
@@ -363,14 +339,15 @@ CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::Chsrpgrpentry()
     chsrpgrpvirtualipaddr{YType::str, "cHsrpGrpVirtualIpAddr"},
     chsrpgrpvirtualmacaddr{YType::str, "cHsrpGrpVirtualMacAddr"}
 {
-    yang_name = "cHsrpGrpEntry"; yang_parent_name = "cHsrpGrpTable";
+
+    yang_name = "cHsrpGrpEntry"; yang_parent_name = "cHsrpGrpTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::~Chsrpgrpentry()
+CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::~Chsrpgrpentry()
 {
 }
 
-bool CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::has_data() const
+bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_data() const
 {
     return ifindex.is_set
 	|| chsrpgrpnumber.is_set
@@ -393,7 +370,7 @@ bool CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::has_data() const
 	|| chsrpgrpvirtualmacaddr.is_set;
 }
 
-bool CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::has_operation() const
+bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -417,27 +394,22 @@ bool CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::has_operation() const
 	|| ydk::is_set(chsrpgrpvirtualmacaddr.yfilter);
 }
 
-std::string CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::get_segment_path() const
+std::string CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB/cHsrpGrpTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpGrpEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cHsrpGrpNumber='" <<chsrpgrpnumber <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-HSRP-MIB:CISCO-HSRP-MIB/cHsrpGrpTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
@@ -460,24 +432,22 @@ const EntityPath CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::get_entity_path(Ent
     if (chsrpgrpvirtualipaddr.is_set || is_set(chsrpgrpvirtualipaddr.yfilter)) leaf_name_data.push_back(chsrpgrpvirtualipaddr.get_name_leafdata());
     if (chsrpgrpvirtualmacaddr.is_set || is_set(chsrpgrpvirtualmacaddr.yfilter)) leaf_name_data.push_back(chsrpgrpvirtualmacaddr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -595,7 +565,7 @@ void CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::set_value(const std::string & v
     }
 }
 
-void CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -675,19 +645,19 @@ void CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::set_filter(const std::string & 
     }
 }
 
-bool CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cHsrpGrpNumber" || name == "cHsrpGrpActiveRouter" || name == "cHsrpGrpAuth" || name == "cHsrpGrpConfiguredHelloTime" || name == "cHsrpGrpConfiguredHoldTime" || name == "cHsrpGrpEntryRowStatus" || name == "cHsrpGrpIpNone" || name == "cHsrpGrpLearnedHelloTime" || name == "cHsrpGrpLearnedHoldTime" || name == "cHsrpGrpPreempt" || name == "cHsrpGrpPreemptDelay" || name == "cHsrpGrpPriority" || name == "cHsrpGrpStandbyRouter" || name == "cHsrpGrpStandbyState" || name == "cHsrpGrpUseConfiguredTimers" || name == "cHsrpGrpUseConfigVirtualIpAddr" || name == "cHsrpGrpVirtualIpAddr" || name == "cHsrpGrpVirtualMacAddr")
         return true;
     return false;
 }
 
-const Enum::YLeaf Hsrpstate::initial {1, "initial"};
-const Enum::YLeaf Hsrpstate::learn {2, "learn"};
-const Enum::YLeaf Hsrpstate::listen {3, "listen"};
-const Enum::YLeaf Hsrpstate::speak {4, "speak"};
-const Enum::YLeaf Hsrpstate::standby {5, "standby"};
-const Enum::YLeaf Hsrpstate::active {6, "active"};
+const Enum::YLeaf HsrpState::initial {1, "initial"};
+const Enum::YLeaf HsrpState::learn {2, "learn"};
+const Enum::YLeaf HsrpState::listen {3, "listen"};
+const Enum::YLeaf HsrpState::speak {4, "speak"};
+const Enum::YLeaf HsrpState::standby {5, "standby"};
+const Enum::YLeaf HsrpState::active {6, "active"};
 
 
 }

@@ -17,7 +17,7 @@ Keychain::Keychain()
 {
     keies->parent = this;
 
-    yang_name = "keychain"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-oper";
+    yang_name = "keychain"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Keychain::~Keychain()
@@ -39,26 +39,15 @@ std::string Keychain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-oper:keychain";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Keychain::has_leaf_or_child_of_name(const std::string & name) const
 
 Keychain::Keies::Keies()
 {
-    yang_name = "keies"; yang_parent_name = "keychain";
+
+    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Keychain::Keies::~Keies()
@@ -156,33 +146,26 @@ bool Keychain::Keies::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Keychain::Keies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-oper:keychain/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Keychain::Keies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychain::Keies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-oper:keychain/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -236,13 +219,13 @@ bool Keychain::Keies::has_leaf_or_child_of_name(const std::string & name) const
 Keychain::Keies::Key::Key()
     :
     key_name{YType::str, "key-name"},
-    accept_tolerance{YType::int32, "accept-tolerance"}
+    accept_tolerance{YType::str, "accept-tolerance"}
     	,
     key(std::make_shared<Keychain::Keies::Key::Key_>())
 {
     key->parent = this;
 
-    yang_name = "key"; yang_parent_name = "keies";
+    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Keychain::Keies::Key::~Key()
@@ -264,35 +247,28 @@ bool Keychain::Keies::Key::has_operation() const
 	|| (key !=  nullptr && key->has_operation());
 }
 
+std::string Keychain::Keies::Key::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-oper:keychain/keies/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Keychain::Keies::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key" <<"[key-name='" <<key_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychain::Keies::Key::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::Key::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-oper:keychain/keies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (key_name.is_set || is_set(key_name.yfilter)) leaf_name_data.push_back(key_name.get_name_leafdata());
     if (accept_tolerance.is_set || is_set(accept_tolerance.yfilter)) leaf_name_data.push_back(accept_tolerance.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -358,7 +334,8 @@ bool Keychain::Keies::Key::has_leaf_or_child_of_name(const std::string & name) c
 
 Keychain::Keies::Key::Key_::Key_()
 {
-    yang_name = "key"; yang_parent_name = "key";
+
+    yang_name = "key"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychain::Keies::Key::Key_::~Key_()
@@ -389,29 +366,15 @@ std::string Keychain::Keies::Key::Key_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychain::Keies::Key::Key_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::Key::Key_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Key_' in Cisco_IOS_XR_lib_keychain_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -474,12 +437,10 @@ Keychain::Keies::Key::Key_::KeyId::KeyId()
 	,send_lifetime(std::make_shared<Keychain::Keies::Key::Key_::KeyId::SendLifetime>())
 {
     accept_lifetime->parent = this;
-
     macsec->parent = this;
-
     send_lifetime->parent = this;
 
-    yang_name = "key-id"; yang_parent_name = "key";
+    yang_name = "key-id"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychain::Keies::Key::Key_::KeyId::~KeyId()
@@ -513,23 +474,11 @@ std::string Keychain::Keies::Key::Key_::KeyId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-id";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychain::Keies::Key::Key_::KeyId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::Key::Key_::KeyId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'KeyId' in Cisco_IOS_XR_lib_keychain_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cryptographic_algorithm.is_set || is_set(cryptographic_algorithm.yfilter)) leaf_name_data.push_back(cryptographic_algorithm.get_name_leafdata());
@@ -537,9 +486,7 @@ const EntityPath Keychain::Keies::Key::Key_::KeyId::get_entity_path(Entity* ance
     if (key_string.is_set || is_set(key_string.yfilter)) leaf_name_data.push_back(key_string.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -651,240 +598,6 @@ bool Keychain::Keies::Key::Key_::KeyId::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Keychain::Keies::Key::Key_::KeyId::Macsec::Macsec()
-    :
-    is_macsec_key{YType::boolean, "is-macsec-key"}
-{
-    yang_name = "macsec"; yang_parent_name = "key-id";
-}
-
-Keychain::Keies::Key::Key_::KeyId::Macsec::~Macsec()
-{
-}
-
-bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_data() const
-{
-    return is_macsec_key.is_set;
-}
-
-bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_macsec_key.yfilter);
-}
-
-std::string Keychain::Keies::Key::Key_::KeyId::Macsec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "macsec";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Keychain::Keies::Key::Key_::KeyId::Macsec::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Macsec' in Cisco_IOS_XR_lib_keychain_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_macsec_key.is_set || is_set(is_macsec_key.yfilter)) leaf_name_data.push_back(is_macsec_key.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::Macsec::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Keychain::Keies::Key::Key_::KeyId::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-macsec-key")
-    {
-        is_macsec_key = value;
-        is_macsec_key.value_namespace = name_space;
-        is_macsec_key.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Keychain::Keies::Key::Key_::KeyId::Macsec::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-macsec-key")
-    {
-        is_macsec_key.yfilter = yfilter;
-    }
-}
-
-bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-macsec-key")
-        return true;
-    return false;
-}
-
-Keychain::Keies::Key::Key_::KeyId::SendLifetime::SendLifetime()
-    :
-    duration{YType::str, "duration"},
-    end{YType::str, "end"},
-    is_always_valid{YType::boolean, "is-always-valid"},
-    is_valid_now{YType::boolean, "is-valid-now"},
-    start{YType::str, "start"}
-{
-    yang_name = "send-lifetime"; yang_parent_name = "key-id";
-}
-
-Keychain::Keies::Key::Key_::KeyId::SendLifetime::~SendLifetime()
-{
-}
-
-bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_data() const
-{
-    return duration.is_set
-	|| end.is_set
-	|| is_always_valid.is_set
-	|| is_valid_now.is_set
-	|| start.is_set;
-}
-
-bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(duration.yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(is_always_valid.yfilter)
-	|| ydk::is_set(is_valid_now.yfilter)
-	|| ydk::is_set(start.yfilter);
-}
-
-std::string Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "send-lifetime";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SendLifetime' in Cisco_IOS_XR_lib_keychain_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (is_always_valid.is_set || is_set(is_always_valid.yfilter)) leaf_name_data.push_back(is_always_valid.get_name_leafdata());
-    if (is_valid_now.is_set || is_set(is_valid_now.yfilter)) leaf_name_data.push_back(is_valid_now.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Keychain::Keies::Key::Key_::KeyId::SendLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "duration")
-    {
-        duration = value;
-        duration.value_namespace = name_space;
-        duration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-always-valid")
-    {
-        is_always_valid = value;
-        is_always_valid.value_namespace = name_space;
-        is_always_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-valid-now")
-    {
-        is_valid_now = value;
-        is_valid_now.value_namespace = name_space;
-        is_valid_now.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Keychain::Keies::Key::Key_::KeyId::SendLifetime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "duration")
-    {
-        duration.yfilter = yfilter;
-    }
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "is-always-valid")
-    {
-        is_always_valid.yfilter = yfilter;
-    }
-    if(value_path == "is-valid-now")
-    {
-        is_valid_now.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-}
-
-bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "duration" || name == "end" || name == "is-always-valid" || name == "is-valid-now" || name == "start")
-        return true;
-    return false;
-}
-
 Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::AcceptLifetime()
     :
     duration{YType::str, "duration"},
@@ -893,7 +606,8 @@ Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::AcceptLifetime()
     is_valid_now{YType::boolean, "is-valid-now"},
     start{YType::str, "start"}
 {
-    yang_name = "accept-lifetime"; yang_parent_name = "key-id";
+
+    yang_name = "accept-lifetime"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::~AcceptLifetime()
@@ -923,23 +637,11 @@ std::string Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "accept-lifetime";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AcceptLifetime' in Cisco_IOS_XR_lib_keychain_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
@@ -948,9 +650,7 @@ const EntityPath Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_entity_p
     if (is_valid_now.is_set || is_set(is_valid_now.yfilter)) leaf_name_data.push_back(is_valid_now.get_name_leafdata());
     if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1030,6 +730,217 @@ bool Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::has_leaf_or_child_of_nam
     return false;
 }
 
+Keychain::Keies::Key::Key_::KeyId::Macsec::Macsec()
+    :
+    is_macsec_key{YType::boolean, "is-macsec-key"}
+{
+
+    yang_name = "macsec"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Keychain::Keies::Key::Key_::KeyId::Macsec::~Macsec()
+{
+}
+
+bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_data() const
+{
+    return is_macsec_key.is_set;
+}
+
+bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_macsec_key.yfilter);
+}
+
+std::string Keychain::Keies::Key::Key_::KeyId::Macsec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "macsec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::Key::Key_::KeyId::Macsec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_macsec_key.is_set || is_set(is_macsec_key.yfilter)) leaf_name_data.push_back(is_macsec_key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::Macsec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Keychain::Keies::Key::Key_::KeyId::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-macsec-key")
+    {
+        is_macsec_key = value;
+        is_macsec_key.value_namespace = name_space;
+        is_macsec_key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Keychain::Keies::Key::Key_::KeyId::Macsec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-macsec-key")
+    {
+        is_macsec_key.yfilter = yfilter;
+    }
+}
+
+bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-macsec-key")
+        return true;
+    return false;
+}
+
+Keychain::Keies::Key::Key_::KeyId::SendLifetime::SendLifetime()
+    :
+    duration{YType::str, "duration"},
+    end{YType::str, "end"},
+    is_always_valid{YType::boolean, "is-always-valid"},
+    is_valid_now{YType::boolean, "is-valid-now"},
+    start{YType::str, "start"}
+{
+
+    yang_name = "send-lifetime"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Keychain::Keies::Key::Key_::KeyId::SendLifetime::~SendLifetime()
+{
+}
+
+bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_data() const
+{
+    return duration.is_set
+	|| end.is_set
+	|| is_always_valid.is_set
+	|| is_valid_now.is_set
+	|| start.is_set;
+}
+
+bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(duration.yfilter)
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(is_always_valid.yfilter)
+	|| ydk::is_set(is_valid_now.yfilter)
+	|| ydk::is_set(start.yfilter);
+}
+
+std::string Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "send-lifetime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (is_always_valid.is_set || is_set(is_always_valid.yfilter)) leaf_name_data.push_back(is_always_valid.get_name_leafdata());
+    if (is_valid_now.is_set || is_set(is_valid_now.yfilter)) leaf_name_data.push_back(is_valid_now.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Keychain::Keies::Key::Key_::KeyId::SendLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "duration")
+    {
+        duration = value;
+        duration.value_namespace = name_space;
+        duration.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end")
+    {
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-always-valid")
+    {
+        is_always_valid = value;
+        is_always_valid.value_namespace = name_space;
+        is_always_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-valid-now")
+    {
+        is_valid_now = value;
+        is_valid_now.value_namespace = name_space;
+        is_valid_now.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Keychain::Keies::Key::Key_::KeyId::SendLifetime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "duration")
+    {
+        duration.yfilter = yfilter;
+    }
+    if(value_path == "end")
+    {
+        end.yfilter = yfilter;
+    }
+    if(value_path == "is-always-valid")
+    {
+        is_always_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-valid-now")
+    {
+        is_valid_now.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+}
+
+bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duration" || name == "end" || name == "is-always-valid" || name == "is-valid-now" || name == "start")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Enc::password_type7 {0, "password-type7"};
+const Enum::YLeaf Enc::password_type6 {2, "password-type6"};
+
 const Enum::YLeaf CrytoAlgo::not_configured {0, "not-configured"};
 const Enum::YLeaf CrytoAlgo::hmac_sha1_12 {2, "hmac-sha1-12"};
 const Enum::YLeaf CrytoAlgo::md5 {3, "md5"};
@@ -1038,9 +949,6 @@ const Enum::YLeaf CrytoAlgo::hmac_md5 {5, "hmac-md5"};
 const Enum::YLeaf CrytoAlgo::hmac_sha1_20 {6, "hmac-sha1-20"};
 const Enum::YLeaf CrytoAlgo::aes_128_cmac {7, "aes-128-cmac"};
 const Enum::YLeaf CrytoAlgo::aes_256_cmac {8, "aes-256-cmac"};
-
-const Enum::YLeaf Enc::password_type7 {0, "password-type7"};
-const Enum::YLeaf Enc::password_type6 {2, "password-type6"};
 
 
 }

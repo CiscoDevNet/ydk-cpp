@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_infra_infra_cfg {
 
 Banners::Banners()
 {
-    yang_name = "banners"; yang_parent_name = "Cisco-IOS-XR-infra-infra-cfg";
+
+    yang_name = "banners"; yang_parent_name = "Cisco-IOS-XR-infra-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Banners::~Banners()
@@ -44,26 +45,15 @@ std::string Banners::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-infra-cfg:banners";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Banners::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Banners::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -144,7 +134,8 @@ Banners::Banner::Banner()
     banner_name{YType::enumeration, "banner-name"},
     banner_text{YType::str, "banner-text"}
 {
-    yang_name = "banner"; yang_parent_name = "banners";
+
+    yang_name = "banner"; yang_parent_name = "banners"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Banners::Banner::~Banner()
@@ -164,35 +155,28 @@ bool Banners::Banner::has_operation() const
 	|| ydk::is_set(banner_text.yfilter);
 }
 
+std::string Banners::Banner::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-infra-cfg:banners/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Banners::Banner::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "banner" <<"[banner-name='" <<banner_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Banners::Banner::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Banners::Banner::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-infra-cfg:banners/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (banner_name.is_set || is_set(banner_name.yfilter)) leaf_name_data.push_back(banner_name.get_name_leafdata());
     if (banner_text.is_set || is_set(banner_text.yfilter)) leaf_name_data.push_back(banner_text.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

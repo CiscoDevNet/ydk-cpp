@@ -15,7 +15,8 @@ HostNames::HostNames()
     :
     host_name{YType::str, "host-name"}
 {
-    yang_name = "host-names"; yang_parent_name = "Cisco-IOS-XR-shellutil-cfg";
+
+    yang_name = "host-names"; yang_parent_name = "Cisco-IOS-XR-shellutil-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 HostNames::~HostNames()
@@ -37,27 +38,16 @@ std::string HostNames::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-shellutil-cfg:host-names";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HostNames::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HostNames::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

@@ -18,7 +18,7 @@ class VirtualServices : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class VirtualServices : public ydk::Entity
 
         class VirtualService; //type: VirtualServices::VirtualService
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService> > virtual_service;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService> > virtual_service;
         
 }; // VirtualServices
 
@@ -46,13 +46,14 @@ class VirtualServices::VirtualService : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         class Details; //type: VirtualServices::VirtualService::Details
@@ -63,15 +64,61 @@ class VirtualServices::VirtualService : public ydk::Entity
         class NetworkInterfaces; //type: VirtualServices::VirtualService::NetworkInterfaces
         class GuestRoutes; //type: VirtualServices::VirtualService::GuestRoutes
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices> attached_devices;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details> details;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes> guest_routes;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces> network_interfaces;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils> network_utils;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils> storage_utils;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization> utilization;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices> attached_devices;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details> details;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes> guest_routes;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces> network_interfaces;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils> network_utils;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils> storage_utils;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization> utilization;
         
 }; // VirtualServices::VirtualService
+
+
+class VirtualServices::VirtualService::AttachedDevices : public ydk::Entity
+{
+    public:
+        AttachedDevices();
+        ~AttachedDevices();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AttachedDevice; //type: VirtualServices::VirtualService::AttachedDevices::AttachedDevice
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices::AttachedDevice> > attached_device;
+        
+}; // VirtualServices::VirtualService::AttachedDevices
+
+
+class VirtualServices::VirtualService::AttachedDevices::AttachedDevice : public ydk::Entity
+{
+    public:
+        AttachedDevice();
+        ~AttachedDevice();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf alias; //type: string
+
+}; // VirtualServices::VirtualService::AttachedDevices::AttachedDevice
 
 
 class VirtualServices::VirtualService::Details : public ydk::Entity
@@ -82,7 +129,7 @@ class VirtualServices::VirtualService::Details : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -98,108 +145,12 @@ class VirtualServices::VirtualService::Details : public ydk::Entity
         class ResourceReservation; //type: VirtualServices::VirtualService::Details::ResourceReservation
         class ResourceAdmission; //type: VirtualServices::VirtualService::Details::ResourceAdmission
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus> detailed_guest_status;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation> package_information;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceAdmission> resource_admission;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceReservation> resource_reservation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus> detailed_guest_status;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation> package_information;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceAdmission> resource_admission;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceReservation> resource_reservation;
         
 }; // VirtualServices::VirtualService::Details
-
-
-class VirtualServices::VirtualService::Details::PackageInformation : public ydk::Entity
-{
-    public:
-        PackageInformation();
-        ~PackageInformation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf path; //type: string
-        class Application; //type: VirtualServices::VirtualService::Details::PackageInformation::Application
-        class Signing; //type: VirtualServices::VirtualService::Details::PackageInformation::Signing
-        class Licensing; //type: VirtualServices::VirtualService::Details::PackageInformation::Licensing
-
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Application> application;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Licensing> licensing;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Signing> signing;
-        
-}; // VirtualServices::VirtualService::Details::PackageInformation
-
-
-class VirtualServices::VirtualService::Details::PackageInformation::Application : public ydk::Entity
-{
-    public:
-        Application();
-        ~Application();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf installed_version; //type: string
-        ydk::YLeaf description; //type: string
-
-}; // VirtualServices::VirtualService::Details::PackageInformation::Application
-
-
-class VirtualServices::VirtualService::Details::PackageInformation::Signing : public ydk::Entity
-{
-    public:
-        Signing();
-        ~Signing();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf key_type; //type: string
-        ydk::YLeaf method; //type: string
-
-}; // VirtualServices::VirtualService::Details::PackageInformation::Signing
-
-
-class VirtualServices::VirtualService::Details::PackageInformation::Licensing : public ydk::Entity
-{
-    public:
-        Licensing();
-        ~Licensing();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf version; //type: string
-
-}; // VirtualServices::VirtualService::Details::PackageInformation::Licensing
 
 
 class VirtualServices::VirtualService::Details::DetailedGuestStatus : public ydk::Entity
@@ -210,7 +161,7 @@ class VirtualServices::VirtualService::Details::DetailedGuestStatus : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -220,7 +171,7 @@ class VirtualServices::VirtualService::Details::DetailedGuestStatus : public ydk
 
         class Processes; //type: VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes> processes;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes> processes;
         
 }; // VirtualServices::VirtualService::Details::DetailedGuestStatus
 
@@ -233,7 +184,7 @@ class VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -250,15 +201,15 @@ class VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes :
 }; // VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes
 
 
-class VirtualServices::VirtualService::Details::ResourceReservation : public ydk::Entity
+class VirtualServices::VirtualService::Details::PackageInformation : public ydk::Entity
 {
     public:
-        ResourceReservation();
-        ~ResourceReservation();
+        PackageInformation();
+        ~PackageInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -266,11 +217,84 @@ class VirtualServices::VirtualService::Details::ResourceReservation : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf disk; //type: uint64
-        ydk::YLeaf memory; //type: uint64
-        ydk::YLeaf cpu; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf path; //type: string
+        class Application; //type: VirtualServices::VirtualService::Details::PackageInformation::Application
+        class Signing; //type: VirtualServices::VirtualService::Details::PackageInformation::Signing
+        class Licensing; //type: VirtualServices::VirtualService::Details::PackageInformation::Licensing
 
-}; // VirtualServices::VirtualService::Details::ResourceReservation
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Application> application;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Licensing> licensing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Signing> signing;
+        
+}; // VirtualServices::VirtualService::Details::PackageInformation
+
+
+class VirtualServices::VirtualService::Details::PackageInformation::Application : public ydk::Entity
+{
+    public:
+        Application();
+        ~Application();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf installed_version; //type: string
+        ydk::YLeaf description; //type: string
+
+}; // VirtualServices::VirtualService::Details::PackageInformation::Application
+
+
+class VirtualServices::VirtualService::Details::PackageInformation::Licensing : public ydk::Entity
+{
+    public:
+        Licensing();
+        ~Licensing();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf version; //type: string
+
+}; // VirtualServices::VirtualService::Details::PackageInformation::Licensing
+
+
+class VirtualServices::VirtualService::Details::PackageInformation::Signing : public ydk::Entity
+{
+    public:
+        Signing();
+        ~Signing();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_type; //type: string
+        ydk::YLeaf method; //type: string
+
+}; // VirtualServices::VirtualService::Details::PackageInformation::Signing
 
 
 class VirtualServices::VirtualService::Details::ResourceAdmission : public ydk::Entity
@@ -281,7 +305,7 @@ class VirtualServices::VirtualService::Details::ResourceAdmission : public ydk::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -298,15 +322,15 @@ class VirtualServices::VirtualService::Details::ResourceAdmission : public ydk::
 }; // VirtualServices::VirtualService::Details::ResourceAdmission
 
 
-class VirtualServices::VirtualService::Utilization : public ydk::Entity
+class VirtualServices::VirtualService::Details::ResourceReservation : public ydk::Entity
 {
     public:
-        Utilization();
-        ~Utilization();
+        ResourceReservation();
+        ~ResourceReservation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -314,25 +338,45 @@ class VirtualServices::VirtualService::Utilization : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
-        class CpuUtil; //type: VirtualServices::VirtualService::Utilization::CpuUtil
-        class MemoryUtil; //type: VirtualServices::VirtualService::Utilization::MemoryUtil
+        ydk::YLeaf disk; //type: uint64
+        ydk::YLeaf memory; //type: uint64
+        ydk::YLeaf cpu; //type: uint64
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::CpuUtil> cpu_util;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::MemoryUtil> memory_util;
+}; // VirtualServices::VirtualService::Details::ResourceReservation
+
+
+class VirtualServices::VirtualService::GuestRoutes : public ydk::Entity
+{
+    public:
+        GuestRoutes();
+        ~GuestRoutes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class GuestRoute; //type: VirtualServices::VirtualService::GuestRoutes::GuestRoute
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes::GuestRoute> > guest_route;
         
-}; // VirtualServices::VirtualService::Utilization
+}; // VirtualServices::VirtualService::GuestRoutes
 
 
-class VirtualServices::VirtualService::Utilization::CpuUtil : public ydk::Entity
+class VirtualServices::VirtualService::GuestRoutes::GuestRoute : public ydk::Entity
 {
     public:
-        CpuUtil();
-        ~CpuUtil();
+        GuestRoute();
+        ~GuestRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -340,22 +384,20 @@ class VirtualServices::VirtualService::Utilization::CpuUtil : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf requested_application_util; //type: uint64
-        ydk::YLeaf actual_application_util; //type: uint64
-        ydk::YLeaf cpu_state; //type: string
+        ydk::YLeaf route; //type: string
 
-}; // VirtualServices::VirtualService::Utilization::CpuUtil
+}; // VirtualServices::VirtualService::GuestRoutes::GuestRoute
 
 
-class VirtualServices::VirtualService::Utilization::MemoryUtil : public ydk::Entity
+class VirtualServices::VirtualService::NetworkInterfaces : public ydk::Entity
 {
     public:
-        MemoryUtil();
-        ~MemoryUtil();
+        NetworkInterfaces();
+        ~NetworkInterfaces();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -363,10 +405,33 @@ class VirtualServices::VirtualService::Utilization::MemoryUtil : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf memory_allocation; //type: string
-        ydk::YLeaf memory_used; //type: string
+        class NetworkInterface; //type: VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
 
-}; // VirtualServices::VirtualService::Utilization::MemoryUtil
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface> > network_interface;
+        
+}; // VirtualServices::VirtualService::NetworkInterfaces
+
+
+class VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface : public ydk::Entity
+{
+    public:
+        NetworkInterface();
+        ~NetworkInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf attached_interface; //type: string
+
+}; // VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
 
 
 class VirtualServices::VirtualService::NetworkUtils : public ydk::Entity
@@ -377,7 +442,7 @@ class VirtualServices::VirtualService::NetworkUtils : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -387,7 +452,7 @@ class VirtualServices::VirtualService::NetworkUtils : public ydk::Entity
 
         class NetworkUtil; //type: VirtualServices::VirtualService::NetworkUtils::NetworkUtil
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils::NetworkUtil> > network_util;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils::NetworkUtil> > network_util;
         
 }; // VirtualServices::VirtualService::NetworkUtils
 
@@ -400,7 +465,7 @@ class VirtualServices::VirtualService::NetworkUtils::NetworkUtil : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -428,7 +493,7 @@ class VirtualServices::VirtualService::StorageUtils : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -438,7 +503,7 @@ class VirtualServices::VirtualService::StorageUtils : public ydk::Entity
 
         class StorageUtil; //type: VirtualServices::VirtualService::StorageUtils::StorageUtil
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils::StorageUtil> > storage_util;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils::StorageUtil> > storage_util;
         
 }; // VirtualServices::VirtualService::StorageUtils
 
@@ -451,7 +516,7 @@ class VirtualServices::VirtualService::StorageUtils::StorageUtil : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -474,38 +539,15 @@ class VirtualServices::VirtualService::StorageUtils::StorageUtil : public ydk::E
 }; // VirtualServices::VirtualService::StorageUtils::StorageUtil
 
 
-class VirtualServices::VirtualService::AttachedDevices : public ydk::Entity
+class VirtualServices::VirtualService::Utilization : public ydk::Entity
 {
     public:
-        AttachedDevices();
-        ~AttachedDevices();
+        Utilization();
+        ~Utilization();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AttachedDevice; //type: VirtualServices::VirtualService::AttachedDevices::AttachedDevice
-
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices::AttachedDevice> > attached_device;
-        
-}; // VirtualServices::VirtualService::AttachedDevices
-
-
-class VirtualServices::VirtualService::AttachedDevices::AttachedDevice : public ydk::Entity
-{
-    public:
-        AttachedDevice();
-        ~AttachedDevice();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -514,44 +556,24 @@ class VirtualServices::VirtualService::AttachedDevices::AttachedDevice : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf type; //type: string
-        ydk::YLeaf alias; //type: string
+        class CpuUtil; //type: VirtualServices::VirtualService::Utilization::CpuUtil
+        class MemoryUtil; //type: VirtualServices::VirtualService::Utilization::MemoryUtil
 
-}; // VirtualServices::VirtualService::AttachedDevices::AttachedDevice
-
-
-class VirtualServices::VirtualService::NetworkInterfaces : public ydk::Entity
-{
-    public:
-        NetworkInterfaces();
-        ~NetworkInterfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class NetworkInterface; //type: VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface> > network_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::CpuUtil> cpu_util;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::MemoryUtil> memory_util;
         
-}; // VirtualServices::VirtualService::NetworkInterfaces
+}; // VirtualServices::VirtualService::Utilization
 
 
-class VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface : public ydk::Entity
+class VirtualServices::VirtualService::Utilization::CpuUtil : public ydk::Entity
 {
     public:
-        NetworkInterface();
-        ~NetworkInterface();
+        CpuUtil();
+        ~CpuUtil();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -559,21 +581,22 @@ class VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf attached_interface; //type: string
+        ydk::YLeaf requested_application_util; //type: uint64
+        ydk::YLeaf actual_application_util; //type: uint64
+        ydk::YLeaf cpu_state; //type: string
 
-}; // VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
+}; // VirtualServices::VirtualService::Utilization::CpuUtil
 
 
-class VirtualServices::VirtualService::GuestRoutes : public ydk::Entity
+class VirtualServices::VirtualService::Utilization::MemoryUtil : public ydk::Entity
 {
     public:
-        GuestRoutes();
-        ~GuestRoutes();
+        MemoryUtil();
+        ~MemoryUtil();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -581,32 +604,10 @@ class VirtualServices::VirtualService::GuestRoutes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class GuestRoute; //type: VirtualServices::VirtualService::GuestRoutes::GuestRoute
+        ydk::YLeaf memory_allocation; //type: string
+        ydk::YLeaf memory_used; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes::GuestRoute> > guest_route;
-        
-}; // VirtualServices::VirtualService::GuestRoutes
-
-
-class VirtualServices::VirtualService::GuestRoutes::GuestRoute : public ydk::Entity
-{
-    public:
-        GuestRoute();
-        ~GuestRoute();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf route; //type: string
-
-}; // VirtualServices::VirtualService::GuestRoutes::GuestRoute
+}; // VirtualServices::VirtualService::Utilization::MemoryUtil
 
 
 }

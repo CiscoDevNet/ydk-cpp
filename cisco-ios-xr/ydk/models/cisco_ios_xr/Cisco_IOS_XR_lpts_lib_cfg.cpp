@@ -18,7 +18,7 @@ Lpts::Lpts()
 {
     punt->parent = this;
 
-    yang_name = "lpts"; yang_parent_name = "Cisco-IOS-XR-lpts-lib-cfg";
+    yang_name = "lpts"; yang_parent_name = "Cisco-IOS-XR-lpts-lib-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Lpts::~Lpts()
@@ -42,26 +42,15 @@ std::string Lpts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -152,10 +141,9 @@ Lpts::Ipolicer::Ipolicer()
 	,ipv4acls(std::make_shared<Lpts::Ipolicer::Ipv4Acls>())
 {
     flows->parent = this;
-
     ipv4acls->parent = this;
 
-    yang_name = "ipolicer"; yang_parent_name = "lpts";
+    yang_name = "ipolicer"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Ipolicer::~Ipolicer()
@@ -177,34 +165,27 @@ bool Lpts::Ipolicer::has_operation() const
 	|| (ipv4acls !=  nullptr && ipv4acls->has_operation());
 }
 
+std::string Lpts::Ipolicer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Ipolicer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Ipolicer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -272,433 +253,10 @@ bool Lpts::Ipolicer::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acls()
-{
-    yang_name = "ipv4acls"; yang_parent_name = "ipolicer";
-}
-
-Lpts::Ipolicer::Ipv4Acls::~Ipv4Acls()
-{
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::has_data() const
-{
-    for (std::size_t index=0; index<ipv4acl.size(); index++)
-    {
-        if(ipv4acl[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::has_operation() const
-{
-    for (std::size_t index=0; index<ipv4acl.size(); index++)
-    {
-        if(ipv4acl[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Ipolicer::Ipv4Acls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4acls";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Ipolicer::Ipv4Acls::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4acl")
-    {
-        for(auto const & c : ipv4acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl>();
-        c->parent = this;
-        ipv4acl.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv4acl)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Lpts::Ipolicer::Ipv4Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Ipolicer::Ipv4Acls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4acl")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4Acl()
-    :
-    acl_name{YType::str, "acl-name"}
-    	,
-    ipv4vrf_names(std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames>())
-{
-    ipv4vrf_names->parent = this;
-
-    yang_name = "ipv4acl"; yang_parent_name = "ipv4acls";
-}
-
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::~Ipv4Acl()
-{
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_data() const
-{
-    return acl_name.is_set
-	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_data());
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(acl_name.yfilter)
-	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_operation());
-}
-
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4acl" <<"[acl-name='" <<acl_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/ipv4acls/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4vrf-names")
-    {
-        if(ipv4vrf_names == nullptr)
-        {
-            ipv4vrf_names = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames>();
-        }
-        return ipv4vrf_names;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4vrf_names != nullptr)
-    {
-        children["ipv4vrf-names"] = ipv4vrf_names;
-    }
-
-    return children;
-}
-
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "acl-name")
-    {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "acl-name")
-    {
-        acl_name.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4vrf-names" || name == "acl-name")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfNames()
-{
-    yang_name = "ipv4vrf-names"; yang_parent_name = "ipv4acl";
-}
-
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::~Ipv4VrfNames()
-{
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_data() const
-{
-    for (std::size_t index=0; index<ipv4vrf_name.size(); index++)
-    {
-        if(ipv4vrf_name[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_operation() const
-{
-    for (std::size_t index=0; index<ipv4vrf_name.size(); index++)
-    {
-        if(ipv4vrf_name[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4vrf-names";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4VrfNames' in Cisco_IOS_XR_lpts_lib_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4vrf-name")
-    {
-        for(auto const & c : ipv4vrf_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName>();
-        c->parent = this;
-        ipv4vrf_name.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv4vrf_name)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4vrf-name")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::Ipv4VrfName()
-    :
-    vrf_name{YType::str, "vrf-name"},
-    acl_rate{YType::uint32, "acl-rate"}
-{
-    yang_name = "ipv4vrf-name"; yang_parent_name = "ipv4vrf-names";
-}
-
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::~Ipv4VrfName()
-{
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_data() const
-{
-    return vrf_name.is_set
-	|| acl_rate.is_set;
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(acl_rate.yfilter);
-}
-
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4vrf-name" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4VrfName' in Cisco_IOS_XR_lpts_lib_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (acl_rate.is_set || is_set(acl_rate.yfilter)) leaf_name_data.push_back(acl_rate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-rate")
-    {
-        acl_rate = value;
-        acl_rate.value_namespace = name_space;
-        acl_rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "acl-rate")
-    {
-        acl_rate.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name" || name == "acl-rate")
-        return true;
-    return false;
-}
-
 Lpts::Ipolicer::Flows::Flows()
 {
-    yang_name = "flows"; yang_parent_name = "ipolicer";
+
+    yang_name = "flows"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Ipolicer::Flows::~Flows()
@@ -725,33 +283,26 @@ bool Lpts::Ipolicer::Flows::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Lpts::Ipolicer::Flows::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Ipolicer::Flows::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flows";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Ipolicer::Flows::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -811,7 +362,7 @@ Lpts::Ipolicer::Flows::Flow::Flow()
 {
     precedences->parent = this;
 
-    yang_name = "flow"; yang_parent_name = "flows";
+    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Ipolicer::Flows::Flow::~Flow()
@@ -833,35 +384,28 @@ bool Lpts::Ipolicer::Flows::Flow::has_operation() const
 	|| (precedences !=  nullptr && precedences->has_operation());
 }
 
+std::string Lpts::Ipolicer::Flows::Flow::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/flows/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Ipolicer::Flows::Flow::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow" <<"[flow-type='" <<flow_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Ipolicer::Flows::Flow::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/flows/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
     if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -929,7 +473,8 @@ Lpts::Ipolicer::Flows::Flow::Precedences::Precedences()
     :
     precedence{YType::str, "precedence"}
 {
-    yang_name = "precedences"; yang_parent_name = "flow";
+
+    yang_name = "precedences"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Lpts::Ipolicer::Flows::Flow::Precedences::~Precedences()
@@ -961,31 +506,17 @@ std::string Lpts::Ipolicer::Flows::Flow::Precedences::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "precedences";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Ipolicer::Flows::Flow::Precedences::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::Precedences::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Precedences' in Cisco_IOS_XR_lpts_lib_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto precedence_name_datas = precedence.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), precedence_name_datas.begin(), precedence_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1023,13 +554,398 @@ bool Lpts::Ipolicer::Flows::Flow::Precedences::has_leaf_or_child_of_name(const s
     return false;
 }
 
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acls()
+{
+
+    yang_name = "ipv4acls"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lpts::Ipolicer::Ipv4Acls::~Ipv4Acls()
+{
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::has_data() const
+{
+    for (std::size_t index=0; index<ipv4acl.size(); index++)
+    {
+        if(ipv4acl[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::has_operation() const
+{
+    for (std::size_t index=0; index<ipv4acl.size(); index++)
+    {
+        if(ipv4acl[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Ipv4Acls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::Ipv4Acls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4acls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4acl")
+    {
+        for(auto const & c : ipv4acl)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl>();
+        c->parent = this;
+        ipv4acl.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipv4acl)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Lpts::Ipolicer::Ipv4Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Ipv4Acls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4acl")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4Acl()
+    :
+    acl_name{YType::str, "acl-name"}
+    	,
+    ipv4vrf_names(std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames>())
+{
+    ipv4vrf_names->parent = this;
+
+    yang_name = "ipv4acl"; yang_parent_name = "ipv4acls"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::~Ipv4Acl()
+{
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_data() const
+{
+    return acl_name.is_set
+	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_data());
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(acl_name.yfilter)
+	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_operation());
+}
+
+std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/ipv4acls/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4acl" <<"[acl-name='" <<acl_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4vrf-names")
+    {
+        if(ipv4vrf_names == nullptr)
+        {
+            ipv4vrf_names = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames>();
+        }
+        return ipv4vrf_names;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4vrf_names != nullptr)
+    {
+        children["ipv4vrf-names"] = ipv4vrf_names;
+    }
+
+    return children;
+}
+
+void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "acl-name")
+    {
+        acl_name = value;
+        acl_name.value_namespace = name_space;
+        acl_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acl-name")
+    {
+        acl_name.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4vrf-names" || name == "acl-name")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfNames()
+{
+
+    yang_name = "ipv4vrf-names"; yang_parent_name = "ipv4acl"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::~Ipv4VrfNames()
+{
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_data() const
+{
+    for (std::size_t index=0; index<ipv4vrf_name.size(); index++)
+    {
+        if(ipv4vrf_name[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_operation() const
+{
+    for (std::size_t index=0; index<ipv4vrf_name.size(); index++)
+    {
+        if(ipv4vrf_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4vrf-names";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4vrf-name")
+    {
+        for(auto const & c : ipv4vrf_name)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName>();
+        c->parent = this;
+        ipv4vrf_name.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipv4vrf_name)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4vrf-name")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::Ipv4VrfName()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    acl_rate{YType::uint32, "acl-rate"}
+{
+
+    yang_name = "ipv4vrf-name"; yang_parent_name = "ipv4vrf-names"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::~Ipv4VrfName()
+{
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_data() const
+{
+    return vrf_name.is_set
+	|| acl_rate.is_set;
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(acl_rate.yfilter);
+}
+
+std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4vrf-name" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (acl_rate.is_set || is_set(acl_rate.yfilter)) leaf_name_data.push_back(acl_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acl-rate")
+    {
+        acl_rate = value;
+        acl_rate.value_namespace = name_space;
+        acl_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "acl-rate")
+    {
+        acl_rate.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "acl-rate")
+        return true;
+    return false;
+}
+
 Lpts::Punt::Punt()
     :
     flowtrap(std::make_shared<Lpts::Punt::Flowtrap>())
 {
     flowtrap->parent = this;
 
-    yang_name = "punt"; yang_parent_name = "lpts";
+    yang_name = "punt"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Punt::~Punt()
@@ -1047,33 +963,26 @@ bool Lpts::Punt::has_operation() const
 	|| (flowtrap !=  nullptr && flowtrap->has_operation());
 }
 
+std::string Lpts::Punt::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Punt::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Punt::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1136,12 +1045,10 @@ Lpts::Punt::Flowtrap::Flowtrap()
 	,penalty_timeouts(std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts>())
 {
     exclude->parent = this;
-
     penalty_rates->parent = this;
-
     penalty_timeouts->parent = this;
 
-    yang_name = "flowtrap"; yang_parent_name = "punt";
+    yang_name = "flowtrap"; yang_parent_name = "punt"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Punt::Flowtrap::~Flowtrap()
@@ -1185,27 +1092,22 @@ bool Lpts::Punt::Flowtrap::has_operation() const
 	|| (penalty_timeouts !=  nullptr && penalty_timeouts->has_operation());
 }
 
+std::string Lpts::Punt::Flowtrap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Punt::Flowtrap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flowtrap";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Punt::Flowtrap::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dampening.is_set || is_set(dampening.yfilter)) leaf_name_data.push_back(dampening.get_name_leafdata());
@@ -1220,9 +1122,7 @@ const EntityPath Lpts::Punt::Flowtrap::get_entity_path(Entity* ancestor) const
     if (sample_prob.is_set || is_set(sample_prob.yfilter)) leaf_name_data.push_back(sample_prob.get_name_leafdata());
     if (subscriber_interfaces.is_set || is_set(subscriber_interfaces.yfilter)) leaf_name_data.push_back(subscriber_interfaces.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1404,431 +1304,13 @@ bool Lpts::Punt::Flowtrap::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRates()
-{
-    yang_name = "penalty-rates"; yang_parent_name = "flowtrap";
-}
-
-Lpts::Punt::Flowtrap::PenaltyRates::~PenaltyRates()
-{
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyRates::has_data() const
-{
-    for (std::size_t index=0; index<penalty_rate.size(); index++)
-    {
-        if(penalty_rate[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyRates::has_operation() const
-{
-    for (std::size_t index=0; index<penalty_rate.size(); index++)
-    {
-        if(penalty_rate[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Punt::Flowtrap::PenaltyRates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "penalty-rates";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Punt::Flowtrap::PenaltyRates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "penalty-rate")
-    {
-        for(auto const & c : penalty_rate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate>();
-        c->parent = this;
-        penalty_rate.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : penalty_rate)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Lpts::Punt::Flowtrap::PenaltyRates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Punt::Flowtrap::PenaltyRates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyRates::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "penalty-rate")
-        return true;
-    return false;
-}
-
-Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::PenaltyRate()
-    :
-    protocol_name{YType::enumeration, "protocol-name"},
-    rate{YType::uint32, "rate"}
-{
-    yang_name = "penalty-rate"; yang_parent_name = "penalty-rates";
-}
-
-Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::~PenaltyRate()
-{
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_data() const
-{
-    return protocol_name.is_set
-	|| rate.is_set;
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(protocol_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "penalty-rate" <<"[protocol-name='" <<protocol_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/penalty-rates/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol-name")
-    {
-        protocol_name = value;
-        protocol_name.value_namespace = name_space;
-        protocol_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol-name")
-    {
-        protocol_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol-name" || name == "rate")
-        return true;
-    return false;
-}
-
-Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeouts()
-{
-    yang_name = "penalty-timeouts"; yang_parent_name = "flowtrap";
-}
-
-Lpts::Punt::Flowtrap::PenaltyTimeouts::~PenaltyTimeouts()
-{
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_data() const
-{
-    for (std::size_t index=0; index<penalty_timeout.size(); index++)
-    {
-        if(penalty_timeout[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_operation() const
-{
-    for (std::size_t index=0; index<penalty_timeout.size(); index++)
-    {
-        if(penalty_timeout[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "penalty-timeouts";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Punt::Flowtrap::PenaltyTimeouts::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "penalty-timeout")
-    {
-        for(auto const & c : penalty_timeout)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout>();
-        c->parent = this;
-        penalty_timeout.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : penalty_timeout)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Lpts::Punt::Flowtrap::PenaltyTimeouts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Punt::Flowtrap::PenaltyTimeouts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "penalty-timeout")
-        return true;
-    return false;
-}
-
-Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::PenaltyTimeout()
-    :
-    protocol_name{YType::enumeration, "protocol-name"},
-    timeout{YType::uint32, "timeout"}
-{
-    yang_name = "penalty-timeout"; yang_parent_name = "penalty-timeouts";
-}
-
-Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::~PenaltyTimeout()
-{
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_data() const
-{
-    return protocol_name.is_set
-	|| timeout.is_set;
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(protocol_name.yfilter)
-	|| ydk::is_set(timeout.yfilter);
-}
-
-std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "penalty-timeout" <<"[protocol-name='" <<protocol_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/penalty-timeouts/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol-name")
-    {
-        protocol_name = value;
-        protocol_name.value_namespace = name_space;
-        protocol_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol-name")
-    {
-        protocol_name.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol-name" || name == "timeout")
-        return true;
-    return false;
-}
-
 Lpts::Punt::Flowtrap::Exclude::Exclude()
     :
     interface_names(std::make_shared<Lpts::Punt::Flowtrap::Exclude::InterfaceNames>())
 {
     interface_names->parent = this;
 
-    yang_name = "exclude"; yang_parent_name = "flowtrap";
+    yang_name = "exclude"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Punt::Flowtrap::Exclude::~Exclude()
@@ -1846,33 +1328,26 @@ bool Lpts::Punt::Flowtrap::Exclude::has_operation() const
 	|| (interface_names !=  nullptr && interface_names->has_operation());
 }
 
+std::string Lpts::Punt::Flowtrap::Exclude::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Punt::Flowtrap::Exclude::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "exclude";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Punt::Flowtrap::Exclude::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::Exclude::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1918,7 +1393,8 @@ bool Lpts::Punt::Flowtrap::Exclude::has_leaf_or_child_of_name(const std::string 
 
 Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceNames()
 {
-    yang_name = "interface-names"; yang_parent_name = "exclude";
+
+    yang_name = "interface-names"; yang_parent_name = "exclude"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Punt::Flowtrap::Exclude::InterfaceNames::~InterfaceNames()
@@ -1945,33 +1421,26 @@ bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/exclude/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-names";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/exclude/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2027,7 +1496,8 @@ Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::InterfaceName()
     ifname{YType::str, "ifname"},
     id1{YType::boolean, "id1"}
 {
-    yang_name = "interface-name"; yang_parent_name = "interface-names";
+
+    yang_name = "interface-name"; yang_parent_name = "interface-names"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::~InterfaceName()
@@ -2047,35 +1517,28 @@ bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::has_operation
 	|| ydk::is_set(id1.yfilter);
 }
 
+std::string Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/exclude/interface-names/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-name" <<"[ifname='" <<ifname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/exclude/interface-names/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ifname.is_set || is_set(ifname.yfilter)) leaf_name_data.push_back(ifname.get_name_leafdata());
     if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2121,6 +1584,400 @@ void Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::set_filter(co
 bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifname" || name == "id1")
+        return true;
+    return false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRates()
+{
+
+    yang_name = "penalty-rates"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyRates::~PenaltyRates()
+{
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyRates::has_data() const
+{
+    for (std::size_t index=0; index<penalty_rate.size(); index++)
+    {
+        if(penalty_rate[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyRates::has_operation() const
+{
+    for (std::size_t index=0; index<penalty_rate.size(); index++)
+    {
+        if(penalty_rate[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyRates::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyRates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "penalty-rates";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyRates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "penalty-rate")
+    {
+        for(auto const & c : penalty_rate)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate>();
+        c->parent = this;
+        penalty_rate.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : penalty_rate)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Lpts::Punt::Flowtrap::PenaltyRates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Punt::Flowtrap::PenaltyRates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyRates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "penalty-rate")
+        return true;
+    return false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::PenaltyRate()
+    :
+    protocol_name{YType::enumeration, "protocol-name"},
+    rate{YType::uint32, "rate"}
+{
+
+    yang_name = "penalty-rate"; yang_parent_name = "penalty-rates"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::~PenaltyRate()
+{
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_data() const
+{
+    return protocol_name.is_set
+	|| rate.is_set;
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(rate.yfilter);
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/penalty-rates/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "penalty-rate" <<"[protocol-name='" <<protocol_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name = value;
+        protocol_name.value_namespace = name_space;
+        protocol_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-name" || name == "rate")
+        return true;
+    return false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeouts()
+{
+
+    yang_name = "penalty-timeouts"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyTimeouts::~PenaltyTimeouts()
+{
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_data() const
+{
+    for (std::size_t index=0; index<penalty_timeout.size(); index++)
+    {
+        if(penalty_timeout[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_operation() const
+{
+    for (std::size_t index=0; index<penalty_timeout.size(); index++)
+    {
+        if(penalty_timeout[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "penalty-timeouts";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyTimeouts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "penalty-timeout")
+    {
+        for(auto const & c : penalty_timeout)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout>();
+        c->parent = this;
+        penalty_timeout.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : penalty_timeout)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Lpts::Punt::Flowtrap::PenaltyTimeouts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Punt::Flowtrap::PenaltyTimeouts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "penalty-timeout")
+        return true;
+    return false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::PenaltyTimeout()
+    :
+    protocol_name{YType::enumeration, "protocol-name"},
+    timeout{YType::uint32, "timeout"}
+{
+
+    yang_name = "penalty-timeout"; yang_parent_name = "penalty-timeouts"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::~PenaltyTimeout()
+{
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_data() const
+{
+    return protocol_name.is_set
+	|| timeout.is_set;
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt/flowtrap/penalty-timeouts/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "penalty-timeout" <<"[protocol-name='" <<protocol_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name = value;
+        protocol_name.value_namespace = name_space;
+        protocol_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-name" || name == "timeout")
         return true;
     return false;
 }

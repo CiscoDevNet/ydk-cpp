@@ -17,7 +17,7 @@ CfmStatistics::CfmStatistics()
 {
     cfm_meps->parent = this;
 
-    yang_name = "cfm-statistics"; yang_parent_name = "Cisco-IOS-XE-cfm-oper";
+    yang_name = "cfm-statistics"; yang_parent_name = "Cisco-IOS-XE-cfm-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 CfmStatistics::~CfmStatistics()
@@ -39,26 +39,15 @@ std::string CfmStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-cfm-oper:cfm-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfmStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfmStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool CfmStatistics::has_leaf_or_child_of_name(const std::string & name) const
 
 CfmStatistics::CfmMeps::CfmMeps()
 {
-    yang_name = "cfm-meps"; yang_parent_name = "cfm-statistics";
+
+    yang_name = "cfm-meps"; yang_parent_name = "cfm-statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CfmStatistics::CfmMeps::~CfmMeps()
@@ -156,33 +146,26 @@ bool CfmStatistics::CfmMeps::has_operation() const
     return is_set(yfilter);
 }
 
+std::string CfmStatistics::CfmMeps::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cfm-oper:cfm-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CfmStatistics::CfmMeps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cfm-meps";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfmStatistics::CfmMeps::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfmStatistics::CfmMeps::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-cfm-oper:cfm-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -250,7 +233,7 @@ CfmStatistics::CfmMeps::CfmMep::CfmMep()
 {
     last_cleared->parent = this;
 
-    yang_name = "cfm-mep"; yang_parent_name = "cfm-meps";
+    yang_name = "cfm-mep"; yang_parent_name = "cfm-meps"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 CfmStatistics::CfmMeps::CfmMep::~CfmMep()
@@ -288,27 +271,22 @@ bool CfmStatistics::CfmMeps::CfmMep::has_operation() const
 	|| (last_cleared !=  nullptr && last_cleared->has_operation());
 }
 
+std::string CfmStatistics::CfmMeps::CfmMep::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cfm-oper:cfm-statistics/cfm-meps/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string CfmStatistics::CfmMeps::CfmMep::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cfm-mep" <<"[domain-name='" <<domain_name <<"']" <<"[ma-name='" <<ma_name <<"']" <<"[mpid='" <<mpid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfmStatistics::CfmMeps::CfmMep::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfmStatistics::CfmMeps::CfmMep::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-cfm-oper:cfm-statistics/cfm-meps/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
@@ -322,9 +300,7 @@ const EntityPath CfmStatistics::CfmMeps::CfmMep::get_entity_path(Entity* ancesto
     if (lbr_transmitted.is_set || is_set(lbr_transmitted.yfilter)) leaf_name_data.push_back(lbr_transmitted.get_name_leafdata());
     if (ltr_unexpected.is_set || is_set(ltr_unexpected.yfilter)) leaf_name_data.push_back(ltr_unexpected.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -473,7 +449,8 @@ CfmStatistics::CfmMeps::CfmMep::LastCleared::LastCleared()
     never{YType::empty, "never"},
     time{YType::str, "time"}
 {
-    yang_name = "last-cleared"; yang_parent_name = "cfm-mep";
+
+    yang_name = "last-cleared"; yang_parent_name = "cfm-mep"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 CfmStatistics::CfmMeps::CfmMep::LastCleared::~LastCleared()
@@ -497,31 +474,17 @@ std::string CfmStatistics::CfmMeps::CfmMep::LastCleared::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "last-cleared";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CfmStatistics::CfmMeps::CfmMep::LastCleared::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CfmStatistics::CfmMeps::CfmMep::LastCleared::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LastCleared' in Cisco_IOS_XE_cfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (never.is_set || is_set(never.yfilter)) leaf_name_data.push_back(never.get_name_leafdata());
     if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

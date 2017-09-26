@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_shellutil_filesystem_oper {
 
 FileSystem::FileSystem()
 {
-    yang_name = "file-system"; yang_parent_name = "Cisco-IOS-XR-shellutil-filesystem-oper";
+
+    yang_name = "file-system"; yang_parent_name = "Cisco-IOS-XR-shellutil-filesystem-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 FileSystem::~FileSystem()
@@ -44,26 +45,15 @@ std::string FileSystem::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-shellutil-filesystem-oper:file-system";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FileSystem::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FileSystem::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -143,7 +133,8 @@ FileSystem::Node::Node()
     :
     node_name{YType::str, "node-name"}
 {
-    yang_name = "node"; yang_parent_name = "file-system";
+
+    yang_name = "node"; yang_parent_name = "file-system"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 FileSystem::Node::~Node()
@@ -171,34 +162,27 @@ bool FileSystem::Node::has_operation() const
 	|| ydk::is_set(node_name.yfilter);
 }
 
+std::string FileSystem::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-shellutil-filesystem-oper:file-system/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string FileSystem::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FileSystem::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FileSystem::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-shellutil-filesystem-oper:file-system/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -267,7 +251,8 @@ FileSystem::Node::FileSystem_::FileSystem_()
     size{YType::str, "size"},
     type{YType::str, "type"}
 {
-    yang_name = "file-system"; yang_parent_name = "node";
+
+    yang_name = "file-system"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FileSystem::Node::FileSystem_::~FileSystem_()
@@ -297,23 +282,11 @@ std::string FileSystem::Node::FileSystem_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "file-system";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FileSystem::Node::FileSystem_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FileSystem::Node::FileSystem_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FileSystem_' in Cisco_IOS_XR_shellutil_filesystem_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
@@ -322,9 +295,7 @@ const EntityPath FileSystem::Node::FileSystem_::get_entity_path(Entity* ancestor
     if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

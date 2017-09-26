@@ -17,7 +17,7 @@ NvSatelliteGlobal::NvSatelliteGlobal()
 {
     chassis_mac->parent = this;
 
-    yang_name = "nv-satellite-global"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg";
+    yang_name = "nv-satellite-global"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 NvSatelliteGlobal::~NvSatelliteGlobal()
@@ -39,26 +39,15 @@ std::string NvSatelliteGlobal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-global";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatelliteGlobal::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatelliteGlobal::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,8 @@ NvSatelliteGlobal::ChassisMac::ChassisMac()
     mac2{YType::uint32, "mac2"},
     mac3{YType::uint32, "mac3"}
 {
-    yang_name = "chassis-mac"; yang_parent_name = "nv-satellite-global";
+
+    yang_name = "chassis-mac"; yang_parent_name = "nv-satellite-global"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NvSatelliteGlobal::ChassisMac::~ChassisMac()
@@ -155,36 +145,29 @@ bool NvSatelliteGlobal::ChassisMac::has_operation() const
 	|| ydk::is_set(mac3.yfilter);
 }
 
+std::string NvSatelliteGlobal::ChassisMac::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-global/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NvSatelliteGlobal::ChassisMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "chassis-mac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatelliteGlobal::ChassisMac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatelliteGlobal::ChassisMac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-global/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mac1.is_set || is_set(mac1.yfilter)) leaf_name_data.push_back(mac1.get_name_leafdata());
     if (mac2.is_set || is_set(mac2.yfilter)) leaf_name_data.push_back(mac2.get_name_leafdata());
     if (mac3.is_set || is_set(mac3.yfilter)) leaf_name_data.push_back(mac3.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -246,7 +229,8 @@ bool NvSatelliteGlobal::ChassisMac::has_leaf_or_child_of_name(const std::string 
 
 NvSatellites::NvSatellites()
 {
-    yang_name = "nv-satellites"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg";
+
+    yang_name = "nv-satellites"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 NvSatellites::~NvSatellites()
@@ -277,26 +261,15 @@ std::string NvSatellites::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellites";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatellites::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatellites::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -393,14 +366,11 @@ NvSatellites::NvSatellite::NvSatellite()
 	,upgrade_on_connect(std::make_shared<NvSatellites::NvSatellite::UpgradeOnConnect>())
 {
     candidate_fabric_ports->parent = this;
-
     connection_info->parent = this;
-
     redundancy->parent = this;
-
     upgrade_on_connect->parent = this;
 
-    yang_name = "nv-satellite"; yang_parent_name = "nv-satellites";
+    yang_name = "nv-satellite"; yang_parent_name = "nv-satellites"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NvSatellites::NvSatellite::~NvSatellite()
@@ -448,27 +418,22 @@ bool NvSatellites::NvSatellite::has_operation() const
 	|| (upgrade_on_connect !=  nullptr && upgrade_on_connect->has_operation());
 }
 
+std::string NvSatellites::NvSatellite::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellites/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NvSatellites::NvSatellite::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nv-satellite" <<"[satellite-id='" <<satellite_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatellites::NvSatellite::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellites/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (satellite_id.is_set || is_set(satellite_id.yfilter)) leaf_name_data.push_back(satellite_id.get_name_leafdata());
@@ -484,9 +449,7 @@ const EntityPath NvSatellites::NvSatellite::get_entity_path(Entity* ancestor) co
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -692,112 +655,10 @@ bool NvSatellites::NvSatellite::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
-    :
-    connect_type{YType::uint32, "connect-type"},
-    reference{YType::str, "reference"}
-{
-    yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite";
-}
-
-NvSatellites::NvSatellite::UpgradeOnConnect::~UpgradeOnConnect()
-{
-}
-
-bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
-{
-    return connect_type.is_set
-	|| reference.is_set;
-}
-
-bool NvSatellites::NvSatellite::UpgradeOnConnect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(connect_type.yfilter)
-	|| ydk::is_set(reference.yfilter);
-}
-
-std::string NvSatellites::NvSatellite::UpgradeOnConnect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "upgrade-on-connect";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NvSatellites::NvSatellite::UpgradeOnConnect::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UpgradeOnConnect' in Cisco_IOS_XR_icpe_infra_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (connect_type.is_set || is_set(connect_type.yfilter)) leaf_name_data.push_back(connect_type.get_name_leafdata());
-    if (reference.is_set || is_set(reference.yfilter)) leaf_name_data.push_back(reference.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NvSatellites::NvSatellite::UpgradeOnConnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::UpgradeOnConnect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "connect-type")
-    {
-        connect_type = value;
-        connect_type.value_namespace = name_space;
-        connect_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reference")
-    {
-        reference = value;
-        reference.value_namespace = name_space;
-        reference.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "connect-type")
-    {
-        connect_type.yfilter = yfilter;
-    }
-    if(value_path == "reference")
-    {
-        reference.yfilter = yfilter;
-    }
-}
-
-bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "connect-type" || name == "reference")
-        return true;
-    return false;
-}
-
 NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPorts()
 {
-    yang_name = "candidate-fabric-ports"; yang_parent_name = "nv-satellite";
+
+    yang_name = "candidate-fabric-ports"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::~CandidateFabricPorts()
@@ -828,29 +689,15 @@ std::string NvSatellites::NvSatellite::CandidateFabricPorts::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "candidate-fabric-ports";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatellites::NvSatellite::CandidateFabricPorts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::CandidateFabricPorts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CandidateFabricPorts' in Cisco_IOS_XR_icpe_infra_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -908,7 +755,8 @@ NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::CandidateF
     sub_slot{YType::uint32, "sub-slot"},
     port_range{YType::str, "port-range"}
 {
-    yang_name = "candidate-fabric-port"; yang_parent_name = "candidate-fabric-ports";
+
+    yang_name = "candidate-fabric-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::~CandidateFabricPort()
@@ -936,23 +784,11 @@ std::string NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort
 {
     std::ostringstream path_buffer;
     path_buffer << "candidate-fabric-port" <<"[port-type='" <<port_type <<"']" <<"[slot='" <<slot <<"']" <<"[sub-slot='" <<sub_slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CandidateFabricPort' in Cisco_IOS_XR_icpe_infra_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (port_type.is_set || is_set(port_type.yfilter)) leaf_name_data.push_back(port_type.get_name_leafdata());
@@ -960,9 +796,7 @@ const EntityPath NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabri
     if (sub_slot.is_set || is_set(sub_slot.yfilter)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
     if (port_range.is_set || is_set(port_range.yfilter)) leaf_name_data.push_back(port_range.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1037,7 +871,8 @@ NvSatellites::NvSatellite::ConnectionInfo::ConnectionInfo()
     password{YType::str, "password"},
     username{YType::str, "username"}
 {
-    yang_name = "connection-info"; yang_parent_name = "nv-satellite";
+
+    yang_name = "connection-info"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NvSatellites::NvSatellite::ConnectionInfo::~ConnectionInfo()
@@ -1061,31 +896,17 @@ std::string NvSatellites::NvSatellite::ConnectionInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "connection-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatellites::NvSatellite::ConnectionInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::ConnectionInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ConnectionInfo' in Cisco_IOS_XR_icpe_infra_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1139,7 +960,8 @@ NvSatellites::NvSatellite::Redundancy::Redundancy()
     :
     host_priority{YType::uint32, "host-priority"}
 {
-    yang_name = "redundancy"; yang_parent_name = "nv-satellite";
+
+    yang_name = "redundancy"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NvSatellites::NvSatellite::Redundancy::~Redundancy()
@@ -1161,30 +983,16 @@ std::string NvSatellites::NvSatellite::Redundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redundancy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NvSatellites::NvSatellite::Redundancy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Redundancy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redundancy' in Cisco_IOS_XR_icpe_infra_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (host_priority.is_set || is_set(host_priority.yfilter)) leaf_name_data.push_back(host_priority.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1223,6 +1031,99 @@ bool NvSatellites::NvSatellite::Redundancy::has_leaf_or_child_of_name(const std:
         return true;
     return false;
 }
+
+NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
+    :
+    connect_type{YType::enumeration, "connect-type"},
+    reference{YType::str, "reference"}
+{
+
+    yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NvSatellites::NvSatellite::UpgradeOnConnect::~UpgradeOnConnect()
+{
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
+{
+    return connect_type.is_set
+	|| reference.is_set;
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(connect_type.yfilter)
+	|| ydk::is_set(reference.yfilter);
+}
+
+std::string NvSatellites::NvSatellite::UpgradeOnConnect::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "upgrade-on-connect";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::UpgradeOnConnect::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (connect_type.is_set || is_set(connect_type.yfilter)) leaf_name_data.push_back(connect_type.get_name_leafdata());
+    if (reference.is_set || is_set(reference.yfilter)) leaf_name_data.push_back(reference.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NvSatellites::NvSatellite::UpgradeOnConnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::UpgradeOnConnect::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "connect-type")
+    {
+        connect_type = value;
+        connect_type.value_namespace = name_space;
+        connect_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reference")
+    {
+        reference = value;
+        reference.value_namespace = name_space;
+        reference.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connect-type")
+    {
+        connect_type.yfilter = yfilter;
+    }
+    if(value_path == "reference")
+    {
+        reference.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connect-type" || name == "reference")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf NvSatellites::NvSatellite::UpgradeOnConnect::ConnectType::on_connection {1, "on-connection"};
+const Enum::YLeaf NvSatellites::NvSatellite::UpgradeOnConnect::ConnectType::on_first_connection {2, "on-first-connection"};
 
 
 }

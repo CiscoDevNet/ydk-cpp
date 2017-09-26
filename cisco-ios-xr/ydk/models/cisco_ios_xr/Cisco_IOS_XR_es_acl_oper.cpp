@@ -17,7 +17,7 @@ EsAcl::EsAcl()
 {
     active->parent = this;
 
-    yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-oper";
+    yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 EsAcl::~EsAcl()
@@ -39,26 +39,15 @@ std::string EsAcl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -135,14 +124,11 @@ EsAcl::Active::Active()
 	,usages(std::make_shared<EsAcl::Active::Usages>())
 {
     list->parent = this;
-
     oor->parent = this;
-
     oor_acls->parent = this;
-
     usages->parent = this;
 
-    yang_name = "active"; yang_parent_name = "es-acl";
+    yang_name = "active"; yang_parent_name = "es-acl"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::~Active()
@@ -166,33 +152,26 @@ bool EsAcl::Active::has_operation() const
 	|| (usages !=  nullptr && usages->has_operation());
 }
 
+std::string EsAcl::Active::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "active";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -278,332 +257,13 @@ bool EsAcl::Active::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-EsAcl::Active::Oor::Oor()
-    :
-    acl_summary(std::make_shared<EsAcl::Active::Oor::AclSummary>())
-{
-    acl_summary->parent = this;
-
-    yang_name = "oor"; yang_parent_name = "active";
-}
-
-EsAcl::Active::Oor::~Oor()
-{
-}
-
-bool EsAcl::Active::Oor::has_data() const
-{
-    return (acl_summary !=  nullptr && acl_summary->has_data());
-}
-
-bool EsAcl::Active::Oor::has_operation() const
-{
-    return is_set(yfilter)
-	|| (acl_summary !=  nullptr && acl_summary->has_operation());
-}
-
-std::string EsAcl::Active::Oor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oor";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EsAcl::Active::Oor::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-summary")
-    {
-        if(acl_summary == nullptr)
-        {
-            acl_summary = std::make_shared<EsAcl::Active::Oor::AclSummary>();
-        }
-        return acl_summary;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(acl_summary != nullptr)
-    {
-        children["acl-summary"] = acl_summary;
-    }
-
-    return children;
-}
-
-void EsAcl::Active::Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EsAcl::Active::Oor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EsAcl::Active::Oor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-summary")
-        return true;
-    return false;
-}
-
-EsAcl::Active::Oor::AclSummary::AclSummary()
-    :
-    details(std::make_shared<EsAcl::Active::Oor::AclSummary::Details>())
-{
-    details->parent = this;
-
-    yang_name = "acl-summary"; yang_parent_name = "oor";
-}
-
-EsAcl::Active::Oor::AclSummary::~AclSummary()
-{
-}
-
-bool EsAcl::Active::Oor::AclSummary::has_data() const
-{
-    return (details !=  nullptr && details->has_data());
-}
-
-bool EsAcl::Active::Oor::AclSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| (details !=  nullptr && details->has_operation());
-}
-
-std::string EsAcl::Active::Oor::AclSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EsAcl::Active::Oor::AclSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "details")
-    {
-        if(details == nullptr)
-        {
-            details = std::make_shared<EsAcl::Active::Oor::AclSummary::Details>();
-        }
-        return details;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(details != nullptr)
-    {
-        children["details"] = details;
-    }
-
-    return children;
-}
-
-void EsAcl::Active::Oor::AclSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EsAcl::Active::Oor::AclSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EsAcl::Active::Oor::AclSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "details")
-        return true;
-    return false;
-}
-
-EsAcl::Active::Oor::AclSummary::Details::Details()
-    :
-    current_configured_ac_es{YType::uint32, "current-configured-ac-es"},
-    current_configured_ac_ls{YType::uint32, "current-configured-ac-ls"},
-    maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"},
-    maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"}
-{
-    yang_name = "details"; yang_parent_name = "acl-summary";
-}
-
-EsAcl::Active::Oor::AclSummary::Details::~Details()
-{
-}
-
-bool EsAcl::Active::Oor::AclSummary::Details::has_data() const
-{
-    return current_configured_ac_es.is_set
-	|| current_configured_ac_ls.is_set
-	|| maximum_configurable_ac_es.is_set
-	|| maximum_configurable_ac_ls.is_set;
-}
-
-bool EsAcl::Active::Oor::AclSummary::Details::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(current_configured_ac_es.yfilter)
-	|| ydk::is_set(current_configured_ac_ls.yfilter)
-	|| ydk::is_set(maximum_configurable_ac_es.yfilter)
-	|| ydk::is_set(maximum_configurable_ac_ls.yfilter);
-}
-
-std::string EsAcl::Active::Oor::AclSummary::Details::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EsAcl::Active::Oor::AclSummary::Details::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/acl-summary/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (current_configured_ac_es.is_set || is_set(current_configured_ac_es.yfilter)) leaf_name_data.push_back(current_configured_ac_es.get_name_leafdata());
-    if (current_configured_ac_ls.is_set || is_set(current_configured_ac_ls.yfilter)) leaf_name_data.push_back(current_configured_ac_ls.get_name_leafdata());
-    if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
-    if (maximum_configurable_ac_ls.is_set || is_set(maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_ls.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void EsAcl::Active::Oor::AclSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "current-configured-ac-es")
-    {
-        current_configured_ac_es = value;
-        current_configured_ac_es.value_namespace = name_space;
-        current_configured_ac_es.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "current-configured-ac-ls")
-    {
-        current_configured_ac_ls = value;
-        current_configured_ac_ls.value_namespace = name_space;
-        current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-configurable-ac-es")
-    {
-        maximum_configurable_ac_es = value;
-        maximum_configurable_ac_es.value_namespace = name_space;
-        maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-configurable-ac-ls")
-    {
-        maximum_configurable_ac_ls = value;
-        maximum_configurable_ac_ls.value_namespace = name_space;
-        maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EsAcl::Active::Oor::AclSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "current-configured-ac-es")
-    {
-        current_configured_ac_es.yfilter = yfilter;
-    }
-    if(value_path == "current-configured-ac-ls")
-    {
-        current_configured_ac_ls.yfilter = yfilter;
-    }
-    if(value_path == "maximum-configurable-ac-es")
-    {
-        maximum_configurable_ac_es.yfilter = yfilter;
-    }
-    if(value_path == "maximum-configurable-ac-ls")
-    {
-        maximum_configurable_ac_ls.yfilter = yfilter;
-    }
-}
-
-bool EsAcl::Active::Oor::AclSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "current-configured-ac-es" || name == "current-configured-ac-ls" || name == "maximum-configurable-ac-es" || name == "maximum-configurable-ac-ls")
-        return true;
-    return false;
-}
-
 EsAcl::Active::List::List()
     :
     acls(std::make_shared<EsAcl::Active::List::Acls>())
 {
     acls->parent = this;
 
-    yang_name = "list"; yang_parent_name = "active";
+    yang_name = "list"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::List::~List()
@@ -621,33 +281,26 @@ bool EsAcl::Active::List::has_operation() const
 	|| (acls !=  nullptr && acls->has_operation());
 }
 
+std::string EsAcl::Active::List::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::List::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::List::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -693,7 +346,8 @@ bool EsAcl::Active::List::has_leaf_or_child_of_name(const std::string & name) co
 
 EsAcl::Active::List::Acls::Acls()
 {
-    yang_name = "acls"; yang_parent_name = "list";
+
+    yang_name = "acls"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::List::Acls::~Acls()
@@ -720,33 +374,26 @@ bool EsAcl::Active::List::Acls::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EsAcl::Active::List::Acls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/list/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::List::Acls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "acls";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::List::Acls::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/list/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -805,7 +452,7 @@ EsAcl::Active::List::Acls::Acl::Acl()
 {
     acl_sequence_numbers->parent = this;
 
-    yang_name = "acl"; yang_parent_name = "acls";
+    yang_name = "acl"; yang_parent_name = "acls"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::List::Acls::Acl::~Acl()
@@ -825,34 +472,27 @@ bool EsAcl::Active::List::Acls::Acl::has_operation() const
 	|| (acl_sequence_numbers !=  nullptr && acl_sequence_numbers->has_operation());
 }
 
+std::string EsAcl::Active::List::Acls::Acl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/list/acls/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::List::Acls::Acl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "acl" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::List::Acls::Acl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/list/acls/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -908,7 +548,8 @@ bool EsAcl::Active::List::Acls::Acl::has_leaf_or_child_of_name(const std::string
 
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumbers()
 {
-    yang_name = "acl-sequence-numbers"; yang_parent_name = "acl";
+
+    yang_name = "acl-sequence-numbers"; yang_parent_name = "acl"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::~AclSequenceNumbers()
@@ -939,29 +580,15 @@ std::string EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "acl-sequence-numbers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AclSequenceNumbers' in Cisco_IOS_XR_es_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1038,7 +665,8 @@ EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::AclSequen
     vlan1{YType::uint16, "vlan1"},
     vlan2{YType::uint16, "vlan2"}
 {
-    yang_name = "acl-sequence-number"; yang_parent_name = "acl-sequence-numbers";
+
+    yang_name = "acl-sequence-number"; yang_parent_name = "acl-sequence-numbers"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::~AclSequenceNumber()
@@ -1104,23 +732,11 @@ std::string EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumbe
 {
     std::ostringstream path_buffer;
     path_buffer << "acl-sequence-number" <<"[sequence-number='" <<sequence_number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AclSequenceNumber' in Cisco_IOS_XR_es_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
@@ -1147,9 +763,7 @@ const EntityPath EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequence
     if (vlan1.is_set || is_set(vlan1.yfilter)) leaf_name_data.push_back(vlan1.get_name_leafdata());
     if (vlan2.is_set || is_set(vlan2.yfilter)) leaf_name_data.push_back(vlan2.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1409,9 +1023,309 @@ bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_
     return false;
 }
 
+EsAcl::Active::Oor::Oor()
+    :
+    acl_summary(std::make_shared<EsAcl::Active::Oor::AclSummary>())
+{
+    acl_summary->parent = this;
+
+    yang_name = "oor"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EsAcl::Active::Oor::~Oor()
+{
+}
+
+bool EsAcl::Active::Oor::has_data() const
+{
+    return (acl_summary !=  nullptr && acl_summary->has_data());
+}
+
+bool EsAcl::Active::Oor::has_operation() const
+{
+    return is_set(yfilter)
+	|| (acl_summary !=  nullptr && acl_summary->has_operation());
+}
+
+std::string EsAcl::Active::Oor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EsAcl::Active::Oor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-summary")
+    {
+        if(acl_summary == nullptr)
+        {
+            acl_summary = std::make_shared<EsAcl::Active::Oor::AclSummary>();
+        }
+        return acl_summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl_summary != nullptr)
+    {
+        children["acl-summary"] = acl_summary;
+    }
+
+    return children;
+}
+
+void EsAcl::Active::Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EsAcl::Active::Oor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EsAcl::Active::Oor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-summary")
+        return true;
+    return false;
+}
+
+EsAcl::Active::Oor::AclSummary::AclSummary()
+    :
+    details(std::make_shared<EsAcl::Active::Oor::AclSummary::Details>())
+{
+    details->parent = this;
+
+    yang_name = "acl-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EsAcl::Active::Oor::AclSummary::~AclSummary()
+{
+}
+
+bool EsAcl::Active::Oor::AclSummary::has_data() const
+{
+    return (details !=  nullptr && details->has_data());
+}
+
+bool EsAcl::Active::Oor::AclSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| (details !=  nullptr && details->has_operation());
+}
+
+std::string EsAcl::Active::Oor::AclSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EsAcl::Active::Oor::AclSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "details")
+    {
+        if(details == nullptr)
+        {
+            details = std::make_shared<EsAcl::Active::Oor::AclSummary::Details>();
+        }
+        return details;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(details != nullptr)
+    {
+        children["details"] = details;
+    }
+
+    return children;
+}
+
+void EsAcl::Active::Oor::AclSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EsAcl::Active::Oor::AclSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EsAcl::Active::Oor::AclSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details")
+        return true;
+    return false;
+}
+
+EsAcl::Active::Oor::AclSummary::Details::Details()
+    :
+    current_configured_ac_es{YType::uint32, "current-configured-ac-es"},
+    current_configured_ac_ls{YType::uint32, "current-configured-ac-ls"},
+    maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"},
+    maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"}
+{
+
+    yang_name = "details"; yang_parent_name = "acl-summary"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EsAcl::Active::Oor::AclSummary::Details::~Details()
+{
+}
+
+bool EsAcl::Active::Oor::AclSummary::Details::has_data() const
+{
+    return current_configured_ac_es.is_set
+	|| current_configured_ac_ls.is_set
+	|| maximum_configurable_ac_es.is_set
+	|| maximum_configurable_ac_ls.is_set;
+}
+
+bool EsAcl::Active::Oor::AclSummary::Details::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(current_configured_ac_es.yfilter)
+	|| ydk::is_set(current_configured_ac_ls.yfilter)
+	|| ydk::is_set(maximum_configurable_ac_es.yfilter)
+	|| ydk::is_set(maximum_configurable_ac_ls.yfilter);
+}
+
+std::string EsAcl::Active::Oor::AclSummary::Details::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/acl-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EsAcl::Active::Oor::AclSummary::Details::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::Details::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (current_configured_ac_es.is_set || is_set(current_configured_ac_es.yfilter)) leaf_name_data.push_back(current_configured_ac_es.get_name_leafdata());
+    if (current_configured_ac_ls.is_set || is_set(current_configured_ac_ls.yfilter)) leaf_name_data.push_back(current_configured_ac_ls.get_name_leafdata());
+    if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
+    if (maximum_configurable_ac_ls.is_set || is_set(maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_ls.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EsAcl::Active::Oor::AclSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "current-configured-ac-es")
+    {
+        current_configured_ac_es = value;
+        current_configured_ac_es.value_namespace = name_space;
+        current_configured_ac_es.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current-configured-ac-ls")
+    {
+        current_configured_ac_ls = value;
+        current_configured_ac_ls.value_namespace = name_space;
+        current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-configurable-ac-es")
+    {
+        maximum_configurable_ac_es = value;
+        maximum_configurable_ac_es.value_namespace = name_space;
+        maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-configurable-ac-ls")
+    {
+        maximum_configurable_ac_ls = value;
+        maximum_configurable_ac_ls.value_namespace = name_space;
+        maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EsAcl::Active::Oor::AclSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-configured-ac-es")
+    {
+        current_configured_ac_es.yfilter = yfilter;
+    }
+    if(value_path == "current-configured-ac-ls")
+    {
+        current_configured_ac_ls.yfilter = yfilter;
+    }
+    if(value_path == "maximum-configurable-ac-es")
+    {
+        maximum_configurable_ac_es.yfilter = yfilter;
+    }
+    if(value_path == "maximum-configurable-ac-ls")
+    {
+        maximum_configurable_ac_ls.yfilter = yfilter;
+    }
+}
+
+bool EsAcl::Active::Oor::AclSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "current-configured-ac-es" || name == "current-configured-ac-ls" || name == "maximum-configurable-ac-es" || name == "maximum-configurable-ac-ls")
+        return true;
+    return false;
+}
+
 EsAcl::Active::OorAcls::OorAcls()
 {
-    yang_name = "oor-acls"; yang_parent_name = "active";
+
+    yang_name = "oor-acls"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::OorAcls::~OorAcls()
@@ -1438,33 +1352,26 @@ bool EsAcl::Active::OorAcls::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EsAcl::Active::OorAcls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::OorAcls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor-acls";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::OorAcls::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::OorAcls::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1523,7 +1430,8 @@ EsAcl::Active::OorAcls::OorAcl::OorAcl()
     maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"},
     maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"}
 {
-    yang_name = "oor-acl"; yang_parent_name = "oor-acls";
+
+    yang_name = "oor-acl"; yang_parent_name = "oor-acls"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::OorAcls::OorAcl::~OorAcl()
@@ -1549,27 +1457,22 @@ bool EsAcl::Active::OorAcls::OorAcl::has_operation() const
 	|| ydk::is_set(maximum_configurable_ac_ls.yfilter);
 }
 
+std::string EsAcl::Active::OorAcls::OorAcl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor-acls/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::OorAcls::OorAcl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oor-acl" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::OorAcls::OorAcl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::OorAcls::OorAcl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor-acls/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -1578,9 +1481,7 @@ const EntityPath EsAcl::Active::OorAcls::OorAcl::get_entity_path(Entity* ancesto
     if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
     if (maximum_configurable_ac_ls.is_set || is_set(maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_ls.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1662,7 +1563,8 @@ bool EsAcl::Active::OorAcls::OorAcl::has_leaf_or_child_of_name(const std::string
 
 EsAcl::Active::Usages::Usages()
 {
-    yang_name = "usages"; yang_parent_name = "active";
+
+    yang_name = "usages"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::Usages::~Usages()
@@ -1689,33 +1591,26 @@ bool EsAcl::Active::Usages::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EsAcl::Active::Usages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::Usages::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "usages";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::Usages::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Usages::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1773,7 +1668,8 @@ EsAcl::Active::Usages::Usage::Usage()
     name{YType::str, "name"},
     usage_details{YType::str, "usage-details"}
 {
-    yang_name = "usage"; yang_parent_name = "usages";
+
+    yang_name = "usage"; yang_parent_name = "usages"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EsAcl::Active::Usages::Usage::~Usage()
@@ -1797,27 +1693,22 @@ bool EsAcl::Active::Usages::Usage::has_operation() const
 	|| ydk::is_set(usage_details.yfilter);
 }
 
+std::string EsAcl::Active::Usages::Usage::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/usages/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EsAcl::Active::Usages::Usage::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "usage";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EsAcl::Active::Usages::Usage::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Usages::Usage::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/usages/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (application_id.is_set || is_set(application_id.yfilter)) leaf_name_data.push_back(application_id.get_name_leafdata());
@@ -1825,9 +1716,7 @@ const EntityPath EsAcl::Active::Usages::Usage::get_entity_path(Entity* ancestor)
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (usage_details.is_set || is_set(usage_details.yfilter)) leaf_name_data.push_back(usage_details.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1907,6 +1796,10 @@ const Enum::YLeaf AclAction::encrypt {2, "encrypt"};
 const Enum::YLeaf AclAction::bypass {3, "bypass"};
 const Enum::YLeaf AclAction::fallthrough {4, "fallthrough"};
 const Enum::YLeaf AclAction::invalid {5, "invalid"};
+
+const Enum::YLeaf AclAce1_::normal {0, "normal"};
+const Enum::YLeaf AclAce1_::remark {1, "remark"};
+const Enum::YLeaf AclAce1_::abf {2, "abf"};
 
 
 }

@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_HSRP_MIB {
 
-class CiscoHsrpMib : public ydk::Entity
+class CISCOHSRPMIB : public ydk::Entity
 {
     public:
-        CiscoHsrpMib();
-        ~CiscoHsrpMib();
+        CISCOHSRPMIB();
+        ~CISCOHSRPMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,16 +32,16 @@ class CiscoHsrpMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Chsrpglobalconfig; //type: CiscoHsrpMib::Chsrpglobalconfig
-        class Chsrpgrptable; //type: CiscoHsrpMib::Chsrpgrptable
+        class Chsrpglobalconfig; //type: CISCOHSRPMIB::Chsrpglobalconfig
+        class Chsrpgrptable; //type: CISCOHSRPMIB::Chsrpgrptable
 
-        std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpglobalconfig> chsrpglobalconfig;
-        std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpgrptable> chsrpgrptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::Chsrpglobalconfig> chsrpglobalconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::Chsrpgrptable> chsrpgrptable;
         
-}; // CiscoHsrpMib
+}; // CISCOHSRPMIB
 
 
-class CiscoHsrpMib::Chsrpglobalconfig : public ydk::Entity
+class CISCOHSRPMIB::Chsrpglobalconfig : public ydk::Entity
 {
     public:
         Chsrpglobalconfig();
@@ -49,20 +49,21 @@ class CiscoHsrpMib::Chsrpglobalconfig : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf chsrpconfigtimeout; //type: uint32
 
-}; // CiscoHsrpMib::Chsrpglobalconfig
+}; // CISCOHSRPMIB::Chsrpglobalconfig
 
 
-class CiscoHsrpMib::Chsrpgrptable : public ydk::Entity
+class CISCOHSRPMIB::Chsrpgrptable : public ydk::Entity
 {
     public:
         Chsrpgrptable();
@@ -70,22 +71,23 @@ class CiscoHsrpMib::Chsrpgrptable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Chsrpgrpentry; //type: CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry
+        class Chsrpgrpentry; //type: CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry
 
-        std::vector<std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry> > chsrpgrpentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry> > chsrpgrpentry;
         
-}; // CiscoHsrpMib::Chsrpgrptable
+}; // CISCOHSRPMIB::Chsrpgrptable
 
 
-class CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry : public ydk::Entity
+class CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry : public ydk::Entity
 {
     public:
         Chsrpgrpentry();
@@ -93,15 +95,16 @@ class CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf chsrpgrpnumber; //type: uint32
         ydk::YLeaf chsrpgrpauth; //type: string
@@ -117,14 +120,14 @@ class CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry : public ydk::Entity
         ydk::YLeaf chsrpgrpuseconfigvirtualipaddr; //type: boolean
         ydk::YLeaf chsrpgrpactiverouter; //type: string
         ydk::YLeaf chsrpgrpstandbyrouter; //type: string
-        ydk::YLeaf chsrpgrpstandbystate; //type: Hsrpstate
+        ydk::YLeaf chsrpgrpstandbystate; //type: HsrpState
         ydk::YLeaf chsrpgrpvirtualmacaddr; //type: string
-        ydk::YLeaf chsrpgrpentryrowstatus; //type: Rowstatus
+        ydk::YLeaf chsrpgrpentryrowstatus; //type: RowStatus
         ydk::YLeaf chsrpgrpipnone; //type: boolean
 
-}; // CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry
+}; // CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry
 
-class Hsrpstate : public ydk::Enum
+class HsrpState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf initial;

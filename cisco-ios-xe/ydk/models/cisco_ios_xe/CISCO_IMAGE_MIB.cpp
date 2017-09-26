@@ -11,64 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IMAGE_MIB {
 
-CiscoImageMib::CiscoImageMib()
+CISCOIMAGEMIB::CISCOIMAGEMIB()
     :
-    ciscoimagetable(std::make_shared<CiscoImageMib::Ciscoimagetable>())
+    ciscoimagetable(std::make_shared<CISCOIMAGEMIB::Ciscoimagetable>())
 {
     ciscoimagetable->parent = this;
 
-    yang_name = "CISCO-IMAGE-MIB"; yang_parent_name = "CISCO-IMAGE-MIB";
+    yang_name = "CISCO-IMAGE-MIB"; yang_parent_name = "CISCO-IMAGE-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoImageMib::~CiscoImageMib()
+CISCOIMAGEMIB::~CISCOIMAGEMIB()
 {
 }
 
-bool CiscoImageMib::has_data() const
+bool CISCOIMAGEMIB::has_data() const
 {
     return (ciscoimagetable !=  nullptr && ciscoimagetable->has_data());
 }
 
-bool CiscoImageMib::has_operation() const
+bool CISCOIMAGEMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ciscoimagetable !=  nullptr && ciscoimagetable->has_operation());
 }
 
-std::string CiscoImageMib::get_segment_path() const
+std::string CISCOIMAGEMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoImageMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoImageMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoImageTable")
     {
         if(ciscoimagetable == nullptr)
         {
-            ciscoimagetable = std::make_shared<CiscoImageMib::Ciscoimagetable>();
+            ciscoimagetable = std::make_shared<CISCOIMAGEMIB::Ciscoimagetable>();
         }
         return ciscoimagetable;
     }
@@ -76,7 +65,7 @@ std::shared_ptr<Entity> CiscoImageMib::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ciscoimagetable != nullptr)
@@ -87,56 +76,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::get_children() con
     return children;
 }
 
-void CiscoImageMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoImageMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoImageMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOIMAGEMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoImageMib>();
+    return std::make_shared<CISCOIMAGEMIB>();
 }
 
-std::string CiscoImageMib::get_bundle_yang_models_location() const
+std::string CISCOIMAGEMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoImageMib::get_bundle_name() const
+std::string CISCOIMAGEMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoImageMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIMAGEMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoImageMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIMAGEMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoImageMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGEMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoImageTable")
         return true;
     return false;
 }
 
-CiscoImageMib::Ciscoimagetable::Ciscoimagetable()
+CISCOIMAGEMIB::Ciscoimagetable::Ciscoimagetable()
 {
-    yang_name = "ciscoImageTable"; yang_parent_name = "CISCO-IMAGE-MIB";
+
+    yang_name = "ciscoImageTable"; yang_parent_name = "CISCO-IMAGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoImageMib::Ciscoimagetable::~Ciscoimagetable()
+CISCOIMAGEMIB::Ciscoimagetable::~Ciscoimagetable()
 {
 }
 
-bool CiscoImageMib::Ciscoimagetable::has_data() const
+bool CISCOIMAGEMIB::Ciscoimagetable::has_data() const
 {
     for (std::size_t index=0; index<ciscoimageentry.size(); index++)
     {
@@ -146,7 +136,7 @@ bool CiscoImageMib::Ciscoimagetable::has_data() const
     return false;
 }
 
-bool CiscoImageMib::Ciscoimagetable::has_operation() const
+bool CISCOIMAGEMIB::Ciscoimagetable::has_operation() const
 {
     for (std::size_t index=0; index<ciscoimageentry.size(); index++)
     {
@@ -156,37 +146,30 @@ bool CiscoImageMib::Ciscoimagetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoImageMib::Ciscoimagetable::get_segment_path() const
+std::string CISCOIMAGEMIB::Ciscoimagetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIMAGEMIB::Ciscoimagetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoImageTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoImageMib::Ciscoimagetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::Ciscoimagetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGEMIB::Ciscoimagetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoImageEntry")
     {
@@ -198,7 +181,7 @@ std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::get_child_by_name(const 
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoImageMib::Ciscoimagetable::Ciscoimageentry>();
+        auto c = std::make_shared<CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry>();
         c->parent = this;
         ciscoimageentry.push_back(c);
         return c;
@@ -207,7 +190,7 @@ std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::Ciscoimagetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::Ciscoimagetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ciscoimageentry)
@@ -218,90 +201,84 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::Ciscoimagetable::g
     return children;
 }
 
-void CiscoImageMib::Ciscoimagetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGEMIB::Ciscoimagetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoImageMib::Ciscoimagetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGEMIB::Ciscoimagetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoImageMib::Ciscoimagetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGEMIB::Ciscoimagetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoImageEntry")
         return true;
     return false;
 }
 
-CiscoImageMib::Ciscoimagetable::Ciscoimageentry::Ciscoimageentry()
+CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::Ciscoimageentry()
     :
     ciscoimageindex{YType::int32, "ciscoImageIndex"},
     ciscoimagestring{YType::str, "ciscoImageString"}
 {
-    yang_name = "ciscoImageEntry"; yang_parent_name = "ciscoImageTable";
+
+    yang_name = "ciscoImageEntry"; yang_parent_name = "ciscoImageTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoImageMib::Ciscoimagetable::Ciscoimageentry::~Ciscoimageentry()
+CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::~Ciscoimageentry()
 {
 }
 
-bool CiscoImageMib::Ciscoimagetable::Ciscoimageentry::has_data() const
+bool CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::has_data() const
 {
     return ciscoimageindex.is_set
 	|| ciscoimagestring.is_set;
 }
 
-bool CiscoImageMib::Ciscoimagetable::Ciscoimageentry::has_operation() const
+bool CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscoimageindex.yfilter)
 	|| ydk::is_set(ciscoimagestring.yfilter);
 }
 
-std::string CiscoImageMib::Ciscoimagetable::Ciscoimageentry::get_segment_path() const
+std::string CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB/ciscoImageTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoImageEntry" <<"[ciscoImageIndex='" <<ciscoimageindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoImageMib::Ciscoimagetable::Ciscoimageentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB/ciscoImageTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ciscoimageindex.is_set || is_set(ciscoimageindex.yfilter)) leaf_name_data.push_back(ciscoimageindex.get_name_leafdata());
     if (ciscoimagestring.is_set || is_set(ciscoimagestring.yfilter)) leaf_name_data.push_back(ciscoimagestring.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::Ciscoimageentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::Ciscoimagetable::Ciscoimageentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoImageMib::Ciscoimagetable::Ciscoimageentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoImageIndex")
     {
@@ -317,7 +294,7 @@ void CiscoImageMib::Ciscoimagetable::Ciscoimageentry::set_value(const std::strin
     }
 }
 
-void CiscoImageMib::Ciscoimagetable::Ciscoimageentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoImageIndex")
     {
@@ -329,7 +306,7 @@ void CiscoImageMib::Ciscoimagetable::Ciscoimageentry::set_filter(const std::stri
     }
 }
 
-bool CiscoImageMib::Ciscoimagetable::Ciscoimageentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoImageIndex" || name == "ciscoImageString")
         return true;

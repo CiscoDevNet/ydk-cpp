@@ -149,8 +149,8 @@ const char* expected_bgp_peer_json = "{\"openconfig-bgp:bgp\":{\"global\":{\"con
 
 TEST_CASE( "bgp" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
     auto & schema = sp.get_root_schema();
 
@@ -229,8 +229,9 @@ TEST_CASE( "bgp" )
 
 TEST_CASE( "bgp_validation" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
     auto & schema = sp.get_root_schema();
 
@@ -274,8 +275,9 @@ TEST_CASE( "bgp_validation" )
 
 TEST_CASE( "decode_remove_as" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
     auto & schema = sp.get_root_schema();
 
@@ -296,12 +298,13 @@ TEST_CASE( "decode_remove_as" )
 
 TEST_CASE( "bits_order" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+
     ydk::path::Codec s{};
 
-    auto & schema = sp.get_root_schema();
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
+    auto & schema = sp.get_root_schema();
 
     auto & runner = schema.create_datanode("ydktest-sanity:runner", "");
 
@@ -316,9 +319,11 @@ TEST_CASE( "bits_order" )
 
 TEST_CASE("rpc_output")
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+
     ydk::path::Codec s{};
+
+    mock::MockSession sp{TEST_HOME, test_openconfig};
 
     auto & schema = sp.get_root_schema();
 
@@ -338,8 +343,8 @@ TEST_CASE("rpc_output")
 
 TEST_CASE( "submodule" )
 {//TODO fix issue with submodule
-//    std::string searchdir{TEST_HOME};
-//    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    // ydk::path::Repository repo{TEST_HOME};
+//    mock::MockServiceProvider sp{repo, test_openconfig};
 //    ydk::path::Codec s{};
 //
 //    std::unique_ptr<ydk::path::RootSchemaNode> schema{sp.get_root_schema()};

@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_ncs1k_mxp_cfg {
 
 HardwareModule::HardwareModule()
 {
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-cfg";
+
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 HardwareModule::~HardwareModule()
@@ -44,26 +45,15 @@ std::string HardwareModule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs1k-mxp-cfg:hardware-module";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -143,7 +133,8 @@ HardwareModule::Node::Node()
     :
     location{YType::str, "location"}
 {
-    yang_name = "node"; yang_parent_name = "hardware-module";
+
+    yang_name = "node"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HardwareModule::Node::~Node()
@@ -171,34 +162,27 @@ bool HardwareModule::Node::has_operation() const
 	|| ydk::is_set(location.yfilter);
 }
 
+std::string HardwareModule::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs1k-mxp-cfg:hardware-module/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HardwareModule::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[location='" <<location <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs1k-mxp-cfg:hardware-module/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -268,7 +252,7 @@ HardwareModule::Node::Slice::Slice()
 {
     values->parent = this;
 
-    yang_name = "slice"; yang_parent_name = "node";
+    yang_name = "slice"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Node::Slice::~Slice()
@@ -294,31 +278,17 @@ std::string HardwareModule::Node::Slice::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slice" <<"[slice-id='" <<slice_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::Slice::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slice::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slice' in Cisco_IOS_XR_ncs1k_mxp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
     if (lldp.is_set || is_set(lldp.yfilter)) leaf_name_data.push_back(lldp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -389,7 +359,8 @@ HardwareModule::Node::Slice::Values::Values()
     fec{YType::enumeration, "fec"},
     trunk_rate{YType::enumeration, "trunk-rate"}
 {
-    yang_name = "values"; yang_parent_name = "slice";
+
+    yang_name = "values"; yang_parent_name = "slice"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Node::Slice::Values::~Values()
@@ -417,23 +388,11 @@ std::string HardwareModule::Node::Slice::Values::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "values";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::Slice::Values::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slice::Values::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Values' in Cisco_IOS_XR_ncs1k_mxp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
@@ -441,9 +400,7 @@ const EntityPath HardwareModule::Node::Slice::Values::get_entity_path(Entity* an
     if (fec.is_set || is_set(fec.yfilter)) leaf_name_data.push_back(fec.get_name_leafdata());
     if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -513,16 +470,17 @@ bool HardwareModule::Node::Slice::Values::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-const Enum::YLeaf TrunkDataRate::hundred_gig {2, "hundred-gig"};
-const Enum::YLeaf TrunkDataRate::two_hundred_gig {3, "two-hundred-gig"};
-const Enum::YLeaf TrunkDataRate::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
-
 const Enum::YLeaf Fec::sd7 {1, "sd7"};
 const Enum::YLeaf Fec::sd20 {2, "sd20"};
 
 const Enum::YLeaf ClientDataRate::ten_gig {1, "ten-gig"};
 const Enum::YLeaf ClientDataRate::forty_gig {2, "forty-gig"};
 const Enum::YLeaf ClientDataRate::hundred_gig {3, "hundred-gig"};
+const Enum::YLeaf ClientDataRate::ten_and_hundred_gig {4, "ten-and-hundred-gig"};
+
+const Enum::YLeaf TrunkDataRate::hundred_gig {2, "hundred-gig"};
+const Enum::YLeaf TrunkDataRate::two_hundred_gig {3, "two-hundred-gig"};
+const Enum::YLeaf TrunkDataRate::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
 
 
 }

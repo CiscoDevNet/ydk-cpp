@@ -17,7 +17,7 @@ Password::Password()
 {
     encryption->parent = this;
 
-    yang_name = "password"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg";
+    yang_name = "password"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Password::~Password()
@@ -39,26 +39,15 @@ std::string Password::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg:password";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Password::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Password::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -131,7 +120,8 @@ Password::Encryption::Encryption()
     :
     aes{YType::int32, "aes"}
 {
-    yang_name = "encryption"; yang_parent_name = "password";
+
+    yang_name = "encryption"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Password::Encryption::~Encryption()
@@ -149,34 +139,27 @@ bool Password::Encryption::has_operation() const
 	|| ydk::is_set(aes.yfilter);
 }
 
+std::string Password::Encryption::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg:password/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Password::Encryption::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "encryption";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Password::Encryption::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Password::Encryption::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg:password/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (aes.is_set || is_set(aes.yfilter)) leaf_name_data.push_back(aes.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

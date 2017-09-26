@@ -14,9 +14,6 @@ namespace Cisco_IOS_XR_ethernet_cfm_datatypes {
 const Enum::YLeaf CfmMepDir::up {0, "up"};
 const Enum::YLeaf CfmMepDir::down {1, "down"};
 
-const Enum::YLeaf CfmAisInterval::Y_1s {4, "1s"};
-const Enum::YLeaf CfmAisInterval::Y_1m {6, "1m"};
-
 const Enum::YLeaf CfmCcmInterval::Y_3__DOT__3ms {1, "3.3ms"};
 const Enum::YLeaf CfmCcmInterval::Y_10ms {2, "10ms"};
 const Enum::YLeaf CfmCcmInterval::Y_100ms {3, "100ms"};
@@ -27,6 +24,9 @@ const Enum::YLeaf CfmCcmInterval::Y_10m {7, "10m"};
 
 const Enum::YLeaf BandwidthNotificationState::ok {1, "ok"};
 const Enum::YLeaf BandwidthNotificationState::degraded {2, "degraded"};
+
+const Enum::YLeaf CfmAisInterval::Y_1s {4, "1s"};
+const Enum::YLeaf CfmAisInterval::Y_1m {6, "1m"};
 
 
 }

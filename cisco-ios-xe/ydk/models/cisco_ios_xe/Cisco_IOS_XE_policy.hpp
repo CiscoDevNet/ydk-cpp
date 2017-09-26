@@ -10,13 +10,6 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_policy {
 
-class PrecedenceType2 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp;
-
-};
-
 class PolicyActionType : public ydk::Enum
 {
     public:
@@ -40,11 +33,10 @@ class PolicyActionType : public ydk::Enum
 
 };
 
-class PolicePpsBpsType : public ydk::Enum
+class ClassNameType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pps;
-        static const ydk::Enum::YLeaf bps;
+        static const ydk::Enum::YLeaf class_default;
 
 };
 
@@ -56,10 +48,18 @@ class PolicePacketsBytesType : public ydk::Enum
 
 };
 
-class ClassNameType : public ydk::Enum
+class PrecedenceType2 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf class_default;
+        static const ydk::Enum::YLeaf rsvp;
+
+};
+
+class PolicePpsBpsType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pps;
+        static const ydk::Enum::YLeaf bps;
 
 };
 

@@ -11,50 +11,40 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace NHRP_MIB {
 
-NhrpMib::NhrpMib()
+NHRPMIB::NHRPMIB()
     :
-    nhrpcachetable(std::make_shared<NhrpMib::Nhrpcachetable>())
-	,nhrpclientnhstable(std::make_shared<NhrpMib::Nhrpclientnhstable>())
-	,nhrpclientregistrationtable(std::make_shared<NhrpMib::Nhrpclientregistrationtable>())
-	,nhrpclientstattable(std::make_shared<NhrpMib::Nhrpclientstattable>())
-	,nhrpclienttable(std::make_shared<NhrpMib::Nhrpclienttable>())
-	,nhrpgeneralobjects(std::make_shared<NhrpMib::Nhrpgeneralobjects>())
-	,nhrppurgereqtable(std::make_shared<NhrpMib::Nhrppurgereqtable>())
-	,nhrpservercachetable(std::make_shared<NhrpMib::Nhrpservercachetable>())
-	,nhrpservernhctable(std::make_shared<NhrpMib::Nhrpservernhctable>())
-	,nhrpserverstattable(std::make_shared<NhrpMib::Nhrpserverstattable>())
-	,nhrpservertable(std::make_shared<NhrpMib::Nhrpservertable>())
+    nhrpcachetable(std::make_shared<NHRPMIB::Nhrpcachetable>())
+	,nhrpclientnhstable(std::make_shared<NHRPMIB::Nhrpclientnhstable>())
+	,nhrpclientregistrationtable(std::make_shared<NHRPMIB::Nhrpclientregistrationtable>())
+	,nhrpclientstattable(std::make_shared<NHRPMIB::Nhrpclientstattable>())
+	,nhrpclienttable(std::make_shared<NHRPMIB::Nhrpclienttable>())
+	,nhrpgeneralobjects(std::make_shared<NHRPMIB::Nhrpgeneralobjects>())
+	,nhrppurgereqtable(std::make_shared<NHRPMIB::Nhrppurgereqtable>())
+	,nhrpservercachetable(std::make_shared<NHRPMIB::Nhrpservercachetable>())
+	,nhrpservernhctable(std::make_shared<NHRPMIB::Nhrpservernhctable>())
+	,nhrpserverstattable(std::make_shared<NHRPMIB::Nhrpserverstattable>())
+	,nhrpservertable(std::make_shared<NHRPMIB::Nhrpservertable>())
 {
     nhrpcachetable->parent = this;
-
     nhrpclientnhstable->parent = this;
-
     nhrpclientregistrationtable->parent = this;
-
     nhrpclientstattable->parent = this;
-
     nhrpclienttable->parent = this;
-
     nhrpgeneralobjects->parent = this;
-
     nhrppurgereqtable->parent = this;
-
     nhrpservercachetable->parent = this;
-
     nhrpservernhctable->parent = this;
-
     nhrpserverstattable->parent = this;
-
     nhrpservertable->parent = this;
 
-    yang_name = "NHRP-MIB"; yang_parent_name = "NHRP-MIB";
+    yang_name = "NHRP-MIB"; yang_parent_name = "NHRP-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-NhrpMib::~NhrpMib()
+NHRPMIB::~NHRPMIB()
 {
 }
 
-bool NhrpMib::has_data() const
+bool NHRPMIB::has_data() const
 {
     return (nhrpcachetable !=  nullptr && nhrpcachetable->has_data())
 	|| (nhrpclientnhstable !=  nullptr && nhrpclientnhstable->has_data())
@@ -69,7 +59,7 @@ bool NhrpMib::has_data() const
 	|| (nhrpservertable !=  nullptr && nhrpservertable->has_data());
 }
 
-bool NhrpMib::has_operation() const
+bool NHRPMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (nhrpcachetable !=  nullptr && nhrpcachetable->has_operation())
@@ -85,40 +75,29 @@ bool NhrpMib::has_operation() const
 	|| (nhrpservertable !=  nullptr && nhrpservertable->has_operation());
 }
 
-std::string NhrpMib::get_segment_path() const
+std::string NHRPMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NHRP-MIB:NHRP-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpCacheTable")
     {
         if(nhrpcachetable == nullptr)
         {
-            nhrpcachetable = std::make_shared<NhrpMib::Nhrpcachetable>();
+            nhrpcachetable = std::make_shared<NHRPMIB::Nhrpcachetable>();
         }
         return nhrpcachetable;
     }
@@ -127,7 +106,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpclientnhstable == nullptr)
         {
-            nhrpclientnhstable = std::make_shared<NhrpMib::Nhrpclientnhstable>();
+            nhrpclientnhstable = std::make_shared<NHRPMIB::Nhrpclientnhstable>();
         }
         return nhrpclientnhstable;
     }
@@ -136,7 +115,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpclientregistrationtable == nullptr)
         {
-            nhrpclientregistrationtable = std::make_shared<NhrpMib::Nhrpclientregistrationtable>();
+            nhrpclientregistrationtable = std::make_shared<NHRPMIB::Nhrpclientregistrationtable>();
         }
         return nhrpclientregistrationtable;
     }
@@ -145,7 +124,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpclientstattable == nullptr)
         {
-            nhrpclientstattable = std::make_shared<NhrpMib::Nhrpclientstattable>();
+            nhrpclientstattable = std::make_shared<NHRPMIB::Nhrpclientstattable>();
         }
         return nhrpclientstattable;
     }
@@ -154,7 +133,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpclienttable == nullptr)
         {
-            nhrpclienttable = std::make_shared<NhrpMib::Nhrpclienttable>();
+            nhrpclienttable = std::make_shared<NHRPMIB::Nhrpclienttable>();
         }
         return nhrpclienttable;
     }
@@ -163,7 +142,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpgeneralobjects == nullptr)
         {
-            nhrpgeneralobjects = std::make_shared<NhrpMib::Nhrpgeneralobjects>();
+            nhrpgeneralobjects = std::make_shared<NHRPMIB::Nhrpgeneralobjects>();
         }
         return nhrpgeneralobjects;
     }
@@ -172,7 +151,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrppurgereqtable == nullptr)
         {
-            nhrppurgereqtable = std::make_shared<NhrpMib::Nhrppurgereqtable>();
+            nhrppurgereqtable = std::make_shared<NHRPMIB::Nhrppurgereqtable>();
         }
         return nhrppurgereqtable;
     }
@@ -181,7 +160,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpservercachetable == nullptr)
         {
-            nhrpservercachetable = std::make_shared<NhrpMib::Nhrpservercachetable>();
+            nhrpservercachetable = std::make_shared<NHRPMIB::Nhrpservercachetable>();
         }
         return nhrpservercachetable;
     }
@@ -190,7 +169,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpservernhctable == nullptr)
         {
-            nhrpservernhctable = std::make_shared<NhrpMib::Nhrpservernhctable>();
+            nhrpservernhctable = std::make_shared<NHRPMIB::Nhrpservernhctable>();
         }
         return nhrpservernhctable;
     }
@@ -199,7 +178,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpserverstattable == nullptr)
         {
-            nhrpserverstattable = std::make_shared<NhrpMib::Nhrpserverstattable>();
+            nhrpserverstattable = std::make_shared<NHRPMIB::Nhrpserverstattable>();
         }
         return nhrpserverstattable;
     }
@@ -208,7 +187,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     {
         if(nhrpservertable == nullptr)
         {
-            nhrpservertable = std::make_shared<NhrpMib::Nhrpservertable>();
+            nhrpservertable = std::make_shared<NHRPMIB::Nhrpservertable>();
         }
         return nhrpservertable;
     }
@@ -216,7 +195,7 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(nhrpcachetable != nullptr)
@@ -277,145 +256,57 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::get_children() const
     return children;
 }
 
-void NhrpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NhrpMib::clone_ptr() const
+std::shared_ptr<Entity> NHRPMIB::clone_ptr() const
 {
-    return std::make_shared<NhrpMib>();
+    return std::make_shared<NHRPMIB>();
 }
 
-std::string NhrpMib::get_bundle_yang_models_location() const
+std::string NHRPMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string NhrpMib::get_bundle_name() const
+std::string NHRPMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function NhrpMib::get_augment_capabilities_function() const
+augment_capabilities_function NHRPMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> NhrpMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> NHRPMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool NhrpMib::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpCacheTable" || name == "nhrpClientNhsTable" || name == "nhrpClientRegistrationTable" || name == "nhrpClientStatTable" || name == "nhrpClientTable" || name == "nhrpGeneralObjects" || name == "nhrpPurgeReqTable" || name == "nhrpServerCacheTable" || name == "nhrpServerNhcTable" || name == "nhrpServerStatTable" || name == "nhrpServerTable")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpgeneralobjects::Nhrpgeneralobjects()
-    :
-    nhrpnextindex{YType::uint32, "nhrpNextIndex"}
+NHRPMIB::Nhrpcachetable::Nhrpcachetable()
 {
-    yang_name = "nhrpGeneralObjects"; yang_parent_name = "NHRP-MIB";
+
+    yang_name = "nhrpCacheTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpgeneralobjects::~Nhrpgeneralobjects()
-{
-}
-
-bool NhrpMib::Nhrpgeneralobjects::has_data() const
-{
-    return nhrpnextindex.is_set;
-}
-
-bool NhrpMib::Nhrpgeneralobjects::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nhrpnextindex.yfilter);
-}
-
-std::string NhrpMib::Nhrpgeneralobjects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpGeneralObjects";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrpgeneralobjects::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nhrpnextindex.is_set || is_set(nhrpnextindex.yfilter)) leaf_name_data.push_back(nhrpnextindex.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrpgeneralobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpgeneralobjects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NhrpMib::Nhrpgeneralobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nhrpNextIndex")
-    {
-        nhrpnextindex = value;
-        nhrpnextindex.value_namespace = name_space;
-        nhrpnextindex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NhrpMib::Nhrpgeneralobjects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nhrpNextIndex")
-    {
-        nhrpnextindex.yfilter = yfilter;
-    }
-}
-
-bool NhrpMib::Nhrpgeneralobjects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpNextIndex")
-        return true;
-    return false;
-}
-
-NhrpMib::Nhrpcachetable::Nhrpcachetable()
-{
-    yang_name = "nhrpCacheTable"; yang_parent_name = "NHRP-MIB";
-}
-
-NhrpMib::Nhrpcachetable::~Nhrpcachetable()
+NHRPMIB::Nhrpcachetable::~Nhrpcachetable()
 {
 }
 
-bool NhrpMib::Nhrpcachetable::has_data() const
+bool NHRPMIB::Nhrpcachetable::has_data() const
 {
     for (std::size_t index=0; index<nhrpcacheentry.size(); index++)
     {
@@ -425,7 +316,7 @@ bool NhrpMib::Nhrpcachetable::has_data() const
     return false;
 }
 
-bool NhrpMib::Nhrpcachetable::has_operation() const
+bool NHRPMIB::Nhrpcachetable::has_operation() const
 {
     for (std::size_t index=0; index<nhrpcacheentry.size(); index++)
     {
@@ -435,37 +326,30 @@ bool NhrpMib::Nhrpcachetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpcachetable::get_segment_path() const
+std::string NHRPMIB::Nhrpcachetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpcachetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpCacheTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpcachetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpcachetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpcachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpCacheEntry")
     {
@@ -477,7 +361,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::get_child_by_name(const std::st
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpcachetable::Nhrpcacheentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpcachetable::Nhrpcacheentry>();
         c->parent = this;
         nhrpcacheentry.push_back(c);
         return c;
@@ -486,7 +370,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpcachetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nhrpcacheentry)
@@ -497,22 +381,22 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpcachetable::get_chil
     return children;
 }
 
-void NhrpMib::Nhrpcachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpcachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpcachetable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpcachetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpcachetable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpcachetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpCacheEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcacheentry()
+NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcacheentry()
     :
     nhrpcacheinternetworkaddrtype{YType::enumeration, "nhrpCacheInternetworkAddrType"},
     nhrpcacheinternetworkaddr{YType::str, "nhrpCacheInternetworkAddr"},
@@ -532,14 +416,15 @@ NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcacheentry()
     nhrpcachestoragetype{YType::enumeration, "nhrpCacheStorageType"},
     nhrpcachetype{YType::enumeration, "nhrpCacheType"}
 {
-    yang_name = "nhrpCacheEntry"; yang_parent_name = "nhrpCacheTable";
+
+    yang_name = "nhrpCacheEntry"; yang_parent_name = "nhrpCacheTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpcachetable::Nhrpcacheentry::~Nhrpcacheentry()
+NHRPMIB::Nhrpcachetable::Nhrpcacheentry::~Nhrpcacheentry()
 {
 }
 
-bool NhrpMib::Nhrpcachetable::Nhrpcacheentry::has_data() const
+bool NHRPMIB::Nhrpcachetable::Nhrpcacheentry::has_data() const
 {
     return nhrpcacheinternetworkaddrtype.is_set
 	|| nhrpcacheinternetworkaddr.is_set
@@ -560,7 +445,7 @@ bool NhrpMib::Nhrpcachetable::Nhrpcacheentry::has_data() const
 	|| nhrpcachetype.is_set;
 }
 
-bool NhrpMib::Nhrpcachetable::Nhrpcacheentry::has_operation() const
+bool NHRPMIB::Nhrpcachetable::Nhrpcacheentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nhrpcacheinternetworkaddrtype.yfilter)
@@ -582,27 +467,22 @@ bool NhrpMib::Nhrpcachetable::Nhrpcacheentry::has_operation() const
 	|| ydk::is_set(nhrpcachetype.yfilter);
 }
 
-std::string NhrpMib::Nhrpcachetable::Nhrpcacheentry::get_segment_path() const
+std::string NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpCacheTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpCacheEntry" <<"[nhrpCacheInternetworkAddrType='" <<nhrpcacheinternetworkaddrtype <<"']" <<"[nhrpCacheInternetworkAddr='" <<nhrpcacheinternetworkaddr <<"']" <<"[ifIndex='" <<ifindex <<"']" <<"[nhrpCacheIndex='" <<nhrpcacheindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpcachetable::Nhrpcacheentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpCacheTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nhrpcacheinternetworkaddrtype.is_set || is_set(nhrpcacheinternetworkaddrtype.yfilter)) leaf_name_data.push_back(nhrpcacheinternetworkaddrtype.get_name_leafdata());
@@ -623,24 +503,22 @@ const EntityPath NhrpMib::Nhrpcachetable::Nhrpcacheentry::get_entity_path(Entity
     if (nhrpcachestoragetype.is_set || is_set(nhrpcachestoragetype.yfilter)) leaf_name_data.push_back(nhrpcachestoragetype.get_name_leafdata());
     if (nhrpcachetype.is_set || is_set(nhrpcachetype.yfilter)) leaf_name_data.push_back(nhrpcachetype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::Nhrpcacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpcachetable::Nhrpcacheentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpcachetable::Nhrpcacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpcachetable::Nhrpcacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nhrpCacheInternetworkAddrType")
     {
@@ -746,7 +624,7 @@ void NhrpMib::Nhrpcachetable::Nhrpcacheentry::set_value(const std::string & valu
     }
 }
 
-void NhrpMib::Nhrpcachetable::Nhrpcacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpcachetable::Nhrpcacheentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nhrpCacheInternetworkAddrType")
     {
@@ -818,930 +696,24 @@ void NhrpMib::Nhrpcachetable::Nhrpcacheentry::set_filter(const std::string & val
     }
 }
 
-bool NhrpMib::Nhrpcachetable::Nhrpcacheentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpcachetable::Nhrpcacheentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpCacheInternetworkAddrType" || name == "nhrpCacheInternetworkAddr" || name == "ifIndex" || name == "nhrpCacheIndex" || name == "nhrpCacheHoldingTime" || name == "nhrpCacheHoldingTimeValid" || name == "nhrpCacheNbmaAddr" || name == "nhrpCacheNbmaAddrType" || name == "nhrpCacheNbmaSubaddr" || name == "nhrpCacheNegotiatedMtu" || name == "nhrpCacheNextHopInternetworkAddr" || name == "nhrpCachePreference" || name == "nhrpCachePrefixLength" || name == "nhrpCacheRowStatus" || name == "nhrpCacheState" || name == "nhrpCacheStorageType" || name == "nhrpCacheType")
         return true;
     return false;
 }
 
-NhrpMib::Nhrppurgereqtable::Nhrppurgereqtable()
+NHRPMIB::Nhrpclientnhstable::Nhrpclientnhstable()
 {
-    yang_name = "nhrpPurgeReqTable"; yang_parent_name = "NHRP-MIB";
-}
-
-NhrpMib::Nhrppurgereqtable::~Nhrppurgereqtable()
-{
-}
-
-bool NhrpMib::Nhrppurgereqtable::has_data() const
-{
-    for (std::size_t index=0; index<nhrppurgereqentry.size(); index++)
-    {
-        if(nhrppurgereqentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NhrpMib::Nhrppurgereqtable::has_operation() const
-{
-    for (std::size_t index=0; index<nhrppurgereqentry.size(); index++)
-    {
-        if(nhrppurgereqentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NhrpMib::Nhrppurgereqtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpPurgeReqTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrppurgereqtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrppurgereqtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nhrpPurgeReqEntry")
-    {
-        for(auto const & c : nhrppurgereqentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry>();
-        c->parent = this;
-        nhrppurgereqentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrppurgereqtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrppurgereqentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NhrpMib::Nhrppurgereqtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NhrpMib::Nhrppurgereqtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NhrpMib::Nhrppurgereqtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpPurgeReqEntry")
-        return true;
-    return false;
-}
-
-NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::Nhrppurgereqentry()
-    :
-    nhrppurgeindex{YType::uint32, "nhrpPurgeIndex"},
-    nhrppurgecacheidentifier{YType::uint32, "nhrpPurgeCacheIdentifier"},
-    nhrppurgeprefixlength{YType::int32, "nhrpPurgePrefixLength"},
-    nhrppurgereplyexpected{YType::boolean, "nhrpPurgeReplyExpected"},
-    nhrppurgerequestid{YType::uint32, "nhrpPurgeRequestID"},
-    nhrppurgerowstatus{YType::enumeration, "nhrpPurgeRowStatus"}
-{
-    yang_name = "nhrpPurgeReqEntry"; yang_parent_name = "nhrpPurgeReqTable";
-}
-
-NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::~Nhrppurgereqentry()
-{
-}
-
-bool NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::has_data() const
-{
-    return nhrppurgeindex.is_set
-	|| nhrppurgecacheidentifier.is_set
-	|| nhrppurgeprefixlength.is_set
-	|| nhrppurgereplyexpected.is_set
-	|| nhrppurgerequestid.is_set
-	|| nhrppurgerowstatus.is_set;
-}
-
-bool NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nhrppurgeindex.yfilter)
-	|| ydk::is_set(nhrppurgecacheidentifier.yfilter)
-	|| ydk::is_set(nhrppurgeprefixlength.yfilter)
-	|| ydk::is_set(nhrppurgereplyexpected.yfilter)
-	|| ydk::is_set(nhrppurgerequestid.yfilter)
-	|| ydk::is_set(nhrppurgerowstatus.yfilter);
-}
-
-std::string NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpPurgeReqEntry" <<"[nhrpPurgeIndex='" <<nhrppurgeindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpPurgeReqTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nhrppurgeindex.is_set || is_set(nhrppurgeindex.yfilter)) leaf_name_data.push_back(nhrppurgeindex.get_name_leafdata());
-    if (nhrppurgecacheidentifier.is_set || is_set(nhrppurgecacheidentifier.yfilter)) leaf_name_data.push_back(nhrppurgecacheidentifier.get_name_leafdata());
-    if (nhrppurgeprefixlength.is_set || is_set(nhrppurgeprefixlength.yfilter)) leaf_name_data.push_back(nhrppurgeprefixlength.get_name_leafdata());
-    if (nhrppurgereplyexpected.is_set || is_set(nhrppurgereplyexpected.yfilter)) leaf_name_data.push_back(nhrppurgereplyexpected.get_name_leafdata());
-    if (nhrppurgerequestid.is_set || is_set(nhrppurgerequestid.yfilter)) leaf_name_data.push_back(nhrppurgerequestid.get_name_leafdata());
-    if (nhrppurgerowstatus.is_set || is_set(nhrppurgerowstatus.yfilter)) leaf_name_data.push_back(nhrppurgerowstatus.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nhrpPurgeIndex")
-    {
-        nhrppurgeindex = value;
-        nhrppurgeindex.value_namespace = name_space;
-        nhrppurgeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpPurgeCacheIdentifier")
-    {
-        nhrppurgecacheidentifier = value;
-        nhrppurgecacheidentifier.value_namespace = name_space;
-        nhrppurgecacheidentifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpPurgePrefixLength")
-    {
-        nhrppurgeprefixlength = value;
-        nhrppurgeprefixlength.value_namespace = name_space;
-        nhrppurgeprefixlength.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpPurgeReplyExpected")
-    {
-        nhrppurgereplyexpected = value;
-        nhrppurgereplyexpected.value_namespace = name_space;
-        nhrppurgereplyexpected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpPurgeRequestID")
-    {
-        nhrppurgerequestid = value;
-        nhrppurgerequestid.value_namespace = name_space;
-        nhrppurgerequestid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpPurgeRowStatus")
-    {
-        nhrppurgerowstatus = value;
-        nhrppurgerowstatus.value_namespace = name_space;
-        nhrppurgerowstatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nhrpPurgeIndex")
-    {
-        nhrppurgeindex.yfilter = yfilter;
-    }
-    if(value_path == "nhrpPurgeCacheIdentifier")
-    {
-        nhrppurgecacheidentifier.yfilter = yfilter;
-    }
-    if(value_path == "nhrpPurgePrefixLength")
-    {
-        nhrppurgeprefixlength.yfilter = yfilter;
-    }
-    if(value_path == "nhrpPurgeReplyExpected")
-    {
-        nhrppurgereplyexpected.yfilter = yfilter;
-    }
-    if(value_path == "nhrpPurgeRequestID")
-    {
-        nhrppurgerequestid.yfilter = yfilter;
-    }
-    if(value_path == "nhrpPurgeRowStatus")
-    {
-        nhrppurgerowstatus.yfilter = yfilter;
-    }
-}
-
-bool NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpPurgeIndex" || name == "nhrpPurgeCacheIdentifier" || name == "nhrpPurgePrefixLength" || name == "nhrpPurgeReplyExpected" || name == "nhrpPurgeRequestID" || name == "nhrpPurgeRowStatus")
-        return true;
-    return false;
-}
-
-NhrpMib::Nhrpclienttable::Nhrpclienttable()
-{
-    yang_name = "nhrpClientTable"; yang_parent_name = "NHRP-MIB";
-}
-
-NhrpMib::Nhrpclienttable::~Nhrpclienttable()
-{
-}
-
-bool NhrpMib::Nhrpclienttable::has_data() const
-{
-    for (std::size_t index=0; index<nhrpcliententry.size(); index++)
-    {
-        if(nhrpcliententry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NhrpMib::Nhrpclienttable::has_operation() const
-{
-    for (std::size_t index=0; index<nhrpcliententry.size(); index++)
-    {
-        if(nhrpcliententry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NhrpMib::Nhrpclienttable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpClientTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrpclienttable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrpclienttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nhrpClientEntry")
-    {
-        for(auto const & c : nhrpcliententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NhrpMib::Nhrpclienttable::Nhrpcliententry>();
-        c->parent = this;
-        nhrpcliententry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclienttable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpcliententry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NhrpMib::Nhrpclienttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NhrpMib::Nhrpclienttable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NhrpMib::Nhrpclienttable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpClientEntry")
-        return true;
-    return false;
-}
 
-NhrpMib::Nhrpclienttable::Nhrpcliententry::Nhrpcliententry()
-    :
-    nhrpclientindex{YType::uint32, "nhrpClientIndex"},
-    nhrpclientdefaultmtu{YType::uint32, "nhrpClientDefaultMtu"},
-    nhrpclientholdtime{YType::uint32, "nhrpClientHoldTime"},
-    nhrpclientinitialrequesttimeout{YType::int32, "nhrpClientInitialRequestTimeout"},
-    nhrpclientinternetworkaddr{YType::str, "nhrpClientInternetworkAddr"},
-    nhrpclientinternetworkaddrtype{YType::enumeration, "nhrpClientInternetworkAddrType"},
-    nhrpclientnbmaaddr{YType::str, "nhrpClientNbmaAddr"},
-    nhrpclientnbmaaddrtype{YType::enumeration, "nhrpClientNbmaAddrType"},
-    nhrpclientnbmasubaddr{YType::str, "nhrpClientNbmaSubaddr"},
-    nhrpclientpurgerequestretries{YType::int32, "nhrpClientPurgeRequestRetries"},
-    nhrpclientregistrationrequestretries{YType::int32, "nhrpClientRegistrationRequestRetries"},
-    nhrpclientrequestid{YType::uint32, "nhrpClientRequestID"},
-    nhrpclientresolutionrequestretries{YType::int32, "nhrpClientResolutionRequestRetries"},
-    nhrpclientrowstatus{YType::enumeration, "nhrpClientRowStatus"},
-    nhrpclientstoragetype{YType::enumeration, "nhrpClientStorageType"}
-{
-    yang_name = "nhrpClientEntry"; yang_parent_name = "nhrpClientTable";
-}
-
-NhrpMib::Nhrpclienttable::Nhrpcliententry::~Nhrpcliententry()
-{
-}
-
-bool NhrpMib::Nhrpclienttable::Nhrpcliententry::has_data() const
-{
-    return nhrpclientindex.is_set
-	|| nhrpclientdefaultmtu.is_set
-	|| nhrpclientholdtime.is_set
-	|| nhrpclientinitialrequesttimeout.is_set
-	|| nhrpclientinternetworkaddr.is_set
-	|| nhrpclientinternetworkaddrtype.is_set
-	|| nhrpclientnbmaaddr.is_set
-	|| nhrpclientnbmaaddrtype.is_set
-	|| nhrpclientnbmasubaddr.is_set
-	|| nhrpclientpurgerequestretries.is_set
-	|| nhrpclientregistrationrequestretries.is_set
-	|| nhrpclientrequestid.is_set
-	|| nhrpclientresolutionrequestretries.is_set
-	|| nhrpclientrowstatus.is_set
-	|| nhrpclientstoragetype.is_set;
-}
-
-bool NhrpMib::Nhrpclienttable::Nhrpcliententry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nhrpclientindex.yfilter)
-	|| ydk::is_set(nhrpclientdefaultmtu.yfilter)
-	|| ydk::is_set(nhrpclientholdtime.yfilter)
-	|| ydk::is_set(nhrpclientinitialrequesttimeout.yfilter)
-	|| ydk::is_set(nhrpclientinternetworkaddr.yfilter)
-	|| ydk::is_set(nhrpclientinternetworkaddrtype.yfilter)
-	|| ydk::is_set(nhrpclientnbmaaddr.yfilter)
-	|| ydk::is_set(nhrpclientnbmaaddrtype.yfilter)
-	|| ydk::is_set(nhrpclientnbmasubaddr.yfilter)
-	|| ydk::is_set(nhrpclientpurgerequestretries.yfilter)
-	|| ydk::is_set(nhrpclientregistrationrequestretries.yfilter)
-	|| ydk::is_set(nhrpclientrequestid.yfilter)
-	|| ydk::is_set(nhrpclientresolutionrequestretries.yfilter)
-	|| ydk::is_set(nhrpclientrowstatus.yfilter)
-	|| ydk::is_set(nhrpclientstoragetype.yfilter);
-}
-
-std::string NhrpMib::Nhrpclienttable::Nhrpcliententry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpClientEntry" <<"[nhrpClientIndex='" <<nhrpclientindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrpclienttable::Nhrpcliententry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nhrpclientindex.is_set || is_set(nhrpclientindex.yfilter)) leaf_name_data.push_back(nhrpclientindex.get_name_leafdata());
-    if (nhrpclientdefaultmtu.is_set || is_set(nhrpclientdefaultmtu.yfilter)) leaf_name_data.push_back(nhrpclientdefaultmtu.get_name_leafdata());
-    if (nhrpclientholdtime.is_set || is_set(nhrpclientholdtime.yfilter)) leaf_name_data.push_back(nhrpclientholdtime.get_name_leafdata());
-    if (nhrpclientinitialrequesttimeout.is_set || is_set(nhrpclientinitialrequesttimeout.yfilter)) leaf_name_data.push_back(nhrpclientinitialrequesttimeout.get_name_leafdata());
-    if (nhrpclientinternetworkaddr.is_set || is_set(nhrpclientinternetworkaddr.yfilter)) leaf_name_data.push_back(nhrpclientinternetworkaddr.get_name_leafdata());
-    if (nhrpclientinternetworkaddrtype.is_set || is_set(nhrpclientinternetworkaddrtype.yfilter)) leaf_name_data.push_back(nhrpclientinternetworkaddrtype.get_name_leafdata());
-    if (nhrpclientnbmaaddr.is_set || is_set(nhrpclientnbmaaddr.yfilter)) leaf_name_data.push_back(nhrpclientnbmaaddr.get_name_leafdata());
-    if (nhrpclientnbmaaddrtype.is_set || is_set(nhrpclientnbmaaddrtype.yfilter)) leaf_name_data.push_back(nhrpclientnbmaaddrtype.get_name_leafdata());
-    if (nhrpclientnbmasubaddr.is_set || is_set(nhrpclientnbmasubaddr.yfilter)) leaf_name_data.push_back(nhrpclientnbmasubaddr.get_name_leafdata());
-    if (nhrpclientpurgerequestretries.is_set || is_set(nhrpclientpurgerequestretries.yfilter)) leaf_name_data.push_back(nhrpclientpurgerequestretries.get_name_leafdata());
-    if (nhrpclientregistrationrequestretries.is_set || is_set(nhrpclientregistrationrequestretries.yfilter)) leaf_name_data.push_back(nhrpclientregistrationrequestretries.get_name_leafdata());
-    if (nhrpclientrequestid.is_set || is_set(nhrpclientrequestid.yfilter)) leaf_name_data.push_back(nhrpclientrequestid.get_name_leafdata());
-    if (nhrpclientresolutionrequestretries.is_set || is_set(nhrpclientresolutionrequestretries.yfilter)) leaf_name_data.push_back(nhrpclientresolutionrequestretries.get_name_leafdata());
-    if (nhrpclientrowstatus.is_set || is_set(nhrpclientrowstatus.yfilter)) leaf_name_data.push_back(nhrpclientrowstatus.get_name_leafdata());
-    if (nhrpclientstoragetype.is_set || is_set(nhrpclientstoragetype.yfilter)) leaf_name_data.push_back(nhrpclientstoragetype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrpclienttable::Nhrpcliententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclienttable::Nhrpcliententry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NhrpMib::Nhrpclienttable::Nhrpcliententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nhrpClientIndex")
-    {
-        nhrpclientindex = value;
-        nhrpclientindex.value_namespace = name_space;
-        nhrpclientindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientDefaultMtu")
-    {
-        nhrpclientdefaultmtu = value;
-        nhrpclientdefaultmtu.value_namespace = name_space;
-        nhrpclientdefaultmtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientHoldTime")
-    {
-        nhrpclientholdtime = value;
-        nhrpclientholdtime.value_namespace = name_space;
-        nhrpclientholdtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientInitialRequestTimeout")
-    {
-        nhrpclientinitialrequesttimeout = value;
-        nhrpclientinitialrequesttimeout.value_namespace = name_space;
-        nhrpclientinitialrequesttimeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientInternetworkAddr")
-    {
-        nhrpclientinternetworkaddr = value;
-        nhrpclientinternetworkaddr.value_namespace = name_space;
-        nhrpclientinternetworkaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientInternetworkAddrType")
-    {
-        nhrpclientinternetworkaddrtype = value;
-        nhrpclientinternetworkaddrtype.value_namespace = name_space;
-        nhrpclientinternetworkaddrtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientNbmaAddr")
-    {
-        nhrpclientnbmaaddr = value;
-        nhrpclientnbmaaddr.value_namespace = name_space;
-        nhrpclientnbmaaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientNbmaAddrType")
-    {
-        nhrpclientnbmaaddrtype = value;
-        nhrpclientnbmaaddrtype.value_namespace = name_space;
-        nhrpclientnbmaaddrtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientNbmaSubaddr")
-    {
-        nhrpclientnbmasubaddr = value;
-        nhrpclientnbmasubaddr.value_namespace = name_space;
-        nhrpclientnbmasubaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientPurgeRequestRetries")
-    {
-        nhrpclientpurgerequestretries = value;
-        nhrpclientpurgerequestretries.value_namespace = name_space;
-        nhrpclientpurgerequestretries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRegistrationRequestRetries")
-    {
-        nhrpclientregistrationrequestretries = value;
-        nhrpclientregistrationrequestretries.value_namespace = name_space;
-        nhrpclientregistrationrequestretries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRequestID")
-    {
-        nhrpclientrequestid = value;
-        nhrpclientrequestid.value_namespace = name_space;
-        nhrpclientrequestid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientResolutionRequestRetries")
-    {
-        nhrpclientresolutionrequestretries = value;
-        nhrpclientresolutionrequestretries.value_namespace = name_space;
-        nhrpclientresolutionrequestretries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRowStatus")
-    {
-        nhrpclientrowstatus = value;
-        nhrpclientrowstatus.value_namespace = name_space;
-        nhrpclientrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientStorageType")
-    {
-        nhrpclientstoragetype = value;
-        nhrpclientstoragetype.value_namespace = name_space;
-        nhrpclientstoragetype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NhrpMib::Nhrpclienttable::Nhrpcliententry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nhrpClientIndex")
-    {
-        nhrpclientindex.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientDefaultMtu")
-    {
-        nhrpclientdefaultmtu.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientHoldTime")
-    {
-        nhrpclientholdtime.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientInitialRequestTimeout")
-    {
-        nhrpclientinitialrequesttimeout.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientInternetworkAddr")
-    {
-        nhrpclientinternetworkaddr.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientInternetworkAddrType")
-    {
-        nhrpclientinternetworkaddrtype.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientNbmaAddr")
-    {
-        nhrpclientnbmaaddr.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientNbmaAddrType")
-    {
-        nhrpclientnbmaaddrtype.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientNbmaSubaddr")
-    {
-        nhrpclientnbmasubaddr.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientPurgeRequestRetries")
-    {
-        nhrpclientpurgerequestretries.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRegistrationRequestRetries")
-    {
-        nhrpclientregistrationrequestretries.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRequestID")
-    {
-        nhrpclientrequestid.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientResolutionRequestRetries")
-    {
-        nhrpclientresolutionrequestretries.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRowStatus")
-    {
-        nhrpclientrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientStorageType")
-    {
-        nhrpclientstoragetype.yfilter = yfilter;
-    }
-}
-
-bool NhrpMib::Nhrpclienttable::Nhrpcliententry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpClientIndex" || name == "nhrpClientDefaultMtu" || name == "nhrpClientHoldTime" || name == "nhrpClientInitialRequestTimeout" || name == "nhrpClientInternetworkAddr" || name == "nhrpClientInternetworkAddrType" || name == "nhrpClientNbmaAddr" || name == "nhrpClientNbmaAddrType" || name == "nhrpClientNbmaSubaddr" || name == "nhrpClientPurgeRequestRetries" || name == "nhrpClientRegistrationRequestRetries" || name == "nhrpClientRequestID" || name == "nhrpClientResolutionRequestRetries" || name == "nhrpClientRowStatus" || name == "nhrpClientStorageType")
-        return true;
-    return false;
-}
-
-NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationtable()
-{
-    yang_name = "nhrpClientRegistrationTable"; yang_parent_name = "NHRP-MIB";
-}
-
-NhrpMib::Nhrpclientregistrationtable::~Nhrpclientregistrationtable()
-{
-}
-
-bool NhrpMib::Nhrpclientregistrationtable::has_data() const
-{
-    for (std::size_t index=0; index<nhrpclientregistrationentry.size(); index++)
-    {
-        if(nhrpclientregistrationentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NhrpMib::Nhrpclientregistrationtable::has_operation() const
-{
-    for (std::size_t index=0; index<nhrpclientregistrationentry.size(); index++)
-    {
-        if(nhrpclientregistrationentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NhrpMib::Nhrpclientregistrationtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpClientRegistrationTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrpclientregistrationtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrpclientregistrationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nhrpClientRegistrationEntry")
-    {
-        for(auto const & c : nhrpclientregistrationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry>();
-        c->parent = this;
-        nhrpclientregistrationentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientregistrationtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpclientregistrationentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NhrpMib::Nhrpclientregistrationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NhrpMib::Nhrpclientregistrationtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NhrpMib::Nhrpclientregistrationtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpClientRegistrationEntry")
-        return true;
-    return false;
-}
-
-NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregistrationentry()
-    :
-    nhrpclientindex{YType::str, "nhrpClientIndex"},
-    nhrpclientregindex{YType::uint32, "nhrpClientRegIndex"},
-    nhrpclientregrowstatus{YType::enumeration, "nhrpClientRegRowStatus"},
-    nhrpclientregstate{YType::enumeration, "nhrpClientRegState"},
-    nhrpclientreguniqueness{YType::enumeration, "nhrpClientRegUniqueness"}
-{
-    yang_name = "nhrpClientRegistrationEntry"; yang_parent_name = "nhrpClientRegistrationTable";
-}
-
-NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::~Nhrpclientregistrationentry()
-{
-}
-
-bool NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::has_data() const
-{
-    return nhrpclientindex.is_set
-	|| nhrpclientregindex.is_set
-	|| nhrpclientregrowstatus.is_set
-	|| nhrpclientregstate.is_set
-	|| nhrpclientreguniqueness.is_set;
-}
-
-bool NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nhrpclientindex.yfilter)
-	|| ydk::is_set(nhrpclientregindex.yfilter)
-	|| ydk::is_set(nhrpclientregrowstatus.yfilter)
-	|| ydk::is_set(nhrpclientregstate.yfilter)
-	|| ydk::is_set(nhrpclientreguniqueness.yfilter);
-}
-
-std::string NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nhrpClientRegistrationEntry" <<"[nhrpClientIndex='" <<nhrpclientindex <<"']" <<"[nhrpClientRegIndex='" <<nhrpclientregindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientRegistrationTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nhrpclientindex.is_set || is_set(nhrpclientindex.yfilter)) leaf_name_data.push_back(nhrpclientindex.get_name_leafdata());
-    if (nhrpclientregindex.is_set || is_set(nhrpclientregindex.yfilter)) leaf_name_data.push_back(nhrpclientregindex.get_name_leafdata());
-    if (nhrpclientregrowstatus.is_set || is_set(nhrpclientregrowstatus.yfilter)) leaf_name_data.push_back(nhrpclientregrowstatus.get_name_leafdata());
-    if (nhrpclientregstate.is_set || is_set(nhrpclientregstate.yfilter)) leaf_name_data.push_back(nhrpclientregstate.get_name_leafdata());
-    if (nhrpclientreguniqueness.is_set || is_set(nhrpclientreguniqueness.yfilter)) leaf_name_data.push_back(nhrpclientreguniqueness.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nhrpClientIndex")
-    {
-        nhrpclientindex = value;
-        nhrpclientindex.value_namespace = name_space;
-        nhrpclientindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRegIndex")
-    {
-        nhrpclientregindex = value;
-        nhrpclientregindex.value_namespace = name_space;
-        nhrpclientregindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRegRowStatus")
-    {
-        nhrpclientregrowstatus = value;
-        nhrpclientregrowstatus.value_namespace = name_space;
-        nhrpclientregrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRegState")
-    {
-        nhrpclientregstate = value;
-        nhrpclientregstate.value_namespace = name_space;
-        nhrpclientregstate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nhrpClientRegUniqueness")
-    {
-        nhrpclientreguniqueness = value;
-        nhrpclientreguniqueness.value_namespace = name_space;
-        nhrpclientreguniqueness.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nhrpClientIndex")
-    {
-        nhrpclientindex.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRegIndex")
-    {
-        nhrpclientregindex.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRegRowStatus")
-    {
-        nhrpclientregrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRegState")
-    {
-        nhrpclientregstate.yfilter = yfilter;
-    }
-    if(value_path == "nhrpClientRegUniqueness")
-    {
-        nhrpclientreguniqueness.yfilter = yfilter;
-    }
-}
-
-bool NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nhrpClientIndex" || name == "nhrpClientRegIndex" || name == "nhrpClientRegRowStatus" || name == "nhrpClientRegState" || name == "nhrpClientRegUniqueness")
-        return true;
-    return false;
-}
-
-NhrpMib::Nhrpclientnhstable::Nhrpclientnhstable()
-{
-    yang_name = "nhrpClientNhsTable"; yang_parent_name = "NHRP-MIB";
+    yang_name = "nhrpClientNhsTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpclientnhstable::~Nhrpclientnhstable()
+NHRPMIB::Nhrpclientnhstable::~Nhrpclientnhstable()
 {
 }
 
-bool NhrpMib::Nhrpclientnhstable::has_data() const
+bool NHRPMIB::Nhrpclientnhstable::has_data() const
 {
     for (std::size_t index=0; index<nhrpclientnhsentry.size(); index++)
     {
@@ -1751,7 +723,7 @@ bool NhrpMib::Nhrpclientnhstable::has_data() const
     return false;
 }
 
-bool NhrpMib::Nhrpclientnhstable::has_operation() const
+bool NHRPMIB::Nhrpclientnhstable::has_operation() const
 {
     for (std::size_t index=0; index<nhrpclientnhsentry.size(); index++)
     {
@@ -1761,37 +733,30 @@ bool NhrpMib::Nhrpclientnhstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpclientnhstable::get_segment_path() const
+std::string NHRPMIB::Nhrpclientnhstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpclientnhstable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpClientNhsTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpclientnhstable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclientnhstable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpclientnhstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpClientNhsEntry")
     {
@@ -1803,7 +768,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::get_child_by_name(const std
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry>();
         c->parent = this;
         nhrpclientnhsentry.push_back(c);
         return c;
@@ -1812,7 +777,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientnhstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientnhstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nhrpclientnhsentry)
@@ -1823,22 +788,22 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientnhstable::get_
     return children;
 }
 
-void NhrpMib::Nhrpclientnhstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpclientnhstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpclientnhstable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpclientnhstable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpclientnhstable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpclientnhstable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpClientNhsEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::Nhrpclientnhsentry()
+NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::Nhrpclientnhsentry()
     :
     nhrpclientindex{YType::str, "nhrpClientIndex"},
     nhrpclientnhsindex{YType::uint32, "nhrpClientNhsIndex"},
@@ -1850,14 +815,15 @@ NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::Nhrpclientnhsentry()
     nhrpclientnhsnbmasubaddr{YType::str, "nhrpClientNhsNbmaSubaddr"},
     nhrpclientnhsrowstatus{YType::enumeration, "nhrpClientNhsRowStatus"}
 {
-    yang_name = "nhrpClientNhsEntry"; yang_parent_name = "nhrpClientNhsTable";
+
+    yang_name = "nhrpClientNhsEntry"; yang_parent_name = "nhrpClientNhsTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::~Nhrpclientnhsentry()
+NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::~Nhrpclientnhsentry()
 {
 }
 
-bool NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::has_data() const
+bool NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::has_data() const
 {
     return nhrpclientindex.is_set
 	|| nhrpclientnhsindex.is_set
@@ -1870,7 +836,7 @@ bool NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::has_data() const
 	|| nhrpclientnhsrowstatus.is_set;
 }
 
-bool NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::has_operation() const
+bool NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nhrpclientindex.yfilter)
@@ -1884,27 +850,22 @@ bool NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::has_operation() const
 	|| ydk::is_set(nhrpclientnhsrowstatus.yfilter);
 }
 
-std::string NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::get_segment_path() const
+std::string NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientNhsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpClientNhsEntry" <<"[nhrpClientIndex='" <<nhrpclientindex <<"']" <<"[nhrpClientNhsIndex='" <<nhrpclientnhsindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientNhsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nhrpclientindex.is_set || is_set(nhrpclientindex.yfilter)) leaf_name_data.push_back(nhrpclientindex.get_name_leafdata());
@@ -1917,24 +878,22 @@ const EntityPath NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::get_entity_pat
     if (nhrpclientnhsnbmasubaddr.is_set || is_set(nhrpclientnhsnbmasubaddr.yfilter)) leaf_name_data.push_back(nhrpclientnhsnbmasubaddr.get_name_leafdata());
     if (nhrpclientnhsrowstatus.is_set || is_set(nhrpclientnhsrowstatus.yfilter)) leaf_name_data.push_back(nhrpclientnhsrowstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nhrpClientIndex")
     {
@@ -1992,7 +951,7 @@ void NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::set_value(const std::strin
     }
 }
 
-void NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nhrpClientIndex")
     {
@@ -2032,23 +991,263 @@ void NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::set_filter(const std::stri
     }
 }
 
-bool NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpClientIndex" || name == "nhrpClientNhsIndex" || name == "nhrpClientNhsInternetworkAddr" || name == "nhrpClientNhsInternetworkAddrType" || name == "nhrpClientNhsInUse" || name == "nhrpClientNhsNbmaAddr" || name == "nhrpClientNhsNbmaAddrType" || name == "nhrpClientNhsNbmaSubaddr" || name == "nhrpClientNhsRowStatus")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpclientstattable::Nhrpclientstattable()
+NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationtable()
 {
-    yang_name = "nhrpClientStatTable"; yang_parent_name = "NHRP-MIB";
+
+    yang_name = "nhrpClientRegistrationTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpclientstattable::~Nhrpclientstattable()
+NHRPMIB::Nhrpclientregistrationtable::~Nhrpclientregistrationtable()
 {
 }
 
-bool NhrpMib::Nhrpclientstattable::has_data() const
+bool NHRPMIB::Nhrpclientregistrationtable::has_data() const
+{
+    for (std::size_t index=0; index<nhrpclientregistrationentry.size(); index++)
+    {
+        if(nhrpclientregistrationentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NHRPMIB::Nhrpclientregistrationtable::has_operation() const
+{
+    for (std::size_t index=0; index<nhrpclientregistrationentry.size(); index++)
+    {
+        if(nhrpclientregistrationentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NHRPMIB::Nhrpclientregistrationtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpclientregistrationtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpClientRegistrationTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclientregistrationtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrpclientregistrationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nhrpClientRegistrationEntry")
+    {
+        for(auto const & c : nhrpclientregistrationentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry>();
+        c->parent = this;
+        nhrpclientregistrationentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientregistrationtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : nhrpclientregistrationentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NHRPMIB::Nhrpclientregistrationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NHRPMIB::Nhrpclientregistrationtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NHRPMIB::Nhrpclientregistrationtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpClientRegistrationEntry")
+        return true;
+    return false;
+}
+
+NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregistrationentry()
+    :
+    nhrpclientindex{YType::str, "nhrpClientIndex"},
+    nhrpclientregindex{YType::uint32, "nhrpClientRegIndex"},
+    nhrpclientregrowstatus{YType::enumeration, "nhrpClientRegRowStatus"},
+    nhrpclientregstate{YType::enumeration, "nhrpClientRegState"},
+    nhrpclientreguniqueness{YType::enumeration, "nhrpClientRegUniqueness"}
+{
+
+    yang_name = "nhrpClientRegistrationEntry"; yang_parent_name = "nhrpClientRegistrationTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::~Nhrpclientregistrationentry()
+{
+}
+
+bool NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::has_data() const
+{
+    return nhrpclientindex.is_set
+	|| nhrpclientregindex.is_set
+	|| nhrpclientregrowstatus.is_set
+	|| nhrpclientregstate.is_set
+	|| nhrpclientreguniqueness.is_set;
+}
+
+bool NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nhrpclientindex.yfilter)
+	|| ydk::is_set(nhrpclientregindex.yfilter)
+	|| ydk::is_set(nhrpclientregrowstatus.yfilter)
+	|| ydk::is_set(nhrpclientregstate.yfilter)
+	|| ydk::is_set(nhrpclientreguniqueness.yfilter);
+}
+
+std::string NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientRegistrationTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpClientRegistrationEntry" <<"[nhrpClientIndex='" <<nhrpclientindex <<"']" <<"[nhrpClientRegIndex='" <<nhrpclientregindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nhrpclientindex.is_set || is_set(nhrpclientindex.yfilter)) leaf_name_data.push_back(nhrpclientindex.get_name_leafdata());
+    if (nhrpclientregindex.is_set || is_set(nhrpclientregindex.yfilter)) leaf_name_data.push_back(nhrpclientregindex.get_name_leafdata());
+    if (nhrpclientregrowstatus.is_set || is_set(nhrpclientregrowstatus.yfilter)) leaf_name_data.push_back(nhrpclientregrowstatus.get_name_leafdata());
+    if (nhrpclientregstate.is_set || is_set(nhrpclientregstate.yfilter)) leaf_name_data.push_back(nhrpclientregstate.get_name_leafdata());
+    if (nhrpclientreguniqueness.is_set || is_set(nhrpclientreguniqueness.yfilter)) leaf_name_data.push_back(nhrpclientreguniqueness.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nhrpClientIndex")
+    {
+        nhrpclientindex = value;
+        nhrpclientindex.value_namespace = name_space;
+        nhrpclientindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRegIndex")
+    {
+        nhrpclientregindex = value;
+        nhrpclientregindex.value_namespace = name_space;
+        nhrpclientregindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRegRowStatus")
+    {
+        nhrpclientregrowstatus = value;
+        nhrpclientregrowstatus.value_namespace = name_space;
+        nhrpclientregrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRegState")
+    {
+        nhrpclientregstate = value;
+        nhrpclientregstate.value_namespace = name_space;
+        nhrpclientregstate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRegUniqueness")
+    {
+        nhrpclientreguniqueness = value;
+        nhrpclientreguniqueness.value_namespace = name_space;
+        nhrpclientreguniqueness.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nhrpClientIndex")
+    {
+        nhrpclientindex.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRegIndex")
+    {
+        nhrpclientregindex.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRegRowStatus")
+    {
+        nhrpclientregrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRegState")
+    {
+        nhrpclientregstate.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRegUniqueness")
+    {
+        nhrpclientreguniqueness.yfilter = yfilter;
+    }
+}
+
+bool NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpClientIndex" || name == "nhrpClientRegIndex" || name == "nhrpClientRegRowStatus" || name == "nhrpClientRegState" || name == "nhrpClientRegUniqueness")
+        return true;
+    return false;
+}
+
+NHRPMIB::Nhrpclientstattable::Nhrpclientstattable()
+{
+
+    yang_name = "nhrpClientStatTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NHRPMIB::Nhrpclientstattable::~Nhrpclientstattable()
+{
+}
+
+bool NHRPMIB::Nhrpclientstattable::has_data() const
 {
     for (std::size_t index=0; index<nhrpclientstatentry.size(); index++)
     {
@@ -2058,7 +1257,7 @@ bool NhrpMib::Nhrpclientstattable::has_data() const
     return false;
 }
 
-bool NhrpMib::Nhrpclientstattable::has_operation() const
+bool NHRPMIB::Nhrpclientstattable::has_operation() const
 {
     for (std::size_t index=0; index<nhrpclientstatentry.size(); index++)
     {
@@ -2068,37 +1267,30 @@ bool NhrpMib::Nhrpclientstattable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpclientstattable::get_segment_path() const
+std::string NHRPMIB::Nhrpclientstattable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpclientstattable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpClientStatTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpclientstattable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclientstattable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpclientstattable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpClientStatEntry")
     {
@@ -2110,7 +1302,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::get_child_by_name(const st
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpclientstattable::Nhrpclientstatentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry>();
         c->parent = this;
         nhrpclientstatentry.push_back(c);
         return c;
@@ -2119,7 +1311,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientstattable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientstattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nhrpclientstatentry)
@@ -2130,22 +1322,22 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientstattable::get
     return children;
 }
 
-void NhrpMib::Nhrpclientstattable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpclientstattable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpclientstattable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpclientstattable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpclientstattable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpclientstattable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpClientStatEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::Nhrpclientstatentry()
+NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::Nhrpclientstatentry()
     :
     nhrpclientindex{YType::str, "nhrpClientIndex"},
     nhrpclientstatdiscontinuitytime{YType::uint32, "nhrpClientStatDiscontinuityTime"},
@@ -2174,14 +1366,15 @@ NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::Nhrpclientstatentry()
     nhrpclientstattxregisterreq{YType::uint32, "nhrpClientStatTxRegisterReq"},
     nhrpclientstattxresolvereq{YType::uint32, "nhrpClientStatTxResolveReq"}
 {
-    yang_name = "nhrpClientStatEntry"; yang_parent_name = "nhrpClientStatTable";
+
+    yang_name = "nhrpClientStatEntry"; yang_parent_name = "nhrpClientStatTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::~Nhrpclientstatentry()
+NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::~Nhrpclientstatentry()
 {
 }
 
-bool NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::has_data() const
+bool NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::has_data() const
 {
     return nhrpclientindex.is_set
 	|| nhrpclientstatdiscontinuitytime.is_set
@@ -2211,7 +1404,7 @@ bool NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::has_data() const
 	|| nhrpclientstattxresolvereq.is_set;
 }
 
-bool NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::has_operation() const
+bool NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nhrpclientindex.yfilter)
@@ -2242,27 +1435,22 @@ bool NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::has_operation() const
 	|| ydk::is_set(nhrpclientstattxresolvereq.yfilter);
 }
 
-std::string NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::get_segment_path() const
+std::string NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientStatTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpClientStatEntry" <<"[nhrpClientIndex='" <<nhrpclientindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientStatTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nhrpclientindex.is_set || is_set(nhrpclientindex.yfilter)) leaf_name_data.push_back(nhrpclientindex.get_name_leafdata());
@@ -2292,24 +1480,22 @@ const EntityPath NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::get_entity_p
     if (nhrpclientstattxregisterreq.is_set || is_set(nhrpclientstattxregisterreq.yfilter)) leaf_name_data.push_back(nhrpclientstattxregisterreq.get_name_leafdata());
     if (nhrpclientstattxresolvereq.is_set || is_set(nhrpclientstattxresolvereq.yfilter)) leaf_name_data.push_back(nhrpclientstattxresolvereq.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nhrpClientIndex")
     {
@@ -2469,7 +1655,7 @@ void NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::set_value(const std::str
     }
 }
 
-void NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nhrpClientIndex")
     {
@@ -2577,77 +1763,71 @@ void NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::set_filter(const std::st
     }
 }
 
-bool NhrpMib::Nhrpclientstattable::Nhrpclientstatentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpClientIndex" || name == "nhrpClientStatDiscontinuityTime" || name == "nhrpClientStatRxErrAuthenticationFailure" || name == "nhrpClientStatRxErrHopCountExceeded" || name == "nhrpClientStatRxErrInvalidExtension" || name == "nhrpClientStatRxErrLoopDetected" || name == "nhrpClientStatRxErrProtoAddrUnreachable" || name == "nhrpClientStatRxErrProtoError" || name == "nhrpClientStatRxErrSduSizeExceeded" || name == "nhrpClientStatRxErrUnrecognizedExtension" || name == "nhrpClientStatRxPurgeReply" || name == "nhrpClientStatRxPurgeReq" || name == "nhrpClientStatRxRegisterAck" || name == "nhrpClientStatRxRegisterNakAlreadyReg" || name == "nhrpClientStatRxRegisterNakInsufResources" || name == "nhrpClientStatRxRegisterNakProhibited" || name == "nhrpClientStatRxResolveReplyAck" || name == "nhrpClientStatRxResolveReplyNakInsufResources" || name == "nhrpClientStatRxResolveReplyNakNoBinding" || name == "nhrpClientStatRxResolveReplyNakNotUnique" || name == "nhrpClientStatRxResolveReplyNakProhibited" || name == "nhrpClientStatTxErrorIndication" || name == "nhrpClientStatTxPurgeReply" || name == "nhrpClientStatTxPurgeReq" || name == "nhrpClientStatTxRegisterReq" || name == "nhrpClientStatTxResolveReq")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpservertable::Nhrpservertable()
+NHRPMIB::Nhrpclienttable::Nhrpclienttable()
 {
-    yang_name = "nhrpServerTable"; yang_parent_name = "NHRP-MIB";
+
+    yang_name = "nhrpClientTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpservertable::~Nhrpservertable()
+NHRPMIB::Nhrpclienttable::~Nhrpclienttable()
 {
 }
 
-bool NhrpMib::Nhrpservertable::has_data() const
+bool NHRPMIB::Nhrpclienttable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpserverentry.size(); index++)
+    for (std::size_t index=0; index<nhrpcliententry.size(); index++)
     {
-        if(nhrpserverentry[index]->has_data())
+        if(nhrpcliententry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool NhrpMib::Nhrpservertable::has_operation() const
+bool NHRPMIB::Nhrpclienttable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpserverentry.size(); index++)
+    for (std::size_t index=0; index<nhrpcliententry.size(); index++)
     {
-        if(nhrpserverentry[index]->has_operation())
+        if(nhrpcliententry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpservertable::get_segment_path() const
+std::string NHRPMIB::Nhrpclienttable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nhrpServerTable";
-
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpservertable::get_entity_path(Entity* ancestor) const
+std::string NHRPMIB::Nhrpclienttable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "nhrpClientTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclienttable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpservertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpclienttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "nhrpServerEntry")
+    if(child_yang_name == "nhrpClientEntry")
     {
-        for(auto const & c : nhrpserverentry)
+        for(auto const & c : nhrpcliententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2655,19 +1835,19 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservertable::get_child_by_name(const std::s
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpservertable::Nhrpserverentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpclienttable::Nhrpcliententry>();
         c->parent = this;
-        nhrpserverentry.push_back(c);
+        nhrpcliententry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclienttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpserverentry)
+    for (auto const & c : nhrpcliententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2675,218 +1855,647 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservertable::get_chi
     return children;
 }
 
-void NhrpMib::Nhrpservertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpclienttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpservertable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpclienttable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpservertable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpclienttable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nhrpServerEntry")
+    if(name == "nhrpClientEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpservertable::Nhrpserverentry::Nhrpserverentry()
+NHRPMIB::Nhrpclienttable::Nhrpcliententry::Nhrpcliententry()
     :
-    nhrpserverindex{YType::uint32, "nhrpServerIndex"},
-    nhrpserverinternetworkaddr{YType::str, "nhrpServerInternetworkAddr"},
-    nhrpserverinternetworkaddrtype{YType::enumeration, "nhrpServerInternetworkAddrType"},
-    nhrpservernbmaaddr{YType::str, "nhrpServerNbmaAddr"},
-    nhrpservernbmaaddrtype{YType::enumeration, "nhrpServerNbmaAddrType"},
-    nhrpservernbmasubaddr{YType::str, "nhrpServerNbmaSubaddr"},
-    nhrpserverrowstatus{YType::enumeration, "nhrpServerRowStatus"},
-    nhrpserverstoragetype{YType::enumeration, "nhrpServerStorageType"}
+    nhrpclientindex{YType::uint32, "nhrpClientIndex"},
+    nhrpclientdefaultmtu{YType::uint32, "nhrpClientDefaultMtu"},
+    nhrpclientholdtime{YType::uint32, "nhrpClientHoldTime"},
+    nhrpclientinitialrequesttimeout{YType::int32, "nhrpClientInitialRequestTimeout"},
+    nhrpclientinternetworkaddr{YType::str, "nhrpClientInternetworkAddr"},
+    nhrpclientinternetworkaddrtype{YType::enumeration, "nhrpClientInternetworkAddrType"},
+    nhrpclientnbmaaddr{YType::str, "nhrpClientNbmaAddr"},
+    nhrpclientnbmaaddrtype{YType::enumeration, "nhrpClientNbmaAddrType"},
+    nhrpclientnbmasubaddr{YType::str, "nhrpClientNbmaSubaddr"},
+    nhrpclientpurgerequestretries{YType::int32, "nhrpClientPurgeRequestRetries"},
+    nhrpclientregistrationrequestretries{YType::int32, "nhrpClientRegistrationRequestRetries"},
+    nhrpclientrequestid{YType::uint32, "nhrpClientRequestID"},
+    nhrpclientresolutionrequestretries{YType::int32, "nhrpClientResolutionRequestRetries"},
+    nhrpclientrowstatus{YType::enumeration, "nhrpClientRowStatus"},
+    nhrpclientstoragetype{YType::enumeration, "nhrpClientStorageType"}
 {
-    yang_name = "nhrpServerEntry"; yang_parent_name = "nhrpServerTable";
+
+    yang_name = "nhrpClientEntry"; yang_parent_name = "nhrpClientTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpservertable::Nhrpserverentry::~Nhrpserverentry()
+NHRPMIB::Nhrpclienttable::Nhrpcliententry::~Nhrpcliententry()
 {
 }
 
-bool NhrpMib::Nhrpservertable::Nhrpserverentry::has_data() const
+bool NHRPMIB::Nhrpclienttable::Nhrpcliententry::has_data() const
 {
-    return nhrpserverindex.is_set
-	|| nhrpserverinternetworkaddr.is_set
-	|| nhrpserverinternetworkaddrtype.is_set
-	|| nhrpservernbmaaddr.is_set
-	|| nhrpservernbmaaddrtype.is_set
-	|| nhrpservernbmasubaddr.is_set
-	|| nhrpserverrowstatus.is_set
-	|| nhrpserverstoragetype.is_set;
+    return nhrpclientindex.is_set
+	|| nhrpclientdefaultmtu.is_set
+	|| nhrpclientholdtime.is_set
+	|| nhrpclientinitialrequesttimeout.is_set
+	|| nhrpclientinternetworkaddr.is_set
+	|| nhrpclientinternetworkaddrtype.is_set
+	|| nhrpclientnbmaaddr.is_set
+	|| nhrpclientnbmaaddrtype.is_set
+	|| nhrpclientnbmasubaddr.is_set
+	|| nhrpclientpurgerequestretries.is_set
+	|| nhrpclientregistrationrequestretries.is_set
+	|| nhrpclientrequestid.is_set
+	|| nhrpclientresolutionrequestretries.is_set
+	|| nhrpclientrowstatus.is_set
+	|| nhrpclientstoragetype.is_set;
 }
 
-bool NhrpMib::Nhrpservertable::Nhrpserverentry::has_operation() const
+bool NHRPMIB::Nhrpclienttable::Nhrpcliententry::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(nhrpserverindex.yfilter)
-	|| ydk::is_set(nhrpserverinternetworkaddr.yfilter)
-	|| ydk::is_set(nhrpserverinternetworkaddrtype.yfilter)
-	|| ydk::is_set(nhrpservernbmaaddr.yfilter)
-	|| ydk::is_set(nhrpservernbmaaddrtype.yfilter)
-	|| ydk::is_set(nhrpservernbmasubaddr.yfilter)
-	|| ydk::is_set(nhrpserverrowstatus.yfilter)
-	|| ydk::is_set(nhrpserverstoragetype.yfilter);
+	|| ydk::is_set(nhrpclientindex.yfilter)
+	|| ydk::is_set(nhrpclientdefaultmtu.yfilter)
+	|| ydk::is_set(nhrpclientholdtime.yfilter)
+	|| ydk::is_set(nhrpclientinitialrequesttimeout.yfilter)
+	|| ydk::is_set(nhrpclientinternetworkaddr.yfilter)
+	|| ydk::is_set(nhrpclientinternetworkaddrtype.yfilter)
+	|| ydk::is_set(nhrpclientnbmaaddr.yfilter)
+	|| ydk::is_set(nhrpclientnbmaaddrtype.yfilter)
+	|| ydk::is_set(nhrpclientnbmasubaddr.yfilter)
+	|| ydk::is_set(nhrpclientpurgerequestretries.yfilter)
+	|| ydk::is_set(nhrpclientregistrationrequestretries.yfilter)
+	|| ydk::is_set(nhrpclientrequestid.yfilter)
+	|| ydk::is_set(nhrpclientresolutionrequestretries.yfilter)
+	|| ydk::is_set(nhrpclientrowstatus.yfilter)
+	|| ydk::is_set(nhrpclientstoragetype.yfilter);
 }
 
-std::string NhrpMib::Nhrpservertable::Nhrpserverentry::get_segment_path() const
+std::string NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nhrpServerEntry" <<"[nhrpServerIndex='" <<nhrpserverindex <<"']";
-
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpClientTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpservertable::Nhrpserverentry::get_entity_path(Entity* ancestor) const
+std::string NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "nhrpClientEntry" <<"[nhrpClientIndex='" <<nhrpclientindex <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nhrpserverindex.is_set || is_set(nhrpserverindex.yfilter)) leaf_name_data.push_back(nhrpserverindex.get_name_leafdata());
-    if (nhrpserverinternetworkaddr.is_set || is_set(nhrpserverinternetworkaddr.yfilter)) leaf_name_data.push_back(nhrpserverinternetworkaddr.get_name_leafdata());
-    if (nhrpserverinternetworkaddrtype.is_set || is_set(nhrpserverinternetworkaddrtype.yfilter)) leaf_name_data.push_back(nhrpserverinternetworkaddrtype.get_name_leafdata());
-    if (nhrpservernbmaaddr.is_set || is_set(nhrpservernbmaaddr.yfilter)) leaf_name_data.push_back(nhrpservernbmaaddr.get_name_leafdata());
-    if (nhrpservernbmaaddrtype.is_set || is_set(nhrpservernbmaaddrtype.yfilter)) leaf_name_data.push_back(nhrpservernbmaaddrtype.get_name_leafdata());
-    if (nhrpservernbmasubaddr.is_set || is_set(nhrpservernbmasubaddr.yfilter)) leaf_name_data.push_back(nhrpservernbmasubaddr.get_name_leafdata());
-    if (nhrpserverrowstatus.is_set || is_set(nhrpserverrowstatus.yfilter)) leaf_name_data.push_back(nhrpserverrowstatus.get_name_leafdata());
-    if (nhrpserverstoragetype.is_set || is_set(nhrpserverstoragetype.yfilter)) leaf_name_data.push_back(nhrpserverstoragetype.get_name_leafdata());
+    if (nhrpclientindex.is_set || is_set(nhrpclientindex.yfilter)) leaf_name_data.push_back(nhrpclientindex.get_name_leafdata());
+    if (nhrpclientdefaultmtu.is_set || is_set(nhrpclientdefaultmtu.yfilter)) leaf_name_data.push_back(nhrpclientdefaultmtu.get_name_leafdata());
+    if (nhrpclientholdtime.is_set || is_set(nhrpclientholdtime.yfilter)) leaf_name_data.push_back(nhrpclientholdtime.get_name_leafdata());
+    if (nhrpclientinitialrequesttimeout.is_set || is_set(nhrpclientinitialrequesttimeout.yfilter)) leaf_name_data.push_back(nhrpclientinitialrequesttimeout.get_name_leafdata());
+    if (nhrpclientinternetworkaddr.is_set || is_set(nhrpclientinternetworkaddr.yfilter)) leaf_name_data.push_back(nhrpclientinternetworkaddr.get_name_leafdata());
+    if (nhrpclientinternetworkaddrtype.is_set || is_set(nhrpclientinternetworkaddrtype.yfilter)) leaf_name_data.push_back(nhrpclientinternetworkaddrtype.get_name_leafdata());
+    if (nhrpclientnbmaaddr.is_set || is_set(nhrpclientnbmaaddr.yfilter)) leaf_name_data.push_back(nhrpclientnbmaaddr.get_name_leafdata());
+    if (nhrpclientnbmaaddrtype.is_set || is_set(nhrpclientnbmaaddrtype.yfilter)) leaf_name_data.push_back(nhrpclientnbmaaddrtype.get_name_leafdata());
+    if (nhrpclientnbmasubaddr.is_set || is_set(nhrpclientnbmasubaddr.yfilter)) leaf_name_data.push_back(nhrpclientnbmasubaddr.get_name_leafdata());
+    if (nhrpclientpurgerequestretries.is_set || is_set(nhrpclientpurgerequestretries.yfilter)) leaf_name_data.push_back(nhrpclientpurgerequestretries.get_name_leafdata());
+    if (nhrpclientregistrationrequestretries.is_set || is_set(nhrpclientregistrationrequestretries.yfilter)) leaf_name_data.push_back(nhrpclientregistrationrequestretries.get_name_leafdata());
+    if (nhrpclientrequestid.is_set || is_set(nhrpclientrequestid.yfilter)) leaf_name_data.push_back(nhrpclientrequestid.get_name_leafdata());
+    if (nhrpclientresolutionrequestretries.is_set || is_set(nhrpclientresolutionrequestretries.yfilter)) leaf_name_data.push_back(nhrpclientresolutionrequestretries.get_name_leafdata());
+    if (nhrpclientrowstatus.is_set || is_set(nhrpclientrowstatus.yfilter)) leaf_name_data.push_back(nhrpclientrowstatus.get_name_leafdata());
+    if (nhrpclientstoragetype.is_set || is_set(nhrpclientstoragetype.yfilter)) leaf_name_data.push_back(nhrpclientstoragetype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpservertable::Nhrpserverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservertable::Nhrpserverentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpservertable::Nhrpserverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpclienttable::Nhrpcliententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "nhrpServerIndex")
+    if(value_path == "nhrpClientIndex")
     {
-        nhrpserverindex = value;
-        nhrpserverindex.value_namespace = name_space;
-        nhrpserverindex.value_namespace_prefix = name_space_prefix;
+        nhrpclientindex = value;
+        nhrpclientindex.value_namespace = name_space;
+        nhrpclientindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerInternetworkAddr")
+    if(value_path == "nhrpClientDefaultMtu")
     {
-        nhrpserverinternetworkaddr = value;
-        nhrpserverinternetworkaddr.value_namespace = name_space;
-        nhrpserverinternetworkaddr.value_namespace_prefix = name_space_prefix;
+        nhrpclientdefaultmtu = value;
+        nhrpclientdefaultmtu.value_namespace = name_space;
+        nhrpclientdefaultmtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerInternetworkAddrType")
+    if(value_path == "nhrpClientHoldTime")
     {
-        nhrpserverinternetworkaddrtype = value;
-        nhrpserverinternetworkaddrtype.value_namespace = name_space;
-        nhrpserverinternetworkaddrtype.value_namespace_prefix = name_space_prefix;
+        nhrpclientholdtime = value;
+        nhrpclientholdtime.value_namespace = name_space;
+        nhrpclientholdtime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerNbmaAddr")
+    if(value_path == "nhrpClientInitialRequestTimeout")
     {
-        nhrpservernbmaaddr = value;
-        nhrpservernbmaaddr.value_namespace = name_space;
-        nhrpservernbmaaddr.value_namespace_prefix = name_space_prefix;
+        nhrpclientinitialrequesttimeout = value;
+        nhrpclientinitialrequesttimeout.value_namespace = name_space;
+        nhrpclientinitialrequesttimeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerNbmaAddrType")
+    if(value_path == "nhrpClientInternetworkAddr")
     {
-        nhrpservernbmaaddrtype = value;
-        nhrpservernbmaaddrtype.value_namespace = name_space;
-        nhrpservernbmaaddrtype.value_namespace_prefix = name_space_prefix;
+        nhrpclientinternetworkaddr = value;
+        nhrpclientinternetworkaddr.value_namespace = name_space;
+        nhrpclientinternetworkaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerNbmaSubaddr")
+    if(value_path == "nhrpClientInternetworkAddrType")
     {
-        nhrpservernbmasubaddr = value;
-        nhrpservernbmasubaddr.value_namespace = name_space;
-        nhrpservernbmasubaddr.value_namespace_prefix = name_space_prefix;
+        nhrpclientinternetworkaddrtype = value;
+        nhrpclientinternetworkaddrtype.value_namespace = name_space;
+        nhrpclientinternetworkaddrtype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerRowStatus")
+    if(value_path == "nhrpClientNbmaAddr")
     {
-        nhrpserverrowstatus = value;
-        nhrpserverrowstatus.value_namespace = name_space;
-        nhrpserverrowstatus.value_namespace_prefix = name_space_prefix;
+        nhrpclientnbmaaddr = value;
+        nhrpclientnbmaaddr.value_namespace = name_space;
+        nhrpclientnbmaaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nhrpServerStorageType")
+    if(value_path == "nhrpClientNbmaAddrType")
     {
-        nhrpserverstoragetype = value;
-        nhrpserverstoragetype.value_namespace = name_space;
-        nhrpserverstoragetype.value_namespace_prefix = name_space_prefix;
+        nhrpclientnbmaaddrtype = value;
+        nhrpclientnbmaaddrtype.value_namespace = name_space;
+        nhrpclientnbmaaddrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientNbmaSubaddr")
+    {
+        nhrpclientnbmasubaddr = value;
+        nhrpclientnbmasubaddr.value_namespace = name_space;
+        nhrpclientnbmasubaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientPurgeRequestRetries")
+    {
+        nhrpclientpurgerequestretries = value;
+        nhrpclientpurgerequestretries.value_namespace = name_space;
+        nhrpclientpurgerequestretries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRegistrationRequestRetries")
+    {
+        nhrpclientregistrationrequestretries = value;
+        nhrpclientregistrationrequestretries.value_namespace = name_space;
+        nhrpclientregistrationrequestretries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRequestID")
+    {
+        nhrpclientrequestid = value;
+        nhrpclientrequestid.value_namespace = name_space;
+        nhrpclientrequestid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientResolutionRequestRetries")
+    {
+        nhrpclientresolutionrequestretries = value;
+        nhrpclientresolutionrequestretries.value_namespace = name_space;
+        nhrpclientresolutionrequestretries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientRowStatus")
+    {
+        nhrpclientrowstatus = value;
+        nhrpclientrowstatus.value_namespace = name_space;
+        nhrpclientrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpClientStorageType")
+    {
+        nhrpclientstoragetype = value;
+        nhrpclientstoragetype.value_namespace = name_space;
+        nhrpclientstoragetype.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void NhrpMib::Nhrpservertable::Nhrpserverentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpclienttable::Nhrpcliententry::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "nhrpServerIndex")
+    if(value_path == "nhrpClientIndex")
     {
-        nhrpserverindex.yfilter = yfilter;
+        nhrpclientindex.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerInternetworkAddr")
+    if(value_path == "nhrpClientDefaultMtu")
     {
-        nhrpserverinternetworkaddr.yfilter = yfilter;
+        nhrpclientdefaultmtu.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerInternetworkAddrType")
+    if(value_path == "nhrpClientHoldTime")
     {
-        nhrpserverinternetworkaddrtype.yfilter = yfilter;
+        nhrpclientholdtime.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerNbmaAddr")
+    if(value_path == "nhrpClientInitialRequestTimeout")
     {
-        nhrpservernbmaaddr.yfilter = yfilter;
+        nhrpclientinitialrequesttimeout.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerNbmaAddrType")
+    if(value_path == "nhrpClientInternetworkAddr")
     {
-        nhrpservernbmaaddrtype.yfilter = yfilter;
+        nhrpclientinternetworkaddr.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerNbmaSubaddr")
+    if(value_path == "nhrpClientInternetworkAddrType")
     {
-        nhrpservernbmasubaddr.yfilter = yfilter;
+        nhrpclientinternetworkaddrtype.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerRowStatus")
+    if(value_path == "nhrpClientNbmaAddr")
     {
-        nhrpserverrowstatus.yfilter = yfilter;
+        nhrpclientnbmaaddr.yfilter = yfilter;
     }
-    if(value_path == "nhrpServerStorageType")
+    if(value_path == "nhrpClientNbmaAddrType")
     {
-        nhrpserverstoragetype.yfilter = yfilter;
+        nhrpclientnbmaaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientNbmaSubaddr")
+    {
+        nhrpclientnbmasubaddr.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientPurgeRequestRetries")
+    {
+        nhrpclientpurgerequestretries.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRegistrationRequestRetries")
+    {
+        nhrpclientregistrationrequestretries.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRequestID")
+    {
+        nhrpclientrequestid.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientResolutionRequestRetries")
+    {
+        nhrpclientresolutionrequestretries.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientRowStatus")
+    {
+        nhrpclientrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "nhrpClientStorageType")
+    {
+        nhrpclientstoragetype.yfilter = yfilter;
     }
 }
 
-bool NhrpMib::Nhrpservertable::Nhrpserverentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpclienttable::Nhrpcliententry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nhrpServerIndex" || name == "nhrpServerInternetworkAddr" || name == "nhrpServerInternetworkAddrType" || name == "nhrpServerNbmaAddr" || name == "nhrpServerNbmaAddrType" || name == "nhrpServerNbmaSubaddr" || name == "nhrpServerRowStatus" || name == "nhrpServerStorageType")
+    if(name == "nhrpClientIndex" || name == "nhrpClientDefaultMtu" || name == "nhrpClientHoldTime" || name == "nhrpClientInitialRequestTimeout" || name == "nhrpClientInternetworkAddr" || name == "nhrpClientInternetworkAddrType" || name == "nhrpClientNbmaAddr" || name == "nhrpClientNbmaAddrType" || name == "nhrpClientNbmaSubaddr" || name == "nhrpClientPurgeRequestRetries" || name == "nhrpClientRegistrationRequestRetries" || name == "nhrpClientRequestID" || name == "nhrpClientResolutionRequestRetries" || name == "nhrpClientRowStatus" || name == "nhrpClientStorageType")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpservercachetable::Nhrpservercachetable()
+NHRPMIB::Nhrpgeneralobjects::Nhrpgeneralobjects()
+    :
+    nhrpnextindex{YType::uint32, "nhrpNextIndex"}
 {
-    yang_name = "nhrpServerCacheTable"; yang_parent_name = "NHRP-MIB";
+
+    yang_name = "nhrpGeneralObjects"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpservercachetable::~Nhrpservercachetable()
+NHRPMIB::Nhrpgeneralobjects::~Nhrpgeneralobjects()
 {
 }
 
-bool NhrpMib::Nhrpservercachetable::has_data() const
+bool NHRPMIB::Nhrpgeneralobjects::has_data() const
+{
+    return nhrpnextindex.is_set;
+}
+
+bool NHRPMIB::Nhrpgeneralobjects::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nhrpnextindex.yfilter);
+}
+
+std::string NHRPMIB::Nhrpgeneralobjects::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpgeneralobjects::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpGeneralObjects";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpgeneralobjects::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nhrpnextindex.is_set || is_set(nhrpnextindex.yfilter)) leaf_name_data.push_back(nhrpnextindex.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrpgeneralobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpgeneralobjects::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NHRPMIB::Nhrpgeneralobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nhrpNextIndex")
+    {
+        nhrpnextindex = value;
+        nhrpnextindex.value_namespace = name_space;
+        nhrpnextindex.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NHRPMIB::Nhrpgeneralobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nhrpNextIndex")
+    {
+        nhrpnextindex.yfilter = yfilter;
+    }
+}
+
+bool NHRPMIB::Nhrpgeneralobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpNextIndex")
+        return true;
+    return false;
+}
+
+NHRPMIB::Nhrppurgereqtable::Nhrppurgereqtable()
+{
+
+    yang_name = "nhrpPurgeReqTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NHRPMIB::Nhrppurgereqtable::~Nhrppurgereqtable()
+{
+}
+
+bool NHRPMIB::Nhrppurgereqtable::has_data() const
+{
+    for (std::size_t index=0; index<nhrppurgereqentry.size(); index++)
+    {
+        if(nhrppurgereqentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NHRPMIB::Nhrppurgereqtable::has_operation() const
+{
+    for (std::size_t index=0; index<nhrppurgereqentry.size(); index++)
+    {
+        if(nhrppurgereqentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NHRPMIB::Nhrppurgereqtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrppurgereqtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpPurgeReqTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrppurgereqtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrppurgereqtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nhrpPurgeReqEntry")
+    {
+        for(auto const & c : nhrppurgereqentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry>();
+        c->parent = this;
+        nhrppurgereqentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrppurgereqtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : nhrppurgereqentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NHRPMIB::Nhrppurgereqtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NHRPMIB::Nhrppurgereqtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NHRPMIB::Nhrppurgereqtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpPurgeReqEntry")
+        return true;
+    return false;
+}
+
+NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::Nhrppurgereqentry()
+    :
+    nhrppurgeindex{YType::uint32, "nhrpPurgeIndex"},
+    nhrppurgecacheidentifier{YType::uint32, "nhrpPurgeCacheIdentifier"},
+    nhrppurgeprefixlength{YType::int32, "nhrpPurgePrefixLength"},
+    nhrppurgereplyexpected{YType::boolean, "nhrpPurgeReplyExpected"},
+    nhrppurgerequestid{YType::uint32, "nhrpPurgeRequestID"},
+    nhrppurgerowstatus{YType::enumeration, "nhrpPurgeRowStatus"}
+{
+
+    yang_name = "nhrpPurgeReqEntry"; yang_parent_name = "nhrpPurgeReqTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::~Nhrppurgereqentry()
+{
+}
+
+bool NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::has_data() const
+{
+    return nhrppurgeindex.is_set
+	|| nhrppurgecacheidentifier.is_set
+	|| nhrppurgeprefixlength.is_set
+	|| nhrppurgereplyexpected.is_set
+	|| nhrppurgerequestid.is_set
+	|| nhrppurgerowstatus.is_set;
+}
+
+bool NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nhrppurgeindex.yfilter)
+	|| ydk::is_set(nhrppurgecacheidentifier.yfilter)
+	|| ydk::is_set(nhrppurgeprefixlength.yfilter)
+	|| ydk::is_set(nhrppurgereplyexpected.yfilter)
+	|| ydk::is_set(nhrppurgerequestid.yfilter)
+	|| ydk::is_set(nhrppurgerowstatus.yfilter);
+}
+
+std::string NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpPurgeReqTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpPurgeReqEntry" <<"[nhrpPurgeIndex='" <<nhrppurgeindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nhrppurgeindex.is_set || is_set(nhrppurgeindex.yfilter)) leaf_name_data.push_back(nhrppurgeindex.get_name_leafdata());
+    if (nhrppurgecacheidentifier.is_set || is_set(nhrppurgecacheidentifier.yfilter)) leaf_name_data.push_back(nhrppurgecacheidentifier.get_name_leafdata());
+    if (nhrppurgeprefixlength.is_set || is_set(nhrppurgeprefixlength.yfilter)) leaf_name_data.push_back(nhrppurgeprefixlength.get_name_leafdata());
+    if (nhrppurgereplyexpected.is_set || is_set(nhrppurgereplyexpected.yfilter)) leaf_name_data.push_back(nhrppurgereplyexpected.get_name_leafdata());
+    if (nhrppurgerequestid.is_set || is_set(nhrppurgerequestid.yfilter)) leaf_name_data.push_back(nhrppurgerequestid.get_name_leafdata());
+    if (nhrppurgerowstatus.is_set || is_set(nhrppurgerowstatus.yfilter)) leaf_name_data.push_back(nhrppurgerowstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nhrpPurgeIndex")
+    {
+        nhrppurgeindex = value;
+        nhrppurgeindex.value_namespace = name_space;
+        nhrppurgeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpPurgeCacheIdentifier")
+    {
+        nhrppurgecacheidentifier = value;
+        nhrppurgecacheidentifier.value_namespace = name_space;
+        nhrppurgecacheidentifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpPurgePrefixLength")
+    {
+        nhrppurgeprefixlength = value;
+        nhrppurgeprefixlength.value_namespace = name_space;
+        nhrppurgeprefixlength.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpPurgeReplyExpected")
+    {
+        nhrppurgereplyexpected = value;
+        nhrppurgereplyexpected.value_namespace = name_space;
+        nhrppurgereplyexpected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpPurgeRequestID")
+    {
+        nhrppurgerequestid = value;
+        nhrppurgerequestid.value_namespace = name_space;
+        nhrppurgerequestid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpPurgeRowStatus")
+    {
+        nhrppurgerowstatus = value;
+        nhrppurgerowstatus.value_namespace = name_space;
+        nhrppurgerowstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nhrpPurgeIndex")
+    {
+        nhrppurgeindex.yfilter = yfilter;
+    }
+    if(value_path == "nhrpPurgeCacheIdentifier")
+    {
+        nhrppurgecacheidentifier.yfilter = yfilter;
+    }
+    if(value_path == "nhrpPurgePrefixLength")
+    {
+        nhrppurgeprefixlength.yfilter = yfilter;
+    }
+    if(value_path == "nhrpPurgeReplyExpected")
+    {
+        nhrppurgereplyexpected.yfilter = yfilter;
+    }
+    if(value_path == "nhrpPurgeRequestID")
+    {
+        nhrppurgerequestid.yfilter = yfilter;
+    }
+    if(value_path == "nhrpPurgeRowStatus")
+    {
+        nhrppurgerowstatus.yfilter = yfilter;
+    }
+}
+
+bool NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpPurgeIndex" || name == "nhrpPurgeCacheIdentifier" || name == "nhrpPurgePrefixLength" || name == "nhrpPurgeReplyExpected" || name == "nhrpPurgeRequestID" || name == "nhrpPurgeRowStatus")
+        return true;
+    return false;
+}
+
+NHRPMIB::Nhrpservercachetable::Nhrpservercachetable()
+{
+
+    yang_name = "nhrpServerCacheTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NHRPMIB::Nhrpservercachetable::~Nhrpservercachetable()
+{
+}
+
+bool NHRPMIB::Nhrpservercachetable::has_data() const
 {
     for (std::size_t index=0; index<nhrpservercacheentry.size(); index++)
     {
@@ -2896,7 +2505,7 @@ bool NhrpMib::Nhrpservercachetable::has_data() const
     return false;
 }
 
-bool NhrpMib::Nhrpservercachetable::has_operation() const
+bool NHRPMIB::Nhrpservercachetable::has_operation() const
 {
     for (std::size_t index=0; index<nhrpservercacheentry.size(); index++)
     {
@@ -2906,37 +2515,30 @@ bool NhrpMib::Nhrpservercachetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpservercachetable::get_segment_path() const
+std::string NHRPMIB::Nhrpservercachetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpservercachetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpServerCacheTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpservercachetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpservercachetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpservercachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpServerCacheEntry")
     {
@@ -2948,7 +2550,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::get_child_by_name(const s
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpservercachetable::Nhrpservercacheentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry>();
         c->parent = this;
         nhrpservercacheentry.push_back(c);
         return c;
@@ -2957,7 +2559,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservercachetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservercachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nhrpservercacheentry)
@@ -2968,22 +2570,22 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservercachetable::ge
     return children;
 }
 
-void NhrpMib::Nhrpservercachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpservercachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpservercachetable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpservercachetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpservercachetable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpservercachetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpServerCacheEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::Nhrpservercacheentry()
+NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::Nhrpservercacheentry()
     :
     nhrpcacheinternetworkaddrtype{YType::enumeration, "nhrpCacheInternetworkAddrType"},
     nhrpcacheinternetworkaddr{YType::str, "nhrpCacheInternetworkAddr"},
@@ -2992,14 +2594,15 @@ NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::Nhrpservercacheentry()
     nhrpservercacheauthoritative{YType::boolean, "nhrpServerCacheAuthoritative"},
     nhrpservercacheuniqueness{YType::boolean, "nhrpServerCacheUniqueness"}
 {
-    yang_name = "nhrpServerCacheEntry"; yang_parent_name = "nhrpServerCacheTable";
+
+    yang_name = "nhrpServerCacheEntry"; yang_parent_name = "nhrpServerCacheTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::~Nhrpservercacheentry()
+NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::~Nhrpservercacheentry()
 {
 }
 
-bool NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::has_data() const
+bool NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::has_data() const
 {
     return nhrpcacheinternetworkaddrtype.is_set
 	|| nhrpcacheinternetworkaddr.is_set
@@ -3009,7 +2612,7 @@ bool NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::has_data() const
 	|| nhrpservercacheuniqueness.is_set;
 }
 
-bool NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::has_operation() const
+bool NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nhrpcacheinternetworkaddrtype.yfilter)
@@ -3020,27 +2623,22 @@ bool NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::has_operation() const
 	|| ydk::is_set(nhrpservercacheuniqueness.yfilter);
 }
 
-std::string NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::get_segment_path() const
+std::string NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerCacheTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpServerCacheEntry" <<"[nhrpCacheInternetworkAddrType='" <<nhrpcacheinternetworkaddrtype <<"']" <<"[nhrpCacheInternetworkAddr='" <<nhrpcacheinternetworkaddr <<"']" <<"[ifIndex='" <<ifindex <<"']" <<"[nhrpCacheIndex='" <<nhrpcacheindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerCacheTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nhrpcacheinternetworkaddrtype.is_set || is_set(nhrpcacheinternetworkaddrtype.yfilter)) leaf_name_data.push_back(nhrpcacheinternetworkaddrtype.get_name_leafdata());
@@ -3050,24 +2648,22 @@ const EntityPath NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::get_entity
     if (nhrpservercacheauthoritative.is_set || is_set(nhrpservercacheauthoritative.yfilter)) leaf_name_data.push_back(nhrpservercacheauthoritative.get_name_leafdata());
     if (nhrpservercacheuniqueness.is_set || is_set(nhrpservercacheuniqueness.yfilter)) leaf_name_data.push_back(nhrpservercacheuniqueness.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nhrpCacheInternetworkAddrType")
     {
@@ -3107,7 +2703,7 @@ void NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::set_value(const std::s
     }
 }
 
-void NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nhrpCacheInternetworkAddrType")
     {
@@ -3135,23 +2731,24 @@ void NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::set_filter(const std::
     }
 }
 
-bool NhrpMib::Nhrpservercachetable::Nhrpservercacheentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpCacheInternetworkAddrType" || name == "nhrpCacheInternetworkAddr" || name == "ifIndex" || name == "nhrpCacheIndex" || name == "nhrpServerCacheAuthoritative" || name == "nhrpServerCacheUniqueness")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpservernhctable::Nhrpservernhctable()
+NHRPMIB::Nhrpservernhctable::Nhrpservernhctable()
 {
-    yang_name = "nhrpServerNhcTable"; yang_parent_name = "NHRP-MIB";
+
+    yang_name = "nhrpServerNhcTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpservernhctable::~Nhrpservernhctable()
+NHRPMIB::Nhrpservernhctable::~Nhrpservernhctable()
 {
 }
 
-bool NhrpMib::Nhrpservernhctable::has_data() const
+bool NHRPMIB::Nhrpservernhctable::has_data() const
 {
     for (std::size_t index=0; index<nhrpservernhcentry.size(); index++)
     {
@@ -3161,7 +2758,7 @@ bool NhrpMib::Nhrpservernhctable::has_data() const
     return false;
 }
 
-bool NhrpMib::Nhrpservernhctable::has_operation() const
+bool NHRPMIB::Nhrpservernhctable::has_operation() const
 {
     for (std::size_t index=0; index<nhrpservernhcentry.size(); index++)
     {
@@ -3171,37 +2768,30 @@ bool NhrpMib::Nhrpservernhctable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpservernhctable::get_segment_path() const
+std::string NHRPMIB::Nhrpservernhctable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpservernhctable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpServerNhcTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpservernhctable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpservernhctable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpservernhctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpServerNhcEntry")
     {
@@ -3213,7 +2803,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::get_child_by_name(const std
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpservernhctable::Nhrpservernhcentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry>();
         c->parent = this;
         nhrpservernhcentry.push_back(c);
         return c;
@@ -3222,7 +2812,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservernhctable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservernhctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nhrpservernhcentry)
@@ -3233,22 +2823,22 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservernhctable::get_
     return children;
 }
 
-void NhrpMib::Nhrpservernhctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpservernhctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpservernhctable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpservernhctable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpservernhctable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpservernhctable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpServerNhcEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::Nhrpservernhcentry()
+NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::Nhrpservernhcentry()
     :
     nhrpserverindex{YType::str, "nhrpServerIndex"},
     nhrpservernhcindex{YType::uint32, "nhrpServerNhcIndex"},
@@ -3261,14 +2851,15 @@ NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::Nhrpservernhcentry()
     nhrpservernhcprefixlength{YType::int32, "nhrpServerNhcPrefixLength"},
     nhrpservernhcrowstatus{YType::enumeration, "nhrpServerNhcRowStatus"}
 {
-    yang_name = "nhrpServerNhcEntry"; yang_parent_name = "nhrpServerNhcTable";
+
+    yang_name = "nhrpServerNhcEntry"; yang_parent_name = "nhrpServerNhcTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::~Nhrpservernhcentry()
+NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::~Nhrpservernhcentry()
 {
 }
 
-bool NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::has_data() const
+bool NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::has_data() const
 {
     return nhrpserverindex.is_set
 	|| nhrpservernhcindex.is_set
@@ -3282,7 +2873,7 @@ bool NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::has_data() const
 	|| nhrpservernhcrowstatus.is_set;
 }
 
-bool NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::has_operation() const
+bool NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nhrpserverindex.yfilter)
@@ -3297,27 +2888,22 @@ bool NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::has_operation() const
 	|| ydk::is_set(nhrpservernhcrowstatus.yfilter);
 }
 
-std::string NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::get_segment_path() const
+std::string NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerNhcTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpServerNhcEntry" <<"[nhrpServerIndex='" <<nhrpserverindex <<"']" <<"[nhrpServerNhcIndex='" <<nhrpservernhcindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerNhcTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nhrpserverindex.is_set || is_set(nhrpserverindex.yfilter)) leaf_name_data.push_back(nhrpserverindex.get_name_leafdata());
@@ -3331,24 +2917,22 @@ const EntityPath NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::get_entity_pat
     if (nhrpservernhcprefixlength.is_set || is_set(nhrpservernhcprefixlength.yfilter)) leaf_name_data.push_back(nhrpservernhcprefixlength.get_name_leafdata());
     if (nhrpservernhcrowstatus.is_set || is_set(nhrpservernhcrowstatus.yfilter)) leaf_name_data.push_back(nhrpservernhcrowstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nhrpServerIndex")
     {
@@ -3412,7 +2996,7 @@ void NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::set_value(const std::strin
     }
 }
 
-void NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nhrpServerIndex")
     {
@@ -3456,23 +3040,24 @@ void NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::set_filter(const std::stri
     }
 }
 
-bool NhrpMib::Nhrpservernhctable::Nhrpservernhcentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpServerIndex" || name == "nhrpServerNhcIndex" || name == "nhrpServerNhcInternetworkAddr" || name == "nhrpServerNhcInternetworkAddrType" || name == "nhrpServerNhcInUse" || name == "nhrpServerNhcNbmaAddr" || name == "nhrpServerNhcNbmaAddrType" || name == "nhrpServerNhcNbmaSubaddr" || name == "nhrpServerNhcPrefixLength" || name == "nhrpServerNhcRowStatus")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpserverstattable::Nhrpserverstattable()
+NHRPMIB::Nhrpserverstattable::Nhrpserverstattable()
 {
-    yang_name = "nhrpServerStatTable"; yang_parent_name = "NHRP-MIB";
+
+    yang_name = "nhrpServerStatTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpserverstattable::~Nhrpserverstattable()
+NHRPMIB::Nhrpserverstattable::~Nhrpserverstattable()
 {
 }
 
-bool NhrpMib::Nhrpserverstattable::has_data() const
+bool NHRPMIB::Nhrpserverstattable::has_data() const
 {
     for (std::size_t index=0; index<nhrpserverstatentry.size(); index++)
     {
@@ -3482,7 +3067,7 @@ bool NhrpMib::Nhrpserverstattable::has_data() const
     return false;
 }
 
-bool NhrpMib::Nhrpserverstattable::has_operation() const
+bool NHRPMIB::Nhrpserverstattable::has_operation() const
 {
     for (std::size_t index=0; index<nhrpserverstatentry.size(); index++)
     {
@@ -3492,37 +3077,30 @@ bool NhrpMib::Nhrpserverstattable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NhrpMib::Nhrpserverstattable::get_segment_path() const
+std::string NHRPMIB::Nhrpserverstattable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpserverstattable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpServerStatTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpserverstattable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpserverstattable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpserverstattable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nhrpServerStatEntry")
     {
@@ -3534,7 +3112,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::get_child_by_name(const st
                 return c;
             }
         }
-        auto c = std::make_shared<NhrpMib::Nhrpserverstattable::Nhrpserverstatentry>();
+        auto c = std::make_shared<NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry>();
         c->parent = this;
         nhrpserverstatentry.push_back(c);
         return c;
@@ -3543,7 +3121,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpserverstattable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpserverstattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nhrpserverstatentry)
@@ -3554,22 +3132,22 @@ std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpserverstattable::get
     return children;
 }
 
-void NhrpMib::Nhrpserverstattable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpserverstattable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NhrpMib::Nhrpserverstattable::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpserverstattable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NhrpMib::Nhrpserverstattable::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpserverstattable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpServerStatEntry")
         return true;
     return false;
 }
 
-NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::Nhrpserverstatentry()
+NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::Nhrpserverstatentry()
     :
     nhrpserverindex{YType::str, "nhrpServerIndex"},
     nhrpserverstatdiscontinuitytime{YType::uint32, "nhrpServerStatDiscontinuityTime"},
@@ -3613,14 +3191,15 @@ NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::Nhrpserverstatentry()
     nhrpserverstattxresolvereplynaknotunique{YType::uint32, "nhrpServerStatTxResolveReplyNakNotUnique"},
     nhrpserverstattxresolvereplynakprohibited{YType::uint32, "nhrpServerStatTxResolveReplyNakProhibited"}
 {
-    yang_name = "nhrpServerStatEntry"; yang_parent_name = "nhrpServerStatTable";
+
+    yang_name = "nhrpServerStatEntry"; yang_parent_name = "nhrpServerStatTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::~Nhrpserverstatentry()
+NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::~Nhrpserverstatentry()
 {
 }
 
-bool NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::has_data() const
+bool NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::has_data() const
 {
     return nhrpserverindex.is_set
 	|| nhrpserverstatdiscontinuitytime.is_set
@@ -3665,7 +3244,7 @@ bool NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::has_data() const
 	|| nhrpserverstattxresolvereplynakprohibited.is_set;
 }
 
-bool NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::has_operation() const
+bool NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nhrpserverindex.yfilter)
@@ -3711,27 +3290,22 @@ bool NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::has_operation() const
 	|| ydk::is_set(nhrpserverstattxresolvereplynakprohibited.yfilter);
 }
 
-std::string NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::get_segment_path() const
+std::string NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerStatTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nhrpServerStatEntry" <<"[nhrpServerIndex='" <<nhrpserverindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerStatTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nhrpserverindex.is_set || is_set(nhrpserverindex.yfilter)) leaf_name_data.push_back(nhrpserverindex.get_name_leafdata());
@@ -3776,24 +3350,22 @@ const EntityPath NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::get_entity_p
     if (nhrpserverstattxresolvereplynaknotunique.is_set || is_set(nhrpserverstattxresolvereplynaknotunique.yfilter)) leaf_name_data.push_back(nhrpserverstattxresolvereplynaknotunique.get_name_leafdata());
     if (nhrpserverstattxresolvereplynakprohibited.is_set || is_set(nhrpserverstattxresolvereplynakprohibited.yfilter)) leaf_name_data.push_back(nhrpserverstattxresolvereplynakprohibited.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nhrpServerIndex")
     {
@@ -4043,7 +3615,7 @@ void NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::set_value(const std::str
     }
 }
 
-void NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nhrpServerIndex")
     {
@@ -4211,33 +3783,314 @@ void NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::set_filter(const std::st
     }
 }
 
-bool NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nhrpServerIndex" || name == "nhrpServerStatDiscontinuityTime" || name == "nhrpServerStatFwErrorIndication" || name == "nhrpServerStatFwPurgeReply" || name == "nhrpServerStatFwPurgeReq" || name == "nhrpServerStatFwRegisterReply" || name == "nhrpServerStatFwRegisterReq" || name == "nhrpServerStatFwResolveReply" || name == "nhrpServerStatFwResolveReq" || name == "nhrpServerStatRxErrAuthenticationFailure" || name == "nhrpServerStatRxErrHopCountExceeded" || name == "nhrpServerStatRxErrInvalidExtension" || name == "nhrpServerStatRxErrInvalidResReplyReceived" || name == "nhrpServerStatRxErrLoopDetected" || name == "nhrpServerStatRxErrProtoAddrUnreachable" || name == "nhrpServerStatRxErrProtoError" || name == "nhrpServerStatRxErrSduSizeExceeded" || name == "nhrpServerStatRxErrUnrecognizedExtension" || name == "nhrpServerStatRxPurgeReply" || name == "nhrpServerStatRxPurgeReq" || name == "nhrpServerStatRxRegisterReq" || name == "nhrpServerStatRxResolveReq" || name == "nhrpServerStatTxErrAuthenticationFailure" || name == "nhrpServerStatTxErrHopCountExceeded" || name == "nhrpServerStatTxErrInvalidExtension" || name == "nhrpServerStatTxErrLoopDetected" || name == "nhrpServerStatTxErrProtoAddrUnreachable" || name == "nhrpServerStatTxErrProtoError" || name == "nhrpServerStatTxErrSduSizeExceeded" || name == "nhrpServerStatTxErrUnrecognizedExtension" || name == "nhrpServerStatTxPurgeReply" || name == "nhrpServerStatTxPurgeReq" || name == "nhrpServerStatTxRegisterAck" || name == "nhrpServerStatTxRegisterNakAlreadyReg" || name == "nhrpServerStatTxRegisterNakInsufResources" || name == "nhrpServerStatTxRegisterNakProhibited" || name == "nhrpServerStatTxResolveReplyAck" || name == "nhrpServerStatTxResolveReplyNakInsufResources" || name == "nhrpServerStatTxResolveReplyNakNoBinding" || name == "nhrpServerStatTxResolveReplyNakNotUnique" || name == "nhrpServerStatTxResolveReplyNakProhibited")
         return true;
     return false;
 }
 
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::other {1, "other"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::register_ {2, "register"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::resolveAuthoritative {3, "resolveAuthoritative"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::resoveNonauthoritative {4, "resoveNonauthoritative"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::transit {5, "transit"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::administrativelyAdded {6, "administrativelyAdded"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::atmarp {7, "atmarp"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::scsp {8, "scsp"};
+NHRPMIB::Nhrpservertable::Nhrpservertable()
+{
 
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate::incomplete {1, "incomplete"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate::ackReply {2, "ackReply"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate::nakReply {3, "nakReply"};
+    yang_name = "nhrpServerTable"; yang_parent_name = "NHRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
 
-const Enum::YLeaf NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientreguniqueness::requestUnique {1, "requestUnique"};
-const Enum::YLeaf NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientreguniqueness::requestNotUnique {2, "requestNotUnique"};
+NHRPMIB::Nhrpservertable::~Nhrpservertable()
+{
+}
 
-const Enum::YLeaf NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::other {1, "other"};
-const Enum::YLeaf NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::registering {2, "registering"};
-const Enum::YLeaf NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::ackRegisterReply {3, "ackRegisterReply"};
-const Enum::YLeaf NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::nakRegisterReply {4, "nakRegisterReply"};
+bool NHRPMIB::Nhrpservertable::has_data() const
+{
+    for (std::size_t index=0; index<nhrpserverentry.size(); index++)
+    {
+        if(nhrpserverentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NHRPMIB::Nhrpservertable::has_operation() const
+{
+    for (std::size_t index=0; index<nhrpserverentry.size(); index++)
+    {
+        if(nhrpserverentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NHRPMIB::Nhrpservertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpservertable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpServerTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpservertable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrpservertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nhrpServerEntry")
+    {
+        for(auto const & c : nhrpserverentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NHRPMIB::Nhrpservertable::Nhrpserverentry>();
+        c->parent = this;
+        nhrpserverentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservertable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : nhrpserverentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NHRPMIB::Nhrpservertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NHRPMIB::Nhrpservertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NHRPMIB::Nhrpservertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpServerEntry")
+        return true;
+    return false;
+}
+
+NHRPMIB::Nhrpservertable::Nhrpserverentry::Nhrpserverentry()
+    :
+    nhrpserverindex{YType::uint32, "nhrpServerIndex"},
+    nhrpserverinternetworkaddr{YType::str, "nhrpServerInternetworkAddr"},
+    nhrpserverinternetworkaddrtype{YType::enumeration, "nhrpServerInternetworkAddrType"},
+    nhrpservernbmaaddr{YType::str, "nhrpServerNbmaAddr"},
+    nhrpservernbmaaddrtype{YType::enumeration, "nhrpServerNbmaAddrType"},
+    nhrpservernbmasubaddr{YType::str, "nhrpServerNbmaSubaddr"},
+    nhrpserverrowstatus{YType::enumeration, "nhrpServerRowStatus"},
+    nhrpserverstoragetype{YType::enumeration, "nhrpServerStorageType"}
+{
+
+    yang_name = "nhrpServerEntry"; yang_parent_name = "nhrpServerTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NHRPMIB::Nhrpservertable::Nhrpserverentry::~Nhrpserverentry()
+{
+}
+
+bool NHRPMIB::Nhrpservertable::Nhrpserverentry::has_data() const
+{
+    return nhrpserverindex.is_set
+	|| nhrpserverinternetworkaddr.is_set
+	|| nhrpserverinternetworkaddrtype.is_set
+	|| nhrpservernbmaaddr.is_set
+	|| nhrpservernbmaaddrtype.is_set
+	|| nhrpservernbmasubaddr.is_set
+	|| nhrpserverrowstatus.is_set
+	|| nhrpserverstoragetype.is_set;
+}
+
+bool NHRPMIB::Nhrpservertable::Nhrpserverentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nhrpserverindex.yfilter)
+	|| ydk::is_set(nhrpserverinternetworkaddr.yfilter)
+	|| ydk::is_set(nhrpserverinternetworkaddrtype.yfilter)
+	|| ydk::is_set(nhrpservernbmaaddr.yfilter)
+	|| ydk::is_set(nhrpservernbmaaddrtype.yfilter)
+	|| ydk::is_set(nhrpservernbmasubaddr.yfilter)
+	|| ydk::is_set(nhrpserverrowstatus.yfilter)
+	|| ydk::is_set(nhrpserverstoragetype.yfilter);
+}
+
+std::string NHRPMIB::Nhrpservertable::Nhrpserverentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NHRP-MIB:NHRP-MIB/nhrpServerTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NHRPMIB::Nhrpservertable::Nhrpserverentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nhrpServerEntry" <<"[nhrpServerIndex='" <<nhrpserverindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NHRPMIB::Nhrpservertable::Nhrpserverentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nhrpserverindex.is_set || is_set(nhrpserverindex.yfilter)) leaf_name_data.push_back(nhrpserverindex.get_name_leafdata());
+    if (nhrpserverinternetworkaddr.is_set || is_set(nhrpserverinternetworkaddr.yfilter)) leaf_name_data.push_back(nhrpserverinternetworkaddr.get_name_leafdata());
+    if (nhrpserverinternetworkaddrtype.is_set || is_set(nhrpserverinternetworkaddrtype.yfilter)) leaf_name_data.push_back(nhrpserverinternetworkaddrtype.get_name_leafdata());
+    if (nhrpservernbmaaddr.is_set || is_set(nhrpservernbmaaddr.yfilter)) leaf_name_data.push_back(nhrpservernbmaaddr.get_name_leafdata());
+    if (nhrpservernbmaaddrtype.is_set || is_set(nhrpservernbmaaddrtype.yfilter)) leaf_name_data.push_back(nhrpservernbmaaddrtype.get_name_leafdata());
+    if (nhrpservernbmasubaddr.is_set || is_set(nhrpservernbmasubaddr.yfilter)) leaf_name_data.push_back(nhrpservernbmasubaddr.get_name_leafdata());
+    if (nhrpserverrowstatus.is_set || is_set(nhrpserverrowstatus.yfilter)) leaf_name_data.push_back(nhrpserverrowstatus.get_name_leafdata());
+    if (nhrpserverstoragetype.is_set || is_set(nhrpserverstoragetype.yfilter)) leaf_name_data.push_back(nhrpserverstoragetype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NHRPMIB::Nhrpservertable::Nhrpserverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservertable::Nhrpserverentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NHRPMIB::Nhrpservertable::Nhrpserverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nhrpServerIndex")
+    {
+        nhrpserverindex = value;
+        nhrpserverindex.value_namespace = name_space;
+        nhrpserverindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerInternetworkAddr")
+    {
+        nhrpserverinternetworkaddr = value;
+        nhrpserverinternetworkaddr.value_namespace = name_space;
+        nhrpserverinternetworkaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerInternetworkAddrType")
+    {
+        nhrpserverinternetworkaddrtype = value;
+        nhrpserverinternetworkaddrtype.value_namespace = name_space;
+        nhrpserverinternetworkaddrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerNbmaAddr")
+    {
+        nhrpservernbmaaddr = value;
+        nhrpservernbmaaddr.value_namespace = name_space;
+        nhrpservernbmaaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerNbmaAddrType")
+    {
+        nhrpservernbmaaddrtype = value;
+        nhrpservernbmaaddrtype.value_namespace = name_space;
+        nhrpservernbmaaddrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerNbmaSubaddr")
+    {
+        nhrpservernbmasubaddr = value;
+        nhrpservernbmasubaddr.value_namespace = name_space;
+        nhrpservernbmasubaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerRowStatus")
+    {
+        nhrpserverrowstatus = value;
+        nhrpserverrowstatus.value_namespace = name_space;
+        nhrpserverrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhrpServerStorageType")
+    {
+        nhrpserverstoragetype = value;
+        nhrpserverstoragetype.value_namespace = name_space;
+        nhrpserverstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NHRPMIB::Nhrpservertable::Nhrpserverentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nhrpServerIndex")
+    {
+        nhrpserverindex.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerInternetworkAddr")
+    {
+        nhrpserverinternetworkaddr.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerInternetworkAddrType")
+    {
+        nhrpserverinternetworkaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerNbmaAddr")
+    {
+        nhrpservernbmaaddr.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerNbmaAddrType")
+    {
+        nhrpservernbmaaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerNbmaSubaddr")
+    {
+        nhrpservernbmasubaddr.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerRowStatus")
+    {
+        nhrpserverrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "nhrpServerStorageType")
+    {
+        nhrpserverstoragetype.yfilter = yfilter;
+    }
+}
+
+bool NHRPMIB::Nhrpservertable::Nhrpserverentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nhrpServerIndex" || name == "nhrpServerInternetworkAddr" || name == "nhrpServerInternetworkAddrType" || name == "nhrpServerNbmaAddr" || name == "nhrpServerNbmaAddrType" || name == "nhrpServerNbmaSubaddr" || name == "nhrpServerRowStatus" || name == "nhrpServerStorageType")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::other {1, "other"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::register_ {2, "register"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::resolveAuthoritative {3, "resolveAuthoritative"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::resoveNonauthoritative {4, "resoveNonauthoritative"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::transit {5, "transit"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::administrativelyAdded {6, "administrativelyAdded"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::atmarp {7, "atmarp"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype::scsp {8, "scsp"};
+
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate::incomplete {1, "incomplete"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate::ackReply {2, "ackReply"};
+const Enum::YLeaf NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate::nakReply {3, "nakReply"};
+
+const Enum::YLeaf NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientreguniqueness::requestUnique {1, "requestUnique"};
+const Enum::YLeaf NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientreguniqueness::requestNotUnique {2, "requestNotUnique"};
+
+const Enum::YLeaf NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::other {1, "other"};
+const Enum::YLeaf NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::registering {2, "registering"};
+const Enum::YLeaf NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::ackRegisterReply {3, "ackRegisterReply"};
+const Enum::YLeaf NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate::nakRegisterReply {4, "nakRegisterReply"};
 
 
 }

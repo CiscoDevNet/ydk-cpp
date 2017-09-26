@@ -18,15 +18,15 @@ const Enum::YLeaf MplsLdpafName::ipv6 {6, "ipv6"};
 
 const Enum::YLeaf MplsLdpDownstreamOnDemand::peer_acl {1, "peer-acl"};
 
+const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
+const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
+
 const Enum::YLeaf MplsLdpSessionProtection::all {1, "all"};
 const Enum::YLeaf MplsLdpSessionProtection::for_ {2, "for"};
 const Enum::YLeaf MplsLdpSessionProtection::all_with_duration {3, "all-with-duration"};
 const Enum::YLeaf MplsLdpSessionProtection::for_with_duration {4, "for-with-duration"};
 const Enum::YLeaf MplsLdpSessionProtection::all_with_forever {5, "all-with-forever"};
 const Enum::YLeaf MplsLdpSessionProtection::for_with_forever {6, "for-with-forever"};
-
-const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
-const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
 
 
 }

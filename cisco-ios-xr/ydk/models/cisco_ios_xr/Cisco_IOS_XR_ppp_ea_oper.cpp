@@ -17,7 +17,7 @@ Pppea::Pppea()
 {
     nodes->parent = this;
 
-    yang_name = "pppea"; yang_parent_name = "Cisco-IOS-XR-ppp-ea-oper";
+    yang_name = "pppea"; yang_parent_name = "Cisco-IOS-XR-ppp-ea-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Pppea::~Pppea()
@@ -39,26 +39,15 @@ std::string Pppea::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ppp-ea-oper:pppea";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pppea::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pppea::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Pppea::has_leaf_or_child_of_name(const std::string & name) const
 
 Pppea::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "pppea";
+
+    yang_name = "nodes"; yang_parent_name = "pppea"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Pppea::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Pppea::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Pppea::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ea-oper:pppea/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Pppea::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pppea::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pppea::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ppp-ea-oper:pppea/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ Pppea::Nodes::Node::Node()
 {
     ea_interface_names->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Pppea::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool Pppea::Nodes::Node::has_operation() const
 	|| (ea_interface_names !=  nullptr && ea_interface_names->has_operation());
 }
 
+std::string Pppea::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ea-oper:pppea/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Pppea::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pppea::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pppea::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ppp-ea-oper:pppea/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool Pppea::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) con
 
 Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceNames()
 {
-    yang_name = "ea-interface-names"; yang_parent_name = "node";
+
+    yang_name = "ea-interface-names"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pppea::Nodes::Node::EaInterfaceNames::~EaInterfaceNames()
@@ -375,29 +352,15 @@ std::string Pppea::Nodes::Node::EaInterfaceNames::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ea-interface-names";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pppea::Nodes::Node::EaInterfaceNames::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pppea::Nodes::Node::EaInterfaceNames::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EaInterfaceNames' in Cisco_IOS_XR_ppp_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -485,7 +448,8 @@ Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::EaInterfaceName()
     vrf_table_id{YType::uint32, "vrf-table-id"},
     xconnect_id{YType::uint32, "xconnect-id"}
 {
-    yang_name = "ea-interface-name"; yang_parent_name = "ea-interface-names";
+
+    yang_name = "ea-interface-name"; yang_parent_name = "ea-interface-names"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::~EaInterfaceName()
@@ -573,23 +537,11 @@ std::string Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "ea-interface-name" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EaInterfaceName' in Cisco_IOS_XR_ppp_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -627,9 +579,7 @@ const EntityPath Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::get_enti
     if (vrf_table_id.is_set || is_set(vrf_table_id.yfilter)) leaf_name_data.push_back(vrf_table_id.get_name_leafdata());
     if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

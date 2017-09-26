@@ -10,95 +10,95 @@
 namespace openconfig {
 namespace openconfig_if_ethernet {
 
-class Ethernet_Speed : public virtual ydk::Identity
+class ETHERNETSPEED : public virtual ydk::Identity
 {
     public:
-        Ethernet_Speed();
-        ~Ethernet_Speed();
+        ETHERNETSPEED();
+        ~ETHERNETSPEED();
 
 
-}; // Ethernet_Speed
+}; // ETHERNETSPEED
 
-class Speed_50Gb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED100GB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_50Gb();
-        ~Speed_50Gb();
+        SPEED100GB();
+        ~SPEED100GB();
 
 
-}; // Speed_50Gb
+}; // SPEED100GB
 
-class Speed_25Gb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED100MB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_25Gb();
-        ~Speed_25Gb();
+        SPEED100MB();
+        ~SPEED100MB();
 
 
-}; // Speed_25Gb
+}; // SPEED100MB
 
-class Speed_100Mb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED10GB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_100Mb();
-        ~Speed_100Mb();
+        SPEED10GB();
+        ~SPEED10GB();
 
 
-}; // Speed_100Mb
+}; // SPEED10GB
 
-class Speed_Unknown : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED10MB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_Unknown();
-        ~Speed_Unknown();
+        SPEED10MB();
+        ~SPEED10MB();
 
 
-}; // Speed_Unknown
+}; // SPEED10MB
 
-class Speed_10Gb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED1GB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_10Gb();
-        ~Speed_10Gb();
+        SPEED1GB();
+        ~SPEED1GB();
 
 
-}; // Speed_10Gb
+}; // SPEED1GB
 
-class Speed_1Gb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED25GB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_1Gb();
-        ~Speed_1Gb();
+        SPEED25GB();
+        ~SPEED25GB();
 
 
-}; // Speed_1Gb
+}; // SPEED25GB
 
-class Speed_40Gb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED40GB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_40Gb();
-        ~Speed_40Gb();
+        SPEED40GB();
+        ~SPEED40GB();
 
 
-}; // Speed_40Gb
+}; // SPEED40GB
 
-class Speed_10Mb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEED50GB : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_10Mb();
-        ~Speed_10Mb();
+        SPEED50GB();
+        ~SPEED50GB();
 
 
-}; // Speed_10Mb
+}; // SPEED50GB
 
-class Speed_100Gb : public openconfig_if_ethernet::Ethernet_Speed, virtual ydk::Identity
+class SPEEDUNKNOWN : public openconfig::openconfig_if_ethernet::ETHERNETSPEED, virtual ydk::Identity
 {
     public:
-        Speed_100Gb();
-        ~Speed_100Gb();
+        SPEEDUNKNOWN();
+        ~SPEEDUNKNOWN();
 
 
-}; // Speed_100Gb
+}; // SPEEDUNKNOWN
 
 
 }

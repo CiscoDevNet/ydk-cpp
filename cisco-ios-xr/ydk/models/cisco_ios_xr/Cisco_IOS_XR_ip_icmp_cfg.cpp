@@ -12,8 +12,14 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_icmp_cfg {
 
 Icmp::Icmp()
+    :
+    ipv4(std::make_shared<Icmp::Ipv4>())
+	,ipv6(std::make_shared<Icmp::Ipv6>())
 {
-    yang_name = "icmp"; yang_parent_name = "Cisco-IOS-XR-ip-icmp-cfg";
+    ipv4->parent = this;
+    ipv6->parent = this;
+
+    yang_name = "icmp"; yang_parent_name = "Cisco-IOS-XR-ip-icmp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Icmp::~Icmp()
@@ -22,67 +28,51 @@ Icmp::~Icmp()
 
 bool Icmp::has_data() const
 {
-    for (std::size_t index=0; index<ip_protocol.size(); index++)
-    {
-        if(ip_protocol[index]->has_data())
-            return true;
-    }
-    return false;
+    return (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
 
 bool Icmp::has_operation() const
 {
-    for (std::size_t index=0; index<ip_protocol.size(); index++)
-    {
-        if(ip_protocol[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Icmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Icmp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Icmp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ip-protocol")
+    if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ip_protocol)
+        if(ipv4 == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            ipv4 = std::make_shared<Icmp::Ipv4>();
         }
-        auto c = std::make_shared<Icmp::IpProtocol>();
-        c->parent = this;
-        ip_protocol.push_back(c);
-        return c;
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Icmp::Ipv6>();
+        }
+        return ipv6;
     }
 
     return nullptr;
@@ -91,9 +81,14 @@ std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ip_protocol)
+    if(ipv4 != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -134,82 +129,69 @@ std::map<std::pair<std::string, std::string>, std::string> Icmp::get_namespace_i
 
 bool Icmp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip-protocol")
+    if(name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Icmp::IpProtocol::IpProtocol()
+Icmp::Ipv4::Ipv4()
     :
-    protocol_type{YType::str, "protocol-type"}
-    	,
-    rate_limit(std::make_shared<Icmp::IpProtocol::RateLimit>())
-	,source(std::make_shared<Icmp::IpProtocol::Source>())
+    rate_limit(std::make_shared<Icmp::Ipv4::RateLimit>())
+	,source(std::make_shared<Icmp::Ipv4::Source>())
 {
     rate_limit->parent = this;
-
     source->parent = this;
 
-    yang_name = "ip-protocol"; yang_parent_name = "icmp";
+    yang_name = "ipv4"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Icmp::IpProtocol::~IpProtocol()
+Icmp::Ipv4::~Ipv4()
 {
 }
 
-bool Icmp::IpProtocol::has_data() const
+bool Icmp::Ipv4::has_data() const
 {
-    return protocol_type.is_set
-	|| (rate_limit !=  nullptr && rate_limit->has_data())
+    return (rate_limit !=  nullptr && rate_limit->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
 
-bool Icmp::IpProtocol::has_operation() const
+bool Icmp::Ipv4::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(protocol_type.yfilter)
 	|| (rate_limit !=  nullptr && rate_limit->has_operation())
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Icmp::IpProtocol::get_segment_path() const
+std::string Icmp::Ipv4::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ip-protocol" <<"[protocol-type='" <<protocol_type <<"']";
-
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Icmp::IpProtocol::get_entity_path(Entity* ancestor) const
+std::string Icmp::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_type.is_set || is_set(protocol_type.yfilter)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Icmp::IpProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Icmp::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate-limit")
     {
         if(rate_limit == nullptr)
         {
-            rate_limit = std::make_shared<Icmp::IpProtocol::RateLimit>();
+            rate_limit = std::make_shared<Icmp::Ipv4::RateLimit>();
         }
         return rate_limit;
     }
@@ -218,7 +200,7 @@ std::shared_ptr<Entity> Icmp::IpProtocol::get_child_by_name(const std::string & 
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Icmp::IpProtocol::Source>();
+            source = std::make_shared<Icmp::Ipv4::Source>();
         }
         return source;
     }
@@ -226,7 +208,7 @@ std::shared_ptr<Entity> Icmp::IpProtocol::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(rate_limit != nullptr)
@@ -242,92 +224,75 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::get_children() 
     return children;
 }
 
-void Icmp::IpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Icmp::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "protocol-type")
-    {
-        protocol_type = value;
-        protocol_type.value_namespace = name_space;
-        protocol_type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Icmp::IpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Icmp::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "protocol-type")
-    {
-        protocol_type.yfilter = yfilter;
-    }
 }
 
-bool Icmp::IpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Icmp::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rate-limit" || name == "source" || name == "protocol-type")
+    if(name == "rate-limit" || name == "source")
         return true;
     return false;
 }
 
-Icmp::IpProtocol::RateLimit::RateLimit()
+Icmp::Ipv4::RateLimit::RateLimit()
     :
-    unreachable(std::make_shared<Icmp::IpProtocol::RateLimit::Unreachable>())
+    unreachable(std::make_shared<Icmp::Ipv4::RateLimit::Unreachable>())
 {
     unreachable->parent = this;
 
-    yang_name = "rate-limit"; yang_parent_name = "ip-protocol";
+    yang_name = "rate-limit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Icmp::IpProtocol::RateLimit::~RateLimit()
+Icmp::Ipv4::RateLimit::~RateLimit()
 {
 }
 
-bool Icmp::IpProtocol::RateLimit::has_data() const
+bool Icmp::Ipv4::RateLimit::has_data() const
 {
     return (unreachable !=  nullptr && unreachable->has_data());
 }
 
-bool Icmp::IpProtocol::RateLimit::has_operation() const
+bool Icmp::Ipv4::RateLimit::has_operation() const
 {
     return is_set(yfilter)
 	|| (unreachable !=  nullptr && unreachable->has_operation());
 }
 
-std::string Icmp::IpProtocol::RateLimit::get_segment_path() const
+std::string Icmp::Ipv4::RateLimit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv4::RateLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rate-limit";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Icmp::IpProtocol::RateLimit::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::RateLimit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RateLimit' in Cisco_IOS_XR_ip_icmp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Icmp::IpProtocol::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unreachable")
     {
         if(unreachable == nullptr)
         {
-            unreachable = std::make_shared<Icmp::IpProtocol::RateLimit::Unreachable>();
+            unreachable = std::make_shared<Icmp::Ipv4::RateLimit::Unreachable>();
         }
         return unreachable;
     }
@@ -335,7 +300,7 @@ std::shared_ptr<Entity> Icmp::IpProtocol::RateLimit::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::RateLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(unreachable != nullptr)
@@ -346,90 +311,84 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::get_
     return children;
 }
 
-void Icmp::IpProtocol::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Icmp::Ipv4::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Icmp::IpProtocol::RateLimit::set_filter(const std::string & value_path, YFilter yfilter)
+void Icmp::Ipv4::RateLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Icmp::IpProtocol::RateLimit::has_leaf_or_child_of_name(const std::string & name) const
+bool Icmp::Ipv4::RateLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unreachable")
         return true;
     return false;
 }
 
-Icmp::IpProtocol::RateLimit::Unreachable::Unreachable()
+Icmp::Ipv4::RateLimit::Unreachable::Unreachable()
     :
     fragmentation{YType::uint32, "fragmentation"},
     rate{YType::uint32, "rate"}
 {
-    yang_name = "unreachable"; yang_parent_name = "rate-limit";
+
+    yang_name = "unreachable"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Icmp::IpProtocol::RateLimit::Unreachable::~Unreachable()
+Icmp::Ipv4::RateLimit::Unreachable::~Unreachable()
 {
 }
 
-bool Icmp::IpProtocol::RateLimit::Unreachable::has_data() const
+bool Icmp::Ipv4::RateLimit::Unreachable::has_data() const
 {
     return fragmentation.is_set
 	|| rate.is_set;
 }
 
-bool Icmp::IpProtocol::RateLimit::Unreachable::has_operation() const
+bool Icmp::Ipv4::RateLimit::Unreachable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fragmentation.yfilter)
 	|| ydk::is_set(rate.yfilter);
 }
 
-std::string Icmp::IpProtocol::RateLimit::Unreachable::get_segment_path() const
+std::string Icmp::Ipv4::RateLimit::Unreachable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/ipv4/rate-limit/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv4::RateLimit::Unreachable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unreachable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Icmp::IpProtocol::RateLimit::Unreachable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::RateLimit::Unreachable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Unreachable' in Cisco_IOS_XR_ip_icmp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fragmentation.is_set || is_set(fragmentation.yfilter)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
     if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Icmp::IpProtocol::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::Unreachable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::RateLimit::Unreachable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Icmp::IpProtocol::RateLimit::Unreachable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Icmp::Ipv4::RateLimit::Unreachable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fragmentation")
     {
@@ -445,7 +404,7 @@ void Icmp::IpProtocol::RateLimit::Unreachable::set_value(const std::string & val
     }
 }
 
-void Icmp::IpProtocol::RateLimit::Unreachable::set_filter(const std::string & value_path, YFilter yfilter)
+void Icmp::Ipv4::RateLimit::Unreachable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fragmentation")
     {
@@ -457,78 +416,72 @@ void Icmp::IpProtocol::RateLimit::Unreachable::set_filter(const std::string & va
     }
 }
 
-bool Icmp::IpProtocol::RateLimit::Unreachable::has_leaf_or_child_of_name(const std::string & name) const
+bool Icmp::Ipv4::RateLimit::Unreachable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fragmentation" || name == "rate")
         return true;
     return false;
 }
 
-Icmp::IpProtocol::Source::Source()
+Icmp::Ipv4::Source::Source()
     :
     source_address_policy{YType::enumeration, "source-address-policy"}
 {
-    yang_name = "source"; yang_parent_name = "ip-protocol";
+
+    yang_name = "source"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Icmp::IpProtocol::Source::~Source()
+Icmp::Ipv4::Source::~Source()
 {
 }
 
-bool Icmp::IpProtocol::Source::has_data() const
+bool Icmp::Ipv4::Source::has_data() const
 {
     return source_address_policy.is_set;
 }
 
-bool Icmp::IpProtocol::Source::has_operation() const
+bool Icmp::Ipv4::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address_policy.yfilter);
 }
 
-std::string Icmp::IpProtocol::Source::get_segment_path() const
+std::string Icmp::Ipv4::Source::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv4::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Icmp::IpProtocol::Source::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::Source::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Source' in Cisco_IOS_XR_ip_icmp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (source_address_policy.is_set || is_set(source_address_policy.yfilter)) leaf_name_data.push_back(source_address_policy.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Icmp::IpProtocol::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Icmp::Ipv4::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Icmp::IpProtocol::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Icmp::Ipv4::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address-policy")
     {
@@ -538,7 +491,7 @@ void Icmp::IpProtocol::Source::set_value(const std::string & value_path, const s
     }
 }
 
-void Icmp::IpProtocol::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Icmp::Ipv4::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address-policy")
     {
@@ -546,7 +499,379 @@ void Icmp::IpProtocol::Source::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool Icmp::IpProtocol::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Icmp::Ipv4::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address-policy")
+        return true;
+    return false;
+}
+
+Icmp::Ipv6::Ipv6()
+    :
+    rate_limit(std::make_shared<Icmp::Ipv6::RateLimit>())
+	,source(std::make_shared<Icmp::Ipv6::Source>())
+{
+    rate_limit->parent = this;
+    source->parent = this;
+
+    yang_name = "ipv6"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Icmp::Ipv6::~Ipv6()
+{
+}
+
+bool Icmp::Ipv6::has_data() const
+{
+    return (rate_limit !=  nullptr && rate_limit->has_data())
+	|| (source !=  nullptr && source->has_data());
+}
+
+bool Icmp::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rate_limit !=  nullptr && rate_limit->has_operation())
+	|| (source !=  nullptr && source->has_operation());
+}
+
+std::string Icmp::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Icmp::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rate-limit")
+    {
+        if(rate_limit == nullptr)
+        {
+            rate_limit = std::make_shared<Icmp::Ipv6::RateLimit>();
+        }
+        return rate_limit;
+    }
+
+    if(child_yang_name == "source")
+    {
+        if(source == nullptr)
+        {
+            source = std::make_shared<Icmp::Ipv6::Source>();
+        }
+        return source;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rate_limit != nullptr)
+    {
+        children["rate-limit"] = rate_limit;
+    }
+
+    if(source != nullptr)
+    {
+        children["source"] = source;
+    }
+
+    return children;
+}
+
+void Icmp::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Icmp::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Icmp::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rate-limit" || name == "source")
+        return true;
+    return false;
+}
+
+Icmp::Ipv6::RateLimit::RateLimit()
+    :
+    unreachable(std::make_shared<Icmp::Ipv6::RateLimit::Unreachable>())
+{
+    unreachable->parent = this;
+
+    yang_name = "rate-limit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Icmp::Ipv6::RateLimit::~RateLimit()
+{
+}
+
+bool Icmp::Ipv6::RateLimit::has_data() const
+{
+    return (unreachable !=  nullptr && unreachable->has_data());
+}
+
+bool Icmp::Ipv6::RateLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (unreachable !=  nullptr && unreachable->has_operation());
+}
+
+std::string Icmp::Ipv6::RateLimit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv6::RateLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rate-limit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::RateLimit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "unreachable")
+    {
+        if(unreachable == nullptr)
+        {
+            unreachable = std::make_shared<Icmp::Ipv6::RateLimit::Unreachable>();
+        }
+        return unreachable;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::RateLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(unreachable != nullptr)
+    {
+        children["unreachable"] = unreachable;
+    }
+
+    return children;
+}
+
+void Icmp::Ipv6::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Icmp::Ipv6::RateLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Icmp::Ipv6::RateLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unreachable")
+        return true;
+    return false;
+}
+
+Icmp::Ipv6::RateLimit::Unreachable::Unreachable()
+    :
+    fragmentation{YType::uint32, "fragmentation"},
+    rate{YType::uint32, "rate"}
+{
+
+    yang_name = "unreachable"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Icmp::Ipv6::RateLimit::Unreachable::~Unreachable()
+{
+}
+
+bool Icmp::Ipv6::RateLimit::Unreachable::has_data() const
+{
+    return fragmentation.is_set
+	|| rate.is_set;
+}
+
+bool Icmp::Ipv6::RateLimit::Unreachable::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fragmentation.yfilter)
+	|| ydk::is_set(rate.yfilter);
+}
+
+std::string Icmp::Ipv6::RateLimit::Unreachable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/ipv6/rate-limit/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv6::RateLimit::Unreachable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "unreachable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::RateLimit::Unreachable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fragmentation.is_set || is_set(fragmentation.yfilter)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::RateLimit::Unreachable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Icmp::Ipv6::RateLimit::Unreachable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fragmentation")
+    {
+        fragmentation = value;
+        fragmentation.value_namespace = name_space;
+        fragmentation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Icmp::Ipv6::RateLimit::Unreachable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fragmentation")
+    {
+        fragmentation.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool Icmp::Ipv6::RateLimit::Unreachable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fragmentation" || name == "rate")
+        return true;
+    return false;
+}
+
+Icmp::Ipv6::Source::Source()
+    :
+    source_address_policy{YType::enumeration, "source-address-policy"}
+{
+
+    yang_name = "source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Icmp::Ipv6::Source::~Source()
+{
+}
+
+bool Icmp::Ipv6::Source::has_data() const
+{
+    return source_address_policy.is_set;
+}
+
+bool Icmp::Ipv6::Source::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_address_policy.yfilter);
+}
+
+std::string Icmp::Ipv6::Source::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-icmp-cfg:icmp/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Icmp::Ipv6::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::Source::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address_policy.is_set || is_set(source_address_policy.yfilter)) leaf_name_data.push_back(source_address_policy.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Icmp::Ipv6::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Icmp::Ipv6::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address-policy")
+    {
+        source_address_policy = value;
+        source_address_policy.value_namespace = name_space;
+        source_address_policy.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Icmp::Ipv6::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address-policy")
+    {
+        source_address_policy.yfilter = yfilter;
+    }
+}
+
+bool Icmp::Ipv6::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address-policy")
         return true;

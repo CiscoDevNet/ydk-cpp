@@ -20,16 +20,12 @@ Hsrp::Hsrp()
 	,summary(std::make_shared<Hsrp::Summary>())
 {
     bfd_sessions->parent = this;
-
     ipv4->parent = this;
-
     ipv6->parent = this;
-
     mgo_sessions->parent = this;
-
     summary->parent = this;
 
-    yang_name = "hsrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-hsrp-oper";
+    yang_name = "hsrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-hsrp-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Hsrp::~Hsrp()
@@ -59,26 +55,15 @@ std::string Hsrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -203,6 +188,422 @@ bool Hsrp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Hsrp::BfdSessions::BfdSessions()
+{
+
+    yang_name = "bfd-sessions"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Hsrp::BfdSessions::~BfdSessions()
+{
+}
+
+bool Hsrp::BfdSessions::has_data() const
+{
+    for (std::size_t index=0; index<bfd_session.size(); index++)
+    {
+        if(bfd_session[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Hsrp::BfdSessions::has_operation() const
+{
+    for (std::size_t index=0; index<bfd_session.size(); index++)
+    {
+        if(bfd_session[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Hsrp::BfdSessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Hsrp::BfdSessions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-sessions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::BfdSessions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::BfdSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-session")
+    {
+        for(auto const & c : bfd_session)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Hsrp::BfdSessions::BfdSession>();
+        c->parent = this;
+        bfd_session.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bfd_session)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Hsrp::BfdSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Hsrp::BfdSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Hsrp::BfdSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-session")
+        return true;
+    return false;
+}
+
+Hsrp::BfdSessions::BfdSession::BfdSession()
+    :
+    interface_name{YType::str, "interface-name"},
+    ip_address{YType::str, "ip-address"},
+    bfd_interface_name{YType::str, "bfd-interface-name"},
+    bfd_interval{YType::uint32, "bfd-interval"},
+    bfd_multiplier{YType::uint32, "bfd-multiplier"},
+    bfd_session_state{YType::enumeration, "bfd-session-state"},
+    destination_address{YType::str, "destination-address"},
+    destination_ipv6_address{YType::str, "destination-ipv6-address"},
+    session_address_family{YType::enumeration, "session-address-family"}
+{
+
+    yang_name = "bfd-session"; yang_parent_name = "bfd-sessions"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Hsrp::BfdSessions::BfdSession::~BfdSession()
+{
+}
+
+bool Hsrp::BfdSessions::BfdSession::has_data() const
+{
+    for (std::size_t index=0; index<group.size(); index++)
+    {
+        if(group[index]->has_data())
+            return true;
+    }
+    return interface_name.is_set
+	|| ip_address.is_set
+	|| bfd_interface_name.is_set
+	|| bfd_interval.is_set
+	|| bfd_multiplier.is_set
+	|| bfd_session_state.is_set
+	|| destination_address.is_set
+	|| destination_ipv6_address.is_set
+	|| session_address_family.is_set;
+}
+
+bool Hsrp::BfdSessions::BfdSession::has_operation() const
+{
+    for (std::size_t index=0; index<group.size(); index++)
+    {
+        if(group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(bfd_interface_name.yfilter)
+	|| ydk::is_set(bfd_interval.yfilter)
+	|| ydk::is_set(bfd_multiplier.yfilter)
+	|| ydk::is_set(bfd_session_state.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(destination_ipv6_address.yfilter)
+	|| ydk::is_set(session_address_family.yfilter);
+}
+
+std::string Hsrp::BfdSessions::BfdSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/bfd-sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Hsrp::BfdSessions::BfdSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-session" <<"[interface-name='" <<interface_name <<"']" <<"[ip-address='" <<ip_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::BfdSessions::BfdSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (bfd_interface_name.is_set || is_set(bfd_interface_name.yfilter)) leaf_name_data.push_back(bfd_interface_name.get_name_leafdata());
+    if (bfd_interval.is_set || is_set(bfd_interval.yfilter)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
+    if (bfd_multiplier.is_set || is_set(bfd_multiplier.yfilter)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
+    if (bfd_session_state.is_set || is_set(bfd_session_state.yfilter)) leaf_name_data.push_back(bfd_session_state.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (destination_ipv6_address.is_set || is_set(destination_ipv6_address.yfilter)) leaf_name_data.push_back(destination_ipv6_address.get_name_leafdata());
+    if (session_address_family.is_set || is_set(session_address_family.yfilter)) leaf_name_data.push_back(session_address_family.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "group")
+    {
+        for(auto const & c : group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Hsrp::BfdSessions::BfdSession::Group>();
+        c->parent = this;
+        group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::BfdSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Hsrp::BfdSessions::BfdSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-interface-name")
+    {
+        bfd_interface_name = value;
+        bfd_interface_name.value_namespace = name_space;
+        bfd_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-interval")
+    {
+        bfd_interval = value;
+        bfd_interval.value_namespace = name_space;
+        bfd_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-multiplier")
+    {
+        bfd_multiplier = value;
+        bfd_multiplier.value_namespace = name_space;
+        bfd_multiplier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-session-state")
+    {
+        bfd_session_state = value;
+        bfd_session_state.value_namespace = name_space;
+        bfd_session_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-ipv6-address")
+    {
+        destination_ipv6_address = value;
+        destination_ipv6_address.value_namespace = name_space;
+        destination_ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-address-family")
+    {
+        session_address_family = value;
+        session_address_family.value_namespace = name_space;
+        session_address_family.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::BfdSessions::BfdSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-interface-name")
+    {
+        bfd_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-interval")
+    {
+        bfd_interval.yfilter = yfilter;
+    }
+    if(value_path == "bfd-multiplier")
+    {
+        bfd_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "bfd-session-state")
+    {
+        bfd_session_state.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-ipv6-address")
+    {
+        destination_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "session-address-family")
+    {
+        session_address_family.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::BfdSessions::BfdSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group" || name == "interface-name" || name == "ip-address" || name == "bfd-interface-name" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-session-state" || name == "destination-address" || name == "destination-ipv6-address" || name == "session-address-family")
+        return true;
+    return false;
+}
+
+Hsrp::BfdSessions::BfdSession::Group::Group()
+    :
+    hsrp_group_number{YType::uint32, "hsrp-group-number"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "group"; yang_parent_name = "bfd-session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::BfdSessions::BfdSession::Group::~Group()
+{
+}
+
+bool Hsrp::BfdSessions::BfdSession::Group::has_data() const
+{
+    return hsrp_group_number.is_set
+	|| interface_name.is_set;
+}
+
+bool Hsrp::BfdSessions::BfdSession::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hsrp_group_number.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string Hsrp::BfdSessions::BfdSession::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::BfdSessions::BfdSession::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hsrp_group_number.is_set || is_set(hsrp_group_number.yfilter)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::BfdSession::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::BfdSessions::BfdSession::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hsrp-group-number")
+    {
+        hsrp_group_number = value;
+        hsrp_group_number.value_namespace = name_space;
+        hsrp_group_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::BfdSessions::BfdSession::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hsrp-group-number")
+    {
+        hsrp_group_number.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::BfdSessions::BfdSession::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hsrp-group-number" || name == "interface-name")
+        return true;
+    return false;
+}
+
 Hsrp::Ipv4::Ipv4()
     :
     groups(std::make_shared<Hsrp::Ipv4::Groups>())
@@ -210,12 +611,10 @@ Hsrp::Ipv4::Ipv4()
 	,tracked_interfaces(std::make_shared<Hsrp::Ipv4::TrackedInterfaces>())
 {
     groups->parent = this;
-
     interfaces->parent = this;
-
     tracked_interfaces->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "hsrp";
+    yang_name = "ipv4"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv4::~Ipv4()
@@ -237,33 +636,26 @@ bool Hsrp::Ipv4::has_operation() const
 	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation());
 }
 
+std::string Hsrp::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -337,7 +729,8 @@ bool Hsrp::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 
 Hsrp::Ipv4::Groups::Groups()
 {
-    yang_name = "groups"; yang_parent_name = "ipv4";
+
+    yang_name = "groups"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv4::Groups::~Groups()
@@ -364,33 +757,26 @@ bool Hsrp::Ipv4::Groups::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Hsrp::Ipv4::Groups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv4::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Groups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -516,16 +902,12 @@ Hsrp::Ipv4::Groups::Group::Group()
 	,statistics(std::make_shared<Hsrp::Ipv4::Groups::Group::Statistics>())
 {
     coup_received_time->parent = this;
-
     coup_sent_time->parent = this;
-
     resign_received_time->parent = this;
-
     resign_sent_time->parent = this;
-
     statistics->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups";
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv4::Groups::Group::~Group()
@@ -710,27 +1092,22 @@ bool Hsrp::Ipv4::Groups::Group::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string Hsrp::Ipv4::Groups::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv4::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Groups::Group::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -800,9 +1177,7 @@ const EntityPath Hsrp::Ipv4::Groups::Group::get_entity_path(Entity* ancestor) co
 
     auto secondary_address_name_datas = secondary_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), secondary_address_name_datas.begin(), secondary_address_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1592,321 +1967,13 @@ bool Hsrp::Ipv4::Groups::Group::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Hsrp::Ipv4::Groups::Group::ResignSentTime::ResignSentTime()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "resign-sent-time"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv4::Groups::Group::ResignSentTime::~ResignSentTime()
-{
-}
-
-bool Hsrp::Ipv4::Groups::Group::ResignSentTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv4::Groups::Group::ResignSentTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv4::Groups::Group::ResignSentTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "resign-sent-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::Groups::Group::ResignSentTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ResignSentTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::ResignSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::ResignSentTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv4::Groups::Group::ResignSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::Groups::Group::ResignSentTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::Groups::Group::ResignSentTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv4::Groups::Group::ResignReceivedTime::ResignReceivedTime()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "resign-received-time"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv4::Groups::Group::ResignReceivedTime::~ResignReceivedTime()
-{
-}
-
-bool Hsrp::Ipv4::Groups::Group::ResignReceivedTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv4::Groups::Group::ResignReceivedTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "resign-received-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ResignReceivedTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv4::Groups::Group::ResignReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::Groups::Group::ResignReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::Groups::Group::ResignReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv4::Groups::Group::CoupSentTime::CoupSentTime()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "coup-sent-time"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv4::Groups::Group::CoupSentTime::~CoupSentTime()
-{
-}
-
-bool Hsrp::Ipv4::Groups::Group::CoupSentTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv4::Groups::Group::CoupSentTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv4::Groups::Group::CoupSentTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "coup-sent-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::Groups::Group::CoupSentTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CoupSentTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::CoupSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::CoupSentTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv4::Groups::Group::CoupSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::Groups::Group::CoupSentTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::Groups::Group::CoupSentTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
 Hsrp::Ipv4::Groups::Group::CoupReceivedTime::CoupReceivedTime()
     :
     nanoseconds{YType::uint32, "nanoseconds"},
     seconds{YType::uint32, "seconds"}
 {
-    yang_name = "coup-received-time"; yang_parent_name = "group";
+
+    yang_name = "coup-received-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Hsrp::Ipv4::Groups::Group::CoupReceivedTime::~CoupReceivedTime()
@@ -1930,31 +1997,17 @@ std::string Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "coup-received-time";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CoupReceivedTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
     if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2004,6 +2057,565 @@ bool Hsrp::Ipv4::Groups::Group::CoupReceivedTime::has_leaf_or_child_of_name(cons
     return false;
 }
 
+Hsrp::Ipv4::Groups::Group::CoupSentTime::CoupSentTime()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "coup-sent-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv4::Groups::Group::CoupSentTime::~CoupSentTime()
+{
+}
+
+bool Hsrp::Ipv4::Groups::Group::CoupSentTime::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv4::Groups::Group::CoupSentTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv4::Groups::Group::CoupSentTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "coup-sent-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::CoupSentTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::CoupSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::CoupSentTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv4::Groups::Group::CoupSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv4::Groups::Group::CoupSentTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv4::Groups::Group::CoupSentTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv4::Groups::Group::GlobalAddress::GlobalAddress()
+    :
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "global-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv4::Groups::Group::GlobalAddress::~GlobalAddress()
+{
+}
+
+bool Hsrp::Ipv4::Groups::Group::GlobalAddress::has_data() const
+{
+    return ipv6_address.is_set;
+}
+
+bool Hsrp::Ipv4::Groups::Group::GlobalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Hsrp::Ipv4::Groups::Group::GlobalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::GlobalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::GlobalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::GlobalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv4::Groups::Group::GlobalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv4::Groups::Group::GlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv4::Groups::Group::GlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv4::Groups::Group::ResignReceivedTime::ResignReceivedTime()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "resign-received-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv4::Groups::Group::ResignReceivedTime::~ResignReceivedTime()
+{
+}
+
+bool Hsrp::Ipv4::Groups::Group::ResignReceivedTime::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv4::Groups::Group::ResignReceivedTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "resign-received-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv4::Groups::Group::ResignReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv4::Groups::Group::ResignReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv4::Groups::Group::ResignReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv4::Groups::Group::ResignSentTime::ResignSentTime()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "resign-sent-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv4::Groups::Group::ResignSentTime::~ResignSentTime()
+{
+}
+
+bool Hsrp::Ipv4::Groups::Group::ResignSentTime::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv4::Groups::Group::ResignSentTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv4::Groups::Group::ResignSentTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "resign-sent-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::ResignSentTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::ResignSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::ResignSentTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv4::Groups::Group::ResignSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv4::Groups::Group::ResignSentTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv4::Groups::Group::ResignSentTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv4::Groups::Group::StateChangeHistory::StateChangeHistory()
+    :
+    new_state{YType::enumeration, "new-state"},
+    old_state{YType::enumeration, "old-state"},
+    reason{YType::enumeration, "reason"}
+    	,
+    time(std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time>())
+{
+    time->parent = this;
+
+    yang_name = "state-change-history"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv4::Groups::Group::StateChangeHistory::~StateChangeHistory()
+{
+}
+
+bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_data() const
+{
+    return new_state.is_set
+	|| old_state.is_set
+	|| reason.is_set
+	|| (time !=  nullptr && time->has_data());
+}
+
+bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(new_state.yfilter)
+	|| ydk::is_set(old_state.yfilter)
+	|| ydk::is_set(reason.yfilter)
+	|| (time !=  nullptr && time->has_operation());
+}
+
+std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-change-history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
+    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
+    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "time")
+    {
+        if(time == nullptr)
+        {
+            time = std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time>();
+        }
+        return time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(time != nullptr)
+    {
+        children["time"] = time;
+    }
+
+    return children;
+}
+
+void Hsrp::Ipv4::Groups::Group::StateChangeHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "new-state")
+    {
+        new_state = value;
+        new_state.value_namespace = name_space;
+        new_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "old-state")
+    {
+        old_state = value;
+        old_state.value_namespace = name_space;
+        old_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reason")
+    {
+        reason = value;
+        reason.value_namespace = name_space;
+        reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv4::Groups::Group::StateChangeHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "new-state")
+    {
+        new_state.yfilter = yfilter;
+    }
+    if(value_path == "old-state")
+    {
+        old_state.yfilter = yfilter;
+    }
+    if(value_path == "reason")
+    {
+        reason.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "new-state" || name == "old-state" || name == "reason")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::Time()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "time"; yang_parent_name = "state-change-history"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::~Time()
+{
+}
+
+bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
 Hsrp::Ipv4::Groups::Group::Statistics::Statistics()
     :
     active_transitions{YType::uint32, "active-transitions"},
@@ -2022,7 +2634,8 @@ Hsrp::Ipv4::Groups::Group::Statistics::Statistics()
     speak_transitions{YType::uint32, "speak-transitions"},
     standby_transitions{YType::uint32, "standby-transitions"}
 {
-    yang_name = "statistics"; yang_parent_name = "group";
+
+    yang_name = "statistics"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Hsrp::Ipv4::Groups::Group::Statistics::~Statistics()
@@ -2072,23 +2685,11 @@ std::string Hsrp::Ipv4::Groups::Group::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Groups::Group::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Groups::Group::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active_transitions.is_set || is_set(active_transitions.yfilter)) leaf_name_data.push_back(active_transitions.get_name_leafdata());
@@ -2107,9 +2708,7 @@ const EntityPath Hsrp::Ipv4::Groups::Group::Statistics::get_entity_path(Entity* 
     if (speak_transitions.is_set || is_set(speak_transitions.yfilter)) leaf_name_data.push_back(speak_transitions.get_name_leafdata());
     if (standby_transitions.is_set || is_set(standby_transitions.yfilter)) leaf_name_data.push_back(standby_transitions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2289,645 +2888,10 @@ bool Hsrp::Ipv4::Groups::Group::Statistics::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Hsrp::Ipv4::Groups::Group::GlobalAddress::GlobalAddress()
-    :
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "global-address"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv4::Groups::Group::GlobalAddress::~GlobalAddress()
-{
-}
-
-bool Hsrp::Ipv4::Groups::Group::GlobalAddress::has_data() const
-{
-    return ipv6_address.is_set;
-}
-
-bool Hsrp::Ipv4::Groups::Group::GlobalAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string Hsrp::Ipv4::Groups::Group::GlobalAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::Groups::Group::GlobalAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GlobalAddress' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::GlobalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::GlobalAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv4::Groups::Group::GlobalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::Groups::Group::GlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::Groups::Group::GlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv6-address")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv4::Groups::Group::StateChangeHistory::StateChangeHistory()
-    :
-    new_state{YType::enumeration, "new-state"},
-    old_state{YType::enumeration, "old-state"},
-    reason{YType::enumeration, "reason"}
-    	,
-    time(std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time>())
-{
-    time->parent = this;
-
-    yang_name = "state-change-history"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv4::Groups::Group::StateChangeHistory::~StateChangeHistory()
-{
-}
-
-bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_data() const
-{
-    return new_state.is_set
-	|| old_state.is_set
-	|| reason.is_set
-	|| (time !=  nullptr && time->has_data());
-}
-
-bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(new_state.yfilter)
-	|| ydk::is_set(old_state.yfilter)
-	|| ydk::is_set(reason.yfilter)
-	|| (time !=  nullptr && time->has_operation());
-}
-
-std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-change-history";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateChangeHistory' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
-    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
-    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "time")
-    {
-        if(time == nullptr)
-        {
-            time = std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time>();
-        }
-        return time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(time != nullptr)
-    {
-        children["time"] = time;
-    }
-
-    return children;
-}
-
-void Hsrp::Ipv4::Groups::Group::StateChangeHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "new-state")
-    {
-        new_state = value;
-        new_state.value_namespace = name_space;
-        new_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "old-state")
-    {
-        old_state = value;
-        old_state.value_namespace = name_space;
-        old_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reason")
-    {
-        reason = value;
-        reason.value_namespace = name_space;
-        reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::Groups::Group::StateChangeHistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "new-state")
-    {
-        new_state.yfilter = yfilter;
-    }
-    if(value_path == "old-state")
-    {
-        old_state.yfilter = yfilter;
-    }
-    if(value_path == "reason")
-    {
-        reason.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time" || name == "new-state" || name == "old-state" || name == "reason")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::Time()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "time"; yang_parent_name = "state-change-history";
-}
-
-Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::~Time()
-{
-}
-
-bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Time' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv4::TrackedInterfaces::TrackedInterfaces()
-{
-    yang_name = "tracked-interfaces"; yang_parent_name = "ipv4";
-}
-
-Hsrp::Ipv4::TrackedInterfaces::~TrackedInterfaces()
-{
-}
-
-bool Hsrp::Ipv4::TrackedInterfaces::has_data() const
-{
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
-    {
-        if(tracked_interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Hsrp::Ipv4::TrackedInterfaces::has_operation() const
-{
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
-    {
-        if(tracked_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Hsrp::Ipv4::TrackedInterfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tracked-interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::TrackedInterfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tracked-interface")
-    {
-        for(auto const & c : tracked_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Hsrp::Ipv4::TrackedInterfaces::TrackedInterface>();
-        c->parent = this;
-        tracked_interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::TrackedInterfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tracked_interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Hsrp::Ipv4::TrackedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Hsrp::Ipv4::TrackedInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Hsrp::Ipv4::TrackedInterfaces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tracked-interface")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::TrackedInterface()
-    :
-    interface_name{YType::str, "interface-name"},
-    group_number{YType::int32, "group-number"},
-    tracked_interface_name{YType::str, "tracked-interface-name"},
-    hsrp_group_number{YType::uint32, "hsrp-group-number"},
-    interface{YType::str, "interface"},
-    interface_up_flag{YType::boolean, "interface-up-flag"},
-    is_object{YType::boolean, "is-object"},
-    priority_decrement{YType::uint32, "priority-decrement"},
-    tracked_interface_name_xr{YType::str, "tracked-interface-name-xr"}
-{
-    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces";
-}
-
-Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::~TrackedInterface()
-{
-}
-
-bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_data() const
-{
-    return interface_name.is_set
-	|| group_number.is_set
-	|| tracked_interface_name.is_set
-	|| hsrp_group_number.is_set
-	|| interface.is_set
-	|| interface_up_flag.is_set
-	|| is_object.is_set
-	|| priority_decrement.is_set
-	|| tracked_interface_name_xr.is_set;
-}
-
-bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(group_number.yfilter)
-	|| ydk::is_set(tracked_interface_name.yfilter)
-	|| ydk::is_set(hsrp_group_number.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(interface_up_flag.yfilter)
-	|| ydk::is_set(is_object.yfilter)
-	|| ydk::is_set(priority_decrement.yfilter)
-	|| ydk::is_set(tracked_interface_name_xr.yfilter);
-}
-
-std::string Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/tracked-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
-    if (tracked_interface_name.is_set || is_set(tracked_interface_name.yfilter)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
-    if (hsrp_group_number.is_set || is_set(hsrp_group_number.yfilter)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (interface_up_flag.is_set || is_set(interface_up_flag.yfilter)) leaf_name_data.push_back(interface_up_flag.get_name_leafdata());
-    if (is_object.is_set || is_set(is_object.yfilter)) leaf_name_data.push_back(is_object.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
-    if (tracked_interface_name_xr.is_set || is_set(tracked_interface_name_xr.yfilter)) leaf_name_data.push_back(tracked_interface_name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-number")
-    {
-        group_number = value;
-        group_number.value_namespace = name_space;
-        group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracked-interface-name")
-    {
-        tracked_interface_name = value;
-        tracked_interface_name.value_namespace = name_space;
-        tracked_interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hsrp-group-number")
-    {
-        hsrp_group_number = value;
-        hsrp_group_number.value_namespace = name_space;
-        hsrp_group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-up-flag")
-    {
-        interface_up_flag = value;
-        interface_up_flag.value_namespace = name_space;
-        interface_up_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-object")
-    {
-        is_object = value;
-        is_object.value_namespace = name_space;
-        is_object.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-decrement")
-    {
-        priority_decrement = value;
-        priority_decrement.value_namespace = name_space;
-        priority_decrement.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracked-interface-name-xr")
-    {
-        tracked_interface_name_xr = value;
-        tracked_interface_name_xr.value_namespace = name_space;
-        tracked_interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "group-number")
-    {
-        group_number.yfilter = yfilter;
-    }
-    if(value_path == "tracked-interface-name")
-    {
-        tracked_interface_name.yfilter = yfilter;
-    }
-    if(value_path == "hsrp-group-number")
-    {
-        hsrp_group_number.yfilter = yfilter;
-    }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "interface-up-flag")
-    {
-        interface_up_flag.yfilter = yfilter;
-    }
-    if(value_path == "is-object")
-    {
-        is_object.yfilter = yfilter;
-    }
-    if(value_path == "priority-decrement")
-    {
-        priority_decrement.yfilter = yfilter;
-    }
-    if(value_path == "tracked-interface-name-xr")
-    {
-        tracked_interface_name_xr.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "group-number" || name == "tracked-interface-name" || name == "hsrp-group-number" || name == "interface" || name == "interface-up-flag" || name == "is-object" || name == "priority-decrement" || name == "tracked-interface-name-xr")
-        return true;
-    return false;
-}
-
 Hsrp::Ipv4::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "ipv4";
+
+    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv4::Interfaces::~Interfaces()
@@ -2954,33 +2918,26 @@ bool Hsrp::Ipv4::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Hsrp::Ipv4::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv4::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3041,7 +2998,7 @@ Hsrp::Ipv4::Interfaces::Interface::Interface()
 {
     statistics->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv4::Interfaces::Interface::~Interface()
@@ -3065,36 +3022,29 @@ bool Hsrp::Ipv4::Interfaces::Interface::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string Hsrp::Ipv4::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv4::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (use_bia_flag.is_set || is_set(use_bia_flag.yfilter)) leaf_name_data.push_back(use_bia_flag.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3180,7 +3130,8 @@ Hsrp::Ipv4::Interfaces::Interface::Statistics::Statistics()
     short_packets_received{YType::uint32, "short-packets-received"},
     unknown_group_received{YType::uint32, "unknown-group-received"}
 {
-    yang_name = "statistics"; yang_parent_name = "interface";
+
+    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Hsrp::Ipv4::Interfaces::Interface::Statistics::~Statistics()
@@ -3218,23 +3169,11 @@ std::string Hsrp::Ipv4::Interfaces::Interface::Statistics::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv4::Interfaces::Interface::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::Interfaces::Interface::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (advert_packets_received.is_set || is_set(advert_packets_received.yfilter)) leaf_name_data.push_back(advert_packets_received.get_name_leafdata());
@@ -3247,9 +3186,7 @@ const EntityPath Hsrp::Ipv4::Interfaces::Interface::Statistics::get_entity_path(
     if (short_packets_received.is_set || is_set(short_packets_received.yfilter)) leaf_name_data.push_back(short_packets_received.get_name_leafdata());
     if (unknown_group_received.is_set || is_set(unknown_group_received.yfilter)) leaf_name_data.push_back(unknown_group_received.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3369,70 +3306,64 @@ bool Hsrp::Ipv4::Interfaces::Interface::Statistics::has_leaf_or_child_of_name(co
     return false;
 }
 
-Hsrp::MgoSessions::MgoSessions()
+Hsrp::Ipv4::TrackedInterfaces::TrackedInterfaces()
 {
-    yang_name = "mgo-sessions"; yang_parent_name = "hsrp";
+
+    yang_name = "tracked-interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Hsrp::MgoSessions::~MgoSessions()
+Hsrp::Ipv4::TrackedInterfaces::~TrackedInterfaces()
 {
 }
 
-bool Hsrp::MgoSessions::has_data() const
+bool Hsrp::Ipv4::TrackedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<mgo_session.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.size(); index++)
     {
-        if(mgo_session[index]->has_data())
+        if(tracked_interface[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Hsrp::MgoSessions::has_operation() const
+bool Hsrp::Ipv4::TrackedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<mgo_session.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.size(); index++)
     {
-        if(mgo_session[index]->has_operation())
+        if(tracked_interface[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Hsrp::MgoSessions::get_segment_path() const
+std::string Hsrp::Ipv4::TrackedInterfaces::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mgo-sessions";
-
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::MgoSessions::get_entity_path(Entity* ancestor) const
+std::string Hsrp::Ipv4::TrackedInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "tracked-interfaces";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::TrackedInterfaces::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Hsrp::MgoSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mgo-session")
+    if(child_yang_name == "tracked-interface")
     {
-        for(auto const & c : mgo_session)
+        for(auto const & c : tracked_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3440,19 +3371,19 @@ std::shared_ptr<Entity> Hsrp::MgoSessions::get_child_by_name(const std::string &
                 return c;
             }
         }
-        auto c = std::make_shared<Hsrp::MgoSessions::MgoSession>();
+        auto c = std::make_shared<Hsrp::Ipv4::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        mgo_session.push_back(c);
+        tracked_interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::TrackedInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mgo_session)
+    for (auto const & c : tracked_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3460,310 +3391,212 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::get_children()
     return children;
 }
 
-void Hsrp::MgoSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Hsrp::Ipv4::TrackedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Hsrp::MgoSessions::set_filter(const std::string & value_path, YFilter yfilter)
+void Hsrp::Ipv4::TrackedInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Hsrp::MgoSessions::has_leaf_or_child_of_name(const std::string & name) const
+bool Hsrp::Ipv4::TrackedInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mgo-session")
+    if(name == "tracked-interface")
         return true;
     return false;
 }
 
-Hsrp::MgoSessions::MgoSession::MgoSession()
+Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::TrackedInterface()
     :
-    session_name{YType::str, "session-name"},
-    primary_af_name{YType::enumeration, "primary-af-name"},
-    primary_session_interface{YType::str, "primary-session-interface"},
-    primary_session_name{YType::str, "primary-session-name"},
-    primary_session_number{YType::uint32, "primary-session-number"},
-    primary_session_state{YType::enumeration, "primary-session-state"}
+    interface_name{YType::str, "interface-name"},
+    group_number{YType::int32, "group-number"},
+    tracked_interface_name{YType::str, "tracked-interface-name"},
+    hsrp_group_number{YType::uint32, "hsrp-group-number"},
+    interface{YType::str, "interface"},
+    interface_up_flag{YType::boolean, "interface-up-flag"},
+    is_object{YType::boolean, "is-object"},
+    priority_decrement{YType::uint32, "priority-decrement"},
+    tracked_interface_name_xr{YType::str, "tracked-interface-name-xr"}
 {
-    yang_name = "mgo-session"; yang_parent_name = "mgo-sessions";
+
+    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Hsrp::MgoSessions::MgoSession::~MgoSession()
-{
-}
-
-bool Hsrp::MgoSessions::MgoSession::has_data() const
-{
-    for (std::size_t index=0; index<slave.size(); index++)
-    {
-        if(slave[index]->has_data())
-            return true;
-    }
-    return session_name.is_set
-	|| primary_af_name.is_set
-	|| primary_session_interface.is_set
-	|| primary_session_name.is_set
-	|| primary_session_number.is_set
-	|| primary_session_state.is_set;
-}
-
-bool Hsrp::MgoSessions::MgoSession::has_operation() const
-{
-    for (std::size_t index=0; index<slave.size(); index++)
-    {
-        if(slave[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(session_name.yfilter)
-	|| ydk::is_set(primary_af_name.yfilter)
-	|| ydk::is_set(primary_session_interface.yfilter)
-	|| ydk::is_set(primary_session_name.yfilter)
-	|| ydk::is_set(primary_session_number.yfilter)
-	|| ydk::is_set(primary_session_state.yfilter);
-}
-
-std::string Hsrp::MgoSessions::MgoSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mgo-session" <<"[session-name='" <<session_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::MgoSessions::MgoSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/mgo-sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
-    if (primary_af_name.is_set || is_set(primary_af_name.yfilter)) leaf_name_data.push_back(primary_af_name.get_name_leafdata());
-    if (primary_session_interface.is_set || is_set(primary_session_interface.yfilter)) leaf_name_data.push_back(primary_session_interface.get_name_leafdata());
-    if (primary_session_name.is_set || is_set(primary_session_name.yfilter)) leaf_name_data.push_back(primary_session_name.get_name_leafdata());
-    if (primary_session_number.is_set || is_set(primary_session_number.yfilter)) leaf_name_data.push_back(primary_session_number.get_name_leafdata());
-    if (primary_session_state.is_set || is_set(primary_session_state.yfilter)) leaf_name_data.push_back(primary_session_state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "slave")
-    {
-        for(auto const & c : slave)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Hsrp::MgoSessions::MgoSession::Slave>();
-        c->parent = this;
-        slave.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::MgoSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : slave)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Hsrp::MgoSessions::MgoSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "session-name")
-    {
-        session_name = value;
-        session_name.value_namespace = name_space;
-        session_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "primary-af-name")
-    {
-        primary_af_name = value;
-        primary_af_name.value_namespace = name_space;
-        primary_af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "primary-session-interface")
-    {
-        primary_session_interface = value;
-        primary_session_interface.value_namespace = name_space;
-        primary_session_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "primary-session-name")
-    {
-        primary_session_name = value;
-        primary_session_name.value_namespace = name_space;
-        primary_session_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "primary-session-number")
-    {
-        primary_session_number = value;
-        primary_session_number.value_namespace = name_space;
-        primary_session_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "primary-session-state")
-    {
-        primary_session_state = value;
-        primary_session_state.value_namespace = name_space;
-        primary_session_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::MgoSessions::MgoSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "session-name")
-    {
-        session_name.yfilter = yfilter;
-    }
-    if(value_path == "primary-af-name")
-    {
-        primary_af_name.yfilter = yfilter;
-    }
-    if(value_path == "primary-session-interface")
-    {
-        primary_session_interface.yfilter = yfilter;
-    }
-    if(value_path == "primary-session-name")
-    {
-        primary_session_name.yfilter = yfilter;
-    }
-    if(value_path == "primary-session-number")
-    {
-        primary_session_number.yfilter = yfilter;
-    }
-    if(value_path == "primary-session-state")
-    {
-        primary_session_state.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::MgoSessions::MgoSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "slave" || name == "session-name" || name == "primary-af-name" || name == "primary-session-interface" || name == "primary-session-name" || name == "primary-session-number" || name == "primary-session-state")
-        return true;
-    return false;
-}
-
-Hsrp::MgoSessions::MgoSession::Slave::Slave()
-    :
-    slave_group_interface{YType::str, "slave-group-interface"},
-    slave_group_number{YType::uint32, "slave-group-number"}
-{
-    yang_name = "slave"; yang_parent_name = "mgo-session";
-}
-
-Hsrp::MgoSessions::MgoSession::Slave::~Slave()
+Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::~TrackedInterface()
 {
 }
 
-bool Hsrp::MgoSessions::MgoSession::Slave::has_data() const
+bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_data() const
 {
-    return slave_group_interface.is_set
-	|| slave_group_number.is_set;
+    return interface_name.is_set
+	|| group_number.is_set
+	|| tracked_interface_name.is_set
+	|| hsrp_group_number.is_set
+	|| interface.is_set
+	|| interface_up_flag.is_set
+	|| is_object.is_set
+	|| priority_decrement.is_set
+	|| tracked_interface_name_xr.is_set;
 }
 
-bool Hsrp::MgoSessions::MgoSession::Slave::has_operation() const
+bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(slave_group_interface.yfilter)
-	|| ydk::is_set(slave_group_number.yfilter);
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(group_number.yfilter)
+	|| ydk::is_set(tracked_interface_name.yfilter)
+	|| ydk::is_set(hsrp_group_number.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_up_flag.yfilter)
+	|| ydk::is_set(is_object.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter)
+	|| ydk::is_set(tracked_interface_name_xr.yfilter);
 }
 
-std::string Hsrp::MgoSessions::MgoSession::Slave::get_segment_path() const
+std::string Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slave";
-
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv4/tracked-interfaces/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* ancestor) const
+std::string Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slave' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slave_group_interface.is_set || is_set(slave_group_interface.yfilter)) leaf_name_data.push_back(slave_group_interface.get_name_leafdata());
-    if (slave_group_number.is_set || is_set(slave_group_number.yfilter)) leaf_name_data.push_back(slave_group_number.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
+    if (tracked_interface_name.is_set || is_set(tracked_interface_name.yfilter)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
+    if (hsrp_group_number.is_set || is_set(hsrp_group_number.yfilter)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_up_flag.is_set || is_set(interface_up_flag.yfilter)) leaf_name_data.push_back(interface_up_flag.get_name_leafdata());
+    if (is_object.is_set || is_set(is_object.yfilter)) leaf_name_data.push_back(is_object.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (tracked_interface_name_xr.is_set || is_set(tracked_interface_name_xr.yfilter)) leaf_name_data.push_back(tracked_interface_name_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::Slave::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::MgoSession::Slave::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Hsrp::MgoSessions::MgoSession::Slave::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "slave-group-interface")
+    if(value_path == "interface-name")
     {
-        slave_group_interface = value;
-        slave_group_interface.value_namespace = name_space;
-        slave_group_interface.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "slave-group-number")
+    if(value_path == "group-number")
     {
-        slave_group_number = value;
-        slave_group_number.value_namespace = name_space;
-        slave_group_number.value_namespace_prefix = name_space_prefix;
+        group_number = value;
+        group_number.value_namespace = name_space;
+        group_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-interface-name")
+    {
+        tracked_interface_name = value;
+        tracked_interface_name.value_namespace = name_space;
+        tracked_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hsrp-group-number")
+    {
+        hsrp_group_number = value;
+        hsrp_group_number.value_namespace = name_space;
+        hsrp_group_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-up-flag")
+    {
+        interface_up_flag = value;
+        interface_up_flag.value_namespace = name_space;
+        interface_up_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-object")
+    {
+        is_object = value;
+        is_object.value_namespace = name_space;
+        is_object.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-interface-name-xr")
+    {
+        tracked_interface_name_xr = value;
+        tracked_interface_name_xr.value_namespace = name_space;
+        tracked_interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Hsrp::MgoSessions::MgoSession::Slave::set_filter(const std::string & value_path, YFilter yfilter)
+void Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "slave-group-interface")
+    if(value_path == "interface-name")
     {
-        slave_group_interface.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
-    if(value_path == "slave-group-number")
+    if(value_path == "group-number")
     {
-        slave_group_number.yfilter = yfilter;
+        group_number.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-name")
+    {
+        tracked_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "hsrp-group-number")
+    {
+        hsrp_group_number.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "interface-up-flag")
+    {
+        interface_up_flag.yfilter = yfilter;
+    }
+    if(value_path == "is-object")
+    {
+        is_object.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-name-xr")
+    {
+        tracked_interface_name_xr.yfilter = yfilter;
     }
 }
 
-bool Hsrp::MgoSessions::MgoSession::Slave::has_leaf_or_child_of_name(const std::string & name) const
+bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "slave-group-interface" || name == "slave-group-number")
+    if(name == "interface-name" || name == "group-number" || name == "tracked-interface-name" || name == "hsrp-group-number" || name == "interface" || name == "interface-up-flag" || name == "is-object" || name == "priority-decrement" || name == "tracked-interface-name-xr")
         return true;
     return false;
 }
@@ -3775,12 +3608,10 @@ Hsrp::Ipv6::Ipv6()
 	,tracked_interfaces(std::make_shared<Hsrp::Ipv6::TrackedInterfaces>())
 {
     groups->parent = this;
-
     interfaces->parent = this;
-
     tracked_interfaces->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "hsrp";
+    yang_name = "ipv6"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv6::~Ipv6()
@@ -3802,33 +3633,26 @@ bool Hsrp::Ipv6::has_operation() const
 	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation());
 }
 
+std::string Hsrp::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3900,316 +3724,10 @@ bool Hsrp::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Hsrp::Ipv6::TrackedInterfaces::TrackedInterfaces()
-{
-    yang_name = "tracked-interfaces"; yang_parent_name = "ipv6";
-}
-
-Hsrp::Ipv6::TrackedInterfaces::~TrackedInterfaces()
-{
-}
-
-bool Hsrp::Ipv6::TrackedInterfaces::has_data() const
-{
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
-    {
-        if(tracked_interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Hsrp::Ipv6::TrackedInterfaces::has_operation() const
-{
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
-    {
-        if(tracked_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Hsrp::Ipv6::TrackedInterfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tracked-interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::TrackedInterfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tracked-interface")
-    {
-        for(auto const & c : tracked_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Hsrp::Ipv6::TrackedInterfaces::TrackedInterface>();
-        c->parent = this;
-        tracked_interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::TrackedInterfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tracked_interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Hsrp::Ipv6::TrackedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Hsrp::Ipv6::TrackedInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Hsrp::Ipv6::TrackedInterfaces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tracked-interface")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::TrackedInterface()
-    :
-    interface_name{YType::str, "interface-name"},
-    group_number{YType::int32, "group-number"},
-    tracked_interface_name{YType::str, "tracked-interface-name"},
-    hsrp_group_number{YType::uint32, "hsrp-group-number"},
-    interface{YType::str, "interface"},
-    interface_up_flag{YType::boolean, "interface-up-flag"},
-    is_object{YType::boolean, "is-object"},
-    priority_decrement{YType::uint32, "priority-decrement"},
-    tracked_interface_name_xr{YType::str, "tracked-interface-name-xr"}
-{
-    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces";
-}
-
-Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::~TrackedInterface()
-{
-}
-
-bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_data() const
-{
-    return interface_name.is_set
-	|| group_number.is_set
-	|| tracked_interface_name.is_set
-	|| hsrp_group_number.is_set
-	|| interface.is_set
-	|| interface_up_flag.is_set
-	|| is_object.is_set
-	|| priority_decrement.is_set
-	|| tracked_interface_name_xr.is_set;
-}
-
-bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(group_number.yfilter)
-	|| ydk::is_set(tracked_interface_name.yfilter)
-	|| ydk::is_set(hsrp_group_number.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(interface_up_flag.yfilter)
-	|| ydk::is_set(is_object.yfilter)
-	|| ydk::is_set(priority_decrement.yfilter)
-	|| ydk::is_set(tracked_interface_name_xr.yfilter);
-}
-
-std::string Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/tracked-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
-    if (tracked_interface_name.is_set || is_set(tracked_interface_name.yfilter)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
-    if (hsrp_group_number.is_set || is_set(hsrp_group_number.yfilter)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (interface_up_flag.is_set || is_set(interface_up_flag.yfilter)) leaf_name_data.push_back(interface_up_flag.get_name_leafdata());
-    if (is_object.is_set || is_set(is_object.yfilter)) leaf_name_data.push_back(is_object.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
-    if (tracked_interface_name_xr.is_set || is_set(tracked_interface_name_xr.yfilter)) leaf_name_data.push_back(tracked_interface_name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-number")
-    {
-        group_number = value;
-        group_number.value_namespace = name_space;
-        group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracked-interface-name")
-    {
-        tracked_interface_name = value;
-        tracked_interface_name.value_namespace = name_space;
-        tracked_interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hsrp-group-number")
-    {
-        hsrp_group_number = value;
-        hsrp_group_number.value_namespace = name_space;
-        hsrp_group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-up-flag")
-    {
-        interface_up_flag = value;
-        interface_up_flag.value_namespace = name_space;
-        interface_up_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-object")
-    {
-        is_object = value;
-        is_object.value_namespace = name_space;
-        is_object.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-decrement")
-    {
-        priority_decrement = value;
-        priority_decrement.value_namespace = name_space;
-        priority_decrement.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracked-interface-name-xr")
-    {
-        tracked_interface_name_xr = value;
-        tracked_interface_name_xr.value_namespace = name_space;
-        tracked_interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "group-number")
-    {
-        group_number.yfilter = yfilter;
-    }
-    if(value_path == "tracked-interface-name")
-    {
-        tracked_interface_name.yfilter = yfilter;
-    }
-    if(value_path == "hsrp-group-number")
-    {
-        hsrp_group_number.yfilter = yfilter;
-    }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "interface-up-flag")
-    {
-        interface_up_flag.yfilter = yfilter;
-    }
-    if(value_path == "is-object")
-    {
-        is_object.yfilter = yfilter;
-    }
-    if(value_path == "priority-decrement")
-    {
-        priority_decrement.yfilter = yfilter;
-    }
-    if(value_path == "tracked-interface-name-xr")
-    {
-        tracked_interface_name_xr.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "group-number" || name == "tracked-interface-name" || name == "hsrp-group-number" || name == "interface" || name == "interface-up-flag" || name == "is-object" || name == "priority-decrement" || name == "tracked-interface-name-xr")
-        return true;
-    return false;
-}
-
 Hsrp::Ipv6::Groups::Groups()
 {
-    yang_name = "groups"; yang_parent_name = "ipv6";
+
+    yang_name = "groups"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv6::Groups::~Groups()
@@ -4236,33 +3754,26 @@ bool Hsrp::Ipv6::Groups::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Hsrp::Ipv6::Groups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv6::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Groups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4388,16 +3899,12 @@ Hsrp::Ipv6::Groups::Group::Group()
 	,statistics(std::make_shared<Hsrp::Ipv6::Groups::Group::Statistics>())
 {
     coup_received_time->parent = this;
-
     coup_sent_time->parent = this;
-
     resign_received_time->parent = this;
-
     resign_sent_time->parent = this;
-
     statistics->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups";
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv6::Groups::Group::~Group()
@@ -4582,27 +4089,22 @@ bool Hsrp::Ipv6::Groups::Group::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string Hsrp::Ipv6::Groups::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv6::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Groups::Group::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -4672,9 +4174,7 @@ const EntityPath Hsrp::Ipv6::Groups::Group::get_entity_path(Entity* ancestor) co
 
     auto secondary_address_name_datas = secondary_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), secondary_address_name_datas.begin(), secondary_address_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5464,321 +4964,13 @@ bool Hsrp::Ipv6::Groups::Group::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Hsrp::Ipv6::Groups::Group::ResignSentTime::ResignSentTime()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "resign-sent-time"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv6::Groups::Group::ResignSentTime::~ResignSentTime()
-{
-}
-
-bool Hsrp::Ipv6::Groups::Group::ResignSentTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv6::Groups::Group::ResignSentTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv6::Groups::Group::ResignSentTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "resign-sent-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::Groups::Group::ResignSentTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ResignSentTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::ResignSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::ResignSentTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv6::Groups::Group::ResignSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::Groups::Group::ResignSentTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::Groups::Group::ResignSentTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv6::Groups::Group::ResignReceivedTime::ResignReceivedTime()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "resign-received-time"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv6::Groups::Group::ResignReceivedTime::~ResignReceivedTime()
-{
-}
-
-bool Hsrp::Ipv6::Groups::Group::ResignReceivedTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv6::Groups::Group::ResignReceivedTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "resign-received-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ResignReceivedTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv6::Groups::Group::ResignReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::Groups::Group::ResignReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::Groups::Group::ResignReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv6::Groups::Group::CoupSentTime::CoupSentTime()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "coup-sent-time"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv6::Groups::Group::CoupSentTime::~CoupSentTime()
-{
-}
-
-bool Hsrp::Ipv6::Groups::Group::CoupSentTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv6::Groups::Group::CoupSentTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv6::Groups::Group::CoupSentTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "coup-sent-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::Groups::Group::CoupSentTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CoupSentTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::CoupSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::CoupSentTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv6::Groups::Group::CoupSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::Groups::Group::CoupSentTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::Groups::Group::CoupSentTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
 Hsrp::Ipv6::Groups::Group::CoupReceivedTime::CoupReceivedTime()
     :
     nanoseconds{YType::uint32, "nanoseconds"},
     seconds{YType::uint32, "seconds"}
 {
-    yang_name = "coup-received-time"; yang_parent_name = "group";
+
+    yang_name = "coup-received-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Hsrp::Ipv6::Groups::Group::CoupReceivedTime::~CoupReceivedTime()
@@ -5802,31 +4994,17 @@ std::string Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "coup-received-time";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CoupReceivedTime' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
     if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5876,6 +5054,565 @@ bool Hsrp::Ipv6::Groups::Group::CoupReceivedTime::has_leaf_or_child_of_name(cons
     return false;
 }
 
+Hsrp::Ipv6::Groups::Group::CoupSentTime::CoupSentTime()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "coup-sent-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv6::Groups::Group::CoupSentTime::~CoupSentTime()
+{
+}
+
+bool Hsrp::Ipv6::Groups::Group::CoupSentTime::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv6::Groups::Group::CoupSentTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv6::Groups::Group::CoupSentTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "coup-sent-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::CoupSentTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::CoupSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::CoupSentTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv6::Groups::Group::CoupSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv6::Groups::Group::CoupSentTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv6::Groups::Group::CoupSentTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv6::Groups::Group::GlobalAddress::GlobalAddress()
+    :
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "global-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv6::Groups::Group::GlobalAddress::~GlobalAddress()
+{
+}
+
+bool Hsrp::Ipv6::Groups::Group::GlobalAddress::has_data() const
+{
+    return ipv6_address.is_set;
+}
+
+bool Hsrp::Ipv6::Groups::Group::GlobalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Hsrp::Ipv6::Groups::Group::GlobalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::GlobalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::GlobalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::GlobalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv6::Groups::Group::GlobalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv6::Groups::Group::GlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv6::Groups::Group::GlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv6::Groups::Group::ResignReceivedTime::ResignReceivedTime()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "resign-received-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv6::Groups::Group::ResignReceivedTime::~ResignReceivedTime()
+{
+}
+
+bool Hsrp::Ipv6::Groups::Group::ResignReceivedTime::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv6::Groups::Group::ResignReceivedTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "resign-received-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv6::Groups::Group::ResignReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv6::Groups::Group::ResignReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv6::Groups::Group::ResignReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv6::Groups::Group::ResignSentTime::ResignSentTime()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "resign-sent-time"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv6::Groups::Group::ResignSentTime::~ResignSentTime()
+{
+}
+
+bool Hsrp::Ipv6::Groups::Group::ResignSentTime::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv6::Groups::Group::ResignSentTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv6::Groups::Group::ResignSentTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "resign-sent-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::ResignSentTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::ResignSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::ResignSentTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv6::Groups::Group::ResignSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv6::Groups::Group::ResignSentTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv6::Groups::Group::ResignSentTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv6::Groups::Group::StateChangeHistory::StateChangeHistory()
+    :
+    new_state{YType::enumeration, "new-state"},
+    old_state{YType::enumeration, "old-state"},
+    reason{YType::enumeration, "reason"}
+    	,
+    time(std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time>())
+{
+    time->parent = this;
+
+    yang_name = "state-change-history"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv6::Groups::Group::StateChangeHistory::~StateChangeHistory()
+{
+}
+
+bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_data() const
+{
+    return new_state.is_set
+	|| old_state.is_set
+	|| reason.is_set
+	|| (time !=  nullptr && time->has_data());
+}
+
+bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(new_state.yfilter)
+	|| ydk::is_set(old_state.yfilter)
+	|| ydk::is_set(reason.yfilter)
+	|| (time !=  nullptr && time->has_operation());
+}
+
+std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-change-history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
+    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
+    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "time")
+    {
+        if(time == nullptr)
+        {
+            time = std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time>();
+        }
+        return time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(time != nullptr)
+    {
+        children["time"] = time;
+    }
+
+    return children;
+}
+
+void Hsrp::Ipv6::Groups::Group::StateChangeHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "new-state")
+    {
+        new_state = value;
+        new_state.value_namespace = name_space;
+        new_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "old-state")
+    {
+        old_state = value;
+        old_state.value_namespace = name_space;
+        old_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reason")
+    {
+        reason = value;
+        reason.value_namespace = name_space;
+        reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv6::Groups::Group::StateChangeHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "new-state")
+    {
+        new_state.yfilter = yfilter;
+    }
+    if(value_path == "old-state")
+    {
+        old_state.yfilter = yfilter;
+    }
+    if(value_path == "reason")
+    {
+        reason.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "new-state" || name == "old-state" || name == "reason")
+        return true;
+    return false;
+}
+
+Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::Time()
+    :
+    nanoseconds{YType::uint32, "nanoseconds"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "time"; yang_parent_name = "state-change-history"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::~Time()
+{
+}
+
+bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::has_data() const
+{
+    return nanoseconds.is_set
+	|| seconds.is_set;
+}
+
+bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
+}
+
 Hsrp::Ipv6::Groups::Group::Statistics::Statistics()
     :
     active_transitions{YType::uint32, "active-transitions"},
@@ -5894,7 +5631,8 @@ Hsrp::Ipv6::Groups::Group::Statistics::Statistics()
     speak_transitions{YType::uint32, "speak-transitions"},
     standby_transitions{YType::uint32, "standby-transitions"}
 {
-    yang_name = "statistics"; yang_parent_name = "group";
+
+    yang_name = "statistics"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Hsrp::Ipv6::Groups::Group::Statistics::~Statistics()
@@ -5944,23 +5682,11 @@ std::string Hsrp::Ipv6::Groups::Group::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Groups::Group::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Groups::Group::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active_transitions.is_set || is_set(active_transitions.yfilter)) leaf_name_data.push_back(active_transitions.get_name_leafdata());
@@ -5979,9 +5705,7 @@ const EntityPath Hsrp::Ipv6::Groups::Group::Statistics::get_entity_path(Entity* 
     if (speak_transitions.is_set || is_set(speak_transitions.yfilter)) leaf_name_data.push_back(speak_transitions.get_name_leafdata());
     if (standby_transitions.is_set || is_set(standby_transitions.yfilter)) leaf_name_data.push_back(standby_transitions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6161,338 +5885,10 @@ bool Hsrp::Ipv6::Groups::Group::Statistics::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Hsrp::Ipv6::Groups::Group::GlobalAddress::GlobalAddress()
-    :
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "global-address"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv6::Groups::Group::GlobalAddress::~GlobalAddress()
-{
-}
-
-bool Hsrp::Ipv6::Groups::Group::GlobalAddress::has_data() const
-{
-    return ipv6_address.is_set;
-}
-
-bool Hsrp::Ipv6::Groups::Group::GlobalAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string Hsrp::Ipv6::Groups::Group::GlobalAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::Groups::Group::GlobalAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GlobalAddress' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::GlobalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::GlobalAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv6::Groups::Group::GlobalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::Groups::Group::GlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::Groups::Group::GlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv6-address")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv6::Groups::Group::StateChangeHistory::StateChangeHistory()
-    :
-    new_state{YType::enumeration, "new-state"},
-    old_state{YType::enumeration, "old-state"},
-    reason{YType::enumeration, "reason"}
-    	,
-    time(std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time>())
-{
-    time->parent = this;
-
-    yang_name = "state-change-history"; yang_parent_name = "group";
-}
-
-Hsrp::Ipv6::Groups::Group::StateChangeHistory::~StateChangeHistory()
-{
-}
-
-bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_data() const
-{
-    return new_state.is_set
-	|| old_state.is_set
-	|| reason.is_set
-	|| (time !=  nullptr && time->has_data());
-}
-
-bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(new_state.yfilter)
-	|| ydk::is_set(old_state.yfilter)
-	|| ydk::is_set(reason.yfilter)
-	|| (time !=  nullptr && time->has_operation());
-}
-
-std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-change-history";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateChangeHistory' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
-    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
-    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "time")
-    {
-        if(time == nullptr)
-        {
-            time = std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time>();
-        }
-        return time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(time != nullptr)
-    {
-        children["time"] = time;
-    }
-
-    return children;
-}
-
-void Hsrp::Ipv6::Groups::Group::StateChangeHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "new-state")
-    {
-        new_state = value;
-        new_state.value_namespace = name_space;
-        new_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "old-state")
-    {
-        old_state = value;
-        old_state.value_namespace = name_space;
-        old_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reason")
-    {
-        reason = value;
-        reason.value_namespace = name_space;
-        reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::Groups::Group::StateChangeHistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "new-state")
-    {
-        new_state.yfilter = yfilter;
-    }
-    if(value_path == "old-state")
-    {
-        old_state.yfilter = yfilter;
-    }
-    if(value_path == "reason")
-    {
-        reason.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time" || name == "new-state" || name == "old-state" || name == "reason")
-        return true;
-    return false;
-}
-
-Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::Time()
-    :
-    nanoseconds{YType::uint32, "nanoseconds"},
-    seconds{YType::uint32, "seconds"}
-{
-    yang_name = "time"; yang_parent_name = "state-change-history";
-}
-
-Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::~Time()
-{
-}
-
-bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Time' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
 Hsrp::Ipv6::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "ipv6";
+
+    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv6::Interfaces::~Interfaces()
@@ -6519,33 +5915,26 @@ bool Hsrp::Ipv6::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Hsrp::Ipv6::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv6::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6606,7 +5995,7 @@ Hsrp::Ipv6::Interfaces::Interface::Interface()
 {
     statistics->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Ipv6::Interfaces::Interface::~Interface()
@@ -6630,36 +6019,29 @@ bool Hsrp::Ipv6::Interfaces::Interface::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string Hsrp::Ipv6::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Ipv6::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (use_bia_flag.is_set || is_set(use_bia_flag.yfilter)) leaf_name_data.push_back(use_bia_flag.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6745,7 +6127,8 @@ Hsrp::Ipv6::Interfaces::Interface::Statistics::Statistics()
     short_packets_received{YType::uint32, "short-packets-received"},
     unknown_group_received{YType::uint32, "unknown-group-received"}
 {
-    yang_name = "statistics"; yang_parent_name = "interface";
+
+    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Hsrp::Ipv6::Interfaces::Interface::Statistics::~Statistics()
@@ -6783,23 +6166,11 @@ std::string Hsrp::Ipv6::Interfaces::Interface::Statistics::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Ipv6::Interfaces::Interface::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::Interfaces::Interface::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (advert_packets_received.is_set || is_set(advert_packets_received.yfilter)) leaf_name_data.push_back(advert_packets_received.get_name_leafdata());
@@ -6812,9 +6183,7 @@ const EntityPath Hsrp::Ipv6::Interfaces::Interface::Statistics::get_entity_path(
     if (short_packets_received.is_set || is_set(short_packets_received.yfilter)) leaf_name_data.push_back(short_packets_received.get_name_leafdata());
     if (unknown_group_received.is_set || is_set(unknown_group_received.yfilter)) leaf_name_data.push_back(unknown_group_received.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6934,70 +6303,64 @@ bool Hsrp::Ipv6::Interfaces::Interface::Statistics::has_leaf_or_child_of_name(co
     return false;
 }
 
-Hsrp::BfdSessions::BfdSessions()
+Hsrp::Ipv6::TrackedInterfaces::TrackedInterfaces()
 {
-    yang_name = "bfd-sessions"; yang_parent_name = "hsrp";
+
+    yang_name = "tracked-interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Hsrp::BfdSessions::~BfdSessions()
+Hsrp::Ipv6::TrackedInterfaces::~TrackedInterfaces()
 {
 }
 
-bool Hsrp::BfdSessions::has_data() const
+bool Hsrp::Ipv6::TrackedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<bfd_session.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.size(); index++)
     {
-        if(bfd_session[index]->has_data())
+        if(tracked_interface[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Hsrp::BfdSessions::has_operation() const
+bool Hsrp::Ipv6::TrackedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_session.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.size(); index++)
     {
-        if(bfd_session[index]->has_operation())
+        if(tracked_interface[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Hsrp::BfdSessions::get_segment_path() const
+std::string Hsrp::Ipv6::TrackedInterfaces::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-sessions";
-
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::BfdSessions::get_entity_path(Entity* ancestor) const
+std::string Hsrp::Ipv6::TrackedInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "tracked-interfaces";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::TrackedInterfaces::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Hsrp::BfdSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bfd-session")
+    if(child_yang_name == "tracked-interface")
     {
-        for(auto const & c : bfd_session)
+        for(auto const & c : tracked_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7005,19 +6368,19 @@ std::shared_ptr<Entity> Hsrp::BfdSessions::get_child_by_name(const std::string &
                 return c;
             }
         }
-        auto c = std::make_shared<Hsrp::BfdSessions::BfdSession>();
+        auto c = std::make_shared<Hsrp::Ipv6::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        bfd_session.push_back(c);
+        tracked_interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::TrackedInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_session)
+    for (auto const & c : tracked_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7025,149 +6388,112 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::get_children()
     return children;
 }
 
-void Hsrp::BfdSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Hsrp::Ipv6::TrackedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Hsrp::BfdSessions::set_filter(const std::string & value_path, YFilter yfilter)
+void Hsrp::Ipv6::TrackedInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Hsrp::BfdSessions::has_leaf_or_child_of_name(const std::string & name) const
+bool Hsrp::Ipv6::TrackedInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bfd-session")
+    if(name == "tracked-interface")
         return true;
     return false;
 }
 
-Hsrp::BfdSessions::BfdSession::BfdSession()
+Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::TrackedInterface()
     :
     interface_name{YType::str, "interface-name"},
-    ip_address{YType::str, "ip-address"},
-    bfd_interface_name{YType::str, "bfd-interface-name"},
-    bfd_interval{YType::uint32, "bfd-interval"},
-    bfd_multiplier{YType::uint32, "bfd-multiplier"},
-    bfd_session_state{YType::enumeration, "bfd-session-state"},
-    destination_address{YType::str, "destination-address"},
-    destination_ipv6_address{YType::str, "destination-ipv6-address"},
-    session_address_family{YType::enumeration, "session-address-family"}
+    group_number{YType::int32, "group-number"},
+    tracked_interface_name{YType::str, "tracked-interface-name"},
+    hsrp_group_number{YType::uint32, "hsrp-group-number"},
+    interface{YType::str, "interface"},
+    interface_up_flag{YType::boolean, "interface-up-flag"},
+    is_object{YType::boolean, "is-object"},
+    priority_decrement{YType::uint32, "priority-decrement"},
+    tracked_interface_name_xr{YType::str, "tracked-interface-name-xr"}
 {
-    yang_name = "bfd-session"; yang_parent_name = "bfd-sessions";
+
+    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Hsrp::BfdSessions::BfdSession::~BfdSession()
+Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::~TrackedInterface()
 {
 }
 
-bool Hsrp::BfdSessions::BfdSession::has_data() const
+bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
-    {
-        if(group[index]->has_data())
-            return true;
-    }
     return interface_name.is_set
-	|| ip_address.is_set
-	|| bfd_interface_name.is_set
-	|| bfd_interval.is_set
-	|| bfd_multiplier.is_set
-	|| bfd_session_state.is_set
-	|| destination_address.is_set
-	|| destination_ipv6_address.is_set
-	|| session_address_family.is_set;
+	|| group_number.is_set
+	|| tracked_interface_name.is_set
+	|| hsrp_group_number.is_set
+	|| interface.is_set
+	|| interface_up_flag.is_set
+	|| is_object.is_set
+	|| priority_decrement.is_set
+	|| tracked_interface_name_xr.is_set;
 }
 
-bool Hsrp::BfdSessions::BfdSession::has_operation() const
+bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
-    {
-        if(group[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(bfd_interface_name.yfilter)
-	|| ydk::is_set(bfd_interval.yfilter)
-	|| ydk::is_set(bfd_multiplier.yfilter)
-	|| ydk::is_set(bfd_session_state.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(destination_ipv6_address.yfilter)
-	|| ydk::is_set(session_address_family.yfilter);
+	|| ydk::is_set(group_number.yfilter)
+	|| ydk::is_set(tracked_interface_name.yfilter)
+	|| ydk::is_set(hsrp_group_number.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_up_flag.yfilter)
+	|| ydk::is_set(is_object.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter)
+	|| ydk::is_set(tracked_interface_name_xr.yfilter);
 }
 
-std::string Hsrp::BfdSessions::BfdSession::get_segment_path() const
+std::string Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-session" <<"[interface-name='" <<interface_name <<"']" <<"[ip-address='" <<ip_address <<"']";
-
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/ipv6/tracked-interfaces/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::BfdSessions::BfdSession::get_entity_path(Entity* ancestor) const
+std::string Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/bfd-sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (bfd_interface_name.is_set || is_set(bfd_interface_name.yfilter)) leaf_name_data.push_back(bfd_interface_name.get_name_leafdata());
-    if (bfd_interval.is_set || is_set(bfd_interval.yfilter)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
-    if (bfd_multiplier.is_set || is_set(bfd_multiplier.yfilter)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
-    if (bfd_session_state.is_set || is_set(bfd_session_state.yfilter)) leaf_name_data.push_back(bfd_session_state.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (destination_ipv6_address.is_set || is_set(destination_ipv6_address.yfilter)) leaf_name_data.push_back(destination_ipv6_address.get_name_leafdata());
-    if (session_address_family.is_set || is_set(session_address_family.yfilter)) leaf_name_data.push_back(session_address_family.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
+    if (tracked_interface_name.is_set || is_set(tracked_interface_name.yfilter)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
+    if (hsrp_group_number.is_set || is_set(hsrp_group_number.yfilter)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_up_flag.is_set || is_set(interface_up_flag.yfilter)) leaf_name_data.push_back(interface_up_flag.get_name_leafdata());
+    if (is_object.is_set || is_set(is_object.yfilter)) leaf_name_data.push_back(is_object.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (tracked_interface_name_xr.is_set || is_set(tracked_interface_name_xr.yfilter)) leaf_name_data.push_back(tracked_interface_name_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "group")
-    {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Hsrp::BfdSessions::BfdSession::Group>();
-        c->parent = this;
-        group.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::BfdSession::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Hsrp::BfdSessions::BfdSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -7175,202 +6501,473 @@ void Hsrp::BfdSessions::BfdSession::set_value(const std::string & value_path, co
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ip-address")
+    if(value_path == "group-number")
     {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
+        group_number = value;
+        group_number.value_namespace = name_space;
+        group_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bfd-interface-name")
+    if(value_path == "tracked-interface-name")
     {
-        bfd_interface_name = value;
-        bfd_interface_name.value_namespace = name_space;
-        bfd_interface_name.value_namespace_prefix = name_space_prefix;
+        tracked_interface_name = value;
+        tracked_interface_name.value_namespace = name_space;
+        tracked_interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bfd-interval")
-    {
-        bfd_interval = value;
-        bfd_interval.value_namespace = name_space;
-        bfd_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bfd-multiplier")
-    {
-        bfd_multiplier = value;
-        bfd_multiplier.value_namespace = name_space;
-        bfd_multiplier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bfd-session-state")
-    {
-        bfd_session_state = value;
-        bfd_session_state.value_namespace = name_space;
-        bfd_session_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-ipv6-address")
-    {
-        destination_ipv6_address = value;
-        destination_ipv6_address.value_namespace = name_space;
-        destination_ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-address-family")
-    {
-        session_address_family = value;
-        session_address_family.value_namespace = name_space;
-        session_address_family.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Hsrp::BfdSessions::BfdSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "bfd-interface-name")
-    {
-        bfd_interface_name.yfilter = yfilter;
-    }
-    if(value_path == "bfd-interval")
-    {
-        bfd_interval.yfilter = yfilter;
-    }
-    if(value_path == "bfd-multiplier")
-    {
-        bfd_multiplier.yfilter = yfilter;
-    }
-    if(value_path == "bfd-session-state")
-    {
-        bfd_session_state.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "destination-ipv6-address")
-    {
-        destination_ipv6_address.yfilter = yfilter;
-    }
-    if(value_path == "session-address-family")
-    {
-        session_address_family.yfilter = yfilter;
-    }
-}
-
-bool Hsrp::BfdSessions::BfdSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group" || name == "interface-name" || name == "ip-address" || name == "bfd-interface-name" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-session-state" || name == "destination-address" || name == "destination-ipv6-address" || name == "session-address-family")
-        return true;
-    return false;
-}
-
-Hsrp::BfdSessions::BfdSession::Group::Group()
-    :
-    hsrp_group_number{YType::uint32, "hsrp-group-number"},
-    interface_name{YType::str, "interface-name"}
-{
-    yang_name = "group"; yang_parent_name = "bfd-session";
-}
-
-Hsrp::BfdSessions::BfdSession::Group::~Group()
-{
-}
-
-bool Hsrp::BfdSessions::BfdSession::Group::has_data() const
-{
-    return hsrp_group_number.is_set
-	|| interface_name.is_set;
-}
-
-bool Hsrp::BfdSessions::BfdSession::Group::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(hsrp_group_number.yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string Hsrp::BfdSessions::BfdSession::Group::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "group";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Hsrp::BfdSessions::BfdSession::Group::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Group' in Cisco_IOS_XR_ipv4_hsrp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (hsrp_group_number.is_set || is_set(hsrp_group_number.yfilter)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::BfdSession::Group::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Hsrp::BfdSessions::BfdSession::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
     if(value_path == "hsrp-group-number")
     {
         hsrp_group_number = value;
         hsrp_group_number.value_namespace = name_space;
         hsrp_group_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface-name")
+    if(value_path == "interface")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-up-flag")
+    {
+        interface_up_flag = value;
+        interface_up_flag.value_namespace = name_space;
+        interface_up_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-object")
+    {
+        is_object = value;
+        is_object.value_namespace = name_space;
+        is_object.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-interface-name-xr")
+    {
+        tracked_interface_name_xr = value;
+        tracked_interface_name_xr.value_namespace = name_space;
+        tracked_interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Hsrp::BfdSessions::BfdSession::Group::set_filter(const std::string & value_path, YFilter yfilter)
+void Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "hsrp-group-number")
-    {
-        hsrp_group_number.yfilter = yfilter;
-    }
     if(value_path == "interface-name")
     {
         interface_name.yfilter = yfilter;
     }
+    if(value_path == "group-number")
+    {
+        group_number.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-name")
+    {
+        tracked_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "hsrp-group-number")
+    {
+        hsrp_group_number.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "interface-up-flag")
+    {
+        interface_up_flag.yfilter = yfilter;
+    }
+    if(value_path == "is-object")
+    {
+        is_object.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-name-xr")
+    {
+        tracked_interface_name_xr.yfilter = yfilter;
+    }
 }
 
-bool Hsrp::BfdSessions::BfdSession::Group::has_leaf_or_child_of_name(const std::string & name) const
+bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hsrp-group-number" || name == "interface-name")
+    if(name == "interface-name" || name == "group-number" || name == "tracked-interface-name" || name == "hsrp-group-number" || name == "interface" || name == "interface-up-flag" || name == "is-object" || name == "priority-decrement" || name == "tracked-interface-name-xr")
+        return true;
+    return false;
+}
+
+Hsrp::MgoSessions::MgoSessions()
+{
+
+    yang_name = "mgo-sessions"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Hsrp::MgoSessions::~MgoSessions()
+{
+}
+
+bool Hsrp::MgoSessions::has_data() const
+{
+    for (std::size_t index=0; index<mgo_session.size(); index++)
+    {
+        if(mgo_session[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Hsrp::MgoSessions::has_operation() const
+{
+    for (std::size_t index=0; index<mgo_session.size(); index++)
+    {
+        if(mgo_session[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Hsrp::MgoSessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Hsrp::MgoSessions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mgo-sessions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::MgoSessions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::MgoSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mgo-session")
+    {
+        for(auto const & c : mgo_session)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Hsrp::MgoSessions::MgoSession>();
+        c->parent = this;
+        mgo_session.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mgo_session)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Hsrp::MgoSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Hsrp::MgoSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Hsrp::MgoSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mgo-session")
+        return true;
+    return false;
+}
+
+Hsrp::MgoSessions::MgoSession::MgoSession()
+    :
+    session_name{YType::str, "session-name"},
+    primary_af_name{YType::enumeration, "primary-af-name"},
+    primary_session_interface{YType::str, "primary-session-interface"},
+    primary_session_name{YType::str, "primary-session-name"},
+    primary_session_number{YType::uint32, "primary-session-number"},
+    primary_session_state{YType::enumeration, "primary-session-state"}
+{
+
+    yang_name = "mgo-session"; yang_parent_name = "mgo-sessions"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Hsrp::MgoSessions::MgoSession::~MgoSession()
+{
+}
+
+bool Hsrp::MgoSessions::MgoSession::has_data() const
+{
+    for (std::size_t index=0; index<slave.size(); index++)
+    {
+        if(slave[index]->has_data())
+            return true;
+    }
+    return session_name.is_set
+	|| primary_af_name.is_set
+	|| primary_session_interface.is_set
+	|| primary_session_name.is_set
+	|| primary_session_number.is_set
+	|| primary_session_state.is_set;
+}
+
+bool Hsrp::MgoSessions::MgoSession::has_operation() const
+{
+    for (std::size_t index=0; index<slave.size(); index++)
+    {
+        if(slave[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(session_name.yfilter)
+	|| ydk::is_set(primary_af_name.yfilter)
+	|| ydk::is_set(primary_session_interface.yfilter)
+	|| ydk::is_set(primary_session_name.yfilter)
+	|| ydk::is_set(primary_session_number.yfilter)
+	|| ydk::is_set(primary_session_state.yfilter);
+}
+
+std::string Hsrp::MgoSessions::MgoSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/mgo-sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Hsrp::MgoSessions::MgoSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mgo-session" <<"[session-name='" <<session_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::MgoSessions::MgoSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (primary_af_name.is_set || is_set(primary_af_name.yfilter)) leaf_name_data.push_back(primary_af_name.get_name_leafdata());
+    if (primary_session_interface.is_set || is_set(primary_session_interface.yfilter)) leaf_name_data.push_back(primary_session_interface.get_name_leafdata());
+    if (primary_session_name.is_set || is_set(primary_session_name.yfilter)) leaf_name_data.push_back(primary_session_name.get_name_leafdata());
+    if (primary_session_number.is_set || is_set(primary_session_number.yfilter)) leaf_name_data.push_back(primary_session_number.get_name_leafdata());
+    if (primary_session_state.is_set || is_set(primary_session_state.yfilter)) leaf_name_data.push_back(primary_session_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "slave")
+    {
+        for(auto const & c : slave)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Hsrp::MgoSessions::MgoSession::Slave>();
+        c->parent = this;
+        slave.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::MgoSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : slave)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Hsrp::MgoSessions::MgoSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-name")
+    {
+        session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-af-name")
+    {
+        primary_af_name = value;
+        primary_af_name.value_namespace = name_space;
+        primary_af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-session-interface")
+    {
+        primary_session_interface = value;
+        primary_session_interface.value_namespace = name_space;
+        primary_session_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-session-name")
+    {
+        primary_session_name = value;
+        primary_session_name.value_namespace = name_space;
+        primary_session_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-session-number")
+    {
+        primary_session_number = value;
+        primary_session_number.value_namespace = name_space;
+        primary_session_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-session-state")
+    {
+        primary_session_state = value;
+        primary_session_state.value_namespace = name_space;
+        primary_session_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::MgoSessions::MgoSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-af-name")
+    {
+        primary_af_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-interface")
+    {
+        primary_session_interface.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-name")
+    {
+        primary_session_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-number")
+    {
+        primary_session_number.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-state")
+    {
+        primary_session_state.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::MgoSessions::MgoSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave" || name == "session-name" || name == "primary-af-name" || name == "primary-session-interface" || name == "primary-session-name" || name == "primary-session-number" || name == "primary-session-state")
+        return true;
+    return false;
+}
+
+Hsrp::MgoSessions::MgoSession::Slave::Slave()
+    :
+    slave_group_interface{YType::str, "slave-group-interface"},
+    slave_group_number{YType::uint32, "slave-group-number"}
+{
+
+    yang_name = "slave"; yang_parent_name = "mgo-session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Hsrp::MgoSessions::MgoSession::Slave::~Slave()
+{
+}
+
+bool Hsrp::MgoSessions::MgoSession::Slave::has_data() const
+{
+    return slave_group_interface.is_set
+	|| slave_group_number.is_set;
+}
+
+bool Hsrp::MgoSessions::MgoSession::Slave::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(slave_group_interface.yfilter)
+	|| ydk::is_set(slave_group_number.yfilter);
+}
+
+std::string Hsrp::MgoSessions::MgoSession::Slave::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "slave";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Hsrp::MgoSessions::MgoSession::Slave::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (slave_group_interface.is_set || is_set(slave_group_interface.yfilter)) leaf_name_data.push_back(slave_group_interface.get_name_leafdata());
+    if (slave_group_number.is_set || is_set(slave_group_number.yfilter)) leaf_name_data.push_back(slave_group_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::Slave::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::MgoSession::Slave::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Hsrp::MgoSessions::MgoSession::Slave::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "slave-group-interface")
+    {
+        slave_group_interface = value;
+        slave_group_interface.value_namespace = name_space;
+        slave_group_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slave-group-number")
+    {
+        slave_group_number = value;
+        slave_group_number.value_namespace = name_space;
+        slave_group_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Hsrp::MgoSessions::MgoSession::Slave::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slave-group-interface")
+    {
+        slave_group_interface.yfilter = yfilter;
+    }
+    if(value_path == "slave-group-number")
+    {
+        slave_group_number.yfilter = yfilter;
+    }
+}
+
+bool Hsrp::MgoSessions::MgoSession::Slave::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave-group-interface" || name == "slave-group-number")
         return true;
     return false;
 }
@@ -7439,7 +7036,8 @@ Hsrp::Summary::Summary()
     tracked_objects_down{YType::uint32, "tracked-objects-down"},
     tracked_objects_up{YType::uint32, "tracked-objects-up"}
 {
-    yang_name = "summary"; yang_parent_name = "hsrp";
+
+    yang_name = "summary"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hsrp::Summary::~Summary()
@@ -7577,27 +7175,22 @@ bool Hsrp::Summary::has_operation() const
 	|| ydk::is_set(tracked_objects_up.yfilter);
 }
 
+std::string Hsrp::Summary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hsrp::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hsrp::Summary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hsrp::Summary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-hsrp-oper:hsrp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bfd_session_inactive.is_set || is_set(bfd_session_inactive.yfilter)) leaf_name_data.push_back(bfd_session_inactive.get_name_leafdata());
@@ -7662,9 +7255,7 @@ const EntityPath Hsrp::Summary::get_entity_path(Entity* ancestor) const
     if (tracked_objects_down.is_set || is_set(tracked_objects_down.yfilter)) leaf_name_data.push_back(tracked_objects_down.get_name_leafdata());
     if (tracked_objects_up.is_set || is_set(tracked_objects_up.yfilter)) leaf_name_data.push_back(tracked_objects_up.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8316,6 +7907,10 @@ const Enum::YLeaf StandbyGrpState::state_speak {4, "state-speak"};
 const Enum::YLeaf StandbyGrpState::state_standby {5, "state-standby"};
 const Enum::YLeaf StandbyGrpState::state_active {6, "state-active"};
 
+const Enum::YLeaf HsrpBAf::ipv4 {0, "ipv4"};
+const Enum::YLeaf HsrpBAf::ipv6 {1, "ipv6"};
+const Enum::YLeaf HsrpBAf::count {2, "count"};
+
 const Enum::YLeaf HsrpStateChangeReason::state_change_bfd_down {0, "state-change-bfd-down"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_vip_learnt {1, "state-change-vip-learnt"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_interface_ip {2, "state-change-interface-ip"};
@@ -8341,16 +7936,13 @@ const Enum::YLeaf HsrpStateChangeReason::state_change_admin {21, "state-change-a
 const Enum::YLeaf HsrpStateChangeReason::state_change_parent {22, "state-change-parent"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_chkpt_update {23, "state-change-chkpt-update"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_issu_resync {24, "state-change-issu-resync"};
-const Enum::YLeaf HsrpStateChangeReason::state_change_max {25, "state-change-max"};
+const Enum::YLeaf HsrpStateChangeReason::state_change_reset_to_learn {25, "state-change-reset-to-learn"};
+const Enum::YLeaf HsrpStateChangeReason::state_change_max {26, "state-change-max"};
 
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_none {0, "bfd-state-none"};
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_inactive {1, "bfd-state-inactive"};
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_up {2, "bfd-state-up"};
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_down {3, "bfd-state-down"};
-
-const Enum::YLeaf HsrpBAf::ipv4 {0, "ipv4"};
-const Enum::YLeaf HsrpBAf::ipv6 {1, "ipv6"};
-const Enum::YLeaf HsrpBAf::count {2, "count"};
 
 
 }

@@ -17,7 +17,7 @@ Fia::Fia()
 {
     nodes->parent = this;
 
-    yang_name = "fia"; yang_parent_name = "Cisco-IOS-XR-dnx-driver-oper";
+    yang_name = "fia"; yang_parent_name = "Cisco-IOS-XR-dnx-driver-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Fia::~Fia()
@@ -39,26 +39,15 @@ std::string Fia::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dnx-driver-oper:fia";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Fia::has_leaf_or_child_of_name(const std::string & name) const
 
 Fia::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "fia";
+
+    yang_name = "nodes"; yang_parent_name = "fia"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fia::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Fia::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Fia::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dnx-driver-oper:fia/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fia::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dnx-driver-oper:fia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -246,20 +229,14 @@ Fia::Nodes::Node::Node()
 	,tx_link_information(std::make_shared<Fia::Nodes::Node::TxLinkInformation>())
 {
     asic_statistics->parent = this;
-
     clear_statistics->parent = this;
-
     diag_shell->parent = this;
-
     driver_information->parent = this;
-
     oir_history->parent = this;
-
     rx_link_information->parent = this;
-
     tx_link_information->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fia::Nodes::Node::~Node()
@@ -291,34 +268,27 @@ bool Fia::Nodes::Node::has_operation() const
 	|| (tx_link_information !=  nullptr && tx_link_information->has_operation());
 }
 
+std::string Fia::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dnx-driver-oper:fia/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fia::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dnx-driver-oper:fia/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -456,164 +426,137 @@ bool Fia::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::RxLinkInformation()
+Fia::Nodes::Node::AsicStatistics::AsicStatistics()
     :
-    link_options(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions>())
+    statistics_asic_instances(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances>())
 {
-    link_options->parent = this;
+    statistics_asic_instances->parent = this;
 
-    yang_name = "rx-link-information"; yang_parent_name = "node";
+    yang_name = "asic-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::~RxLinkInformation()
+Fia::Nodes::Node::AsicStatistics::~AsicStatistics()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::has_data() const
 {
-    return (link_options !=  nullptr && link_options->has_data());
+    return (statistics_asic_instances !=  nullptr && statistics_asic_instances->has_data());
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::has_operation() const
 {
     return is_set(yfilter)
-	|| (link_options !=  nullptr && link_options->has_operation());
+	|| (statistics_asic_instances !=  nullptr && statistics_asic_instances->has_operation());
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rx-link-information";
-
+    path_buffer << "asic-statistics";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLinkInformation' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "link-options")
+    if(child_yang_name == "statistics-asic-instances")
     {
-        if(link_options == nullptr)
+        if(statistics_asic_instances == nullptr)
         {
-            link_options = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions>();
+            statistics_asic_instances = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances>();
         }
-        return link_options;
+        return statistics_asic_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(link_options != nullptr)
+    if(statistics_asic_instances != nullptr)
     {
-        children["link-options"] = link_options;
+        children["statistics-asic-instances"] = statistics_asic_instances;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Fia::Nodes::Node::RxLinkInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-options")
+    if(name == "statistics-asic-instances")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOptions()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstances()
 {
-    yang_name = "link-options"; yang_parent_name = "rx-link-information";
+
+    yang_name = "statistics-asic-instances"; yang_parent_name = "asic-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::~LinkOptions()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::~StatisticsAsicInstances()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_data() const
 {
-    for (std::size_t index=0; index<link_option.size(); index++)
+    for (std::size_t index=0; index<statistics_asic_instance.size(); index++)
     {
-        if(link_option[index]->has_data())
+        if(statistics_asic_instance[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_operation() const
 {
-    for (std::size_t index=0; index<link_option.size(); index++)
+    for (std::size_t index=0; index<statistics_asic_instance.size(); index++)
     {
-        if(link_option[index]->has_operation())
+        if(statistics_asic_instance[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-options";
-
+    path_buffer << "statistics-asic-instances";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkOptions' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "link-option")
+    if(child_yang_name == "statistics-asic-instance")
     {
-        for(auto const & c : link_option)
+        for(auto const & c : statistics_asic_instance)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -621,19 +564,19 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_ch
                 return c;
             }
         }
-        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption>();
+        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance>();
         c->parent = this;
-        link_option.push_back(c);
+        statistics_asic_instance.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : link_option)
+    for (auto const & c : statistics_asic_instance)
     {
         children[c->get_segment_path()] = c;
     }
@@ -641,321 +584,110 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-option")
+    if(name == "statistics-asic-instance")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::LinkOption()
-    :
-    option{YType::str, "option"}
-    	,
-    rx_asic_instances(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances>())
-{
-    rx_asic_instances->parent = this;
-
-    yang_name = "link-option"; yang_parent_name = "link-options";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::~LinkOption()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_data() const
-{
-    return option.is_set
-	|| (rx_asic_instances !=  nullptr && rx_asic_instances->has_data());
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(option.yfilter)
-	|| (rx_asic_instances !=  nullptr && rx_asic_instances->has_operation());
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "link-option" <<"[option='" <<option <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkOption' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rx-asic-instances")
-    {
-        if(rx_asic_instances == nullptr)
-        {
-            rx_asic_instances = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances>();
-        }
-        return rx_asic_instances;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(rx_asic_instances != nullptr)
-    {
-        children["rx-asic-instances"] = rx_asic_instances;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "option")
-    {
-        option = value;
-        option.value_namespace = name_space;
-        option.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "option")
-    {
-        option.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-asic-instances" || name == "option")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstances()
-{
-    yang_name = "rx-asic-instances"; yang_parent_name = "link-option";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::~RxAsicInstances()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_data() const
-{
-    for (std::size_t index=0; index<rx_asic_instance.size(); index++)
-    {
-        if(rx_asic_instance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_operation() const
-{
-    for (std::size_t index=0; index<rx_asic_instance.size(); index++)
-    {
-        if(rx_asic_instance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-asic-instances";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxAsicInstances' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rx-asic-instance")
-    {
-        for(auto const & c : rx_asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance>();
-        c->parent = this;
-        rx_asic_instance.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rx_asic_instance)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-asic-instance")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxAsicInstance()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::StatisticsAsicInstance()
     :
     instance{YType::uint32, "instance"}
     	,
-    rx_links(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks>())
+    fmac_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics>())
+	,pbc_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics>())
 {
-    rx_links->parent = this;
+    fmac_statistics->parent = this;
+    pbc_statistics->parent = this;
 
-    yang_name = "rx-asic-instance"; yang_parent_name = "rx-asic-instances";
+    yang_name = "statistics-asic-instance"; yang_parent_name = "statistics-asic-instances"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::~RxAsicInstance()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::~StatisticsAsicInstance()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_data() const
 {
     return instance.is_set
-	|| (rx_links !=  nullptr && rx_links->has_data());
+	|| (fmac_statistics !=  nullptr && fmac_statistics->has_data())
+	|| (pbc_statistics !=  nullptr && pbc_statistics->has_data());
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(instance.yfilter)
-	|| (rx_links !=  nullptr && rx_links->has_operation());
+	|| (fmac_statistics !=  nullptr && fmac_statistics->has_operation())
+	|| (pbc_statistics !=  nullptr && pbc_statistics->has_operation());
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rx-asic-instance" <<"[instance='" <<instance <<"']";
-
+    path_buffer << "statistics-asic-instance" <<"[instance='" <<instance <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxAsicInstance' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rx-links")
+    if(child_yang_name == "fmac-statistics")
     {
-        if(rx_links == nullptr)
+        if(fmac_statistics == nullptr)
         {
-            rx_links = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks>();
+            fmac_statistics = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics>();
         }
-        return rx_links;
+        return fmac_statistics;
+    }
+
+    if(child_yang_name == "pbc-statistics")
+    {
+        if(pbc_statistics == nullptr)
+        {
+            pbc_statistics = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics>();
+        }
+        return pbc_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(rx_links != nullptr)
+    if(fmac_statistics != nullptr)
     {
-        children["rx-links"] = rx_links;
+        children["fmac-statistics"] = fmac_statistics;
+    }
+
+    if(pbc_statistics != nullptr)
+    {
+        children["pbc-statistics"] = pbc_statistics;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance")
     {
@@ -965,7 +697,7 @@ void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
     }
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "instance")
     {
@@ -973,77 +705,144 @@ void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
     }
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rx-links" || name == "instance")
+    if(name == "fmac-statistics" || name == "pbc-statistics" || name == "instance")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLinks()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacStatistics()
+    :
+    fmac_links(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks>())
 {
-    yang_name = "rx-links"; yang_parent_name = "rx-asic-instance";
+    fmac_links->parent = this;
+
+    yang_name = "fmac-statistics"; yang_parent_name = "statistics-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::~RxLinks()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::~FmacStatistics()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_data() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    return (fmac_links !=  nullptr && fmac_links->has_data());
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (fmac_links !=  nullptr && fmac_links->has_operation());
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fmac-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fmac-links")
     {
-        if(rx_link[index]->has_data())
+        if(fmac_links == nullptr)
+        {
+            fmac_links = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks>();
+        }
+        return fmac_links;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fmac_links != nullptr)
+    {
+        children["fmac-links"] = fmac_links;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fmac-links")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLinks()
+{
+
+    yang_name = "fmac-links"; yang_parent_name = "fmac-statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::~FmacLinks()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_data() const
+{
+    for (std::size_t index=0; index<fmac_link.size(); index++)
+    {
+        if(fmac_link[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_operation() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    for (std::size_t index=0; index<fmac_link.size(); index++)
     {
-        if(rx_link[index]->has_operation())
+        if(fmac_link[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rx-links";
-
+    path_buffer << "fmac-links";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLinks' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rx-link")
+    if(child_yang_name == "fmac-link")
     {
-        for(auto const & c : rx_link)
+        for(auto const & c : fmac_link)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1051,19 +850,19 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
                 return c;
             }
         }
-        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink>();
+        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink>();
         c->parent = this;
-        rx_link.push_back(c);
+        fmac_link.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rx_link)
+    for (auto const & c : fmac_link)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1071,359 +870,104 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rx-link")
+    if(name == "fmac-link")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacLink()
     :
-    end_number{YType::uint32, "end-number"},
-    start_number{YType::uint32, "start-number"},
-    status_option{YType::str, "status-option"}
+    link{YType::int32, "link"}
 {
-    yang_name = "rx-link"; yang_parent_name = "rx-links";
+
+    yang_name = "fmac-link"; yang_parent_name = "fmac-links"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::~RxLink()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::~FmacLink()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_data() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    for (std::size_t index=0; index<fmac_asic.size(); index++)
     {
-        if(rx_link[index]->has_data())
+        if(fmac_asic[index]->has_data())
             return true;
     }
-    return end_number.is_set
-	|| start_number.is_set
-	|| status_option.is_set;
+    return link.is_set;
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_operation() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    for (std::size_t index=0; index<fmac_asic.size(); index++)
     {
-        if(rx_link[index]->has_operation())
+        if(fmac_asic[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(end_number.yfilter)
-	|| ydk::is_set(start_number.yfilter)
-	|| ydk::is_set(status_option.yfilter);
+	|| ydk::is_set(link.yfilter);
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rx-link";
-
+    path_buffer << "fmac-link" <<"[link='" <<link <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end_number.is_set || is_set(end_number.yfilter)) leaf_name_data.push_back(end_number.get_name_leafdata());
-    if (start_number.is_set || is_set(start_number.yfilter)) leaf_name_data.push_back(start_number.get_name_leafdata());
-    if (status_option.is_set || is_set(status_option.yfilter)) leaf_name_data.push_back(status_option.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rx-link")
-    {
-        for(auto const & c : rx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_>();
-        c->parent = this;
-        rx_link.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rx_link)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end-number")
-    {
-        end_number = value;
-        end_number.value_namespace = name_space;
-        end_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-number")
-    {
-        start_number = value;
-        start_number.value_namespace = name_space;
-        start_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status-option")
-    {
-        status_option = value;
-        status_option.value_namespace = name_space;
-        status_option.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end-number")
-    {
-        end_number.yfilter = yfilter;
-    }
-    if(value_path == "start-number")
-    {
-        start_number.yfilter = yfilter;
-    }
-    if(value_path == "status-option")
-    {
-        status_option.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-link" || name == "end-number" || name == "start-number" || name == "status-option")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::RxLink_()
-    :
-    link{YType::int32, "link"},
-    admin_state{YType::enumeration, "admin-state"},
-    correctable_errors{YType::uint64, "correctable-errors"},
-    error_state{YType::enumeration, "error-state"},
-    flags{YType::str, "flags"},
-    flap_cnt{YType::uint32, "flap-cnt"},
-    is_conf_pending{YType::boolean, "is-conf-pending"},
-    is_link_valid{YType::boolean, "is-link-valid"},
-    num_admin_shuts{YType::uint32, "num-admin-shuts"},
-    oper_state{YType::enumeration, "oper-state"},
-    speed{YType::uint32, "speed"},
-    stage{YType::enumeration, "stage"},
-    uncorrectable_errors{YType::uint64, "uncorrectable-errors"}
-    	,
-    far_end_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink>())
-	,far_end_link_in_hw(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw>())
-	,history(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History>())
-	,this_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink>())
-{
-    far_end_link->parent = this;
-
-    far_end_link_in_hw->parent = this;
-
-    history->parent = this;
-
-    this_link->parent = this;
-
-    yang_name = "rx-link"; yang_parent_name = "rx-link";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::~RxLink_()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_data() const
-{
-    return link.is_set
-	|| admin_state.is_set
-	|| correctable_errors.is_set
-	|| error_state.is_set
-	|| flags.is_set
-	|| flap_cnt.is_set
-	|| is_conf_pending.is_set
-	|| is_link_valid.is_set
-	|| num_admin_shuts.is_set
-	|| oper_state.is_set
-	|| speed.is_set
-	|| stage.is_set
-	|| uncorrectable_errors.is_set
-	|| (far_end_link !=  nullptr && far_end_link->has_data())
-	|| (far_end_link_in_hw !=  nullptr && far_end_link_in_hw->has_data())
-	|| (history !=  nullptr && history->has_data())
-	|| (this_link !=  nullptr && this_link->has_data());
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link.yfilter)
-	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(correctable_errors.yfilter)
-	|| ydk::is_set(error_state.yfilter)
-	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(flap_cnt.yfilter)
-	|| ydk::is_set(is_conf_pending.yfilter)
-	|| ydk::is_set(is_link_valid.yfilter)
-	|| ydk::is_set(num_admin_shuts.yfilter)
-	|| ydk::is_set(oper_state.yfilter)
-	|| ydk::is_set(speed.yfilter)
-	|| ydk::is_set(stage.yfilter)
-	|| ydk::is_set(uncorrectable_errors.yfilter)
-	|| (far_end_link !=  nullptr && far_end_link->has_operation())
-	|| (far_end_link_in_hw !=  nullptr && far_end_link_in_hw->has_operation())
-	|| (history !=  nullptr && history->has_operation())
-	|| (this_link !=  nullptr && this_link->has_operation());
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-link" <<"[link='" <<link <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLink_' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (correctable_errors.is_set || is_set(correctable_errors.yfilter)) leaf_name_data.push_back(correctable_errors.get_name_leafdata());
-    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
-    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (flap_cnt.is_set || is_set(flap_cnt.yfilter)) leaf_name_data.push_back(flap_cnt.get_name_leafdata());
-    if (is_conf_pending.is_set || is_set(is_conf_pending.yfilter)) leaf_name_data.push_back(is_conf_pending.get_name_leafdata());
-    if (is_link_valid.is_set || is_set(is_link_valid.yfilter)) leaf_name_data.push_back(is_link_valid.get_name_leafdata());
-    if (num_admin_shuts.is_set || is_set(num_admin_shuts.yfilter)) leaf_name_data.push_back(num_admin_shuts.get_name_leafdata());
-    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
-    if (stage.is_set || is_set(stage.yfilter)) leaf_name_data.push_back(stage.get_name_leafdata());
-    if (uncorrectable_errors.is_set || is_set(uncorrectable_errors.yfilter)) leaf_name_data.push_back(uncorrectable_errors.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "far-end-link")
+    if(child_yang_name == "fmac-asic")
     {
-        if(far_end_link == nullptr)
+        for(auto const & c : fmac_asic)
         {
-            far_end_link = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return far_end_link;
-    }
-
-    if(child_yang_name == "far-end-link-in-hw")
-    {
-        if(far_end_link_in_hw == nullptr)
-        {
-            far_end_link_in_hw = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw>();
-        }
-        return far_end_link_in_hw;
-    }
-
-    if(child_yang_name == "history")
-    {
-        if(history == nullptr)
-        {
-            history = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History>();
-        }
-        return history;
-    }
-
-    if(child_yang_name == "this-link")
-    {
-        if(this_link == nullptr)
-        {
-            this_link = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink>();
-        }
-        return this_link;
+        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic>();
+        c->parent = this;
+        fmac_asic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(far_end_link != nullptr)
+    for (auto const & c : fmac_asic)
     {
-        children["far-end-link"] = far_end_link;
-    }
-
-    if(far_end_link_in_hw != nullptr)
-    {
-        children["far-end-link-in-hw"] = far_end_link_in_hw;
-    }
-
-    if(history != nullptr)
-    {
-        children["history"] = history;
-    }
-
-    if(this_link != nullptr)
-    {
-        children["this-link"] = this_link;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link")
     {
@@ -1431,375 +975,1999 @@ void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
         link.value_namespace = name_space;
         link.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "admin-state")
-    {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "correctable-errors")
-    {
-        correctable_errors = value;
-        correctable_errors.value_namespace = name_space;
-        correctable_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error-state")
-    {
-        error_state = value;
-        error_state.value_namespace = name_space;
-        error_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flags")
-    {
-        flags = value;
-        flags.value_namespace = name_space;
-        flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flap-cnt")
-    {
-        flap_cnt = value;
-        flap_cnt.value_namespace = name_space;
-        flap_cnt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-conf-pending")
-    {
-        is_conf_pending = value;
-        is_conf_pending.value_namespace = name_space;
-        is_conf_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-link-valid")
-    {
-        is_link_valid = value;
-        is_link_valid.value_namespace = name_space;
-        is_link_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-admin-shuts")
-    {
-        num_admin_shuts = value;
-        num_admin_shuts.value_namespace = name_space;
-        num_admin_shuts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state = value;
-        oper_state.value_namespace = name_space;
-        oper_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed")
-    {
-        speed = value;
-        speed.value_namespace = name_space;
-        speed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stage")
-    {
-        stage = value;
-        stage.value_namespace = name_space;
-        stage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uncorrectable-errors")
-    {
-        uncorrectable_errors = value;
-        uncorrectable_errors.value_namespace = name_space;
-        uncorrectable_errors.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "link")
     {
         link.yfilter = yfilter;
     }
-    if(value_path == "admin-state")
-    {
-        admin_state.yfilter = yfilter;
-    }
-    if(value_path == "correctable-errors")
-    {
-        correctable_errors.yfilter = yfilter;
-    }
-    if(value_path == "error-state")
-    {
-        error_state.yfilter = yfilter;
-    }
-    if(value_path == "flags")
-    {
-        flags.yfilter = yfilter;
-    }
-    if(value_path == "flap-cnt")
-    {
-        flap_cnt.yfilter = yfilter;
-    }
-    if(value_path == "is-conf-pending")
-    {
-        is_conf_pending.yfilter = yfilter;
-    }
-    if(value_path == "is-link-valid")
-    {
-        is_link_valid.yfilter = yfilter;
-    }
-    if(value_path == "num-admin-shuts")
-    {
-        num_admin_shuts.yfilter = yfilter;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state.yfilter = yfilter;
-    }
-    if(value_path == "speed")
-    {
-        speed.yfilter = yfilter;
-    }
-    if(value_path == "stage")
-    {
-        stage.yfilter = yfilter;
-    }
-    if(value_path == "uncorrectable-errors")
-    {
-        uncorrectable_errors.yfilter = yfilter;
-    }
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "far-end-link" || name == "far-end-link-in-hw" || name == "history" || name == "this-link" || name == "link" || name == "admin-state" || name == "correctable-errors" || name == "error-state" || name == "flags" || name == "flap-cnt" || name == "is-conf-pending" || name == "is-link-valid" || name == "num-admin-shuts" || name == "oper-state" || name == "speed" || name == "stage" || name == "uncorrectable-errors")
+    if(name == "fmac-asic" || name == "link")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::ThisLink()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::FmacAsic()
     :
-    link_num{YType::uint32, "link-num"},
-    link_stage{YType::enumeration, "link-stage"},
-    link_type{YType::enumeration, "link-type"},
-    phy_link_num{YType::uint32, "phy-link-num"}
+    asic{YType::int32, "asic"},
+    asic_instance{YType::uint32, "asic-instance"},
+    link_no{YType::uint32, "link-no"},
+    link_valid{YType::boolean, "link-valid"},
+    rack_no{YType::uint32, "rack-no"},
+    slot_no{YType::uint32, "slot-no"},
+    valid{YType::boolean, "valid"}
     	,
-    asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId>())
+    aggr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats>())
+	,incr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats>())
 {
-    asic_id->parent = this;
+    aggr_stats->parent = this;
+    incr_stats->parent = this;
 
-    yang_name = "this-link"; yang_parent_name = "rx-link";
+    yang_name = "fmac-asic"; yang_parent_name = "fmac-link"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::~ThisLink()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::~FmacAsic()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_data() const
 {
-    return link_num.is_set
-	|| link_stage.is_set
-	|| link_type.is_set
-	|| phy_link_num.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
+    return asic.is_set
+	|| asic_instance.is_set
+	|| link_no.is_set
+	|| link_valid.is_set
+	|| rack_no.is_set
+	|| slot_no.is_set
+	|| valid.is_set
+	|| (aggr_stats !=  nullptr && aggr_stats->has_data())
+	|| (incr_stats !=  nullptr && incr_stats->has_data());
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(link_num.yfilter)
-	|| ydk::is_set(link_stage.yfilter)
-	|| ydk::is_set(link_type.yfilter)
-	|| ydk::is_set(phy_link_num.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
+	|| ydk::is_set(asic.yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(link_no.yfilter)
+	|| ydk::is_set(link_valid.yfilter)
+	|| ydk::is_set(rack_no.yfilter)
+	|| ydk::is_set(slot_no.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| (aggr_stats !=  nullptr && aggr_stats->has_operation())
+	|| (incr_stats !=  nullptr && incr_stats->has_operation());
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "this-link";
-
+    path_buffer << "fmac-asic" <<"[asic='" <<asic <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ThisLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
-    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
-    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
-    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
+    if (asic.is_set || is_set(asic.yfilter)) leaf_name_data.push_back(asic.get_name_leafdata());
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (link_no.is_set || is_set(link_no.yfilter)) leaf_name_data.push_back(link_no.get_name_leafdata());
+    if (link_valid.is_set || is_set(link_valid.yfilter)) leaf_name_data.push_back(link_valid.get_name_leafdata());
+    if (rack_no.is_set || is_set(rack_no.yfilter)) leaf_name_data.push_back(rack_no.get_name_leafdata());
+    if (slot_no.is_set || is_set(slot_no.yfilter)) leaf_name_data.push_back(slot_no.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "asic-id")
+    if(child_yang_name == "aggr-stats")
     {
-        if(asic_id == nullptr)
+        if(aggr_stats == nullptr)
         {
-            asic_id = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId>();
+            aggr_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats>();
         }
-        return asic_id;
+        return aggr_stats;
+    }
+
+    if(child_yang_name == "incr-stats")
+    {
+        if(incr_stats == nullptr)
+        {
+            incr_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats>();
+        }
+        return incr_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
+    if(aggr_stats != nullptr)
     {
-        children["asic-id"] = asic_id;
+        children["aggr-stats"] = aggr_stats;
+    }
+
+    if(incr_stats != nullptr)
+    {
+        children["incr-stats"] = incr_stats;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "link-num")
+    if(value_path == "asic")
     {
-        link_num = value;
-        link_num.value_namespace = name_space;
-        link_num.value_namespace_prefix = name_space_prefix;
+        asic = value;
+        asic.value_namespace = name_space;
+        asic.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-stage")
+    if(value_path == "asic-instance")
     {
-        link_stage = value;
-        link_stage.value_namespace = name_space;
-        link_stage.value_namespace_prefix = name_space_prefix;
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-type")
+    if(value_path == "link-no")
     {
-        link_type = value;
-        link_type.value_namespace = name_space;
-        link_type.value_namespace_prefix = name_space_prefix;
+        link_no = value;
+        link_no.value_namespace = name_space;
+        link_no.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "phy-link-num")
+    if(value_path == "link-valid")
     {
-        phy_link_num = value;
-        phy_link_num.value_namespace = name_space;
-        phy_link_num.value_namespace_prefix = name_space_prefix;
+        link_valid = value;
+        link_valid.value_namespace = name_space;
+        link_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-no")
+    {
+        rack_no = value;
+        rack_no.value_namespace = name_space;
+        rack_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-no")
+    {
+        slot_no = value;
+        slot_no.value_namespace = name_space;
+        slot_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "link-num")
+    if(value_path == "asic")
     {
-        link_num.yfilter = yfilter;
+        asic.yfilter = yfilter;
     }
-    if(value_path == "link-stage")
+    if(value_path == "asic-instance")
     {
-        link_stage.yfilter = yfilter;
+        asic_instance.yfilter = yfilter;
     }
-    if(value_path == "link-type")
+    if(value_path == "link-no")
     {
-        link_type.yfilter = yfilter;
+        link_no.yfilter = yfilter;
     }
-    if(value_path == "phy-link-num")
+    if(value_path == "link-valid")
     {
-        phy_link_num.yfilter = yfilter;
+        link_valid.yfilter = yfilter;
+    }
+    if(value_path == "rack-no")
+    {
+        rack_no.yfilter = yfilter;
+    }
+    if(value_path == "slot-no")
+    {
+        slot_no.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
+    if(name == "aggr-stats" || name == "incr-stats" || name == "asic" || name == "asic-instance" || name == "link-no" || name == "link-valid" || name == "rack-no" || name == "slot-no" || name == "valid")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::AsicId()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::AggrStats()
+    :
+    link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters>())
+	,link_error_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus>())
+	,ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus>())
+{
+    link_counters->parent = this;
+    link_error_status->parent = this;
+    ovf_status->parent = this;
+
+    yang_name = "aggr-stats"; yang_parent_name = "fmac-asic"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::~AggrStats()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_data() const
+{
+    return (link_counters !=  nullptr && link_counters->has_data())
+	|| (link_error_status !=  nullptr && link_error_status->has_data())
+	|| (ovf_status !=  nullptr && ovf_status->has_data());
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| (link_counters !=  nullptr && link_counters->has_operation())
+	|| (link_error_status !=  nullptr && link_error_status->has_operation())
+	|| (ovf_status !=  nullptr && ovf_status->has_operation());
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aggr-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-counters")
+    {
+        if(link_counters == nullptr)
+        {
+            link_counters = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters>();
+        }
+        return link_counters;
+    }
+
+    if(child_yang_name == "link-error-status")
+    {
+        if(link_error_status == nullptr)
+        {
+            link_error_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus>();
+        }
+        return link_error_status;
+    }
+
+    if(child_yang_name == "ovf-status")
+    {
+        if(ovf_status == nullptr)
+        {
+            ovf_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus>();
+        }
+        return ovf_status;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(link_counters != nullptr)
+    {
+        children["link-counters"] = link_counters;
+    }
+
+    if(link_error_status != nullptr)
+    {
+        children["link-error-status"] = link_error_status;
+    }
+
+    if(ovf_status != nullptr)
+    {
+        children["ovf-status"] = ovf_status;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-counters" || name == "link-error-status" || name == "ovf-status")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::LinkCounters()
+    :
+    rx_8b_10b_code_errors{YType::uint64, "rx-8b-10b-code-errors"},
+    rx_8b_10b_disparity_errors{YType::uint64, "rx-8b-10b-disparity-errors"},
+    rx_asyn_fifo_rate{YType::uint64, "rx-asyn-fifo-rate"},
+    rx_control_cells_counter{YType::uint64, "rx-control-cells-counter"},
+    rx_crc_errors_counter{YType::uint64, "rx-crc-errors-counter"},
+    rx_data_byte_counter{YType::uint64, "rx-data-byte-counter"},
+    rx_data_cell_counter{YType::uint64, "rx-data-cell-counter"},
+    rx_dropped_retransmitted_control{YType::uint64, "rx-dropped-retransmitted-control"},
+    rx_lfec_fec_correctable_error{YType::uint64, "rx-lfec-fec-correctable-error"},
+    rx_lfec_fec_uncorrectable_errors{YType::uint64, "rx-lfec-fec-uncorrectable-errors"},
+    tx_asyn_fifo_rate{YType::uint64, "tx-asyn-fifo-rate"},
+    tx_control_cells_counter{YType::uint64, "tx-control-cells-counter"},
+    tx_data_byte_counter{YType::uint64, "tx-data-byte-counter"},
+    tx_data_cell_counter{YType::uint64, "tx-data-cell-counter"}
+{
+
+    yang_name = "link-counters"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::~LinkCounters()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_data() const
+{
+    return rx_8b_10b_code_errors.is_set
+	|| rx_8b_10b_disparity_errors.is_set
+	|| rx_asyn_fifo_rate.is_set
+	|| rx_control_cells_counter.is_set
+	|| rx_crc_errors_counter.is_set
+	|| rx_data_byte_counter.is_set
+	|| rx_data_cell_counter.is_set
+	|| rx_dropped_retransmitted_control.is_set
+	|| rx_lfec_fec_correctable_error.is_set
+	|| rx_lfec_fec_uncorrectable_errors.is_set
+	|| tx_asyn_fifo_rate.is_set
+	|| tx_control_cells_counter.is_set
+	|| tx_data_byte_counter.is_set
+	|| tx_data_cell_counter.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
+	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
+	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(rx_control_cells_counter.yfilter)
+	|| ydk::is_set(rx_crc_errors_counter.yfilter)
+	|| ydk::is_set(rx_data_byte_counter.yfilter)
+	|| ydk::is_set(rx_data_cell_counter.yfilter)
+	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
+	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
+	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
+	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(tx_control_cells_counter.yfilter)
+	|| ydk::is_set(tx_data_byte_counter.yfilter)
+	|| ydk::is_set(tx_data_cell_counter.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-counters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
+    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
+    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
+    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
+    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
+    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
+    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
+    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
+    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
+    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
+    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
+    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
+    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
+    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors = value;
+        rx_8b_10b_code_errors.value_namespace = name_space;
+        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors = value;
+        rx_8b_10b_disparity_errors.value_namespace = name_space;
+        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate = value;
+        rx_asyn_fifo_rate.value_namespace = name_space;
+        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter = value;
+        rx_control_cells_counter.value_namespace = name_space;
+        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter = value;
+        rx_crc_errors_counter.value_namespace = name_space;
+        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter = value;
+        rx_data_byte_counter.value_namespace = name_space;
+        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter = value;
+        rx_data_cell_counter.value_namespace = name_space;
+        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control = value;
+        rx_dropped_retransmitted_control.value_namespace = name_space;
+        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error = value;
+        rx_lfec_fec_correctable_error.value_namespace = name_space;
+        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors = value;
+        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
+        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate = value;
+        tx_asyn_fifo_rate.value_namespace = name_space;
+        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter = value;
+        tx_control_cells_counter.value_namespace = name_space;
+        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter = value;
+        tx_data_byte_counter.value_namespace = name_space;
+        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter = value;
+        tx_data_cell_counter.value_namespace = name_space;
+        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::LinkErrorStatus()
+    :
+    error_token_count{YType::uint32, "error-token-count"},
+    link_code_group_error{YType::uint32, "link-code-group-error"},
+    link_crc_error{YType::uint32, "link-crc-error"},
+    link_mis_align_error{YType::uint32, "link-mis-align-error"},
+    link_no_sig_accept_error{YType::uint32, "link-no-sig-accept-error"},
+    link_no_sig_lock_error{YType::uint32, "link-no-sig-lock-error"},
+    link_size_error{YType::uint32, "link-size-error"},
+    link_tokens_error{YType::uint32, "link-tokens-error"}
+{
+
+    yang_name = "link-error-status"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::~LinkErrorStatus()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_data() const
+{
+    return error_token_count.is_set
+	|| link_code_group_error.is_set
+	|| link_crc_error.is_set
+	|| link_mis_align_error.is_set
+	|| link_no_sig_accept_error.is_set
+	|| link_no_sig_lock_error.is_set
+	|| link_size_error.is_set
+	|| link_tokens_error.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_token_count.yfilter)
+	|| ydk::is_set(link_code_group_error.yfilter)
+	|| ydk::is_set(link_crc_error.yfilter)
+	|| ydk::is_set(link_mis_align_error.yfilter)
+	|| ydk::is_set(link_no_sig_accept_error.yfilter)
+	|| ydk::is_set(link_no_sig_lock_error.yfilter)
+	|| ydk::is_set(link_size_error.yfilter)
+	|| ydk::is_set(link_tokens_error.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-error-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_token_count.is_set || is_set(error_token_count.yfilter)) leaf_name_data.push_back(error_token_count.get_name_leafdata());
+    if (link_code_group_error.is_set || is_set(link_code_group_error.yfilter)) leaf_name_data.push_back(link_code_group_error.get_name_leafdata());
+    if (link_crc_error.is_set || is_set(link_crc_error.yfilter)) leaf_name_data.push_back(link_crc_error.get_name_leafdata());
+    if (link_mis_align_error.is_set || is_set(link_mis_align_error.yfilter)) leaf_name_data.push_back(link_mis_align_error.get_name_leafdata());
+    if (link_no_sig_accept_error.is_set || is_set(link_no_sig_accept_error.yfilter)) leaf_name_data.push_back(link_no_sig_accept_error.get_name_leafdata());
+    if (link_no_sig_lock_error.is_set || is_set(link_no_sig_lock_error.yfilter)) leaf_name_data.push_back(link_no_sig_lock_error.get_name_leafdata());
+    if (link_size_error.is_set || is_set(link_size_error.yfilter)) leaf_name_data.push_back(link_size_error.get_name_leafdata());
+    if (link_tokens_error.is_set || is_set(link_tokens_error.yfilter)) leaf_name_data.push_back(link_tokens_error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-token-count")
+    {
+        error_token_count = value;
+        error_token_count.value_namespace = name_space;
+        error_token_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-code-group-error")
+    {
+        link_code_group_error = value;
+        link_code_group_error.value_namespace = name_space;
+        link_code_group_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-crc-error")
+    {
+        link_crc_error = value;
+        link_crc_error.value_namespace = name_space;
+        link_crc_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-mis-align-error")
+    {
+        link_mis_align_error = value;
+        link_mis_align_error.value_namespace = name_space;
+        link_mis_align_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-no-sig-accept-error")
+    {
+        link_no_sig_accept_error = value;
+        link_no_sig_accept_error.value_namespace = name_space;
+        link_no_sig_accept_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-no-sig-lock-error")
+    {
+        link_no_sig_lock_error = value;
+        link_no_sig_lock_error.value_namespace = name_space;
+        link_no_sig_lock_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-size-error")
+    {
+        link_size_error = value;
+        link_size_error.value_namespace = name_space;
+        link_size_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-tokens-error")
+    {
+        link_tokens_error = value;
+        link_tokens_error.value_namespace = name_space;
+        link_tokens_error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-token-count")
+    {
+        error_token_count.yfilter = yfilter;
+    }
+    if(value_path == "link-code-group-error")
+    {
+        link_code_group_error.yfilter = yfilter;
+    }
+    if(value_path == "link-crc-error")
+    {
+        link_crc_error.yfilter = yfilter;
+    }
+    if(value_path == "link-mis-align-error")
+    {
+        link_mis_align_error.yfilter = yfilter;
+    }
+    if(value_path == "link-no-sig-accept-error")
+    {
+        link_no_sig_accept_error.yfilter = yfilter;
+    }
+    if(value_path == "link-no-sig-lock-error")
+    {
+        link_no_sig_lock_error.yfilter = yfilter;
+    }
+    if(value_path == "link-size-error")
+    {
+        link_size_error.yfilter = yfilter;
+    }
+    if(value_path == "link-tokens-error")
+    {
+        link_tokens_error.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-token-count" || name == "link-code-group-error" || name == "link-crc-error" || name == "link-mis-align-error" || name == "link-no-sig-accept-error" || name == "link-no-sig-lock-error" || name == "link-size-error" || name == "link-tokens-error")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::OvfStatus()
+    :
+    rx_8b_10b_code_errors{YType::str, "rx-8b-10b-code-errors"},
+    rx_8b_10b_disparity_errors{YType::str, "rx-8b-10b-disparity-errors"},
+    rx_asyn_fifo_rate{YType::str, "rx-asyn-fifo-rate"},
+    rx_control_cells_counter{YType::str, "rx-control-cells-counter"},
+    rx_crc_errors_counter{YType::str, "rx-crc-errors-counter"},
+    rx_data_byte_counter{YType::str, "rx-data-byte-counter"},
+    rx_data_cell_counter{YType::str, "rx-data-cell-counter"},
+    rx_dropped_retransmitted_control{YType::str, "rx-dropped-retransmitted-control"},
+    rx_lfec_fec_correctable_error{YType::str, "rx-lfec-fec-correctable-error"},
+    rx_lfec_fec_uncorrectable_errors{YType::str, "rx-lfec-fec-uncorrectable-errors"},
+    tx_asyn_fifo_rate{YType::str, "tx-asyn-fifo-rate"},
+    tx_control_cells_counter{YType::str, "tx-control-cells-counter"},
+    tx_data_byte_counter{YType::str, "tx-data-byte-counter"},
+    tx_data_cell_counter{YType::str, "tx-data-cell-counter"}
+{
+
+    yang_name = "ovf-status"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::~OvfStatus()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_data() const
+{
+    return rx_8b_10b_code_errors.is_set
+	|| rx_8b_10b_disparity_errors.is_set
+	|| rx_asyn_fifo_rate.is_set
+	|| rx_control_cells_counter.is_set
+	|| rx_crc_errors_counter.is_set
+	|| rx_data_byte_counter.is_set
+	|| rx_data_cell_counter.is_set
+	|| rx_dropped_retransmitted_control.is_set
+	|| rx_lfec_fec_correctable_error.is_set
+	|| rx_lfec_fec_uncorrectable_errors.is_set
+	|| tx_asyn_fifo_rate.is_set
+	|| tx_control_cells_counter.is_set
+	|| tx_data_byte_counter.is_set
+	|| tx_data_cell_counter.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
+	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
+	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(rx_control_cells_counter.yfilter)
+	|| ydk::is_set(rx_crc_errors_counter.yfilter)
+	|| ydk::is_set(rx_data_byte_counter.yfilter)
+	|| ydk::is_set(rx_data_cell_counter.yfilter)
+	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
+	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
+	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
+	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(tx_control_cells_counter.yfilter)
+	|| ydk::is_set(tx_data_byte_counter.yfilter)
+	|| ydk::is_set(tx_data_cell_counter.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ovf-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
+    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
+    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
+    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
+    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
+    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
+    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
+    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
+    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
+    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
+    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
+    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
+    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
+    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors = value;
+        rx_8b_10b_code_errors.value_namespace = name_space;
+        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors = value;
+        rx_8b_10b_disparity_errors.value_namespace = name_space;
+        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate = value;
+        rx_asyn_fifo_rate.value_namespace = name_space;
+        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter = value;
+        rx_control_cells_counter.value_namespace = name_space;
+        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter = value;
+        rx_crc_errors_counter.value_namespace = name_space;
+        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter = value;
+        rx_data_byte_counter.value_namespace = name_space;
+        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter = value;
+        rx_data_cell_counter.value_namespace = name_space;
+        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control = value;
+        rx_dropped_retransmitted_control.value_namespace = name_space;
+        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error = value;
+        rx_lfec_fec_correctable_error.value_namespace = name_space;
+        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors = value;
+        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
+        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate = value;
+        tx_asyn_fifo_rate.value_namespace = name_space;
+        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter = value;
+        tx_control_cells_counter.value_namespace = name_space;
+        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter = value;
+        tx_data_byte_counter.value_namespace = name_space;
+        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter = value;
+        tx_data_cell_counter.value_namespace = name_space;
+        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::IncrStats()
+    :
+    link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters>())
+	,link_error_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus>())
+	,ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus>())
+{
+    link_counters->parent = this;
+    link_error_status->parent = this;
+    ovf_status->parent = this;
+
+    yang_name = "incr-stats"; yang_parent_name = "fmac-asic"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::~IncrStats()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_data() const
+{
+    return (link_counters !=  nullptr && link_counters->has_data())
+	|| (link_error_status !=  nullptr && link_error_status->has_data())
+	|| (ovf_status !=  nullptr && ovf_status->has_data());
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| (link_counters !=  nullptr && link_counters->has_operation())
+	|| (link_error_status !=  nullptr && link_error_status->has_operation())
+	|| (ovf_status !=  nullptr && ovf_status->has_operation());
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "incr-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-counters")
+    {
+        if(link_counters == nullptr)
+        {
+            link_counters = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters>();
+        }
+        return link_counters;
+    }
+
+    if(child_yang_name == "link-error-status")
+    {
+        if(link_error_status == nullptr)
+        {
+            link_error_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus>();
+        }
+        return link_error_status;
+    }
+
+    if(child_yang_name == "ovf-status")
+    {
+        if(ovf_status == nullptr)
+        {
+            ovf_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus>();
+        }
+        return ovf_status;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(link_counters != nullptr)
+    {
+        children["link-counters"] = link_counters;
+    }
+
+    if(link_error_status != nullptr)
+    {
+        children["link-error-status"] = link_error_status;
+    }
+
+    if(ovf_status != nullptr)
+    {
+        children["ovf-status"] = ovf_status;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-counters" || name == "link-error-status" || name == "ovf-status")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::LinkCounters()
+    :
+    rx_8b_10b_code_errors{YType::uint64, "rx-8b-10b-code-errors"},
+    rx_8b_10b_disparity_errors{YType::uint64, "rx-8b-10b-disparity-errors"},
+    rx_asyn_fifo_rate{YType::uint64, "rx-asyn-fifo-rate"},
+    rx_control_cells_counter{YType::uint64, "rx-control-cells-counter"},
+    rx_crc_errors_counter{YType::uint64, "rx-crc-errors-counter"},
+    rx_data_byte_counter{YType::uint64, "rx-data-byte-counter"},
+    rx_data_cell_counter{YType::uint64, "rx-data-cell-counter"},
+    rx_dropped_retransmitted_control{YType::uint64, "rx-dropped-retransmitted-control"},
+    rx_lfec_fec_correctable_error{YType::uint64, "rx-lfec-fec-correctable-error"},
+    rx_lfec_fec_uncorrectable_errors{YType::uint64, "rx-lfec-fec-uncorrectable-errors"},
+    tx_asyn_fifo_rate{YType::uint64, "tx-asyn-fifo-rate"},
+    tx_control_cells_counter{YType::uint64, "tx-control-cells-counter"},
+    tx_data_byte_counter{YType::uint64, "tx-data-byte-counter"},
+    tx_data_cell_counter{YType::uint64, "tx-data-cell-counter"}
+{
+
+    yang_name = "link-counters"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::~LinkCounters()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_data() const
+{
+    return rx_8b_10b_code_errors.is_set
+	|| rx_8b_10b_disparity_errors.is_set
+	|| rx_asyn_fifo_rate.is_set
+	|| rx_control_cells_counter.is_set
+	|| rx_crc_errors_counter.is_set
+	|| rx_data_byte_counter.is_set
+	|| rx_data_cell_counter.is_set
+	|| rx_dropped_retransmitted_control.is_set
+	|| rx_lfec_fec_correctable_error.is_set
+	|| rx_lfec_fec_uncorrectable_errors.is_set
+	|| tx_asyn_fifo_rate.is_set
+	|| tx_control_cells_counter.is_set
+	|| tx_data_byte_counter.is_set
+	|| tx_data_cell_counter.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
+	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
+	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(rx_control_cells_counter.yfilter)
+	|| ydk::is_set(rx_crc_errors_counter.yfilter)
+	|| ydk::is_set(rx_data_byte_counter.yfilter)
+	|| ydk::is_set(rx_data_cell_counter.yfilter)
+	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
+	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
+	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
+	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(tx_control_cells_counter.yfilter)
+	|| ydk::is_set(tx_data_byte_counter.yfilter)
+	|| ydk::is_set(tx_data_cell_counter.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-counters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
+    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
+    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
+    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
+    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
+    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
+    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
+    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
+    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
+    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
+    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
+    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
+    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
+    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors = value;
+        rx_8b_10b_code_errors.value_namespace = name_space;
+        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors = value;
+        rx_8b_10b_disparity_errors.value_namespace = name_space;
+        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate = value;
+        rx_asyn_fifo_rate.value_namespace = name_space;
+        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter = value;
+        rx_control_cells_counter.value_namespace = name_space;
+        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter = value;
+        rx_crc_errors_counter.value_namespace = name_space;
+        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter = value;
+        rx_data_byte_counter.value_namespace = name_space;
+        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter = value;
+        rx_data_cell_counter.value_namespace = name_space;
+        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control = value;
+        rx_dropped_retransmitted_control.value_namespace = name_space;
+        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error = value;
+        rx_lfec_fec_correctable_error.value_namespace = name_space;
+        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors = value;
+        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
+        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate = value;
+        tx_asyn_fifo_rate.value_namespace = name_space;
+        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter = value;
+        tx_control_cells_counter.value_namespace = name_space;
+        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter = value;
+        tx_data_byte_counter.value_namespace = name_space;
+        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter = value;
+        tx_data_cell_counter.value_namespace = name_space;
+        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::LinkErrorStatus()
+    :
+    error_token_count{YType::uint32, "error-token-count"},
+    link_code_group_error{YType::uint32, "link-code-group-error"},
+    link_crc_error{YType::uint32, "link-crc-error"},
+    link_mis_align_error{YType::uint32, "link-mis-align-error"},
+    link_no_sig_accept_error{YType::uint32, "link-no-sig-accept-error"},
+    link_no_sig_lock_error{YType::uint32, "link-no-sig-lock-error"},
+    link_size_error{YType::uint32, "link-size-error"},
+    link_tokens_error{YType::uint32, "link-tokens-error"}
+{
+
+    yang_name = "link-error-status"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::~LinkErrorStatus()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_data() const
+{
+    return error_token_count.is_set
+	|| link_code_group_error.is_set
+	|| link_crc_error.is_set
+	|| link_mis_align_error.is_set
+	|| link_no_sig_accept_error.is_set
+	|| link_no_sig_lock_error.is_set
+	|| link_size_error.is_set
+	|| link_tokens_error.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_token_count.yfilter)
+	|| ydk::is_set(link_code_group_error.yfilter)
+	|| ydk::is_set(link_crc_error.yfilter)
+	|| ydk::is_set(link_mis_align_error.yfilter)
+	|| ydk::is_set(link_no_sig_accept_error.yfilter)
+	|| ydk::is_set(link_no_sig_lock_error.yfilter)
+	|| ydk::is_set(link_size_error.yfilter)
+	|| ydk::is_set(link_tokens_error.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-error-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_token_count.is_set || is_set(error_token_count.yfilter)) leaf_name_data.push_back(error_token_count.get_name_leafdata());
+    if (link_code_group_error.is_set || is_set(link_code_group_error.yfilter)) leaf_name_data.push_back(link_code_group_error.get_name_leafdata());
+    if (link_crc_error.is_set || is_set(link_crc_error.yfilter)) leaf_name_data.push_back(link_crc_error.get_name_leafdata());
+    if (link_mis_align_error.is_set || is_set(link_mis_align_error.yfilter)) leaf_name_data.push_back(link_mis_align_error.get_name_leafdata());
+    if (link_no_sig_accept_error.is_set || is_set(link_no_sig_accept_error.yfilter)) leaf_name_data.push_back(link_no_sig_accept_error.get_name_leafdata());
+    if (link_no_sig_lock_error.is_set || is_set(link_no_sig_lock_error.yfilter)) leaf_name_data.push_back(link_no_sig_lock_error.get_name_leafdata());
+    if (link_size_error.is_set || is_set(link_size_error.yfilter)) leaf_name_data.push_back(link_size_error.get_name_leafdata());
+    if (link_tokens_error.is_set || is_set(link_tokens_error.yfilter)) leaf_name_data.push_back(link_tokens_error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-token-count")
+    {
+        error_token_count = value;
+        error_token_count.value_namespace = name_space;
+        error_token_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-code-group-error")
+    {
+        link_code_group_error = value;
+        link_code_group_error.value_namespace = name_space;
+        link_code_group_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-crc-error")
+    {
+        link_crc_error = value;
+        link_crc_error.value_namespace = name_space;
+        link_crc_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-mis-align-error")
+    {
+        link_mis_align_error = value;
+        link_mis_align_error.value_namespace = name_space;
+        link_mis_align_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-no-sig-accept-error")
+    {
+        link_no_sig_accept_error = value;
+        link_no_sig_accept_error.value_namespace = name_space;
+        link_no_sig_accept_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-no-sig-lock-error")
+    {
+        link_no_sig_lock_error = value;
+        link_no_sig_lock_error.value_namespace = name_space;
+        link_no_sig_lock_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-size-error")
+    {
+        link_size_error = value;
+        link_size_error.value_namespace = name_space;
+        link_size_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-tokens-error")
+    {
+        link_tokens_error = value;
+        link_tokens_error.value_namespace = name_space;
+        link_tokens_error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-token-count")
+    {
+        error_token_count.yfilter = yfilter;
+    }
+    if(value_path == "link-code-group-error")
+    {
+        link_code_group_error.yfilter = yfilter;
+    }
+    if(value_path == "link-crc-error")
+    {
+        link_crc_error.yfilter = yfilter;
+    }
+    if(value_path == "link-mis-align-error")
+    {
+        link_mis_align_error.yfilter = yfilter;
+    }
+    if(value_path == "link-no-sig-accept-error")
+    {
+        link_no_sig_accept_error.yfilter = yfilter;
+    }
+    if(value_path == "link-no-sig-lock-error")
+    {
+        link_no_sig_lock_error.yfilter = yfilter;
+    }
+    if(value_path == "link-size-error")
+    {
+        link_size_error.yfilter = yfilter;
+    }
+    if(value_path == "link-tokens-error")
+    {
+        link_tokens_error.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-token-count" || name == "link-code-group-error" || name == "link-crc-error" || name == "link-mis-align-error" || name == "link-no-sig-accept-error" || name == "link-no-sig-lock-error" || name == "link-size-error" || name == "link-tokens-error")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::OvfStatus()
+    :
+    rx_8b_10b_code_errors{YType::str, "rx-8b-10b-code-errors"},
+    rx_8b_10b_disparity_errors{YType::str, "rx-8b-10b-disparity-errors"},
+    rx_asyn_fifo_rate{YType::str, "rx-asyn-fifo-rate"},
+    rx_control_cells_counter{YType::str, "rx-control-cells-counter"},
+    rx_crc_errors_counter{YType::str, "rx-crc-errors-counter"},
+    rx_data_byte_counter{YType::str, "rx-data-byte-counter"},
+    rx_data_cell_counter{YType::str, "rx-data-cell-counter"},
+    rx_dropped_retransmitted_control{YType::str, "rx-dropped-retransmitted-control"},
+    rx_lfec_fec_correctable_error{YType::str, "rx-lfec-fec-correctable-error"},
+    rx_lfec_fec_uncorrectable_errors{YType::str, "rx-lfec-fec-uncorrectable-errors"},
+    tx_asyn_fifo_rate{YType::str, "tx-asyn-fifo-rate"},
+    tx_control_cells_counter{YType::str, "tx-control-cells-counter"},
+    tx_data_byte_counter{YType::str, "tx-data-byte-counter"},
+    tx_data_cell_counter{YType::str, "tx-data-cell-counter"}
+{
+
+    yang_name = "ovf-status"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::~OvfStatus()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_data() const
+{
+    return rx_8b_10b_code_errors.is_set
+	|| rx_8b_10b_disparity_errors.is_set
+	|| rx_asyn_fifo_rate.is_set
+	|| rx_control_cells_counter.is_set
+	|| rx_crc_errors_counter.is_set
+	|| rx_data_byte_counter.is_set
+	|| rx_data_cell_counter.is_set
+	|| rx_dropped_retransmitted_control.is_set
+	|| rx_lfec_fec_correctable_error.is_set
+	|| rx_lfec_fec_uncorrectable_errors.is_set
+	|| tx_asyn_fifo_rate.is_set
+	|| tx_control_cells_counter.is_set
+	|| tx_data_byte_counter.is_set
+	|| tx_data_cell_counter.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
+	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
+	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(rx_control_cells_counter.yfilter)
+	|| ydk::is_set(rx_crc_errors_counter.yfilter)
+	|| ydk::is_set(rx_data_byte_counter.yfilter)
+	|| ydk::is_set(rx_data_cell_counter.yfilter)
+	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
+	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
+	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
+	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
+	|| ydk::is_set(tx_control_cells_counter.yfilter)
+	|| ydk::is_set(tx_data_byte_counter.yfilter)
+	|| ydk::is_set(tx_data_cell_counter.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ovf-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
+    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
+    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
+    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
+    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
+    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
+    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
+    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
+    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
+    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
+    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
+    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
+    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
+    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors = value;
+        rx_8b_10b_code_errors.value_namespace = name_space;
+        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors = value;
+        rx_8b_10b_disparity_errors.value_namespace = name_space;
+        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate = value;
+        rx_asyn_fifo_rate.value_namespace = name_space;
+        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter = value;
+        rx_control_cells_counter.value_namespace = name_space;
+        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter = value;
+        rx_crc_errors_counter.value_namespace = name_space;
+        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter = value;
+        rx_data_byte_counter.value_namespace = name_space;
+        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter = value;
+        rx_data_cell_counter.value_namespace = name_space;
+        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control = value;
+        rx_dropped_retransmitted_control.value_namespace = name_space;
+        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error = value;
+        rx_lfec_fec_correctable_error.value_namespace = name_space;
+        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors = value;
+        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
+        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate = value;
+        tx_asyn_fifo_rate.value_namespace = name_space;
+        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter = value;
+        tx_control_cells_counter.value_namespace = name_space;
+        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter = value;
+        tx_data_byte_counter.value_namespace = name_space;
+        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter = value;
+        tx_data_cell_counter.value_namespace = name_space;
+        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rx-8b-10b-code-errors")
+    {
+        rx_8b_10b_code_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-8b-10b-disparity-errors")
+    {
+        rx_8b_10b_disparity_errors.yfilter = yfilter;
+    }
+    if(value_path == "rx-asyn-fifo-rate")
+    {
+        rx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "rx-control-cells-counter")
+    {
+        rx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-crc-errors-counter")
+    {
+        rx_crc_errors_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-byte-counter")
+    {
+        rx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-data-cell-counter")
+    {
+        rx_data_cell_counter.yfilter = yfilter;
+    }
+    if(value_path == "rx-dropped-retransmitted-control")
+    {
+        rx_dropped_retransmitted_control.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-correctable-error")
+    {
+        rx_lfec_fec_correctable_error.yfilter = yfilter;
+    }
+    if(value_path == "rx-lfec-fec-uncorrectable-errors")
+    {
+        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
+    }
+    if(value_path == "tx-asyn-fifo-rate")
+    {
+        tx_asyn_fifo_rate.yfilter = yfilter;
+    }
+    if(value_path == "tx-control-cells-counter")
+    {
+        tx_control_cells_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-byte-counter")
+    {
+        tx_data_byte_counter.yfilter = yfilter;
+    }
+    if(value_path == "tx-data-cell-counter")
+    {
+        tx_data_cell_counter.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStatistics()
+    :
+    pbc_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats>())
+{
+    pbc_stats->parent = this;
+
+    yang_name = "pbc-statistics"; yang_parent_name = "statistics-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::~PbcStatistics()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_data() const
+{
+    return (pbc_stats !=  nullptr && pbc_stats->has_data());
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pbc_stats !=  nullptr && pbc_stats->has_operation());
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pbc-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbc-stats")
+    {
+        if(pbc_stats == nullptr)
+        {
+            pbc_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats>();
+        }
+        return pbc_stats;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbc_stats != nullptr)
+    {
+        children["pbc-stats"] = pbc_stats;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbc-stats")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::PbcStats()
     :
     asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
+    chip_ver{YType::uint16, "chip-ver"},
+    rack_no{YType::uint32, "rack-no"},
+    slot_no{YType::uint32, "slot-no"},
+    valid{YType::boolean, "valid"}
+    	,
+    stats_info(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>())
 {
-    yang_name = "asic-id"; yang_parent_name = "this-link";
+    stats_info->parent = this;
+
+    yang_name = "pbc-stats"; yang_parent_name = "pbc-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::~AsicId()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::~PbcStats()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_data() const
 {
     return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
+	|| chip_ver.is_set
+	|| rack_no.is_set
+	|| slot_no.is_set
+	|| valid.is_set
+	|| (stats_info !=  nullptr && stats_info->has_data());
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
+	|| ydk::is_set(chip_ver.yfilter)
+	|| ydk::is_set(rack_no.yfilter)
+	|| ydk::is_set(slot_no.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| (stats_info !=  nullptr && stats_info->has_operation());
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
+    path_buffer << "pbc-stats";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+    if (chip_ver.is_set || is_set(chip_ver.yfilter)) leaf_name_data.push_back(chip_ver.get_name_leafdata());
+    if (rack_no.is_set || is_set(rack_no.yfilter)) leaf_name_data.push_back(rack_no.get_name_leafdata());
+    if (slot_no.is_set || is_set(slot_no.yfilter)) leaf_name_data.push_back(slot_no.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "stats-info")
+    {
+        if(stats_info == nullptr)
+        {
+            stats_info = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>();
+        }
+        return stats_info;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stats_info != nullptr)
+    {
+        children["stats-info"] = stats_info;
+    }
+
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asic-instance")
     {
@@ -1807,727 +2975,118 @@ void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
         asic_instance.value_namespace = name_space;
         asic_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "asic-type")
+    if(value_path == "chip-ver")
     {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
+        chip_ver = value;
+        chip_ver.value_namespace = name_space;
+        chip_ver.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rack-num")
+    if(value_path == "rack-no")
     {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
+        rack_no = value;
+        rack_no.value_namespace = name_space;
+        rack_no.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rack-type")
+    if(value_path == "slot-no")
     {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
+        slot_no = value;
+        slot_no.value_namespace = name_space;
+        slot_no.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "slot-num")
+    if(value_path == "valid")
     {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "asic-instance")
     {
         asic_instance.yfilter = yfilter;
     }
-    if(value_path == "asic-type")
+    if(value_path == "chip-ver")
     {
-        asic_type.yfilter = yfilter;
+        chip_ver.yfilter = yfilter;
     }
-    if(value_path == "rack-num")
+    if(value_path == "rack-no")
     {
-        rack_num.yfilter = yfilter;
+        rack_no.yfilter = yfilter;
     }
-    if(value_path == "rack-type")
+    if(value_path == "slot-no")
     {
-        rack_type.yfilter = yfilter;
+        slot_no.yfilter = yfilter;
     }
-    if(value_path == "slot-num")
+    if(value_path == "valid")
     {
-        slot_num.yfilter = yfilter;
+        valid.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
+    if(name == "stats-info" || name == "asic-instance" || name == "chip-ver" || name == "rack-no" || name == "slot-no" || name == "valid")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::FarEndLink()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::StatsInfo()
     :
-    link_num{YType::uint32, "link-num"},
-    link_stage{YType::enumeration, "link-stage"},
-    link_type{YType::enumeration, "link-type"},
-    phy_link_num{YType::uint32, "phy-link-num"}
-    	,
-    asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId>())
+    num_blocks{YType::uint8, "num-blocks"}
 {
-    asic_id->parent = this;
 
-    yang_name = "far-end-link"; yang_parent_name = "rx-link";
+    yang_name = "stats-info"; yang_parent_name = "pbc-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::~FarEndLink()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::~StatsInfo()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_data() const
 {
-    return link_num.is_set
-	|| link_stage.is_set
-	|| link_type.is_set
-	|| phy_link_num.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link_num.yfilter)
-	|| ydk::is_set(link_stage.yfilter)
-	|| ydk::is_set(link_type.yfilter)
-	|| ydk::is_set(phy_link_num.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "far-end-link";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<block_info.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FarEndLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
-    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
-    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
-    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-id")
-    {
-        if(asic_id == nullptr)
-        {
-            asic_id = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId>();
-        }
-        return asic_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
-    {
-        children["asic-id"] = asic_id;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link-num")
-    {
-        link_num = value;
-        link_num.value_namespace = name_space;
-        link_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage = value;
-        link_stage.value_namespace = name_space;
-        link_stage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-type")
-    {
-        link_type = value;
-        link_type.value_namespace = name_space;
-        link_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num = value;
-        phy_link_num.value_namespace = name_space;
-        phy_link_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link-num")
-    {
-        link_num.yfilter = yfilter;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage.yfilter = yfilter;
-    }
-    if(value_path == "link-type")
-    {
-        link_type.yfilter = yfilter;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::AsicId()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
-{
-    yang_name = "asic-id"; yang_parent_name = "far-end-link";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::~AsicId()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_data() const
-{
-    return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type.yfilter = yfilter;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num.yfilter = yfilter;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type.yfilter = yfilter;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::FarEndLinkInHw()
-    :
-    link_num{YType::uint32, "link-num"},
-    link_stage{YType::enumeration, "link-stage"},
-    link_type{YType::enumeration, "link-type"},
-    phy_link_num{YType::uint32, "phy-link-num"}
-    	,
-    asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId>())
-{
-    asic_id->parent = this;
-
-    yang_name = "far-end-link-in-hw"; yang_parent_name = "rx-link";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::~FarEndLinkInHw()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_data() const
-{
-    return link_num.is_set
-	|| link_stage.is_set
-	|| link_type.is_set
-	|| phy_link_num.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link_num.yfilter)
-	|| ydk::is_set(link_stage.yfilter)
-	|| ydk::is_set(link_type.yfilter)
-	|| ydk::is_set(phy_link_num.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "far-end-link-in-hw";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FarEndLinkInHw' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
-    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
-    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
-    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-id")
-    {
-        if(asic_id == nullptr)
-        {
-            asic_id = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId>();
-        }
-        return asic_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
-    {
-        children["asic-id"] = asic_id;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link-num")
-    {
-        link_num = value;
-        link_num.value_namespace = name_space;
-        link_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage = value;
-        link_stage.value_namespace = name_space;
-        link_stage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-type")
-    {
-        link_type = value;
-        link_type.value_namespace = name_space;
-        link_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num = value;
-        phy_link_num.value_namespace = name_space;
-        phy_link_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link-num")
-    {
-        link_num.yfilter = yfilter;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage.yfilter = yfilter;
-    }
-    if(value_path == "link-type")
-    {
-        link_type.yfilter = yfilter;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::AsicId()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
-{
-    yang_name = "asic-id"; yang_parent_name = "far-end-link-in-hw";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::~AsicId()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_data() const
-{
-    return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
-}
-
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type.yfilter = yfilter;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num.yfilter = yfilter;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type.yfilter = yfilter;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::History()
-    :
-    histnum{YType::uint8, "histnum"},
-    start_index{YType::uint8, "start-index"}
-{
-    yang_name = "history"; yang_parent_name = "rx-link";
-}
-
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::~History()
-{
-}
-
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_data() const
-{
-    for (std::size_t index=0; index<hist.size(); index++)
-    {
-        if(hist[index]->has_data())
+        if(block_info[index]->has_data())
             return true;
     }
-    return histnum.is_set
-	|| start_index.is_set;
+    return num_blocks.is_set;
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_operation() const
 {
-    for (std::size_t index=0; index<hist.size(); index++)
+    for (std::size_t index=0; index<block_info.size(); index++)
     {
-        if(hist[index]->has_operation())
+        if(block_info[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(histnum.yfilter)
-	|| ydk::is_set(start_index.yfilter);
+	|| ydk::is_set(num_blocks.yfilter);
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history";
-
+    path_buffer << "stats-info";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'History' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (histnum.is_set || is_set(histnum.yfilter)) leaf_name_data.push_back(histnum.get_name_leafdata());
-    if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
+    if (num_blocks.is_set || is_set(num_blocks.yfilter)) leaf_name_data.push_back(num_blocks.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "hist")
+    if(child_yang_name == "block-info")
     {
-        for(auto const & c : hist)
+        for(auto const & c : block_info)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2535,19 +3094,19 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
                 return c;
             }
         }
-        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist>();
+        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo>();
         c->parent = this;
-        hist.push_back(c);
+        block_info.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hist)
+    for (auto const & c : block_info)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2555,182 +3114,1073 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "histnum")
+    if(value_path == "num-blocks")
     {
-        histnum = value;
-        histnum.value_namespace = name_space;
-        histnum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-index")
-    {
-        start_index = value;
-        start_index.value_namespace = name_space;
-        start_index.value_namespace_prefix = name_space_prefix;
+        num_blocks = value;
+        num_blocks.value_namespace = name_space;
+        num_blocks.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "histnum")
+    if(value_path == "num-blocks")
     {
-        histnum.yfilter = yfilter;
-    }
-    if(value_path == "start-index")
-    {
-        start_index.yfilter = yfilter;
+        num_blocks.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hist" || name == "histnum" || name == "start-index")
+    if(name == "block-info" || name == "num-blocks")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::Hist()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::BlockInfo()
     :
-    admin_state{YType::enumeration, "admin-state"},
-    error_state{YType::enumeration, "error-state"},
-    oper_state{YType::enumeration, "oper-state"},
-    reasons{YType::str, "reasons"},
-    timestamp{YType::uint64, "timestamp"}
+    block_name{YType::str, "block-name"},
+    num_fields{YType::uint8, "num-fields"}
 {
-    yang_name = "hist"; yang_parent_name = "history";
+
+    yang_name = "block-info"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::~Hist()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::~BlockInfo()
 {
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_data() const
 {
-    return admin_state.is_set
-	|| error_state.is_set
-	|| oper_state.is_set
-	|| reasons.is_set
-	|| timestamp.is_set;
+    for (std::size_t index=0; index<field_info.size(); index++)
+    {
+        if(field_info[index]->has_data())
+            return true;
+    }
+    return block_name.is_set
+	|| num_fields.is_set;
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_operation() const
 {
+    for (std::size_t index=0; index<field_info.size(); index++)
+    {
+        if(field_info[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(error_state.yfilter)
-	|| ydk::is_set(oper_state.yfilter)
-	|| ydk::is_set(reasons.yfilter)
-	|| ydk::is_set(timestamp.yfilter);
+	|| ydk::is_set(block_name.yfilter)
+	|| ydk::is_set(num_fields.yfilter);
 }
 
-std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hist";
-
+    path_buffer << "block-info";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hist' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
-    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
-    if (reasons.is_set || is_set(reasons.yfilter)) leaf_name_data.push_back(reasons.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (block_name.is_set || is_set(block_name.yfilter)) leaf_name_data.push_back(block_name.get_name_leafdata());
+    if (num_fields.is_set || is_set(num_fields.yfilter)) leaf_name_data.push_back(num_fields.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "field-info")
+    {
+        for(auto const & c : field_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo>();
+        c->parent = this;
+        field_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : field_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "block-name")
+    {
+        block_name = value;
+        block_name.value_namespace = name_space;
+        block_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-fields")
+    {
+        num_fields = value;
+        num_fields.value_namespace = name_space;
+        num_fields.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "block-name")
+    {
+        block_name.yfilter = yfilter;
+    }
+    if(value_path == "num-fields")
+    {
+        num_fields.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "field-info" || name == "block-name" || name == "num-fields")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::FieldInfo()
+    :
+    field_name{YType::str, "field-name"},
+    field_value{YType::uint64, "field-value"},
+    is_ovf{YType::boolean, "is-ovf"}
+{
+
+    yang_name = "field-info"; yang_parent_name = "block-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::~FieldInfo()
+{
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_data() const
+{
+    return field_name.is_set
+	|| field_value.is_set
+	|| is_ovf.is_set;
+}
+
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(field_name.yfilter)
+	|| ydk::is_set(field_value.yfilter)
+	|| ydk::is_set(is_ovf.yfilter);
+}
+
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "field-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (field_name.is_set || is_set(field_name.yfilter)) leaf_name_data.push_back(field_name.get_name_leafdata());
+    if (field_value.is_set || is_set(field_value.yfilter)) leaf_name_data.push_back(field_value.get_name_leafdata());
+    if (is_ovf.is_set || is_set(is_ovf.yfilter)) leaf_name_data.push_back(is_ovf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "admin-state")
+    if(value_path == "field-name")
     {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
+        field_name = value;
+        field_name.value_namespace = name_space;
+        field_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "error-state")
+    if(value_path == "field-value")
     {
-        error_state = value;
-        error_state.value_namespace = name_space;
-        error_state.value_namespace_prefix = name_space_prefix;
+        field_value = value;
+        field_value.value_namespace = name_space;
+        field_value.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "oper-state")
+    if(value_path == "is-ovf")
     {
-        oper_state = value;
-        oper_state.value_namespace = name_space;
-        oper_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reasons")
-    {
-        reasons = value;
-        reasons.value_namespace = name_space;
-        reasons.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timestamp")
-    {
-        timestamp = value;
-        timestamp.value_namespace = name_space;
-        timestamp.value_namespace_prefix = name_space_prefix;
+        is_ovf = value;
+        is_ovf.value_namespace = name_space;
+        is_ovf.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "admin-state")
+    if(value_path == "field-name")
     {
-        admin_state.yfilter = yfilter;
+        field_name.yfilter = yfilter;
     }
-    if(value_path == "error-state")
+    if(value_path == "field-value")
     {
-        error_state.yfilter = yfilter;
+        field_value.yfilter = yfilter;
     }
-    if(value_path == "oper-state")
+    if(value_path == "is-ovf")
     {
-        oper_state.yfilter = yfilter;
-    }
-    if(value_path == "reasons")
-    {
-        reasons.yfilter = yfilter;
-    }
-    if(value_path == "timestamp")
-    {
-        timestamp.yfilter = yfilter;
+        is_ovf.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-state" || name == "error-state" || name == "oper-state" || name == "reasons" || name == "timestamp")
+    if(name == "field-name" || name == "field-value" || name == "is-ovf")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::ClearStatistics::ClearStatistics()
+    :
+    asic_instances(std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances>())
+{
+    asic_instances->parent = this;
+
+    yang_name = "clear-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::ClearStatistics::~ClearStatistics()
+{
+}
+
+bool Fia::Nodes::Node::ClearStatistics::has_data() const
+{
+    return (asic_instances !=  nullptr && asic_instances->has_data());
+}
+
+bool Fia::Nodes::Node::ClearStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (asic_instances !=  nullptr && asic_instances->has_operation());
+}
+
+std::string Fia::Nodes::Node::ClearStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clear-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::ClearStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-instances")
+    {
+        if(asic_instances == nullptr)
+        {
+            asic_instances = std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances>();
+        }
+        return asic_instances;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(asic_instances != nullptr)
+    {
+        children["asic-instances"] = asic_instances;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::ClearStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::ClearStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::ClearStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-instances")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstances()
+{
+
+    yang_name = "asic-instances"; yang_parent_name = "clear-statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::ClearStatistics::AsicInstances::~AsicInstances()
+{
+}
+
+bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_data() const
+{
+    for (std::size_t index=0; index<asic_instance.size(); index++)
+    {
+        if(asic_instance[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_operation() const
+{
+    for (std::size_t index=0; index<asic_instance.size(); index++)
+    {
+        if(asic_instance[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fia::Nodes::Node::ClearStatistics::AsicInstances::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-instances";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::ClearStatistics::AsicInstances::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-instance")
+    {
+        for(auto const & c : asic_instance)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance>();
+        c->parent = this;
+        asic_instance.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : asic_instance)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::ClearStatistics::AsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::ClearStatistics::AsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-instance")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::AsicInstance()
+    :
+    asic_instance{YType::uint32, "asic-instance"},
+    instance{YType::int32, "instance"}
+{
+
+    yang_name = "asic-instance"; yang_parent_name = "asic-instances"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::~AsicInstance()
+{
+}
+
+bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_data() const
+{
+    return asic_instance.is_set
+	|| instance.is_set;
+}
+
+bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(instance.yfilter);
+}
+
+std::string Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-instance" <<"[asic-instance='" <<asic_instance <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "instance")
+    {
+        instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-instance" || name == "instance")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShell()
+    :
+    diag_shell_units(std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits>())
+{
+    diag_shell_units->parent = this;
+
+    yang_name = "diag-shell"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::DiagShell::~DiagShell()
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::has_data() const
+{
+    return (diag_shell_units !=  nullptr && diag_shell_units->has_data());
+}
+
+bool Fia::Nodes::Node::DiagShell::has_operation() const
+{
+    return is_set(yfilter)
+	|| (diag_shell_units !=  nullptr && diag_shell_units->has_operation());
+}
+
+std::string Fia::Nodes::Node::DiagShell::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "diag-shell";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DiagShell::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "diag-shell-units")
+    {
+        if(diag_shell_units == nullptr)
+        {
+            diag_shell_units = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits>();
+        }
+        return diag_shell_units;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(diag_shell_units != nullptr)
+    {
+        children["diag-shell-units"] = diag_shell_units;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::DiagShell::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::DiagShell::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "diag-shell-units")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnits()
+{
+
+    yang_name = "diag-shell-units"; yang_parent_name = "diag-shell"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::~DiagShellUnits()
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_data() const
+{
+    for (std::size_t index=0; index<diag_shell_unit.size(); index++)
+    {
+        if(diag_shell_unit[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_operation() const
+{
+    for (std::size_t index=0; index<diag_shell_unit.size(); index++)
+    {
+        if(diag_shell_unit[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "diag-shell-units";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DiagShell::DiagShellUnits::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "diag-shell-unit")
+    {
+        for(auto const & c : diag_shell_unit)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit>();
+        c->parent = this;
+        diag_shell_unit.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : diag_shell_unit)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "diag-shell-unit")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::DiagShellUnit()
+    :
+    unit{YType::uint32, "unit"}
+    	,
+    commands(std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands>())
+{
+    commands->parent = this;
+
+    yang_name = "diag-shell-unit"; yang_parent_name = "diag-shell-units"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::~DiagShellUnit()
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_data() const
+{
+    return unit.is_set
+	|| (commands !=  nullptr && commands->has_data());
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| (commands !=  nullptr && commands->has_operation());
+}
+
+std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "diag-shell-unit" <<"[unit='" <<unit <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "commands")
+    {
+        if(commands == nullptr)
+        {
+            commands = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands>();
+        }
+        return commands;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(commands != nullptr)
+    {
+        children["commands"] = commands;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commands" || name == "unit")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Commands()
+{
+
+    yang_name = "commands"; yang_parent_name = "diag-shell-unit"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::~Commands()
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_data() const
+{
+    for (std::size_t index=0; index<command.size(); index++)
+    {
+        if(command[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_operation() const
+{
+    for (std::size_t index=0; index<command.size(); index++)
+    {
+        if(command[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "commands";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "command")
+    {
+        for(auto const & c : command)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command>();
+        c->parent = this;
+        command.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : command)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Command()
+    :
+    cmd{YType::str, "cmd"}
+{
+
+    yang_name = "command"; yang_parent_name = "commands"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::~Command()
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_data() const
+{
+    for (std::size_t index=0; index<output.size(); index++)
+    {
+        if(output[index]->has_data())
+            return true;
+    }
+    return cmd.is_set;
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_operation() const
+{
+    for (std::size_t index=0; index<output.size(); index++)
+    {
+        if(output[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(cmd.yfilter);
+}
+
+std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "command" <<"[cmd='" <<cmd <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cmd.is_set || is_set(cmd.yfilter)) leaf_name_data.push_back(cmd.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "output")
+    {
+        for(auto const & c : output)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output>();
+        c->parent = this;
+        output.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : output)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cmd")
+    {
+        cmd = value;
+        cmd.value_namespace = name_space;
+        cmd.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmd")
+    {
+        cmd.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output" || name == "cmd")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::Output()
+    :
+    output{YType::str, "output"},
+    output_xr{YType::str, "output-xr"}
+{
+
+    yang_name = "output"; yang_parent_name = "command"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::~Output()
+{
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_data() const
+{
+    return output.is_set
+	|| output_xr.is_set;
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(output.yfilter)
+	|| ydk::is_set(output_xr.yfilter);
+}
+
+std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output" <<"[output='" <<output <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
+    if (output_xr.is_set || is_set(output_xr.yfilter)) leaf_name_data.push_back(output_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "output")
+    {
+        output = value;
+        output.value_namespace = name_space;
+        output.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-xr")
+    {
+        output_xr = value;
+        output_xr.value_namespace = name_space;
+        output_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "output")
+    {
+        output.yfilter = yfilter;
+    }
+    if(value_path == "output-xr")
+    {
+        output_xr.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output" || name == "output-xr")
         return true;
     return false;
 }
@@ -2782,7 +4232,8 @@ Fia::Nodes::Node::DriverInformation::DriverInformation()
     uc_weight{YType::uint8, "uc-weight"},
     ucmc_ratio{YType::uint32, "ucmc-ratio"}
 {
-    yang_name = "driver-information"; yang_parent_name = "node";
+
+    yang_name = "driver-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::DriverInformation::~DriverInformation()
@@ -2910,23 +4361,11 @@ std::string Fia::Nodes::Node::DriverInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "driver-information";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::DriverInformation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DriverInformation' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (asic_avail_mask.is_set || is_set(asic_avail_mask.yfilter)) leaf_name_data.push_back(asic_avail_mask.get_name_leafdata());
@@ -2974,9 +4413,7 @@ const EntityPath Fia::Nodes::Node::DriverInformation::get_entity_path(Entity* an
     if (uc_weight.is_set || is_set(uc_weight.yfilter)) leaf_name_data.push_back(uc_weight.get_name_leafdata());
     if (ucmc_ratio.is_set || is_set(ucmc_ratio.yfilter)) leaf_name_data.push_back(ucmc_ratio.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3488,400 +4925,6 @@ bool Fia::Nodes::Node::DriverInformation::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Fia::Nodes::Node::DriverInformation::DeviceInfo::DeviceInfo()
-    :
-    admin_state{YType::enumeration, "admin-state"},
-    asic_state{YType::enumeration, "asic-state"},
-    fapid{YType::uint32, "fapid"},
-    hotplug_event{YType::uint32, "hotplug-event"},
-    is_valid{YType::boolean, "is-valid"},
-    last_init_cause{YType::enumeration, "last-init-cause"},
-    local_switch_state{YType::boolean, "local-switch-state"},
-    num_hard_resets{YType::uint32, "num-hard-resets"},
-    num_pon_resets{YType::uint32, "num-pon-resets"},
-    oper_state{YType::enumeration, "oper-state"},
-    slice_state{YType::enumeration, "slice-state"}
-    	,
-    asic_id(std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId>())
-{
-    asic_id->parent = this;
-
-    yang_name = "device-info"; yang_parent_name = "driver-information";
-}
-
-Fia::Nodes::Node::DriverInformation::DeviceInfo::~DeviceInfo()
-{
-}
-
-bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_data() const
-{
-    return admin_state.is_set
-	|| asic_state.is_set
-	|| fapid.is_set
-	|| hotplug_event.is_set
-	|| is_valid.is_set
-	|| last_init_cause.is_set
-	|| local_switch_state.is_set
-	|| num_hard_resets.is_set
-	|| num_pon_resets.is_set
-	|| oper_state.is_set
-	|| slice_state.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
-}
-
-bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(asic_state.yfilter)
-	|| ydk::is_set(fapid.yfilter)
-	|| ydk::is_set(hotplug_event.yfilter)
-	|| ydk::is_set(is_valid.yfilter)
-	|| ydk::is_set(last_init_cause.yfilter)
-	|| ydk::is_set(local_switch_state.yfilter)
-	|| ydk::is_set(num_hard_resets.yfilter)
-	|| ydk::is_set(num_pon_resets.yfilter)
-	|| ydk::is_set(oper_state.yfilter)
-	|| ydk::is_set(slice_state.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
-}
-
-std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "device-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::DriverInformation::DeviceInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DeviceInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (asic_state.is_set || is_set(asic_state.yfilter)) leaf_name_data.push_back(asic_state.get_name_leafdata());
-    if (fapid.is_set || is_set(fapid.yfilter)) leaf_name_data.push_back(fapid.get_name_leafdata());
-    if (hotplug_event.is_set || is_set(hotplug_event.yfilter)) leaf_name_data.push_back(hotplug_event.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (last_init_cause.is_set || is_set(last_init_cause.yfilter)) leaf_name_data.push_back(last_init_cause.get_name_leafdata());
-    if (local_switch_state.is_set || is_set(local_switch_state.yfilter)) leaf_name_data.push_back(local_switch_state.get_name_leafdata());
-    if (num_hard_resets.is_set || is_set(num_hard_resets.yfilter)) leaf_name_data.push_back(num_hard_resets.get_name_leafdata());
-    if (num_pon_resets.is_set || is_set(num_pon_resets.yfilter)) leaf_name_data.push_back(num_pon_resets.get_name_leafdata());
-    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
-    if (slice_state.is_set || is_set(slice_state.yfilter)) leaf_name_data.push_back(slice_state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::DeviceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-id")
-    {
-        if(asic_id == nullptr)
-        {
-            asic_id = std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId>();
-        }
-        return asic_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::DeviceInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
-    {
-        children["asic-id"] = asic_id;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-state")
-    {
-        asic_state = value;
-        asic_state.value_namespace = name_space;
-        asic_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fapid")
-    {
-        fapid = value;
-        fapid.value_namespace = name_space;
-        fapid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hotplug-event")
-    {
-        hotplug_event = value;
-        hotplug_event.value_namespace = name_space;
-        hotplug_event.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-valid")
-    {
-        is_valid = value;
-        is_valid.value_namespace = name_space;
-        is_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-init-cause")
-    {
-        last_init_cause = value;
-        last_init_cause.value_namespace = name_space;
-        last_init_cause.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-switch-state")
-    {
-        local_switch_state = value;
-        local_switch_state.value_namespace = name_space;
-        local_switch_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-hard-resets")
-    {
-        num_hard_resets = value;
-        num_hard_resets.value_namespace = name_space;
-        num_hard_resets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-pon-resets")
-    {
-        num_pon_resets = value;
-        num_pon_resets.value_namespace = name_space;
-        num_pon_resets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state = value;
-        oper_state.value_namespace = name_space;
-        oper_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slice-state")
-    {
-        slice_state = value;
-        slice_state.value_namespace = name_space;
-        slice_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state.yfilter = yfilter;
-    }
-    if(value_path == "asic-state")
-    {
-        asic_state.yfilter = yfilter;
-    }
-    if(value_path == "fapid")
-    {
-        fapid.yfilter = yfilter;
-    }
-    if(value_path == "hotplug-event")
-    {
-        hotplug_event.yfilter = yfilter;
-    }
-    if(value_path == "is-valid")
-    {
-        is_valid.yfilter = yfilter;
-    }
-    if(value_path == "last-init-cause")
-    {
-        last_init_cause.yfilter = yfilter;
-    }
-    if(value_path == "local-switch-state")
-    {
-        local_switch_state.yfilter = yfilter;
-    }
-    if(value_path == "num-hard-resets")
-    {
-        num_hard_resets.yfilter = yfilter;
-    }
-    if(value_path == "num-pon-resets")
-    {
-        num_pon_resets.yfilter = yfilter;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state.yfilter = yfilter;
-    }
-    if(value_path == "slice-state")
-    {
-        slice_state.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-id" || name == "admin-state" || name == "asic-state" || name == "fapid" || name == "hotplug-event" || name == "is-valid" || name == "last-init-cause" || name == "local-switch-state" || name == "num-hard-resets" || name == "num-pon-resets" || name == "oper-state" || name == "slice-state")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::AsicId()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
-{
-    yang_name = "asic-id"; yang_parent_name = "device-info";
-}
-
-Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::~AsicId()
-{
-}
-
-bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_data() const
-{
-    return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
-}
-
-bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
-}
-
-std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type.yfilter = yfilter;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num.yfilter = yfilter;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type.yfilter = yfilter;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
-        return true;
-    return false;
-}
-
 Fia::Nodes::Node::DriverInformation::CardInfo::CardInfo()
     :
     card_flag{YType::int32, "card-flag"},
@@ -3904,7 +4947,7 @@ Fia::Nodes::Node::DriverInformation::CardInfo::CardInfo()
 {
     oir_circular_buffer->parent = this;
 
-    yang_name = "card-info"; yang_parent_name = "driver-information";
+    yang_name = "card-info"; yang_parent_name = "driver-information"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::DriverInformation::CardInfo::~CardInfo()
@@ -3956,23 +4999,11 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "card-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformation::CardInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CardInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_flag.is_set || is_set(card_flag.yfilter)) leaf_name_data.push_back(card_flag.get_name_leafdata());
@@ -3991,9 +5022,7 @@ const EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::get_entity_path(
     if (reg_flag.is_set || is_set(reg_flag.yfilter)) leaf_name_data.push_back(reg_flag.get_name_leafdata());
     if (slot_no.is_set || is_set(slot_no.yfilter)) leaf_name_data.push_back(slot_no.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4193,7 +5222,8 @@ Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::OirCircularBuf
     end{YType::int32, "end"},
     start{YType::int32, "start"}
 {
-    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info";
+
+    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::~OirCircularBuffer()
@@ -4229,32 +5259,18 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "oir-circular-buffer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OirCircularBuffer' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
     if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
     if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4345,7 +5361,8 @@ Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::Fi
     rack_num{YType::int32, "rack-num"},
     reg_flag{YType::int32, "reg-flag"}
 {
-    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer";
+
+    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::~FiaOirInfo()
@@ -4379,23 +5396,11 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::Fi
 {
     std::ostringstream path_buffer;
     path_buffer << "fia-oir-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FiaOirInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_flag.is_set || is_set(card_flag.yfilter)) leaf_name_data.push_back(card_flag.get_name_leafdata());
@@ -4406,9 +5411,7 @@ const EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffe
     if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
     if (reg_flag.is_set || is_set(reg_flag.yfilter)) leaf_name_data.push_back(reg_flag.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4508,2262 +5511,117 @@ bool Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInf
     return false;
 }
 
-Fia::Nodes::Node::ClearStatistics::ClearStatistics()
+Fia::Nodes::Node::DriverInformation::DeviceInfo::DeviceInfo()
     :
-    asic_instances(std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances>())
-{
-    asic_instances->parent = this;
-
-    yang_name = "clear-statistics"; yang_parent_name = "node";
-}
-
-Fia::Nodes::Node::ClearStatistics::~ClearStatistics()
-{
-}
-
-bool Fia::Nodes::Node::ClearStatistics::has_data() const
-{
-    return (asic_instances !=  nullptr && asic_instances->has_data());
-}
-
-bool Fia::Nodes::Node::ClearStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| (asic_instances !=  nullptr && asic_instances->has_operation());
-}
-
-std::string Fia::Nodes::Node::ClearStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "clear-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::ClearStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClearStatistics' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-instances")
-    {
-        if(asic_instances == nullptr)
-        {
-            asic_instances = std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances>();
-        }
-        return asic_instances;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_instances != nullptr)
-    {
-        children["asic-instances"] = asic_instances;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::ClearStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::ClearStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::ClearStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instances")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstances()
-{
-    yang_name = "asic-instances"; yang_parent_name = "clear-statistics";
-}
-
-Fia::Nodes::Node::ClearStatistics::AsicInstances::~AsicInstances()
-{
-}
-
-bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_data() const
-{
-    for (std::size_t index=0; index<asic_instance.size(); index++)
-    {
-        if(asic_instance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_operation() const
-{
-    for (std::size_t index=0; index<asic_instance.size(); index++)
-    {
-        if(asic_instance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fia::Nodes::Node::ClearStatistics::AsicInstances::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-instances";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::ClearStatistics::AsicInstances::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicInstances' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-instance")
-    {
-        for(auto const & c : asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance>();
-        c->parent = this;
-        asic_instance.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : asic_instance)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::ClearStatistics::AsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::ClearStatistics::AsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::AsicInstance()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    instance{YType::int32, "instance"}
-{
-    yang_name = "asic-instance"; yang_parent_name = "asic-instances";
-}
-
-Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::~AsicInstance()
-{
-}
-
-bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_data() const
-{
-    return asic_instance.is_set
-	|| instance.is_set;
-}
-
-bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(instance.yfilter);
-}
-
-std::string Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-instance" <<"[asic-instance='" <<asic_instance <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicInstance' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "instance")
-    {
-        instance = value;
-        instance.value_namespace = name_space;
-        instance.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "instance")
-    {
-        instance.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "instance")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxLinkInformation()
-    :
-    tx_status_option_table(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable>())
-{
-    tx_status_option_table->parent = this;
-
-    yang_name = "tx-link-information"; yang_parent_name = "node";
-}
-
-Fia::Nodes::Node::TxLinkInformation::~TxLinkInformation()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::has_data() const
-{
-    return (tx_status_option_table !=  nullptr && tx_status_option_table->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| (tx_status_option_table !=  nullptr && tx_status_option_table->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-link-information";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxLinkInformation' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-status-option-table")
-    {
-        if(tx_status_option_table == nullptr)
-        {
-            tx_status_option_table = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable>();
-        }
-        return tx_status_option_table;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tx_status_option_table != nullptr)
-    {
-        children["tx-status-option-table"] = tx_status_option_table;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::TxLinkInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-status-option-table")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOptionTable()
-    :
-    tx_status_option(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption>())
-{
-    tx_status_option->parent = this;
-
-    yang_name = "tx-status-option-table"; yang_parent_name = "tx-link-information";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::~TxStatusOptionTable()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_data() const
-{
-    return (tx_status_option !=  nullptr && tx_status_option->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_operation() const
-{
-    return is_set(yfilter)
-	|| (tx_status_option !=  nullptr && tx_status_option->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-status-option-table";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxStatusOptionTable' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-status-option")
-    {
-        if(tx_status_option == nullptr)
-        {
-            tx_status_option = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption>();
-        }
-        return tx_status_option;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tx_status_option != nullptr)
-    {
-        children["tx-status-option"] = tx_status_option;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-status-option")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxStatusOption()
-    :
-    tx_asic_instances(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances>())
-{
-    tx_asic_instances->parent = this;
-
-    yang_name = "tx-status-option"; yang_parent_name = "tx-status-option-table";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::~TxStatusOption()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_data() const
-{
-    return (tx_asic_instances !=  nullptr && tx_asic_instances->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_operation() const
-{
-    return is_set(yfilter)
-	|| (tx_asic_instances !=  nullptr && tx_asic_instances->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-status-option";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxStatusOption' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-asic-instances")
-    {
-        if(tx_asic_instances == nullptr)
-        {
-            tx_asic_instances = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances>();
-        }
-        return tx_asic_instances;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tx_asic_instances != nullptr)
-    {
-        children["tx-asic-instances"] = tx_asic_instances;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-asic-instances")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstances()
-{
-    yang_name = "tx-asic-instances"; yang_parent_name = "tx-status-option";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::~TxAsicInstances()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_data() const
-{
-    for (std::size_t index=0; index<tx_asic_instance.size(); index++)
-    {
-        if(tx_asic_instance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_operation() const
-{
-    for (std::size_t index=0; index<tx_asic_instance.size(); index++)
-    {
-        if(tx_asic_instance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-asic-instances";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxAsicInstances' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-asic-instance")
-    {
-        for(auto const & c : tx_asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance>();
-        c->parent = this;
-        tx_asic_instance.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tx_asic_instance)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-asic-instance")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxAsicInstance()
-    :
-    instance{YType::uint32, "instance"}
-    	,
-    tx_links(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks>())
-{
-    tx_links->parent = this;
-
-    yang_name = "tx-asic-instance"; yang_parent_name = "tx-asic-instances";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::~TxAsicInstance()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_data() const
-{
-    return instance.is_set
-	|| (tx_links !=  nullptr && tx_links->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(instance.yfilter)
-	|| (tx_links !=  nullptr && tx_links->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-asic-instance" <<"[instance='" <<instance <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxAsicInstance' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-links")
-    {
-        if(tx_links == nullptr)
-        {
-            tx_links = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks>();
-        }
-        return tx_links;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tx_links != nullptr)
-    {
-        children["tx-links"] = tx_links;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "instance")
-    {
-        instance = value;
-        instance.value_namespace = name_space;
-        instance.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "instance")
-    {
-        instance.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-links" || name == "instance")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLinks()
-{
-    yang_name = "tx-links"; yang_parent_name = "tx-asic-instance";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::~TxLinks()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_data() const
-{
-    for (std::size_t index=0; index<tx_link.size(); index++)
-    {
-        if(tx_link[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_operation() const
-{
-    for (std::size_t index=0; index<tx_link.size(); index++)
-    {
-        if(tx_link[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-links";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxLinks' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-link")
-    {
-        for(auto const & c : tx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink>();
-        c->parent = this;
-        tx_link.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tx_link)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-link")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink()
-    :
-    end_number{YType::uint32, "end-number"},
-    start_number{YType::uint32, "start-number"}
-{
-    yang_name = "tx-link"; yang_parent_name = "tx-links";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::~TxLink()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_data() const
-{
-    for (std::size_t index=0; index<tx_link.size(); index++)
-    {
-        if(tx_link[index]->has_data())
-            return true;
-    }
-    return end_number.is_set
-	|| start_number.is_set;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_operation() const
-{
-    for (std::size_t index=0; index<tx_link.size(); index++)
-    {
-        if(tx_link[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(end_number.yfilter)
-	|| ydk::is_set(start_number.yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-link";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end_number.is_set || is_set(end_number.yfilter)) leaf_name_data.push_back(end_number.get_name_leafdata());
-    if (start_number.is_set || is_set(start_number.yfilter)) leaf_name_data.push_back(start_number.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-link")
-    {
-        for(auto const & c : tx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_>();
-        c->parent = this;
-        tx_link.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tx_link)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end-number")
-    {
-        end_number = value;
-        end_number.value_namespace = name_space;
-        end_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-number")
-    {
-        start_number = value;
-        start_number.value_namespace = name_space;
-        start_number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end-number")
-    {
-        end_number.yfilter = yfilter;
-    }
-    if(value_path == "start-number")
-    {
-        start_number.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-link" || name == "end-number" || name == "start-number")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::TxLink_()
-    :
-    link{YType::int32, "link"},
     admin_state{YType::enumeration, "admin-state"},
-    coeff1{YType::uint32, "coeff1"},
-    coeff2{YType::uint32, "coeff2"},
-    error_state{YType::enumeration, "error-state"},
-    is_conf_pending{YType::boolean, "is-conf-pending"},
-    is_link_valid{YType::boolean, "is-link-valid"},
-    is_power_enabled{YType::boolean, "is-power-enabled"},
-    num_admin_shuts{YType::uint32, "num-admin-shuts"},
+    asic_state{YType::enumeration, "asic-state"},
+    fapid{YType::uint32, "fapid"},
+    hotplug_event{YType::uint32, "hotplug-event"},
+    is_valid{YType::boolean, "is-valid"},
+    last_init_cause{YType::enumeration, "last-init-cause"},
+    local_switch_state{YType::boolean, "local-switch-state"},
+    num_hard_resets{YType::uint32, "num-hard-resets"},
+    num_pon_resets{YType::uint32, "num-pon-resets"},
     oper_state{YType::enumeration, "oper-state"},
-    speed{YType::uint32, "speed"},
-    stage{YType::uint8, "stage"}
+    slice_state{YType::enumeration, "slice-state"}
     	,
-    far_end_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink>())
-	,history(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History>())
-	,stats(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats>())
-	,this_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink>())
-{
-    far_end_link->parent = this;
-
-    history->parent = this;
-
-    stats->parent = this;
-
-    this_link->parent = this;
-
-    yang_name = "tx-link"; yang_parent_name = "tx-link";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::~TxLink_()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_data() const
-{
-    return link.is_set
-	|| admin_state.is_set
-	|| coeff1.is_set
-	|| coeff2.is_set
-	|| error_state.is_set
-	|| is_conf_pending.is_set
-	|| is_link_valid.is_set
-	|| is_power_enabled.is_set
-	|| num_admin_shuts.is_set
-	|| oper_state.is_set
-	|| speed.is_set
-	|| stage.is_set
-	|| (far_end_link !=  nullptr && far_end_link->has_data())
-	|| (history !=  nullptr && history->has_data())
-	|| (stats !=  nullptr && stats->has_data())
-	|| (this_link !=  nullptr && this_link->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link.yfilter)
-	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(coeff1.yfilter)
-	|| ydk::is_set(coeff2.yfilter)
-	|| ydk::is_set(error_state.yfilter)
-	|| ydk::is_set(is_conf_pending.yfilter)
-	|| ydk::is_set(is_link_valid.yfilter)
-	|| ydk::is_set(is_power_enabled.yfilter)
-	|| ydk::is_set(num_admin_shuts.yfilter)
-	|| ydk::is_set(oper_state.yfilter)
-	|| ydk::is_set(speed.yfilter)
-	|| ydk::is_set(stage.yfilter)
-	|| (far_end_link !=  nullptr && far_end_link->has_operation())
-	|| (history !=  nullptr && history->has_operation())
-	|| (stats !=  nullptr && stats->has_operation())
-	|| (this_link !=  nullptr && this_link->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-link" <<"[link='" <<link <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxLink_' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (coeff1.is_set || is_set(coeff1.yfilter)) leaf_name_data.push_back(coeff1.get_name_leafdata());
-    if (coeff2.is_set || is_set(coeff2.yfilter)) leaf_name_data.push_back(coeff2.get_name_leafdata());
-    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
-    if (is_conf_pending.is_set || is_set(is_conf_pending.yfilter)) leaf_name_data.push_back(is_conf_pending.get_name_leafdata());
-    if (is_link_valid.is_set || is_set(is_link_valid.yfilter)) leaf_name_data.push_back(is_link_valid.get_name_leafdata());
-    if (is_power_enabled.is_set || is_set(is_power_enabled.yfilter)) leaf_name_data.push_back(is_power_enabled.get_name_leafdata());
-    if (num_admin_shuts.is_set || is_set(num_admin_shuts.yfilter)) leaf_name_data.push_back(num_admin_shuts.get_name_leafdata());
-    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
-    if (stage.is_set || is_set(stage.yfilter)) leaf_name_data.push_back(stage.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "far-end-link")
-    {
-        if(far_end_link == nullptr)
-        {
-            far_end_link = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink>();
-        }
-        return far_end_link;
-    }
-
-    if(child_yang_name == "history")
-    {
-        if(history == nullptr)
-        {
-            history = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History>();
-        }
-        return history;
-    }
-
-    if(child_yang_name == "stats")
-    {
-        if(stats == nullptr)
-        {
-            stats = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats>();
-        }
-        return stats;
-    }
-
-    if(child_yang_name == "this-link")
-    {
-        if(this_link == nullptr)
-        {
-            this_link = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink>();
-        }
-        return this_link;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(far_end_link != nullptr)
-    {
-        children["far-end-link"] = far_end_link;
-    }
-
-    if(history != nullptr)
-    {
-        children["history"] = history;
-    }
-
-    if(stats != nullptr)
-    {
-        children["stats"] = stats;
-    }
-
-    if(this_link != nullptr)
-    {
-        children["this-link"] = this_link;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link")
-    {
-        link = value;
-        link.value_namespace = name_space;
-        link.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-state")
-    {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coeff1")
-    {
-        coeff1 = value;
-        coeff1.value_namespace = name_space;
-        coeff1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coeff2")
-    {
-        coeff2 = value;
-        coeff2.value_namespace = name_space;
-        coeff2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error-state")
-    {
-        error_state = value;
-        error_state.value_namespace = name_space;
-        error_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-conf-pending")
-    {
-        is_conf_pending = value;
-        is_conf_pending.value_namespace = name_space;
-        is_conf_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-link-valid")
-    {
-        is_link_valid = value;
-        is_link_valid.value_namespace = name_space;
-        is_link_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-power-enabled")
-    {
-        is_power_enabled = value;
-        is_power_enabled.value_namespace = name_space;
-        is_power_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-admin-shuts")
-    {
-        num_admin_shuts = value;
-        num_admin_shuts.value_namespace = name_space;
-        num_admin_shuts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state = value;
-        oper_state.value_namespace = name_space;
-        oper_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed")
-    {
-        speed = value;
-        speed.value_namespace = name_space;
-        speed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stage")
-    {
-        stage = value;
-        stage.value_namespace = name_space;
-        stage.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link")
-    {
-        link.yfilter = yfilter;
-    }
-    if(value_path == "admin-state")
-    {
-        admin_state.yfilter = yfilter;
-    }
-    if(value_path == "coeff1")
-    {
-        coeff1.yfilter = yfilter;
-    }
-    if(value_path == "coeff2")
-    {
-        coeff2.yfilter = yfilter;
-    }
-    if(value_path == "error-state")
-    {
-        error_state.yfilter = yfilter;
-    }
-    if(value_path == "is-conf-pending")
-    {
-        is_conf_pending.yfilter = yfilter;
-    }
-    if(value_path == "is-link-valid")
-    {
-        is_link_valid.yfilter = yfilter;
-    }
-    if(value_path == "is-power-enabled")
-    {
-        is_power_enabled.yfilter = yfilter;
-    }
-    if(value_path == "num-admin-shuts")
-    {
-        num_admin_shuts.yfilter = yfilter;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state.yfilter = yfilter;
-    }
-    if(value_path == "speed")
-    {
-        speed.yfilter = yfilter;
-    }
-    if(value_path == "stage")
-    {
-        stage.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "far-end-link" || name == "history" || name == "stats" || name == "this-link" || name == "link" || name == "admin-state" || name == "coeff1" || name == "coeff2" || name == "error-state" || name == "is-conf-pending" || name == "is-link-valid" || name == "is-power-enabled" || name == "num-admin-shuts" || name == "oper-state" || name == "speed" || name == "stage")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::ThisLink()
-    :
-    link_num{YType::uint32, "link-num"},
-    link_stage{YType::enumeration, "link-stage"},
-    link_type{YType::enumeration, "link-type"},
-    phy_link_num{YType::uint32, "phy-link-num"}
-    	,
-    asic_id(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId>())
+    asic_id(std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "this-link"; yang_parent_name = "tx-link";
+    yang_name = "device-info"; yang_parent_name = "driver-information"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::~ThisLink()
+Fia::Nodes::Node::DriverInformation::DeviceInfo::~DeviceInfo()
 {
 }
 
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_data() const
-{
-    return link_num.is_set
-	|| link_stage.is_set
-	|| link_type.is_set
-	|| phy_link_num.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link_num.yfilter)
-	|| ydk::is_set(link_stage.yfilter)
-	|| ydk::is_set(link_type.yfilter)
-	|| ydk::is_set(phy_link_num.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "this-link";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ThisLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
-    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
-    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
-    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-id")
-    {
-        if(asic_id == nullptr)
-        {
-            asic_id = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId>();
-        }
-        return asic_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
-    {
-        children["asic-id"] = asic_id;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link-num")
-    {
-        link_num = value;
-        link_num.value_namespace = name_space;
-        link_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage = value;
-        link_stage.value_namespace = name_space;
-        link_stage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-type")
-    {
-        link_type = value;
-        link_type.value_namespace = name_space;
-        link_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num = value;
-        phy_link_num.value_namespace = name_space;
-        phy_link_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link-num")
-    {
-        link_num.yfilter = yfilter;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage.yfilter = yfilter;
-    }
-    if(value_path == "link-type")
-    {
-        link_type.yfilter = yfilter;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::AsicId()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
-{
-    yang_name = "asic-id"; yang_parent_name = "this-link";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::~AsicId()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_data() const
-{
-    return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type.yfilter = yfilter;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num.yfilter = yfilter;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type.yfilter = yfilter;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::FarEndLink()
-    :
-    link_num{YType::uint32, "link-num"},
-    link_stage{YType::enumeration, "link-stage"},
-    link_type{YType::enumeration, "link-type"},
-    phy_link_num{YType::uint32, "phy-link-num"}
-    	,
-    asic_id(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId>())
-{
-    asic_id->parent = this;
-
-    yang_name = "far-end-link"; yang_parent_name = "tx-link";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::~FarEndLink()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_data() const
-{
-    return link_num.is_set
-	|| link_stage.is_set
-	|| link_type.is_set
-	|| phy_link_num.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link_num.yfilter)
-	|| ydk::is_set(link_stage.yfilter)
-	|| ydk::is_set(link_type.yfilter)
-	|| ydk::is_set(phy_link_num.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "far-end-link";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FarEndLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
-    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
-    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
-    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-id")
-    {
-        if(asic_id == nullptr)
-        {
-            asic_id = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId>();
-        }
-        return asic_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
-    {
-        children["asic-id"] = asic_id;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link-num")
-    {
-        link_num = value;
-        link_num.value_namespace = name_space;
-        link_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage = value;
-        link_stage.value_namespace = name_space;
-        link_stage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-type")
-    {
-        link_type = value;
-        link_type.value_namespace = name_space;
-        link_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num = value;
-        phy_link_num.value_namespace = name_space;
-        phy_link_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link-num")
-    {
-        link_num.yfilter = yfilter;
-    }
-    if(value_path == "link-stage")
-    {
-        link_stage.yfilter = yfilter;
-    }
-    if(value_path == "link-type")
-    {
-        link_type.yfilter = yfilter;
-    }
-    if(value_path == "phy-link-num")
-    {
-        phy_link_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::AsicId()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
-{
-    yang_name = "asic-id"; yang_parent_name = "far-end-link";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::~AsicId()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_data() const
-{
-    return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type.yfilter = yfilter;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num.yfilter = yfilter;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type.yfilter = yfilter;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::Stats()
-    :
-    dummy{YType::uint32, "dummy"}
-{
-    yang_name = "stats"; yang_parent_name = "tx-link";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::~Stats()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_data() const
-{
-    return dummy.is_set;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dummy.yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stats' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dummy")
-    {
-        dummy = value;
-        dummy.value_namespace = name_space;
-        dummy.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dummy")
-    {
-        dummy.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dummy")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::History()
-    :
-    histnum{YType::uint8, "histnum"},
-    start_index{YType::uint8, "start-index"}
-{
-    yang_name = "history"; yang_parent_name = "tx-link";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::~History()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_data() const
-{
-    for (std::size_t index=0; index<hist.size(); index++)
-    {
-        if(hist[index]->has_data())
-            return true;
-    }
-    return histnum.is_set
-	|| start_index.is_set;
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_operation() const
-{
-    for (std::size_t index=0; index<hist.size(); index++)
-    {
-        if(hist[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(histnum.yfilter)
-	|| ydk::is_set(start_index.yfilter);
-}
-
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "history";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'History' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (histnum.is_set || is_set(histnum.yfilter)) leaf_name_data.push_back(histnum.get_name_leafdata());
-    if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hist")
-    {
-        for(auto const & c : hist)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist>();
-        c->parent = this;
-        hist.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hist)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "histnum")
-    {
-        histnum = value;
-        histnum.value_namespace = name_space;
-        histnum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-index")
-    {
-        start_index = value;
-        start_index.value_namespace = name_space;
-        start_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "histnum")
-    {
-        histnum.yfilter = yfilter;
-    }
-    if(value_path == "start-index")
-    {
-        start_index.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hist" || name == "histnum" || name == "start-index")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::Hist()
-    :
-    admin_state{YType::enumeration, "admin-state"},
-    error_state{YType::enumeration, "error-state"},
-    oper_state{YType::enumeration, "oper-state"},
-    reasons{YType::str, "reasons"},
-    timestamp{YType::uint64, "timestamp"}
-{
-    yang_name = "hist"; yang_parent_name = "history";
-}
-
-Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::~Hist()
-{
-}
-
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_data() const
+bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_data() const
 {
     return admin_state.is_set
-	|| error_state.is_set
+	|| asic_state.is_set
+	|| fapid.is_set
+	|| hotplug_event.is_set
+	|| is_valid.is_set
+	|| last_init_cause.is_set
+	|| local_switch_state.is_set
+	|| num_hard_resets.is_set
+	|| num_pon_resets.is_set
 	|| oper_state.is_set
-	|| reasons.is_set
-	|| timestamp.is_set;
+	|| slice_state.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
 }
 
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_operation() const
+bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(error_state.yfilter)
+	|| ydk::is_set(asic_state.yfilter)
+	|| ydk::is_set(fapid.yfilter)
+	|| ydk::is_set(hotplug_event.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(last_init_cause.yfilter)
+	|| ydk::is_set(local_switch_state.yfilter)
+	|| ydk::is_set(num_hard_resets.yfilter)
+	|| ydk::is_set(num_pon_resets.yfilter)
 	|| ydk::is_set(oper_state.yfilter)
-	|| ydk::is_set(reasons.yfilter)
-	|| ydk::is_set(timestamp.yfilter);
+	|| ydk::is_set(slice_state.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
-std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_segment_path() const
+std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hist";
-
+    path_buffer << "device-info";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformation::DeviceInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hist' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
+    if (asic_state.is_set || is_set(asic_state.yfilter)) leaf_name_data.push_back(asic_state.get_name_leafdata());
+    if (fapid.is_set || is_set(fapid.yfilter)) leaf_name_data.push_back(fapid.get_name_leafdata());
+    if (hotplug_event.is_set || is_set(hotplug_event.yfilter)) leaf_name_data.push_back(hotplug_event.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (last_init_cause.is_set || is_set(last_init_cause.yfilter)) leaf_name_data.push_back(last_init_cause.get_name_leafdata());
+    if (local_switch_state.is_set || is_set(local_switch_state.yfilter)) leaf_name_data.push_back(local_switch_state.get_name_leafdata());
+    if (num_hard_resets.is_set || is_set(num_hard_resets.yfilter)) leaf_name_data.push_back(num_hard_resets.get_name_leafdata());
+    if (num_pon_resets.is_set || is_set(num_pon_resets.yfilter)) leaf_name_data.push_back(num_pon_resets.get_name_leafdata());
     if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
-    if (reasons.is_set || is_set(reasons.yfilter)) leaf_name_data.push_back(reasons.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (slice_state.is_set || is_set(slice_state.yfilter)) leaf_name_data.push_back(slice_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::DeviceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "asic-id")
+    {
+        if(asic_id == nullptr)
+        {
+            asic_id = std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId>();
+        }
+        return asic_id;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::DeviceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(asic_id != nullptr)
+    {
+        children["asic-id"] = asic_id;
+    }
+
     return children;
 }
 
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-state")
     {
@@ -6771,11 +5629,53 @@ void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
         admin_state.value_namespace = name_space;
         admin_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "error-state")
+    if(value_path == "asic-state")
     {
-        error_state = value;
-        error_state.value_namespace = name_space;
-        error_state.value_namespace_prefix = name_space_prefix;
+        asic_state = value;
+        asic_state.value_namespace = name_space;
+        asic_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fapid")
+    {
+        fapid = value;
+        fapid.value_namespace = name_space;
+        fapid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hotplug-event")
+    {
+        hotplug_event = value;
+        hotplug_event.value_namespace = name_space;
+        hotplug_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-init-cause")
+    {
+        last_init_cause = value;
+        last_init_cause.value_namespace = name_space;
+        last_init_cause.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-switch-state")
+    {
+        local_switch_state = value;
+        local_switch_state.value_namespace = name_space;
+        local_switch_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-hard-resets")
+    {
+        num_hard_resets = value;
+        num_hard_resets.value_namespace = name_space;
+        num_hard_resets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-pon-resets")
+    {
+        num_pon_resets = value;
+        num_pon_resets.value_namespace = name_space;
+        num_pon_resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oper-state")
     {
@@ -6783,685 +5683,197 @@ void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
         oper_state.value_namespace = name_space;
         oper_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reasons")
+    if(value_path == "slice-state")
     {
-        reasons = value;
-        reasons.value_namespace = name_space;
-        reasons.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timestamp")
-    {
-        timestamp = value;
-        timestamp.value_namespace = name_space;
-        timestamp.value_namespace_prefix = name_space_prefix;
+        slice_state = value;
+        slice_state.value_namespace = name_space;
+        slice_state.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "admin-state")
     {
         admin_state.yfilter = yfilter;
     }
-    if(value_path == "error-state")
+    if(value_path == "asic-state")
     {
-        error_state.yfilter = yfilter;
+        asic_state.yfilter = yfilter;
+    }
+    if(value_path == "fapid")
+    {
+        fapid.yfilter = yfilter;
+    }
+    if(value_path == "hotplug-event")
+    {
+        hotplug_event.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "last-init-cause")
+    {
+        last_init_cause.yfilter = yfilter;
+    }
+    if(value_path == "local-switch-state")
+    {
+        local_switch_state.yfilter = yfilter;
+    }
+    if(value_path == "num-hard-resets")
+    {
+        num_hard_resets.yfilter = yfilter;
+    }
+    if(value_path == "num-pon-resets")
+    {
+        num_pon_resets.yfilter = yfilter;
     }
     if(value_path == "oper-state")
     {
         oper_state.yfilter = yfilter;
     }
-    if(value_path == "reasons")
+    if(value_path == "slice-state")
     {
-        reasons.yfilter = yfilter;
-    }
-    if(value_path == "timestamp")
-    {
-        timestamp.yfilter = yfilter;
+        slice_state.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-state" || name == "error-state" || name == "oper-state" || name == "reasons" || name == "timestamp")
+    if(name == "asic-id" || name == "admin-state" || name == "asic-state" || name == "fapid" || name == "hotplug-event" || name == "is-valid" || name == "last-init-cause" || name == "local-switch-state" || name == "num-hard-resets" || name == "num-pon-resets" || name == "oper-state" || name == "slice-state")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::DiagShell::DiagShell()
+Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::AsicId()
     :
-    diag_shell_units(std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits>())
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
 {
-    diag_shell_units->parent = this;
 
-    yang_name = "diag-shell"; yang_parent_name = "node";
+    yang_name = "asic-id"; yang_parent_name = "device-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::DiagShell::~DiagShell()
+Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::~AsicId()
 {
 }
 
-bool Fia::Nodes::Node::DiagShell::has_data() const
+bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_data() const
 {
-    return (diag_shell_units !=  nullptr && diag_shell_units->has_data());
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
 }
 
-bool Fia::Nodes::Node::DiagShell::has_operation() const
+bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_operation() const
 {
     return is_set(yfilter)
-	|| (diag_shell_units !=  nullptr && diag_shell_units->has_operation());
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
 }
 
-std::string Fia::Nodes::Node::DiagShell::get_segment_path() const
+std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diag-shell";
-
+    path_buffer << "asic-id";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::DiagShell::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DiagShell' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "diag-shell-units")
-    {
-        if(diag_shell_units == nullptr)
-        {
-            diag_shell_units = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits>();
-        }
-        return diag_shell_units;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(diag_shell_units != nullptr)
-    {
-        children["diag-shell-units"] = diag_shell_units;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::DiagShell::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::DiagShell::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "diag-shell-units")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnits()
-{
-    yang_name = "diag-shell-units"; yang_parent_name = "diag-shell";
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::~DiagShellUnits()
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_data() const
-{
-    for (std::size_t index=0; index<diag_shell_unit.size(); index++)
-    {
-        if(diag_shell_unit[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_operation() const
-{
-    for (std::size_t index=0; index<diag_shell_unit.size(); index++)
-    {
-        if(diag_shell_unit[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "diag-shell-units";
-
-    return path_buffer.str();
+    return leaf_name_data;
 
 }
 
-const EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DiagShellUnits' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "diag-shell-unit")
-    {
-        for(auto const & c : diag_shell_unit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit>();
-        c->parent = this;
-        diag_shell_unit.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diag_shell_unit)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "diag-shell-unit")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::DiagShellUnit()
-    :
-    unit{YType::uint32, "unit"}
-    	,
-    commands(std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands>())
-{
-    commands->parent = this;
-
-    yang_name = "diag-shell-unit"; yang_parent_name = "diag-shell-units";
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::~DiagShellUnit()
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_data() const
-{
-    return unit.is_set
-	|| (commands !=  nullptr && commands->has_data());
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| (commands !=  nullptr && commands->has_operation());
-}
-
-std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "diag-shell-unit" <<"[unit='" <<unit <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DiagShellUnit' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "commands")
-    {
-        if(commands == nullptr)
-        {
-            commands = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands>();
-        }
-        return commands;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(commands != nullptr)
-    {
-        children["commands"] = commands;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "commands" || name == "unit")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Commands()
-{
-    yang_name = "commands"; yang_parent_name = "diag-shell-unit";
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::~Commands()
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_data() const
-{
-    for (std::size_t index=0; index<command.size(); index++)
-    {
-        if(command[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_operation() const
-{
-    for (std::size_t index=0; index<command.size(); index++)
-    {
-        if(command[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "commands";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Commands' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "command")
-    {
-        for(auto const & c : command)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command>();
-        c->parent = this;
-        command.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : command)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "command")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Command()
-    :
-    cmd{YType::str, "cmd"}
-{
-    yang_name = "command"; yang_parent_name = "commands";
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::~Command()
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_data() const
-{
-    for (std::size_t index=0; index<output.size(); index++)
-    {
-        if(output[index]->has_data())
-            return true;
-    }
-    return cmd.is_set;
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_operation() const
-{
-    for (std::size_t index=0; index<output.size(); index++)
-    {
-        if(output[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(cmd.yfilter);
-}
-
-std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "command" <<"[cmd='" <<cmd <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Command' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cmd.is_set || is_set(cmd.yfilter)) leaf_name_data.push_back(cmd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "output")
-    {
-        for(auto const & c : output)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output>();
-        c->parent = this;
-        output.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : output)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cmd")
-    {
-        cmd = value;
-        cmd.value_namespace = name_space;
-        cmd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cmd")
-    {
-        cmd.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "output" || name == "cmd")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::Output()
-    :
-    output{YType::str, "output"},
-    output_xr{YType::str, "output-xr"}
-{
-    yang_name = "output"; yang_parent_name = "command";
-}
-
-Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::~Output()
-{
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_data() const
-{
-    return output.is_set
-	|| output_xr.is_set;
-}
-
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(output.yfilter)
-	|| ydk::is_set(output_xr.yfilter);
-}
-
-std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output" <<"[output='" <<output <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Output' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
-    if (output_xr.is_set || is_set(output_xr.yfilter)) leaf_name_data.push_back(output_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "output")
+    if(value_path == "asic-instance")
     {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "output-xr")
+    if(value_path == "asic-type")
     {
-        output_xr = value;
-        output_xr.value_namespace = name_space;
-        output_xr.value_namespace_prefix = name_space_prefix;
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "output")
+    if(value_path == "asic-instance")
     {
-        output.yfilter = yfilter;
+        asic_instance.yfilter = yfilter;
     }
-    if(value_path == "output-xr")
+    if(value_path == "asic-type")
     {
-        output_xr.yfilter = yfilter;
+        asic_type.yfilter = yfilter;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num.yfilter = yfilter;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type.yfilter = yfilter;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "output" || name == "output-xr")
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
         return true;
     return false;
 }
@@ -7472,7 +5884,7 @@ Fia::Nodes::Node::OirHistory::OirHistory()
 {
     flags->parent = this;
 
-    yang_name = "oir-history"; yang_parent_name = "node";
+    yang_name = "oir-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::~OirHistory()
@@ -7494,29 +5906,15 @@ std::string Fia::Nodes::Node::OirHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oir-history";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OirHistory' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7562,7 +5960,8 @@ bool Fia::Nodes::Node::OirHistory::has_leaf_or_child_of_name(const std::string &
 
 Fia::Nodes::Node::OirHistory::Flags::Flags()
 {
-    yang_name = "flags"; yang_parent_name = "oir-history";
+
+    yang_name = "flags"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::~Flags()
@@ -7593,29 +5992,15 @@ std::string Fia::Nodes::Node::OirHistory::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flags' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7674,7 +6059,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Flag()
 {
     slots->parent = this;
 
-    yang_name = "flag"; yang_parent_name = "flags";
+    yang_name = "flag"; yang_parent_name = "flags"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::~Flag()
@@ -7698,30 +6083,16 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flag" <<"[flag='" <<flag <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flag' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7777,7 +6148,8 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::has_leaf_or_child_of_name(const 
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slots()
 {
-    yang_name = "slots"; yang_parent_name = "flag";
+
+    yang_name = "slots"; yang_parent_name = "flag"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::~Slots()
@@ -7808,29 +6180,15 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slots' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7929,7 +6287,8 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::Slot()
     uc_weight{YType::uint8, "uc-weight"},
     ucmc_ratio{YType::uint32, "ucmc-ratio"}
 {
-    yang_name = "slot"; yang_parent_name = "slots";
+
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::~Slot()
@@ -8059,23 +6418,11 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot='" <<slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
@@ -8124,9 +6471,7 @@ const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_ent
     if (uc_weight.is_set || is_set(uc_weight.yfilter)) leaf_name_data.push_back(uc_weight.get_name_leafdata());
     if (ucmc_ratio.is_set || is_set(ucmc_ratio.yfilter)) leaf_name_data.push_back(ucmc_ratio.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8648,400 +6993,6 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_leaf_or_child_o
     return false;
 }
 
-Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::DeviceInfo()
-    :
-    admin_state{YType::enumeration, "admin-state"},
-    asic_state{YType::enumeration, "asic-state"},
-    fapid{YType::uint32, "fapid"},
-    hotplug_event{YType::uint32, "hotplug-event"},
-    is_valid{YType::boolean, "is-valid"},
-    last_init_cause{YType::enumeration, "last-init-cause"},
-    local_switch_state{YType::boolean, "local-switch-state"},
-    num_hard_resets{YType::uint32, "num-hard-resets"},
-    num_pon_resets{YType::uint32, "num-pon-resets"},
-    oper_state{YType::enumeration, "oper-state"},
-    slice_state{YType::enumeration, "slice-state"}
-    	,
-    asic_id(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId>())
-{
-    asic_id->parent = this;
-
-    yang_name = "device-info"; yang_parent_name = "slot";
-}
-
-Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::~DeviceInfo()
-{
-}
-
-bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_data() const
-{
-    return admin_state.is_set
-	|| asic_state.is_set
-	|| fapid.is_set
-	|| hotplug_event.is_set
-	|| is_valid.is_set
-	|| last_init_cause.is_set
-	|| local_switch_state.is_set
-	|| num_hard_resets.is_set
-	|| num_pon_resets.is_set
-	|| oper_state.is_set
-	|| slice_state.is_set
-	|| (asic_id !=  nullptr && asic_id->has_data());
-}
-
-bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(asic_state.yfilter)
-	|| ydk::is_set(fapid.yfilter)
-	|| ydk::is_set(hotplug_event.yfilter)
-	|| ydk::is_set(is_valid.yfilter)
-	|| ydk::is_set(last_init_cause.yfilter)
-	|| ydk::is_set(local_switch_state.yfilter)
-	|| ydk::is_set(num_hard_resets.yfilter)
-	|| ydk::is_set(num_pon_resets.yfilter)
-	|| ydk::is_set(oper_state.yfilter)
-	|| ydk::is_set(slice_state.yfilter)
-	|| (asic_id !=  nullptr && asic_id->has_operation());
-}
-
-std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "device-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DeviceInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (asic_state.is_set || is_set(asic_state.yfilter)) leaf_name_data.push_back(asic_state.get_name_leafdata());
-    if (fapid.is_set || is_set(fapid.yfilter)) leaf_name_data.push_back(fapid.get_name_leafdata());
-    if (hotplug_event.is_set || is_set(hotplug_event.yfilter)) leaf_name_data.push_back(hotplug_event.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (last_init_cause.is_set || is_set(last_init_cause.yfilter)) leaf_name_data.push_back(last_init_cause.get_name_leafdata());
-    if (local_switch_state.is_set || is_set(local_switch_state.yfilter)) leaf_name_data.push_back(local_switch_state.get_name_leafdata());
-    if (num_hard_resets.is_set || is_set(num_hard_resets.yfilter)) leaf_name_data.push_back(num_hard_resets.get_name_leafdata());
-    if (num_pon_resets.is_set || is_set(num_pon_resets.yfilter)) leaf_name_data.push_back(num_pon_resets.get_name_leafdata());
-    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
-    if (slice_state.is_set || is_set(slice_state.yfilter)) leaf_name_data.push_back(slice_state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "asic-id")
-    {
-        if(asic_id == nullptr)
-        {
-            asic_id = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId>();
-        }
-        return asic_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(asic_id != nullptr)
-    {
-        children["asic-id"] = asic_id;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-state")
-    {
-        asic_state = value;
-        asic_state.value_namespace = name_space;
-        asic_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fapid")
-    {
-        fapid = value;
-        fapid.value_namespace = name_space;
-        fapid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hotplug-event")
-    {
-        hotplug_event = value;
-        hotplug_event.value_namespace = name_space;
-        hotplug_event.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-valid")
-    {
-        is_valid = value;
-        is_valid.value_namespace = name_space;
-        is_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-init-cause")
-    {
-        last_init_cause = value;
-        last_init_cause.value_namespace = name_space;
-        last_init_cause.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-switch-state")
-    {
-        local_switch_state = value;
-        local_switch_state.value_namespace = name_space;
-        local_switch_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-hard-resets")
-    {
-        num_hard_resets = value;
-        num_hard_resets.value_namespace = name_space;
-        num_hard_resets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-pon-resets")
-    {
-        num_pon_resets = value;
-        num_pon_resets.value_namespace = name_space;
-        num_pon_resets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state = value;
-        oper_state.value_namespace = name_space;
-        oper_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slice-state")
-    {
-        slice_state = value;
-        slice_state.value_namespace = name_space;
-        slice_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state.yfilter = yfilter;
-    }
-    if(value_path == "asic-state")
-    {
-        asic_state.yfilter = yfilter;
-    }
-    if(value_path == "fapid")
-    {
-        fapid.yfilter = yfilter;
-    }
-    if(value_path == "hotplug-event")
-    {
-        hotplug_event.yfilter = yfilter;
-    }
-    if(value_path == "is-valid")
-    {
-        is_valid.yfilter = yfilter;
-    }
-    if(value_path == "last-init-cause")
-    {
-        last_init_cause.yfilter = yfilter;
-    }
-    if(value_path == "local-switch-state")
-    {
-        local_switch_state.yfilter = yfilter;
-    }
-    if(value_path == "num-hard-resets")
-    {
-        num_hard_resets.yfilter = yfilter;
-    }
-    if(value_path == "num-pon-resets")
-    {
-        num_pon_resets.yfilter = yfilter;
-    }
-    if(value_path == "oper-state")
-    {
-        oper_state.yfilter = yfilter;
-    }
-    if(value_path == "slice-state")
-    {
-        slice_state.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-id" || name == "admin-state" || name == "asic-state" || name == "fapid" || name == "hotplug-event" || name == "is-valid" || name == "last-init-cause" || name == "local-switch-state" || name == "num-hard-resets" || name == "num-pon-resets" || name == "oper-state" || name == "slice-state")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::AsicId()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    asic_type{YType::enumeration, "asic-type"},
-    rack_num{YType::uint32, "rack-num"},
-    rack_type{YType::enumeration, "rack-type"},
-    slot_num{YType::uint32, "slot-num"}
-{
-    yang_name = "asic-id"; yang_parent_name = "device-info";
-}
-
-Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::~AsicId()
-{
-}
-
-bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_data() const
-{
-    return asic_instance.is_set
-	|| asic_type.is_set
-	|| rack_num.is_set
-	|| rack_type.is_set
-	|| slot_num.is_set;
-}
-
-bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(asic_type.yfilter)
-	|| ydk::is_set(rack_num.yfilter)
-	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slot_num.yfilter);
-}
-
-std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicId' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type = value;
-        asic_type.value_namespace = name_space;
-        asic_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num = value;
-        rack_num.value_namespace = name_space;
-        rack_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type = value;
-        rack_type.value_namespace = name_space;
-        rack_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num = value;
-        slot_num.value_namespace = name_space;
-        slot_num.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "asic-type")
-    {
-        asic_type.yfilter = yfilter;
-    }
-    if(value_path == "rack-num")
-    {
-        rack_num.yfilter = yfilter;
-    }
-    if(value_path == "rack-type")
-    {
-        rack_type.yfilter = yfilter;
-    }
-    if(value_path == "slot-num")
-    {
-        slot_num.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
-        return true;
-    return false;
-}
-
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::CardInfo()
     :
     card_flag{YType::int32, "card-flag"},
@@ -9064,7 +7015,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::CardInfo()
 {
     oir_circular_buffer->parent = this;
 
-    yang_name = "card-info"; yang_parent_name = "slot";
+    yang_name = "card-info"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::~CardInfo()
@@ -9116,23 +7067,11 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "card-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CardInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_flag.is_set || is_set(card_flag.yfilter)) leaf_name_data.push_back(card_flag.get_name_leafdata());
@@ -9151,9 +7090,7 @@ const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInf
     if (reg_flag.is_set || is_set(reg_flag.yfilter)) leaf_name_data.push_back(reg_flag.get_name_leafdata());
     if (slot_no.is_set || is_set(slot_no.yfilter)) leaf_name_data.push_back(slot_no.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9353,7 +7290,8 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuf
     end{YType::int32, "end"},
     start{YType::int32, "start"}
 {
-    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info";
+
+    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::~OirCircularBuffer()
@@ -9389,32 +7327,18 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::Oi
 {
     std::ostringstream path_buffer;
     path_buffer << "oir-circular-buffer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OirCircularBuffer' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
     if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
     if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9505,7 +7429,8 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuf
     rack_num{YType::int32, "rack-num"},
     reg_flag{YType::int32, "reg-flag"}
 {
-    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer";
+
+    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo::~FiaOirInfo()
@@ -9539,23 +7464,11 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::Oi
 {
     std::ostringstream path_buffer;
     path_buffer << "fia-oir-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FiaOirInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_flag.is_set || is_set(card_flag.yfilter)) leaf_name_data.push_back(card_flag.get_name_leafdata());
@@ -9566,9 +7479,7 @@ const EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInf
     if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
     if (reg_flag.is_set || is_set(reg_flag.yfilter)) leaf_name_data.push_back(reg_flag.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9668,164 +7579,504 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircul
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::AsicStatistics()
+Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::DeviceInfo()
     :
-    statistics_asic_instances(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances>())
+    admin_state{YType::enumeration, "admin-state"},
+    asic_state{YType::enumeration, "asic-state"},
+    fapid{YType::uint32, "fapid"},
+    hotplug_event{YType::uint32, "hotplug-event"},
+    is_valid{YType::boolean, "is-valid"},
+    last_init_cause{YType::enumeration, "last-init-cause"},
+    local_switch_state{YType::boolean, "local-switch-state"},
+    num_hard_resets{YType::uint32, "num-hard-resets"},
+    num_pon_resets{YType::uint32, "num-pon-resets"},
+    oper_state{YType::enumeration, "oper-state"},
+    slice_state{YType::enumeration, "slice-state"}
+    	,
+    asic_id(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId>())
 {
-    statistics_asic_instances->parent = this;
+    asic_id->parent = this;
 
-    yang_name = "asic-statistics"; yang_parent_name = "node";
+    yang_name = "device-info"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::~AsicStatistics()
+Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::~DeviceInfo()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::has_data() const
+bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_data() const
 {
-    return (statistics_asic_instances !=  nullptr && statistics_asic_instances->has_data());
+    return admin_state.is_set
+	|| asic_state.is_set
+	|| fapid.is_set
+	|| hotplug_event.is_set
+	|| is_valid.is_set
+	|| last_init_cause.is_set
+	|| local_switch_state.is_set
+	|| num_hard_resets.is_set
+	|| num_pon_resets.is_set
+	|| oper_state.is_set
+	|| slice_state.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
 }
 
-bool Fia::Nodes::Node::AsicStatistics::has_operation() const
+bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| (statistics_asic_instances !=  nullptr && statistics_asic_instances->has_operation());
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(asic_state.yfilter)
+	|| ydk::is_set(fapid.yfilter)
+	|| ydk::is_set(hotplug_event.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(last_init_cause.yfilter)
+	|| ydk::is_set(local_switch_state.yfilter)
+	|| ydk::is_set(num_hard_resets.yfilter)
+	|| ydk::is_set(num_pon_resets.yfilter)
+	|| ydk::is_set(oper_state.yfilter)
+	|| ydk::is_set(slice_state.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::get_segment_path() const
+std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic-statistics";
-
+    path_buffer << "device-info";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AsicStatistics' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (asic_state.is_set || is_set(asic_state.yfilter)) leaf_name_data.push_back(asic_state.get_name_leafdata());
+    if (fapid.is_set || is_set(fapid.yfilter)) leaf_name_data.push_back(fapid.get_name_leafdata());
+    if (hotplug_event.is_set || is_set(hotplug_event.yfilter)) leaf_name_data.push_back(hotplug_event.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (last_init_cause.is_set || is_set(last_init_cause.yfilter)) leaf_name_data.push_back(last_init_cause.get_name_leafdata());
+    if (local_switch_state.is_set || is_set(local_switch_state.yfilter)) leaf_name_data.push_back(local_switch_state.get_name_leafdata());
+    if (num_hard_resets.is_set || is_set(num_hard_resets.yfilter)) leaf_name_data.push_back(num_hard_resets.get_name_leafdata());
+    if (num_pon_resets.is_set || is_set(num_pon_resets.yfilter)) leaf_name_data.push_back(num_pon_resets.get_name_leafdata());
+    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
+    if (slice_state.is_set || is_set(slice_state.yfilter)) leaf_name_data.push_back(slice_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "statistics-asic-instances")
+    if(child_yang_name == "asic-id")
     {
-        if(statistics_asic_instances == nullptr)
+        if(asic_id == nullptr)
         {
-            statistics_asic_instances = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances>();
+            asic_id = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId>();
         }
-        return statistics_asic_instances;
+        return asic_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(statistics_asic_instances != nullptr)
+    if(asic_id != nullptr)
     {
-        children["statistics-asic-instances"] = statistics_asic_instances;
+        children["asic-id"] = asic_id;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic-state")
+    {
+        asic_state = value;
+        asic_state.value_namespace = name_space;
+        asic_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fapid")
+    {
+        fapid = value;
+        fapid.value_namespace = name_space;
+        fapid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hotplug-event")
+    {
+        hotplug_event = value;
+        hotplug_event.value_namespace = name_space;
+        hotplug_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-init-cause")
+    {
+        last_init_cause = value;
+        last_init_cause.value_namespace = name_space;
+        last_init_cause.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-switch-state")
+    {
+        local_switch_state = value;
+        local_switch_state.value_namespace = name_space;
+        local_switch_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-hard-resets")
+    {
+        num_hard_resets = value;
+        num_hard_resets.value_namespace = name_space;
+        num_hard_resets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-pon-resets")
+    {
+        num_pon_resets = value;
+        num_pon_resets.value_namespace = name_space;
+        num_pon_resets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state = value;
+        oper_state.value_namespace = name_space;
+        oper_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slice-state")
+    {
+        slice_state = value;
+        slice_state.value_namespace = name_space;
+        slice_state.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Fia::Nodes::Node::AsicStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "asic-state")
+    {
+        asic_state.yfilter = yfilter;
+    }
+    if(value_path == "fapid")
+    {
+        fapid.yfilter = yfilter;
+    }
+    if(value_path == "hotplug-event")
+    {
+        hotplug_event.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "last-init-cause")
+    {
+        last_init_cause.yfilter = yfilter;
+    }
+    if(value_path == "local-switch-state")
+    {
+        local_switch_state.yfilter = yfilter;
+    }
+    if(value_path == "num-hard-resets")
+    {
+        num_hard_resets.yfilter = yfilter;
+    }
+    if(value_path == "num-pon-resets")
+    {
+        num_pon_resets.yfilter = yfilter;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state.yfilter = yfilter;
+    }
+    if(value_path == "slice-state")
+    {
+        slice_state.yfilter = yfilter;
+    }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics-asic-instances")
+    if(name == "asic-id" || name == "admin-state" || name == "asic-state" || name == "fapid" || name == "hotplug-event" || name == "is-valid" || name == "last-init-cause" || name == "local-switch-state" || name == "num-hard-resets" || name == "num-pon-resets" || name == "oper-state" || name == "slice-state")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstances()
+Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::AsicId()
+    :
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
 {
-    yang_name = "statistics-asic-instances"; yang_parent_name = "asic-statistics";
+
+    yang_name = "asic-id"; yang_parent_name = "device-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::~StatisticsAsicInstances()
+Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::~AsicId()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_data() const
+bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_data() const
 {
-    for (std::size_t index=0; index<statistics_asic_instance.size(); index++)
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
+}
+
+bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
+}
+
+std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asic-instance")
     {
-        if(statistics_asic_instance[index]->has_data())
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic-type")
+    {
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance.yfilter = yfilter;
+    }
+    if(value_path == "asic-type")
+    {
+        asic_type.yfilter = yfilter;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num.yfilter = yfilter;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type.yfilter = yfilter;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::RxLinkInformation()
+    :
+    link_options(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions>())
+{
+    link_options->parent = this;
+
+    yang_name = "rx-link-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::~RxLinkInformation()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::has_data() const
+{
+    return (link_options !=  nullptr && link_options->has_data());
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| (link_options !=  nullptr && link_options->has_operation());
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-link-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-options")
+    {
+        if(link_options == nullptr)
+        {
+            link_options = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions>();
+        }
+        return link_options;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(link_options != nullptr)
+    {
+        children["link-options"] = link_options;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::RxLinkInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-options")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOptions()
+{
+
+    yang_name = "link-options"; yang_parent_name = "rx-link-information"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::~LinkOptions()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_data() const
+{
+    for (std::size_t index=0; index<link_option.size(); index++)
+    {
+        if(link_option[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_operation() const
 {
-    for (std::size_t index=0; index<statistics_asic_instance.size(); index++)
+    for (std::size_t index=0; index<link_option.size(); index++)
     {
-        if(statistics_asic_instance[index]->has_operation())
+        if(link_option[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistics-asic-instances";
-
+    path_buffer << "link-options";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StatisticsAsicInstances' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "statistics-asic-instance")
+    if(child_yang_name == "link-option")
     {
-        for(auto const & c : statistics_asic_instance)
+        for(auto const & c : link_option)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -9833,19 +8084,19 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
                 return c;
             }
         }
-        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance>();
+        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption>();
         c->parent = this;
-        statistics_asic_instance.push_back(c);
+        link_option.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : statistics_asic_instance)
+    for (auto const & c : link_option)
     {
         children[c->get_segment_path()] = c;
     }
@@ -9853,125 +8104,280 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics-asic-instance")
+    if(name == "link-option")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::StatisticsAsicInstance()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::LinkOption()
     :
-    instance{YType::uint32, "instance"}
+    option{YType::str, "option"}
     	,
-    fmac_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics>())
-	,pbc_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics>())
+    rx_asic_instances(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances>())
 {
-    fmac_statistics->parent = this;
+    rx_asic_instances->parent = this;
 
-    pbc_statistics->parent = this;
-
-    yang_name = "statistics-asic-instance"; yang_parent_name = "statistics-asic-instances";
+    yang_name = "link-option"; yang_parent_name = "link-options"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::~StatisticsAsicInstance()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::~LinkOption()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_data() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_data() const
 {
-    return instance.is_set
-	|| (fmac_statistics !=  nullptr && fmac_statistics->has_data())
-	|| (pbc_statistics !=  nullptr && pbc_statistics->has_data());
+    return option.is_set
+	|| (rx_asic_instances !=  nullptr && rx_asic_instances->has_data());
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(instance.yfilter)
-	|| (fmac_statistics !=  nullptr && fmac_statistics->has_operation())
-	|| (pbc_statistics !=  nullptr && pbc_statistics->has_operation());
+	|| ydk::is_set(option.yfilter)
+	|| (rx_asic_instances !=  nullptr && rx_asic_instances->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistics-asic-instance" <<"[instance='" <<instance <<"']";
-
+    path_buffer << "link-option" <<"[option='" <<option <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StatisticsAsicInstance' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fmac-statistics")
+    if(child_yang_name == "rx-asic-instances")
     {
-        if(fmac_statistics == nullptr)
+        if(rx_asic_instances == nullptr)
         {
-            fmac_statistics = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics>();
+            rx_asic_instances = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances>();
         }
-        return fmac_statistics;
-    }
-
-    if(child_yang_name == "pbc-statistics")
-    {
-        if(pbc_statistics == nullptr)
-        {
-            pbc_statistics = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics>();
-        }
-        return pbc_statistics;
+        return rx_asic_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(fmac_statistics != nullptr)
+    if(rx_asic_instances != nullptr)
     {
-        children["fmac-statistics"] = fmac_statistics;
-    }
-
-    if(pbc_statistics != nullptr)
-    {
-        children["pbc-statistics"] = pbc_statistics;
+        children["rx-asic-instances"] = rx_asic_instances;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option")
+    {
+        option = value;
+        option.value_namespace = name_space;
+        option.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option")
+    {
+        option.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-asic-instances" || name == "option")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstances()
+{
+
+    yang_name = "rx-asic-instances"; yang_parent_name = "link-option"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::~RxAsicInstances()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_data() const
+{
+    for (std::size_t index=0; index<rx_asic_instance.size(); index++)
+    {
+        if(rx_asic_instance[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_operation() const
+{
+    for (std::size_t index=0; index<rx_asic_instance.size(); index++)
+    {
+        if(rx_asic_instance[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-asic-instances";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rx-asic-instance")
+    {
+        for(auto const & c : rx_asic_instance)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance>();
+        c->parent = this;
+        rx_asic_instance.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rx_asic_instance)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-asic-instance")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxAsicInstance()
+    :
+    instance{YType::uint32, "instance"}
+    	,
+    rx_links(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks>())
+{
+    rx_links->parent = this;
+
+    yang_name = "rx-asic-instance"; yang_parent_name = "rx-asic-instances"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::~RxAsicInstance()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_data() const
+{
+    return instance.is_set
+	|| (rx_links !=  nullptr && rx_links->has_data());
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| (rx_links !=  nullptr && rx_links->has_operation());
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-asic-instance" <<"[instance='" <<instance <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rx-links")
+    {
+        if(rx_links == nullptr)
+        {
+            rx_links = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks>();
+        }
+        return rx_links;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rx_links != nullptr)
+    {
+        children["rx-links"] = rx_links;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance")
     {
@@ -9981,7 +8387,7 @@ void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "instance")
     {
@@ -9989,801 +8395,64 @@ void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fmac-statistics" || name == "pbc-statistics" || name == "instance")
+    if(name == "rx-links" || name == "instance")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStatistics()
-    :
-    pbc_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats>())
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLinks()
 {
-    pbc_stats->parent = this;
 
-    yang_name = "pbc-statistics"; yang_parent_name = "statistics-asic-instance";
+    yang_name = "rx-links"; yang_parent_name = "rx-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::~PbcStatistics()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::~RxLinks()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_data() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_data() const
 {
-    return (pbc_stats !=  nullptr && pbc_stats->has_data());
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pbc_stats !=  nullptr && pbc_stats->has_operation());
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbc-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<rx_link.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PbcStatistics' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pbc-stats")
-    {
-        if(pbc_stats == nullptr)
-        {
-            pbc_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats>();
-        }
-        return pbc_stats;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbc_stats != nullptr)
-    {
-        children["pbc-stats"] = pbc_stats;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbc-stats")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::PbcStats()
-    :
-    asic_instance{YType::uint32, "asic-instance"},
-    chip_ver{YType::uint16, "chip-ver"},
-    rack_no{YType::uint32, "rack-no"},
-    slot_no{YType::uint32, "slot-no"},
-    valid{YType::boolean, "valid"}
-    	,
-    stats_info(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>())
-{
-    stats_info->parent = this;
-
-    yang_name = "pbc-stats"; yang_parent_name = "pbc-statistics";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::~PbcStats()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_data() const
-{
-    return asic_instance.is_set
-	|| chip_ver.is_set
-	|| rack_no.is_set
-	|| slot_no.is_set
-	|| valid.is_set
-	|| (stats_info !=  nullptr && stats_info->has_data());
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(chip_ver.yfilter)
-	|| ydk::is_set(rack_no.yfilter)
-	|| ydk::is_set(slot_no.yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| (stats_info !=  nullptr && stats_info->has_operation());
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbc-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PbcStats' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (chip_ver.is_set || is_set(chip_ver.yfilter)) leaf_name_data.push_back(chip_ver.get_name_leafdata());
-    if (rack_no.is_set || is_set(rack_no.yfilter)) leaf_name_data.push_back(rack_no.get_name_leafdata());
-    if (slot_no.is_set || is_set(slot_no.yfilter)) leaf_name_data.push_back(slot_no.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stats-info")
-    {
-        if(stats_info == nullptr)
-        {
-            stats_info = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>();
-        }
-        return stats_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stats_info != nullptr)
-    {
-        children["stats-info"] = stats_info;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance = value;
-        asic_instance.value_namespace = name_space;
-        asic_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-ver")
-    {
-        chip_ver = value;
-        chip_ver.value_namespace = name_space;
-        chip_ver.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rack-no")
-    {
-        rack_no = value;
-        rack_no.value_namespace = name_space;
-        rack_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot-no")
-    {
-        slot_no = value;
-        slot_no.value_namespace = name_space;
-        slot_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "asic-instance")
-    {
-        asic_instance.yfilter = yfilter;
-    }
-    if(value_path == "chip-ver")
-    {
-        chip_ver.yfilter = yfilter;
-    }
-    if(value_path == "rack-no")
-    {
-        rack_no.yfilter = yfilter;
-    }
-    if(value_path == "slot-no")
-    {
-        slot_no.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "stats-info" || name == "asic-instance" || name == "chip-ver" || name == "rack-no" || name == "slot-no" || name == "valid")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::StatsInfo()
-    :
-    num_blocks{YType::uint8, "num-blocks"}
-{
-    yang_name = "stats-info"; yang_parent_name = "pbc-stats";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::~StatsInfo()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_data() const
-{
-    for (std::size_t index=0; index<block_info.size(); index++)
-    {
-        if(block_info[index]->has_data())
-            return true;
-    }
-    return num_blocks.is_set;
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_operation() const
-{
-    for (std::size_t index=0; index<block_info.size(); index++)
-    {
-        if(block_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(num_blocks.yfilter);
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stats-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StatsInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_blocks.is_set || is_set(num_blocks.yfilter)) leaf_name_data.push_back(num_blocks.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "block-info")
-    {
-        for(auto const & c : block_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo>();
-        c->parent = this;
-        block_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : block_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-blocks")
-    {
-        num_blocks = value;
-        num_blocks.value_namespace = name_space;
-        num_blocks.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-blocks")
-    {
-        num_blocks.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block-info" || name == "num-blocks")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::BlockInfo()
-    :
-    block_name{YType::str, "block-name"},
-    num_fields{YType::uint8, "num-fields"}
-{
-    yang_name = "block-info"; yang_parent_name = "stats-info";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::~BlockInfo()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_data() const
-{
-    for (std::size_t index=0; index<field_info.size(); index++)
-    {
-        if(field_info[index]->has_data())
-            return true;
-    }
-    return block_name.is_set
-	|| num_fields.is_set;
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_operation() const
-{
-    for (std::size_t index=0; index<field_info.size(); index++)
-    {
-        if(field_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(block_name.yfilter)
-	|| ydk::is_set(num_fields.yfilter);
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BlockInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (block_name.is_set || is_set(block_name.yfilter)) leaf_name_data.push_back(block_name.get_name_leafdata());
-    if (num_fields.is_set || is_set(num_fields.yfilter)) leaf_name_data.push_back(num_fields.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "field-info")
-    {
-        for(auto const & c : field_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo>();
-        c->parent = this;
-        field_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : field_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "block-name")
-    {
-        block_name = value;
-        block_name.value_namespace = name_space;
-        block_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-fields")
-    {
-        num_fields = value;
-        num_fields.value_namespace = name_space;
-        num_fields.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "block-name")
-    {
-        block_name.yfilter = yfilter;
-    }
-    if(value_path == "num-fields")
-    {
-        num_fields.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "field-info" || name == "block-name" || name == "num-fields")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::FieldInfo()
-    :
-    field_name{YType::str, "field-name"},
-    field_value{YType::uint64, "field-value"},
-    is_ovf{YType::boolean, "is-ovf"}
-{
-    yang_name = "field-info"; yang_parent_name = "block-info";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::~FieldInfo()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_data() const
-{
-    return field_name.is_set
-	|| field_value.is_set
-	|| is_ovf.is_set;
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(field_name.yfilter)
-	|| ydk::is_set(field_value.yfilter)
-	|| ydk::is_set(is_ovf.yfilter);
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "field-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FieldInfo' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (field_name.is_set || is_set(field_name.yfilter)) leaf_name_data.push_back(field_name.get_name_leafdata());
-    if (field_value.is_set || is_set(field_value.yfilter)) leaf_name_data.push_back(field_value.get_name_leafdata());
-    if (is_ovf.is_set || is_set(is_ovf.yfilter)) leaf_name_data.push_back(is_ovf.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "field-name")
-    {
-        field_name = value;
-        field_name.value_namespace = name_space;
-        field_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "field-value")
-    {
-        field_value = value;
-        field_value.value_namespace = name_space;
-        field_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-ovf")
-    {
-        is_ovf = value;
-        is_ovf.value_namespace = name_space;
-        is_ovf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "field-name")
-    {
-        field_name.yfilter = yfilter;
-    }
-    if(value_path == "field-value")
-    {
-        field_value.yfilter = yfilter;
-    }
-    if(value_path == "is-ovf")
-    {
-        is_ovf.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "field-name" || name == "field-value" || name == "is-ovf")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacStatistics()
-    :
-    fmac_links(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks>())
-{
-    fmac_links->parent = this;
-
-    yang_name = "fmac-statistics"; yang_parent_name = "statistics-asic-instance";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::~FmacStatistics()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_data() const
-{
-    return (fmac_links !=  nullptr && fmac_links->has_data());
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| (fmac_links !=  nullptr && fmac_links->has_operation());
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fmac-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FmacStatistics' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fmac-links")
-    {
-        if(fmac_links == nullptr)
-        {
-            fmac_links = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks>();
-        }
-        return fmac_links;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(fmac_links != nullptr)
-    {
-        children["fmac-links"] = fmac_links;
-    }
-
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fmac-links")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLinks()
-{
-    yang_name = "fmac-links"; yang_parent_name = "fmac-statistics";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::~FmacLinks()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_data() const
-{
-    for (std::size_t index=0; index<fmac_link.size(); index++)
-    {
-        if(fmac_link[index]->has_data())
+        if(rx_link[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_operation() const
 {
-    for (std::size_t index=0; index<fmac_link.size(); index++)
+    for (std::size_t index=0; index<rx_link.size(); index++)
     {
-        if(fmac_link[index]->has_operation())
+        if(rx_link[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fmac-links";
-
+    path_buffer << "rx-links";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FmacLinks' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fmac-link")
+    if(child_yang_name == "rx-link")
     {
-        for(auto const & c : fmac_link)
+        for(auto const & c : rx_link)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -10791,19 +8460,19 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
                 return c;
             }
         }
-        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink>();
+        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink>();
         c->parent = this;
-        fmac_link.push_back(c);
+        rx_link.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : fmac_link)
+    for (auto const & c : rx_link)
     {
         children[c->get_segment_path()] = c;
     }
@@ -10811,89 +8480,84 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fmac-link")
+    if(name == "rx-link")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacLink()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink()
     :
-    link{YType::int32, "link"}
+    end_number{YType::uint32, "end-number"},
+    start_number{YType::uint32, "start-number"},
+    status_option{YType::str, "status-option"}
 {
-    yang_name = "fmac-link"; yang_parent_name = "fmac-links";
+
+    yang_name = "rx-link"; yang_parent_name = "rx-links"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::~FmacLink()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::~RxLink()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_data() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_data() const
 {
-    for (std::size_t index=0; index<fmac_asic.size(); index++)
+    for (std::size_t index=0; index<rx_link.size(); index++)
     {
-        if(fmac_asic[index]->has_data())
+        if(rx_link[index]->has_data())
             return true;
     }
-    return link.is_set;
+    return end_number.is_set
+	|| start_number.is_set
+	|| status_option.is_set;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_operation() const
 {
-    for (std::size_t index=0; index<fmac_asic.size(); index++)
+    for (std::size_t index=0; index<rx_link.size(); index++)
     {
-        if(fmac_asic[index]->has_operation())
+        if(rx_link[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(link.yfilter);
+	|| ydk::is_set(end_number.yfilter)
+	|| ydk::is_set(start_number.yfilter)
+	|| ydk::is_set(status_option.yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fmac-link" <<"[link='" <<link <<"']";
-
+    path_buffer << "rx-link";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FmacLink' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
+    if (end_number.is_set || is_set(end_number.yfilter)) leaf_name_data.push_back(end_number.get_name_leafdata());
+    if (start_number.is_set || is_set(start_number.yfilter)) leaf_name_data.push_back(start_number.get_name_leafdata());
+    if (status_option.is_set || is_set(status_option.yfilter)) leaf_name_data.push_back(status_option.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fmac-asic")
+    if(child_yang_name == "rx-link")
     {
-        for(auto const & c : fmac_asic)
+        for(auto const & c : rx_link)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -10901,19 +8565,19 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
                 return c;
             }
         }
-        auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic>();
+        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_>();
         c->parent = this;
-        fmac_asic.push_back(c);
+        rx_link.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : fmac_asic)
+    for (auto const & c : rx_link)
     {
         children[c->get_segment_path()] = c;
     }
@@ -10921,7 +8585,224 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end-number")
+    {
+        end_number = value;
+        end_number.value_namespace = name_space;
+        end_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-number")
+    {
+        start_number = value;
+        start_number.value_namespace = name_space;
+        start_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status-option")
+    {
+        status_option = value;
+        status_option.value_namespace = name_space;
+        status_option.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-number")
+    {
+        end_number.yfilter = yfilter;
+    }
+    if(value_path == "start-number")
+    {
+        start_number.yfilter = yfilter;
+    }
+    if(value_path == "status-option")
+    {
+        status_option.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-link" || name == "end-number" || name == "start-number" || name == "status-option")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::RxLink_()
+    :
+    link{YType::int32, "link"},
+    admin_state{YType::enumeration, "admin-state"},
+    correctable_errors{YType::uint64, "correctable-errors"},
+    error_state{YType::enumeration, "error-state"},
+    flags{YType::str, "flags"},
+    flap_cnt{YType::uint32, "flap-cnt"},
+    is_conf_pending{YType::boolean, "is-conf-pending"},
+    is_link_valid{YType::boolean, "is-link-valid"},
+    num_admin_shuts{YType::uint32, "num-admin-shuts"},
+    oper_state{YType::enumeration, "oper-state"},
+    speed{YType::uint32, "speed"},
+    stage{YType::enumeration, "stage"},
+    uncorrectable_errors{YType::uint64, "uncorrectable-errors"}
+    	,
+    far_end_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink>())
+	,far_end_link_in_hw(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw>())
+	,history(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History>())
+	,this_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink>())
+{
+    far_end_link->parent = this;
+    far_end_link_in_hw->parent = this;
+    history->parent = this;
+    this_link->parent = this;
+
+    yang_name = "rx-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::~RxLink_()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_data() const
+{
+    return link.is_set
+	|| admin_state.is_set
+	|| correctable_errors.is_set
+	|| error_state.is_set
+	|| flags.is_set
+	|| flap_cnt.is_set
+	|| is_conf_pending.is_set
+	|| is_link_valid.is_set
+	|| num_admin_shuts.is_set
+	|| oper_state.is_set
+	|| speed.is_set
+	|| stage.is_set
+	|| uncorrectable_errors.is_set
+	|| (far_end_link !=  nullptr && far_end_link->has_data())
+	|| (far_end_link_in_hw !=  nullptr && far_end_link_in_hw->has_data())
+	|| (history !=  nullptr && history->has_data())
+	|| (this_link !=  nullptr && this_link->has_data());
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link.yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(correctable_errors.yfilter)
+	|| ydk::is_set(error_state.yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(flap_cnt.yfilter)
+	|| ydk::is_set(is_conf_pending.yfilter)
+	|| ydk::is_set(is_link_valid.yfilter)
+	|| ydk::is_set(num_admin_shuts.yfilter)
+	|| ydk::is_set(oper_state.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(stage.yfilter)
+	|| ydk::is_set(uncorrectable_errors.yfilter)
+	|| (far_end_link !=  nullptr && far_end_link->has_operation())
+	|| (far_end_link_in_hw !=  nullptr && far_end_link_in_hw->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (this_link !=  nullptr && this_link->has_operation());
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-link" <<"[link='" <<link <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (correctable_errors.is_set || is_set(correctable_errors.yfilter)) leaf_name_data.push_back(correctable_errors.get_name_leafdata());
+    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (flap_cnt.is_set || is_set(flap_cnt.yfilter)) leaf_name_data.push_back(flap_cnt.get_name_leafdata());
+    if (is_conf_pending.is_set || is_set(is_conf_pending.yfilter)) leaf_name_data.push_back(is_conf_pending.get_name_leafdata());
+    if (is_link_valid.is_set || is_set(is_link_valid.yfilter)) leaf_name_data.push_back(is_link_valid.get_name_leafdata());
+    if (num_admin_shuts.is_set || is_set(num_admin_shuts.yfilter)) leaf_name_data.push_back(num_admin_shuts.get_name_leafdata());
+    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (stage.is_set || is_set(stage.yfilter)) leaf_name_data.push_back(stage.get_name_leafdata());
+    if (uncorrectable_errors.is_set || is_set(uncorrectable_errors.yfilter)) leaf_name_data.push_back(uncorrectable_errors.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "far-end-link")
+    {
+        if(far_end_link == nullptr)
+        {
+            far_end_link = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink>();
+        }
+        return far_end_link;
+    }
+
+    if(child_yang_name == "far-end-link-in-hw")
+    {
+        if(far_end_link_in_hw == nullptr)
+        {
+            far_end_link_in_hw = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw>();
+        }
+        return far_end_link_in_hw;
+    }
+
+    if(child_yang_name == "history")
+    {
+        if(history == nullptr)
+        {
+            history = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History>();
+        }
+        return history;
+    }
+
+    if(child_yang_name == "this-link")
+    {
+        if(this_link == nullptr)
+        {
+            this_link = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink>();
+        }
+        return this_link;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(far_end_link != nullptr)
+    {
+        children["far-end-link"] = far_end_link;
+    }
+
+    if(far_end_link_in_hw != nullptr)
+    {
+        children["far-end-link-in-hw"] = far_end_link_in_hw;
+    }
+
+    if(history != nullptr)
+    {
+        children["history"] = history;
+    }
+
+    if(this_link != nullptr)
+    {
+        children["this-link"] = this_link;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link")
     {
@@ -10929,1967 +8810,3033 @@ void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
         link.value_namespace = name_space;
         link.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "correctable-errors")
+    {
+        correctable_errors = value;
+        correctable_errors.value_namespace = name_space;
+        correctable_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-state")
+    {
+        error_state = value;
+        error_state.value_namespace = name_space;
+        error_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flap-cnt")
+    {
+        flap_cnt = value;
+        flap_cnt.value_namespace = name_space;
+        flap_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-conf-pending")
+    {
+        is_conf_pending = value;
+        is_conf_pending.value_namespace = name_space;
+        is_conf_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-link-valid")
+    {
+        is_link_valid = value;
+        is_link_valid.value_namespace = name_space;
+        is_link_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-admin-shuts")
+    {
+        num_admin_shuts = value;
+        num_admin_shuts.value_namespace = name_space;
+        num_admin_shuts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state = value;
+        oper_state.value_namespace = name_space;
+        oper_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "speed")
+    {
+        speed = value;
+        speed.value_namespace = name_space;
+        speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stage")
+    {
+        stage = value;
+        stage.value_namespace = name_space;
+        stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uncorrectable-errors")
+    {
+        uncorrectable_errors = value;
+        uncorrectable_errors.value_namespace = name_space;
+        uncorrectable_errors.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "link")
     {
         link.yfilter = yfilter;
     }
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "correctable-errors")
+    {
+        correctable_errors.yfilter = yfilter;
+    }
+    if(value_path == "error-state")
+    {
+        error_state.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "flap-cnt")
+    {
+        flap_cnt.yfilter = yfilter;
+    }
+    if(value_path == "is-conf-pending")
+    {
+        is_conf_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-link-valid")
+    {
+        is_link_valid.yfilter = yfilter;
+    }
+    if(value_path == "num-admin-shuts")
+    {
+        num_admin_shuts.yfilter = yfilter;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state.yfilter = yfilter;
+    }
+    if(value_path == "speed")
+    {
+        speed.yfilter = yfilter;
+    }
+    if(value_path == "stage")
+    {
+        stage.yfilter = yfilter;
+    }
+    if(value_path == "uncorrectable-errors")
+    {
+        uncorrectable_errors.yfilter = yfilter;
+    }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fmac-asic" || name == "link")
+    if(name == "far-end-link" || name == "far-end-link-in-hw" || name == "history" || name == "this-link" || name == "link" || name == "admin-state" || name == "correctable-errors" || name == "error-state" || name == "flags" || name == "flap-cnt" || name == "is-conf-pending" || name == "is-link-valid" || name == "num-admin-shuts" || name == "oper-state" || name == "speed" || name == "stage" || name == "uncorrectable-errors")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::FmacAsic()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::FarEndLink()
     :
-    asic{YType::int32, "asic"},
-    asic_instance{YType::uint32, "asic-instance"},
-    link_no{YType::uint32, "link-no"},
-    link_valid{YType::boolean, "link-valid"},
-    rack_no{YType::uint32, "rack-no"},
-    slot_no{YType::uint32, "slot-no"},
-    valid{YType::boolean, "valid"}
+    link_num{YType::uint32, "link-num"},
+    link_stage{YType::enumeration, "link-stage"},
+    link_type{YType::enumeration, "link-type"},
+    phy_link_num{YType::uint32, "phy-link-num"}
     	,
-    aggr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats>())
-	,incr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats>())
+    asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId>())
 {
-    aggr_stats->parent = this;
+    asic_id->parent = this;
 
-    incr_stats->parent = this;
-
-    yang_name = "fmac-asic"; yang_parent_name = "fmac-link";
+    yang_name = "far-end-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::~FmacAsic()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::~FarEndLink()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_data() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_data() const
 {
-    return asic.is_set
-	|| asic_instance.is_set
-	|| link_no.is_set
-	|| link_valid.is_set
-	|| rack_no.is_set
-	|| slot_no.is_set
-	|| valid.is_set
-	|| (aggr_stats !=  nullptr && aggr_stats->has_data())
-	|| (incr_stats !=  nullptr && incr_stats->has_data());
+    return link_num.is_set
+	|| link_stage.is_set
+	|| link_type.is_set
+	|| phy_link_num.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(asic.yfilter)
-	|| ydk::is_set(asic_instance.yfilter)
-	|| ydk::is_set(link_no.yfilter)
-	|| ydk::is_set(link_valid.yfilter)
-	|| ydk::is_set(rack_no.yfilter)
-	|| ydk::is_set(slot_no.yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| (aggr_stats !=  nullptr && aggr_stats->has_operation())
-	|| (incr_stats !=  nullptr && incr_stats->has_operation());
+	|| ydk::is_set(link_num.yfilter)
+	|| ydk::is_set(link_stage.yfilter)
+	|| ydk::is_set(link_type.yfilter)
+	|| ydk::is_set(phy_link_num.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fmac-asic" <<"[asic='" <<asic <<"']";
-
+    path_buffer << "far-end-link";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FmacAsic' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asic.is_set || is_set(asic.yfilter)) leaf_name_data.push_back(asic.get_name_leafdata());
-    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
-    if (link_no.is_set || is_set(link_no.yfilter)) leaf_name_data.push_back(link_no.get_name_leafdata());
-    if (link_valid.is_set || is_set(link_valid.yfilter)) leaf_name_data.push_back(link_valid.get_name_leafdata());
-    if (rack_no.is_set || is_set(rack_no.yfilter)) leaf_name_data.push_back(rack_no.get_name_leafdata());
-    if (slot_no.is_set || is_set(slot_no.yfilter)) leaf_name_data.push_back(slot_no.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
+    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "aggr-stats")
+    if(child_yang_name == "asic-id")
     {
-        if(aggr_stats == nullptr)
+        if(asic_id == nullptr)
         {
-            aggr_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats>();
+            asic_id = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId>();
         }
-        return aggr_stats;
-    }
-
-    if(child_yang_name == "incr-stats")
-    {
-        if(incr_stats == nullptr)
-        {
-            incr_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats>();
-        }
-        return incr_stats;
+        return asic_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(aggr_stats != nullptr)
+    if(asic_id != nullptr)
     {
-        children["aggr-stats"] = aggr_stats;
-    }
-
-    if(incr_stats != nullptr)
-    {
-        children["incr-stats"] = incr_stats;
+        children["asic-id"] = asic_id;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "asic")
+    if(value_path == "link-num")
     {
-        asic = value;
-        asic.value_namespace = name_space;
-        asic.value_namespace_prefix = name_space_prefix;
+        link_num = value;
+        link_num.value_namespace = name_space;
+        link_num.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "link-stage")
+    {
+        link_stage = value;
+        link_stage.value_namespace = name_space;
+        link_stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-type")
+    {
+        link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num = value;
+        phy_link_num.value_namespace = name_space;
+        phy_link_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-num")
+    {
+        link_num.yfilter = yfilter;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::AsicId()
+    :
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
+{
+
+    yang_name = "asic-id"; yang_parent_name = "far-end-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::~AsicId()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_data() const
+{
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
     if(value_path == "asic-instance")
     {
         asic_instance = value;
         asic_instance.value_namespace = name_space;
         asic_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-no")
+    if(value_path == "asic-type")
     {
-        link_no = value;
-        link_no.value_namespace = name_space;
-        link_no.value_namespace_prefix = name_space_prefix;
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-valid")
+    if(value_path == "rack-num")
     {
-        link_valid = value;
-        link_valid.value_namespace = name_space;
-        link_valid.value_namespace_prefix = name_space_prefix;
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rack-no")
+    if(value_path == "rack-type")
     {
-        rack_no = value;
-        rack_no.value_namespace = name_space;
-        rack_no.value_namespace_prefix = name_space_prefix;
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "slot-no")
+    if(value_path == "slot-num")
     {
-        slot_no = value;
-        slot_no.value_namespace = name_space;
-        slot_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "asic")
-    {
-        asic.yfilter = yfilter;
-    }
     if(value_path == "asic-instance")
     {
         asic_instance.yfilter = yfilter;
     }
-    if(value_path == "link-no")
+    if(value_path == "asic-type")
     {
-        link_no.yfilter = yfilter;
+        asic_type.yfilter = yfilter;
     }
-    if(value_path == "link-valid")
+    if(value_path == "rack-num")
     {
-        link_valid.yfilter = yfilter;
+        rack_num.yfilter = yfilter;
     }
-    if(value_path == "rack-no")
+    if(value_path == "rack-type")
     {
-        rack_no.yfilter = yfilter;
+        rack_type.yfilter = yfilter;
     }
-    if(value_path == "slot-no")
+    if(value_path == "slot-num")
     {
-        slot_no.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
+        slot_num.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "aggr-stats" || name == "incr-stats" || name == "asic" || name == "asic-instance" || name == "link-no" || name == "link-valid" || name == "rack-no" || name == "slot-no" || name == "valid")
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::AggrStats()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::FarEndLinkInHw()
     :
-    link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters>())
-	,link_error_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus>())
-	,ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus>())
+    link_num{YType::uint32, "link-num"},
+    link_stage{YType::enumeration, "link-stage"},
+    link_type{YType::enumeration, "link-type"},
+    phy_link_num{YType::uint32, "phy-link-num"}
+    	,
+    asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId>())
 {
-    link_counters->parent = this;
+    asic_id->parent = this;
 
-    link_error_status->parent = this;
-
-    ovf_status->parent = this;
-
-    yang_name = "aggr-stats"; yang_parent_name = "fmac-asic";
+    yang_name = "far-end-link-in-hw"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::~AggrStats()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::~FarEndLinkInHw()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_data() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_data() const
 {
-    return (link_counters !=  nullptr && link_counters->has_data())
-	|| (link_error_status !=  nullptr && link_error_status->has_data())
-	|| (ovf_status !=  nullptr && ovf_status->has_data());
+    return link_num.is_set
+	|| link_stage.is_set
+	|| link_type.is_set
+	|| phy_link_num.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_operation() const
 {
     return is_set(yfilter)
-	|| (link_counters !=  nullptr && link_counters->has_operation())
-	|| (link_error_status !=  nullptr && link_error_status->has_operation())
-	|| (ovf_status !=  nullptr && ovf_status->has_operation());
+	|| ydk::is_set(link_num.yfilter)
+	|| ydk::is_set(link_stage.yfilter)
+	|| ydk::is_set(link_type.yfilter)
+	|| ydk::is_set(phy_link_num.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aggr-stats";
-
+    path_buffer << "far-end-link-in-hw";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AggrStats' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
+    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "link-counters")
+    if(child_yang_name == "asic-id")
     {
-        if(link_counters == nullptr)
+        if(asic_id == nullptr)
         {
-            link_counters = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters>();
+            asic_id = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId>();
         }
-        return link_counters;
+        return asic_id;
     }
 
-    if(child_yang_name == "link-error-status")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(asic_id != nullptr)
     {
-        if(link_error_status == nullptr)
+        children["asic-id"] = asic_id;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-num")
+    {
+        link_num = value;
+        link_num.value_namespace = name_space;
+        link_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage = value;
+        link_stage.value_namespace = name_space;
+        link_stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-type")
+    {
+        link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num = value;
+        phy_link_num.value_namespace = name_space;
+        phy_link_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-num")
+    {
+        link_num.yfilter = yfilter;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::AsicId()
+    :
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
+{
+
+    yang_name = "asic-id"; yang_parent_name = "far-end-link-in-hw"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::~AsicId()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_data() const
+{
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic-type")
+    {
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance.yfilter = yfilter;
+    }
+    if(value_path == "asic-type")
+    {
+        asic_type.yfilter = yfilter;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num.yfilter = yfilter;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type.yfilter = yfilter;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::History()
+    :
+    histnum{YType::uint8, "histnum"},
+    start_index{YType::uint8, "start-index"}
+{
+
+    yang_name = "history"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::~History()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_data() const
+{
+    for (std::size_t index=0; index<hist.size(); index++)
+    {
+        if(hist[index]->has_data())
+            return true;
+    }
+    return histnum.is_set
+	|| start_index.is_set;
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_operation() const
+{
+    for (std::size_t index=0; index<hist.size(); index++)
+    {
+        if(hist[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(histnum.yfilter)
+	|| ydk::is_set(start_index.yfilter);
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (histnum.is_set || is_set(histnum.yfilter)) leaf_name_data.push_back(histnum.get_name_leafdata());
+    if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hist")
+    {
+        for(auto const & c : hist)
         {
-            link_error_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return link_error_status;
+        auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist>();
+        c->parent = this;
+        hist.push_back(c);
+        return c;
     }
 
-    if(child_yang_name == "ovf-status")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hist)
     {
-        if(ovf_status == nullptr)
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "histnum")
+    {
+        histnum = value;
+        histnum.value_namespace = name_space;
+        histnum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-index")
+    {
+        start_index = value;
+        start_index.value_namespace = name_space;
+        start_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "histnum")
+    {
+        histnum.yfilter = yfilter;
+    }
+    if(value_path == "start-index")
+    {
+        start_index.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hist" || name == "histnum" || name == "start-index")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::Hist()
+    :
+    admin_state{YType::enumeration, "admin-state"},
+    error_state{YType::enumeration, "error-state"},
+    oper_state{YType::enumeration, "oper-state"},
+    reasons{YType::str, "reasons"},
+    timestamp{YType::uint64, "timestamp"}
+{
+
+    yang_name = "hist"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::~Hist()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_data() const
+{
+    return admin_state.is_set
+	|| error_state.is_set
+	|| oper_state.is_set
+	|| reasons.is_set
+	|| timestamp.is_set;
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(error_state.yfilter)
+	|| ydk::is_set(oper_state.yfilter)
+	|| ydk::is_set(reasons.yfilter)
+	|| ydk::is_set(timestamp.yfilter);
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hist";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
+    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
+    if (reasons.is_set || is_set(reasons.yfilter)) leaf_name_data.push_back(reasons.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-state")
+    {
+        error_state = value;
+        error_state.value_namespace = name_space;
+        error_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state = value;
+        oper_state.value_namespace = name_space;
+        oper_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reasons")
+    {
+        reasons = value;
+        reasons.value_namespace = name_space;
+        reasons.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "error-state")
+    {
+        error_state.yfilter = yfilter;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state.yfilter = yfilter;
+    }
+    if(value_path == "reasons")
+    {
+        reasons.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-state" || name == "error-state" || name == "oper-state" || name == "reasons" || name == "timestamp")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::ThisLink()
+    :
+    link_num{YType::uint32, "link-num"},
+    link_stage{YType::enumeration, "link-stage"},
+    link_type{YType::enumeration, "link-type"},
+    phy_link_num{YType::uint32, "phy-link-num"}
+    	,
+    asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId>())
+{
+    asic_id->parent = this;
+
+    yang_name = "this-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::~ThisLink()
+{
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_data() const
+{
+    return link_num.is_set
+	|| link_stage.is_set
+	|| link_type.is_set
+	|| phy_link_num.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
+}
+
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_num.yfilter)
+	|| ydk::is_set(link_stage.yfilter)
+	|| ydk::is_set(link_type.yfilter)
+	|| ydk::is_set(phy_link_num.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
+}
+
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "this-link";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
+    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-id")
+    {
+        if(asic_id == nullptr)
         {
-            ovf_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus>();
+            asic_id = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId>();
         }
-        return ovf_status;
+        return asic_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(link_counters != nullptr)
+    if(asic_id != nullptr)
     {
-        children["link-counters"] = link_counters;
-    }
-
-    if(link_error_status != nullptr)
-    {
-        children["link-error-status"] = link_error_status;
-    }
-
-    if(ovf_status != nullptr)
-    {
-        children["ovf-status"] = ovf_status;
+        children["asic-id"] = asic_id;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "link-num")
+    {
+        link_num = value;
+        link_num.value_namespace = name_space;
+        link_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage = value;
+        link_stage.value_namespace = name_space;
+        link_stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-type")
+    {
+        link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num = value;
+        phy_link_num.value_namespace = name_space;
+        phy_link_num.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "link-num")
+    {
+        link_num.yfilter = yfilter;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num.yfilter = yfilter;
+    }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-counters" || name == "link-error-status" || name == "ovf-status")
+    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::LinkErrorStatus()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::AsicId()
     :
-    error_token_count{YType::uint32, "error-token-count"},
-    link_code_group_error{YType::uint32, "link-code-group-error"},
-    link_crc_error{YType::uint32, "link-crc-error"},
-    link_mis_align_error{YType::uint32, "link-mis-align-error"},
-    link_no_sig_accept_error{YType::uint32, "link-no-sig-accept-error"},
-    link_no_sig_lock_error{YType::uint32, "link-no-sig-lock-error"},
-    link_size_error{YType::uint32, "link-size-error"},
-    link_tokens_error{YType::uint32, "link-tokens-error"}
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
 {
-    yang_name = "link-error-status"; yang_parent_name = "aggr-stats";
+
+    yang_name = "asic-id"; yang_parent_name = "this-link"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::~LinkErrorStatus()
+Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::~AsicId()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_data() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_data() const
 {
-    return error_token_count.is_set
-	|| link_code_group_error.is_set
-	|| link_crc_error.is_set
-	|| link_mis_align_error.is_set
-	|| link_no_sig_accept_error.is_set
-	|| link_no_sig_lock_error.is_set
-	|| link_size_error.is_set
-	|| link_tokens_error.is_set;
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_operation() const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(error_token_count.yfilter)
-	|| ydk::is_set(link_code_group_error.yfilter)
-	|| ydk::is_set(link_crc_error.yfilter)
-	|| ydk::is_set(link_mis_align_error.yfilter)
-	|| ydk::is_set(link_no_sig_accept_error.yfilter)
-	|| ydk::is_set(link_no_sig_lock_error.yfilter)
-	|| ydk::is_set(link_size_error.yfilter)
-	|| ydk::is_set(link_tokens_error.yfilter);
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_segment_path() const
+std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-error-status";
-
+    path_buffer << "asic-id";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkErrorStatus' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error_token_count.is_set || is_set(error_token_count.yfilter)) leaf_name_data.push_back(error_token_count.get_name_leafdata());
-    if (link_code_group_error.is_set || is_set(link_code_group_error.yfilter)) leaf_name_data.push_back(link_code_group_error.get_name_leafdata());
-    if (link_crc_error.is_set || is_set(link_crc_error.yfilter)) leaf_name_data.push_back(link_crc_error.get_name_leafdata());
-    if (link_mis_align_error.is_set || is_set(link_mis_align_error.yfilter)) leaf_name_data.push_back(link_mis_align_error.get_name_leafdata());
-    if (link_no_sig_accept_error.is_set || is_set(link_no_sig_accept_error.yfilter)) leaf_name_data.push_back(link_no_sig_accept_error.get_name_leafdata());
-    if (link_no_sig_lock_error.is_set || is_set(link_no_sig_lock_error.yfilter)) leaf_name_data.push_back(link_no_sig_lock_error.get_name_leafdata());
-    if (link_size_error.is_set || is_set(link_size_error.yfilter)) leaf_name_data.push_back(link_size_error.get_name_leafdata());
-    if (link_tokens_error.is_set || is_set(link_tokens_error.yfilter)) leaf_name_data.push_back(link_tokens_error.get_name_leafdata());
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "error-token-count")
+    if(value_path == "asic-instance")
     {
-        error_token_count = value;
-        error_token_count.value_namespace = name_space;
-        error_token_count.value_namespace_prefix = name_space_prefix;
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-code-group-error")
+    if(value_path == "asic-type")
     {
-        link_code_group_error = value;
-        link_code_group_error.value_namespace = name_space;
-        link_code_group_error.value_namespace_prefix = name_space_prefix;
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-crc-error")
+    if(value_path == "rack-num")
     {
-        link_crc_error = value;
-        link_crc_error.value_namespace = name_space;
-        link_crc_error.value_namespace_prefix = name_space_prefix;
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-mis-align-error")
+    if(value_path == "rack-type")
     {
-        link_mis_align_error = value;
-        link_mis_align_error.value_namespace = name_space;
-        link_mis_align_error.value_namespace_prefix = name_space_prefix;
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-no-sig-accept-error")
+    if(value_path == "slot-num")
     {
-        link_no_sig_accept_error = value;
-        link_no_sig_accept_error.value_namespace = name_space;
-        link_no_sig_accept_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-no-sig-lock-error")
-    {
-        link_no_sig_lock_error = value;
-        link_no_sig_lock_error.value_namespace = name_space;
-        link_no_sig_lock_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-size-error")
-    {
-        link_size_error = value;
-        link_size_error.value_namespace = name_space;
-        link_size_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-tokens-error")
-    {
-        link_tokens_error = value;
-        link_tokens_error.value_namespace = name_space;
-        link_tokens_error.value_namespace_prefix = name_space_prefix;
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "error-token-count")
+    if(value_path == "asic-instance")
     {
-        error_token_count.yfilter = yfilter;
+        asic_instance.yfilter = yfilter;
     }
-    if(value_path == "link-code-group-error")
+    if(value_path == "asic-type")
     {
-        link_code_group_error.yfilter = yfilter;
+        asic_type.yfilter = yfilter;
     }
-    if(value_path == "link-crc-error")
+    if(value_path == "rack-num")
     {
-        link_crc_error.yfilter = yfilter;
+        rack_num.yfilter = yfilter;
     }
-    if(value_path == "link-mis-align-error")
+    if(value_path == "rack-type")
     {
-        link_mis_align_error.yfilter = yfilter;
+        rack_type.yfilter = yfilter;
     }
-    if(value_path == "link-no-sig-accept-error")
+    if(value_path == "slot-num")
     {
-        link_no_sig_accept_error.yfilter = yfilter;
-    }
-    if(value_path == "link-no-sig-lock-error")
-    {
-        link_no_sig_lock_error.yfilter = yfilter;
-    }
-    if(value_path == "link-size-error")
-    {
-        link_size_error.yfilter = yfilter;
-    }
-    if(value_path == "link-tokens-error")
-    {
-        link_tokens_error.yfilter = yfilter;
+        slot_num.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "error-token-count" || name == "link-code-group-error" || name == "link-crc-error" || name == "link-mis-align-error" || name == "link-no-sig-accept-error" || name == "link-no-sig-lock-error" || name == "link-size-error" || name == "link-tokens-error")
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::LinkCounters()
+Fia::Nodes::Node::TxLinkInformation::TxLinkInformation()
     :
-    rx_8b_10b_code_errors{YType::uint64, "rx-8b-10b-code-errors"},
-    rx_8b_10b_disparity_errors{YType::uint64, "rx-8b-10b-disparity-errors"},
-    rx_asyn_fifo_rate{YType::uint64, "rx-asyn-fifo-rate"},
-    rx_control_cells_counter{YType::uint64, "rx-control-cells-counter"},
-    rx_crc_errors_counter{YType::uint64, "rx-crc-errors-counter"},
-    rx_data_byte_counter{YType::uint64, "rx-data-byte-counter"},
-    rx_data_cell_counter{YType::uint64, "rx-data-cell-counter"},
-    rx_dropped_retransmitted_control{YType::uint64, "rx-dropped-retransmitted-control"},
-    rx_lfec_fec_correctable_error{YType::uint64, "rx-lfec-fec-correctable-error"},
-    rx_lfec_fec_uncorrectable_errors{YType::uint64, "rx-lfec-fec-uncorrectable-errors"},
-    tx_asyn_fifo_rate{YType::uint64, "tx-asyn-fifo-rate"},
-    tx_control_cells_counter{YType::uint64, "tx-control-cells-counter"},
-    tx_data_byte_counter{YType::uint64, "tx-data-byte-counter"},
-    tx_data_cell_counter{YType::uint64, "tx-data-cell-counter"}
+    tx_status_option_table(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable>())
 {
-    yang_name = "link-counters"; yang_parent_name = "aggr-stats";
+    tx_status_option_table->parent = this;
+
+    yang_name = "tx-link-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::~LinkCounters()
+Fia::Nodes::Node::TxLinkInformation::~TxLinkInformation()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_data() const
+bool Fia::Nodes::Node::TxLinkInformation::has_data() const
 {
-    return rx_8b_10b_code_errors.is_set
-	|| rx_8b_10b_disparity_errors.is_set
-	|| rx_asyn_fifo_rate.is_set
-	|| rx_control_cells_counter.is_set
-	|| rx_crc_errors_counter.is_set
-	|| rx_data_byte_counter.is_set
-	|| rx_data_cell_counter.is_set
-	|| rx_dropped_retransmitted_control.is_set
-	|| rx_lfec_fec_correctable_error.is_set
-	|| rx_lfec_fec_uncorrectable_errors.is_set
-	|| tx_asyn_fifo_rate.is_set
-	|| tx_control_cells_counter.is_set
-	|| tx_data_byte_counter.is_set
-	|| tx_data_cell_counter.is_set;
+    return (tx_status_option_table !=  nullptr && tx_status_option_table->has_data());
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_operation() const
+bool Fia::Nodes::Node::TxLinkInformation::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
-	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
-	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(rx_control_cells_counter.yfilter)
-	|| ydk::is_set(rx_crc_errors_counter.yfilter)
-	|| ydk::is_set(rx_data_byte_counter.yfilter)
-	|| ydk::is_set(rx_data_cell_counter.yfilter)
-	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
-	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
-	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
-	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(tx_control_cells_counter.yfilter)
-	|| ydk::is_set(tx_data_byte_counter.yfilter)
-	|| ydk::is_set(tx_data_cell_counter.yfilter);
+	|| (tx_status_option_table !=  nullptr && tx_status_option_table->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_segment_path() const
+std::string Fia::Nodes::Node::TxLinkInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-counters";
-
+    path_buffer << "tx-link-information";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkCounters' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
-    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
-    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
-    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
-    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
-    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
-    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
-    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
-    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
-    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
-    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
-    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
-    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
-    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rx-8b-10b-code-errors")
-    {
-        rx_8b_10b_code_errors = value;
-        rx_8b_10b_code_errors.value_namespace = name_space;
-        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-8b-10b-disparity-errors")
-    {
-        rx_8b_10b_disparity_errors = value;
-        rx_8b_10b_disparity_errors.value_namespace = name_space;
-        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-asyn-fifo-rate")
-    {
-        rx_asyn_fifo_rate = value;
-        rx_asyn_fifo_rate.value_namespace = name_space;
-        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-control-cells-counter")
-    {
-        rx_control_cells_counter = value;
-        rx_control_cells_counter.value_namespace = name_space;
-        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-crc-errors-counter")
-    {
-        rx_crc_errors_counter = value;
-        rx_crc_errors_counter.value_namespace = name_space;
-        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter = value;
-        rx_data_byte_counter.value_namespace = name_space;
-        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter = value;
-        rx_data_cell_counter.value_namespace = name_space;
-        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control = value;
-        rx_dropped_retransmitted_control.value_namespace = name_space;
-        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error = value;
-        rx_lfec_fec_correctable_error.value_namespace = name_space;
-        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors = value;
-        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
-        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate = value;
-        tx_asyn_fifo_rate.value_namespace = name_space;
-        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter = value;
-        tx_control_cells_counter.value_namespace = name_space;
-        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter = value;
-        tx_data_byte_counter.value_namespace = name_space;
-        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter = value;
-        tx_data_cell_counter.value_namespace = name_space;
-        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rx-8b-10b-code-errors")
-    {
-        rx_8b_10b_code_errors.yfilter = yfilter;
-    }
-    if(value_path == "rx-8b-10b-disparity-errors")
-    {
-        rx_8b_10b_disparity_errors.yfilter = yfilter;
-    }
-    if(value_path == "rx-asyn-fifo-rate")
-    {
-        rx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "rx-control-cells-counter")
-    {
-        rx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-crc-errors-counter")
-    {
-        rx_crc_errors_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::OvfStatus()
-    :
-    rx_8b_10b_code_errors{YType::str, "rx-8b-10b-code-errors"},
-    rx_8b_10b_disparity_errors{YType::str, "rx-8b-10b-disparity-errors"},
-    rx_asyn_fifo_rate{YType::str, "rx-asyn-fifo-rate"},
-    rx_control_cells_counter{YType::str, "rx-control-cells-counter"},
-    rx_crc_errors_counter{YType::str, "rx-crc-errors-counter"},
-    rx_data_byte_counter{YType::str, "rx-data-byte-counter"},
-    rx_data_cell_counter{YType::str, "rx-data-cell-counter"},
-    rx_dropped_retransmitted_control{YType::str, "rx-dropped-retransmitted-control"},
-    rx_lfec_fec_correctable_error{YType::str, "rx-lfec-fec-correctable-error"},
-    rx_lfec_fec_uncorrectable_errors{YType::str, "rx-lfec-fec-uncorrectable-errors"},
-    tx_asyn_fifo_rate{YType::str, "tx-asyn-fifo-rate"},
-    tx_control_cells_counter{YType::str, "tx-control-cells-counter"},
-    tx_data_byte_counter{YType::str, "tx-data-byte-counter"},
-    tx_data_cell_counter{YType::str, "tx-data-cell-counter"}
-{
-    yang_name = "ovf-status"; yang_parent_name = "aggr-stats";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::~OvfStatus()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_data() const
-{
-    return rx_8b_10b_code_errors.is_set
-	|| rx_8b_10b_disparity_errors.is_set
-	|| rx_asyn_fifo_rate.is_set
-	|| rx_control_cells_counter.is_set
-	|| rx_crc_errors_counter.is_set
-	|| rx_data_byte_counter.is_set
-	|| rx_data_cell_counter.is_set
-	|| rx_dropped_retransmitted_control.is_set
-	|| rx_lfec_fec_correctable_error.is_set
-	|| rx_lfec_fec_uncorrectable_errors.is_set
-	|| tx_asyn_fifo_rate.is_set
-	|| tx_control_cells_counter.is_set
-	|| tx_data_byte_counter.is_set
-	|| tx_data_cell_counter.is_set;
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
-	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
-	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(rx_control_cells_counter.yfilter)
-	|| ydk::is_set(rx_crc_errors_counter.yfilter)
-	|| ydk::is_set(rx_data_byte_counter.yfilter)
-	|| ydk::is_set(rx_data_cell_counter.yfilter)
-	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
-	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
-	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
-	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(tx_control_cells_counter.yfilter)
-	|| ydk::is_set(tx_data_byte_counter.yfilter)
-	|| ydk::is_set(tx_data_cell_counter.yfilter);
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ovf-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OvfStatus' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
-    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
-    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
-    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
-    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
-    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
-    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
-    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
-    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
-    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
-    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
-    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
-    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
-    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rx-8b-10b-code-errors")
-    {
-        rx_8b_10b_code_errors = value;
-        rx_8b_10b_code_errors.value_namespace = name_space;
-        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-8b-10b-disparity-errors")
-    {
-        rx_8b_10b_disparity_errors = value;
-        rx_8b_10b_disparity_errors.value_namespace = name_space;
-        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-asyn-fifo-rate")
-    {
-        rx_asyn_fifo_rate = value;
-        rx_asyn_fifo_rate.value_namespace = name_space;
-        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-control-cells-counter")
-    {
-        rx_control_cells_counter = value;
-        rx_control_cells_counter.value_namespace = name_space;
-        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-crc-errors-counter")
-    {
-        rx_crc_errors_counter = value;
-        rx_crc_errors_counter.value_namespace = name_space;
-        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter = value;
-        rx_data_byte_counter.value_namespace = name_space;
-        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter = value;
-        rx_data_cell_counter.value_namespace = name_space;
-        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control = value;
-        rx_dropped_retransmitted_control.value_namespace = name_space;
-        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error = value;
-        rx_lfec_fec_correctable_error.value_namespace = name_space;
-        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors = value;
-        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
-        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate = value;
-        tx_asyn_fifo_rate.value_namespace = name_space;
-        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter = value;
-        tx_control_cells_counter.value_namespace = name_space;
-        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter = value;
-        tx_data_byte_counter.value_namespace = name_space;
-        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter = value;
-        tx_data_cell_counter.value_namespace = name_space;
-        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rx-8b-10b-code-errors")
-    {
-        rx_8b_10b_code_errors.yfilter = yfilter;
-    }
-    if(value_path == "rx-8b-10b-disparity-errors")
-    {
-        rx_8b_10b_disparity_errors.yfilter = yfilter;
-    }
-    if(value_path == "rx-asyn-fifo-rate")
-    {
-        rx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "rx-control-cells-counter")
-    {
-        rx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-crc-errors-counter")
-    {
-        rx_crc_errors_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter.yfilter = yfilter;
-    }
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
-        return true;
-    return false;
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::IncrStats()
-    :
-    link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters>())
-	,link_error_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus>())
-	,ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus>())
-{
-    link_counters->parent = this;
-
-    link_error_status->parent = this;
-
-    ovf_status->parent = this;
-
-    yang_name = "incr-stats"; yang_parent_name = "fmac-asic";
-}
-
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::~IncrStats()
-{
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_data() const
-{
-    return (link_counters !=  nullptr && link_counters->has_data())
-	|| (link_error_status !=  nullptr && link_error_status->has_data())
-	|| (ovf_status !=  nullptr && ovf_status->has_data());
-}
-
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| (link_counters !=  nullptr && link_counters->has_operation())
-	|| (link_error_status !=  nullptr && link_error_status->has_operation())
-	|| (ovf_status !=  nullptr && ovf_status->has_operation());
-}
-
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "incr-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IncrStats' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "link-counters")
+    if(child_yang_name == "tx-status-option-table")
     {
-        if(link_counters == nullptr)
+        if(tx_status_option_table == nullptr)
         {
-            link_counters = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters>();
+            tx_status_option_table = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable>();
         }
-        return link_counters;
+        return tx_status_option_table;
     }
 
-    if(child_yang_name == "link-error-status")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tx_status_option_table != nullptr)
     {
-        if(link_error_status == nullptr)
+        children["tx-status-option-table"] = tx_status_option_table;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::TxLinkInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tx-status-option-table")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOptionTable()
+    :
+    tx_status_option(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption>())
+{
+    tx_status_option->parent = this;
+
+    yang_name = "tx-status-option-table"; yang_parent_name = "tx-link-information"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::~TxStatusOptionTable()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_data() const
+{
+    return (tx_status_option !=  nullptr && tx_status_option->has_data());
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_operation() const
+{
+    return is_set(yfilter)
+	|| (tx_status_option !=  nullptr && tx_status_option->has_operation());
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-status-option-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tx-status-option")
+    {
+        if(tx_status_option == nullptr)
         {
-            link_error_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus>();
+            tx_status_option = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption>();
         }
-        return link_error_status;
+        return tx_status_option;
     }
 
-    if(child_yang_name == "ovf-status")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tx_status_option != nullptr)
     {
-        if(ovf_status == nullptr)
+        children["tx-status-option"] = tx_status_option;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tx-status-option")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxStatusOption()
+    :
+    tx_asic_instances(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances>())
+{
+    tx_asic_instances->parent = this;
+
+    yang_name = "tx-status-option"; yang_parent_name = "tx-status-option-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::~TxStatusOption()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_data() const
+{
+    return (tx_asic_instances !=  nullptr && tx_asic_instances->has_data());
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_operation() const
+{
+    return is_set(yfilter)
+	|| (tx_asic_instances !=  nullptr && tx_asic_instances->has_operation());
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-status-option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tx-asic-instances")
+    {
+        if(tx_asic_instances == nullptr)
         {
-            ovf_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus>();
+            tx_asic_instances = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances>();
         }
-        return ovf_status;
+        return tx_asic_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(link_counters != nullptr)
+    if(tx_asic_instances != nullptr)
     {
-        children["link-counters"] = link_counters;
-    }
-
-    if(link_error_status != nullptr)
-    {
-        children["link-error-status"] = link_error_status;
-    }
-
-    if(ovf_status != nullptr)
-    {
-        children["ovf-status"] = ovf_status;
+        children["tx-asic-instances"] = tx_asic_instances;
     }
 
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-counters" || name == "link-error-status" || name == "ovf-status")
+    if(name == "tx-asic-instances")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::LinkErrorStatus()
-    :
-    error_token_count{YType::uint32, "error-token-count"},
-    link_code_group_error{YType::uint32, "link-code-group-error"},
-    link_crc_error{YType::uint32, "link-crc-error"},
-    link_mis_align_error{YType::uint32, "link-mis-align-error"},
-    link_no_sig_accept_error{YType::uint32, "link-no-sig-accept-error"},
-    link_no_sig_lock_error{YType::uint32, "link-no-sig-lock-error"},
-    link_size_error{YType::uint32, "link-size-error"},
-    link_tokens_error{YType::uint32, "link-tokens-error"}
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstances()
 {
-    yang_name = "link-error-status"; yang_parent_name = "incr-stats";
+
+    yang_name = "tx-asic-instances"; yang_parent_name = "tx-status-option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::~LinkErrorStatus()
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::~TxAsicInstances()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_data() const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_data() const
 {
-    return error_token_count.is_set
-	|| link_code_group_error.is_set
-	|| link_crc_error.is_set
-	|| link_mis_align_error.is_set
-	|| link_no_sig_accept_error.is_set
-	|| link_no_sig_lock_error.is_set
-	|| link_size_error.is_set
-	|| link_tokens_error.is_set;
+    for (std::size_t index=0; index<tx_asic_instance.size(); index++)
+    {
+        if(tx_asic_instance[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_operation() const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(error_token_count.yfilter)
-	|| ydk::is_set(link_code_group_error.yfilter)
-	|| ydk::is_set(link_crc_error.yfilter)
-	|| ydk::is_set(link_mis_align_error.yfilter)
-	|| ydk::is_set(link_no_sig_accept_error.yfilter)
-	|| ydk::is_set(link_no_sig_lock_error.yfilter)
-	|| ydk::is_set(link_size_error.yfilter)
-	|| ydk::is_set(link_tokens_error.yfilter);
+    for (std::size_t index=0; index<tx_asic_instance.size(); index++)
+    {
+        if(tx_asic_instance[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_segment_path() const
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-error-status";
-
+    path_buffer << "tx-asic-instances";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkErrorStatus' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error_token_count.is_set || is_set(error_token_count.yfilter)) leaf_name_data.push_back(error_token_count.get_name_leafdata());
-    if (link_code_group_error.is_set || is_set(link_code_group_error.yfilter)) leaf_name_data.push_back(link_code_group_error.get_name_leafdata());
-    if (link_crc_error.is_set || is_set(link_crc_error.yfilter)) leaf_name_data.push_back(link_crc_error.get_name_leafdata());
-    if (link_mis_align_error.is_set || is_set(link_mis_align_error.yfilter)) leaf_name_data.push_back(link_mis_align_error.get_name_leafdata());
-    if (link_no_sig_accept_error.is_set || is_set(link_no_sig_accept_error.yfilter)) leaf_name_data.push_back(link_no_sig_accept_error.get_name_leafdata());
-    if (link_no_sig_lock_error.is_set || is_set(link_no_sig_lock_error.yfilter)) leaf_name_data.push_back(link_no_sig_lock_error.get_name_leafdata());
-    if (link_size_error.is_set || is_set(link_size_error.yfilter)) leaf_name_data.push_back(link_size_error.get_name_leafdata());
-    if (link_tokens_error.is_set || is_set(link_tokens_error.yfilter)) leaf_name_data.push_back(link_tokens_error.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tx-asic-instance")
+    {
+        for(auto const & c : tx_asic_instance)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance>();
+        c->parent = this;
+        tx_asic_instance.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tx_asic_instance)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "error-token-count")
-    {
-        error_token_count = value;
-        error_token_count.value_namespace = name_space;
-        error_token_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-code-group-error")
-    {
-        link_code_group_error = value;
-        link_code_group_error.value_namespace = name_space;
-        link_code_group_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-crc-error")
-    {
-        link_crc_error = value;
-        link_crc_error.value_namespace = name_space;
-        link_crc_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-mis-align-error")
-    {
-        link_mis_align_error = value;
-        link_mis_align_error.value_namespace = name_space;
-        link_mis_align_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-no-sig-accept-error")
-    {
-        link_no_sig_accept_error = value;
-        link_no_sig_accept_error.value_namespace = name_space;
-        link_no_sig_accept_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-no-sig-lock-error")
-    {
-        link_no_sig_lock_error = value;
-        link_no_sig_lock_error.value_namespace = name_space;
-        link_no_sig_lock_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-size-error")
-    {
-        link_size_error = value;
-        link_size_error.value_namespace = name_space;
-        link_size_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-tokens-error")
-    {
-        link_tokens_error = value;
-        link_tokens_error.value_namespace = name_space;
-        link_tokens_error.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "error-token-count")
-    {
-        error_token_count.yfilter = yfilter;
-    }
-    if(value_path == "link-code-group-error")
-    {
-        link_code_group_error.yfilter = yfilter;
-    }
-    if(value_path == "link-crc-error")
-    {
-        link_crc_error.yfilter = yfilter;
-    }
-    if(value_path == "link-mis-align-error")
-    {
-        link_mis_align_error.yfilter = yfilter;
-    }
-    if(value_path == "link-no-sig-accept-error")
-    {
-        link_no_sig_accept_error.yfilter = yfilter;
-    }
-    if(value_path == "link-no-sig-lock-error")
-    {
-        link_no_sig_lock_error.yfilter = yfilter;
-    }
-    if(value_path == "link-size-error")
-    {
-        link_size_error.yfilter = yfilter;
-    }
-    if(value_path == "link-tokens-error")
-    {
-        link_tokens_error.yfilter = yfilter;
-    }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "error-token-count" || name == "link-code-group-error" || name == "link-crc-error" || name == "link-mis-align-error" || name == "link-no-sig-accept-error" || name == "link-no-sig-lock-error" || name == "link-size-error" || name == "link-tokens-error")
+    if(name == "tx-asic-instance")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::LinkCounters()
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxAsicInstance()
     :
-    rx_8b_10b_code_errors{YType::uint64, "rx-8b-10b-code-errors"},
-    rx_8b_10b_disparity_errors{YType::uint64, "rx-8b-10b-disparity-errors"},
-    rx_asyn_fifo_rate{YType::uint64, "rx-asyn-fifo-rate"},
-    rx_control_cells_counter{YType::uint64, "rx-control-cells-counter"},
-    rx_crc_errors_counter{YType::uint64, "rx-crc-errors-counter"},
-    rx_data_byte_counter{YType::uint64, "rx-data-byte-counter"},
-    rx_data_cell_counter{YType::uint64, "rx-data-cell-counter"},
-    rx_dropped_retransmitted_control{YType::uint64, "rx-dropped-retransmitted-control"},
-    rx_lfec_fec_correctable_error{YType::uint64, "rx-lfec-fec-correctable-error"},
-    rx_lfec_fec_uncorrectable_errors{YType::uint64, "rx-lfec-fec-uncorrectable-errors"},
-    tx_asyn_fifo_rate{YType::uint64, "tx-asyn-fifo-rate"},
-    tx_control_cells_counter{YType::uint64, "tx-control-cells-counter"},
-    tx_data_byte_counter{YType::uint64, "tx-data-byte-counter"},
-    tx_data_cell_counter{YType::uint64, "tx-data-cell-counter"}
+    instance{YType::uint32, "instance"}
+    	,
+    tx_links(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks>())
 {
-    yang_name = "link-counters"; yang_parent_name = "incr-stats";
+    tx_links->parent = this;
+
+    yang_name = "tx-asic-instance"; yang_parent_name = "tx-asic-instances"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::~LinkCounters()
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::~TxAsicInstance()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_data() const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_data() const
 {
-    return rx_8b_10b_code_errors.is_set
-	|| rx_8b_10b_disparity_errors.is_set
-	|| rx_asyn_fifo_rate.is_set
-	|| rx_control_cells_counter.is_set
-	|| rx_crc_errors_counter.is_set
-	|| rx_data_byte_counter.is_set
-	|| rx_data_cell_counter.is_set
-	|| rx_dropped_retransmitted_control.is_set
-	|| rx_lfec_fec_correctable_error.is_set
-	|| rx_lfec_fec_uncorrectable_errors.is_set
-	|| tx_asyn_fifo_rate.is_set
-	|| tx_control_cells_counter.is_set
-	|| tx_data_byte_counter.is_set
-	|| tx_data_cell_counter.is_set;
+    return instance.is_set
+	|| (tx_links !=  nullptr && tx_links->has_data());
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_operation() const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
-	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
-	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(rx_control_cells_counter.yfilter)
-	|| ydk::is_set(rx_crc_errors_counter.yfilter)
-	|| ydk::is_set(rx_data_byte_counter.yfilter)
-	|| ydk::is_set(rx_data_cell_counter.yfilter)
-	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
-	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
-	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
-	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(tx_control_cells_counter.yfilter)
-	|| ydk::is_set(tx_data_byte_counter.yfilter)
-	|| ydk::is_set(tx_data_cell_counter.yfilter);
+	|| ydk::is_set(instance.yfilter)
+	|| (tx_links !=  nullptr && tx_links->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_segment_path() const
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-counters";
-
+    path_buffer << "tx-asic-instance" <<"[instance='" <<instance <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkCounters' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
-    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
-    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
-    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
-    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
-    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
-    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
-    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
-    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
-    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
-    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
-    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
-    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
-    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tx-links")
+    {
+        if(tx_links == nullptr)
+        {
+            tx_links = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks>();
+        }
+        return tx_links;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tx_links != nullptr)
+    {
+        children["tx-links"] = tx_links;
+    }
+
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "rx-8b-10b-code-errors")
+    if(value_path == "instance")
     {
-        rx_8b_10b_code_errors = value;
-        rx_8b_10b_code_errors.value_namespace = name_space;
-        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-8b-10b-disparity-errors")
-    {
-        rx_8b_10b_disparity_errors = value;
-        rx_8b_10b_disparity_errors.value_namespace = name_space;
-        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-asyn-fifo-rate")
-    {
-        rx_asyn_fifo_rate = value;
-        rx_asyn_fifo_rate.value_namespace = name_space;
-        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-control-cells-counter")
-    {
-        rx_control_cells_counter = value;
-        rx_control_cells_counter.value_namespace = name_space;
-        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-crc-errors-counter")
-    {
-        rx_crc_errors_counter = value;
-        rx_crc_errors_counter.value_namespace = name_space;
-        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter = value;
-        rx_data_byte_counter.value_namespace = name_space;
-        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter = value;
-        rx_data_cell_counter.value_namespace = name_space;
-        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control = value;
-        rx_dropped_retransmitted_control.value_namespace = name_space;
-        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error = value;
-        rx_lfec_fec_correctable_error.value_namespace = name_space;
-        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors = value;
-        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
-        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate = value;
-        tx_asyn_fifo_rate.value_namespace = name_space;
-        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter = value;
-        tx_control_cells_counter.value_namespace = name_space;
-        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter = value;
-        tx_data_byte_counter.value_namespace = name_space;
-        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter = value;
-        tx_data_cell_counter.value_namespace = name_space;
-        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+        instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "rx-8b-10b-code-errors")
+    if(value_path == "instance")
     {
-        rx_8b_10b_code_errors.yfilter = yfilter;
-    }
-    if(value_path == "rx-8b-10b-disparity-errors")
-    {
-        rx_8b_10b_disparity_errors.yfilter = yfilter;
-    }
-    if(value_path == "rx-asyn-fifo-rate")
-    {
-        rx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "rx-control-cells-counter")
-    {
-        rx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-crc-errors-counter")
-    {
-        rx_crc_errors_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter.yfilter = yfilter;
+        instance.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
+    if(name == "tx-links" || name == "instance")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::OvfStatus()
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLinks()
+{
+
+    yang_name = "tx-links"; yang_parent_name = "tx-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::~TxLinks()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_data() const
+{
+    for (std::size_t index=0; index<tx_link.size(); index++)
+    {
+        if(tx_link[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_operation() const
+{
+    for (std::size_t index=0; index<tx_link.size(); index++)
+    {
+        if(tx_link[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-links";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tx-link")
+    {
+        for(auto const & c : tx_link)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink>();
+        c->parent = this;
+        tx_link.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tx_link)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tx-link")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink()
     :
-    rx_8b_10b_code_errors{YType::str, "rx-8b-10b-code-errors"},
-    rx_8b_10b_disparity_errors{YType::str, "rx-8b-10b-disparity-errors"},
-    rx_asyn_fifo_rate{YType::str, "rx-asyn-fifo-rate"},
-    rx_control_cells_counter{YType::str, "rx-control-cells-counter"},
-    rx_crc_errors_counter{YType::str, "rx-crc-errors-counter"},
-    rx_data_byte_counter{YType::str, "rx-data-byte-counter"},
-    rx_data_cell_counter{YType::str, "rx-data-cell-counter"},
-    rx_dropped_retransmitted_control{YType::str, "rx-dropped-retransmitted-control"},
-    rx_lfec_fec_correctable_error{YType::str, "rx-lfec-fec-correctable-error"},
-    rx_lfec_fec_uncorrectable_errors{YType::str, "rx-lfec-fec-uncorrectable-errors"},
-    tx_asyn_fifo_rate{YType::str, "tx-asyn-fifo-rate"},
-    tx_control_cells_counter{YType::str, "tx-control-cells-counter"},
-    tx_data_byte_counter{YType::str, "tx-data-byte-counter"},
-    tx_data_cell_counter{YType::str, "tx-data-cell-counter"}
+    end_number{YType::uint32, "end-number"},
+    start_number{YType::uint32, "start-number"}
 {
-    yang_name = "ovf-status"; yang_parent_name = "incr-stats";
+
+    yang_name = "tx-link"; yang_parent_name = "tx-links"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::~OvfStatus()
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::~TxLink()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_data() const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_data() const
 {
-    return rx_8b_10b_code_errors.is_set
-	|| rx_8b_10b_disparity_errors.is_set
-	|| rx_asyn_fifo_rate.is_set
-	|| rx_control_cells_counter.is_set
-	|| rx_crc_errors_counter.is_set
-	|| rx_data_byte_counter.is_set
-	|| rx_data_cell_counter.is_set
-	|| rx_dropped_retransmitted_control.is_set
-	|| rx_lfec_fec_correctable_error.is_set
-	|| rx_lfec_fec_uncorrectable_errors.is_set
-	|| tx_asyn_fifo_rate.is_set
-	|| tx_control_cells_counter.is_set
-	|| tx_data_byte_counter.is_set
-	|| tx_data_cell_counter.is_set;
+    for (std::size_t index=0; index<tx_link.size(); index++)
+    {
+        if(tx_link[index]->has_data())
+            return true;
+    }
+    return end_number.is_set
+	|| start_number.is_set;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_operation() const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_operation() const
+{
+    for (std::size_t index=0; index<tx_link.size(); index++)
+    {
+        if(tx_link[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(end_number.yfilter)
+	|| ydk::is_set(start_number.yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-link";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end_number.is_set || is_set(end_number.yfilter)) leaf_name_data.push_back(end_number.get_name_leafdata());
+    if (start_number.is_set || is_set(start_number.yfilter)) leaf_name_data.push_back(start_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tx-link")
+    {
+        for(auto const & c : tx_link)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_>();
+        c->parent = this;
+        tx_link.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tx_link)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end-number")
+    {
+        end_number = value;
+        end_number.value_namespace = name_space;
+        end_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-number")
+    {
+        start_number = value;
+        start_number.value_namespace = name_space;
+        start_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-number")
+    {
+        end_number.yfilter = yfilter;
+    }
+    if(value_path == "start-number")
+    {
+        start_number.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tx-link" || name == "end-number" || name == "start-number")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::TxLink_()
+    :
+    link{YType::int32, "link"},
+    admin_state{YType::enumeration, "admin-state"},
+    coeff1{YType::uint32, "coeff1"},
+    coeff2{YType::uint32, "coeff2"},
+    error_state{YType::enumeration, "error-state"},
+    is_conf_pending{YType::boolean, "is-conf-pending"},
+    is_link_valid{YType::boolean, "is-link-valid"},
+    is_power_enabled{YType::boolean, "is-power-enabled"},
+    num_admin_shuts{YType::uint32, "num-admin-shuts"},
+    oper_state{YType::enumeration, "oper-state"},
+    speed{YType::uint32, "speed"},
+    stage{YType::uint8, "stage"}
+    	,
+    far_end_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink>())
+	,history(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History>())
+	,stats(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats>())
+	,this_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink>())
+{
+    far_end_link->parent = this;
+    history->parent = this;
+    stats->parent = this;
+    this_link->parent = this;
+
+    yang_name = "tx-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::~TxLink_()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_data() const
+{
+    return link.is_set
+	|| admin_state.is_set
+	|| coeff1.is_set
+	|| coeff2.is_set
+	|| error_state.is_set
+	|| is_conf_pending.is_set
+	|| is_link_valid.is_set
+	|| is_power_enabled.is_set
+	|| num_admin_shuts.is_set
+	|| oper_state.is_set
+	|| speed.is_set
+	|| stage.is_set
+	|| (far_end_link !=  nullptr && far_end_link->has_data())
+	|| (history !=  nullptr && history->has_data())
+	|| (stats !=  nullptr && stats->has_data())
+	|| (this_link !=  nullptr && this_link->has_data());
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(rx_8b_10b_code_errors.yfilter)
-	|| ydk::is_set(rx_8b_10b_disparity_errors.yfilter)
-	|| ydk::is_set(rx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(rx_control_cells_counter.yfilter)
-	|| ydk::is_set(rx_crc_errors_counter.yfilter)
-	|| ydk::is_set(rx_data_byte_counter.yfilter)
-	|| ydk::is_set(rx_data_cell_counter.yfilter)
-	|| ydk::is_set(rx_dropped_retransmitted_control.yfilter)
-	|| ydk::is_set(rx_lfec_fec_correctable_error.yfilter)
-	|| ydk::is_set(rx_lfec_fec_uncorrectable_errors.yfilter)
-	|| ydk::is_set(tx_asyn_fifo_rate.yfilter)
-	|| ydk::is_set(tx_control_cells_counter.yfilter)
-	|| ydk::is_set(tx_data_byte_counter.yfilter)
-	|| ydk::is_set(tx_data_cell_counter.yfilter);
+	|| ydk::is_set(link.yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(coeff1.yfilter)
+	|| ydk::is_set(coeff2.yfilter)
+	|| ydk::is_set(error_state.yfilter)
+	|| ydk::is_set(is_conf_pending.yfilter)
+	|| ydk::is_set(is_link_valid.yfilter)
+	|| ydk::is_set(is_power_enabled.yfilter)
+	|| ydk::is_set(num_admin_shuts.yfilter)
+	|| ydk::is_set(oper_state.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(stage.yfilter)
+	|| (far_end_link !=  nullptr && far_end_link->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (stats !=  nullptr && stats->has_operation())
+	|| (this_link !=  nullptr && this_link->has_operation());
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_segment_path() const
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ovf-status";
-
+    path_buffer << "tx-link" <<"[link='" <<link <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OvfStatus' in Cisco_IOS_XR_dnx_driver_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rx_8b_10b_code_errors.is_set || is_set(rx_8b_10b_code_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_code_errors.get_name_leafdata());
-    if (rx_8b_10b_disparity_errors.is_set || is_set(rx_8b_10b_disparity_errors.yfilter)) leaf_name_data.push_back(rx_8b_10b_disparity_errors.get_name_leafdata());
-    if (rx_asyn_fifo_rate.is_set || is_set(rx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(rx_asyn_fifo_rate.get_name_leafdata());
-    if (rx_control_cells_counter.is_set || is_set(rx_control_cells_counter.yfilter)) leaf_name_data.push_back(rx_control_cells_counter.get_name_leafdata());
-    if (rx_crc_errors_counter.is_set || is_set(rx_crc_errors_counter.yfilter)) leaf_name_data.push_back(rx_crc_errors_counter.get_name_leafdata());
-    if (rx_data_byte_counter.is_set || is_set(rx_data_byte_counter.yfilter)) leaf_name_data.push_back(rx_data_byte_counter.get_name_leafdata());
-    if (rx_data_cell_counter.is_set || is_set(rx_data_cell_counter.yfilter)) leaf_name_data.push_back(rx_data_cell_counter.get_name_leafdata());
-    if (rx_dropped_retransmitted_control.is_set || is_set(rx_dropped_retransmitted_control.yfilter)) leaf_name_data.push_back(rx_dropped_retransmitted_control.get_name_leafdata());
-    if (rx_lfec_fec_correctable_error.is_set || is_set(rx_lfec_fec_correctable_error.yfilter)) leaf_name_data.push_back(rx_lfec_fec_correctable_error.get_name_leafdata());
-    if (rx_lfec_fec_uncorrectable_errors.is_set || is_set(rx_lfec_fec_uncorrectable_errors.yfilter)) leaf_name_data.push_back(rx_lfec_fec_uncorrectable_errors.get_name_leafdata());
-    if (tx_asyn_fifo_rate.is_set || is_set(tx_asyn_fifo_rate.yfilter)) leaf_name_data.push_back(tx_asyn_fifo_rate.get_name_leafdata());
-    if (tx_control_cells_counter.is_set || is_set(tx_control_cells_counter.yfilter)) leaf_name_data.push_back(tx_control_cells_counter.get_name_leafdata());
-    if (tx_data_byte_counter.is_set || is_set(tx_data_byte_counter.yfilter)) leaf_name_data.push_back(tx_data_byte_counter.get_name_leafdata());
-    if (tx_data_cell_counter.is_set || is_set(tx_data_cell_counter.yfilter)) leaf_name_data.push_back(tx_data_cell_counter.get_name_leafdata());
+    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (coeff1.is_set || is_set(coeff1.yfilter)) leaf_name_data.push_back(coeff1.get_name_leafdata());
+    if (coeff2.is_set || is_set(coeff2.yfilter)) leaf_name_data.push_back(coeff2.get_name_leafdata());
+    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
+    if (is_conf_pending.is_set || is_set(is_conf_pending.yfilter)) leaf_name_data.push_back(is_conf_pending.get_name_leafdata());
+    if (is_link_valid.is_set || is_set(is_link_valid.yfilter)) leaf_name_data.push_back(is_link_valid.get_name_leafdata());
+    if (is_power_enabled.is_set || is_set(is_power_enabled.yfilter)) leaf_name_data.push_back(is_power_enabled.get_name_leafdata());
+    if (num_admin_shuts.is_set || is_set(num_admin_shuts.yfilter)) leaf_name_data.push_back(num_admin_shuts.get_name_leafdata());
+    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (stage.is_set || is_set(stage.yfilter)) leaf_name_data.push_back(stage.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "far-end-link")
+    {
+        if(far_end_link == nullptr)
+        {
+            far_end_link = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink>();
+        }
+        return far_end_link;
+    }
+
+    if(child_yang_name == "history")
+    {
+        if(history == nullptr)
+        {
+            history = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History>();
+        }
+        return history;
+    }
+
+    if(child_yang_name == "stats")
+    {
+        if(stats == nullptr)
+        {
+            stats = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats>();
+        }
+        return stats;
+    }
+
+    if(child_yang_name == "this-link")
+    {
+        if(this_link == nullptr)
+        {
+            this_link = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink>();
+        }
+        return this_link;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(far_end_link != nullptr)
+    {
+        children["far-end-link"] = far_end_link;
+    }
+
+    if(history != nullptr)
+    {
+        children["history"] = history;
+    }
+
+    if(stats != nullptr)
+    {
+        children["stats"] = stats;
+    }
+
+    if(this_link != nullptr)
+    {
+        children["this-link"] = this_link;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link")
+    {
+        link = value;
+        link.value_namespace = name_space;
+        link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coeff1")
+    {
+        coeff1 = value;
+        coeff1.value_namespace = name_space;
+        coeff1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coeff2")
+    {
+        coeff2 = value;
+        coeff2.value_namespace = name_space;
+        coeff2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-state")
+    {
+        error_state = value;
+        error_state.value_namespace = name_space;
+        error_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-conf-pending")
+    {
+        is_conf_pending = value;
+        is_conf_pending.value_namespace = name_space;
+        is_conf_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-link-valid")
+    {
+        is_link_valid = value;
+        is_link_valid.value_namespace = name_space;
+        is_link_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-power-enabled")
+    {
+        is_power_enabled = value;
+        is_power_enabled.value_namespace = name_space;
+        is_power_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-admin-shuts")
+    {
+        num_admin_shuts = value;
+        num_admin_shuts.value_namespace = name_space;
+        num_admin_shuts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state = value;
+        oper_state.value_namespace = name_space;
+        oper_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "speed")
+    {
+        speed = value;
+        speed.value_namespace = name_space;
+        speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stage")
+    {
+        stage = value;
+        stage.value_namespace = name_space;
+        stage.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link")
+    {
+        link.yfilter = yfilter;
+    }
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "coeff1")
+    {
+        coeff1.yfilter = yfilter;
+    }
+    if(value_path == "coeff2")
+    {
+        coeff2.yfilter = yfilter;
+    }
+    if(value_path == "error-state")
+    {
+        error_state.yfilter = yfilter;
+    }
+    if(value_path == "is-conf-pending")
+    {
+        is_conf_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-link-valid")
+    {
+        is_link_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-power-enabled")
+    {
+        is_power_enabled.yfilter = yfilter;
+    }
+    if(value_path == "num-admin-shuts")
+    {
+        num_admin_shuts.yfilter = yfilter;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state.yfilter = yfilter;
+    }
+    if(value_path == "speed")
+    {
+        speed.yfilter = yfilter;
+    }
+    if(value_path == "stage")
+    {
+        stage.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-link" || name == "history" || name == "stats" || name == "this-link" || name == "link" || name == "admin-state" || name == "coeff1" || name == "coeff2" || name == "error-state" || name == "is-conf-pending" || name == "is-link-valid" || name == "is-power-enabled" || name == "num-admin-shuts" || name == "oper-state" || name == "speed" || name == "stage")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::FarEndLink()
+    :
+    link_num{YType::uint32, "link-num"},
+    link_stage{YType::enumeration, "link-stage"},
+    link_type{YType::enumeration, "link-type"},
+    phy_link_num{YType::uint32, "phy-link-num"}
+    	,
+    asic_id(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId>())
+{
+    asic_id->parent = this;
+
+    yang_name = "far-end-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::~FarEndLink()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_data() const
+{
+    return link_num.is_set
+	|| link_stage.is_set
+	|| link_type.is_set
+	|| phy_link_num.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_num.yfilter)
+	|| ydk::is_set(link_stage.yfilter)
+	|| ydk::is_set(link_type.yfilter)
+	|| ydk::is_set(phy_link_num.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-link";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
+    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-id")
+    {
+        if(asic_id == nullptr)
+        {
+            asic_id = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId>();
+        }
+        return asic_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(asic_id != nullptr)
+    {
+        children["asic-id"] = asic_id;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-num")
+    {
+        link_num = value;
+        link_num.value_namespace = name_space;
+        link_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage = value;
+        link_stage.value_namespace = name_space;
+        link_stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-type")
+    {
+        link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num = value;
+        phy_link_num.value_namespace = name_space;
+        phy_link_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-num")
+    {
+        link_num.yfilter = yfilter;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::AsicId()
+    :
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
+{
+
+    yang_name = "asic-id"; yang_parent_name = "far-end-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::~AsicId()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_data() const
+{
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "rx-8b-10b-code-errors")
+    if(value_path == "asic-instance")
     {
-        rx_8b_10b_code_errors = value;
-        rx_8b_10b_code_errors.value_namespace = name_space;
-        rx_8b_10b_code_errors.value_namespace_prefix = name_space_prefix;
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rx-8b-10b-disparity-errors")
+    if(value_path == "asic-type")
     {
-        rx_8b_10b_disparity_errors = value;
-        rx_8b_10b_disparity_errors.value_namespace = name_space;
-        rx_8b_10b_disparity_errors.value_namespace_prefix = name_space_prefix;
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rx-asyn-fifo-rate")
+    if(value_path == "rack-num")
     {
-        rx_asyn_fifo_rate = value;
-        rx_asyn_fifo_rate.value_namespace = name_space;
-        rx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rx-control-cells-counter")
+    if(value_path == "rack-type")
     {
-        rx_control_cells_counter = value;
-        rx_control_cells_counter.value_namespace = name_space;
-        rx_control_cells_counter.value_namespace_prefix = name_space_prefix;
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rx-crc-errors-counter")
+    if(value_path == "slot-num")
     {
-        rx_crc_errors_counter = value;
-        rx_crc_errors_counter.value_namespace = name_space;
-        rx_crc_errors_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter = value;
-        rx_data_byte_counter.value_namespace = name_space;
-        rx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter = value;
-        rx_data_cell_counter.value_namespace = name_space;
-        rx_data_cell_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control = value;
-        rx_dropped_retransmitted_control.value_namespace = name_space;
-        rx_dropped_retransmitted_control.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error = value;
-        rx_lfec_fec_correctable_error.value_namespace = name_space;
-        rx_lfec_fec_correctable_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors = value;
-        rx_lfec_fec_uncorrectable_errors.value_namespace = name_space;
-        rx_lfec_fec_uncorrectable_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate = value;
-        tx_asyn_fifo_rate.value_namespace = name_space;
-        tx_asyn_fifo_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter = value;
-        tx_control_cells_counter.value_namespace = name_space;
-        tx_control_cells_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter = value;
-        tx_data_byte_counter.value_namespace = name_space;
-        tx_data_byte_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter = value;
-        tx_data_cell_counter.value_namespace = name_space;
-        tx_data_cell_counter.value_namespace_prefix = name_space_prefix;
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "rx-8b-10b-code-errors")
+    if(value_path == "asic-instance")
     {
-        rx_8b_10b_code_errors.yfilter = yfilter;
+        asic_instance.yfilter = yfilter;
     }
-    if(value_path == "rx-8b-10b-disparity-errors")
+    if(value_path == "asic-type")
     {
-        rx_8b_10b_disparity_errors.yfilter = yfilter;
+        asic_type.yfilter = yfilter;
     }
-    if(value_path == "rx-asyn-fifo-rate")
+    if(value_path == "rack-num")
     {
-        rx_asyn_fifo_rate.yfilter = yfilter;
+        rack_num.yfilter = yfilter;
     }
-    if(value_path == "rx-control-cells-counter")
+    if(value_path == "rack-type")
     {
-        rx_control_cells_counter.yfilter = yfilter;
+        rack_type.yfilter = yfilter;
     }
-    if(value_path == "rx-crc-errors-counter")
+    if(value_path == "slot-num")
     {
-        rx_crc_errors_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-byte-counter")
-    {
-        rx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-data-cell-counter")
-    {
-        rx_data_cell_counter.yfilter = yfilter;
-    }
-    if(value_path == "rx-dropped-retransmitted-control")
-    {
-        rx_dropped_retransmitted_control.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-correctable-error")
-    {
-        rx_lfec_fec_correctable_error.yfilter = yfilter;
-    }
-    if(value_path == "rx-lfec-fec-uncorrectable-errors")
-    {
-        rx_lfec_fec_uncorrectable_errors.yfilter = yfilter;
-    }
-    if(value_path == "tx-asyn-fifo-rate")
-    {
-        tx_asyn_fifo_rate.yfilter = yfilter;
-    }
-    if(value_path == "tx-control-cells-counter")
-    {
-        tx_control_cells_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-byte-counter")
-    {
-        tx_data_byte_counter.yfilter = yfilter;
-    }
-    if(value_path == "tx-data-cell-counter")
-    {
-        tx_data_cell_counter.yfilter = yfilter;
+        slot_num.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rx-8b-10b-code-errors" || name == "rx-8b-10b-disparity-errors" || name == "rx-asyn-fifo-rate" || name == "rx-control-cells-counter" || name == "rx-crc-errors-counter" || name == "rx-data-byte-counter" || name == "rx-data-cell-counter" || name == "rx-dropped-retransmitted-control" || name == "rx-lfec-fec-correctable-error" || name == "rx-lfec-fec-uncorrectable-errors" || name == "tx-asyn-fifo-rate" || name == "tx-control-cells-counter" || name == "tx-data-byte-counter" || name == "tx-data-cell-counter")
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
         return true;
     return false;
 }
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::History()
+    :
+    histnum{YType::uint8, "histnum"},
+    start_index{YType::uint8, "start-index"}
+{
+
+    yang_name = "history"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::~History()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_data() const
+{
+    for (std::size_t index=0; index<hist.size(); index++)
+    {
+        if(hist[index]->has_data())
+            return true;
+    }
+    return histnum.is_set
+	|| start_index.is_set;
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_operation() const
+{
+    for (std::size_t index=0; index<hist.size(); index++)
+    {
+        if(hist[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(histnum.yfilter)
+	|| ydk::is_set(start_index.yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (histnum.is_set || is_set(histnum.yfilter)) leaf_name_data.push_back(histnum.get_name_leafdata());
+    if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hist")
+    {
+        for(auto const & c : hist)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist>();
+        c->parent = this;
+        hist.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hist)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "histnum")
+    {
+        histnum = value;
+        histnum.value_namespace = name_space;
+        histnum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-index")
+    {
+        start_index = value;
+        start_index.value_namespace = name_space;
+        start_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "histnum")
+    {
+        histnum.yfilter = yfilter;
+    }
+    if(value_path == "start-index")
+    {
+        start_index.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hist" || name == "histnum" || name == "start-index")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::Hist()
+    :
+    admin_state{YType::enumeration, "admin-state"},
+    error_state{YType::enumeration, "error-state"},
+    oper_state{YType::enumeration, "oper-state"},
+    reasons{YType::str, "reasons"},
+    timestamp{YType::uint64, "timestamp"}
+{
+
+    yang_name = "hist"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::~Hist()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_data() const
+{
+    return admin_state.is_set
+	|| error_state.is_set
+	|| oper_state.is_set
+	|| reasons.is_set
+	|| timestamp.is_set;
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(error_state.yfilter)
+	|| ydk::is_set(oper_state.yfilter)
+	|| ydk::is_set(reasons.yfilter)
+	|| ydk::is_set(timestamp.yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hist";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (error_state.is_set || is_set(error_state.yfilter)) leaf_name_data.push_back(error_state.get_name_leafdata());
+    if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
+    if (reasons.is_set || is_set(reasons.yfilter)) leaf_name_data.push_back(reasons.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-state")
+    {
+        error_state = value;
+        error_state.value_namespace = name_space;
+        error_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state = value;
+        oper_state.value_namespace = name_space;
+        oper_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reasons")
+    {
+        reasons = value;
+        reasons.value_namespace = name_space;
+        reasons.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "error-state")
+    {
+        error_state.yfilter = yfilter;
+    }
+    if(value_path == "oper-state")
+    {
+        oper_state.yfilter = yfilter;
+    }
+    if(value_path == "reasons")
+    {
+        reasons.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-state" || name == "error-state" || name == "oper-state" || name == "reasons" || name == "timestamp")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::Stats()
+    :
+    dummy{YType::uint32, "dummy"}
+{
+
+    yang_name = "stats"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::~Stats()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_data() const
+{
+    return dummy.is_set;
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dummy.yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dummy")
+    {
+        dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::ThisLink()
+    :
+    link_num{YType::uint32, "link-num"},
+    link_stage{YType::enumeration, "link-stage"},
+    link_type{YType::enumeration, "link-type"},
+    phy_link_num{YType::uint32, "phy-link-num"}
+    	,
+    asic_id(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId>())
+{
+    asic_id->parent = this;
+
+    yang_name = "this-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::~ThisLink()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_data() const
+{
+    return link_num.is_set
+	|| link_stage.is_set
+	|| link_type.is_set
+	|| phy_link_num.is_set
+	|| (asic_id !=  nullptr && asic_id->has_data());
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_num.yfilter)
+	|| ydk::is_set(link_stage.yfilter)
+	|| ydk::is_set(link_type.yfilter)
+	|| ydk::is_set(phy_link_num.yfilter)
+	|| (asic_id !=  nullptr && asic_id->has_operation());
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "this-link";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_num.is_set || is_set(link_num.yfilter)) leaf_name_data.push_back(link_num.get_name_leafdata());
+    if (link_stage.is_set || is_set(link_stage.yfilter)) leaf_name_data.push_back(link_stage.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (phy_link_num.is_set || is_set(phy_link_num.yfilter)) leaf_name_data.push_back(phy_link_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-id")
+    {
+        if(asic_id == nullptr)
+        {
+            asic_id = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId>();
+        }
+        return asic_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(asic_id != nullptr)
+    {
+        children["asic-id"] = asic_id;
+    }
+
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-num")
+    {
+        link_num = value;
+        link_num.value_namespace = name_space;
+        link_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage = value;
+        link_stage.value_namespace = name_space;
+        link_stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-type")
+    {
+        link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num = value;
+        phy_link_num.value_namespace = name_space;
+        phy_link_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-num")
+    {
+        link_num.yfilter = yfilter;
+    }
+    if(value_path == "link-stage")
+    {
+        link_stage.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+    if(value_path == "phy-link-num")
+    {
+        phy_link_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-id" || name == "link-num" || name == "link-stage" || name == "link-type" || name == "phy-link-num")
+        return true;
+    return false;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::AsicId()
+    :
+    asic_instance{YType::uint32, "asic-instance"},
+    asic_type{YType::enumeration, "asic-type"},
+    rack_num{YType::uint32, "rack-num"},
+    rack_type{YType::enumeration, "rack-type"},
+    slot_num{YType::uint32, "slot-num"}
+{
+
+    yang_name = "asic-id"; yang_parent_name = "this-link"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::~AsicId()
+{
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_data() const
+{
+    return asic_instance.is_set
+	|| asic_type.is_set
+	|| rack_num.is_set
+	|| rack_type.is_set
+	|| slot_num.is_set;
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(rack_type.yfilter)
+	|| ydk::is_set(slot_num.yfilter);
+}
+
+std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (rack_type.is_set || is_set(rack_type.yfilter)) leaf_name_data.push_back(rack_type.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic-type")
+    {
+        asic_type = value;
+        asic_type.value_namespace = name_space;
+        asic_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type = value;
+        rack_type.value_namespace = name_space;
+        rack_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asic-instance")
+    {
+        asic_instance.yfilter = yfilter;
+    }
+    if(value_path == "asic-type")
+    {
+        asic_type.yfilter = yfilter;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num.yfilter = yfilter;
+    }
+    if(value_path == "rack-type")
+    {
+        rack_type.yfilter = yfilter;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num.yfilter = yfilter;
+    }
+}
+
+bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-instance" || name == "asic-type" || name == "rack-num" || name == "rack-type" || name == "slot-num")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Link::link_type_unset {-1, "link-type-unset"};
+const Enum::YLeaf Link::link_type_unavail {0, "link-type-unavail"};
+const Enum::YLeaf Link::link_type_tx {1, "link-type-tx"};
+const Enum::YLeaf Link::link_type_rx {2, "link-type-rx"};
 
 const Enum::YLeaf LinkErrorState::link_error_unset {-1, "link-error-unset"};
 const Enum::YLeaf LinkErrorState::link_error_none {0, "link-error-none"};
 const Enum::YLeaf LinkErrorState::link_error_shut {1, "link-error-shut"};
 const Enum::YLeaf LinkErrorState::link_error_max {2, "link-error-max"};
 
-const Enum::YLeaf AsicOperState::asic_oper_unset {-1, "asic-oper-unset"};
-const Enum::YLeaf AsicOperState::asic_oper_unknown {0, "asic-oper-unknown"};
-const Enum::YLeaf AsicOperState::asic_oper_up {1, "asic-oper-up"};
-const Enum::YLeaf AsicOperState::asic_oper_down {2, "asic-oper-down"};
-const Enum::YLeaf AsicOperState::asic_card_down {3, "asic-card-down"};
+const Enum::YLeaf AdminState::admin_unset {-1, "admin-unset"};
+const Enum::YLeaf AdminState::admin_up {0, "admin-up"};
+const Enum::YLeaf AdminState::admin_down {1, "admin-down"};
+
+const Enum::YLeaf SliceState::slice_oper_unset {-1, "slice-oper-unset"};
+const Enum::YLeaf SliceState::slice_oper_down {0, "slice-oper-down"};
+const Enum::YLeaf SliceState::slice_oper_up {1, "slice-oper-up"};
+const Enum::YLeaf SliceState::slice_oper_na {2, "slice-oper-na"};
 
 const Enum::YLeaf AsicAccessState::asic_state_unset {-1, "asic-state-unset"};
 const Enum::YLeaf AsicAccessState::asic_state_none {0, "asic-state-none"};
@@ -12918,14 +11865,15 @@ const Enum::YLeaf AsicAccessState::asic_state_issu_started_nn {22, "asic-state-i
 const Enum::YLeaf AsicAccessState::asic_state_issu_abort {23, "asic-state-issu-abort"};
 const Enum::YLeaf AsicAccessState::asic_state_max {24, "asic-state-max"};
 
-const Enum::YLeaf Asic::asic_unset {-1, "asic-unset"};
-const Enum::YLeaf Asic::asic_unavail {0, "asic-unavail"};
-const Enum::YLeaf Asic::asic_fia {1, "asic-fia"};
-const Enum::YLeaf Asic::asic_s123 {2, "asic-s123"};
-const Enum::YLeaf Asic::asic_s13 {3, "asic-s13"};
-const Enum::YLeaf Asic::asic_s2 {4, "asic-s2"};
-const Enum::YLeaf Asic::asic_b2b {5, "asic-b2b"};
-const Enum::YLeaf Asic::asic_type_unknown {6, "asic-type-unknown"};
+const Enum::YLeaf Rack::rack_type_unset {-1, "rack-type-unset"};
+const Enum::YLeaf Rack::rack_type_lcc {0, "rack-type-lcc"};
+const Enum::YLeaf Rack::rack_type_fcc {1, "rack-type-fcc"};
+
+const Enum::YLeaf OperState::oper_unset {-1, "oper-unset"};
+const Enum::YLeaf OperState::oper_unknown {0, "oper-unknown"};
+const Enum::YLeaf OperState::oper_up {1, "oper-up"};
+const Enum::YLeaf OperState::oper_down {2, "oper-down"};
+const Enum::YLeaf OperState::card_down {3, "card-down"};
 
 const Enum::YLeaf LinkStage::link_stage_unset {-1, "link-stage-unset"};
 const Enum::YLeaf LinkStage::link_stage_unused {0, "link-stage-unused"};
@@ -12935,34 +11883,25 @@ const Enum::YLeaf LinkStage::link_stage_s2 {3, "link-stage-s2"};
 const Enum::YLeaf LinkStage::link_stage_s3 {4, "link-stage-s3"};
 const Enum::YLeaf LinkStage::link_stage_unknown {5, "link-stage-unknown"};
 
-const Enum::YLeaf Link::link_type_unset {-1, "link-type-unset"};
-const Enum::YLeaf Link::link_type_unavail {0, "link-type-unavail"};
-const Enum::YLeaf Link::link_type_tx {1, "link-type-tx"};
-const Enum::YLeaf Link::link_type_rx {2, "link-type-rx"};
+const Enum::YLeaf AsicOperState::asic_oper_unset {-1, "asic-oper-unset"};
+const Enum::YLeaf AsicOperState::asic_oper_unknown {0, "asic-oper-unknown"};
+const Enum::YLeaf AsicOperState::asic_oper_up {1, "asic-oper-up"};
+const Enum::YLeaf AsicOperState::asic_oper_down {2, "asic-oper-down"};
+const Enum::YLeaf AsicOperState::asic_card_down {3, "asic-card-down"};
 
 const Enum::YLeaf FcMode::fc_mode_unset {-1, "fc-mode-unset"};
 const Enum::YLeaf FcMode::fc_mode_unavail {0, "fc-mode-unavail"};
 const Enum::YLeaf FcMode::fc_mode_inband {1, "fc-mode-inband"};
 const Enum::YLeaf FcMode::fc_mode_oob {2, "fc-mode-oob"};
 
-const Enum::YLeaf AdminState::admin_unset {-1, "admin-unset"};
-const Enum::YLeaf AdminState::admin_up {0, "admin-up"};
-const Enum::YLeaf AdminState::admin_down {1, "admin-down"};
-
-const Enum::YLeaf SliceState::slice_oper_unset {-1, "slice-oper-unset"};
-const Enum::YLeaf SliceState::slice_oper_down {0, "slice-oper-down"};
-const Enum::YLeaf SliceState::slice_oper_up {1, "slice-oper-up"};
-const Enum::YLeaf SliceState::slice_oper_na {2, "slice-oper-na"};
-
-const Enum::YLeaf OperState::oper_unset {-1, "oper-unset"};
-const Enum::YLeaf OperState::oper_unknown {0, "oper-unknown"};
-const Enum::YLeaf OperState::oper_up {1, "oper-up"};
-const Enum::YLeaf OperState::oper_down {2, "oper-down"};
-const Enum::YLeaf OperState::card_down {3, "card-down"};
-
-const Enum::YLeaf Rack::rack_type_unset {-1, "rack-type-unset"};
-const Enum::YLeaf Rack::rack_type_lcc {0, "rack-type-lcc"};
-const Enum::YLeaf Rack::rack_type_fcc {1, "rack-type-fcc"};
+const Enum::YLeaf Asic::asic_unset {-1, "asic-unset"};
+const Enum::YLeaf Asic::asic_unavail {0, "asic-unavail"};
+const Enum::YLeaf Asic::asic_fia {1, "asic-fia"};
+const Enum::YLeaf Asic::asic_s123 {2, "asic-s123"};
+const Enum::YLeaf Asic::asic_s13 {3, "asic-s13"};
+const Enum::YLeaf Asic::asic_s2 {4, "asic-s2"};
+const Enum::YLeaf Asic::asic_b2b {5, "asic-b2b"};
+const Enum::YLeaf Asic::asic_type_unknown {6, "asic-type-unknown"};
 
 const Enum::YLeaf AsicInitMethod::asic_init_method_unset {-1, "asic-init-method-unset"};
 const Enum::YLeaf AsicInitMethod::asic_init_method_no_reset {0, "asic-init-method-no-reset"};

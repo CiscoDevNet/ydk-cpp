@@ -17,10 +17,9 @@ Ping::Ping()
 	,output(std::make_shared<Ping::Output>())
 {
     input->parent = this;
-
     output->parent = this;
 
-    yang_name = "ping"; yang_parent_name = "Cisco-IOS-XR-ping-act";
+    yang_name = "ping"; yang_parent_name = "Cisco-IOS-XR-ping-act"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ping::~Ping()
@@ -44,26 +43,15 @@ std::string Ping::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ping-act:ping";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -152,10 +140,9 @@ Ping::Input::Input()
 	,ipv6(std::make_shared<Ping::Input::Ipv6>())
 {
     destination->parent = this;
-
     ipv6->parent = this;
 
-    yang_name = "input"; yang_parent_name = "ping";
+    yang_name = "input"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Input::~Input()
@@ -185,33 +172,26 @@ bool Ping::Input::has_operation() const
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
+std::string Ping::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -308,7 +288,8 @@ Ping::Input::Destination::Destination()
     verbose{YType::boolean, "verbose"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "destination"; yang_parent_name = "input";
+
+    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Input::Destination::~Destination()
@@ -354,27 +335,22 @@ bool Ping::Input::Destination::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Ping::Input::Destination::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Input::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Input::Destination::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Input::Destination::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
@@ -393,9 +369,7 @@ const EntityPath Ping::Input::Destination::get_entity_path(Entity* ancestor) con
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -591,7 +565,8 @@ Ping::Input::Ipv4::Ipv4()
     verbose{YType::boolean, "verbose"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "ipv4"; yang_parent_name = "input";
+
+    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Input::Ipv4::~Ipv4()
@@ -633,27 +608,22 @@ bool Ping::Input::Ipv4::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Ping::Input::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Input::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4" <<"[destination='" <<destination <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Input::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Input::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
@@ -670,9 +640,7 @@ const EntityPath Ping::Input::Ipv4::get_entity_path(Entity* ancestor) const
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -847,7 +815,8 @@ Ping::Input::Ipv6::Ipv6()
     verbose{YType::boolean, "verbose"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "ipv6"; yang_parent_name = "input";
+
+    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Input::Ipv6::~Ipv6()
@@ -887,27 +856,22 @@ bool Ping::Input::Ipv6::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Ping::Input::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Input::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Input::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Input::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
@@ -923,9 +887,7 @@ const EntityPath Ping::Input::Ipv6::get_entity_path(Entity* ancestor) const
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1081,7 +1043,7 @@ Ping::Output::Output()
 {
     ping_response->parent = this;
 
-    yang_name = "output"; yang_parent_name = "ping";
+    yang_name = "output"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Output::~Output()
@@ -1099,33 +1061,26 @@ bool Ping::Output::has_operation() const
 	|| (ping_response !=  nullptr && ping_response->has_operation());
 }
 
+std::string Ping::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1175,7 +1130,7 @@ Ping::Output::PingResponse::PingResponse()
 {
     ipv6->parent = this;
 
-    yang_name = "ping-response"; yang_parent_name = "output";
+    yang_name = "ping-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Output::PingResponse::~PingResponse()
@@ -1203,33 +1158,26 @@ bool Ping::Output::PingResponse::has_operation() const
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
+std::string Ping::Output::PingResponse::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/output/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Output::PingResponse::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ping-response";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/output/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1318,7 +1266,7 @@ Ping::Output::PingResponse::Ipv4::Ipv4()
 {
     replies->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "ping-response";
+    yang_name = "ipv4"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Output::PingResponse::Ipv4::~Ipv4()
@@ -1370,27 +1318,22 @@ bool Ping::Output::PingResponse::Ipv4::has_operation() const
 	|| (replies !=  nullptr && replies->has_operation());
 }
 
+std::string Ping::Output::PingResponse::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Output::PingResponse::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4" <<"[destination='" <<destination <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
@@ -1411,9 +1354,7 @@ const EntityPath Ping::Output::PingResponse::Ipv4::get_entity_path(Entity* ances
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1629,7 +1570,8 @@ bool Ping::Output::PingResponse::Ipv4::has_leaf_or_child_of_name(const std::stri
 
 Ping::Output::PingResponse::Ipv4::Replies::Replies()
 {
-    yang_name = "replies"; yang_parent_name = "ipv4";
+
+    yang_name = "replies"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::~Replies()
@@ -1660,29 +1602,15 @@ std::string Ping::Output::PingResponse::Ipv4::Replies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "replies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv4::Replies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv4::Replies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Replies' in Cisco_IOS_XR_ping_act cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1742,7 +1670,7 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::Reply()
 {
     broadcast_reply_addresses->parent = this;
 
-    yang_name = "reply"; yang_parent_name = "replies";
+    yang_name = "reply"; yang_parent_name = "replies"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::~Reply()
@@ -1768,31 +1696,17 @@ std::string Ping::Output::PingResponse::Ipv4::Replies::Reply::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "reply" <<"[reply-index='" <<reply_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv4::Replies::Reply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv4::Replies::Reply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Reply' in Cisco_IOS_XR_ping_act cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (reply_index.is_set || is_set(reply_index.yfilter)) leaf_name_data.push_back(reply_index.get_name_leafdata());
     if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1858,7 +1772,8 @@ bool Ping::Output::PingResponse::Ipv4::Replies::Reply::has_leaf_or_child_of_name
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddresses()
 {
-    yang_name = "broadcast-reply-addresses"; yang_parent_name = "reply";
+
+    yang_name = "broadcast-reply-addresses"; yang_parent_name = "reply"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::~BroadcastReplyAddresses()
@@ -1889,29 +1804,15 @@ std::string Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddr
 {
     std::ostringstream path_buffer;
     path_buffer << "broadcast-reply-addresses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BroadcastReplyAddresses' in Cisco_IOS_XR_ping_act cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1967,7 +1868,8 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::Broad
     reply_address{YType::str, "reply-address"},
     result{YType::str, "result"}
 {
-    yang_name = "broadcast-reply-address"; yang_parent_name = "broadcast-reply-addresses";
+
+    yang_name = "broadcast-reply-address"; yang_parent_name = "broadcast-reply-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::~BroadcastReplyAddress()
@@ -1991,31 +1893,17 @@ std::string Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddr
 {
     std::ostringstream path_buffer;
     path_buffer << "broadcast-reply-address" <<"[reply-address='" <<reply_address <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BroadcastReplyAddress' in Cisco_IOS_XR_ping_act cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (reply_address.is_set || is_set(reply_address.yfilter)) leaf_name_data.push_back(reply_address.get_name_leafdata());
     if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2088,7 +1976,7 @@ Ping::Output::PingResponse::Ipv6::Ipv6()
 {
     replies->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "ping-response";
+    yang_name = "ipv6"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Output::PingResponse::Ipv6::~Ipv6()
@@ -2138,27 +2026,22 @@ bool Ping::Output::PingResponse::Ipv6::has_operation() const
 	|| (replies !=  nullptr && replies->has_operation());
 }
 
+std::string Ping::Output::PingResponse::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Output::PingResponse::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
@@ -2178,9 +2061,7 @@ const EntityPath Ping::Output::PingResponse::Ipv6::get_entity_path(Entity* ances
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2386,7 +2267,8 @@ bool Ping::Output::PingResponse::Ipv6::has_leaf_or_child_of_name(const std::stri
 
 Ping::Output::PingResponse::Ipv6::Replies::Replies()
 {
-    yang_name = "replies"; yang_parent_name = "ipv6";
+
+    yang_name = "replies"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Output::PingResponse::Ipv6::Replies::~Replies()
@@ -2413,33 +2295,26 @@ bool Ping::Output::PingResponse::Ipv6::Replies::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ping::Output::PingResponse::Ipv6::Replies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Output::PingResponse::Ipv6::Replies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "replies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv6::Replies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv6::Replies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/ipv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2495,7 +2370,8 @@ Ping::Output::PingResponse::Ipv6::Replies::Reply::Reply()
     reply_index{YType::uint64, "reply-index"},
     result{YType::str, "result"}
 {
-    yang_name = "reply"; yang_parent_name = "replies";
+
+    yang_name = "reply"; yang_parent_name = "replies"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ping::Output::PingResponse::Ipv6::Replies::Reply::~Reply()
@@ -2515,35 +2391,28 @@ bool Ping::Output::PingResponse::Ipv6::Replies::Reply::has_operation() const
 	|| ydk::is_set(result.yfilter);
 }
 
+std::string Ping::Output::PingResponse::Ipv6::Replies::Reply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/ipv6/replies/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ping::Output::PingResponse::Ipv6::Replies::Reply::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reply" <<"[reply-index='" <<reply_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ping::Output::PingResponse::Ipv6::Replies::Reply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv6::Replies::Reply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/output/ping-response/ipv6/replies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (reply_index.is_set || is_set(reply_index.yfilter)) leaf_name_data.push_back(reply_index.get_name_leafdata());
     if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

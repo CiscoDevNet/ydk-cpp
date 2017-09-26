@@ -11,12 +11,19 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_lib_datatypes {
 
+const Enum::YLeaf AaaAccountingBroadcast::disable {0, "disable"};
+const Enum::YLeaf AaaAccountingBroadcast::enable {1, "enable"};
+
 const Enum::YLeaf AaaAccounting::not_set {0, "not-set"};
 const Enum::YLeaf AaaAccounting::start_stop {1, "start-stop"};
 const Enum::YLeaf AaaAccounting::stop_only {2, "stop-only"};
 
-const Enum::YLeaf AaaAccountingBroadcast::disable {0, "disable"};
-const Enum::YLeaf AaaAccountingBroadcast::enable {1, "enable"};
+const Enum::YLeaf AaaAccountingUpdate::none {0, "none"};
+const Enum::YLeaf AaaAccountingUpdate::newinfo {3, "newinfo"};
+const Enum::YLeaf AaaAccountingUpdate::periodic {4, "periodic"};
+
+const Enum::YLeaf AaaAccountingRpFailover::disable {0, "disable"};
+const Enum::YLeaf AaaAccountingRpFailover::enable {1, "enable"};
 
 const Enum::YLeaf AaaMethod::not_set {0, "not-set"};
 const Enum::YLeaf AaaMethod::none {1, "none"};
@@ -35,13 +42,6 @@ const Enum::YLeaf AaaMethod::enable {13, "enable"};
 const Enum::YLeaf AaaMethod::kerberos {14, "kerberos"};
 const Enum::YLeaf AaaMethod::diameter {15, "diameter"};
 const Enum::YLeaf AaaMethod::last {16, "last"};
-
-const Enum::YLeaf AaaAccountingRpFailover::disable {0, "disable"};
-const Enum::YLeaf AaaAccountingRpFailover::enable {1, "enable"};
-
-const Enum::YLeaf AaaAccountingUpdate::none {0, "none"};
-const Enum::YLeaf AaaAccountingUpdate::newinfo {3, "newinfo"};
-const Enum::YLeaf AaaAccountingUpdate::periodic {4, "periodic"};
 
 
 }

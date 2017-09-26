@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace IP_FORWARD_MIB {
 
-class IpForwardMib : public ydk::Entity
+class IPFORWARDMIB : public ydk::Entity
 {
     public:
-        IpForwardMib();
-        ~IpForwardMib();
+        IPFORWARDMIB();
+        ~IPFORWARDMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,18 +32,81 @@ class IpForwardMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ipforward; //type: IpForwardMib::Ipforward
-        class Ipforwardtable; //type: IpForwardMib::Ipforwardtable
-        class Ipcidrroutetable; //type: IpForwardMib::Ipcidrroutetable
+        class Ipforward; //type: IPFORWARDMIB::Ipforward
+        class Ipforwardtable; //type: IPFORWARDMIB::Ipforwardtable
+        class Ipcidrroutetable; //type: IPFORWARDMIB::Ipcidrroutetable
 
-        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipcidrroutetable> ipcidrroutetable;
-        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforward> ipforward;
-        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforwardtable> ipforwardtable;
+        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipcidrroutetable> ipcidrroutetable;
+        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipforward> ipforward;
+        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipforwardtable> ipforwardtable;
         
-}; // IpForwardMib
+}; // IPFORWARDMIB
 
 
-class IpForwardMib::Ipforward : public ydk::Entity
+class IPFORWARDMIB::Ipcidrroutetable : public ydk::Entity
+{
+    public:
+        Ipcidrroutetable();
+        ~Ipcidrroutetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ipcidrrouteentry; //type: IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry> > ipcidrrouteentry;
+        
+}; // IPFORWARDMIB::Ipcidrroutetable
+
+
+class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry : public ydk::Entity
+{
+    public:
+        Ipcidrrouteentry();
+        ~Ipcidrrouteentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ipcidrroutedest; //type: string
+        ydk::YLeaf ipcidrroutemask; //type: string
+        ydk::YLeaf ipcidrroutetos; //type: int32
+        ydk::YLeaf ipcidrroutenexthop; //type: string
+        ydk::YLeaf ipcidrrouteifindex; //type: int32
+        ydk::YLeaf ipcidrroutetype; //type: Ipcidrroutetype
+        ydk::YLeaf ipcidrrouteproto; //type: Ipcidrrouteproto
+        ydk::YLeaf ipcidrrouteage; //type: int32
+        ydk::YLeaf ipcidrrouteinfo; //type: string
+        ydk::YLeaf ipcidrroutenexthopas; //type: int32
+        ydk::YLeaf ipcidrroutemetric1; //type: int32
+        ydk::YLeaf ipcidrroutemetric2; //type: int32
+        ydk::YLeaf ipcidrroutemetric3; //type: int32
+        ydk::YLeaf ipcidrroutemetric4; //type: int32
+        ydk::YLeaf ipcidrroutemetric5; //type: int32
+        ydk::YLeaf ipcidrroutestatus; //type: RowStatus
+        class Ipcidrroutetype;
+        class Ipcidrrouteproto;
+
+}; // IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry
+
+
+class IPFORWARDMIB::Ipforward : public ydk::Entity
 {
     public:
         Ipforward();
@@ -51,21 +114,22 @@ class IpForwardMib::Ipforward : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf ipforwardnumber; //type: uint32
         ydk::YLeaf ipcidrroutenumber; //type: uint32
 
-}; // IpForwardMib::Ipforward
+}; // IPFORWARDMIB::Ipforward
 
 
-class IpForwardMib::Ipforwardtable : public ydk::Entity
+class IPFORWARDMIB::Ipforwardtable : public ydk::Entity
 {
     public:
         Ipforwardtable();
@@ -73,22 +137,23 @@ class IpForwardMib::Ipforwardtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Ipforwardentry; //type: IpForwardMib::Ipforwardtable::Ipforwardentry
+        class Ipforwardentry; //type: IPFORWARDMIB::Ipforwardtable::Ipforwardentry
 
-        std::vector<std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforwardtable::Ipforwardentry> > ipforwardentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipforwardtable::Ipforwardentry> > ipforwardentry;
         
-}; // IpForwardMib::Ipforwardtable
+}; // IPFORWARDMIB::Ipforwardtable
 
 
-class IpForwardMib::Ipforwardtable::Ipforwardentry : public ydk::Entity
+class IPFORWARDMIB::Ipforwardtable::Ipforwardentry : public ydk::Entity
 {
     public:
         Ipforwardentry();
@@ -96,13 +161,14 @@ class IpForwardMib::Ipforwardtable::Ipforwardentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf ipforwarddest; //type: string
         ydk::YLeaf ipforwardproto; //type: Ipforwardproto
@@ -122,70 +188,41 @@ class IpForwardMib::Ipforwardtable::Ipforwardentry : public ydk::Entity
         class Ipforwardproto;
         class Ipforwardtype;
 
-}; // IpForwardMib::Ipforwardtable::Ipforwardentry
+}; // IPFORWARDMIB::Ipforwardtable::Ipforwardentry
 
-
-class IpForwardMib::Ipcidrroutetable : public ydk::Entity
+class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype : public ydk::Enum
 {
     public:
-        Ipcidrroutetable();
-        ~Ipcidrroutetable();
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf reject;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Ipcidrrouteentry; //type: IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry
-
-        std::vector<std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry> > ipcidrrouteentry;
-        
-}; // IpForwardMib::Ipcidrroutetable
-
-
-class IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry : public ydk::Entity
+class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto : public ydk::Enum
 {
     public:
-        Ipcidrrouteentry();
-        ~Ipcidrrouteentry();
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf egp;
+        static const ydk::Enum::YLeaf ggp;
+        static const ydk::Enum::YLeaf hello;
+        static const ydk::Enum::YLeaf rip;
+        static const ydk::Enum::YLeaf isIs;
+        static const ydk::Enum::YLeaf esIs;
+        static const ydk::Enum::YLeaf ciscoIgrp;
+        static const ydk::Enum::YLeaf bbnSpfIgp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf idpr;
+        static const ydk::Enum::YLeaf ciscoEigrp;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        ydk::YLeaf ipcidrroutedest; //type: string
-        ydk::YLeaf ipcidrroutemask; //type: string
-        ydk::YLeaf ipcidrroutetos; //type: int32
-        ydk::YLeaf ipcidrroutenexthop; //type: string
-        ydk::YLeaf ipcidrrouteifindex; //type: int32
-        ydk::YLeaf ipcidrroutetype; //type: Ipcidrroutetype
-        ydk::YLeaf ipcidrrouteproto; //type: Ipcidrrouteproto
-        ydk::YLeaf ipcidrrouteage; //type: int32
-        ydk::YLeaf ipcidrrouteinfo; //type: string
-        ydk::YLeaf ipcidrroutenexthopas; //type: int32
-        ydk::YLeaf ipcidrroutemetric1; //type: int32
-        ydk::YLeaf ipcidrroutemetric2; //type: int32
-        ydk::YLeaf ipcidrroutemetric3; //type: int32
-        ydk::YLeaf ipcidrroutemetric4; //type: int32
-        ydk::YLeaf ipcidrroutemetric5; //type: int32
-        ydk::YLeaf ipcidrroutestatus; //type: Rowstatus
-        class Ipcidrroutetype;
-        class Ipcidrrouteproto;
-
-}; // IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry
-
-class IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto : public ydk::Enum
+class IPFORWARDMIB::Ipforwardtable::Ipforwardentry::Ipforwardproto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -206,45 +243,13 @@ class IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto : public ydk:
 
 };
 
-class IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardtype : public ydk::Enum
+class IPFORWARDMIB::Ipforwardtable::Ipforwardentry::Ipforwardtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf invalid;
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
-
-};
-
-class IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf reject;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
-
-};
-
-class IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf netmgmt;
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf egp;
-        static const ydk::Enum::YLeaf ggp;
-        static const ydk::Enum::YLeaf hello;
-        static const ydk::Enum::YLeaf rip;
-        static const ydk::Enum::YLeaf isIs;
-        static const ydk::Enum::YLeaf esIs;
-        static const ydk::Enum::YLeaf ciscoIgrp;
-        static const ydk::Enum::YLeaf bbnSpfIgp;
-        static const ydk::Enum::YLeaf ospf;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf idpr;
-        static const ydk::Enum::YLeaf ciscoEigrp;
 
 };
 

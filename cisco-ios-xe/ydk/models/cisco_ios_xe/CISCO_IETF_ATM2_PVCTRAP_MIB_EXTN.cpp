@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN {
 
-CiscoIetfAtm2PvctrapMibExtn::CiscoIetfAtm2PvctrapMibExtn()
+CISCOIETFATM2PVCTRAPMIBEXTN::CISCOIETFATM2PVCTRAPMIBEXTN()
     :
-    atmcurrentstatuschangepvcltable(std::make_shared<CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable>())
-	,atmstatuschangepvclrangetable(std::make_shared<CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable>())
+    atmcurrentstatuschangepvcltable(std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable>())
+	,atmstatuschangepvclrangetable(std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable>())
 {
     atmcurrentstatuschangepvcltable->parent = this;
-
     atmstatuschangepvclrangetable->parent = this;
 
-    yang_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN";
+    yang_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::~CiscoIetfAtm2PvctrapMibExtn()
+CISCOIETFATM2PVCTRAPMIBEXTN::~CISCOIETFATM2PVCTRAPMIBEXTN()
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::has_data() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::has_data() const
 {
     return (atmcurrentstatuschangepvcltable !=  nullptr && atmcurrentstatuschangepvcltable->has_data())
 	|| (atmstatuschangepvclrangetable !=  nullptr && atmstatuschangepvclrangetable->has_data());
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::has_operation() const
 {
     return is_set(yfilter)
 	|| (atmcurrentstatuschangepvcltable !=  nullptr && atmcurrentstatuschangepvcltable->has_operation())
 	|| (atmstatuschangepvclrangetable !=  nullptr && atmstatuschangepvclrangetable->has_operation());
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfAtm2PvctrapMibExtn::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmCurrentStatusChangePVclTable")
     {
         if(atmcurrentstatuschangepvcltable == nullptr)
         {
-            atmcurrentstatuschangepvcltable = std::make_shared<CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable>();
+            atmcurrentstatuschangepvcltable = std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable>();
         }
         return atmcurrentstatuschangepvcltable;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::get_child_by_name(const std
     {
         if(atmstatuschangepvclrangetable == nullptr)
         {
-            atmstatuschangepvclrangetable = std::make_shared<CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable>();
+            atmstatuschangepvclrangetable = std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable>();
         }
         return atmstatuschangepvclrangetable;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(atmcurrentstatuschangepvcltable != nullptr)
@@ -106,56 +94,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::get_
     return children;
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIBEXTN::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIBEXTN::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::clone_ptr() const
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::clone_ptr() const
 {
-    return std::make_shared<CiscoIetfAtm2PvctrapMibExtn>();
+    return std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN>();
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::get_bundle_yang_models_location() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::get_bundle_name() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoIetfAtm2PvctrapMibExtn::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIETFATM2PVCTRAPMIBEXTN::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoIetfAtm2PvctrapMibExtn::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIETFATM2PVCTRAPMIBEXTN::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmCurrentStatusChangePVclTable" || name == "atmStatusChangePVclRangeTable")
         return true;
     return false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvcltable()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvcltable()
 {
-    yang_name = "atmCurrentStatusChangePVclTable"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN";
+
+    yang_name = "atmCurrentStatusChangePVclTable"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::~Atmcurrentstatuschangepvcltable()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::~Atmcurrentstatuschangepvcltable()
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::has_data() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::has_data() const
 {
     for (std::size_t index=0; index<atmcurrentstatuschangepvclentry.size(); index++)
     {
@@ -165,7 +154,7 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::has_data() co
     return false;
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::has_operation() const
 {
     for (std::size_t index=0; index<atmcurrentstatuschangepvclentry.size(); index++)
     {
@@ -175,37 +164,30 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::has_operation
     return is_set(yfilter);
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmCurrentStatusChangePVclTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmCurrentStatusChangePVclEntry")
     {
@@ -217,7 +199,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvclt
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry>();
+        auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry>();
         c->parent = this;
         atmcurrentstatuschangepvclentry.push_back(c);
         return c;
@@ -226,7 +208,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvclt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : atmcurrentstatuschangepvclentry)
@@ -237,22 +219,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::Atmc
     return children;
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmCurrentStatusChangePVclEntry")
         return true;
     return false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::Atmcurrentstatuschangepvclentry()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::Atmcurrentstatuschangepvclentry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -261,14 +243,15 @@ CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatusch
     atmpvclstatuschangestart{YType::uint32, "atmPVclStatusChangeStart"},
     atmpvclstatustransition{YType::uint32, "atmPVclStatusTransition"}
 {
-    yang_name = "atmCurrentStatusChangePVclEntry"; yang_parent_name = "atmCurrentStatusChangePVclTable";
+
+    yang_name = "atmCurrentStatusChangePVclEntry"; yang_parent_name = "atmCurrentStatusChangePVclTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::~Atmcurrentstatuschangepvclentry()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::~Atmcurrentstatuschangepvclentry()
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_data() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_data() const
 {
     return ifindex.is_set
 	|| atmvclvpi.is_set
@@ -278,7 +261,7 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentsta
 	|| atmpvclstatustransition.is_set;
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -289,27 +272,22 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentsta
 	|| ydk::is_set(atmpvclstatustransition.yfilter);
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/atmCurrentStatusChangePVclTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmCurrentStatusChangePVclEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/atmCurrentStatusChangePVclTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
@@ -319,24 +297,22 @@ const EntityPath CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::A
     if (atmpvclstatuschangestart.is_set || is_set(atmpvclstatuschangestart.yfilter)) leaf_name_data.push_back(atmpvclstatuschangestart.get_name_leafdata());
     if (atmpvclstatustransition.is_set || is_set(atmpvclstatustransition.yfilter)) leaf_name_data.push_back(atmpvclstatustransition.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -376,7 +352,7 @@ void CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentsta
     }
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -404,23 +380,24 @@ void CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentsta
     }
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "atmPVclStatusChangeEnd" || name == "atmPVclStatusChangeStart" || name == "atmPVclStatusTransition")
         return true;
     return false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangetable()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangetable()
 {
-    yang_name = "atmStatusChangePVclRangeTable"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN";
+
+    yang_name = "atmStatusChangePVclRangeTable"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::~Atmstatuschangepvclrangetable()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::~Atmstatuschangepvclrangetable()
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::has_data() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::has_data() const
 {
     for (std::size_t index=0; index<atmstatuschangepvclrangeentry.size(); index++)
     {
@@ -430,7 +407,7 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::has_data() cons
     return false;
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::has_operation() const
 {
     for (std::size_t index=0; index<atmstatuschangepvclrangeentry.size(); index++)
     {
@@ -440,37 +417,30 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::has_operation()
     return is_set(yfilter);
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmStatusChangePVclRangeTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmStatusChangePVclRangeEntry")
     {
@@ -482,7 +452,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetab
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry>();
+        auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry>();
         c->parent = this;
         atmstatuschangepvclrangeentry.push_back(c);
         return c;
@@ -491,7 +461,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetab
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : atmstatuschangepvclrangeentry)
@@ -502,22 +472,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::Atms
     return children;
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmStatusChangePVclRangeEntry")
         return true;
     return false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::Atmstatuschangepvclrangeentry()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::Atmstatuschangepvclrangeentry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -527,14 +497,15 @@ CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclr
     atmpvclrangestatuschangeend{YType::uint32, "atmPVclRangeStatusChangeEnd"},
     atmpvclrangestatuschangestart{YType::uint32, "atmPVclRangeStatusChangeStart"}
 {
-    yang_name = "atmStatusChangePVclRangeEntry"; yang_parent_name = "atmStatusChangePVclRangeTable";
+
+    yang_name = "atmStatusChangePVclRangeEntry"; yang_parent_name = "atmStatusChangePVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::~Atmstatuschangepvclrangeentry()
+CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::~Atmstatuschangepvclrangeentry()
 {
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_data() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_data() const
 {
     return ifindex.is_set
 	|| atmvclvpi.is_set
@@ -545,7 +516,7 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschange
 	|| atmpvclrangestatuschangestart.is_set;
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -557,27 +528,22 @@ bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschange
 	|| ydk::is_set(atmpvclrangestatuschangestart.yfilter);
 }
 
-std::string CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/atmStatusChangePVclRangeTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmStatusChangePVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[rangeIndex='" <<rangeindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN/atmStatusChangePVclRangeTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
@@ -588,24 +554,22 @@ const EntityPath CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atm
     if (atmpvclrangestatuschangeend.is_set || is_set(atmpvclrangestatuschangeend.yfilter)) leaf_name_data.push_back(atmpvclrangestatuschangeend.get_name_leafdata());
     if (atmpvclrangestatuschangestart.is_set || is_set(atmpvclrangestatuschangestart.yfilter)) leaf_name_data.push_back(atmpvclrangestatuschangestart.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -651,7 +615,7 @@ void CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschange
     }
 }
 
-void CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -683,7 +647,7 @@ void CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschange
     }
 }
 
-bool CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "rangeIndex" || name == "atmPVclHigherRangeValue" || name == "atmPVclLowerRangeValue" || name == "atmPVclRangeStatusChangeEnd" || name == "atmPVclRangeStatusChangeStart")
         return true;

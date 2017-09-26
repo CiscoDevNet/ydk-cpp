@@ -21,7 +21,6 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#include "path_private.hpp"
 #include <unordered_set>
 
 #include <libxml/parser.h>
@@ -29,6 +28,7 @@
 #include <json.hpp>
 
 #include "../logger.hpp"
+#include "path_private.hpp"
 
 
 static void get_namespaces_from_xml_doc(xmlNodePtr root, std::unordered_set<std::string>& namespaces)
@@ -213,7 +213,7 @@ ydk::path::RootSchemaNodeImpl::populate_new_schemas_from_payload(const std::stri
     else
     {
         auto module_names = get_module_names_from_json_payload(payload);
-        auto modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, module_names, m_name_lookup);
+        modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, module_names, m_name_lookup);
     }
 
     populate_new_schemas(modules);
@@ -249,7 +249,14 @@ ydk::path::RootSchemaNodeImpl::populate_augmented_schema_nodes(const struct lys_
             node = node->parent;
         }
 
-        populate_augmented_schema_node(ancestors, aug.child);
+        if(aug.child == nullptr)
+        {
+            YLOG_DEBUG("Augment child {} is null", aug.target_name);
+        }
+        else
+        {
+            populate_augmented_schema_node(ancestors, aug.child);
+        }
     }
 }
 

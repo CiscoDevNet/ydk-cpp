@@ -23,7 +23,6 @@
 
 #include "entity_data_node_walker.hpp"
 #include "path_api.hpp"
-#include "service.hpp"
 #include "validation_service.hpp"
 #include <map>
 #include "logger.hpp"
@@ -33,10 +32,10 @@ using namespace std;
 namespace ydk {
 
 void
-ValidationService::validate(const path::ServiceProvider& sp, Entity& entity,
+ValidationService::validate(const path::Session& session, Entity& entity,
                             ValidationService::Option option)
 {
-    path::RootSchemaNode& root_schema = sp.get_root_schema();
+    path::RootSchemaNode& root_schema = session.get_root_schema();
     const path::DataNode& datanode = get_data_node_from_entity(entity, root_schema);
     const path::DataNode* dn = &datanode;
     while(dn!= nullptr && dn->get_parent()!=nullptr)

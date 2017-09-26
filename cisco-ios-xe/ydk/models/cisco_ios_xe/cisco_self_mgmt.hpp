@@ -19,7 +19,7 @@ class NetconfYang : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -35,8 +35,8 @@ class NetconfYang : public ydk::Entity
         class CiscoIa; //type: NetconfYang::CiscoIa
         class CiscoOdm; //type: NetconfYang::CiscoOdm
 
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa> cisco_ia;
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoOdm> cisco_odm;
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa> cisco_ia;
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoOdm> cisco_odm;
         
 }; // NetconfYang
 
@@ -49,13 +49,14 @@ class NetconfYang::CiscoIa : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf auto_sync; //type: CiaSyncType
         ydk::YLeaf init_sync; //type: CiaSyncType
@@ -78,105 +79,110 @@ class NetconfYang::CiscoIa : public ydk::Entity
         class Logging; //type: NetconfYang::CiscoIa::Logging
         class Blocking; //type: NetconfYang::CiscoIa::Blocking
 
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking> blocking;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ConfFullSyncCli> > conf_full_sync_cli;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ConfParserMsgIgnore> > conf_parser_msg_ignore;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::FullSyncCli> > full_sync_cli;
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Logging> logging;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ParserMsgIgnore> > parser_msg_ignore;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::PreserveNedPath> > preserve_ned_path;
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl> snmp_trap_control;
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking> blocking;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::ConfFullSyncCli> > conf_full_sync_cli;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::ConfParserMsgIgnore> > conf_parser_msg_ignore;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::FullSyncCli> > full_sync_cli;
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Logging> logging;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::ParserMsgIgnore> > parser_msg_ignore;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::PreserveNedPath> > preserve_ned_path;
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl> snmp_trap_control;
         
 }; // NetconfYang::CiscoIa
 
 
-class NetconfYang::CiscoIa::SnmpTrapControl : public ydk::Entity
+class NetconfYang::CiscoIa::Blocking : public ydk::Entity
 {
     public:
-        SnmpTrapControl();
-        ~SnmpTrapControl();
+        Blocking();
+        ~Blocking();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf global_forwarding; //type: boolean
-        class TrapList; //type: NetconfYang::CiscoIa::SnmpTrapControl::TrapList
+        ydk::YLeaf cli_blocking_enabled; //type: boolean
+        ydk::YLeaf confd_cfg_blocking_enabled; //type: boolean
+        class NetworkElementCommand; //type: NetconfYang::CiscoIa::Blocking::NetworkElementCommand
+        class ConfdCfgCommand; //type: NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
 
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl::TrapList> > trap_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::ConfdCfgCommand> > confd_cfg_command;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::NetworkElementCommand> > network_element_command;
         
-}; // NetconfYang::CiscoIa::SnmpTrapControl
+}; // NetconfYang::CiscoIa::Blocking
 
 
-class NetconfYang::CiscoIa::SnmpTrapControl::TrapList : public ydk::Entity
+class NetconfYang::CiscoIa::Blocking::ConfdCfgCommand : public ydk::Entity
 {
     public:
-        TrapList();
-        ~TrapList();
+        ConfdCfgCommand();
+        ~ConfdCfgCommand();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf trap_oid; //type: string
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf forward; //type: boolean
+        ydk::YLeaf command; //type: string
 
-}; // NetconfYang::CiscoIa::SnmpTrapControl::TrapList
+}; // NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
 
 
-class NetconfYang::CiscoIa::PreserveNedPath : public ydk::Entity
+class NetconfYang::CiscoIa::Blocking::NetworkElementCommand : public ydk::Entity
 {
     public:
-        PreserveNedPath();
-        ~PreserveNedPath();
+        NetworkElementCommand();
+        ~NetworkElementCommand();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf xpath; //type: string
+        ydk::YLeaf command; //type: string
 
-}; // NetconfYang::CiscoIa::PreserveNedPath
+}; // NetconfYang::CiscoIa::Blocking::NetworkElementCommand
 
 
-class NetconfYang::CiscoIa::ParserMsgIgnore : public ydk::Entity
+class NetconfYang::CiscoIa::ConfFullSyncCli : public ydk::Entity
 {
     public:
-        ParserMsgIgnore();
-        ~ParserMsgIgnore();
+        ConfFullSyncCli();
+        ~ConfFullSyncCli();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf message; //type: string
+        ydk::YLeaf command; //type: string
 
-}; // NetconfYang::CiscoIa::ParserMsgIgnore
+}; // NetconfYang::CiscoIa::ConfFullSyncCli
 
 
 class NetconfYang::CiscoIa::ConfParserMsgIgnore : public ydk::Entity
@@ -187,13 +193,14 @@ class NetconfYang::CiscoIa::ConfParserMsgIgnore : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf message; //type: string
 
@@ -208,38 +215,18 @@ class NetconfYang::CiscoIa::FullSyncCli : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf command; //type: string
 
 }; // NetconfYang::CiscoIa::FullSyncCli
-
-
-class NetconfYang::CiscoIa::ConfFullSyncCli : public ydk::Entity
-{
-    public:
-        ConfFullSyncCli();
-        ~ConfFullSyncCli();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf command; //type: string
-
-}; // NetconfYang::CiscoIa::ConfFullSyncCli
 
 
 class NetconfYang::CiscoIa::Logging : public ydk::Entity
@@ -250,13 +237,14 @@ class NetconfYang::CiscoIa::Logging : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf confd_log_level; //type: SyslogSeverity
         ydk::YLeaf ciaauthd_log_level; //type: CiaLogLevel
@@ -268,73 +256,97 @@ class NetconfYang::CiscoIa::Logging : public ydk::Entity
 }; // NetconfYang::CiscoIa::Logging
 
 
-class NetconfYang::CiscoIa::Blocking : public ydk::Entity
+class NetconfYang::CiscoIa::ParserMsgIgnore : public ydk::Entity
 {
     public:
-        Blocking();
-        ~Blocking();
+        ParserMsgIgnore();
+        ~ParserMsgIgnore();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cli_blocking_enabled; //type: boolean
-        ydk::YLeaf confd_cfg_blocking_enabled; //type: boolean
-        class NetworkElementCommand; //type: NetconfYang::CiscoIa::Blocking::NetworkElementCommand
-        class ConfdCfgCommand; //type: NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
+        ydk::YLeaf message; //type: string
 
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::ConfdCfgCommand> > confd_cfg_command;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::NetworkElementCommand> > network_element_command;
+}; // NetconfYang::CiscoIa::ParserMsgIgnore
+
+
+class NetconfYang::CiscoIa::PreserveNedPath : public ydk::Entity
+{
+    public:
+        PreserveNedPath();
+        ~PreserveNedPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf xpath; //type: string
+
+}; // NetconfYang::CiscoIa::PreserveNedPath
+
+
+class NetconfYang::CiscoIa::SnmpTrapControl : public ydk::Entity
+{
+    public:
+        SnmpTrapControl();
+        ~SnmpTrapControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf global_forwarding; //type: boolean
+        class TrapList; //type: NetconfYang::CiscoIa::SnmpTrapControl::TrapList
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl::TrapList> > trap_list;
         
-}; // NetconfYang::CiscoIa::Blocking
+}; // NetconfYang::CiscoIa::SnmpTrapControl
 
 
-class NetconfYang::CiscoIa::Blocking::NetworkElementCommand : public ydk::Entity
+class NetconfYang::CiscoIa::SnmpTrapControl::TrapList : public ydk::Entity
 {
     public:
-        NetworkElementCommand();
-        ~NetworkElementCommand();
+        TrapList();
+        ~TrapList();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf command; //type: string
+        ydk::YLeaf trap_oid; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf forward; //type: boolean
 
-}; // NetconfYang::CiscoIa::Blocking::NetworkElementCommand
-
-
-class NetconfYang::CiscoIa::Blocking::ConfdCfgCommand : public ydk::Entity
-{
-    public:
-        ConfdCfgCommand();
-        ~ConfdCfgCommand();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf command; //type: string
-
-}; // NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
+}; // NetconfYang::CiscoIa::SnmpTrapControl::TrapList
 
 
 class NetconfYang::CiscoOdm : public ydk::Entity
@@ -345,20 +357,21 @@ class NetconfYang::CiscoOdm : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf polling_enable; //type: boolean
         ydk::YLeaf on_demand_default_time; //type: uint32
         ydk::YLeaf on_demand_enable; //type: boolean
         class Actions; //type: NetconfYang::CiscoOdm::Actions
 
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoOdm::Actions> > actions;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoOdm::Actions> > actions;
         
 }; // NetconfYang::CiscoOdm
 
@@ -371,13 +384,14 @@ class NetconfYang::CiscoOdm::Actions : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf action_name; //type: Parsername
         ydk::YLeaf polling_interval; //type: uint32

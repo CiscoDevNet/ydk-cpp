@@ -10,6 +10,18 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_cfm_cfg {
 
+class CfmService : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bridge_domain;
+        static const ydk::Enum::YLeaf p2p_cross_connect;
+        static const ydk::Enum::YLeaf mp2mp_cross_connect;
+        static const ydk::Enum::YLeaf vlan_aware_flexible_cross_connect;
+        static const ydk::Enum::YLeaf vlan_unaware_flexible_cross_connect;
+        static const ydk::Enum::YLeaf down_meps;
+
+};
+
 class CfmMdidFormat : public ydk::Enum
 {
     public:
@@ -31,30 +43,20 @@ class CfmShortMaNameFormat : public ydk::Enum
 
 };
 
-class CfmMipPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf lower_mep_only;
-
-};
-
-class CfmService : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bridge_domain;
-        static const ydk::Enum::YLeaf p2p_cross_connect;
-        static const ydk::Enum::YLeaf mp2mp_cross_connect;
-        static const ydk::Enum::YLeaf down_meps;
-
-};
-
 class CfmLmCountersCfg : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf aggregate;
         static const ydk::Enum::YLeaf list;
         static const ydk::Enum::YLeaf range;
+
+};
+
+class CfmMipPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf lower_mep_only;
 
 };
 

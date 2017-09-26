@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_lib_keychain_cfg {
 
 Keychains::Keychains()
 {
-    yang_name = "keychains"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-cfg";
+
+    yang_name = "keychains"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Keychains::~Keychains()
@@ -44,26 +45,15 @@ std::string Keychains::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-cfg:keychains";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -147,10 +137,9 @@ Keychains::Keychain::Keychain()
 	,keies(std::make_shared<Keychains::Keychain::Keies>())
 {
     accept_tolerance->parent = this;
-
     keies->parent = this;
 
-    yang_name = "keychain"; yang_parent_name = "keychains";
+    yang_name = "keychain"; yang_parent_name = "keychains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Keychains::Keychain::~Keychain()
@@ -172,34 +161,27 @@ bool Keychains::Keychain::has_operation() const
 	|| (keies !=  nullptr && keies->has_operation());
 }
 
+std::string Keychains::Keychain::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-cfg:keychains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Keychains::Keychain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keychain" <<"[chain-name='" <<chain_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::Keychain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-cfg:keychains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (chain_name.is_set || is_set(chain_name.yfilter)) leaf_name_data.push_back(chain_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -272,7 +254,8 @@ Keychains::Keychain::AcceptTolerance::AcceptTolerance()
     infinite{YType::boolean, "infinite"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "accept-tolerance"; yang_parent_name = "keychain";
+
+    yang_name = "accept-tolerance"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychains::Keychain::AcceptTolerance::~AcceptTolerance()
@@ -296,31 +279,17 @@ std::string Keychains::Keychain::AcceptTolerance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accept-tolerance";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::Keychain::AcceptTolerance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::AcceptTolerance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AcceptTolerance' in Cisco_IOS_XR_lib_keychain_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (infinite.is_set || is_set(infinite.yfilter)) leaf_name_data.push_back(infinite.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -372,7 +341,8 @@ bool Keychains::Keychain::AcceptTolerance::has_leaf_or_child_of_name(const std::
 
 Keychains::Keychain::Keies::Keies()
 {
-    yang_name = "keies"; yang_parent_name = "keychain";
+
+    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychains::Keychain::Keies::~Keies()
@@ -403,29 +373,15 @@ std::string Keychains::Keychain::Keies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::Keychain::Keies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Keies' in Cisco_IOS_XR_lib_keychain_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -486,10 +442,9 @@ Keychains::Keychain::Keies::Key::Key()
 	,send_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>())
 {
     accept_lifetime->parent = this;
-
     send_lifetime->parent = this;
 
-    yang_name = "key"; yang_parent_name = "keies";
+    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychains::Keychain::Keies::Key::~Key()
@@ -519,32 +474,18 @@ std::string Keychains::Keychain::Keies::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key" <<"[key-id='" <<key_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::Keychain::Keies::Key::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Key' in Cisco_IOS_XR_lib_keychain_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (key_id.is_set || is_set(key_id.yfilter)) leaf_name_data.push_back(key_id.get_name_leafdata());
     if (cryptographic_algorithm.is_set || is_set(cryptographic_algorithm.yfilter)) leaf_name_data.push_back(cryptographic_algorithm.get_name_leafdata());
     if (key_string.is_set || is_set(key_string.yfilter)) leaf_name_data.push_back(key_string.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -649,7 +590,8 @@ Keychains::Keychain::Keies::Key::AcceptLifetime::AcceptLifetime()
     start_seconds{YType::uint32, "start-seconds"},
     start_year{YType::uint32, "start-year"}
 {
-    yang_name = "accept-lifetime"; yang_parent_name = "key";
+
+    yang_name = "accept-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychains::Keychain::Keies::Key::AcceptLifetime::~AcceptLifetime()
@@ -697,23 +639,11 @@ std::string Keychains::Keychain::Keies::Key::AcceptLifetime::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "accept-lifetime";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::AcceptLifetime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AcceptLifetime' in Cisco_IOS_XR_lib_keychain_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end_date.is_set || is_set(end_date.yfilter)) leaf_name_data.push_back(end_date.get_name_leafdata());
@@ -731,9 +661,7 @@ const EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_pat
     if (start_seconds.is_set || is_set(start_seconds.yfilter)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
     if (start_year.is_set || is_set(start_year.yfilter)) leaf_name_data.push_back(start_year.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -920,7 +848,8 @@ Keychains::Keychain::Keies::Key::SendLifetime::SendLifetime()
     start_seconds{YType::uint32, "start-seconds"},
     start_year{YType::uint32, "start-year"}
 {
-    yang_name = "send-lifetime"; yang_parent_name = "key";
+
+    yang_name = "send-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Keychains::Keychain::Keies::Key::SendLifetime::~SendLifetime()
@@ -968,23 +897,11 @@ std::string Keychains::Keychain::Keies::Key::SendLifetime::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "send-lifetime";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::SendLifetime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SendLifetime' in Cisco_IOS_XR_lib_keychain_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end_date.is_set || is_set(end_date.yfilter)) leaf_name_data.push_back(end_date.get_name_leafdata());
@@ -1002,9 +919,7 @@ const EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(
     if (start_seconds.is_set || is_set(start_seconds.yfilter)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
     if (start_year.is_set || is_set(start_year.yfilter)) leaf_name_data.push_back(start_year.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

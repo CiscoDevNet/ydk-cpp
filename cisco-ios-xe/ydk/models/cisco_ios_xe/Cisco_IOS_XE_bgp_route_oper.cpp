@@ -22,15 +22,15 @@ const Enum::YLeaf BgpRouteFilters::bgp_rf_extcommunity {7, "bgp-rf-extcommunity"
 const Enum::YLeaf BgpRouteFilters::bgp_rf_oer_controlled {8, "bgp-rf-oer-controlled"};
 const Enum::YLeaf BgpRouteFilters::bgp_rf_pending {9, "bgp-rf-pending"};
 
+const Enum::YLeaf BgpOriginCode::origin_igp {0, "origin-igp"};
+const Enum::YLeaf BgpOriginCode::origin_egp {1, "origin-egp"};
+const Enum::YLeaf BgpOriginCode::origin_incomplete {2, "origin-incomplete"};
+
 const Enum::YLeaf BgpRpkiStatus::rpki_valid {0, "rpki-valid"};
 const Enum::YLeaf BgpRpkiStatus::rpki_invalid {1, "rpki-invalid"};
 const Enum::YLeaf BgpRpkiStatus::rpki_not_found {2, "rpki-not-found"};
 const Enum::YLeaf BgpRpkiStatus::rpki_not_enabled {3, "rpki-not-enabled"};
 const Enum::YLeaf BgpRpkiStatus::rpki_illegal {4, "rpki-illegal"};
-
-const Enum::YLeaf BgpOriginCode::origin_igp {0, "origin-igp"};
-const Enum::YLeaf BgpOriginCode::origin_egp {1, "origin-egp"};
-const Enum::YLeaf BgpOriginCode::origin_incomplete {2, "origin-incomplete"};
 
 
 }

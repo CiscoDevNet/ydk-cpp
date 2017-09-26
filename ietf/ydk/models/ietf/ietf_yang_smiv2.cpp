@@ -14,6 +14,7 @@ namespace ietf_yang_smiv2 {
 ObjectIdentity::ObjectIdentity()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-smiv2", "ietf-yang-smiv2", "ietf-yang-smiv2:object-identity")
 {
+
 }
 
 ObjectIdentity::~ObjectIdentity()

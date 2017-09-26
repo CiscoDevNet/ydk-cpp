@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_flow_monitor_oper {
 
 FlowMonitors::FlowMonitors()
 {
-    yang_name = "flow-monitors"; yang_parent_name = "Cisco-IOS-XE-flow-monitor-oper";
+
+    yang_name = "flow-monitors"; yang_parent_name = "Cisco-IOS-XE-flow-monitor-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 FlowMonitors::~FlowMonitors()
@@ -44,26 +45,15 @@ std::string FlowMonitors::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-flow-monitor-oper:flow-monitors";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FlowMonitors::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FlowMonitors::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +138,7 @@ FlowMonitors::FlowMonitor::FlowMonitor()
 {
     flows->parent = this;
 
-    yang_name = "flow-monitor"; yang_parent_name = "flow-monitors";
+    yang_name = "flow-monitor"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 FlowMonitors::FlowMonitor::~FlowMonitor()
@@ -170,35 +160,28 @@ bool FlowMonitors::FlowMonitor::has_operation() const
 	|| (flows !=  nullptr && flows->has_operation());
 }
 
+std::string FlowMonitors::FlowMonitor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-flow-monitor-oper:flow-monitors/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string FlowMonitors::FlowMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-monitor" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FlowMonitors::FlowMonitor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-flow-monitor-oper:flow-monitors/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (time_collected.is_set || is_set(time_collected.yfilter)) leaf_name_data.push_back(time_collected.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -264,7 +247,8 @@ bool FlowMonitors::FlowMonitor::has_leaf_or_child_of_name(const std::string & na
 
 FlowMonitors::FlowMonitor::Flows::Flows()
 {
-    yang_name = "flows"; yang_parent_name = "flow-monitor";
+
+    yang_name = "flows"; yang_parent_name = "flow-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FlowMonitors::FlowMonitor::Flows::~Flows()
@@ -295,29 +279,15 @@ std::string FlowMonitors::FlowMonitor::Flows::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flows";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FlowMonitors::FlowMonitor::Flows::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::Flows::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flows' in Cisco_IOS_XE_flow_monitor_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -383,7 +353,8 @@ FlowMonitors::FlowMonitor::Flows::Flow::Flow()
     interface_output{YType::str, "interface-output"},
     packets{YType::int64, "packets"}
 {
-    yang_name = "flow"; yang_parent_name = "flows";
+
+    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FlowMonitors::FlowMonitor::Flows::Flow::~Flow()
@@ -427,23 +398,11 @@ std::string FlowMonitors::FlowMonitor::Flows::Flow::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[interface-input='" <<interface_input <<"']" <<"[is-multicast='" <<is_multicast <<"']" <<"[vrf-id-input='" <<vrf_id_input <<"']" <<"[source-port='" <<source_port <<"']" <<"[destination-port='" <<destination_port <<"']" <<"[ip-tos='" <<ip_tos <<"']" <<"[ip-protocol='" <<ip_protocol <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FlowMonitors::FlowMonitor::Flows::Flow::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::Flows::Flow::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Flow' in Cisco_IOS_XE_flow_monitor_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
@@ -459,9 +418,7 @@ const EntityPath FlowMonitors::FlowMonitor::Flows::Flow::get_entity_path(Entity*
     if (interface_output.is_set || is_set(interface_output.yfilter)) leaf_name_data.push_back(interface_output.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

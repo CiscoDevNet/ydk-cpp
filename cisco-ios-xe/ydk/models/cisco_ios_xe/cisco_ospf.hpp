@@ -18,11 +18,12 @@ class PrefixApplicability : public ydk::Enum
 
 };
 
-class AccessListInOutType : public ydk::Enum
+class OspfLogAdj : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf detail;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -34,12 +35,11 @@ class OspfExternalType : public ydk::Enum
 
 };
 
-class OspfLogAdj : public ydk::Enum
+class AccessListInOutType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf detail;
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 

@@ -28,10 +28,11 @@
 #ifndef CRUD_SERVICE_HPP
 #define CRUD_SERVICE_HPP
 
-#include <map>
 #include <memory>
-#include <string>
-#include "service.hpp"
+
+#include "path_api.hpp"
+#include "service_provider.hpp"
+
 
 namespace ydk
 {
@@ -39,25 +40,25 @@ namespace ydk
 namespace path
 {
 class DataNode;
-class ServiceProvider;
 }
 
 class Entity;
 
-class CrudService : public Service
+class CrudService
 {
     public:
         CrudService();
+        virtual ~CrudService();
 
-        bool create(path::ServiceProvider & provider, Entity & entity);
+        bool create(ydk::ServiceProvider & provider, Entity & entity);
 
-        bool update(path::ServiceProvider & provider, Entity & entity);
+        bool update(ydk::ServiceProvider & provider, Entity & entity);
 
-        bool delete_(path::ServiceProvider & provider, Entity & entity);
+        bool delete_(ydk::ServiceProvider & provider, Entity & entity);
 
-        std::shared_ptr<Entity> read(path::ServiceProvider & provider, Entity & filter);
+        std::shared_ptr<Entity> read(ydk::ServiceProvider & provider, Entity & filter);
 
-        std::shared_ptr<Entity> read_config(path::ServiceProvider & provider, Entity & filter);
+        std::shared_ptr<Entity> read_config(ydk::ServiceProvider & provider, Entity & filter);
 
     private:
         std::shared_ptr<Entity> read_datanode(Entity & filter, std::shared_ptr<path::DataNode> read_data_node);

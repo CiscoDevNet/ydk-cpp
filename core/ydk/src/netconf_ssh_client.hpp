@@ -46,8 +46,12 @@ public:
     static std::map<std::pair<std::string, std::string>, std::string> password_lookup;
 
 public:
-    NetconfSSHClient(std::string  username, std::string  password,
-            std::string  server_ip, int port);
+    NetconfSSHClient(
+        std::string  username, 
+        std::string  password,
+        std::string  server_ip, 
+        int port,
+        int timeout = -1);
 
     virtual ~NetconfSSHClient();
 
@@ -80,6 +84,7 @@ private:
     std::string username;
     std::string hostname;
     int port;
+    int timeout;
     std::vector<std::string> capabilities;
 };
 

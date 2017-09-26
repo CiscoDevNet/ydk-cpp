@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_CBP_TARGET_MIB {
 
-class CiscoCbpTargetMib : public ydk::Entity
+class CISCOCBPTARGETMIB : public ydk::Entity
 {
     public:
-        CiscoCbpTargetMib();
-        ~CiscoCbpTargetMib();
+        CISCOCBPTARGETMIB();
+        ~CISCOCBPTARGETMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,16 +32,16 @@ class CiscoCbpTargetMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ccbpttargetattachcfg; //type: CiscoCbpTargetMib::Ccbpttargetattachcfg
-        class Ccbpttargettable; //type: CiscoCbpTargetMib::Ccbpttargettable
+        class Ccbpttargetattachcfg; //type: CISCOCBPTARGETMIB::Ccbpttargetattachcfg
+        class Ccbpttargettable; //type: CISCOCBPTARGETMIB::Ccbpttargettable
 
-        std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargetattachcfg> ccbpttargetattachcfg;
-        std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargettable> ccbpttargettable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::Ccbpttargetattachcfg> ccbpttargetattachcfg;
+        std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::Ccbpttargettable> ccbpttargettable;
         
-}; // CiscoCbpTargetMib
+}; // CISCOCBPTARGETMIB
 
 
-class CiscoCbpTargetMib::Ccbpttargetattachcfg : public ydk::Entity
+class CISCOCBPTARGETMIB::Ccbpttargetattachcfg : public ydk::Entity
 {
     public:
         Ccbpttargetattachcfg();
@@ -49,21 +49,22 @@ class CiscoCbpTargetMib::Ccbpttargetattachcfg : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf ccbptpolicyidnext; //type: uint32
         ydk::YLeaf ccbpttargettablelastchange; //type: uint32
 
-}; // CiscoCbpTargetMib::Ccbpttargetattachcfg
+}; // CISCOCBPTARGETMIB::Ccbpttargetattachcfg
 
 
-class CiscoCbpTargetMib::Ccbpttargettable : public ydk::Entity
+class CISCOCBPTARGETMIB::Ccbpttargettable : public ydk::Entity
 {
     public:
         Ccbpttargettable();
@@ -71,22 +72,23 @@ class CiscoCbpTargetMib::Ccbpttargettable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Ccbpttargetentry; //type: CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry
+        class Ccbpttargetentry; //type: CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry
 
-        std::vector<std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry> > ccbpttargetentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry> > ccbpttargetentry;
         
-}; // CiscoCbpTargetMib::Ccbpttargettable
+}; // CISCOCBPTARGETMIB::Ccbpttargettable
 
 
-class CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry : public ydk::Entity
+class CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry : public ydk::Entity
 {
     public:
         Ccbpttargetentry();
@@ -94,26 +96,27 @@ class CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf ccbpttargettype; //type: Ccbpttargettype
+        ydk::YLeaf ccbpttargettype; //type: CcbptTargetType
         ydk::YLeaf ccbpttargetid; //type: binary
-        ydk::YLeaf ccbpttargetdir; //type: Ccbpttargetdirection
-        ydk::YLeaf ccbptpolicysourcetype; //type: Ccbptpolicysourcetype
+        ydk::YLeaf ccbpttargetdir; //type: CcbptTargetDirection
+        ydk::YLeaf ccbptpolicysourcetype; //type: CcbptPolicySourceType
         ydk::YLeaf ccbptpolicyid; //type: uint32
-        ydk::YLeaf ccbpttargetstatus; //type: Rowstatus
-        ydk::YLeaf ccbpttargetstoragetype; //type: Storagetype
+        ydk::YLeaf ccbpttargetstatus; //type: RowStatus
+        ydk::YLeaf ccbpttargetstoragetype; //type: StorageType
         ydk::YLeaf ccbptpolicymap; //type: string
         ydk::YLeaf ccbptpolicyinstance; //type: string
         ydk::YLeaf ccbptpolicyattachtime; //type: uint32
 
-}; // CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry
+}; // CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry
 
 
 }

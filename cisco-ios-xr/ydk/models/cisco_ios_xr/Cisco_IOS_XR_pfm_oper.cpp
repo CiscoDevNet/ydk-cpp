@@ -17,10 +17,9 @@ PlatformFaultManager::PlatformFaultManager()
 	,racks(std::make_shared<PlatformFaultManager::Racks>())
 {
     exclude->parent = this;
-
     racks->parent = this;
 
-    yang_name = "platform-fault-manager"; yang_parent_name = "Cisco-IOS-XR-pfm-oper";
+    yang_name = "platform-fault-manager"; yang_parent_name = "Cisco-IOS-XR-pfm-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PlatformFaultManager::~PlatformFaultManager()
@@ -44,26 +43,15 @@ std::string PlatformFaultManager::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -152,7 +140,7 @@ PlatformFaultManager::Exclude::Exclude()
 {
     fault_type1s->parent = this;
 
-    yang_name = "exclude"; yang_parent_name = "platform-fault-manager";
+    yang_name = "exclude"; yang_parent_name = "platform-fault-manager"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformFaultManager::Exclude::~Exclude()
@@ -170,33 +158,26 @@ bool PlatformFaultManager::Exclude::has_operation() const
 	|| (fault_type1s !=  nullptr && fault_type1s->has_operation());
 }
 
+std::string PlatformFaultManager::Exclude::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformFaultManager::Exclude::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "exclude";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,7 +223,8 @@ bool PlatformFaultManager::Exclude::has_leaf_or_child_of_name(const std::string 
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1S()
 {
-    yang_name = "fault-type1s"; yang_parent_name = "exclude";
+
+    yang_name = "fault-type1s"; yang_parent_name = "exclude"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::~FaultType1S()
@@ -269,33 +251,26 @@ bool PlatformFaultManager::Exclude::FaultType1S::has_operation() const
     return is_set(yfilter);
 }
 
+std::string PlatformFaultManager::Exclude::FaultType1S::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/exclude/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformFaultManager::Exclude::FaultType1S::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type1s";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/exclude/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -354,10 +329,9 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType1()
 	,racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks>())
 {
     fault_type2s->parent = this;
-
     racks->parent = this;
 
-    yang_name = "fault-type1"; yang_parent_name = "fault-type1s";
+    yang_name = "fault-type1"; yang_parent_name = "fault-type1s"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::~FaultType1()
@@ -379,34 +353,27 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::has_operation() con
 	|| (racks !=  nullptr && racks->has_operation());
 }
 
+std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/exclude/fault-type1s/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type1" <<"[hw-fault-type1='" <<hw_fault_type1 <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/exclude/fault-type1s/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type1.is_set || is_set(hw_fault_type1.yfilter)) leaf_name_data.push_back(hw_fault_type1.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -476,7 +443,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::has_leaf_or_child_o
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2S()
 {
-    yang_name = "fault-type2s"; yang_parent_name = "fault-type1";
+
+    yang_name = "fault-type2s"; yang_parent_name = "fault-type1"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::~FaultType2S()
@@ -507,29 +475,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type2s";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultType2S' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -588,10 +542,9 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
 	,racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks>())
 {
     fault_type3s->parent = this;
-
     racks->parent = this;
 
-    yang_name = "fault-type2"; yang_parent_name = "fault-type2s";
+    yang_name = "fault-type2"; yang_parent_name = "fault-type2s"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::~FaultType2()
@@ -617,30 +570,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type2" <<"[hw-fault-type2='" <<hw_fault_type2 <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultType2' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type2.is_set || is_set(hw_fault_type2.yfilter)) leaf_name_data.push_back(hw_fault_type2.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -710,7 +649,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3S()
 {
-    yang_name = "fault-type3s"; yang_parent_name = "fault-type2";
+
+    yang_name = "fault-type3s"; yang_parent_name = "fault-type2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::~FaultType3S()
@@ -741,29 +681,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type3s";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultType3S' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -822,7 +748,7 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
 {
     racks->parent = this;
 
-    yang_name = "fault-type3"; yang_parent_name = "fault-type3s";
+    yang_name = "fault-type3"; yang_parent_name = "fault-type3s"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::~FaultType3()
@@ -846,30 +772,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type3" <<"[hw-fault-type3='" <<hw_fault_type3 <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultType3' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type3.is_set || is_set(hw_fault_type3.yfilter)) leaf_name_data.push_back(hw_fault_type3.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -925,7 +837,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Racks()
 {
-    yang_name = "racks"; yang_parent_name = "fault-type3";
+
+    yang_name = "racks"; yang_parent_name = "fault-type3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::~Racks()
@@ -956,29 +869,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Racks' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1037,7 +936,7 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks";
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::~Rack()
@@ -1061,30 +960,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "rack" <<"[rack='" <<rack <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Rack' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1140,7 +1025,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slots()
 {
-    yang_name = "slots"; yang_parent_name = "rack";
+
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::~Slots()
@@ -1171,29 +1057,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slots' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1252,10 +1124,9 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
 	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
-
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots";
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::~Slot()
@@ -1281,30 +1152,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot='" <<slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1379,7 +1236,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     severity_error_count{YType::int32, "severity-error-count"},
     total{YType::int32, "total"}
 {
-    yang_name = "fault-summary"; yang_parent_name = "slot";
+
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
@@ -1407,23 +1265,11 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultSummary' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
@@ -1431,9 +1277,7 @@ const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultTy
     if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1505,7 +1349,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
 {
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot";
+
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
@@ -1536,29 +1381,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevices' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1613,7 +1444,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     :
     hw_fault_device{YType::str, "hw-fault-device"}
 {
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices";
+
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
@@ -1645,30 +1477,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevice' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_device.is_set || is_set(hw_fault_device.yfilter)) leaf_name_data.push_back(hw_fault_device.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1741,7 +1559,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     device_version{YType::int32, "device-version"},
     process_id{YType::int32, "process-id"}
 {
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device";
+
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
@@ -1779,23 +1598,11 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultType' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
@@ -1808,9 +1615,7 @@ const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultTy
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1932,7 +1737,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Racks()
 {
-    yang_name = "racks"; yang_parent_name = "fault-type2";
+
+    yang_name = "racks"; yang_parent_name = "fault-type2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::~Racks()
@@ -1963,29 +1769,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Racks' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2044,7 +1836,7 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks";
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::~Rack()
@@ -2068,30 +1860,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "rack" <<"[rack='" <<rack <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Rack' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2147,7 +1925,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slots()
 {
-    yang_name = "slots"; yang_parent_name = "rack";
+
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::~Slots()
@@ -2178,29 +1957,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slots' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2259,10 +2024,9 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
 	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
-
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots";
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::~Slot()
@@ -2288,30 +2052,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot='" <<slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2386,7 +2136,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     severity_error_count{YType::int32, "severity-error-count"},
     total{YType::int32, "total"}
 {
-    yang_name = "fault-summary"; yang_parent_name = "slot";
+
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
@@ -2414,23 +2165,11 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultSummary' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
@@ -2438,9 +2177,7 @@ const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultTy
     if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2512,7 +2249,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
 {
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot";
+
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
@@ -2543,29 +2281,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevices' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2620,7 +2344,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     :
     hw_fault_device{YType::str, "hw-fault-device"}
 {
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices";
+
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
@@ -2652,30 +2377,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevice' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_device.is_set || is_set(hw_fault_device.yfilter)) leaf_name_data.push_back(hw_fault_device.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2748,7 +2459,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     device_version{YType::int32, "device-version"},
     process_id{YType::int32, "process-id"}
 {
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device";
+
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
@@ -2786,23 +2498,11 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultType' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
@@ -2815,9 +2515,7 @@ const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultTy
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2939,7 +2637,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Racks()
 {
-    yang_name = "racks"; yang_parent_name = "fault-type1";
+
+    yang_name = "racks"; yang_parent_name = "fault-type1"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::~Racks()
@@ -2970,29 +2669,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Racks' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3051,7 +2736,7 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Rack()
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks";
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::~Rack()
@@ -3075,30 +2760,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "rack" <<"[rack='" <<rack <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Rack' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3154,7 +2825,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::has_le
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slots()
 {
-    yang_name = "slots"; yang_parent_name = "rack";
+
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::~Slots()
@@ -3185,29 +2857,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slots' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3266,10 +2924,9 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
 	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
-
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots";
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::~Slot()
@@ -3295,30 +2952,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot='" <<slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3393,7 +3036,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     severity_error_count{YType::int32, "severity-error-count"},
     total{YType::int32, "total"}
 {
-    yang_name = "fault-summary"; yang_parent_name = "slot";
+
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
@@ -3421,23 +3065,11 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultSummary' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
@@ -3445,9 +3077,7 @@ const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::
     if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3519,7 +3149,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
 {
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot";
+
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
@@ -3550,29 +3181,15 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevices' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3627,7 +3244,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     :
     hw_fault_device{YType::str, "hw-fault-device"}
 {
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices";
+
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
@@ -3659,30 +3277,16 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevice' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_device.is_set || is_set(hw_fault_device.yfilter)) leaf_name_data.push_back(hw_fault_device.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3755,7 +3359,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     device_version{YType::int32, "device-version"},
     process_id{YType::int32, "process-id"}
 {
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device";
+
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
@@ -3793,23 +3398,11 @@ std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack:
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultType' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
@@ -3822,9 +3415,7 @@ const EntityPath PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3946,7 +3537,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 
 PlatformFaultManager::Racks::Racks()
 {
-    yang_name = "racks"; yang_parent_name = "platform-fault-manager";
+
+    yang_name = "racks"; yang_parent_name = "platform-fault-manager"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformFaultManager::Racks::~Racks()
@@ -3973,33 +3565,26 @@ bool PlatformFaultManager::Racks::has_operation() const
     return is_set(yfilter);
 }
 
+std::string PlatformFaultManager::Racks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformFaultManager::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4058,7 +3643,7 @@ PlatformFaultManager::Racks::Rack::Rack()
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks";
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformFaultManager::Racks::Rack::~Rack()
@@ -4078,34 +3663,27 @@ bool PlatformFaultManager::Racks::Rack::has_operation() const
 	|| (slots !=  nullptr && slots->has_operation());
 }
 
+std::string PlatformFaultManager::Racks::Rack::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/racks/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformFaultManager::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rack" <<"[rack='" <<rack <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/racks/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4161,7 +3739,8 @@ bool PlatformFaultManager::Racks::Rack::has_leaf_or_child_of_name(const std::str
 
 PlatformFaultManager::Racks::Rack::Slots::Slots()
 {
-    yang_name = "slots"; yang_parent_name = "rack";
+
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Racks::Rack::Slots::~Slots()
@@ -4192,29 +3771,15 @@ std::string PlatformFaultManager::Racks::Rack::Slots::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::Slots::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slots' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4273,10 +3838,9 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::Slot()
 	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
-
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots";
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::~Slot()
@@ -4302,30 +3866,16 @@ std::string PlatformFaultManager::Racks::Rack::Slots::Slot::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot='" <<slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4400,7 +3950,8 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
     severity_error_count{YType::int32, "severity-error-count"},
     total{YType::int32, "total"}
 {
-    yang_name = "fault-summary"; yang_parent_name = "slot";
+
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
@@ -4428,23 +3979,11 @@ std::string PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FaultSummary' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
@@ -4452,9 +3991,7 @@ const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::g
     if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4526,7 +4063,8 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_c
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
 {
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot";
+
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
@@ -4557,29 +4095,15 @@ std::string PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevices' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4634,7 +4158,8 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFa
     :
     hw_fault_device{YType::str, "hw-fault-device"}
 {
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices";
+
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
@@ -4666,30 +4191,16 @@ std::string PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultDevice' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_device.is_set || is_set(hw_fault_device.yfilter)) leaf_name_data.push_back(hw_fault_device.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4762,7 +4273,8 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFa
     device_version{YType::int32, "device-version"},
     process_id{YType::int32, "process-id"}
 {
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device";
+
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
@@ -4800,23 +4312,11 @@ std::string PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HardwareFaultType' in Cisco_IOS_XR_pfm_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
@@ -4829,9 +4329,7 @@ const EntityPath PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDe
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

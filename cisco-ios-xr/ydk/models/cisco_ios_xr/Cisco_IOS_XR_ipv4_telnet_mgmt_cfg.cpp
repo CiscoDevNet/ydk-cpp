@@ -17,7 +17,7 @@ Telnet::Telnet()
 {
     vrfs->parent = this;
 
-    yang_name = "telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg";
+    yang_name = "telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Telnet::~Telnet()
@@ -39,26 +39,15 @@ std::string Telnet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg:telnet";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Telnet::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Telnet::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Telnet::has_leaf_or_child_of_name(const std::string & name) const
 
 Telnet::Vrfs::Vrfs()
 {
-    yang_name = "vrfs"; yang_parent_name = "telnet";
+
+    yang_name = "vrfs"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Telnet::Vrfs::~Vrfs()
@@ -156,33 +146,26 @@ bool Telnet::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Telnet::Vrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg:telnet/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Telnet::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Telnet::Vrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Telnet::Vrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg:telnet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ Telnet::Vrfs::Vrf::Vrf()
 {
     ipv4->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs";
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Telnet::Vrfs::Vrf::~Vrf()
@@ -261,34 +244,27 @@ bool Telnet::Vrfs::Vrf::has_operation() const
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
+std::string Telnet::Vrfs::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg:telnet/vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Telnet::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Telnet::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Telnet::Vrfs::Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg:telnet/vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -346,7 +322,8 @@ Telnet::Vrfs::Vrf::Ipv4::Ipv4()
     :
     dscp{YType::uint32, "dscp"}
 {
-    yang_name = "ipv4"; yang_parent_name = "vrf";
+
+    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Telnet::Vrfs::Vrf::Ipv4::~Ipv4()
@@ -368,30 +345,16 @@ std::string Telnet::Vrfs::Vrf::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Telnet::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Telnet::Vrfs::Vrf::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4' in Cisco_IOS_XR_ipv4_telnet_mgmt_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

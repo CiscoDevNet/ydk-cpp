@@ -17,7 +17,7 @@ FabricStats::FabricStats()
 {
     nodes->parent = this;
 
-    yang_name = "fabric-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-fsi-oper";
+    yang_name = "fabric-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-fsi-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 FabricStats::~FabricStats()
@@ -39,26 +39,15 @@ std::string FabricStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-asr9k-fsi-oper:fabric-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool FabricStats::has_leaf_or_child_of_name(const std::string & name) const
 
 FabricStats::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "fabric-stats";
+
+    yang_name = "nodes"; yang_parent_name = "fabric-stats"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 FabricStats::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool FabricStats::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string FabricStats::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-fsi-oper:fabric-stats/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string FabricStats::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-fsi-oper:fabric-stats/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ FabricStats::Nodes::Node::Node()
 {
     statses->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 FabricStats::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool FabricStats::Nodes::Node::has_operation() const
 	|| (statses !=  nullptr && statses->has_operation());
 }
 
+std::string FabricStats::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-fsi-oper:fabric-stats/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string FabricStats::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-fsi-oper:fabric-stats/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool FabricStats::Nodes::Node::has_leaf_or_child_of_name(const std::string & nam
 
 FabricStats::Nodes::Node::Statses::Statses()
 {
-    yang_name = "statses"; yang_parent_name = "node";
+
+    yang_name = "statses"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FabricStats::Nodes::Node::Statses::~Statses()
@@ -375,29 +352,15 @@ std::string FabricStats::Nodes::Node::Statses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::Nodes::Node::Statses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::Nodes::Node::Statses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statses' in Cisco_IOS_XR_asr9k_fsi_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -451,9 +414,11 @@ bool FabricStats::Nodes::Node::Statses::has_leaf_or_child_of_name(const std::str
 FabricStats::Nodes::Node::Statses::Stats::Stats()
     :
     type{YType::str, "type"},
+    last_clear_time{YType::uint64, "last-clear-time"},
     stat_table_name{YType::str, "stat-table-name"}
 {
-    yang_name = "stats"; yang_parent_name = "statses";
+
+    yang_name = "stats"; yang_parent_name = "statses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::~Stats()
@@ -468,6 +433,7 @@ bool FabricStats::Nodes::Node::Statses::Stats::has_data() const
             return true;
     }
     return type.is_set
+	|| last_clear_time.is_set
 	|| stat_table_name.is_set;
 }
 
@@ -480,6 +446,7 @@ bool FabricStats::Nodes::Node::Statses::Stats::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
 	|| ydk::is_set(stat_table_name.yfilter);
 }
 
@@ -487,31 +454,18 @@ std::string FabricStats::Nodes::Node::Statses::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats" <<"[type='" <<type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::Nodes::Node::Statses::Stats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::Nodes::Node::Statses::Stats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stats' in Cisco_IOS_XR_asr9k_fsi_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
     if (stat_table_name.is_set || is_set(stat_table_name.yfilter)) leaf_name_data.push_back(stat_table_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -555,6 +509,12 @@ void FabricStats::Nodes::Node::Statses::Stats::set_value(const std::string & val
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "stat-table-name")
     {
         stat_table_name = value;
@@ -569,6 +529,10 @@ void FabricStats::Nodes::Node::Statses::Stats::set_filter(const std::string & va
     {
         type.yfilter = yfilter;
     }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
     if(value_path == "stat-table-name")
     {
         stat_table_name.yfilter = yfilter;
@@ -577,14 +541,15 @@ void FabricStats::Nodes::Node::Statses::Stats::set_filter(const std::string & va
 
 bool FabricStats::Nodes::Node::Statses::Stats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "stats-table" || name == "type" || name == "stat-table-name")
+    if(name == "stats-table" || name == "type" || name == "last-clear-time" || name == "stat-table-name")
         return true;
     return false;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::StatsTable()
 {
-    yang_name = "stats-table"; yang_parent_name = "stats";
+
+    yang_name = "stats-table"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::~StatsTable()
@@ -615,29 +580,15 @@ std::string FabricStats::Nodes::Node::Statses::Stats::StatsTable::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "stats-table";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::Nodes::Node::Statses::Stats::StatsTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::Nodes::Node::Statses::Stats::StatsTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StatsTable' in Cisco_IOS_XR_asr9k_fsi_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -693,7 +644,8 @@ FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::FsiStat()
     count{YType::uint64, "count"},
     counter_name{YType::str, "counter-name"}
 {
-    yang_name = "fsi-stat"; yang_parent_name = "stats-table";
+
+    yang_name = "fsi-stat"; yang_parent_name = "stats-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::~FsiStat()
@@ -717,31 +669,17 @@ std::string FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "fsi-stat";
-
     return path_buffer.str();
-
 }
 
-const EntityPath FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FsiStat' in Cisco_IOS_XR_asr9k_fsi_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
     if (counter_name.is_set || is_set(counter_name.yfilter)) leaf_name_data.push_back(counter_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

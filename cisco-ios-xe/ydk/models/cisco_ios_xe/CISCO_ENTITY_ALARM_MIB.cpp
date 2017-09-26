@@ -11,41 +11,34 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_ENTITY_ALARM_MIB {
 
-CiscoEntityAlarmMib::CiscoEntityAlarmMib()
+CISCOENTITYALARMMIB::CISCOENTITYALARMMIB()
     :
-    cealarmdescrmaptable(std::make_shared<CiscoEntityAlarmMib::Cealarmdescrmaptable>())
-	,cealarmdescrtable(std::make_shared<CiscoEntityAlarmMib::Cealarmdescrtable>())
-	,cealarmfiltering(std::make_shared<CiscoEntityAlarmMib::Cealarmfiltering>())
-	,cealarmfilterprofiletable(std::make_shared<CiscoEntityAlarmMib::Cealarmfilterprofiletable>())
-	,cealarmhistory(std::make_shared<CiscoEntityAlarmMib::Cealarmhistory>())
-	,cealarmhisttable(std::make_shared<CiscoEntityAlarmMib::Cealarmhisttable>())
-	,cealarmmonitoring(std::make_shared<CiscoEntityAlarmMib::Cealarmmonitoring>())
-	,cealarmtable(std::make_shared<CiscoEntityAlarmMib::Cealarmtable>())
+    cealarmdescrmaptable(std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrmaptable>())
+	,cealarmdescrtable(std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrtable>())
+	,cealarmfiltering(std::make_shared<CISCOENTITYALARMMIB::Cealarmfiltering>())
+	,cealarmfilterprofiletable(std::make_shared<CISCOENTITYALARMMIB::Cealarmfilterprofiletable>())
+	,cealarmhistory(std::make_shared<CISCOENTITYALARMMIB::Cealarmhistory>())
+	,cealarmhisttable(std::make_shared<CISCOENTITYALARMMIB::Cealarmhisttable>())
+	,cealarmmonitoring(std::make_shared<CISCOENTITYALARMMIB::Cealarmmonitoring>())
+	,cealarmtable(std::make_shared<CISCOENTITYALARMMIB::Cealarmtable>())
 {
     cealarmdescrmaptable->parent = this;
-
     cealarmdescrtable->parent = this;
-
     cealarmfiltering->parent = this;
-
     cealarmfilterprofiletable->parent = this;
-
     cealarmhistory->parent = this;
-
     cealarmhisttable->parent = this;
-
     cealarmmonitoring->parent = this;
-
     cealarmtable->parent = this;
 
-    yang_name = "CISCO-ENTITY-ALARM-MIB"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
+    yang_name = "CISCO-ENTITY-ALARM-MIB"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::~CiscoEntityAlarmMib()
+CISCOENTITYALARMMIB::~CISCOENTITYALARMMIB()
 {
 }
 
-bool CiscoEntityAlarmMib::has_data() const
+bool CISCOENTITYALARMMIB::has_data() const
 {
     return (cealarmdescrmaptable !=  nullptr && cealarmdescrmaptable->has_data())
 	|| (cealarmdescrtable !=  nullptr && cealarmdescrtable->has_data())
@@ -57,7 +50,7 @@ bool CiscoEntityAlarmMib::has_data() const
 	|| (cealarmtable !=  nullptr && cealarmtable->has_data());
 }
 
-bool CiscoEntityAlarmMib::has_operation() const
+bool CISCOENTITYALARMMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cealarmdescrmaptable !=  nullptr && cealarmdescrmaptable->has_operation())
@@ -70,40 +63,29 @@ bool CiscoEntityAlarmMib::has_operation() const
 	|| (cealarmtable !=  nullptr && cealarmtable->has_operation());
 }
 
-std::string CiscoEntityAlarmMib::get_segment_path() const
+std::string CISCOENTITYALARMMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmDescrMapTable")
     {
         if(cealarmdescrmaptable == nullptr)
         {
-            cealarmdescrmaptable = std::make_shared<CiscoEntityAlarmMib::Cealarmdescrmaptable>();
+            cealarmdescrmaptable = std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrmaptable>();
         }
         return cealarmdescrmaptable;
     }
@@ -112,7 +94,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmdescrtable == nullptr)
         {
-            cealarmdescrtable = std::make_shared<CiscoEntityAlarmMib::Cealarmdescrtable>();
+            cealarmdescrtable = std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrtable>();
         }
         return cealarmdescrtable;
     }
@@ -121,7 +103,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmfiltering == nullptr)
         {
-            cealarmfiltering = std::make_shared<CiscoEntityAlarmMib::Cealarmfiltering>();
+            cealarmfiltering = std::make_shared<CISCOENTITYALARMMIB::Cealarmfiltering>();
         }
         return cealarmfiltering;
     }
@@ -130,7 +112,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmfilterprofiletable == nullptr)
         {
-            cealarmfilterprofiletable = std::make_shared<CiscoEntityAlarmMib::Cealarmfilterprofiletable>();
+            cealarmfilterprofiletable = std::make_shared<CISCOENTITYALARMMIB::Cealarmfilterprofiletable>();
         }
         return cealarmfilterprofiletable;
     }
@@ -139,7 +121,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmhistory == nullptr)
         {
-            cealarmhistory = std::make_shared<CiscoEntityAlarmMib::Cealarmhistory>();
+            cealarmhistory = std::make_shared<CISCOENTITYALARMMIB::Cealarmhistory>();
         }
         return cealarmhistory;
     }
@@ -148,7 +130,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmhisttable == nullptr)
         {
-            cealarmhisttable = std::make_shared<CiscoEntityAlarmMib::Cealarmhisttable>();
+            cealarmhisttable = std::make_shared<CISCOENTITYALARMMIB::Cealarmhisttable>();
         }
         return cealarmhisttable;
     }
@@ -157,7 +139,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmmonitoring == nullptr)
         {
-            cealarmmonitoring = std::make_shared<CiscoEntityAlarmMib::Cealarmmonitoring>();
+            cealarmmonitoring = std::make_shared<CISCOENTITYALARMMIB::Cealarmmonitoring>();
         }
         return cealarmmonitoring;
     }
@@ -166,7 +148,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     {
         if(cealarmtable == nullptr)
         {
-            cealarmtable = std::make_shared<CiscoEntityAlarmMib::Cealarmtable>();
+            cealarmtable = std::make_shared<CISCOENTITYALARMMIB::Cealarmtable>();
         }
         return cealarmtable;
     }
@@ -174,7 +156,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cealarmdescrmaptable != nullptr)
@@ -220,407 +202,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::get_children
     return children;
 }
 
-void CiscoEntityAlarmMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEntityAlarmMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoEntityAlarmMib>();
+    return std::make_shared<CISCOENTITYALARMMIB>();
 }
 
-std::string CiscoEntityAlarmMib::get_bundle_yang_models_location() const
+std::string CISCOENTITYALARMMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoEntityAlarmMib::get_bundle_name() const
+std::string CISCOENTITYALARMMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoEntityAlarmMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOENTITYALARMMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoEntityAlarmMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOENTITYALARMMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoEntityAlarmMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmDescrMapTable" || name == "ceAlarmDescrTable" || name == "ceAlarmFiltering" || name == "ceAlarmFilterProfileTable" || name == "ceAlarmHistory" || name == "ceAlarmHistTable" || name == "ceAlarmMonitoring" || name == "ceAlarmTable")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmmonitoring::Cealarmmonitoring()
-    :
-    cealarmcriticalcount{YType::uint32, "ceAlarmCriticalCount"},
-    cealarmcutoff{YType::boolean, "ceAlarmCutOff"},
-    cealarmmajorcount{YType::uint32, "ceAlarmMajorCount"},
-    cealarmminorcount{YType::uint32, "ceAlarmMinorCount"}
+CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmaptable()
 {
-    yang_name = "ceAlarmMonitoring"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
+
+    yang_name = "ceAlarmDescrMapTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmmonitoring::~Cealarmmonitoring()
+CISCOENTITYALARMMIB::Cealarmdescrmaptable::~Cealarmdescrmaptable()
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmmonitoring::has_data() const
-{
-    return cealarmcriticalcount.is_set
-	|| cealarmcutoff.is_set
-	|| cealarmmajorcount.is_set
-	|| cealarmminorcount.is_set;
-}
-
-bool CiscoEntityAlarmMib::Cealarmmonitoring::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cealarmcriticalcount.yfilter)
-	|| ydk::is_set(cealarmcutoff.yfilter)
-	|| ydk::is_set(cealarmmajorcount.yfilter)
-	|| ydk::is_set(cealarmminorcount.yfilter);
-}
-
-std::string CiscoEntityAlarmMib::Cealarmmonitoring::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceAlarmMonitoring";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEntityAlarmMib::Cealarmmonitoring::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cealarmcriticalcount.is_set || is_set(cealarmcriticalcount.yfilter)) leaf_name_data.push_back(cealarmcriticalcount.get_name_leafdata());
-    if (cealarmcutoff.is_set || is_set(cealarmcutoff.yfilter)) leaf_name_data.push_back(cealarmcutoff.get_name_leafdata());
-    if (cealarmmajorcount.is_set || is_set(cealarmmajorcount.yfilter)) leaf_name_data.push_back(cealarmmajorcount.get_name_leafdata());
-    if (cealarmminorcount.is_set || is_set(cealarmminorcount.yfilter)) leaf_name_data.push_back(cealarmminorcount.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmmonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmmonitoring::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoEntityAlarmMib::Cealarmmonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ceAlarmCriticalCount")
-    {
-        cealarmcriticalcount = value;
-        cealarmcriticalcount.value_namespace = name_space;
-        cealarmcriticalcount.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmCutOff")
-    {
-        cealarmcutoff = value;
-        cealarmcutoff.value_namespace = name_space;
-        cealarmcutoff.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmMajorCount")
-    {
-        cealarmmajorcount = value;
-        cealarmmajorcount.value_namespace = name_space;
-        cealarmmajorcount.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmMinorCount")
-    {
-        cealarmminorcount = value;
-        cealarmminorcount.value_namespace = name_space;
-        cealarmminorcount.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoEntityAlarmMib::Cealarmmonitoring::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ceAlarmCriticalCount")
-    {
-        cealarmcriticalcount.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmCutOff")
-    {
-        cealarmcutoff.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmMajorCount")
-    {
-        cealarmmajorcount.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmMinorCount")
-    {
-        cealarmminorcount.yfilter = yfilter;
-    }
-}
-
-bool CiscoEntityAlarmMib::Cealarmmonitoring::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceAlarmCriticalCount" || name == "ceAlarmCutOff" || name == "ceAlarmMajorCount" || name == "ceAlarmMinorCount")
-        return true;
-    return false;
-}
-
-CiscoEntityAlarmMib::Cealarmhistory::Cealarmhistory()
-    :
-    cealarmhistlastindex{YType::uint32, "ceAlarmHistLastIndex"},
-    cealarmhisttablesize{YType::int32, "ceAlarmHistTableSize"}
-{
-    yang_name = "ceAlarmHistory"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
-}
-
-CiscoEntityAlarmMib::Cealarmhistory::~Cealarmhistory()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmhistory::has_data() const
-{
-    return cealarmhistlastindex.is_set
-	|| cealarmhisttablesize.is_set;
-}
-
-bool CiscoEntityAlarmMib::Cealarmhistory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cealarmhistlastindex.yfilter)
-	|| ydk::is_set(cealarmhisttablesize.yfilter);
-}
-
-std::string CiscoEntityAlarmMib::Cealarmhistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceAlarmHistory";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEntityAlarmMib::Cealarmhistory::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cealarmhistlastindex.is_set || is_set(cealarmhistlastindex.yfilter)) leaf_name_data.push_back(cealarmhistlastindex.get_name_leafdata());
-    if (cealarmhisttablesize.is_set || is_set(cealarmhisttablesize.yfilter)) leaf_name_data.push_back(cealarmhisttablesize.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmhistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoEntityAlarmMib::Cealarmhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ceAlarmHistLastIndex")
-    {
-        cealarmhistlastindex = value;
-        cealarmhistlastindex.value_namespace = name_space;
-        cealarmhistlastindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmHistTableSize")
-    {
-        cealarmhisttablesize = value;
-        cealarmhisttablesize.value_namespace = name_space;
-        cealarmhisttablesize.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoEntityAlarmMib::Cealarmhistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ceAlarmHistLastIndex")
-    {
-        cealarmhistlastindex.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmHistTableSize")
-    {
-        cealarmhisttablesize.yfilter = yfilter;
-    }
-}
-
-bool CiscoEntityAlarmMib::Cealarmhistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceAlarmHistLastIndex" || name == "ceAlarmHistTableSize")
-        return true;
-    return false;
-}
-
-CiscoEntityAlarmMib::Cealarmfiltering::Cealarmfiltering()
-    :
-    cealarmfilterprofileindexnext{YType::uint32, "ceAlarmFilterProfileIndexNext"},
-    cealarmnotifiesenable{YType::int32, "ceAlarmNotifiesEnable"},
-    cealarmsyslogenable{YType::int32, "ceAlarmSyslogEnable"}
-{
-    yang_name = "ceAlarmFiltering"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
-}
-
-CiscoEntityAlarmMib::Cealarmfiltering::~Cealarmfiltering()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmfiltering::has_data() const
-{
-    return cealarmfilterprofileindexnext.is_set
-	|| cealarmnotifiesenable.is_set
-	|| cealarmsyslogenable.is_set;
-}
-
-bool CiscoEntityAlarmMib::Cealarmfiltering::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cealarmfilterprofileindexnext.yfilter)
-	|| ydk::is_set(cealarmnotifiesenable.yfilter)
-	|| ydk::is_set(cealarmsyslogenable.yfilter);
-}
-
-std::string CiscoEntityAlarmMib::Cealarmfiltering::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceAlarmFiltering";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEntityAlarmMib::Cealarmfiltering::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cealarmfilterprofileindexnext.is_set || is_set(cealarmfilterprofileindexnext.yfilter)) leaf_name_data.push_back(cealarmfilterprofileindexnext.get_name_leafdata());
-    if (cealarmnotifiesenable.is_set || is_set(cealarmnotifiesenable.yfilter)) leaf_name_data.push_back(cealarmnotifiesenable.get_name_leafdata());
-    if (cealarmsyslogenable.is_set || is_set(cealarmsyslogenable.yfilter)) leaf_name_data.push_back(cealarmsyslogenable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmfiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmfiltering::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoEntityAlarmMib::Cealarmfiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ceAlarmFilterProfileIndexNext")
-    {
-        cealarmfilterprofileindexnext = value;
-        cealarmfilterprofileindexnext.value_namespace = name_space;
-        cealarmfilterprofileindexnext.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmNotifiesEnable")
-    {
-        cealarmnotifiesenable = value;
-        cealarmnotifiesenable.value_namespace = name_space;
-        cealarmnotifiesenable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmSyslogEnable")
-    {
-        cealarmsyslogenable = value;
-        cealarmsyslogenable.value_namespace = name_space;
-        cealarmsyslogenable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoEntityAlarmMib::Cealarmfiltering::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ceAlarmFilterProfileIndexNext")
-    {
-        cealarmfilterprofileindexnext.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmNotifiesEnable")
-    {
-        cealarmnotifiesenable.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmSyslogEnable")
-    {
-        cealarmsyslogenable.yfilter = yfilter;
-    }
-}
-
-bool CiscoEntityAlarmMib::Cealarmfiltering::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceAlarmFilterProfileIndexNext" || name == "ceAlarmNotifiesEnable" || name == "ceAlarmSyslogEnable")
-        return true;
-    return false;
-}
-
-CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmaptable()
-{
-    yang_name = "ceAlarmDescrMapTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
-}
-
-CiscoEntityAlarmMib::Cealarmdescrmaptable::~Cealarmdescrmaptable()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmdescrmaptable::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmdescrmaptable::has_data() const
 {
     for (std::size_t index=0; index<cealarmdescrmapentry.size(); index++)
     {
@@ -630,7 +262,7 @@ bool CiscoEntityAlarmMib::Cealarmdescrmaptable::has_data() const
     return false;
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrmaptable::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmdescrmaptable::has_operation() const
 {
     for (std::size_t index=0; index<cealarmdescrmapentry.size(); index++)
     {
@@ -640,37 +272,30 @@ bool CiscoEntityAlarmMib::Cealarmdescrmaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmdescrmaptable::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceAlarmDescrMapTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmdescrmaptable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmDescrMapEntry")
     {
@@ -682,7 +307,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrmaptable::get_child_by_
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry>();
+        auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry>();
         c->parent = this;
         cealarmdescrmapentry.push_back(c);
         return c;
@@ -691,7 +316,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrmaptable::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmdescrmaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cealarmdescrmapentry)
@@ -702,90 +327,84 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmdescr
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmdescrmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmdescrmaptable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrmaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmdescrmaptable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmDescrMapEntry")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::Cealarmdescrmapentry()
+CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::Cealarmdescrmapentry()
     :
     cealarmdescrindex{YType::uint32, "ceAlarmDescrIndex"},
     cealarmdescrvendortype{YType::str, "ceAlarmDescrVendorType"}
 {
-    yang_name = "ceAlarmDescrMapEntry"; yang_parent_name = "ceAlarmDescrMapTable";
+
+    yang_name = "ceAlarmDescrMapEntry"; yang_parent_name = "ceAlarmDescrMapTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::~Cealarmdescrmapentry()
+CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::~Cealarmdescrmapentry()
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::has_data() const
 {
     return cealarmdescrindex.is_set
 	|| cealarmdescrvendortype.is_set;
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cealarmdescrindex.yfilter)
 	|| ydk::is_set(cealarmdescrvendortype.yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmDescrMapTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceAlarmDescrMapEntry" <<"[ceAlarmDescrIndex='" <<cealarmdescrindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmDescrMapTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cealarmdescrindex.is_set || is_set(cealarmdescrindex.yfilter)) leaf_name_data.push_back(cealarmdescrindex.get_name_leafdata());
     if (cealarmdescrvendortype.is_set || is_set(cealarmdescrvendortype.yfilter)) leaf_name_data.push_back(cealarmdescrvendortype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceAlarmDescrIndex")
     {
@@ -801,7 +420,7 @@ void CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::set_value(
     }
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ceAlarmDescrIndex")
     {
@@ -813,23 +432,24 @@ void CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::set_filter
     }
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmDescrIndex" || name == "ceAlarmDescrVendorType")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrtable()
+CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrtable()
 {
-    yang_name = "ceAlarmDescrTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
+
+    yang_name = "ceAlarmDescrTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmdescrtable::~Cealarmdescrtable()
+CISCOENTITYALARMMIB::Cealarmdescrtable::~Cealarmdescrtable()
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrtable::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmdescrtable::has_data() const
 {
     for (std::size_t index=0; index<cealarmdescrentry.size(); index++)
     {
@@ -839,7 +459,7 @@ bool CiscoEntityAlarmMib::Cealarmdescrtable::has_data() const
     return false;
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrtable::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmdescrtable::has_operation() const
 {
     for (std::size_t index=0; index<cealarmdescrentry.size(); index++)
     {
@@ -849,37 +469,30 @@ bool CiscoEntityAlarmMib::Cealarmdescrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmdescrtable::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmdescrtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmdescrtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceAlarmDescrTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmdescrtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmdescrtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmDescrEntry")
     {
@@ -891,7 +504,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrtable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry>();
+        auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry>();
         c->parent = this;
         cealarmdescrentry.push_back(c);
         return c;
@@ -900,7 +513,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrtable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmdescrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cealarmdescrentry)
@@ -911,36 +524,37 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmdescr
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmdescrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmdescrtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmdescrtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmDescrEntry")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::Cealarmdescrentry()
+CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::Cealarmdescrentry()
     :
     cealarmdescrindex{YType::str, "ceAlarmDescrIndex"},
     cealarmdescralarmtype{YType::int32, "ceAlarmDescrAlarmType"},
     cealarmdescrseverity{YType::int32, "ceAlarmDescrSeverity"},
     cealarmdescrtext{YType::str, "ceAlarmDescrText"}
 {
-    yang_name = "ceAlarmDescrEntry"; yang_parent_name = "ceAlarmDescrTable";
+
+    yang_name = "ceAlarmDescrEntry"; yang_parent_name = "ceAlarmDescrTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::~Cealarmdescrentry()
+CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::~Cealarmdescrentry()
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::has_data() const
 {
     return cealarmdescrindex.is_set
 	|| cealarmdescralarmtype.is_set
@@ -948,7 +562,7 @@ bool CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::has_data() const
 	|| cealarmdescrtext.is_set;
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cealarmdescrindex.yfilter)
@@ -957,27 +571,22 @@ bool CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::has_operation() 
 	|| ydk::is_set(cealarmdescrtext.yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmDescrTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceAlarmDescrEntry" <<"[ceAlarmDescrIndex='" <<cealarmdescrindex <<"']" <<"[ceAlarmDescrAlarmType='" <<cealarmdescralarmtype <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmDescrTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cealarmdescrindex.is_set || is_set(cealarmdescrindex.yfilter)) leaf_name_data.push_back(cealarmdescrindex.get_name_leafdata());
@@ -985,24 +594,22 @@ const EntityPath CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::get_
     if (cealarmdescrseverity.is_set || is_set(cealarmdescrseverity.yfilter)) leaf_name_data.push_back(cealarmdescrseverity.get_name_leafdata());
     if (cealarmdescrtext.is_set || is_set(cealarmdescrtext.yfilter)) leaf_name_data.push_back(cealarmdescrtext.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceAlarmDescrIndex")
     {
@@ -1030,7 +637,7 @@ void CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::set_value(const 
     }
 }
 
-void CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ceAlarmDescrIndex")
     {
@@ -1050,525 +657,135 @@ void CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::set_filter(const
     }
 }
 
-bool CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmDescrIndex" || name == "ceAlarmDescrAlarmType" || name == "ceAlarmDescrSeverity" || name == "ceAlarmDescrText")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmtable::Cealarmtable()
-{
-    yang_name = "ceAlarmTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
-}
-
-CiscoEntityAlarmMib::Cealarmtable::~Cealarmtable()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmtable::has_data() const
-{
-    for (std::size_t index=0; index<cealarmentry.size(); index++)
-    {
-        if(cealarmentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoEntityAlarmMib::Cealarmtable::has_operation() const
-{
-    for (std::size_t index=0; index<cealarmentry.size(); index++)
-    {
-        if(cealarmentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoEntityAlarmMib::Cealarmtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceAlarmTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEntityAlarmMib::Cealarmtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ceAlarmEntry")
-    {
-        for(auto const & c : cealarmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoEntityAlarmMib::Cealarmtable::Cealarmentry>();
-        c->parent = this;
-        cealarmentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cealarmentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoEntityAlarmMib::Cealarmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoEntityAlarmMib::Cealarmtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceAlarmEntry")
-        return true;
-    return false;
-}
-
-CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::Cealarmentry()
+CISCOENTITYALARMMIB::Cealarmfiltering::Cealarmfiltering()
     :
-    entphysicalindex{YType::str, "entPhysicalIndex"},
-    cealarmfilterprofile{YType::uint32, "ceAlarmFilterProfile"},
-    cealarmlist{YType::str, "ceAlarmList"},
-    cealarmseverity{YType::int32, "ceAlarmSeverity"}
+    cealarmfilterprofileindexnext{YType::uint32, "ceAlarmFilterProfileIndexNext"},
+    cealarmnotifiesenable{YType::int32, "ceAlarmNotifiesEnable"},
+    cealarmsyslogenable{YType::int32, "ceAlarmSyslogEnable"}
 {
-    yang_name = "ceAlarmEntry"; yang_parent_name = "ceAlarmTable";
+
+    yang_name = "ceAlarmFiltering"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::~Cealarmentry()
+CISCOENTITYALARMMIB::Cealarmfiltering::~Cealarmfiltering()
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmfiltering::has_data() const
 {
-    return entphysicalindex.is_set
-	|| cealarmfilterprofile.is_set
-	|| cealarmlist.is_set
-	|| cealarmseverity.is_set;
+    return cealarmfilterprofileindexnext.is_set
+	|| cealarmnotifiesenable.is_set
+	|| cealarmsyslogenable.is_set;
 }
 
-bool CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmfiltering::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(entphysicalindex.yfilter)
-	|| ydk::is_set(cealarmfilterprofile.yfilter)
-	|| ydk::is_set(cealarmlist.yfilter)
-	|| ydk::is_set(cealarmseverity.yfilter);
+	|| ydk::is_set(cealarmfilterprofileindexnext.yfilter)
+	|| ydk::is_set(cealarmnotifiesenable.yfilter)
+	|| ydk::is_set(cealarmsyslogenable.yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmfiltering::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ceAlarmEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
-
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::get_entity_path(Entity* ancestor) const
+std::string CISCOENTITYALARMMIB::Cealarmfiltering::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "ceAlarmFiltering";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmfiltering::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cealarmfilterprofile.is_set || is_set(cealarmfilterprofile.yfilter)) leaf_name_data.push_back(cealarmfilterprofile.get_name_leafdata());
-    if (cealarmlist.is_set || is_set(cealarmlist.yfilter)) leaf_name_data.push_back(cealarmlist.get_name_leafdata());
-    if (cealarmseverity.is_set || is_set(cealarmseverity.yfilter)) leaf_name_data.push_back(cealarmseverity.get_name_leafdata());
+    if (cealarmfilterprofileindexnext.is_set || is_set(cealarmfilterprofileindexnext.yfilter)) leaf_name_data.push_back(cealarmfilterprofileindexnext.get_name_leafdata());
+    if (cealarmnotifiesenable.is_set || is_set(cealarmnotifiesenable.yfilter)) leaf_name_data.push_back(cealarmnotifiesenable.get_name_leafdata());
+    if (cealarmsyslogenable.is_set || is_set(cealarmsyslogenable.yfilter)) leaf_name_data.push_back(cealarmsyslogenable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmfiltering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmfiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "entPhysicalIndex")
+    if(value_path == "ceAlarmFilterProfileIndexNext")
     {
-        entphysicalindex = value;
-        entphysicalindex.value_namespace = name_space;
-        entphysicalindex.value_namespace_prefix = name_space_prefix;
+        cealarmfilterprofileindexnext = value;
+        cealarmfilterprofileindexnext.value_namespace = name_space;
+        cealarmfilterprofileindexnext.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ceAlarmFilterProfile")
+    if(value_path == "ceAlarmNotifiesEnable")
     {
-        cealarmfilterprofile = value;
-        cealarmfilterprofile.value_namespace = name_space;
-        cealarmfilterprofile.value_namespace_prefix = name_space_prefix;
+        cealarmnotifiesenable = value;
+        cealarmnotifiesenable.value_namespace = name_space;
+        cealarmnotifiesenable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ceAlarmList")
+    if(value_path == "ceAlarmSyslogEnable")
     {
-        cealarmlist = value;
-        cealarmlist.value_namespace = name_space;
-        cealarmlist.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmSeverity")
-    {
-        cealarmseverity = value;
-        cealarmseverity.value_namespace = name_space;
-        cealarmseverity.value_namespace_prefix = name_space_prefix;
+        cealarmsyslogenable = value;
+        cealarmsyslogenable.value_namespace = name_space;
+        cealarmsyslogenable.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmfiltering::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "entPhysicalIndex")
+    if(value_path == "ceAlarmFilterProfileIndexNext")
     {
-        entphysicalindex.yfilter = yfilter;
+        cealarmfilterprofileindexnext.yfilter = yfilter;
     }
-    if(value_path == "ceAlarmFilterProfile")
+    if(value_path == "ceAlarmNotifiesEnable")
     {
-        cealarmfilterprofile.yfilter = yfilter;
+        cealarmnotifiesenable.yfilter = yfilter;
     }
-    if(value_path == "ceAlarmList")
+    if(value_path == "ceAlarmSyslogEnable")
     {
-        cealarmlist.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmSeverity")
-    {
-        cealarmseverity.yfilter = yfilter;
+        cealarmsyslogenable.yfilter = yfilter;
     }
 }
 
-bool CiscoEntityAlarmMib::Cealarmtable::Cealarmentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmfiltering::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "entPhysicalIndex" || name == "ceAlarmFilterProfile" || name == "ceAlarmList" || name == "ceAlarmSeverity")
+    if(name == "ceAlarmFilterProfileIndexNext" || name == "ceAlarmNotifiesEnable" || name == "ceAlarmSyslogEnable")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhisttable()
+CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofiletable()
 {
-    yang_name = "ceAlarmHistTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
+
+    yang_name = "ceAlarmFilterProfileTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmhisttable::~Cealarmhisttable()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmhisttable::has_data() const
-{
-    for (std::size_t index=0; index<cealarmhistentry.size(); index++)
-    {
-        if(cealarmhistentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoEntityAlarmMib::Cealarmhisttable::has_operation() const
-{
-    for (std::size_t index=0; index<cealarmhistentry.size(); index++)
-    {
-        if(cealarmhistentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoEntityAlarmMib::Cealarmhisttable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceAlarmHistTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEntityAlarmMib::Cealarmhisttable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmhisttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ceAlarmHistEntry")
-    {
-        for(auto const & c : cealarmhistentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry>();
-        c->parent = this;
-        cealarmhistentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmhisttable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cealarmhistentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoEntityAlarmMib::Cealarmhisttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCOENTITYALARMMIB::Cealarmfilterprofiletable::~Cealarmfilterprofiletable()
 {
 }
 
-void CiscoEntityAlarmMib::Cealarmhisttable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmhisttable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceAlarmHistEntry")
-        return true;
-    return false;
-}
-
-CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::Cealarmhistentry()
-    :
-    cealarmhistindex{YType::uint32, "ceAlarmHistIndex"},
-    cealarmhistalarmtype{YType::int32, "ceAlarmHistAlarmType"},
-    cealarmhistentphysicalindex{YType::int32, "ceAlarmHistEntPhysicalIndex"},
-    cealarmhistseverity{YType::enumeration, "ceAlarmHistSeverity"},
-    cealarmhisttimestamp{YType::uint32, "ceAlarmHistTimeStamp"},
-    cealarmhisttype{YType::enumeration, "ceAlarmHistType"}
-{
-    yang_name = "ceAlarmHistEntry"; yang_parent_name = "ceAlarmHistTable";
-}
-
-CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::~Cealarmhistentry()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::has_data() const
-{
-    return cealarmhistindex.is_set
-	|| cealarmhistalarmtype.is_set
-	|| cealarmhistentphysicalindex.is_set
-	|| cealarmhistseverity.is_set
-	|| cealarmhisttimestamp.is_set
-	|| cealarmhisttype.is_set;
-}
-
-bool CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cealarmhistindex.yfilter)
-	|| ydk::is_set(cealarmhistalarmtype.yfilter)
-	|| ydk::is_set(cealarmhistentphysicalindex.yfilter)
-	|| ydk::is_set(cealarmhistseverity.yfilter)
-	|| ydk::is_set(cealarmhisttimestamp.yfilter)
-	|| ydk::is_set(cealarmhisttype.yfilter);
-}
-
-std::string CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceAlarmHistEntry" <<"[ceAlarmHistIndex='" <<cealarmhistindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmHistTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cealarmhistindex.is_set || is_set(cealarmhistindex.yfilter)) leaf_name_data.push_back(cealarmhistindex.get_name_leafdata());
-    if (cealarmhistalarmtype.is_set || is_set(cealarmhistalarmtype.yfilter)) leaf_name_data.push_back(cealarmhistalarmtype.get_name_leafdata());
-    if (cealarmhistentphysicalindex.is_set || is_set(cealarmhistentphysicalindex.yfilter)) leaf_name_data.push_back(cealarmhistentphysicalindex.get_name_leafdata());
-    if (cealarmhistseverity.is_set || is_set(cealarmhistseverity.yfilter)) leaf_name_data.push_back(cealarmhistseverity.get_name_leafdata());
-    if (cealarmhisttimestamp.is_set || is_set(cealarmhisttimestamp.yfilter)) leaf_name_data.push_back(cealarmhisttimestamp.get_name_leafdata());
-    if (cealarmhisttype.is_set || is_set(cealarmhisttype.yfilter)) leaf_name_data.push_back(cealarmhisttype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ceAlarmHistIndex")
-    {
-        cealarmhistindex = value;
-        cealarmhistindex.value_namespace = name_space;
-        cealarmhistindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmHistAlarmType")
-    {
-        cealarmhistalarmtype = value;
-        cealarmhistalarmtype.value_namespace = name_space;
-        cealarmhistalarmtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmHistEntPhysicalIndex")
-    {
-        cealarmhistentphysicalindex = value;
-        cealarmhistentphysicalindex.value_namespace = name_space;
-        cealarmhistentphysicalindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmHistSeverity")
-    {
-        cealarmhistseverity = value;
-        cealarmhistseverity.value_namespace = name_space;
-        cealarmhistseverity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmHistTimeStamp")
-    {
-        cealarmhisttimestamp = value;
-        cealarmhisttimestamp.value_namespace = name_space;
-        cealarmhisttimestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceAlarmHistType")
-    {
-        cealarmhisttype = value;
-        cealarmhisttype.value_namespace = name_space;
-        cealarmhisttype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ceAlarmHistIndex")
-    {
-        cealarmhistindex.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmHistAlarmType")
-    {
-        cealarmhistalarmtype.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmHistEntPhysicalIndex")
-    {
-        cealarmhistentphysicalindex.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmHistSeverity")
-    {
-        cealarmhistseverity.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmHistTimeStamp")
-    {
-        cealarmhisttimestamp.yfilter = yfilter;
-    }
-    if(value_path == "ceAlarmHistType")
-    {
-        cealarmhisttype.yfilter = yfilter;
-    }
-}
-
-bool CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceAlarmHistIndex" || name == "ceAlarmHistAlarmType" || name == "ceAlarmHistEntPhysicalIndex" || name == "ceAlarmHistSeverity" || name == "ceAlarmHistTimeStamp" || name == "ceAlarmHistType")
-        return true;
-    return false;
-}
-
-CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofiletable()
-{
-    yang_name = "ceAlarmFilterProfileTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB";
-}
-
-CiscoEntityAlarmMib::Cealarmfilterprofiletable::~Cealarmfilterprofiletable()
-{
-}
-
-bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::has_data() const
 {
     for (std::size_t index=0; index<cealarmfilterprofileentry.size(); index++)
     {
@@ -1578,7 +795,7 @@ bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::has_data() const
     return false;
 }
 
-bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::has_operation() const
 {
     for (std::size_t index=0; index<cealarmfilterprofileentry.size(); index++)
     {
@@ -1588,37 +805,30 @@ bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmfilterprofiletable::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceAlarmFilterProfileTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmfilterprofiletable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmfilterprofiletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmFilterProfileEntry")
     {
@@ -1630,7 +840,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmfilterprofiletable::get_chil
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry>();
+        auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry>();
         c->parent = this;
         cealarmfilterprofileentry.push_back(c);
         return c;
@@ -1639,7 +849,7 @@ std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmfilterprofiletable::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmfilterprofiletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cealarmfilterprofileentry)
@@ -1650,22 +860,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmfilte
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmfilterprofiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmfilterprofiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEntityAlarmMib::Cealarmfilterprofiletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmfilterprofiletable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmFilterProfileEntry")
         return true;
     return false;
 }
 
-CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::Cealarmfilterprofileentry()
+CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::Cealarmfilterprofileentry()
     :
     cealarmfilterindex{YType::uint32, "ceAlarmFilterIndex"},
     cealarmfilteralarmsenabled{YType::str, "ceAlarmFilterAlarmsEnabled"},
@@ -1674,14 +884,15 @@ CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::Ceala
     cealarmfilterstatus{YType::enumeration, "ceAlarmFilterStatus"},
     cealarmfiltersyslogenabled{YType::str, "ceAlarmFilterSyslogEnabled"}
 {
-    yang_name = "ceAlarmFilterProfileEntry"; yang_parent_name = "ceAlarmFilterProfileTable";
+
+    yang_name = "ceAlarmFilterProfileEntry"; yang_parent_name = "ceAlarmFilterProfileTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::~Cealarmfilterprofileentry()
+CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::~Cealarmfilterprofileentry()
 {
 }
 
-bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::has_data() const
+bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::has_data() const
 {
     return cealarmfilterindex.is_set
 	|| cealarmfilteralarmsenabled.is_set
@@ -1691,7 +902,7 @@ bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::
 	|| cealarmfiltersyslogenabled.is_set;
 }
 
-bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::has_operation() const
+bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cealarmfilterindex.yfilter)
@@ -1702,27 +913,22 @@ bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::
 	|| ydk::is_set(cealarmfiltersyslogenabled.yfilter);
 }
 
-std::string CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_segment_path() const
+std::string CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmFilterProfileTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceAlarmFilterProfileEntry" <<"[ceAlarmFilterIndex='" <<cealarmfilterindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmFilterProfileTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cealarmfilterindex.is_set || is_set(cealarmfilterindex.yfilter)) leaf_name_data.push_back(cealarmfilterindex.get_name_leafdata());
@@ -1732,24 +938,22 @@ const EntityPath CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterpr
     if (cealarmfilterstatus.is_set || is_set(cealarmfilterstatus.yfilter)) leaf_name_data.push_back(cealarmfilterstatus.get_name_leafdata());
     if (cealarmfiltersyslogenabled.is_set || is_set(cealarmfiltersyslogenabled.yfilter)) leaf_name_data.push_back(cealarmfiltersyslogenabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceAlarmFilterIndex")
     {
@@ -1789,7 +993,7 @@ void CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::
     }
 }
 
-void CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ceAlarmFilterIndex")
     {
@@ -1817,20 +1021,720 @@ void CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::
     }
 }
 
-bool CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceAlarmFilterIndex" || name == "ceAlarmFilterAlarmsEnabled" || name == "ceAlarmFilterAlias" || name == "ceAlarmFilterNotifiesEnabled" || name == "ceAlarmFilterStatus" || name == "ceAlarmFilterSyslogEnabled")
         return true;
     return false;
 }
 
-const Enum::YLeaf Alarmseverity::critical {1, "critical"};
-const Enum::YLeaf Alarmseverity::major {2, "major"};
-const Enum::YLeaf Alarmseverity::minor {3, "minor"};
-const Enum::YLeaf Alarmseverity::info {4, "info"};
+CISCOENTITYALARMMIB::Cealarmhistory::Cealarmhistory()
+    :
+    cealarmhistlastindex{YType::uint32, "ceAlarmHistLastIndex"},
+    cealarmhisttablesize{YType::int32, "ceAlarmHistTableSize"}
+{
 
-const Enum::YLeaf CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::Cealarmhisttype::asserted {1, "asserted"};
-const Enum::YLeaf CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry::Cealarmhisttype::cleared {2, "cleared"};
+    yang_name = "ceAlarmHistory"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYALARMMIB::Cealarmhistory::~Cealarmhistory()
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhistory::has_data() const
+{
+    return cealarmhistlastindex.is_set
+	|| cealarmhisttablesize.is_set;
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cealarmhistlastindex.yfilter)
+	|| ydk::is_set(cealarmhisttablesize.yfilter);
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmhistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmhistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceAlarmHistory";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmhistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cealarmhistlastindex.is_set || is_set(cealarmhistlastindex.yfilter)) leaf_name_data.push_back(cealarmhistlastindex.get_name_leafdata());
+    if (cealarmhisttablesize.is_set || is_set(cealarmhisttablesize.yfilter)) leaf_name_data.push_back(cealarmhisttablesize.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmhistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOENTITYALARMMIB::Cealarmhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ceAlarmHistLastIndex")
+    {
+        cealarmhistlastindex = value;
+        cealarmhistlastindex.value_namespace = name_space;
+        cealarmhistlastindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmHistTableSize")
+    {
+        cealarmhisttablesize = value;
+        cealarmhisttablesize.value_namespace = name_space;
+        cealarmhisttablesize.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOENTITYALARMMIB::Cealarmhistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ceAlarmHistLastIndex")
+    {
+        cealarmhistlastindex.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmHistTableSize")
+    {
+        cealarmhisttablesize.yfilter = yfilter;
+    }
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceAlarmHistLastIndex" || name == "ceAlarmHistTableSize")
+        return true;
+    return false;
+}
+
+CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhisttable()
+{
+
+    yang_name = "ceAlarmHistTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYALARMMIB::Cealarmhisttable::~Cealarmhisttable()
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhisttable::has_data() const
+{
+    for (std::size_t index=0; index<cealarmhistentry.size(); index++)
+    {
+        if(cealarmhistentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhisttable::has_operation() const
+{
+    for (std::size_t index=0; index<cealarmhistentry.size(); index++)
+    {
+        if(cealarmhistentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmhisttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmhisttable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceAlarmHistTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmhisttable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhisttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ceAlarmHistEntry")
+    {
+        for(auto const & c : cealarmhistentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry>();
+        c->parent = this;
+        cealarmhistentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmhisttable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cealarmhistentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOENTITYALARMMIB::Cealarmhisttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOENTITYALARMMIB::Cealarmhisttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhisttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceAlarmHistEntry")
+        return true;
+    return false;
+}
+
+CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::Cealarmhistentry()
+    :
+    cealarmhistindex{YType::uint32, "ceAlarmHistIndex"},
+    cealarmhistalarmtype{YType::int32, "ceAlarmHistAlarmType"},
+    cealarmhistentphysicalindex{YType::int32, "ceAlarmHistEntPhysicalIndex"},
+    cealarmhistseverity{YType::enumeration, "ceAlarmHistSeverity"},
+    cealarmhisttimestamp{YType::uint32, "ceAlarmHistTimeStamp"},
+    cealarmhisttype{YType::enumeration, "ceAlarmHistType"}
+{
+
+    yang_name = "ceAlarmHistEntry"; yang_parent_name = "ceAlarmHistTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::~Cealarmhistentry()
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::has_data() const
+{
+    return cealarmhistindex.is_set
+	|| cealarmhistalarmtype.is_set
+	|| cealarmhistentphysicalindex.is_set
+	|| cealarmhistseverity.is_set
+	|| cealarmhisttimestamp.is_set
+	|| cealarmhisttype.is_set;
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cealarmhistindex.yfilter)
+	|| ydk::is_set(cealarmhistalarmtype.yfilter)
+	|| ydk::is_set(cealarmhistentphysicalindex.yfilter)
+	|| ydk::is_set(cealarmhistseverity.yfilter)
+	|| ydk::is_set(cealarmhisttimestamp.yfilter)
+	|| ydk::is_set(cealarmhisttype.yfilter);
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmHistTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceAlarmHistEntry" <<"[ceAlarmHistIndex='" <<cealarmhistindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cealarmhistindex.is_set || is_set(cealarmhistindex.yfilter)) leaf_name_data.push_back(cealarmhistindex.get_name_leafdata());
+    if (cealarmhistalarmtype.is_set || is_set(cealarmhistalarmtype.yfilter)) leaf_name_data.push_back(cealarmhistalarmtype.get_name_leafdata());
+    if (cealarmhistentphysicalindex.is_set || is_set(cealarmhistentphysicalindex.yfilter)) leaf_name_data.push_back(cealarmhistentphysicalindex.get_name_leafdata());
+    if (cealarmhistseverity.is_set || is_set(cealarmhistseverity.yfilter)) leaf_name_data.push_back(cealarmhistseverity.get_name_leafdata());
+    if (cealarmhisttimestamp.is_set || is_set(cealarmhisttimestamp.yfilter)) leaf_name_data.push_back(cealarmhisttimestamp.get_name_leafdata());
+    if (cealarmhisttype.is_set || is_set(cealarmhisttype.yfilter)) leaf_name_data.push_back(cealarmhisttype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ceAlarmHistIndex")
+    {
+        cealarmhistindex = value;
+        cealarmhistindex.value_namespace = name_space;
+        cealarmhistindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmHistAlarmType")
+    {
+        cealarmhistalarmtype = value;
+        cealarmhistalarmtype.value_namespace = name_space;
+        cealarmhistalarmtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmHistEntPhysicalIndex")
+    {
+        cealarmhistentphysicalindex = value;
+        cealarmhistentphysicalindex.value_namespace = name_space;
+        cealarmhistentphysicalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmHistSeverity")
+    {
+        cealarmhistseverity = value;
+        cealarmhistseverity.value_namespace = name_space;
+        cealarmhistseverity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmHistTimeStamp")
+    {
+        cealarmhisttimestamp = value;
+        cealarmhisttimestamp.value_namespace = name_space;
+        cealarmhisttimestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmHistType")
+    {
+        cealarmhisttype = value;
+        cealarmhisttype.value_namespace = name_space;
+        cealarmhisttype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ceAlarmHistIndex")
+    {
+        cealarmhistindex.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmHistAlarmType")
+    {
+        cealarmhistalarmtype.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmHistEntPhysicalIndex")
+    {
+        cealarmhistentphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmHistSeverity")
+    {
+        cealarmhistseverity.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmHistTimeStamp")
+    {
+        cealarmhisttimestamp.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmHistType")
+    {
+        cealarmhisttype.yfilter = yfilter;
+    }
+}
+
+bool CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceAlarmHistIndex" || name == "ceAlarmHistAlarmType" || name == "ceAlarmHistEntPhysicalIndex" || name == "ceAlarmHistSeverity" || name == "ceAlarmHistTimeStamp" || name == "ceAlarmHistType")
+        return true;
+    return false;
+}
+
+CISCOENTITYALARMMIB::Cealarmmonitoring::Cealarmmonitoring()
+    :
+    cealarmcriticalcount{YType::uint32, "ceAlarmCriticalCount"},
+    cealarmcutoff{YType::boolean, "ceAlarmCutOff"},
+    cealarmmajorcount{YType::uint32, "ceAlarmMajorCount"},
+    cealarmminorcount{YType::uint32, "ceAlarmMinorCount"}
+{
+
+    yang_name = "ceAlarmMonitoring"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYALARMMIB::Cealarmmonitoring::~Cealarmmonitoring()
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmmonitoring::has_data() const
+{
+    return cealarmcriticalcount.is_set
+	|| cealarmcutoff.is_set
+	|| cealarmmajorcount.is_set
+	|| cealarmminorcount.is_set;
+}
+
+bool CISCOENTITYALARMMIB::Cealarmmonitoring::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cealarmcriticalcount.yfilter)
+	|| ydk::is_set(cealarmcutoff.yfilter)
+	|| ydk::is_set(cealarmmajorcount.yfilter)
+	|| ydk::is_set(cealarmminorcount.yfilter);
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmmonitoring::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmmonitoring::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceAlarmMonitoring";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmmonitoring::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cealarmcriticalcount.is_set || is_set(cealarmcriticalcount.yfilter)) leaf_name_data.push_back(cealarmcriticalcount.get_name_leafdata());
+    if (cealarmcutoff.is_set || is_set(cealarmcutoff.yfilter)) leaf_name_data.push_back(cealarmcutoff.get_name_leafdata());
+    if (cealarmmajorcount.is_set || is_set(cealarmmajorcount.yfilter)) leaf_name_data.push_back(cealarmmajorcount.get_name_leafdata());
+    if (cealarmminorcount.is_set || is_set(cealarmminorcount.yfilter)) leaf_name_data.push_back(cealarmminorcount.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmmonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmmonitoring::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOENTITYALARMMIB::Cealarmmonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ceAlarmCriticalCount")
+    {
+        cealarmcriticalcount = value;
+        cealarmcriticalcount.value_namespace = name_space;
+        cealarmcriticalcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmCutOff")
+    {
+        cealarmcutoff = value;
+        cealarmcutoff.value_namespace = name_space;
+        cealarmcutoff.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmMajorCount")
+    {
+        cealarmmajorcount = value;
+        cealarmmajorcount.value_namespace = name_space;
+        cealarmmajorcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmMinorCount")
+    {
+        cealarmminorcount = value;
+        cealarmminorcount.value_namespace = name_space;
+        cealarmminorcount.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOENTITYALARMMIB::Cealarmmonitoring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ceAlarmCriticalCount")
+    {
+        cealarmcriticalcount.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmCutOff")
+    {
+        cealarmcutoff.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmMajorCount")
+    {
+        cealarmmajorcount.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmMinorCount")
+    {
+        cealarmminorcount.yfilter = yfilter;
+    }
+}
+
+bool CISCOENTITYALARMMIB::Cealarmmonitoring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceAlarmCriticalCount" || name == "ceAlarmCutOff" || name == "ceAlarmMajorCount" || name == "ceAlarmMinorCount")
+        return true;
+    return false;
+}
+
+CISCOENTITYALARMMIB::Cealarmtable::Cealarmtable()
+{
+
+    yang_name = "ceAlarmTable"; yang_parent_name = "CISCO-ENTITY-ALARM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYALARMMIB::Cealarmtable::~Cealarmtable()
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmtable::has_data() const
+{
+    for (std::size_t index=0; index<cealarmentry.size(); index++)
+    {
+        if(cealarmentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOENTITYALARMMIB::Cealarmtable::has_operation() const
+{
+    for (std::size_t index=0; index<cealarmentry.size(); index++)
+    {
+        if(cealarmentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceAlarmTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ceAlarmEntry")
+    {
+        for(auto const & c : cealarmentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry>();
+        c->parent = this;
+        cealarmentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cealarmentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOENTITYALARMMIB::Cealarmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOENTITYALARMMIB::Cealarmtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceAlarmEntry")
+        return true;
+    return false;
+}
+
+CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::Cealarmentry()
+    :
+    entphysicalindex{YType::str, "entPhysicalIndex"},
+    cealarmfilterprofile{YType::uint32, "ceAlarmFilterProfile"},
+    cealarmlist{YType::str, "ceAlarmList"},
+    cealarmseverity{YType::int32, "ceAlarmSeverity"}
+{
+
+    yang_name = "ceAlarmEntry"; yang_parent_name = "ceAlarmTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::~Cealarmentry()
+{
+}
+
+bool CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::has_data() const
+{
+    return entphysicalindex.is_set
+	|| cealarmfilterprofile.is_set
+	|| cealarmlist.is_set
+	|| cealarmseverity.is_set;
+}
+
+bool CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cealarmfilterprofile.yfilter)
+	|| ydk::is_set(cealarmlist.yfilter)
+	|| ydk::is_set(cealarmseverity.yfilter);
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-ALARM-MIB:CISCO-ENTITY-ALARM-MIB/ceAlarmTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceAlarmEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cealarmfilterprofile.is_set || is_set(cealarmfilterprofile.yfilter)) leaf_name_data.push_back(cealarmfilterprofile.get_name_leafdata());
+    if (cealarmlist.is_set || is_set(cealarmlist.yfilter)) leaf_name_data.push_back(cealarmlist.get_name_leafdata());
+    if (cealarmseverity.is_set || is_set(cealarmseverity.yfilter)) leaf_name_data.push_back(cealarmseverity.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmFilterProfile")
+    {
+        cealarmfilterprofile = value;
+        cealarmfilterprofile.value_namespace = name_space;
+        cealarmfilterprofile.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmList")
+    {
+        cealarmlist = value;
+        cealarmlist.value_namespace = name_space;
+        cealarmlist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceAlarmSeverity")
+    {
+        cealarmseverity = value;
+        cealarmseverity.value_namespace = name_space;
+        cealarmseverity.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmFilterProfile")
+    {
+        cealarmfilterprofile.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmList")
+    {
+        cealarmlist.yfilter = yfilter;
+    }
+    if(value_path == "ceAlarmSeverity")
+    {
+        cealarmseverity.yfilter = yfilter;
+    }
+}
+
+bool CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceAlarmFilterProfile" || name == "ceAlarmList" || name == "ceAlarmSeverity")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf AlarmSeverity::critical {1, "critical"};
+const Enum::YLeaf AlarmSeverity::major {2, "major"};
+const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
+const Enum::YLeaf AlarmSeverity::info {4, "info"};
+
+const Enum::YLeaf CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::Cealarmhisttype::asserted {1, "asserted"};
+const Enum::YLeaf CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::Cealarmhisttype::cleared {2, "cleared"};
 
 
 }

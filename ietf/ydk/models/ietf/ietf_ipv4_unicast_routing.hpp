@@ -12,7 +12,7 @@
 namespace ietf {
 namespace ietf_ipv4_unicast_routing {
 
-class Ipv4Unicast : public ietf_routing::Ipv4, virtual ydk::Identity
+class Ipv4Unicast : public ietf::ietf_routing::Ipv4, virtual ydk::Identity
 {
     public:
         Ipv4Unicast();

@@ -17,16 +17,16 @@ Grpc::Grpc()
     enable{YType::empty, "enable"},
     max_request_per_user{YType::uint32, "max-request-per-user"},
     max_request_total{YType::uint32, "max-request-total"},
-    port{YType::uint32, "port"}
+    port{YType::uint32, "port"},
+    vrf{YType::str, "vrf"}
     	,
     service_layer(std::make_shared<Grpc::ServiceLayer>())
 	,tls(std::make_shared<Grpc::Tls>())
 {
     service_layer->parent = this;
-
     tls->parent = this;
 
-    yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-cfg";
+    yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Grpc::~Grpc()
@@ -40,6 +40,7 @@ bool Grpc::has_data() const
 	|| max_request_per_user.is_set
 	|| max_request_total.is_set
 	|| port.is_set
+	|| vrf.is_set
 	|| (service_layer !=  nullptr && service_layer->has_data())
 	|| (tls !=  nullptr && tls->has_data());
 }
@@ -52,6 +53,7 @@ bool Grpc::has_operation() const
 	|| ydk::is_set(max_request_per_user.yfilter)
 	|| ydk::is_set(max_request_total.yfilter)
 	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (service_layer !=  nullptr && service_layer->has_operation())
 	|| (tls !=  nullptr && tls->has_operation());
 }
@@ -60,20 +62,11 @@ std::string Grpc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-ems-cfg:grpc";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grpc::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grpc::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
@@ -81,10 +74,9 @@ const EntityPath Grpc::get_entity_path(Entity* ancestor) const
     if (max_request_per_user.is_set || is_set(max_request_per_user.yfilter)) leaf_name_data.push_back(max_request_per_user.get_name_leafdata());
     if (max_request_total.is_set || is_set(max_request_total.yfilter)) leaf_name_data.push_back(max_request_total.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -159,6 +151,12 @@ void Grpc::set_value(const std::string & value_path, const std::string & value, 
         port.value_namespace = name_space;
         port.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Grpc::set_filter(const std::string & value_path, YFilter yfilter)
@@ -182,6 +180,10 @@ void Grpc::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "port")
     {
         port.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
     }
 }
 
@@ -212,7 +214,7 @@ std::map<std::pair<std::string, std::string>, std::string> Grpc::get_namespace_i
 
 bool Grpc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "service-layer" || name == "tls" || name == "address-family" || name == "enable" || name == "max-request-per-user" || name == "max-request-total" || name == "port")
+    if(name == "service-layer" || name == "tls" || name == "address-family" || name == "enable" || name == "max-request-per-user" || name == "max-request-total" || name == "port" || name == "vrf")
         return true;
     return false;
 }
@@ -221,7 +223,8 @@ Grpc::ServiceLayer::ServiceLayer()
     :
     enable{YType::empty, "enable"}
 {
-    yang_name = "service-layer"; yang_parent_name = "grpc";
+
+    yang_name = "service-layer"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Grpc::ServiceLayer::~ServiceLayer()
@@ -239,34 +242,27 @@ bool Grpc::ServiceLayer::has_operation() const
 	|| ydk::is_set(enable.yfilter);
 }
 
+std::string Grpc::ServiceLayer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-ems-cfg:grpc/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Grpc::ServiceLayer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service-layer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grpc::ServiceLayer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grpc::ServiceLayer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-ems-cfg:grpc/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -311,7 +307,8 @@ Grpc::Tls::Tls()
     enable{YType::empty, "enable"},
     trustpoint{YType::str, "trustpoint"}
 {
-    yang_name = "tls"; yang_parent_name = "grpc";
+
+    yang_name = "tls"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Grpc::Tls::~Tls()
@@ -331,35 +328,28 @@ bool Grpc::Tls::has_operation() const
 	|| ydk::is_set(trustpoint.yfilter);
 }
 
+std::string Grpc::Tls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-ems-cfg:grpc/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Grpc::Tls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tls";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Grpc::Tls::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Grpc::Tls::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-ems-cfg:grpc/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (trustpoint.is_set || is_set(trustpoint.yfilter)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

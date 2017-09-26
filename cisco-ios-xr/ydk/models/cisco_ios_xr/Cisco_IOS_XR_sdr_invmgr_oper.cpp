@@ -17,7 +17,7 @@ SdrInventory::SdrInventory()
 {
     racks->parent = this;
 
-    yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-oper";
+    yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SdrInventory::~SdrInventory()
@@ -39,26 +39,15 @@ std::string SdrInventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sdr-invmgr-oper:sdr-inventory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SdrInventory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SdrInventory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool SdrInventory::has_leaf_or_child_of_name(const std::string & name) const
 
 SdrInventory::Racks::Racks()
 {
-    yang_name = "racks"; yang_parent_name = "sdr-inventory";
+
+    yang_name = "racks"; yang_parent_name = "sdr-inventory"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SdrInventory::Racks::~Racks()
@@ -156,33 +146,26 @@ bool SdrInventory::Racks::has_operation() const
     return is_set(yfilter);
 }
 
+std::string SdrInventory::Racks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sdr-invmgr-oper:sdr-inventory/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SdrInventory::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SdrInventory::Racks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-sdr-invmgr-oper:sdr-inventory/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -237,7 +220,8 @@ SdrInventory::Racks::Rack::Rack()
     :
     name{YType::str, "name"}
 {
-    yang_name = "rack"; yang_parent_name = "racks";
+
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SdrInventory::Racks::Rack::~Rack()
@@ -265,34 +249,27 @@ bool SdrInventory::Racks::Rack::has_operation() const
 	|| ydk::is_set(name.yfilter);
 }
 
+std::string SdrInventory::Racks::Rack::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sdr-invmgr-oper:sdr-inventory/racks/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SdrInventory::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rack" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SdrInventory::Racks::Rack::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-sdr-invmgr-oper:sdr-inventory/racks/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -357,7 +334,8 @@ SdrInventory::Racks::Rack::Slot::Slot()
     :
     name{YType::str, "name"}
 {
-    yang_name = "slot"; yang_parent_name = "rack";
+
+    yang_name = "slot"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SdrInventory::Racks::Rack::Slot::~Slot()
@@ -389,30 +367,16 @@ std::string SdrInventory::Racks::Rack::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SdrInventory::Racks::Rack::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_sdr_invmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -481,7 +445,7 @@ SdrInventory::Racks::Rack::Slot::Card::Card()
 {
     attributes->parent = this;
 
-    yang_name = "card"; yang_parent_name = "slot";
+    yang_name = "card"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SdrInventory::Racks::Rack::Slot::Card::~Card()
@@ -505,30 +469,16 @@ std::string SdrInventory::Racks::Rack::Slot::Card::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "card" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SdrInventory::Racks::Rack::Slot::Card::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::Card::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Card' in Cisco_IOS_XR_sdr_invmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -584,22 +534,23 @@ bool SdrInventory::Racks::Rack::Slot::Card::has_leaf_or_child_of_name(const std:
 
 SdrInventory::Racks::Rack::Slot::Card::Attributes::Attributes()
     :
-    card_admin_state{YType::int32, "card-admin-state"},
-    card_state{YType::int32, "card-state"},
+    card_admin_state{YType::uint32, "card-admin-state"},
+    card_state{YType::uint32, "card-state"},
     card_state_string{YType::str, "card-state-string"},
-    card_type{YType::int32, "card-type"},
+    card_type{YType::uint32, "card-type"},
     card_type_string{YType::str, "card-type-string"},
-    config_state{YType::int32, "config-state"},
+    config_state{YType::uint32, "config-state"},
     config_state_string{YType::str, "config-state-string"},
-    ctype{YType::int32, "ctype"},
-    monitor{YType::int32, "monitor"},
+    ctype{YType::uint32, "ctype"},
+    monitor{YType::uint32, "monitor"},
     node_name_string{YType::str, "node-name-string"},
-    pi_slot_number{YType::int32, "pi-slot-number"},
-    power{YType::int32, "power"},
-    shutdown{YType::int32, "shutdown"},
-    vm_state{YType::int32, "vm-state"}
+    pi_slot_number{YType::uint32, "pi-slot-number"},
+    power{YType::uint32, "power"},
+    shutdown{YType::uint32, "shutdown"},
+    vm_state{YType::uint32, "vm-state"}
 {
-    yang_name = "attributes"; yang_parent_name = "card";
+
+    yang_name = "attributes"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SdrInventory::Racks::Rack::Slot::Card::Attributes::~Attributes()
@@ -647,23 +598,11 @@ std::string SdrInventory::Racks::Rack::Slot::Card::Attributes::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "attributes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SdrInventory::Racks::Rack::Slot::Card::Attributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::Card::Attributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Attributes' in Cisco_IOS_XR_sdr_invmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_admin_state.is_set || is_set(card_admin_state.yfilter)) leaf_name_data.push_back(card_admin_state.get_name_leafdata());
@@ -681,9 +620,7 @@ const EntityPath SdrInventory::Racks::Rack::Slot::Card::Attributes::get_entity_p
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
     if (vm_state.is_set || is_set(vm_state.yfilter)) leaf_name_data.push_back(vm_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

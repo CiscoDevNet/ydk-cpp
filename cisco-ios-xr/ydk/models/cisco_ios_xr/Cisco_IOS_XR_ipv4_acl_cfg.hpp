@@ -19,7 +19,7 @@ class Ipv4AclAndPrefixList : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -36,9 +36,9 @@ class Ipv4AclAndPrefixList : public ydk::Entity
         class Prefixes; //type: Ipv4AclAndPrefixList::Prefixes
         class LogUpdate; //type: Ipv4AclAndPrefixList::LogUpdate
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses> accesses;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::LogUpdate> log_update;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes> prefixes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses> accesses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::LogUpdate> log_update;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes> prefixes;
         
 }; // Ipv4AclAndPrefixList
 
@@ -51,17 +51,18 @@ class Ipv4AclAndPrefixList::Accesses : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Access; //type: Ipv4AclAndPrefixList::Accesses::Access
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access> > access;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access> > access;
         
 }; // Ipv4AclAndPrefixList::Accesses
 
@@ -74,18 +75,19 @@ class Ipv4AclAndPrefixList::Accesses::Access : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf access_list_name; //type: string
         class AccessListEntries; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries> access_list_entries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries> access_list_entries;
         
 }; // Ipv4AclAndPrefixList::Accesses::Access
 
@@ -98,7 +100,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -108,7 +110,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries : public ydk::En
 
         class AccessListEntry; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
         
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries
 
@@ -121,7 +123,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -132,15 +134,17 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf grant; //type: Ipv4AclGrantEnum
         ydk::YLeaf protocol_operator; //type: Ipv4AclOperatorEnum
-        ydk::YLeaf protocol; //type: one of uint32, enumeration
-        ydk::YLeaf protocol2; //type: one of uint32, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint32
+        ydk::YLeaf protocol2; //type: one of enumeration, uint32
+        ydk::YLeaf fragment_type; //type: Ipv4AclFragFlags
         ydk::YLeaf counter_name; //type: string
-        ydk::YLeaf igmp_message_type; //type: one of uint32, enumeration
-        ydk::YLeaf precedence; //type: one of uint32, enumeration
+        ydk::YLeaf igmp_message_type; //type: one of enumeration, uint32
+        ydk::YLeaf precedence; //type: one of enumeration, uint32
         ydk::YLeaf log_option; //type: Ipv4AclLoggingEnum
         ydk::YLeaf capture; //type: boolean
         ydk::YLeaf icmp_off; //type: empty
         ydk::YLeaf qos_group; //type: uint32
+        ydk::YLeaf set_ttl; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf remark; //type: string
         ydk::YLeaf source_prefix_group; //type: string
@@ -160,42 +164,19 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         class NextHop; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop
         class Dscp; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork> destination_network;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort> destination_port;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp> dscp;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::FragmentOffset> fragment_offset;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp> icmp;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop> next_hop;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength> packet_length;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork> source_network;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort> source_port;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp> tcp;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive> time_to_live;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork> destination_network;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort> destination_port;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp> dscp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::FragmentOffset> fragment_offset;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp> icmp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop> next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength> packet_length;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork> source_network;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort> source_port;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp> tcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive> time_to_live;
         
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
-
-
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork : public ydk::Entity
-{
-    public:
-        SourceNetwork();
-        ~SourceNetwork();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_wild_card_bits; //type: string
-        ydk::YLeaf source_prefix_length; //type: uint8
-
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork
 
 
 class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork : public ydk::Entity
@@ -206,7 +187,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -221,29 +202,6 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork
 
 
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort : public ydk::Entity
-{
-    public:
-        SourcePort();
-        ~SourcePort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_operator; //type: Ipv4AclOperatorEnum
-        ydk::YLeaf first_source_port; //type: one of uint32, enumeration
-        ydk::YLeaf second_source_port; //type: one of uint32, enumeration
-
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort
-
-
 class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort : public ydk::Entity
 {
     public:
@@ -252,7 +210,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -261,21 +219,21 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf destination_operator; //type: Ipv4AclOperatorEnum
-        ydk::YLeaf first_destination_port; //type: one of uint32, enumeration
-        ydk::YLeaf second_destination_port; //type: one of uint32, enumeration
+        ydk::YLeaf first_destination_port; //type: one of enumeration, uint32
+        ydk::YLeaf second_destination_port; //type: one of enumeration, uint32
 
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort
 
 
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp : public ydk::Entity
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp : public ydk::Entity
 {
     public:
-        Icmp();
-        ~Icmp();
+        Dscp();
+        ~Dscp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -283,78 +241,11 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf icmp_type_code; //type: Ipv4AclIcmpTypeCodeEnum
+        ydk::YLeaf dscp_operator; //type: Ipv4AclOperatorEnum
+        ydk::YLeaf dscp_min; //type: one of enumeration, uint32
+        ydk::YLeaf dscp_max; //type: one of enumeration, uint32
 
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp
-
-
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp : public ydk::Entity
-{
-    public:
-        Tcp();
-        ~Tcp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tcp_bits_match_operator; //type: Ipv4AclTcpMatchOperatorEnum
-        ydk::YLeaf tcp_bits; //type: one of uint32, enumeration
-        ydk::YLeaf tcp_bits_mask; //type: one of uint32, enumeration
-
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
-
-
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength : public ydk::Entity
-{
-    public:
-        PacketLength();
-        ~PacketLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_length_operator; //type: Ipv4AclOperatorEnum
-        ydk::YLeaf packet_length_min; //type: uint32
-        ydk::YLeaf packet_length_max; //type: uint32
-
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength
-
-
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive : public ydk::Entity
-{
-    public:
-        TimeToLive();
-        ~TimeToLive();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf time_to_live_operator; //type: Ipv4AclOperatorEnum
-        ydk::YLeaf time_to_live_min; //type: uint32
-        ydk::YLeaf time_to_live_max; //type: uint32
-
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp
 
 
 class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::FragmentOffset : public ydk::Entity
@@ -365,7 +256,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -380,6 +271,27 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::FragmentOffset
 
 
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp : public ydk::Entity
+{
+    public:
+        Icmp();
+        ~Icmp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf icmp_type_code; //type: Ipv4AclIcmpTypeCodeEnum
+
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp
+
+
 class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop : public ydk::Entity
 {
     public:
@@ -388,7 +300,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -401,9 +313,9 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         class NextHop2; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2
         class NextHop3; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1> next_hop_1;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2> next_hop_2;
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3> next_hop_3;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1> next_hop_1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2> next_hop_2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3> next_hop_3;
         
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop
 
@@ -416,7 +328,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -439,7 +351,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -462,7 +374,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -477,15 +389,15 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3
 
 
-class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp : public ydk::Entity
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength : public ydk::Entity
 {
     public:
-        Dscp();
-        ~Dscp();
+        PacketLength();
+        ~PacketLength();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -493,11 +405,126 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp_operator; //type: Ipv4AclOperatorEnum
-        ydk::YLeaf dscp_min; //type: one of uint32, enumeration
-        ydk::YLeaf dscp_max; //type: one of uint32, enumeration
+        ydk::YLeaf packet_length_operator; //type: Ipv4AclOperatorEnum
+        ydk::YLeaf packet_length_min; //type: uint32
+        ydk::YLeaf packet_length_max; //type: uint32
 
-}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength
+
+
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork : public ydk::Entity
+{
+    public:
+        SourceNetwork();
+        ~SourceNetwork();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_wild_card_bits; //type: string
+        ydk::YLeaf source_prefix_length; //type: uint8
+
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork
+
+
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort : public ydk::Entity
+{
+    public:
+        SourcePort();
+        ~SourcePort();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_operator; //type: Ipv4AclOperatorEnum
+        ydk::YLeaf first_source_port; //type: one of enumeration, uint32
+        ydk::YLeaf second_source_port; //type: one of enumeration, uint32
+
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort
+
+
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp : public ydk::Entity
+{
+    public:
+        Tcp();
+        ~Tcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tcp_bits_match_operator; //type: Ipv4AclTcpMatchOperatorEnum
+        ydk::YLeaf tcp_bits; //type: one of enumeration, uint32
+        ydk::YLeaf tcp_bits_mask; //type: one of enumeration, uint32
+
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
+
+
+class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive : public ydk::Entity
+{
+    public:
+        TimeToLive();
+        ~TimeToLive();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_to_live_operator; //type: Ipv4AclOperatorEnum
+        ydk::YLeaf time_to_live_min; //type: uint32
+        ydk::YLeaf time_to_live_max; //type: uint32
+
+}; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive
+
+
+class Ipv4AclAndPrefixList::LogUpdate : public ydk::Entity
+{
+    public:
+        LogUpdate();
+        ~LogUpdate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf threshold; //type: uint32
+        ydk::YLeaf rate; //type: uint32
+
+}; // Ipv4AclAndPrefixList::LogUpdate
 
 
 class Ipv4AclAndPrefixList::Prefixes : public ydk::Entity
@@ -508,17 +535,18 @@ class Ipv4AclAndPrefixList::Prefixes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Prefix; //type: Ipv4AclAndPrefixList::Prefixes::Prefix
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix> > prefix;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix> > prefix;
         
 }; // Ipv4AclAndPrefixList::Prefixes
 
@@ -531,18 +559,19 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf prefix_list_name; //type: string
         class PrefixListEntries; //type: Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries> prefix_list_entries; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries> prefix_list_entries; // presence node
         
 }; // Ipv4AclAndPrefixList::Prefixes::Prefix
 
@@ -555,7 +584,7 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -565,7 +594,7 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries : public ydk::En
 
         class PrefixListEntry; //type: Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry> > prefix_list_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry> > prefix_list_entry;
         
 }; // Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries
 
@@ -578,7 +607,7 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -599,28 +628,6 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
         ydk::YLeaf remark; //type: string
 
 }; // Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
-
-
-class Ipv4AclAndPrefixList::LogUpdate : public ydk::Entity
-{
-    public:
-        LogUpdate();
-        ~LogUpdate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf rate; //type: uint32
-
-}; // Ipv4AclAndPrefixList::LogUpdate
 
 class NextHopType : public ydk::Enum
 {

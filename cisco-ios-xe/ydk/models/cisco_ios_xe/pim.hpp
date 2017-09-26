@@ -19,16 +19,7 @@ class GroupToRpMappingMode : public virtual ydk::Identity
 
 }; // GroupToRpMappingMode
 
-class SsmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        SsmMappingMode();
-        ~SsmMappingMode();
-
-
-}; // SsmMappingMode
-
-class AsmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class AsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
         AsmMappingMode();
@@ -37,7 +28,16 @@ class AsmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
 
 }; // AsmMappingMode
 
-class OtherMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class DmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
+{
+    public:
+        DmMappingMode();
+        ~DmMappingMode();
+
+
+}; // DmMappingMode
+
+class OtherMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
         OtherMappingMode();
@@ -46,7 +46,7 @@ class OtherMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
 
 }; // OtherMappingMode
 
-class PimBidirMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class PimBidirMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
         PimBidirMappingMode();
@@ -55,7 +55,7 @@ class PimBidirMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Ident
 
 }; // PimBidirMappingMode
 
-class SmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class SmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
         SmMappingMode();
@@ -64,14 +64,37 @@ class SmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
 
 }; // SmMappingMode
 
-class DmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class SsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
-        DmMappingMode();
-        ~DmMappingMode();
+        SsmMappingMode();
+        ~SsmMappingMode();
 
 
-}; // DmMappingMode
+}; // SsmMappingMode
+
+class RouteProtocolType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf egp;
+        static const ydk::Enum::YLeaf ggp;
+        static const ydk::Enum::YLeaf hello;
+        static const ydk::Enum::YLeaf rip;
+        static const ydk::Enum::YLeaf isIs;
+        static const ydk::Enum::YLeaf esIs;
+        static const ydk::Enum::YLeaf ciscoIgrp;
+        static const ydk::Enum::YLeaf bbnSpfIgp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf idpr;
+        static const ydk::Enum::YLeaf ciscoEigrp;
+        static const ydk::Enum::YLeaf dvmrp;
+
+};
 
 class MrouteProtocolType : public ydk::Enum
 {
@@ -104,29 +127,6 @@ class Origin : public ydk::Enum
         static const ydk::Enum::YLeaf auto_rp;
         static const ydk::Enum::YLeaf bsr;
         static const ydk::Enum::YLeaf msdp;
-
-};
-
-class RouteProtocolType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf netmgmt;
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf egp;
-        static const ydk::Enum::YLeaf ggp;
-        static const ydk::Enum::YLeaf hello;
-        static const ydk::Enum::YLeaf rip;
-        static const ydk::Enum::YLeaf isIs;
-        static const ydk::Enum::YLeaf esIs;
-        static const ydk::Enum::YLeaf ciscoIgrp;
-        static const ydk::Enum::YLeaf bbnSpfIgp;
-        static const ydk::Enum::YLeaf ospf;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf idpr;
-        static const ydk::Enum::YLeaf ciscoEigrp;
-        static const ydk::Enum::YLeaf dvmrp;
 
 };
 

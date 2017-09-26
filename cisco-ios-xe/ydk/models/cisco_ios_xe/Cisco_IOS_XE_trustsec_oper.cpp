@@ -18,12 +18,10 @@ TrustsecState::TrustsecState()
 	,cts_sxp_connections(std::make_shared<TrustsecState::CtsSxpConnections>())
 {
     cts_rolebased_policies->parent = this;
-
     cts_rolebased_sgtmaps->parent = this;
-
     cts_sxp_connections->parent = this;
 
-    yang_name = "trustsec-state"; yang_parent_name = "Cisco-IOS-XE-trustsec-oper";
+    yang_name = "trustsec-state"; yang_parent_name = "Cisco-IOS-XE-trustsec-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 TrustsecState::~TrustsecState()
@@ -49,26 +47,15 @@ std::string TrustsecState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrustsecState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrustsecState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -165,246 +152,10 @@ bool TrustsecState::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmaps()
-{
-    yang_name = "cts-rolebased-sgtmaps"; yang_parent_name = "trustsec-state";
-}
-
-TrustsecState::CtsRolebasedSgtmaps::~CtsRolebasedSgtmaps()
-{
-}
-
-bool TrustsecState::CtsRolebasedSgtmaps::has_data() const
-{
-    for (std::size_t index=0; index<cts_rolebased_sgtmap.size(); index++)
-    {
-        if(cts_rolebased_sgtmap[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool TrustsecState::CtsRolebasedSgtmaps::has_operation() const
-{
-    for (std::size_t index=0; index<cts_rolebased_sgtmap.size(); index++)
-    {
-        if(cts_rolebased_sgtmap[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string TrustsecState::CtsRolebasedSgtmaps::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cts-rolebased-sgtmaps";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath TrustsecState::CtsRolebasedSgtmaps::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cts-rolebased-sgtmap")
-    {
-        for(auto const & c : cts_rolebased_sgtmap)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap>();
-        c->parent = this;
-        cts_rolebased_sgtmap.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cts_rolebased_sgtmap)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void TrustsecState::CtsRolebasedSgtmaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void TrustsecState::CtsRolebasedSgtmaps::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool TrustsecState::CtsRolebasedSgtmaps::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cts-rolebased-sgtmap")
-        return true;
-    return false;
-}
-
-TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::CtsRolebasedSgtmap()
-    :
-    ip{YType::str, "ip"},
-    vrf_name{YType::str, "vrf-name"},
-    sgt{YType::int32, "sgt"},
-    source{YType::enumeration, "source"}
-{
-    yang_name = "cts-rolebased-sgtmap"; yang_parent_name = "cts-rolebased-sgtmaps";
-}
-
-TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::~CtsRolebasedSgtmap()
-{
-}
-
-bool TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::has_data() const
-{
-    return ip.is_set
-	|| vrf_name.is_set
-	|| sgt.is_set
-	|| source.is_set;
-}
-
-bool TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(sgt.yfilter)
-	|| ydk::is_set(source.yfilter);
-}
-
-std::string TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cts-rolebased-sgtmap" <<"[ip='" <<ip <<"']" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/cts-rolebased-sgtmaps/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sgt")
-    {
-        sgt = value;
-        sgt.value_namespace = name_space;
-        sgt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "sgt")
-    {
-        sgt.yfilter = yfilter;
-    }
-    if(value_path == "source")
-    {
-        source.yfilter = yfilter;
-    }
-}
-
-bool TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "vrf-name" || name == "sgt" || name == "source")
-        return true;
-    return false;
-}
-
 TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicies()
 {
-    yang_name = "cts-rolebased-policies"; yang_parent_name = "trustsec-state";
+
+    yang_name = "cts-rolebased-policies"; yang_parent_name = "trustsec-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrustsecState::CtsRolebasedPolicies::~CtsRolebasedPolicies()
@@ -431,33 +182,26 @@ bool TrustsecState::CtsRolebasedPolicies::has_operation() const
     return is_set(yfilter);
 }
 
+std::string TrustsecState::CtsRolebasedPolicies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrustsecState::CtsRolebasedPolicies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cts-rolebased-policies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrustsecState::CtsRolebasedPolicies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedPolicies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -526,7 +270,8 @@ TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::CtsRolebasedPolicy()
     total_deny_count{YType::uint64, "total-deny-count"},
     total_permit_count{YType::uint64, "total-permit-count"}
 {
-    yang_name = "cts-rolebased-policy"; yang_parent_name = "cts-rolebased-policies";
+
+    yang_name = "cts-rolebased-policy"; yang_parent_name = "cts-rolebased-policies"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::~CtsRolebasedPolicy()
@@ -572,27 +317,22 @@ bool TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::has_operation() co
 	|| ydk::is_set(total_permit_count.yfilter);
 }
 
+std::string TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/cts-rolebased-policies/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cts-rolebased-policy" <<"[src-sgt='" <<src_sgt <<"']" <<"[dst-sgt='" <<dst_sgt <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/cts-rolebased-policies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (src_sgt.is_set || is_set(src_sgt.yfilter)) leaf_name_data.push_back(src_sgt.get_name_leafdata());
@@ -611,9 +351,7 @@ const EntityPath TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_en
     if (total_deny_count.is_set || is_set(total_deny_count.yfilter)) leaf_name_data.push_back(total_deny_count.get_name_leafdata());
     if (total_permit_count.is_set || is_set(total_permit_count.yfilter)) leaf_name_data.push_back(total_permit_count.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -793,9 +531,235 @@ bool TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::has_leaf_or_child_
     return false;
 }
 
+TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmaps()
+{
+
+    yang_name = "cts-rolebased-sgtmaps"; yang_parent_name = "trustsec-state"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+TrustsecState::CtsRolebasedSgtmaps::~CtsRolebasedSgtmaps()
+{
+}
+
+bool TrustsecState::CtsRolebasedSgtmaps::has_data() const
+{
+    for (std::size_t index=0; index<cts_rolebased_sgtmap.size(); index++)
+    {
+        if(cts_rolebased_sgtmap[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool TrustsecState::CtsRolebasedSgtmaps::has_operation() const
+{
+    for (std::size_t index=0; index<cts_rolebased_sgtmap.size(); index++)
+    {
+        if(cts_rolebased_sgtmap[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string TrustsecState::CtsRolebasedSgtmaps::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string TrustsecState::CtsRolebasedSgtmaps::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cts-rolebased-sgtmaps";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedSgtmaps::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cts-rolebased-sgtmap")
+    {
+        for(auto const & c : cts_rolebased_sgtmap)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap>();
+        c->parent = this;
+        cts_rolebased_sgtmap.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cts_rolebased_sgtmap)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void TrustsecState::CtsRolebasedSgtmaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void TrustsecState::CtsRolebasedSgtmaps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrustsecState::CtsRolebasedSgtmaps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cts-rolebased-sgtmap")
+        return true;
+    return false;
+}
+
+TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::CtsRolebasedSgtmap()
+    :
+    ip{YType::str, "ip"},
+    vrf_name{YType::str, "vrf-name"},
+    sgt{YType::int32, "sgt"},
+    source{YType::enumeration, "source"}
+{
+
+    yang_name = "cts-rolebased-sgtmap"; yang_parent_name = "cts-rolebased-sgtmaps"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::~CtsRolebasedSgtmap()
+{
+}
+
+bool TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::has_data() const
+{
+    return ip.is_set
+	|| vrf_name.is_set
+	|| sgt.is_set
+	|| source.is_set;
+}
+
+bool TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(sgt.yfilter)
+	|| ydk::is_set(source.yfilter);
+}
+
+std::string TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/cts-rolebased-sgtmaps/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cts-rolebased-sgtmap" <<"[ip='" <<ip <<"']" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sgt")
+    {
+        sgt = value;
+        sgt.value_namespace = name_space;
+        sgt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "sgt")
+    {
+        sgt.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "vrf-name" || name == "sgt" || name == "source")
+        return true;
+    return false;
+}
+
 TrustsecState::CtsSxpConnections::CtsSxpConnections()
 {
-    yang_name = "cts-sxp-connections"; yang_parent_name = "trustsec-state";
+
+    yang_name = "cts-sxp-connections"; yang_parent_name = "trustsec-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrustsecState::CtsSxpConnections::~CtsSxpConnections()
@@ -822,33 +786,26 @@ bool TrustsecState::CtsSxpConnections::has_operation() const
     return is_set(yfilter);
 }
 
+std::string TrustsecState::CtsSxpConnections::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrustsecState::CtsSxpConnections::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cts-sxp-connections";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrustsecState::CtsSxpConnections::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsSxpConnections::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -910,7 +867,8 @@ TrustsecState::CtsSxpConnections::CtsSxpConnection::CtsSxpConnection()
     speaker_duration{YType::uint64, "speaker-duration"},
     speaker_state{YType::enumeration, "speaker-state"}
 {
-    yang_name = "cts-sxp-connection"; yang_parent_name = "cts-sxp-connections";
+
+    yang_name = "cts-sxp-connection"; yang_parent_name = "cts-sxp-connections"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 TrustsecState::CtsSxpConnections::CtsSxpConnection::~CtsSxpConnection()
@@ -942,27 +900,22 @@ bool TrustsecState::CtsSxpConnections::CtsSxpConnection::has_operation() const
 	|| ydk::is_set(speaker_state.yfilter);
 }
 
+std::string TrustsecState::CtsSxpConnections::CtsSxpConnection::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/cts-sxp-connections/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string TrustsecState::CtsSxpConnections::CtsSxpConnection::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cts-sxp-connection" <<"[peer-ip='" <<peer_ip <<"']" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath TrustsecState::CtsSxpConnections::CtsSxpConnection::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsSxpConnections::CtsSxpConnection::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-trustsec-oper:trustsec-state/cts-sxp-connections/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (peer_ip.is_set || is_set(peer_ip.yfilter)) leaf_name_data.push_back(peer_ip.get_name_leafdata());
@@ -974,9 +927,7 @@ const EntityPath TrustsecState::CtsSxpConnections::CtsSxpConnection::get_entity_
     if (speaker_duration.is_set || is_set(speaker_duration.yfilter)) leaf_name_data.push_back(speaker_duration.get_name_leafdata());
     if (speaker_state.is_set || is_set(speaker_state.yfilter)) leaf_name_data.push_back(speaker_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1086,11 +1037,6 @@ bool TrustsecState::CtsSxpConnections::CtsSxpConnection::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf SxpConMode::con_mode_invalid {0, "con-mode-invalid"};
-const Enum::YLeaf SxpConMode::con_mode_speaker {1, "con-mode-speaker"};
-const Enum::YLeaf SxpConMode::con_mode_listener {2, "con-mode-listener"};
-const Enum::YLeaf SxpConMode::con_mode_both {3, "con-mode-both"};
-
 const Enum::YLeaf SxpConState::state_off {0, "state-off"};
 const Enum::YLeaf SxpConState::state_pending_on {1, "state-pending-on"};
 const Enum::YLeaf SxpConState::state_on {2, "state-on"};
@@ -1106,6 +1052,11 @@ const Enum::YLeaf CtsOdmBindingSource::from_ip_arp {5, "from-ip-arp"};
 const Enum::YLeaf CtsOdmBindingSource::from_local {6, "from-local"};
 const Enum::YLeaf CtsOdmBindingSource::from_sgt_caching {7, "from-sgt-caching"};
 const Enum::YLeaf CtsOdmBindingSource::from_cli_hi {8, "from-cli-hi"};
+
+const Enum::YLeaf SxpConMode::con_mode_invalid {0, "con-mode-invalid"};
+const Enum::YLeaf SxpConMode::con_mode_speaker {1, "con-mode-speaker"};
+const Enum::YLeaf SxpConMode::con_mode_listener {2, "con-mode-listener"};
+const Enum::YLeaf SxpConMode::con_mode_both {3, "con-mode-both"};
 
 
 }

@@ -15,7 +15,8 @@ Clock_::Clock_()
     :
     time_zone(nullptr) // presence node
 {
-    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-infra-infra-clock-linux-cfg";
+
+    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-infra-infra-clock-linux-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Clock_::~Clock_()
@@ -37,26 +38,15 @@ std::string Clock_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-infra-clock-linux-cfg:clock";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Clock_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Clock_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -130,7 +120,8 @@ Clock_::TimeZone::TimeZone()
     area_name{YType::str, "area-name"},
     time_zone_name{YType::str, "time-zone-name"}
 {
-    yang_name = "time-zone"; yang_parent_name = "clock";
+
+    yang_name = "time-zone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Clock_::TimeZone::~TimeZone()
@@ -150,35 +141,28 @@ bool Clock_::TimeZone::has_operation() const
 	|| ydk::is_set(time_zone_name.yfilter);
 }
 
+std::string Clock_::TimeZone::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-infra-clock-linux-cfg:clock/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Clock_::TimeZone::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "time-zone";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Clock_::TimeZone::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Clock_::TimeZone::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-infra-clock-linux-cfg:clock/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (area_name.is_set || is_set(area_name.yfilter)) leaf_name_data.push_back(area_name.get_name_leafdata());
     if (time_zone_name.is_set || is_set(time_zone_name.yfilter)) leaf_name_data.push_back(time_zone_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

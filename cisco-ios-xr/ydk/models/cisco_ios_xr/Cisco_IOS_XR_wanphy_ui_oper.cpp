@@ -17,7 +17,7 @@ Wanphy::Wanphy()
 {
     controllers->parent = this;
 
-    yang_name = "wanphy"; yang_parent_name = "Cisco-IOS-XR-wanphy-ui-oper";
+    yang_name = "wanphy"; yang_parent_name = "Cisco-IOS-XR-wanphy-ui-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Wanphy::~Wanphy()
@@ -39,26 +39,15 @@ std::string Wanphy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-wanphy-ui-oper:wanphy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Wanphy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Wanphy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Wanphy::has_leaf_or_child_of_name(const std::string & name) const
 
 Wanphy::Controllers::Controllers()
 {
-    yang_name = "controllers"; yang_parent_name = "wanphy";
+
+    yang_name = "controllers"; yang_parent_name = "wanphy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Wanphy::Controllers::~Controllers()
@@ -156,33 +146,26 @@ bool Wanphy::Controllers::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Wanphy::Controllers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-wanphy-ui-oper:wanphy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Wanphy::Controllers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "controllers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Wanphy::Controllers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Wanphy::Controllers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-wanphy-ui-oper:wanphy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ Wanphy::Controllers::Controller::Controller()
 {
     info->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "controllers";
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Wanphy::Controllers::Controller::~Controller()
@@ -261,34 +244,27 @@ bool Wanphy::Controllers::Controller::has_operation() const
 	|| (info !=  nullptr && info->has_operation());
 }
 
+std::string Wanphy::Controllers::Controller::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-wanphy-ui-oper:wanphy/controllers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Wanphy::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Wanphy::Controllers::Controller::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Wanphy::Controllers::Controller::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-wanphy-ui-oper:wanphy/controllers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (controller_name.is_set || is_set(controller_name.yfilter)) leaf_name_data.push_back(controller_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -390,7 +366,8 @@ Wanphy::Controllers::Controller::Info::Info()
     wis_alarms_ser{YType::uint32, "wis-alarms-ser"},
     wis_alarms_wlos{YType::uint32, "wis-alarms-wlos"}
 {
-    yang_name = "info"; yang_parent_name = "controller";
+
+    yang_name = "info"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Wanphy::Controllers::Controller::Info::~Info()
@@ -500,23 +477,11 @@ std::string Wanphy::Controllers::Controller::Info::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Wanphy::Controllers::Controller::Info::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Wanphy::Controllers::Controller::Info::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Info' in Cisco_IOS_XR_wanphy_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (admin_mode.is_set || is_set(admin_mode.yfilter)) leaf_name_data.push_back(admin_mode.get_name_leafdata());
@@ -565,9 +530,7 @@ const EntityPath Wanphy::Controllers::Controller::Info::get_entity_path(Entity* 
     if (wis_alarms_ser.is_set || is_set(wis_alarms_ser.yfilter)) leaf_name_data.push_back(wis_alarms_ser.get_name_leafdata());
     if (wis_alarms_wlos.is_set || is_set(wis_alarms_wlos.yfilter)) leaf_name_data.push_back(wis_alarms_wlos.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1047,11 +1010,11 @@ bool Wanphy::Controllers::Controller::Info::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-const Enum::YLeaf WanphyAlarmRepStatus::disable {0, "disable"};
-const Enum::YLeaf WanphyAlarmRepStatus::enable {1, "enable"};
-
 const Enum::YLeaf WanphyModeInfo::lan {0, "lan"};
 const Enum::YLeaf WanphyModeInfo::wan {1, "wan"};
+
+const Enum::YLeaf WanphyAlarmRepStatus::disable {0, "disable"};
+const Enum::YLeaf WanphyAlarmRepStatus::enable {1, "enable"};
 
 
 }

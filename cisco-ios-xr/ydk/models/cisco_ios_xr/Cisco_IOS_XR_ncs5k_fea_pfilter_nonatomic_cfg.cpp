@@ -17,7 +17,7 @@ Hardware::Hardware()
 {
     access_list->parent = this;
 
-    yang_name = "hardware"; yang_parent_name = "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg";
+    yang_name = "hardware"; yang_parent_name = "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Hardware::~Hardware()
@@ -39,26 +39,15 @@ std::string Hardware::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg:hardware";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hardware::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hardware::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -131,7 +120,8 @@ Hardware::AccessList::AccessList()
     :
     atomic_disable{YType::enumeration, "atomic-disable"}
 {
-    yang_name = "access-list"; yang_parent_name = "hardware";
+
+    yang_name = "access-list"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Hardware::AccessList::~AccessList()
@@ -149,34 +139,27 @@ bool Hardware::AccessList::has_operation() const
 	|| ydk::is_set(atomic_disable.yfilter);
 }
 
+std::string Hardware::AccessList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg:hardware/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Hardware::AccessList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Hardware::AccessList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Hardware::AccessList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg:hardware/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (atomic_disable.is_set || is_set(atomic_disable.yfilter)) leaf_name_data.push_back(atomic_disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

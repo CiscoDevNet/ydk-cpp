@@ -18,7 +18,7 @@ class Crypto : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class Crypto : public ydk::Entity
         class Sam; //type: Crypto::Sam
         class Ssh; //type: Crypto::Ssh
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Sam> sam;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh> ssh;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Sam> sam;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh> ssh;
         
 }; // Crypto
 
@@ -48,17 +48,18 @@ class Crypto::Sam : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class PromptInterval; //type: Crypto::Sam::PromptInterval
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Sam::PromptInterval> prompt_interval; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Sam::PromptInterval> prompt_interval; // presence node
         
 }; // Crypto::Sam
 
@@ -71,13 +72,14 @@ class Crypto::Sam::PromptInterval : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf action; //type: CryptoSamAction
         ydk::YLeaf prompt_time; //type: uint32
@@ -93,19 +95,20 @@ class Crypto::Ssh : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Client; //type: Crypto::Ssh::Client
         class Server; //type: Crypto::Ssh::Server
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Client> client;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server> server;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Client> client;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server> server;
         
 }; // Crypto::Ssh
 
@@ -118,20 +121,72 @@ class Crypto::Ssh::Client : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
+        ydk::YLeaf rekey_volume; //type: uint32
         ydk::YLeaf host_public_key; //type: string
         ydk::YLeaf client_vrf; //type: string
+        ydk::YLeaf rekey_time; //type: uint32
         ydk::YLeaf source_interface; //type: string
         ydk::YLeaf dscp; //type: uint32
+        class ClientEnable; //type: Crypto::Ssh::Client::ClientEnable
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Client::ClientEnable> client_enable;
+        
 }; // Crypto::Ssh::Client
+
+
+class Crypto::Ssh::Client::ClientEnable : public ydk::Entity
+{
+    public:
+        ClientEnable();
+        ~ClientEnable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ClientCipher; //type: Crypto::Ssh::Client::ClientEnable::ClientCipher
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Client::ClientEnable::ClientCipher> client_cipher;
+        
+}; // Crypto::Ssh::Client::ClientEnable
+
+
+class Crypto::Ssh::Client::ClientEnable::ClientCipher : public ydk::Entity
+{
+    public:
+        ClientCipher();
+        ~ClientCipher();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf aescbc; //type: boolean
+
+}; // Crypto::Ssh::Client::ClientEnable::ClientCipher
 
 
 class Crypto::Ssh::Server : public ydk::Entity
@@ -142,13 +197,14 @@ class Crypto::Ssh::Server : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf rekey_volume; //type: uint32
         ydk::YLeaf session_limit; //type: uint32
@@ -160,16 +216,40 @@ class Crypto::Ssh::Server : public ydk::Entity
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf dscp; //type: uint32
         class Disable; //type: Crypto::Ssh::Server::Disable
+        class Enable; //type: Crypto::Ssh::Server::Enable
         class VrfTable; //type: Crypto::Ssh::Server::VrfTable
         class Capability; //type: Crypto::Ssh::Server::Capability
         class NetconfVrfTable; //type: Crypto::Ssh::Server::NetconfVrfTable
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Capability> capability;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Disable> disable;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::NetconfVrfTable> netconf_vrf_table;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::VrfTable> vrf_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Capability> capability;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Disable> disable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Enable> enable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::NetconfVrfTable> netconf_vrf_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::VrfTable> vrf_table;
         
 }; // Crypto::Ssh::Server
+
+
+class Crypto::Ssh::Server::Capability : public ydk::Entity
+{
+    public:
+        Capability();
+        ~Capability();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf netconf_xml; //type: boolean
+
+}; // Crypto::Ssh::Server::Capability
 
 
 class Crypto::Ssh::Server::Disable : public ydk::Entity
@@ -180,17 +260,18 @@ class Crypto::Ssh::Server::Disable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Hmac; //type: Crypto::Ssh::Server::Disable::Hmac
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Disable::Hmac> hmac;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Disable::Hmac> hmac;
         
 }; // Crypto::Ssh::Server::Disable
 
@@ -203,85 +284,64 @@ class Crypto::Ssh::Server::Disable::Hmac : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf hmac_sha512; //type: boolean
 
 }; // Crypto::Ssh::Server::Disable::Hmac
 
 
-class Crypto::Ssh::Server::VrfTable : public ydk::Entity
+class Crypto::Ssh::Server::Enable : public ydk::Entity
 {
     public:
-        VrfTable();
-        ~VrfTable();
+        Enable();
+        ~Enable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Vrf; //type: Crypto::Ssh::Server::VrfTable::Vrf
+        class Cipher; //type: Crypto::Ssh::Server::Enable::Cipher
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::VrfTable::Vrf> > vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::Enable::Cipher> cipher;
         
-}; // Crypto::Ssh::Server::VrfTable
+}; // Crypto::Ssh::Server::Enable
 
 
-class Crypto::Ssh::Server::VrfTable::Vrf : public ydk::Entity
+class Crypto::Ssh::Server::Enable::Cipher : public ydk::Entity
 {
     public:
-        Vrf();
-        ~Vrf();
+        Cipher();
+        ~Cipher();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf ipv4_access_list; //type: string
-        ydk::YLeaf ipv6_access_list; //type: string
+        ydk::YLeaf aescbc; //type: boolean
 
-}; // Crypto::Ssh::Server::VrfTable::Vrf
-
-
-class Crypto::Ssh::Server::Capability : public ydk::Entity
-{
-    public:
-        Capability();
-        ~Capability();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf netconf_xml; //type: boolean
-
-}; // Crypto::Ssh::Server::Capability
+}; // Crypto::Ssh::Server::Enable::Cipher
 
 
 class Crypto::Ssh::Server::NetconfVrfTable : public ydk::Entity
@@ -292,17 +352,18 @@ class Crypto::Ssh::Server::NetconfVrfTable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Vrf; //type: Crypto::Ssh::Server::NetconfVrfTable::Vrf
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::NetconfVrfTable::Vrf> > vrf;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::NetconfVrfTable::Vrf> > vrf;
         
 }; // Crypto::Ssh::Server::NetconfVrfTable
 
@@ -315,13 +376,14 @@ class Crypto::Ssh::Server::NetconfVrfTable::Vrf : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf enable; //type: empty
@@ -329,6 +391,55 @@ class Crypto::Ssh::Server::NetconfVrfTable::Vrf : public ydk::Entity
         ydk::YLeaf ipv6_access_list; //type: string
 
 }; // Crypto::Ssh::Server::NetconfVrfTable::Vrf
+
+
+class Crypto::Ssh::Server::VrfTable : public ydk::Entity
+{
+    public:
+        VrfTable();
+        ~VrfTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Vrf; //type: Crypto::Ssh::Server::VrfTable::Vrf
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_cfg::Crypto::Ssh::Server::VrfTable::Vrf> > vrf;
+        
+}; // Crypto::Ssh::Server::VrfTable
+
+
+class Crypto::Ssh::Server::VrfTable::Vrf : public ydk::Entity
+{
+    public:
+        Vrf();
+        ~Vrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf ipv4_access_list; //type: string
+        ydk::YLeaf ipv6_access_list; //type: string
+
+}; // Crypto::Ssh::Server::VrfTable::Vrf
 
 class CryptoSamAction : public ydk::Enum
 {

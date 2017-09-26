@@ -39,7 +39,7 @@ foreach(sample IN LISTS samples)
 
     target_link_libraries(${sample}
             ${ydk_cisco_ios_xr_location} 
-            ${ydk_location} 
+            ${ydk_location}
             ${xml2_location}
             ${curl_location}
             ${ssh_location}

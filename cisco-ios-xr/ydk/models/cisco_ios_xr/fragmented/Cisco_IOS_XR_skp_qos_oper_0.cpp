@@ -18,7 +18,7 @@ PlatformQos::PlatformQos()
 {
     nodes->parent = this;
 
-    yang_name = "platform-qos"; yang_parent_name = "Cisco-IOS-XR-skp-qos-oper";
+    yang_name = "platform-qos"; yang_parent_name = "Cisco-IOS-XR-skp-qos-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PlatformQos::~PlatformQos()
@@ -40,26 +40,15 @@ std::string PlatformQos::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -130,7 +119,8 @@ bool PlatformQos::has_leaf_or_child_of_name(const std::string & name) const
 
 PlatformQos::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "platform-qos";
+
+    yang_name = "nodes"; yang_parent_name = "platform-qos"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformQos::Nodes::~Nodes()
@@ -157,33 +147,26 @@ bool PlatformQos::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string PlatformQos::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformQos::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -243,12 +226,10 @@ PlatformQos::Nodes::Node::Node()
 	,interfaces(std::make_shared<PlatformQos::Nodes::Node::Interfaces>())
 {
     bundle_interfaces->parent = this;
-
     capability->parent = this;
-
     interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformQos::Nodes::Node::~Node()
@@ -272,34 +253,27 @@ bool PlatformQos::Nodes::Node::has_operation() const
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
+std::string PlatformQos::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformQos::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -383,7 +357,8 @@ bool PlatformQos::Nodes::Node::has_leaf_or_child_of_name(const std::string & nam
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterfaces()
 {
-    yang_name = "bundle-interfaces"; yang_parent_name = "node";
+
+    yang_name = "bundle-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::~BundleInterfaces()
@@ -414,29 +389,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInterfaces' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -495,7 +456,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInterface()
 {
     member_interfaces->parent = this;
 
-    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces";
+    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::~BundleInterface()
@@ -519,30 +480,16 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInterface' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -598,7 +545,8 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::has_leaf_or_ch
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterfaces()
 {
-    yang_name = "member-interfaces"; yang_parent_name = "bundle-interface";
+
+    yang_name = "member-interfaces"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::~MemberInterfaces()
@@ -629,29 +577,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "member-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemberInterfaces' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -710,10 +644,9 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,bundle_output(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput>())
 {
     bundle_input->parent = this;
-
     bundle_output->parent = this;
 
-    yang_name = "member-interface"; yang_parent_name = "member-interfaces";
+    yang_name = "member-interface"; yang_parent_name = "member-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::~MemberInterface()
@@ -739,30 +672,16 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "member-interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemberInterface' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -837,12 +756,10 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,skywarp_qos_policy_class(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass>())
 {
     header->parent = this;
-
     interface_parameters->parent = this;
-
     skywarp_qos_policy_class->parent = this;
 
-    yang_name = "bundle-input"; yang_parent_name = "member-interface";
+    yang_name = "bundle-input"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::~BundleInput()
@@ -868,29 +785,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInput' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -969,7 +872,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     interface_name{YType::str, "interface-name"},
     policy_name{YType::str, "policy-name"}
 {
-    yang_name = "header"; yang_parent_name = "bundle-input";
+
+    yang_name = "header"; yang_parent_name = "bundle-input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Header::~Header()
@@ -997,23 +901,11 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "header";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Header::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Header::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Header' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
@@ -1021,9 +913,7 @@ const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Me
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1100,12 +990,10 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::PortShaperRate>())
 {
     interface_config_rate->parent = this;
-
     interface_program_rate->parent = this;
-
     port_shaper_rate->parent = this;
 
-    yang_name = "interface-parameters"; yang_parent_name = "bundle-input";
+    yang_name = "interface-parameters"; yang_parent_name = "bundle-input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::~InterfaceParameters()
@@ -1131,29 +1019,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-parameters";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceParameters' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1230,7 +1104,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceConfigRate::~InterfaceConfigRate()
@@ -1254,31 +1129,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-config-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceConfigRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceConfigRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceConfigRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1333,7 +1194,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceProgramRate::~InterfaceProgramRate()
@@ -1357,31 +1219,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-program-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceProgramRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceProgramRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceProgramRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1436,7 +1284,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::PortShaperRate::~PortShaperRate()
@@ -1460,31 +1309,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "port-shaper-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::PortShaperRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::PortShaperRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortShaperRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1536,7 +1371,8 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
 {
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "bundle-input";
+
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "bundle-input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
@@ -1567,29 +1403,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "skywarp-qos-policy-class";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SkywarpQosPolicyClass' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1652,16 +1474,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>())
 {
     marking->parent = this;
-
     police->parent = this;
-
     queue->parent = this;
-
     shape->parent = this;
-
     wfq->parent = this;
 
-    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class";
+    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::~QosShowPclassSt()
@@ -1695,31 +1513,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QosShowPclassSt' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
     if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1839,989 +1643,709 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
     :
-    queue_id{YType::uint32, "queue-id"},
-    queue_type{YType::str, "queue-type"}
+    mark_only(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
+	,police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
+	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
 {
-    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st";
+    mark_only->parent = this;
+    police_conform->parent = this;
+    police_exceed->parent = this;
+
+    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
 {
-    return queue_id.is_set
-	|| queue_type.is_set;
+    return (mark_only !=  nullptr && mark_only->has_data())
+	|| (police_conform !=  nullptr && police_conform->has_data())
+	|| (police_exceed !=  nullptr && police_exceed->has_data());
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(queue_id.yfilter)
-	|| ydk::is_set(queue_type.yfilter);
+	|| (mark_only !=  nullptr && mark_only->has_operation())
+	|| (police_conform !=  nullptr && police_conform->has_operation())
+	|| (police_exceed !=  nullptr && police_exceed->has_operation());
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "queue";
-
+    path_buffer << "marking";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Queue' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
-    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id = value;
-        queue_id.value_namespace = name_space;
-        queue_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type = value;
-        queue_type.value_namespace = name_space;
-        queue_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id.yfilter = yfilter;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "queue-id" || name == "queue-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
-    :
-    pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
-{
-    pbs->parent = this;
-
-    pir->parent = this;
-
-    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
-{
-    return (pbs !=  nullptr && pbs->has_data())
-	|| (pir !=  nullptr && pir->has_data());
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pbs !=  nullptr && pbs->has_operation())
-	|| (pir !=  nullptr && pir->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "shape";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Shape' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "pbs")
+    if(child_yang_name == "mark-only")
     {
-        if(pbs == nullptr)
+        if(mark_only == nullptr)
         {
-            pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
+            mark_only = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
         }
-        return pbs;
+        return mark_only;
     }
 
-    if(child_yang_name == "pir")
+    if(child_yang_name == "police-conform")
     {
-        if(pir == nullptr)
+        if(police_conform == nullptr)
         {
-            pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
+            police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
         }
-        return pir;
+        return police_conform;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbs != nullptr)
+    if(child_yang_name == "police-exceed")
     {
-        children["pbs"] = pbs;
-    }
-
-    if(pir != nullptr)
-    {
-        children["pir"] = pir;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbs" || name == "pir")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pir"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pbs"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
-    :
-    excess_weight{YType::uint16, "excess-weight"}
-    	,
-    committed_weight(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
-	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
-{
-    committed_weight->parent = this;
-
-    programmed_wfq->parent = this;
-
-    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
-{
-    return excess_weight.is_set
-	|| (committed_weight !=  nullptr && committed_weight->has_data())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excess_weight.yfilter)
-	|| (committed_weight !=  nullptr && committed_weight->has_operation())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wfq";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Wfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "committed-weight")
-    {
-        if(committed_weight == nullptr)
+        if(police_exceed == nullptr)
         {
-            committed_weight = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
+            police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
         }
-        return committed_weight;
+        return police_exceed;
     }
 
-    if(child_yang_name == "programmed-wfq")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mark_only != nullptr)
     {
-        if(programmed_wfq == nullptr)
+        children["mark-only"] = mark_only;
+    }
+
+    if(police_conform != nullptr)
+    {
+        children["police-conform"] = police_conform;
+    }
+
+    if(police_exceed != nullptr)
+    {
+        children["police-exceed"] = police_exceed;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
+    :
+    action_type{YType::enumeration, "action-type"}
+{
+
+    yang_name = "mark-only"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mark-only";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mark-detail")
+    {
+        for(auto const & c : mark_detail)
         {
-            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return programmed_wfq;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(committed_weight != nullptr)
+    for (auto const & c : mark_detail)
     {
-        children["committed-weight"] = committed_weight;
-    }
-
-    if(programmed_wfq != nullptr)
-    {
-        children["programmed-wfq"] = programmed_wfq;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "excess-weight")
+    if(value_path == "action-type")
     {
-        excess_weight = value;
-        excess_weight.value_namespace = name_space;
-        excess_weight.value_namespace_prefix = name_space_prefix;
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "excess-weight")
+    if(value_path == "action-type")
     {
-        excess_weight.yfilter = yfilter;
+        action_type.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
+    if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
     :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "committed-weight"; yang_parent_name = "wfq";
+
+    yang_name = "mark-detail"; yang_parent_name = "mark-only"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
 {
-    return unit.is_set
-	|| value_.is_set;
+    return action_opcode.is_set
+	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "committed-weight";
-
+    path_buffer << "mark-detail";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CommittedWeight' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit.yfilter = yfilter;
+        action_opcode.yfilter = yfilter;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_.yfilter = yfilter;
+        mark_value.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unit" || name == "value")
+    if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
     :
-    excess_ratio{YType::uint16, "excess-ratio"}
-    	,
-    bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+    action_type{YType::enumeration, "action-type"}
 {
-    bandwidth->parent = this;
 
-    sum_of_bandwidth->parent = this;
-
-    yang_name = "programmed-wfq"; yang_parent_name = "wfq";
+    yang_name = "police-conform"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
 {
-    return excess_ratio.is_set
-	|| (bandwidth !=  nullptr && bandwidth->has_data())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
 {
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(excess_ratio.yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+	|| ydk::is_set(action_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "programmed-wfq";
-
+    path_buffer << "police-conform";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProgrammedWfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bandwidth")
+    if(child_yang_name == "mark-detail")
     {
-        if(bandwidth == nullptr)
+        for(auto const & c : mark_detail)
         {
-            bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return bandwidth;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
-    if(child_yang_name == "sum-of-bandwidth")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mark_detail)
     {
-        if(sum_of_bandwidth == nullptr)
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action-type")
+    {
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-type")
+    {
+        action_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mark-detail" || name == "action-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
+    :
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
+{
+
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
+{
+    return action_opcode.is_set
+	|| mark_value.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mark-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action-opcode")
+    {
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mark-value")
+    {
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-opcode")
+    {
+        action_opcode.yfilter = yfilter;
+    }
+    if(value_path == "mark-value")
+    {
+        mark_value.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-opcode" || name == "mark-value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
+    :
+    action_type{YType::enumeration, "action-type"}
+{
+
+    yang_name = "police-exceed"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police-exceed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mark-detail")
+    {
+        for(auto const & c : mark_detail)
         {
-            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return sum_of_bandwidth;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bandwidth != nullptr)
+    for (auto const & c : mark_detail)
     {
-        children["bandwidth"] = bandwidth;
-    }
-
-    if(sum_of_bandwidth != nullptr)
-    {
-        children["sum-of-bandwidth"] = sum_of_bandwidth;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "excess-ratio")
+    if(value_path == "action-type")
     {
-        excess_ratio = value;
-        excess_ratio.value_namespace = name_space;
-        excess_ratio.value_namespace_prefix = name_space_prefix;
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "excess-ratio")
+    if(value_path == "action-type")
     {
-        excess_ratio.yfilter = yfilter;
+        action_type.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+    if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
     :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq";
+
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
 {
-    return unit.is_set
-	|| value_.is_set;
+    return action_opcode.is_set
+	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-
+    path_buffer << "mark-detail";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sum-of-bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "action-opcode")
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SumOfBandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
+        action_opcode.yfilter = yfilter;
     }
-    else
+    if(value_path == "mark-value")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        mark_value.yfilter = yfilter;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
+    if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
@@ -2835,10 +2359,9 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,cir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>())
 {
     cbs->parent = this;
-
     cir->parent = this;
 
-    yang_name = "police"; yang_parent_name = "qos-show-pclass-st";
+    yang_name = "police"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::~Police()
@@ -2866,31 +2389,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "police";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Police' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (policer_id.is_set || is_set(policer_id.yfilter)) leaf_name_data.push_back(policer_id.get_name_leafdata());
     if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2968,115 +2477,13 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cir"; yang_parent_name = "police";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::Cbs()
     :
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "cbs"; yang_parent_name = "police";
+
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::~Cbs()
@@ -3100,31 +2507,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "cbs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3174,803 +2567,956 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
     :
-    mark_only(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    mark_only->parent = this;
 
-    police_conform->parent = this;
-
-    police_exceed->parent = this;
-
-    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st";
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
 {
-    return (mark_only !=  nullptr && mark_only->has_data())
-	|| (police_conform !=  nullptr && police_conform->has_data())
-	|| (police_exceed !=  nullptr && police_exceed->has_data());
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
 {
     return is_set(yfilter)
-	|| (mark_only !=  nullptr && mark_only->has_operation())
-	|| (police_conform !=  nullptr && police_conform->has_operation())
-	|| (police_exceed !=  nullptr && police_exceed->has_operation());
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "marking";
-
+    path_buffer << "cir";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Marking' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mark-only")
-    {
-        if(mark_only == nullptr)
-        {
-            mark_only = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
-        }
-        return mark_only;
-    }
-
-    if(child_yang_name == "police-conform")
-    {
-        if(police_conform == nullptr)
-        {
-            police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
-        }
-        return police_conform;
-    }
-
-    if(child_yang_name == "police-exceed")
-    {
-        if(police_exceed == nullptr)
-        {
-            police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
-        }
-        return police_exceed;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mark_only != nullptr)
-    {
-        children["mark-only"] = mark_only;
-    }
-
-    if(police_conform != nullptr)
-    {
-        children["police-conform"] = police_conform;
-    }
-
-    if(police_exceed != nullptr)
-    {
-        children["police-exceed"] = police_exceed;
-    }
-
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
     :
-    action_type{YType::enumeration, "action-type"}
+    queue_id{YType::uint32, "queue-id"},
+    queue_type{YType::str, "queue-type"}
 {
-    yang_name = "mark-only"; yang_parent_name = "marking";
+
+    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
+    return queue_id.is_set
+	|| queue_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
+	|| ydk::is_set(queue_id.yfilter)
+	|| ydk::is_set(queue_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mark-only";
-
+    path_buffer << "queue";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkOnly' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mark-detail")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "queue-id")
     {
-        for(auto const & c : mark_detail)
+        queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type = value;
+        queue_type.value_namespace = name_space;
+        queue_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "queue-id" || name == "queue-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
+    :
+    pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
+	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
+{
+    pbs->parent = this;
+    pir->parent = this;
+
+    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
+{
+    return (pbs !=  nullptr && pbs->has_data())
+	|| (pir !=  nullptr && pir->has_data());
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pbs !=  nullptr && pbs->has_operation())
+	|| (pir !=  nullptr && pir->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbs")
+    {
+        if(pbs == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
+        return pbs;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
+    if(child_yang_name == "pir")
     {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mark-detail" || name == "action-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
-    :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
-{
-    yang_name = "mark-detail"; yang_parent_name = "mark-only";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
-{
-    return action_opcode.is_set
-	|| mark_value.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode.yfilter = yfilter;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action-opcode" || name == "mark-value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
-    :
-    action_type{YType::enumeration, "action-type"}
-{
-    yang_name = "police-conform"; yang_parent_name = "marking";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police-conform";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceConform' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mark-detail")
-    {
-        for(auto const & c : mark_detail)
+        if(pir == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
+        return pir;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
+    if(pbs != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["pbs"] = pbs;
+    }
+
+    if(pir != nullptr)
+    {
+        children["pir"] = pir;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mark-detail" || name == "action-type")
+    if(name == "pbs" || name == "pir")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
     :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "police-conform";
+
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
 {
-    return action_opcode.is_set
-	|| mark_value.is_set;
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
+    path_buffer << "pbs";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode.yfilter = yfilter;
+        unit.yfilter = yfilter;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value.yfilter = yfilter;
+        value_.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "action-opcode" || name == "mark-value")
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
     :
-    action_type{YType::enumeration, "action-type"}
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "police-exceed"; yang_parent_name = "marking";
+
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "police-exceed";
-
+    path_buffer << "pir";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceExceed' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mark-detail")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
     {
-        for(auto const & c : mark_detail)
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
+    :
+    excess_weight{YType::uint16, "excess-weight"}
+    	,
+    committed_weight(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
+	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
+{
+    committed_weight->parent = this;
+    programmed_wfq->parent = this;
+
+    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
+{
+    return excess_weight.is_set
+	|| (committed_weight !=  nullptr && committed_weight->has_data())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_weight.yfilter)
+	|| (committed_weight !=  nullptr && committed_weight->has_operation())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "committed-weight")
+    {
+        if(committed_weight == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            committed_weight = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
+        return committed_weight;
+    }
+
+    if(child_yang_name == "programmed-wfq")
+    {
+        if(programmed_wfq == nullptr)
+        {
+            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+        }
+        return programmed_wfq;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
+    if(committed_weight != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["committed-weight"] = committed_weight;
+    }
+
+    if(programmed_wfq != nullptr)
+    {
+        children["programmed-wfq"] = programmed_wfq;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-type")
+    if(value_path == "excess-weight")
     {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
+        excess_weight = value;
+        excess_weight.value_namespace = name_space;
+        excess_weight.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-type")
+    if(value_path == "excess-weight")
     {
-        action_type.yfilter = yfilter;
+        excess_weight.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mark-detail" || name == "action-type")
+    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
     :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed";
+
+    yang_name = "committed-weight"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
 {
-    return action_opcode.is_set
-	|| mark_value.is_set;
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
+    path_buffer << "committed-weight";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode.yfilter = yfilter;
+        unit.yfilter = yfilter;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value.yfilter = yfilter;
+        value_.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "action-opcode" || name == "mark-value")
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+    :
+    excess_ratio{YType::uint16, "excess-ratio"}
+    	,
+    bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
+	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+{
+    bandwidth->parent = this;
+    sum_of_bandwidth->parent = this;
+
+    yang_name = "programmed-wfq"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+{
+    return excess_ratio.is_set
+	|| (bandwidth !=  nullptr && bandwidth->has_data())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "programmed-wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    if(child_yang_name == "sum-of-bandwidth")
+    {
+        if(sum_of_bandwidth == nullptr)
+        {
+            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+        }
+        return sum_of_bandwidth;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    if(sum_of_bandwidth != nullptr)
+    {
+        children["sum-of-bandwidth"] = sum_of_bandwidth;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sum-of-bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
@@ -3982,12 +3528,10 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,skywarp_qos_policy_class(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass>())
 {
     header->parent = this;
-
     interface_parameters->parent = this;
-
     skywarp_qos_policy_class->parent = this;
 
-    yang_name = "bundle-output"; yang_parent_name = "member-interface";
+    yang_name = "bundle-output"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::~BundleOutput()
@@ -4013,29 +3557,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleOutput' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4114,7 +3644,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     interface_name{YType::str, "interface-name"},
     policy_name{YType::str, "policy-name"}
 {
-    yang_name = "header"; yang_parent_name = "bundle-output";
+
+    yang_name = "header"; yang_parent_name = "bundle-output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Header::~Header()
@@ -4142,23 +3673,11 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "header";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Header::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Header::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Header' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
@@ -4166,9 +3685,7 @@ const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Me
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4245,12 +3762,10 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::PortShaperRate>())
 {
     interface_config_rate->parent = this;
-
     interface_program_rate->parent = this;
-
     port_shaper_rate->parent = this;
 
-    yang_name = "interface-parameters"; yang_parent_name = "bundle-output";
+    yang_name = "interface-parameters"; yang_parent_name = "bundle-output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::~InterfaceParameters()
@@ -4276,29 +3791,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-parameters";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceParameters' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4375,7 +3876,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceConfigRate::~InterfaceConfigRate()
@@ -4399,31 +3901,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-config-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceConfigRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceConfigRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceConfigRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4478,7 +3966,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceProgramRate::~InterfaceProgramRate()
@@ -4502,31 +3991,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-program-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceProgramRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceProgramRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceProgramRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4581,7 +4056,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::PortShaperRate::~PortShaperRate()
@@ -4605,31 +4081,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "port-shaper-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::PortShaperRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::PortShaperRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortShaperRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4681,7 +4143,8 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
 {
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "bundle-output";
+
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "bundle-output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
@@ -4712,29 +4175,15 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "skywarp-qos-policy-class";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SkywarpQosPolicyClass' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4797,16 +4246,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>())
 {
     marking->parent = this;
-
     police->parent = this;
-
     queue->parent = this;
-
     shape->parent = this;
-
     wfq->parent = this;
 
-    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class";
+    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::~QosShowPclassSt()
@@ -4840,31 +4285,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QosShowPclassSt' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
     if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4984,989 +4415,709 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
     :
-    queue_id{YType::uint32, "queue-id"},
-    queue_type{YType::str, "queue-type"}
+    mark_only(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
+	,police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
+	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
 {
-    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st";
+    mark_only->parent = this;
+    police_conform->parent = this;
+    police_exceed->parent = this;
+
+    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
 {
-    return queue_id.is_set
-	|| queue_type.is_set;
+    return (mark_only !=  nullptr && mark_only->has_data())
+	|| (police_conform !=  nullptr && police_conform->has_data())
+	|| (police_exceed !=  nullptr && police_exceed->has_data());
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(queue_id.yfilter)
-	|| ydk::is_set(queue_type.yfilter);
+	|| (mark_only !=  nullptr && mark_only->has_operation())
+	|| (police_conform !=  nullptr && police_conform->has_operation())
+	|| (police_exceed !=  nullptr && police_exceed->has_operation());
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "queue";
-
+    path_buffer << "marking";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Queue' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
-    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id = value;
-        queue_id.value_namespace = name_space;
-        queue_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type = value;
-        queue_type.value_namespace = name_space;
-        queue_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id.yfilter = yfilter;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "queue-id" || name == "queue-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
-    :
-    pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
-{
-    pbs->parent = this;
-
-    pir->parent = this;
-
-    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
-{
-    return (pbs !=  nullptr && pbs->has_data())
-	|| (pir !=  nullptr && pir->has_data());
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pbs !=  nullptr && pbs->has_operation())
-	|| (pir !=  nullptr && pir->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "shape";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Shape' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "pbs")
+    if(child_yang_name == "mark-only")
     {
-        if(pbs == nullptr)
+        if(mark_only == nullptr)
         {
-            pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
+            mark_only = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
         }
-        return pbs;
+        return mark_only;
     }
 
-    if(child_yang_name == "pir")
+    if(child_yang_name == "police-conform")
     {
-        if(pir == nullptr)
+        if(police_conform == nullptr)
         {
-            pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
+            police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
         }
-        return pir;
+        return police_conform;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbs != nullptr)
+    if(child_yang_name == "police-exceed")
     {
-        children["pbs"] = pbs;
-    }
-
-    if(pir != nullptr)
-    {
-        children["pir"] = pir;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbs" || name == "pir")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pir"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pbs"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
-    :
-    excess_weight{YType::uint16, "excess-weight"}
-    	,
-    committed_weight(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
-	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
-{
-    committed_weight->parent = this;
-
-    programmed_wfq->parent = this;
-
-    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
-{
-    return excess_weight.is_set
-	|| (committed_weight !=  nullptr && committed_weight->has_data())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excess_weight.yfilter)
-	|| (committed_weight !=  nullptr && committed_weight->has_operation())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wfq";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Wfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "committed-weight")
-    {
-        if(committed_weight == nullptr)
+        if(police_exceed == nullptr)
         {
-            committed_weight = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
+            police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
         }
-        return committed_weight;
+        return police_exceed;
     }
 
-    if(child_yang_name == "programmed-wfq")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mark_only != nullptr)
     {
-        if(programmed_wfq == nullptr)
+        children["mark-only"] = mark_only;
+    }
+
+    if(police_conform != nullptr)
+    {
+        children["police-conform"] = police_conform;
+    }
+
+    if(police_exceed != nullptr)
+    {
+        children["police-exceed"] = police_exceed;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
+    :
+    action_type{YType::enumeration, "action-type"}
+{
+
+    yang_name = "mark-only"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mark-only";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mark-detail")
+    {
+        for(auto const & c : mark_detail)
         {
-            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return programmed_wfq;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(committed_weight != nullptr)
+    for (auto const & c : mark_detail)
     {
-        children["committed-weight"] = committed_weight;
-    }
-
-    if(programmed_wfq != nullptr)
-    {
-        children["programmed-wfq"] = programmed_wfq;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "excess-weight")
+    if(value_path == "action-type")
     {
-        excess_weight = value;
-        excess_weight.value_namespace = name_space;
-        excess_weight.value_namespace_prefix = name_space_prefix;
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "excess-weight")
+    if(value_path == "action-type")
     {
-        excess_weight.yfilter = yfilter;
+        action_type.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
+    if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
     :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "committed-weight"; yang_parent_name = "wfq";
+
+    yang_name = "mark-detail"; yang_parent_name = "mark-only"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
 {
-    return unit.is_set
-	|| value_.is_set;
+    return action_opcode.is_set
+	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "committed-weight";
-
+    path_buffer << "mark-detail";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CommittedWeight' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit.yfilter = yfilter;
+        action_opcode.yfilter = yfilter;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_.yfilter = yfilter;
+        mark_value.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unit" || name == "value")
+    if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
     :
-    excess_ratio{YType::uint16, "excess-ratio"}
-    	,
-    bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+    action_type{YType::enumeration, "action-type"}
 {
-    bandwidth->parent = this;
 
-    sum_of_bandwidth->parent = this;
-
-    yang_name = "programmed-wfq"; yang_parent_name = "wfq";
+    yang_name = "police-conform"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
 {
-    return excess_ratio.is_set
-	|| (bandwidth !=  nullptr && bandwidth->has_data())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
 {
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(excess_ratio.yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+	|| ydk::is_set(action_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "programmed-wfq";
-
+    path_buffer << "police-conform";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProgrammedWfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bandwidth")
+    if(child_yang_name == "mark-detail")
     {
-        if(bandwidth == nullptr)
+        for(auto const & c : mark_detail)
         {
-            bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return bandwidth;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
-    if(child_yang_name == "sum-of-bandwidth")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mark_detail)
     {
-        if(sum_of_bandwidth == nullptr)
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action-type")
+    {
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-type")
+    {
+        action_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mark-detail" || name == "action-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
+    :
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
+{
+
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
+{
+    return action_opcode.is_set
+	|| mark_value.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mark-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action-opcode")
+    {
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mark-value")
+    {
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-opcode")
+    {
+        action_opcode.yfilter = yfilter;
+    }
+    if(value_path == "mark-value")
+    {
+        mark_value.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-opcode" || name == "mark-value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
+    :
+    action_type{YType::enumeration, "action-type"}
+{
+
+    yang_name = "police-exceed"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police-exceed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mark-detail")
+    {
+        for(auto const & c : mark_detail)
         {
-            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return sum_of_bandwidth;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bandwidth != nullptr)
+    for (auto const & c : mark_detail)
     {
-        children["bandwidth"] = bandwidth;
-    }
-
-    if(sum_of_bandwidth != nullptr)
-    {
-        children["sum-of-bandwidth"] = sum_of_bandwidth;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "excess-ratio")
+    if(value_path == "action-type")
     {
-        excess_ratio = value;
-        excess_ratio.value_namespace = name_space;
-        excess_ratio.value_namespace_prefix = name_space_prefix;
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "excess-ratio")
+    if(value_path == "action-type")
     {
-        excess_ratio.yfilter = yfilter;
+        action_type.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+    if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
     :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq";
+
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
 {
-    return unit.is_set
-	|| value_.is_set;
+    return action_opcode.is_set
+	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-
+    path_buffer << "mark-detail";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sum-of-bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "action-opcode")
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SumOfBandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
+        action_opcode.yfilter = yfilter;
     }
-    else
+    if(value_path == "mark-value")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        mark_value.yfilter = yfilter;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
+    if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
@@ -5980,10 +5131,9 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::M
 	,cir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>())
 {
     cbs->parent = this;
-
     cir->parent = this;
 
-    yang_name = "police"; yang_parent_name = "qos-show-pclass-st";
+    yang_name = "police"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::~Police()
@@ -6011,31 +5161,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "police";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Police' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (policer_id.is_set || is_set(policer_id.yfilter)) leaf_name_data.push_back(policer_id.get_name_leafdata());
     if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6113,115 +5249,13 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cir"; yang_parent_name = "police";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::Cbs()
     :
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "cbs"; yang_parent_name = "police";
+
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::~Cbs()
@@ -6245,31 +5279,17 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "cbs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6319,803 +5339,956 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
     :
-    mark_only(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    mark_only->parent = this;
 
-    police_conform->parent = this;
-
-    police_exceed->parent = this;
-
-    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st";
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
 {
-    return (mark_only !=  nullptr && mark_only->has_data())
-	|| (police_conform !=  nullptr && police_conform->has_data())
-	|| (police_exceed !=  nullptr && police_exceed->has_data());
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
 {
     return is_set(yfilter)
-	|| (mark_only !=  nullptr && mark_only->has_operation())
-	|| (police_conform !=  nullptr && police_conform->has_operation())
-	|| (police_exceed !=  nullptr && police_exceed->has_operation());
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "marking";
-
+    path_buffer << "cir";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Marking' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mark-only")
-    {
-        if(mark_only == nullptr)
-        {
-            mark_only = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
-        }
-        return mark_only;
-    }
-
-    if(child_yang_name == "police-conform")
-    {
-        if(police_conform == nullptr)
-        {
-            police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
-        }
-        return police_conform;
-    }
-
-    if(child_yang_name == "police-exceed")
-    {
-        if(police_exceed == nullptr)
-        {
-            police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
-        }
-        return police_exceed;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mark_only != nullptr)
-    {
-        children["mark-only"] = mark_only;
-    }
-
-    if(police_conform != nullptr)
-    {
-        children["police-conform"] = police_conform;
-    }
-
-    if(police_exceed != nullptr)
-    {
-        children["police-exceed"] = police_exceed;
-    }
-
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
     :
-    action_type{YType::enumeration, "action-type"}
+    queue_id{YType::uint32, "queue-id"},
+    queue_type{YType::str, "queue-type"}
 {
-    yang_name = "mark-only"; yang_parent_name = "marking";
+
+    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
+    return queue_id.is_set
+	|| queue_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
+	|| ydk::is_set(queue_id.yfilter)
+	|| ydk::is_set(queue_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mark-only";
-
+    path_buffer << "queue";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkOnly' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mark-detail")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "queue-id")
     {
-        for(auto const & c : mark_detail)
+        queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type = value;
+        queue_type.value_namespace = name_space;
+        queue_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "queue-id" || name == "queue-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
+    :
+    pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
+	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
+{
+    pbs->parent = this;
+    pir->parent = this;
+
+    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
+{
+    return (pbs !=  nullptr && pbs->has_data())
+	|| (pir !=  nullptr && pir->has_data());
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pbs !=  nullptr && pbs->has_operation())
+	|| (pir !=  nullptr && pir->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbs")
+    {
+        if(pbs == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
+        return pbs;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
+    if(child_yang_name == "pir")
     {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mark-detail" || name == "action-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
-    :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
-{
-    yang_name = "mark-detail"; yang_parent_name = "mark-only";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
-{
-    return action_opcode.is_set
-	|| mark_value.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode.yfilter = yfilter;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action-opcode" || name == "mark-value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
-    :
-    action_type{YType::enumeration, "action-type"}
-{
-    yang_name = "police-conform"; yang_parent_name = "marking";
-}
-
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
-{
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
-}
-
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police-conform";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceConform' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mark-detail")
-    {
-        for(auto const & c : mark_detail)
+        if(pir == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
+        return pir;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
+    if(pbs != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["pbs"] = pbs;
+    }
+
+    if(pir != nullptr)
+    {
+        children["pir"] = pir;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mark-detail" || name == "action-type")
+    if(name == "pbs" || name == "pir")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
     :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "police-conform";
+
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
 {
-    return action_opcode.is_set
-	|| mark_value.is_set;
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
+    path_buffer << "pbs";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode.yfilter = yfilter;
+        unit.yfilter = yfilter;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value.yfilter = yfilter;
+        value_.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "action-opcode" || name == "mark-value")
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
     :
-    action_type{YType::enumeration, "action-type"}
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "police-exceed"; yang_parent_name = "marking";
+
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "police-exceed";
-
+    path_buffer << "pir";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceExceed' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mark-detail")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
     {
-        for(auto const & c : mark_detail)
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
+    :
+    excess_weight{YType::uint16, "excess-weight"}
+    	,
+    committed_weight(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
+	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
+{
+    committed_weight->parent = this;
+    programmed_wfq->parent = this;
+
+    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
+{
+    return excess_weight.is_set
+	|| (committed_weight !=  nullptr && committed_weight->has_data())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_weight.yfilter)
+	|| (committed_weight !=  nullptr && committed_weight->has_operation())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "committed-weight")
+    {
+        if(committed_weight == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            committed_weight = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
+        return committed_weight;
+    }
+
+    if(child_yang_name == "programmed-wfq")
+    {
+        if(programmed_wfq == nullptr)
+        {
+            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+        }
+        return programmed_wfq;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
+    if(committed_weight != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["committed-weight"] = committed_weight;
+    }
+
+    if(programmed_wfq != nullptr)
+    {
+        children["programmed-wfq"] = programmed_wfq;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-type")
+    if(value_path == "excess-weight")
     {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
+        excess_weight = value;
+        excess_weight.value_namespace = name_space;
+        excess_weight.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-type")
+    if(value_path == "excess-weight")
     {
-        action_type.yfilter = yfilter;
+        excess_weight.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mark-detail" || name == "action-type")
+    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
     :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed";
+
+    yang_name = "committed-weight"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
 {
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
 {
-    return action_opcode.is_set
-	|| mark_value.is_set;
+    return unit.is_set
+	|| value_.is_set;
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
+    path_buffer << "committed-weight";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "action-opcode")
+    if(value_path == "unit")
     {
-        action_opcode.yfilter = yfilter;
+        unit.yfilter = yfilter;
     }
-    if(value_path == "mark-value")
+    if(value_path == "value")
     {
-        mark_value.yfilter = yfilter;
+        value_.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "action-opcode" || name == "mark-value")
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+    :
+    excess_ratio{YType::uint16, "excess-ratio"}
+    	,
+    bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
+	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+{
+    bandwidth->parent = this;
+    sum_of_bandwidth->parent = this;
+
+    yang_name = "programmed-wfq"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+{
+    return excess_ratio.is_set
+	|| (bandwidth !=  nullptr && bandwidth->has_data())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "programmed-wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    if(child_yang_name == "sum-of-bandwidth")
+    {
+        if(sum_of_bandwidth == nullptr)
+        {
+            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+        }
+        return sum_of_bandwidth;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    if(sum_of_bandwidth != nullptr)
+    {
+        children["sum-of-bandwidth"] = sum_of_bandwidth;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sum-of-bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
@@ -7132,7 +6305,8 @@ PlatformQos::Nodes::Node::Capability::Capability()
     max_policy_maps{YType::uint32, "max-policy-maps"},
     max_policy_name_length{YType::uint32, "max-policy-name-length"}
 {
-    yang_name = "capability"; yang_parent_name = "node";
+
+    yang_name = "capability"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Capability::~Capability()
@@ -7170,23 +6344,11 @@ std::string PlatformQos::Nodes::Node::Capability::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "capability";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Capability::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Capability::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Capability' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_bundle_members.is_set || is_set(max_bundle_members.yfilter)) leaf_name_data.push_back(max_bundle_members.get_name_leafdata());
@@ -7199,9 +6361,7 @@ const EntityPath PlatformQos::Nodes::Node::Capability::get_entity_path(Entity* a
     if (max_policy_maps.is_set || is_set(max_policy_maps.yfilter)) leaf_name_data.push_back(max_policy_maps.get_name_leafdata());
     if (max_policy_name_length.is_set || is_set(max_policy_name_length.yfilter)) leaf_name_data.push_back(max_policy_name_length.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7323,7 +6483,8 @@ bool PlatformQos::Nodes::Node::Capability::has_leaf_or_child_of_name(const std::
 
 PlatformQos::Nodes::Node::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "node";
+
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::~Interfaces()
@@ -7354,29 +6515,15 @@ std::string PlatformQos::Nodes::Node::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7435,10 +6582,9 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Interface()
 	,output(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output>())
 {
     input->parent = this;
-
     output->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::~Interface()
@@ -7464,30 +6610,16 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7555,3151 +6687,6 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::Output()
-    :
-    header(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header>())
-	,interface_parameters(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters>())
-	,skywarp_qos_policy_class(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass>())
-{
-    header->parent = this;
-
-    interface_parameters->parent = this;
-
-    skywarp_qos_policy_class->parent = this;
-
-    yang_name = "output"; yang_parent_name = "interface";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::~Output()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::has_data() const
-{
-    return (header !=  nullptr && header->has_data())
-	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
-	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| (header !=  nullptr && header->has_operation())
-	|| (interface_parameters !=  nullptr && interface_parameters->has_operation())
-	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Output' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "header")
-    {
-        if(header == nullptr)
-        {
-            header = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header>();
-        }
-        return header;
-    }
-
-    if(child_yang_name == "interface-parameters")
-    {
-        if(interface_parameters == nullptr)
-        {
-            interface_parameters = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters>();
-        }
-        return interface_parameters;
-    }
-
-    if(child_yang_name == "skywarp-qos-policy-class")
-    {
-        if(skywarp_qos_policy_class == nullptr)
-        {
-            skywarp_qos_policy_class = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass>();
-        }
-        return skywarp_qos_policy_class;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(header != nullptr)
-    {
-        children["header"] = header;
-    }
-
-    if(interface_parameters != nullptr)
-    {
-        children["interface-parameters"] = interface_parameters;
-    }
-
-    if(skywarp_qos_policy_class != nullptr)
-    {
-        children["skywarp-qos-policy-class"] = skywarp_qos_policy_class;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "header" || name == "interface-parameters" || name == "skywarp-qos-policy-class")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::Header()
-    :
-    classes{YType::uint16, "classes"},
-    direction{YType::str, "direction"},
-    interface_name{YType::str, "interface-name"},
-    policy_name{YType::str, "policy-name"}
-{
-    yang_name = "header"; yang_parent_name = "output";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::~Header()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::has_data() const
-{
-    return classes.is_set
-	|| direction.is_set
-	|| interface_name.is_set
-	|| policy_name.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(classes.yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(policy_name.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "header";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Header' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "classes")
-    {
-        classes = value;
-        classes.value_namespace = name_space;
-        classes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "classes")
-    {
-        classes.yfilter = yfilter;
-    }
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "classes" || name == "direction" || name == "interface-name" || name == "policy-name")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceParameters()
-    :
-    interface_config_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate>())
-	,interface_program_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate>())
-	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate>())
-{
-    interface_config_rate->parent = this;
-
-    interface_program_rate->parent = this;
-
-    port_shaper_rate->parent = this;
-
-    yang_name = "interface-parameters"; yang_parent_name = "output";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::~InterfaceParameters()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::has_data() const
-{
-    return (interface_config_rate !=  nullptr && interface_config_rate->has_data())
-	|| (interface_program_rate !=  nullptr && interface_program_rate->has_data())
-	|| (port_shaper_rate !=  nullptr && port_shaper_rate->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::has_operation() const
-{
-    return is_set(yfilter)
-	|| (interface_config_rate !=  nullptr && interface_config_rate->has_operation())
-	|| (interface_program_rate !=  nullptr && interface_program_rate->has_operation())
-	|| (port_shaper_rate !=  nullptr && port_shaper_rate->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-parameters";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceParameters' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-config-rate")
-    {
-        if(interface_config_rate == nullptr)
-        {
-            interface_config_rate = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate>();
-        }
-        return interface_config_rate;
-    }
-
-    if(child_yang_name == "interface-program-rate")
-    {
-        if(interface_program_rate == nullptr)
-        {
-            interface_program_rate = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate>();
-        }
-        return interface_program_rate;
-    }
-
-    if(child_yang_name == "port-shaper-rate")
-    {
-        if(port_shaper_rate == nullptr)
-        {
-            port_shaper_rate = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate>();
-        }
-        return port_shaper_rate;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(interface_config_rate != nullptr)
-    {
-        children["interface-config-rate"] = interface_config_rate;
-    }
-
-    if(interface_program_rate != nullptr)
-    {
-        children["interface-program-rate"] = interface_program_rate;
-    }
-
-    if(port_shaper_rate != nullptr)
-    {
-        children["port-shaper-rate"] = port_shaper_rate;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-config-rate" || name == "interface-program-rate" || name == "port-shaper-rate")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::InterfaceConfigRate()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::~InterfaceConfigRate()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-config-rate";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceConfigRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::InterfaceProgramRate()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::~InterfaceProgramRate()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-program-rate";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceProgramRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::PortShaperRate()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::~PortShaperRate()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "port-shaper-rate";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortShaperRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
-{
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "output";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::has_data() const
-{
-    for (std::size_t index=0; index<qos_show_pclass_st.size(); index++)
-    {
-        if(qos_show_pclass_st[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::has_operation() const
-{
-    for (std::size_t index=0; index<qos_show_pclass_st.size(); index++)
-    {
-        if(qos_show_pclass_st[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "skywarp-qos-policy-class";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SkywarpQosPolicyClass' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "qos-show-pclass-st")
-    {
-        for(auto const & c : qos_show_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt>();
-        c->parent = this;
-        qos_show_pclass_st.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qos_show_pclass_st)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "qos-show-pclass-st")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::QosShowPclassSt()
-    :
-    class_level{YType::uint8, "class-level"},
-    class_name{YType::str, "class-name"}
-    	,
-    marking(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking>())
-	,police(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police>())
-	,queue(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue>())
-	,shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape>())
-	,wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>())
-{
-    marking->parent = this;
-
-    police->parent = this;
-
-    queue->parent = this;
-
-    shape->parent = this;
-
-    wfq->parent = this;
-
-    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::~QosShowPclassSt()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::has_data() const
-{
-    return class_level.is_set
-	|| class_name.is_set
-	|| (marking !=  nullptr && marking->has_data())
-	|| (police !=  nullptr && police->has_data())
-	|| (queue !=  nullptr && queue->has_data())
-	|| (shape !=  nullptr && shape->has_data())
-	|| (wfq !=  nullptr && wfq->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(class_level.yfilter)
-	|| ydk::is_set(class_name.yfilter)
-	|| (marking !=  nullptr && marking->has_operation())
-	|| (police !=  nullptr && police->has_operation())
-	|| (queue !=  nullptr && queue->has_operation())
-	|| (shape !=  nullptr && shape->has_operation())
-	|| (wfq !=  nullptr && wfq->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qos-show-pclass-st";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QosShowPclassSt' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "marking")
-    {
-        if(marking == nullptr)
-        {
-            marking = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking>();
-        }
-        return marking;
-    }
-
-    if(child_yang_name == "police")
-    {
-        if(police == nullptr)
-        {
-            police = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police>();
-        }
-        return police;
-    }
-
-    if(child_yang_name == "queue")
-    {
-        if(queue == nullptr)
-        {
-            queue = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue>();
-        }
-        return queue;
-    }
-
-    if(child_yang_name == "shape")
-    {
-        if(shape == nullptr)
-        {
-            shape = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape>();
-        }
-        return shape;
-    }
-
-    if(child_yang_name == "wfq")
-    {
-        if(wfq == nullptr)
-        {
-            wfq = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>();
-        }
-        return wfq;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(marking != nullptr)
-    {
-        children["marking"] = marking;
-    }
-
-    if(police != nullptr)
-    {
-        children["police"] = police;
-    }
-
-    if(queue != nullptr)
-    {
-        children["queue"] = queue;
-    }
-
-    if(shape != nullptr)
-    {
-        children["shape"] = shape;
-    }
-
-    if(wfq != nullptr)
-    {
-        children["wfq"] = wfq;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "class-level")
-    {
-        class_level = value;
-        class_level.value_namespace = name_space;
-        class_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "class-name")
-    {
-        class_name = value;
-        class_name.value_namespace = name_space;
-        class_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "class-level")
-    {
-        class_level.yfilter = yfilter;
-    }
-    if(value_path == "class-name")
-    {
-        class_name.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "marking" || name == "police" || name == "queue" || name == "shape" || name == "wfq" || name == "class-level" || name == "class-name")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
-    :
-    queue_id{YType::uint32, "queue-id"},
-    queue_type{YType::str, "queue-type"}
-{
-    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
-{
-    return queue_id.is_set
-	|| queue_type.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(queue_id.yfilter)
-	|| ydk::is_set(queue_type.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "queue";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Queue' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
-    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id = value;
-        queue_id.value_namespace = name_space;
-        queue_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type = value;
-        queue_type.value_namespace = name_space;
-        queue_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id.yfilter = yfilter;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "queue-id" || name == "queue-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
-    :
-    pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
-{
-    pbs->parent = this;
-
-    pir->parent = this;
-
-    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
-{
-    return (pbs !=  nullptr && pbs->has_data())
-	|| (pir !=  nullptr && pir->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pbs !=  nullptr && pbs->has_operation())
-	|| (pir !=  nullptr && pir->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "shape";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Shape' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pbs")
-    {
-        if(pbs == nullptr)
-        {
-            pbs = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
-        }
-        return pbs;
-    }
-
-    if(child_yang_name == "pir")
-    {
-        if(pir == nullptr)
-        {
-            pir = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
-        }
-        return pir;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbs != nullptr)
-    {
-        children["pbs"] = pbs;
-    }
-
-    if(pir != nullptr)
-    {
-        children["pir"] = pir;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbs" || name == "pir")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pir"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pbs"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
-    :
-    excess_weight{YType::uint16, "excess-weight"}
-    	,
-    committed_weight(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
-	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
-{
-    committed_weight->parent = this;
-
-    programmed_wfq->parent = this;
-
-    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
-{
-    return excess_weight.is_set
-	|| (committed_weight !=  nullptr && committed_weight->has_data())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excess_weight.yfilter)
-	|| (committed_weight !=  nullptr && committed_weight->has_operation())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wfq";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Wfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "committed-weight")
-    {
-        if(committed_weight == nullptr)
-        {
-            committed_weight = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
-        }
-        return committed_weight;
-    }
-
-    if(child_yang_name == "programmed-wfq")
-    {
-        if(programmed_wfq == nullptr)
-        {
-            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
-        }
-        return programmed_wfq;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(committed_weight != nullptr)
-    {
-        children["committed-weight"] = committed_weight;
-    }
-
-    if(programmed_wfq != nullptr)
-    {
-        children["programmed-wfq"] = programmed_wfq;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "excess-weight")
-    {
-        excess_weight = value;
-        excess_weight.value_namespace = name_space;
-        excess_weight.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "excess-weight")
-    {
-        excess_weight.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "committed-weight"; yang_parent_name = "wfq";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "committed-weight";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CommittedWeight' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
-    :
-    excess_ratio{YType::uint16, "excess-ratio"}
-    	,
-    bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
-{
-    bandwidth->parent = this;
-
-    sum_of_bandwidth->parent = this;
-
-    yang_name = "programmed-wfq"; yang_parent_name = "wfq";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
-{
-    return excess_ratio.is_set
-	|| (bandwidth !=  nullptr && bandwidth->has_data())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excess_ratio.yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "programmed-wfq";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProgrammedWfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bandwidth")
-    {
-        if(bandwidth == nullptr)
-        {
-            bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
-        }
-        return bandwidth;
-    }
-
-    if(child_yang_name == "sum-of-bandwidth")
-    {
-        if(sum_of_bandwidth == nullptr)
-        {
-            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
-        }
-        return sum_of_bandwidth;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bandwidth != nullptr)
-    {
-        children["bandwidth"] = bandwidth;
-    }
-
-    if(sum_of_bandwidth != nullptr)
-    {
-        children["sum-of-bandwidth"] = sum_of_bandwidth;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "excess-ratio")
-    {
-        excess_ratio = value;
-        excess_ratio.value_namespace = name_space;
-        excess_ratio.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "excess-ratio")
-    {
-        excess_ratio.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sum-of-bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SumOfBandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Police()
-    :
-    policer_id{YType::uint32, "policer-id"},
-    policer_type{YType::enumeration, "policer-type"}
-    	,
-    cbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs>())
-	,cir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>())
-{
-    cbs->parent = this;
-
-    cir->parent = this;
-
-    yang_name = "police"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::~Police()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::has_data() const
-{
-    return policer_id.is_set
-	|| policer_type.is_set
-	|| (cbs !=  nullptr && cbs->has_data())
-	|| (cir !=  nullptr && cir->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(policer_id.yfilter)
-	|| ydk::is_set(policer_type.yfilter)
-	|| (cbs !=  nullptr && cbs->has_operation())
-	|| (cir !=  nullptr && cir->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Police' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (policer_id.is_set || is_set(policer_id.yfilter)) leaf_name_data.push_back(policer_id.get_name_leafdata());
-    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cbs")
-    {
-        if(cbs == nullptr)
-        {
-            cbs = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs>();
-        }
-        return cbs;
-    }
-
-    if(child_yang_name == "cir")
-    {
-        if(cir == nullptr)
-        {
-            cir = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>();
-        }
-        return cir;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cbs != nullptr)
-    {
-        children["cbs"] = cbs;
-    }
-
-    if(cir != nullptr)
-    {
-        children["cir"] = cir;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "policer-id")
-    {
-        policer_id = value;
-        policer_id.value_namespace = name_space;
-        policer_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policer-type")
-    {
-        policer_type = value;
-        policer_type.value_namespace = name_space;
-        policer_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "policer-id")
-    {
-        policer_id.yfilter = yfilter;
-    }
-    if(value_path == "policer-type")
-    {
-        policer_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cbs" || name == "cir" || name == "policer-id" || name == "policer-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cir"; yang_parent_name = "police";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::Cbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cbs"; yang_parent_name = "police";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::~Cbs()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
-    :
-    mark_only(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
-{
-    mark_only->parent = this;
-
-    police_conform->parent = this;
-
-    police_exceed->parent = this;
-
-    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
-{
-    return (mark_only !=  nullptr && mark_only->has_data())
-	|| (police_conform !=  nullptr && police_conform->has_data())
-	|| (police_exceed !=  nullptr && police_exceed->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mark_only !=  nullptr && mark_only->has_operation())
-	|| (police_conform !=  nullptr && police_conform->has_operation())
-	|| (police_exceed !=  nullptr && police_exceed->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "marking";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Marking' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mark-only")
-    {
-        if(mark_only == nullptr)
-        {
-            mark_only = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
-        }
-        return mark_only;
-    }
-
-    if(child_yang_name == "police-conform")
-    {
-        if(police_conform == nullptr)
-        {
-            police_conform = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
-        }
-        return police_conform;
-    }
-
-    if(child_yang_name == "police-exceed")
-    {
-        if(police_exceed == nullptr)
-        {
-            police_exceed = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
-        }
-        return police_exceed;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mark_only != nullptr)
-    {
-        children["mark-only"] = mark_only;
-    }
-
-    if(police_conform != nullptr)
-    {
-        children["police-conform"] = police_conform;
-    }
-
-    if(police_exceed != nullptr)
-    {
-        children["police-exceed"] = police_exceed;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
-    :
-    action_type{YType::enumeration, "action-type"}
-{
-    yang_name = "mark-only"; yang_parent_name = "marking";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mark-only";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkOnly' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mark-detail")
-    {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mark-detail" || name == "action-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
-    :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
-{
-    yang_name = "mark-detail"; yang_parent_name = "mark-only";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
-{
-    return action_opcode.is_set
-	|| mark_value.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode.yfilter = yfilter;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action-opcode" || name == "mark-value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
-    :
-    action_type{YType::enumeration, "action-type"}
-{
-    yang_name = "police-conform"; yang_parent_name = "marking";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police-conform";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceConform' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mark-detail")
-    {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mark-detail" || name == "action-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
-    :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
-{
-    yang_name = "mark-detail"; yang_parent_name = "police-conform";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
-{
-    return action_opcode.is_set
-	|| mark_value.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode.yfilter = yfilter;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action-opcode" || name == "mark-value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
-    :
-    action_type{YType::enumeration, "action-type"}
-{
-    yang_name = "police-exceed"; yang_parent_name = "marking";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_data())
-            return true;
-    }
-    return action_type.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
-{
-    for (std::size_t index=0; index<mark_detail.size(); index++)
-    {
-        if(mark_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(action_type.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police-exceed";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceExceed' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mark-detail")
-    {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
-        c->parent = this;
-        mark_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mark_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-type")
-    {
-        action_type = value;
-        action_type.value_namespace = name_space;
-        action_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-type")
-    {
-        action_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mark-detail" || name == "action-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
-    :
-    action_opcode{YType::enumeration, "action-opcode"},
-    mark_value{YType::uint8, "mark-value"}
-{
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
-{
-    return action_opcode.is_set
-	|| mark_value.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action_opcode.yfilter)
-	|| ydk::is_set(mark_value.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mark-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
-    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode = value;
-        action_opcode.value_namespace = name_space;
-        action_opcode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value = value;
-        mark_value.value_namespace = name_space;
-        mark_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-opcode")
-    {
-        action_opcode.yfilter = yfilter;
-    }
-    if(value_path == "mark-value")
-    {
-        mark_value.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action-opcode" || name == "mark-value")
-        return true;
-    return false;
-}
-
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::Input()
     :
     header(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header>())
@@ -10707,12 +6694,10 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::Input()
 	,skywarp_qos_policy_class(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass>())
 {
     header->parent = this;
-
     interface_parameters->parent = this;
-
     skywarp_qos_policy_class->parent = this;
 
-    yang_name = "input"; yang_parent_name = "interface";
+    yang_name = "input"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::~Input()
@@ -10738,29 +6723,15 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Input' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10839,7 +6810,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header::Header()
     interface_name{YType::str, "interface-name"},
     policy_name{YType::str, "policy-name"}
 {
-    yang_name = "header"; yang_parent_name = "input";
+
+    yang_name = "header"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header::~Header()
@@ -10867,23 +6839,11 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "header";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Header' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
@@ -10891,9 +6851,7 @@ const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header:
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10970,12 +6928,10 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::Int
 	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::PortShaperRate>())
 {
     interface_config_rate->parent = this;
-
     interface_program_rate->parent = this;
-
     port_shaper_rate->parent = this;
 
-    yang_name = "interface-parameters"; yang_parent_name = "input";
+    yang_name = "interface-parameters"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::~InterfaceParameters()
@@ -11001,29 +6957,15 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfacePar
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-parameters";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceParameters' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11100,7 +7042,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::Int
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceConfigRate::~InterfaceConfigRate()
@@ -11124,31 +7067,17 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfacePar
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-config-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceConfigRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceConfigRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceConfigRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11203,7 +7132,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::Int
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceProgramRate::~InterfaceProgramRate()
@@ -11227,31 +7157,17 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfacePar
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-program-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceProgramRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceProgramRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceProgramRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11306,7 +7222,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::Por
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters";
+
+    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::PortShaperRate::~PortShaperRate()
@@ -11330,31 +7247,17 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfacePar
 {
     std::ostringstream path_buffer;
     path_buffer << "port-shaper-rate";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::PortShaperRate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::PortShaperRate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortShaperRate' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11406,7 +7309,8 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
 {
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "input";
+
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
@@ -11437,29 +7341,15 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "skywarp-qos-policy-class";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SkywarpQosPolicyClass' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11522,16 +7412,12 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::Q
 	,wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>())
 {
     marking->parent = this;
-
     police->parent = this;
-
     queue->parent = this;
-
     shape->parent = this;
-
     wfq->parent = this;
 
-    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class";
+    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::~QosShowPclassSt()
@@ -11565,31 +7451,17 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QosShowPclassSt' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
     if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11709,989 +7581,709 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
     :
-    queue_id{YType::uint32, "queue-id"},
-    queue_type{YType::str, "queue-type"}
+    mark_only(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
+	,police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
+	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
 {
-    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st";
+    mark_only->parent = this;
+    police_conform->parent = this;
+    police_exceed->parent = this;
+
+    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
 {
-    return queue_id.is_set
-	|| queue_type.is_set;
+    return (mark_only !=  nullptr && mark_only->has_data())
+	|| (police_conform !=  nullptr && police_conform->has_data())
+	|| (police_exceed !=  nullptr && police_exceed->has_data());
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(queue_id.yfilter)
-	|| ydk::is_set(queue_type.yfilter);
+	|| (mark_only !=  nullptr && mark_only->has_operation())
+	|| (police_conform !=  nullptr && police_conform->has_operation())
+	|| (police_exceed !=  nullptr && police_exceed->has_operation());
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "queue";
-
+    path_buffer << "marking";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Queue' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
-    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id = value;
-        queue_id.value_namespace = name_space;
-        queue_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type = value;
-        queue_type.value_namespace = name_space;
-        queue_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "queue-id")
-    {
-        queue_id.yfilter = yfilter;
-    }
-    if(value_path == "queue-type")
-    {
-        queue_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "queue-id" || name == "queue-type")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
-    :
-    pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
-{
-    pbs->parent = this;
-
-    pir->parent = this;
-
-    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
-{
-    return (pbs !=  nullptr && pbs->has_data())
-	|| (pir !=  nullptr && pir->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pbs !=  nullptr && pbs->has_operation())
-	|| (pir !=  nullptr && pir->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "shape";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Shape' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "pbs")
+    if(child_yang_name == "mark-only")
     {
-        if(pbs == nullptr)
+        if(mark_only == nullptr)
         {
-            pbs = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
+            mark_only = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
         }
-        return pbs;
+        return mark_only;
     }
 
-    if(child_yang_name == "pir")
+    if(child_yang_name == "police-conform")
     {
-        if(pir == nullptr)
+        if(police_conform == nullptr)
         {
-            pir = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
+            police_conform = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
         }
-        return pir;
+        return police_conform;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbs != nullptr)
+    if(child_yang_name == "police-exceed")
     {
-        children["pbs"] = pbs;
-    }
-
-    if(pir != nullptr)
-    {
-        children["pir"] = pir;
-    }
-
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbs" || name == "pir")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pir"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pbs"; yang_parent_name = "shape";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
-    :
-    excess_weight{YType::uint16, "excess-weight"}
-    	,
-    committed_weight(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
-	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
-{
-    committed_weight->parent = this;
-
-    programmed_wfq->parent = this;
-
-    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
-{
-    return excess_weight.is_set
-	|| (committed_weight !=  nullptr && committed_weight->has_data())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excess_weight.yfilter)
-	|| (committed_weight !=  nullptr && committed_weight->has_operation())
-	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wfq";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Wfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "committed-weight")
-    {
-        if(committed_weight == nullptr)
+        if(police_exceed == nullptr)
         {
-            committed_weight = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
+            police_exceed = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
         }
-        return committed_weight;
+        return police_exceed;
     }
 
-    if(child_yang_name == "programmed-wfq")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mark_only != nullptr)
     {
-        if(programmed_wfq == nullptr)
+        children["mark-only"] = mark_only;
+    }
+
+    if(police_conform != nullptr)
+    {
+        children["police-conform"] = police_conform;
+    }
+
+    if(police_exceed != nullptr)
+    {
+        children["police-exceed"] = police_exceed;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
+    :
+    action_type{YType::enumeration, "action-type"}
+{
+
+    yang_name = "mark-only"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mark-only";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mark-detail")
+    {
+        for(auto const & c : mark_detail)
         {
-            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return programmed_wfq;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(committed_weight != nullptr)
+    for (auto const & c : mark_detail)
     {
-        children["committed-weight"] = committed_weight;
-    }
-
-    if(programmed_wfq != nullptr)
-    {
-        children["programmed-wfq"] = programmed_wfq;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "excess-weight")
+    if(value_path == "action-type")
     {
-        excess_weight = value;
-        excess_weight.value_namespace = name_space;
-        excess_weight.value_namespace_prefix = name_space_prefix;
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "excess-weight")
+    if(value_path == "action-type")
     {
-        excess_weight.yfilter = yfilter;
+        action_type.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
+    if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
     :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "committed-weight"; yang_parent_name = "wfq";
+
+    yang_name = "mark-detail"; yang_parent_name = "mark-only"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
 {
-    return unit.is_set
-	|| value_.is_set;
+    return action_opcode.is_set
+	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "committed-weight";
-
+    path_buffer << "mark-detail";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CommittedWeight' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit.yfilter = yfilter;
+        action_opcode.yfilter = yfilter;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_.yfilter = yfilter;
+        mark_value.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unit" || name == "value")
+    if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
     :
-    excess_ratio{YType::uint16, "excess-ratio"}
-    	,
-    bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+    action_type{YType::enumeration, "action-type"}
 {
-    bandwidth->parent = this;
 
-    sum_of_bandwidth->parent = this;
-
-    yang_name = "programmed-wfq"; yang_parent_name = "wfq";
+    yang_name = "police-conform"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
 {
-    return excess_ratio.is_set
-	|| (bandwidth !=  nullptr && bandwidth->has_data())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
 {
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(excess_ratio.yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+	|| ydk::is_set(action_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "programmed-wfq";
-
+    path_buffer << "police-conform";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProgrammedWfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bandwidth")
+    if(child_yang_name == "mark-detail")
     {
-        if(bandwidth == nullptr)
+        for(auto const & c : mark_detail)
         {
-            bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return bandwidth;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
-    if(child_yang_name == "sum-of-bandwidth")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mark_detail)
     {
-        if(sum_of_bandwidth == nullptr)
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action-type")
+    {
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-type")
+    {
+        action_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mark-detail" || name == "action-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
+    :
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
+{
+
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
+{
+    return action_opcode.is_set
+	|| mark_value.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mark-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "action-opcode")
+    {
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mark-value")
+    {
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-opcode")
+    {
+        action_opcode.yfilter = yfilter;
+    }
+    if(value_path == "mark-value")
+    {
+        mark_value.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-opcode" || name == "mark-value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
+    :
+    action_type{YType::enumeration, "action-type"}
+{
+
+    yang_name = "police-exceed"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_data())
+            return true;
+    }
+    return action_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
+{
+    for (std::size_t index=0; index<mark_detail.size(); index++)
+    {
+        if(mark_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police-exceed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mark-detail")
+    {
+        for(auto const & c : mark_detail)
         {
-            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return sum_of_bandwidth;
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
+        c->parent = this;
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bandwidth != nullptr)
+    for (auto const & c : mark_detail)
     {
-        children["bandwidth"] = bandwidth;
-    }
-
-    if(sum_of_bandwidth != nullptr)
-    {
-        children["sum-of-bandwidth"] = sum_of_bandwidth;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "excess-ratio")
+    if(value_path == "action-type")
     {
-        excess_ratio = value;
-        excess_ratio.value_namespace = name_space;
-        excess_ratio.value_namespace_prefix = name_space_prefix;
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "excess-ratio")
+    if(value_path == "action-type")
     {
-        excess_ratio.yfilter = yfilter;
+        action_type.yfilter = yfilter;
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+    if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
     :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
+    action_opcode{YType::enumeration, "action-opcode"},
+    mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq";
+
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
 {
-    return unit.is_set
-	|| value_.is_set;
+    return action_opcode.is_set
+	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(action_opcode.yfilter)
+	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-
+    path_buffer << "mark-detail";
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
+    if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unit")
+    if(value_path == "action-opcode")
     {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
+        action_opcode = value;
+        action_opcode.value_namespace = name_space;
+        action_opcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "value")
+    if(value_path == "mark-value")
     {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
+        mark_value = value;
+        mark_value.value_namespace = name_space;
+        mark_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sum-of-bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "action-opcode")
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SumOfBandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
+        action_opcode.yfilter = yfilter;
     }
-    else
+    if(value_path == "mark-value")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
+        mark_value.yfilter = yfilter;
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
+    if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
@@ -12705,10 +8297,9 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::Q
 	,cir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>())
 {
     cbs->parent = this;
-
     cir->parent = this;
 
-    yang_name = "police"; yang_parent_name = "qos-show-pclass-st";
+    yang_name = "police"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::~Police()
@@ -12736,31 +8327,17 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "police";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Police' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (policer_id.is_set || is_set(policer_id.yfilter)) leaf_name_data.push_back(policer_id.get_name_leafdata());
     if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12838,115 +8415,13 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cir"; yang_parent_name = "police";
-}
-
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
-{
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::Cbs()
     :
     unit{YType::enumeration, "unit"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "cbs"; yang_parent_name = "police";
+
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::~Cbs()
@@ -12970,31 +8445,17 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "cbs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -13044,33 +8505,1879 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
     :
-    mark_only(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cir";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
+    :
+    queue_id{YType::uint32, "queue-id"},
+    queue_type{YType::str, "queue-type"}
+{
+
+    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
+{
+    return queue_id.is_set
+	|| queue_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(queue_id.yfilter)
+	|| ydk::is_set(queue_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "queue";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "queue-id")
+    {
+        queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type = value;
+        queue_type.value_namespace = name_space;
+        queue_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "queue-id" || name == "queue-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
+    :
+    pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
+	,pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
+{
+    pbs->parent = this;
+    pir->parent = this;
+
+    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
+{
+    return (pbs !=  nullptr && pbs->has_data())
+	|| (pir !=  nullptr && pir->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pbs !=  nullptr && pbs->has_operation())
+	|| (pir !=  nullptr && pir->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbs")
+    {
+        if(pbs == nullptr)
+        {
+            pbs = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
+        }
+        return pbs;
+    }
+
+    if(child_yang_name == "pir")
+    {
+        if(pir == nullptr)
+        {
+            pir = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
+        }
+        return pir;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbs != nullptr)
+    {
+        children["pbs"] = pbs;
+    }
+
+    if(pir != nullptr)
+    {
+        children["pir"] = pir;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbs" || name == "pir")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pbs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pir";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
+    :
+    excess_weight{YType::uint16, "excess-weight"}
+    	,
+    committed_weight(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
+	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
+{
+    committed_weight->parent = this;
+    programmed_wfq->parent = this;
+
+    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
+{
+    return excess_weight.is_set
+	|| (committed_weight !=  nullptr && committed_weight->has_data())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_weight.yfilter)
+	|| (committed_weight !=  nullptr && committed_weight->has_operation())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "committed-weight")
+    {
+        if(committed_weight == nullptr)
+        {
+            committed_weight = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
+        }
+        return committed_weight;
+    }
+
+    if(child_yang_name == "programmed-wfq")
+    {
+        if(programmed_wfq == nullptr)
+        {
+            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+        }
+        return programmed_wfq;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(committed_weight != nullptr)
+    {
+        children["committed-weight"] = committed_weight;
+    }
+
+    if(programmed_wfq != nullptr)
+    {
+        children["programmed-wfq"] = programmed_wfq;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-weight")
+    {
+        excess_weight = value;
+        excess_weight.value_namespace = name_space;
+        excess_weight.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-weight")
+    {
+        excess_weight.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "committed-weight"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "committed-weight";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+    :
+    excess_ratio{YType::uint16, "excess-ratio"}
+    	,
+    bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
+	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+{
+    bandwidth->parent = this;
+    sum_of_bandwidth->parent = this;
+
+    yang_name = "programmed-wfq"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+{
+    return excess_ratio.is_set
+	|| (bandwidth !=  nullptr && bandwidth->has_data())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "programmed-wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    if(child_yang_name == "sum-of-bandwidth")
+    {
+        if(sum_of_bandwidth == nullptr)
+        {
+            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+        }
+        return sum_of_bandwidth;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    if(sum_of_bandwidth != nullptr)
+    {
+        children["sum-of-bandwidth"] = sum_of_bandwidth;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sum-of-bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::Output()
+    :
+    header(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header>())
+	,interface_parameters(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters>())
+	,skywarp_qos_policy_class(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass>())
+{
+    header->parent = this;
+    interface_parameters->parent = this;
+    skywarp_qos_policy_class->parent = this;
+
+    yang_name = "output"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::~Output()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::has_data() const
+{
+    return (header !=  nullptr && header->has_data())
+	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
+	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| (header !=  nullptr && header->has_operation())
+	|| (interface_parameters !=  nullptr && interface_parameters->has_operation())
+	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "header")
+    {
+        if(header == nullptr)
+        {
+            header = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header>();
+        }
+        return header;
+    }
+
+    if(child_yang_name == "interface-parameters")
+    {
+        if(interface_parameters == nullptr)
+        {
+            interface_parameters = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters>();
+        }
+        return interface_parameters;
+    }
+
+    if(child_yang_name == "skywarp-qos-policy-class")
+    {
+        if(skywarp_qos_policy_class == nullptr)
+        {
+            skywarp_qos_policy_class = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass>();
+        }
+        return skywarp_qos_policy_class;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(header != nullptr)
+    {
+        children["header"] = header;
+    }
+
+    if(interface_parameters != nullptr)
+    {
+        children["interface-parameters"] = interface_parameters;
+    }
+
+    if(skywarp_qos_policy_class != nullptr)
+    {
+        children["skywarp-qos-policy-class"] = skywarp_qos_policy_class;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header" || name == "interface-parameters" || name == "skywarp-qos-policy-class")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::Header()
+    :
+    classes{YType::uint16, "classes"},
+    direction{YType::str, "direction"},
+    interface_name{YType::str, "interface-name"},
+    policy_name{YType::str, "policy-name"}
+{
+
+    yang_name = "header"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::~Header()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::has_data() const
+{
+    return classes.is_set
+	|| direction.is_set
+	|| interface_name.is_set
+	|| policy_name.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(classes.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "header";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "classes")
+    {
+        classes = value;
+        classes.value_namespace = name_space;
+        classes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "classes")
+    {
+        classes.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes" || name == "direction" || name == "interface-name" || name == "policy-name")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceParameters()
+    :
+    interface_config_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate>())
+	,interface_program_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate>())
+	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate>())
+{
+    interface_config_rate->parent = this;
+    interface_program_rate->parent = this;
+    port_shaper_rate->parent = this;
+
+    yang_name = "interface-parameters"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::~InterfaceParameters()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::has_data() const
+{
+    return (interface_config_rate !=  nullptr && interface_config_rate->has_data())
+	|| (interface_program_rate !=  nullptr && interface_program_rate->has_data())
+	|| (port_shaper_rate !=  nullptr && port_shaper_rate->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::has_operation() const
+{
+    return is_set(yfilter)
+	|| (interface_config_rate !=  nullptr && interface_config_rate->has_operation())
+	|| (interface_program_rate !=  nullptr && interface_program_rate->has_operation())
+	|| (port_shaper_rate !=  nullptr && port_shaper_rate->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-parameters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-config-rate")
+    {
+        if(interface_config_rate == nullptr)
+        {
+            interface_config_rate = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate>();
+        }
+        return interface_config_rate;
+    }
+
+    if(child_yang_name == "interface-program-rate")
+    {
+        if(interface_program_rate == nullptr)
+        {
+            interface_program_rate = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate>();
+        }
+        return interface_program_rate;
+    }
+
+    if(child_yang_name == "port-shaper-rate")
+    {
+        if(port_shaper_rate == nullptr)
+        {
+            port_shaper_rate = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate>();
+        }
+        return port_shaper_rate;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_config_rate != nullptr)
+    {
+        children["interface-config-rate"] = interface_config_rate;
+    }
+
+    if(interface_program_rate != nullptr)
+    {
+        children["interface-program-rate"] = interface_program_rate;
+    }
+
+    if(port_shaper_rate != nullptr)
+    {
+        children["port-shaper-rate"] = port_shaper_rate;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-config-rate" || name == "interface-program-rate" || name == "port-shaper-rate")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::InterfaceConfigRate()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "interface-config-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::~InterfaceConfigRate()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-config-rate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::InterfaceProgramRate()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "interface-program-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::~InterfaceProgramRate()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-program-rate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::PortShaperRate()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::~PortShaperRate()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-shaper-rate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
+{
+
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::has_data() const
+{
+    for (std::size_t index=0; index<qos_show_pclass_st.size(); index++)
+    {
+        if(qos_show_pclass_st[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::has_operation() const
+{
+    for (std::size_t index=0; index<qos_show_pclass_st.size(); index++)
+    {
+        if(qos_show_pclass_st[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "skywarp-qos-policy-class";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "qos-show-pclass-st")
+    {
+        for(auto const & c : qos_show_pclass_st)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt>();
+        c->parent = this;
+        qos_show_pclass_st.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : qos_show_pclass_st)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "qos-show-pclass-st")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::QosShowPclassSt()
+    :
+    class_level{YType::uint8, "class-level"},
+    class_name{YType::str, "class-name"}
+    	,
+    marking(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking>())
+	,police(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police>())
+	,queue(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue>())
+	,shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape>())
+	,wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>())
+{
+    marking->parent = this;
+    police->parent = this;
+    queue->parent = this;
+    shape->parent = this;
+    wfq->parent = this;
+
+    yang_name = "qos-show-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::~QosShowPclassSt()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::has_data() const
+{
+    return class_level.is_set
+	|| class_name.is_set
+	|| (marking !=  nullptr && marking->has_data())
+	|| (police !=  nullptr && police->has_data())
+	|| (queue !=  nullptr && queue->has_data())
+	|| (shape !=  nullptr && shape->has_data())
+	|| (wfq !=  nullptr && wfq->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(class_level.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| (marking !=  nullptr && marking->has_operation())
+	|| (police !=  nullptr && police->has_operation())
+	|| (queue !=  nullptr && queue->has_operation())
+	|| (shape !=  nullptr && shape->has_operation())
+	|| (wfq !=  nullptr && wfq->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qos-show-pclass-st";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "marking")
+    {
+        if(marking == nullptr)
+        {
+            marking = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking>();
+        }
+        return marking;
+    }
+
+    if(child_yang_name == "police")
+    {
+        if(police == nullptr)
+        {
+            police = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police>();
+        }
+        return police;
+    }
+
+    if(child_yang_name == "queue")
+    {
+        if(queue == nullptr)
+        {
+            queue = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue>();
+        }
+        return queue;
+    }
+
+    if(child_yang_name == "shape")
+    {
+        if(shape == nullptr)
+        {
+            shape = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape>();
+        }
+        return shape;
+    }
+
+    if(child_yang_name == "wfq")
+    {
+        if(wfq == nullptr)
+        {
+            wfq = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq>();
+        }
+        return wfq;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(marking != nullptr)
+    {
+        children["marking"] = marking;
+    }
+
+    if(police != nullptr)
+    {
+        children["police"] = police;
+    }
+
+    if(queue != nullptr)
+    {
+        children["queue"] = queue;
+    }
+
+    if(shape != nullptr)
+    {
+        children["shape"] = shape;
+    }
+
+    if(wfq != nullptr)
+    {
+        children["wfq"] = wfq;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "class-level")
+    {
+        class_level = value;
+        class_level.value_namespace = name_space;
+        class_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-name")
+    {
+        class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-level")
+    {
+        class_level.yfilter = yfilter;
+    }
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "marking" || name == "police" || name == "queue" || name == "shape" || name == "wfq" || name == "class-level" || name == "class-name")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::Marking()
+    :
+    mark_only(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>())
+	,police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>())
+	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>())
 {
     mark_only->parent = this;
-
     police_conform->parent = this;
-
     police_exceed->parent = this;
 
-    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st";
+    yang_name = "marking"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::~Marking()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_data() const
 {
     return (mark_only !=  nullptr && mark_only->has_data())
 	|| (police_conform !=  nullptr && police_conform->has_data())
 	|| (police_exceed !=  nullptr && police_exceed->has_data());
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_operation() const
 {
     return is_set(yfilter)
 	|| (mark_only !=  nullptr && mark_only->has_operation())
@@ -13078,43 +10385,29 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
 	|| (police_exceed !=  nullptr && police_exceed->has_operation());
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "marking";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Marking' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mark-only")
     {
         if(mark_only == nullptr)
         {
-            mark_only = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
+            mark_only = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly>();
         }
         return mark_only;
     }
@@ -13123,7 +10416,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
     {
         if(police_conform == nullptr)
         {
-            police_conform = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
+            police_conform = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform>();
         }
         return police_conform;
     }
@@ -13132,7 +10425,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
     {
         if(police_exceed == nullptr)
         {
-            police_exceed = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
+            police_exceed = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed>();
         }
         return police_exceed;
     }
@@ -13140,7 +10433,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(mark_only != nullptr)
@@ -13161,33 +10454,34 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mark-only" || name == "police-conform" || name == "police-exceed")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkOnly()
     :
     action_type{YType::enumeration, "action-type"}
 {
-    yang_name = "mark-only"; yang_parent_name = "marking";
+
+    yang_name = "mark-only"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::~MarkOnly()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_data() const
 {
     for (std::size_t index=0; index<mark_detail.size(); index++)
     {
@@ -13197,7 +10491,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     return action_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_operation() const
 {
     for (std::size_t index=0; index<mark_detail.size(); index++)
     {
@@ -13208,38 +10502,24 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
 	|| ydk::is_set(action_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-only";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkOnly' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mark-detail")
     {
@@ -13251,7 +10531,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
                 return c;
             }
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
         return c;
@@ -13260,7 +10540,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
@@ -13271,7 +10551,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-type")
     {
@@ -13281,7 +10561,7 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-type")
     {
@@ -13289,82 +10569,69 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::MarkDetail()
     :
     action_opcode{YType::enumeration, "action-opcode"},
     mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "mark-only";
+
+    yang_name = "mark-detail"; yang_parent_name = "mark-only"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_data() const
 {
     return action_opcode.is_set
 	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(action_opcode.yfilter)
 	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
     if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-opcode")
     {
@@ -13380,7 +10647,7 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-opcode")
     {
@@ -13392,25 +10659,26 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::PoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
 {
-    yang_name = "police-conform"; yang_parent_name = "marking";
+
+    yang_name = "police-conform"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::~PoliceConform()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_data() const
 {
     for (std::size_t index=0; index<mark_detail.size(); index++)
     {
@@ -13420,7 +10688,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     return action_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_operation() const
 {
     for (std::size_t index=0; index<mark_detail.size(); index++)
     {
@@ -13431,38 +10699,24 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
 	|| ydk::is_set(action_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "police-conform";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceConform' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mark-detail")
     {
@@ -13474,7 +10728,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
                 return c;
             }
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
         return c;
@@ -13483,7 +10737,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
@@ -13494,7 +10748,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-type")
     {
@@ -13504,7 +10758,7 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-type")
     {
@@ -13512,82 +10766,69 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::MarkDetail()
     :
     action_opcode{YType::enumeration, "action-opcode"},
     mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "police-conform";
+
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_data() const
 {
     return action_opcode.is_set
 	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(action_opcode.yfilter)
 	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
     if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-opcode")
     {
@@ -13603,7 +10844,7 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-opcode")
     {
@@ -13615,25 +10856,26 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action-opcode" || name == "mark-value")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::PoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
 {
-    yang_name = "police-exceed"; yang_parent_name = "marking";
+
+    yang_name = "police-exceed"; yang_parent_name = "marking"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::~PoliceExceed()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_data() const
 {
     for (std::size_t index=0; index<mark_detail.size(); index++)
     {
@@ -13643,7 +10885,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     return action_type.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_operation() const
 {
     for (std::size_t index=0; index<mark_detail.size(); index++)
     {
@@ -13654,38 +10896,24 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
 	|| ydk::is_set(action_type.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "police-exceed";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoliceExceed' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mark-detail")
     {
@@ -13697,7 +10925,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
                 return c;
             }
         }
-        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
+        auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
         return c;
@@ -13706,7 +10934,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
@@ -13717,7 +10945,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-type")
     {
@@ -13727,7 +10955,7 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-type")
     {
@@ -13735,82 +10963,69 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mark-detail" || name == "action-type")
         return true;
     return false;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::MarkDetail()
     :
     action_opcode{YType::enumeration, "action-opcode"},
     mark_value{YType::uint8, "mark-value"}
 {
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed";
+
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::~MarkDetail()
 {
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_data() const
 {
     return action_opcode.is_set
 	|| mark_value.is_set;
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(action_opcode.yfilter)
 	|| ydk::is_set(mark_value.yfilter);
 }
 
-std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MarkDetail' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_opcode.is_set || is_set(action_opcode.yfilter)) leaf_name_data.push_back(action_opcode.get_name_leafdata());
     if (mark_value.is_set || is_set(mark_value.yfilter)) leaf_name_data.push_back(mark_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-opcode")
     {
@@ -13826,7 +11041,7 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-opcode")
     {
@@ -13838,9 +11053,1180 @@ void PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCla
     }
 }
 
-bool PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action-opcode" || name == "mark-value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Police()
+    :
+    policer_id{YType::uint32, "policer-id"},
+    policer_type{YType::enumeration, "policer-type"}
+    	,
+    cbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs>())
+	,cir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>())
+{
+    cbs->parent = this;
+    cir->parent = this;
+
+    yang_name = "police"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::~Police()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::has_data() const
+{
+    return policer_id.is_set
+	|| policer_type.is_set
+	|| (cbs !=  nullptr && cbs->has_data())
+	|| (cir !=  nullptr && cir->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policer_id.yfilter)
+	|| ydk::is_set(policer_type.yfilter)
+	|| (cbs !=  nullptr && cbs->has_operation())
+	|| (cir !=  nullptr && cir->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policer_id.is_set || is_set(policer_id.yfilter)) leaf_name_data.push_back(policer_id.get_name_leafdata());
+    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cbs")
+    {
+        if(cbs == nullptr)
+        {
+            cbs = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs>();
+        }
+        return cbs;
+    }
+
+    if(child_yang_name == "cir")
+    {
+        if(cir == nullptr)
+        {
+            cir = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir>();
+        }
+        return cir;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
+    {
+        children["cbs"] = cbs;
+    }
+
+    if(cir != nullptr)
+    {
+        children["cir"] = cir;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policer-id")
+    {
+        policer_id = value;
+        policer_id.value_namespace = name_space;
+        policer_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type = value;
+        policer_type.value_namespace = name_space;
+        policer_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policer-id")
+    {
+        policer_id.yfilter = yfilter;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cbs" || name == "cir" || name == "policer-id" || name == "policer-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::Cbs()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::~Cbs()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cbs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::Cir()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::~Cir()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cir";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::Queue()
+    :
+    queue_id{YType::uint32, "queue-id"},
+    queue_type{YType::str, "queue-type"}
+{
+
+    yang_name = "queue"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::~Queue()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_data() const
+{
+    return queue_id.is_set
+	|| queue_type.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(queue_id.yfilter)
+	|| ydk::is_set(queue_type.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "queue";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (queue_type.is_set || is_set(queue_type.yfilter)) leaf_name_data.push_back(queue_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "queue-id")
+    {
+        queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type = value;
+        queue_type.value_namespace = name_space;
+        queue_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+    if(value_path == "queue-type")
+    {
+        queue_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "queue-id" || name == "queue-type")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Shape()
+    :
+    pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>())
+	,pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>())
+{
+    pbs->parent = this;
+    pir->parent = this;
+
+    yang_name = "shape"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::~Shape()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_data() const
+{
+    return (pbs !=  nullptr && pbs->has_data())
+	|| (pir !=  nullptr && pir->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pbs !=  nullptr && pbs->has_operation())
+	|| (pir !=  nullptr && pir->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbs")
+    {
+        if(pbs == nullptr)
+        {
+            pbs = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs>();
+        }
+        return pbs;
+    }
+
+    if(child_yang_name == "pir")
+    {
+        if(pir == nullptr)
+        {
+            pir = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir>();
+        }
+        return pir;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbs != nullptr)
+    {
+        children["pbs"] = pbs;
+    }
+
+    if(pir != nullptr)
+    {
+        children["pir"] = pir;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbs" || name == "pir")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::Pbs()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::~Pbs()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pbs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::Pir()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::~Pir()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pir";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::Wfq()
+    :
+    excess_weight{YType::uint16, "excess-weight"}
+    	,
+    committed_weight(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>())
+	,programmed_wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>())
+{
+    committed_weight->parent = this;
+    programmed_wfq->parent = this;
+
+    yang_name = "wfq"; yang_parent_name = "qos-show-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::~Wfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_data() const
+{
+    return excess_weight.is_set
+	|| (committed_weight !=  nullptr && committed_weight->has_data())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_weight.yfilter)
+	|| (committed_weight !=  nullptr && committed_weight->has_operation())
+	|| (programmed_wfq !=  nullptr && programmed_wfq->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_weight.is_set || is_set(excess_weight.yfilter)) leaf_name_data.push_back(excess_weight.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "committed-weight")
+    {
+        if(committed_weight == nullptr)
+        {
+            committed_weight = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight>();
+        }
+        return committed_weight;
+    }
+
+    if(child_yang_name == "programmed-wfq")
+    {
+        if(programmed_wfq == nullptr)
+        {
+            programmed_wfq = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq>();
+        }
+        return programmed_wfq;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(committed_weight != nullptr)
+    {
+        children["committed-weight"] = committed_weight;
+    }
+
+    if(programmed_wfq != nullptr)
+    {
+        children["programmed-wfq"] = programmed_wfq;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-weight")
+    {
+        excess_weight = value;
+        excess_weight.value_namespace = name_space;
+        excess_weight.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-weight")
+    {
+        excess_weight.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "committed-weight" || name == "programmed-wfq" || name == "excess-weight")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::CommittedWeight()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "committed-weight"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::~CommittedWeight()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "committed-weight";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::ProgrammedWfq()
+    :
+    excess_ratio{YType::uint16, "excess-ratio"}
+    	,
+    bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>())
+	,sum_of_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>())
+{
+    bandwidth->parent = this;
+    sum_of_bandwidth->parent = this;
+
+    yang_name = "programmed-wfq"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::~ProgrammedWfq()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_data() const
+{
+    return excess_ratio.is_set
+	|| (bandwidth !=  nullptr && bandwidth->has_data())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "programmed-wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    if(child_yang_name == "sum-of-bandwidth")
+    {
+        if(sum_of_bandwidth == nullptr)
+        {
+            sum_of_bandwidth = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth>();
+        }
+        return sum_of_bandwidth;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    if(sum_of_bandwidth != nullptr)
+    {
+        children["sum-of-bandwidth"] = sum_of_bandwidth;
+    }
+
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::Bandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::~Bandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::SumOfBandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "programmed-wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::~SumOfBandwidth()
+{
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sum-of-bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
         return true;
     return false;
 }
@@ -13851,7 +12237,7 @@ PlatformQosEa::PlatformQosEa()
 {
     nodes->parent = this;
 
-    yang_name = "platform-qos-ea"; yang_parent_name = "Cisco-IOS-XR-skp-qos-oper";
+    yang_name = "platform-qos-ea"; yang_parent_name = "Cisco-IOS-XR-skp-qos-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PlatformQosEa::~PlatformQosEa()
@@ -13873,26 +12259,15 @@ std::string PlatformQosEa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos-ea";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -13963,7 +12338,8 @@ bool PlatformQosEa::has_leaf_or_child_of_name(const std::string & name) const
 
 PlatformQosEa::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "platform-qos-ea";
+
+    yang_name = "nodes"; yang_parent_name = "platform-qos-ea"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformQosEa::Nodes::~Nodes()
@@ -13990,33 +12366,26 @@ bool PlatformQosEa::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string PlatformQosEa::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos-ea/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformQosEa::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos-ea/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14075,10 +12444,9 @@ PlatformQosEa::Nodes::Node::Node()
 	,interfaces(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces>())
 {
     bundle_interfaces->parent = this;
-
     interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PlatformQosEa::Nodes::Node::~Node()
@@ -14100,34 +12468,27 @@ bool PlatformQosEa::Nodes::Node::has_operation() const
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
+std::string PlatformQosEa::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos-ea/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PlatformQosEa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-skp-qos-oper:platform-qos-ea/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14197,7 +12558,8 @@ bool PlatformQosEa::Nodes::Node::has_leaf_or_child_of_name(const std::string & n
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterfaces()
 {
-    yang_name = "bundle-interfaces"; yang_parent_name = "node";
+
+    yang_name = "bundle-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::~BundleInterfaces()
@@ -14228,29 +12590,15 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInterfaces' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14309,7 +12657,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::BundleInterface()
 {
     member_interfaces->parent = this;
 
-    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces";
+    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::~BundleInterface()
@@ -14333,30 +12681,16 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInterface' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14412,7 +12746,8 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::has_leaf_or_
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterfaces()
 {
-    yang_name = "member-interfaces"; yang_parent_name = "bundle-interface";
+
+    yang_name = "member-interfaces"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::~MemberInterfaces()
@@ -14443,29 +12778,15 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "member-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemberInterfaces' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14524,10 +12845,9 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 	,bundle_output(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput>())
 {
     bundle_input->parent = this;
-
     bundle_output->parent = this;
 
-    yang_name = "member-interface"; yang_parent_name = "member-interfaces";
+    yang_name = "member-interface"; yang_parent_name = "member-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::~MemberInterface()
@@ -14553,30 +12873,16 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "member-interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemberInterface' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14644,2455 +12950,13 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
     return false;
 }
 
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::BundleOutput()
-    :
-    details(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details>())
-{
-    details->parent = this;
-
-    yang_name = "bundle-output"; yang_parent_name = "member-interface";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::~BundleOutput()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::has_data() const
-{
-    return (details !=  nullptr && details->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::has_operation() const
-{
-    return is_set(yfilter)
-	|| (details !=  nullptr && details->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bundle-output";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleOutput' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "details")
-    {
-        if(details == nullptr)
-        {
-            details = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details>();
-        }
-        return details;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(details != nullptr)
-    {
-        children["details"] = details;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "details")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Details()
-    :
-    header(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header>())
-	,interface_parameters(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters>())
-	,skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass>())
-{
-    header->parent = this;
-
-    interface_parameters->parent = this;
-
-    skywarp_qos_policy_class->parent = this;
-
-    yang_name = "details"; yang_parent_name = "bundle-output";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::~Details()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::has_data() const
-{
-    return (header !=  nullptr && header->has_data())
-	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
-	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::has_operation() const
-{
-    return is_set(yfilter)
-	|| (header !=  nullptr && header->has_operation())
-	|| (interface_parameters !=  nullptr && interface_parameters->has_operation())
-	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Details' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "header")
-    {
-        if(header == nullptr)
-        {
-            header = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header>();
-        }
-        return header;
-    }
-
-    if(child_yang_name == "interface-parameters")
-    {
-        if(interface_parameters == nullptr)
-        {
-            interface_parameters = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters>();
-        }
-        return interface_parameters;
-    }
-
-    if(child_yang_name == "skywarp-qos-policy-class")
-    {
-        if(skywarp_qos_policy_class == nullptr)
-        {
-            skywarp_qos_policy_class = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass>();
-        }
-        return skywarp_qos_policy_class;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(header != nullptr)
-    {
-        children["header"] = header;
-    }
-
-    if(interface_parameters != nullptr)
-    {
-        children["interface-parameters"] = interface_parameters;
-    }
-
-    if(skywarp_qos_policy_class != nullptr)
-    {
-        children["skywarp-qos-policy-class"] = skywarp_qos_policy_class;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "header" || name == "interface-parameters" || name == "skywarp-qos-policy-class")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::Header()
-    :
-    classes{YType::uint16, "classes"},
-    direction{YType::str, "direction"},
-    interface_name{YType::str, "interface-name"},
-    policy_name{YType::str, "policy-name"}
-{
-    yang_name = "header"; yang_parent_name = "details";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::~Header()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::has_data() const
-{
-    return classes.is_set
-	|| direction.is_set
-	|| interface_name.is_set
-	|| policy_name.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(classes.yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(policy_name.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "header";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Header' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "classes")
-    {
-        classes = value;
-        classes.value_namespace = name_space;
-        classes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "classes")
-    {
-        classes.yfilter = yfilter;
-    }
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "classes" || name == "direction" || name == "interface-name" || name == "policy-name")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::InterfaceParameters()
-    :
-    bundle_id{YType::uint16, "bundle-id"},
-    hierarchical_depth{YType::uint8, "hierarchical-depth"},
-    interface_handle{YType::str, "interface-handle"},
-    interface_rate{YType::uint32, "interface-rate"},
-    interface_type{YType::str, "interface-type"},
-    policy_map_id{YType::uint16, "policy-map-id"},
-    policy_name{YType::str, "policy-name"},
-    port{YType::uint32, "port"},
-    port_shaper_rate{YType::uint32, "port-shaper-rate"},
-    qos_interface_handle{YType::uint64, "qos-interface-handle"},
-    uidb_index{YType::uint16, "uidb-index"},
-    under_line_interface_handle{YType::str, "under-line-interface-handle"}
-{
-    yang_name = "interface-parameters"; yang_parent_name = "details";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::~InterfaceParameters()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::has_data() const
-{
-    return bundle_id.is_set
-	|| hierarchical_depth.is_set
-	|| interface_handle.is_set
-	|| interface_rate.is_set
-	|| interface_type.is_set
-	|| policy_map_id.is_set
-	|| policy_name.is_set
-	|| port.is_set
-	|| port_shaper_rate.is_set
-	|| qos_interface_handle.is_set
-	|| uidb_index.is_set
-	|| under_line_interface_handle.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bundle_id.yfilter)
-	|| ydk::is_set(hierarchical_depth.yfilter)
-	|| ydk::is_set(interface_handle.yfilter)
-	|| ydk::is_set(interface_rate.yfilter)
-	|| ydk::is_set(interface_type.yfilter)
-	|| ydk::is_set(policy_map_id.yfilter)
-	|| ydk::is_set(policy_name.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(port_shaper_rate.yfilter)
-	|| ydk::is_set(qos_interface_handle.yfilter)
-	|| ydk::is_set(uidb_index.yfilter)
-	|| ydk::is_set(under_line_interface_handle.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-parameters";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceParameters' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bundle_id.is_set || is_set(bundle_id.yfilter)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
-    if (hierarchical_depth.is_set || is_set(hierarchical_depth.yfilter)) leaf_name_data.push_back(hierarchical_depth.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (interface_rate.is_set || is_set(interface_rate.yfilter)) leaf_name_data.push_back(interface_rate.get_name_leafdata());
-    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (policy_map_id.is_set || is_set(policy_map_id.yfilter)) leaf_name_data.push_back(policy_map_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (port_shaper_rate.is_set || is_set(port_shaper_rate.yfilter)) leaf_name_data.push_back(port_shaper_rate.get_name_leafdata());
-    if (qos_interface_handle.is_set || is_set(qos_interface_handle.yfilter)) leaf_name_data.push_back(qos_interface_handle.get_name_leafdata());
-    if (uidb_index.is_set || is_set(uidb_index.yfilter)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
-    if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.yfilter)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bundle-id")
-    {
-        bundle_id = value;
-        bundle_id.value_namespace = name_space;
-        bundle_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hierarchical-depth")
-    {
-        hierarchical_depth = value;
-        hierarchical_depth.value_namespace = name_space;
-        hierarchical_depth.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-handle")
-    {
-        interface_handle = value;
-        interface_handle.value_namespace = name_space;
-        interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-rate")
-    {
-        interface_rate = value;
-        interface_rate.value_namespace = name_space;
-        interface_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-type")
-    {
-        interface_type = value;
-        interface_type.value_namespace = name_space;
-        interface_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-map-id")
-    {
-        policy_map_id = value;
-        policy_map_id.value_namespace = name_space;
-        policy_map_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port-shaper-rate")
-    {
-        port_shaper_rate = value;
-        port_shaper_rate.value_namespace = name_space;
-        port_shaper_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "qos-interface-handle")
-    {
-        qos_interface_handle = value;
-        qos_interface_handle.value_namespace = name_space;
-        qos_interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uidb-index")
-    {
-        uidb_index = value;
-        uidb_index.value_namespace = name_space;
-        uidb_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "under-line-interface-handle")
-    {
-        under_line_interface_handle = value;
-        under_line_interface_handle.value_namespace = name_space;
-        under_line_interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bundle-id")
-    {
-        bundle_id.yfilter = yfilter;
-    }
-    if(value_path == "hierarchical-depth")
-    {
-        hierarchical_depth.yfilter = yfilter;
-    }
-    if(value_path == "interface-handle")
-    {
-        interface_handle.yfilter = yfilter;
-    }
-    if(value_path == "interface-rate")
-    {
-        interface_rate.yfilter = yfilter;
-    }
-    if(value_path == "interface-type")
-    {
-        interface_type.yfilter = yfilter;
-    }
-    if(value_path == "policy-map-id")
-    {
-        policy_map_id.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "port-shaper-rate")
-    {
-        port_shaper_rate.yfilter = yfilter;
-    }
-    if(value_path == "qos-interface-handle")
-    {
-        qos_interface_handle.yfilter = yfilter;
-    }
-    if(value_path == "uidb-index")
-    {
-        uidb_index.yfilter = yfilter;
-    }
-    if(value_path == "under-line-interface-handle")
-    {
-        under_line_interface_handle.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bundle-id" || name == "hierarchical-depth" || name == "interface-handle" || name == "interface-rate" || name == "interface-type" || name == "policy-map-id" || name == "policy-name" || name == "port" || name == "port-shaper-rate" || name == "qos-interface-handle" || name == "uidb-index" || name == "under-line-interface-handle")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
-{
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::has_data() const
-{
-    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
-    {
-        if(qos_show_ea_pclass_st[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::has_operation() const
-{
-    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
-    {
-        if(qos_show_ea_pclass_st[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "skywarp-qos-policy-class";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SkywarpQosPolicyClass' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "qos-show-ea-pclass-st")
-    {
-        for(auto const & c : qos_show_ea_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
-        c->parent = this;
-        qos_show_ea_pclass_st.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qos_show_ea_pclass_st)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "qos-show-ea-pclass-st")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::QosShowEaPclassSt()
-    :
-    class_level{YType::uint8, "class-level"},
-    class_name{YType::str, "class-name"},
-    index_{YType::uint16, "index"},
-    node_flags{YType::str, "node-flags"},
-    policy_name{YType::str, "policy-name"},
-    stats_flags{YType::str, "stats-flags"}
-    	,
-    config(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config>())
-	,result(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
-{
-    config->parent = this;
-
-    result->parent = this;
-
-    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::~QosShowEaPclassSt()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_data() const
-{
-    return class_level.is_set
-	|| class_name.is_set
-	|| index_.is_set
-	|| node_flags.is_set
-	|| policy_name.is_set
-	|| stats_flags.is_set
-	|| (config !=  nullptr && config->has_data())
-	|| (result !=  nullptr && result->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(class_level.yfilter)
-	|| ydk::is_set(class_name.yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(node_flags.yfilter)
-	|| ydk::is_set(policy_name.yfilter)
-	|| ydk::is_set(stats_flags.yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (result !=  nullptr && result->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qos-show-ea-pclass-st";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QosShowEaPclassSt' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (node_flags.is_set || is_set(node_flags.yfilter)) leaf_name_data.push_back(node_flags.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (stats_flags.is_set || is_set(stats_flags.yfilter)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "result")
-    {
-        if(result == nullptr)
-        {
-            result = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>();
-        }
-        return result;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(result != nullptr)
-    {
-        children["result"] = result;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "class-level")
-    {
-        class_level = value;
-        class_level.value_namespace = name_space;
-        class_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "class-name")
-    {
-        class_name = value;
-        class_name.value_namespace = name_space;
-        class_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-flags")
-    {
-        node_flags = value;
-        node_flags.value_namespace = name_space;
-        node_flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stats-flags")
-    {
-        stats_flags = value;
-        stats_flags.value_namespace = name_space;
-        stats_flags.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "class-level")
-    {
-        class_level.yfilter = yfilter;
-    }
-    if(value_path == "class-name")
-    {
-        class_name.yfilter = yfilter;
-    }
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "node-flags")
-    {
-        node_flags.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-    if(value_path == "stats-flags")
-    {
-        stats_flags.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "result" || name == "class-level" || name == "class-name" || name == "index" || name == "node-flags" || name == "policy-name" || name == "stats-flags")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
-    :
-    node_config{YType::str, "node-config"}
-    	,
-    police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>())
-	,shape(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
-	,wfq(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
-{
-    police->parent = this;
-
-    shape->parent = this;
-
-    wfq->parent = this;
-
-    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::~Config()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_data() const
-{
-    return node_config.is_set
-	|| (police !=  nullptr && police->has_data())
-	|| (shape !=  nullptr && shape->has_data())
-	|| (wfq !=  nullptr && wfq->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node_config.yfilter)
-	|| (police !=  nullptr && police->has_operation())
-	|| (shape !=  nullptr && shape->has_operation())
-	|| (wfq !=  nullptr && wfq->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node_config.is_set || is_set(node_config.yfilter)) leaf_name_data.push_back(node_config.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "police")
-    {
-        if(police == nullptr)
-        {
-            police = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>();
-        }
-        return police;
-    }
-
-    if(child_yang_name == "shape")
-    {
-        if(shape == nullptr)
-        {
-            shape = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>();
-        }
-        return shape;
-    }
-
-    if(child_yang_name == "wfq")
-    {
-        if(wfq == nullptr)
-        {
-            wfq = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>();
-        }
-        return wfq;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(police != nullptr)
-    {
-        children["police"] = police;
-    }
-
-    if(shape != nullptr)
-    {
-        children["shape"] = shape;
-    }
-
-    if(wfq != nullptr)
-    {
-        children["wfq"] = wfq;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node-config")
-    {
-        node_config = value;
-        node_config.value_namespace = name_space;
-        node_config.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node-config")
-    {
-        node_config.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "police" || name == "shape" || name == "wfq" || name == "node-config")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Police()
-    :
-    color_aware{YType::boolean, "color-aware"},
-    policer_type{YType::enumeration, "policer-type"}
-    	,
-    cbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
-	,cir(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>())
-{
-    cbs->parent = this;
-
-    cir->parent = this;
-
-    yang_name = "police"; yang_parent_name = "config";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::~Police()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_data() const
-{
-    return color_aware.is_set
-	|| policer_type.is_set
-	|| (cbs !=  nullptr && cbs->has_data())
-	|| (cir !=  nullptr && cir->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(color_aware.yfilter)
-	|| ydk::is_set(policer_type.yfilter)
-	|| (cbs !=  nullptr && cbs->has_operation())
-	|| (cir !=  nullptr && cir->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Police' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (color_aware.is_set || is_set(color_aware.yfilter)) leaf_name_data.push_back(color_aware.get_name_leafdata());
-    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cbs")
-    {
-        if(cbs == nullptr)
-        {
-            cbs = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>();
-        }
-        return cbs;
-    }
-
-    if(child_yang_name == "cir")
-    {
-        if(cir == nullptr)
-        {
-            cir = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>();
-        }
-        return cir;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cbs != nullptr)
-    {
-        children["cbs"] = cbs;
-    }
-
-    if(cir != nullptr)
-    {
-        children["cir"] = cir;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "color-aware")
-    {
-        color_aware = value;
-        color_aware.value_namespace = name_space;
-        color_aware.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policer-type")
-    {
-        policer_type = value;
-        policer_type.value_namespace = name_space;
-        policer_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "color-aware")
-    {
-        color_aware.yfilter = yfilter;
-    }
-    if(value_path == "policer-type")
-    {
-        policer_type.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cbs" || name == "cir" || name == "color-aware" || name == "policer-type")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::Cir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cir"; yang_parent_name = "police";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::~Cir()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::Cbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "cbs"; yang_parent_name = "police";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::~Cbs()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
-    :
-    pbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
-	,pir(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>())
-{
-    pbs->parent = this;
-
-    pir->parent = this;
-
-    yang_name = "shape"; yang_parent_name = "config";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::~Shape()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_data() const
-{
-    return (pbs !=  nullptr && pbs->has_data())
-	|| (pir !=  nullptr && pir->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pbs !=  nullptr && pbs->has_operation())
-	|| (pir !=  nullptr && pir->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "shape";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Shape' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pbs")
-    {
-        if(pbs == nullptr)
-        {
-            pbs = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>();
-        }
-        return pbs;
-    }
-
-    if(child_yang_name == "pir")
-    {
-        if(pir == nullptr)
-        {
-            pir = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>();
-        }
-        return pir;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pbs != nullptr)
-    {
-        children["pbs"] = pbs;
-    }
-
-    if(pir != nullptr)
-    {
-        children["pir"] = pir;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pbs" || name == "pir")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::Pir()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pir"; yang_parent_name = "shape";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::~Pir()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pir";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pir' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::Pbs()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "pbs"; yang_parent_name = "shape";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::~Pbs()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pbs' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
-    :
-    excess_ratio{YType::uint16, "excess-ratio"}
-    	,
-    bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
-{
-    bandwidth->parent = this;
-
-    sum_of_bandwidth->parent = this;
-
-    yang_name = "wfq"; yang_parent_name = "config";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::~Wfq()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_data() const
-{
-    return excess_ratio.is_set
-	|| (bandwidth !=  nullptr && bandwidth->has_data())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excess_ratio.yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation())
-	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wfq";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Wfq' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bandwidth")
-    {
-        if(bandwidth == nullptr)
-        {
-            bandwidth = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>();
-        }
-        return bandwidth;
-    }
-
-    if(child_yang_name == "sum-of-bandwidth")
-    {
-        if(sum_of_bandwidth == nullptr)
-        {
-            sum_of_bandwidth = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>();
-        }
-        return sum_of_bandwidth;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bandwidth != nullptr)
-    {
-        children["bandwidth"] = bandwidth;
-    }
-
-    if(sum_of_bandwidth != nullptr)
-    {
-        children["sum-of-bandwidth"] = sum_of_bandwidth;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "excess-ratio")
-    {
-        excess_ratio = value;
-        excess_ratio.value_namespace = name_space;
-        excess_ratio.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "excess-ratio")
-    {
-        excess_ratio.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::Bandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "bandwidth"; yang_parent_name = "wfq";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::~Bandwidth()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::SumOfBandwidth()
-    :
-    unit{YType::enumeration, "unit"},
-    value_{YType::uint32, "value"}
-{
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::~SumOfBandwidth()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_data() const
-{
-    return unit.is_set
-	|| value_.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unit.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sum-of-bandwidth";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SumOfBandwidth' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unit")
-    {
-        unit = value;
-        unit.value_namespace = name_space;
-        unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unit")
-    {
-        unit.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unit" || name == "value")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
-    :
-    stats_id{YType::uint32, "stats-id"}
-    	,
-    police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
-	,queue(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>())
-{
-    police->parent = this;
-
-    queue->parent = this;
-
-    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::~Result()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_data() const
-{
-    return stats_id.is_set
-	|| (police !=  nullptr && police->has_data())
-	|| (queue !=  nullptr && queue->has_data());
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(stats_id.yfilter)
-	|| (police !=  nullptr && police->has_operation())
-	|| (queue !=  nullptr && queue->has_operation());
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "result";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Result' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (stats_id.is_set || is_set(stats_id.yfilter)) leaf_name_data.push_back(stats_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "police")
-    {
-        if(police == nullptr)
-        {
-            police = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>();
-        }
-        return police;
-    }
-
-    if(child_yang_name == "queue")
-    {
-        if(queue == nullptr)
-        {
-            queue = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>();
-        }
-        return queue;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(police != nullptr)
-    {
-        children["police"] = police;
-    }
-
-    if(queue != nullptr)
-    {
-        children["queue"] = queue;
-    }
-
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "stats-id")
-    {
-        stats_id = value;
-        stats_id.value_namespace = name_space;
-        stats_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "stats-id")
-    {
-        stats_id.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "police" || name == "queue" || name == "stats-id")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::Queue()
-    :
-    commit_tx{YType::uint32, "commit-tx"},
-    drop{YType::uint32, "drop"},
-    excess_tx{YType::uint32, "excess-tx"},
-    queue_id{YType::uint32, "queue-id"}
-{
-    yang_name = "queue"; yang_parent_name = "result";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::~Queue()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_data() const
-{
-    return commit_tx.is_set
-	|| drop.is_set
-	|| excess_tx.is_set
-	|| queue_id.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(commit_tx.yfilter)
-	|| ydk::is_set(drop.yfilter)
-	|| ydk::is_set(excess_tx.yfilter)
-	|| ydk::is_set(queue_id.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "queue";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Queue' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (commit_tx.is_set || is_set(commit_tx.yfilter)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
-    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (excess_tx.is_set || is_set(excess_tx.yfilter)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
-    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "commit-tx")
-    {
-        commit_tx = value;
-        commit_tx.value_namespace = name_space;
-        commit_tx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "drop")
-    {
-        drop = value;
-        drop.value_namespace = name_space;
-        drop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "excess-tx")
-    {
-        excess_tx = value;
-        excess_tx.value_namespace = name_space;
-        excess_tx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "queue-id")
-    {
-        queue_id = value;
-        queue_id.value_namespace = name_space;
-        queue_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "commit-tx")
-    {
-        commit_tx.yfilter = yfilter;
-    }
-    if(value_path == "drop")
-    {
-        drop.yfilter = yfilter;
-    }
-    if(value_path == "excess-tx")
-    {
-        excess_tx.yfilter = yfilter;
-    }
-    if(value_path == "queue-id")
-    {
-        queue_id.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "commit-tx" || name == "drop" || name == "excess-tx" || name == "queue-id")
-        return true;
-    return false;
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::Police()
-    :
-    conform{YType::uint32, "conform"},
-    exceed{YType::uint32, "exceed"},
-    token_bucket_id{YType::uint32, "token-bucket-id"},
-    violate{YType::uint32, "violate"}
-{
-    yang_name = "police"; yang_parent_name = "result";
-}
-
-PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::~Police()
-{
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_data() const
-{
-    return conform.is_set
-	|| exceed.is_set
-	|| token_bucket_id.is_set
-	|| violate.is_set;
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(conform.yfilter)
-	|| ydk::is_set(exceed.yfilter)
-	|| ydk::is_set(token_bucket_id.yfilter)
-	|| ydk::is_set(violate.yfilter);
-}
-
-std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "police";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Police' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (conform.is_set || is_set(conform.yfilter)) leaf_name_data.push_back(conform.get_name_leafdata());
-    if (exceed.is_set || is_set(exceed.yfilter)) leaf_name_data.push_back(exceed.get_name_leafdata());
-    if (token_bucket_id.is_set || is_set(token_bucket_id.yfilter)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
-    if (violate.is_set || is_set(violate.yfilter)) leaf_name_data.push_back(violate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "conform")
-    {
-        conform = value;
-        conform.value_namespace = name_space;
-        conform.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exceed")
-    {
-        exceed = value;
-        exceed.value_namespace = name_space;
-        exceed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "token-bucket-id")
-    {
-        token_bucket_id = value;
-        token_bucket_id.value_namespace = name_space;
-        token_bucket_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "violate")
-    {
-        violate = value;
-        violate.value_namespace = name_space;
-        violate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "conform")
-    {
-        conform.yfilter = yfilter;
-    }
-    if(value_path == "exceed")
-    {
-        exceed.yfilter = yfilter;
-    }
-    if(value_path == "token-bucket-id")
-    {
-        token_bucket_id.yfilter = yfilter;
-    }
-    if(value_path == "violate")
-    {
-        violate.yfilter = yfilter;
-    }
-}
-
-bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "conform" || name == "exceed" || name == "token-bucket-id" || name == "violate")
-        return true;
-    return false;
-}
-
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::BundleInput()
     :
     details(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details>())
 {
     details->parent = this;
 
-    yang_name = "bundle-input"; yang_parent_name = "member-interface";
+    yang_name = "bundle-input"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::~BundleInput()
@@ -17114,29 +12978,15 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInput' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17187,12 +13037,10 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 	,skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass>())
 {
     header->parent = this;
-
     interface_parameters->parent = this;
-
     skywarp_qos_policy_class->parent = this;
 
-    yang_name = "details"; yang_parent_name = "bundle-input";
+    yang_name = "details"; yang_parent_name = "bundle-input"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::~Details()
@@ -17218,29 +13066,15 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "details";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Details' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17319,7 +13153,8 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     interface_name{YType::str, "interface-name"},
     policy_name{YType::str, "policy-name"}
 {
-    yang_name = "header"; yang_parent_name = "details";
+
+    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::Header::~Header()
@@ -17347,23 +13182,11 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "header";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::Header::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::Header::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Header' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
@@ -17371,9 +13194,7 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17458,7 +13279,8 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     uidb_index{YType::uint16, "uidb-index"},
     under_line_interface_handle{YType::str, "under-line-interface-handle"}
 {
-    yang_name = "interface-parameters"; yang_parent_name = "details";
+
+    yang_name = "interface-parameters"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::InterfaceParameters::~InterfaceParameters()
@@ -17502,23 +13324,11 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-parameters";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::InterfaceParameters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::InterfaceParameters::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceParameters' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bundle_id.is_set || is_set(bundle_id.yfilter)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
@@ -17534,9 +13344,7 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
     if (uidb_index.is_set || is_set(uidb_index.yfilter)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
     if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.yfilter)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17688,7 +13496,8 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
 {
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details";
+
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
@@ -17719,29 +13528,15 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "skywarp-qos-policy-class";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SkywarpQosPolicyClass' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17805,10 +13600,9 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 	,result(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
 {
     config->parent = this;
-
     result->parent = this;
 
-    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class";
+    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::~QosShowEaPclassSt()
@@ -17844,23 +13638,11 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-ea-pclass-st";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QosShowEaPclassSt' in Cisco_IOS_XR_skp_qos_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
@@ -17870,9 +13652,7 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
     if (stats_flags.is_set || is_set(stats_flags.yfilter)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17990,6 +13770,2201 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
     return false;
 }
 
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
+    :
+    node_config{YType::str, "node-config"}
+    	,
+    police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>())
+	,shape(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
+	,wfq(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
+{
+    police->parent = this;
+    shape->parent = this;
+    wfq->parent = this;
+
+    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::~Config()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_data() const
+{
+    return node_config.is_set
+	|| (police !=  nullptr && police->has_data())
+	|| (shape !=  nullptr && shape->has_data())
+	|| (wfq !=  nullptr && wfq->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_config.yfilter)
+	|| (police !=  nullptr && police->has_operation())
+	|| (shape !=  nullptr && shape->has_operation())
+	|| (wfq !=  nullptr && wfq->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_config.is_set || is_set(node_config.yfilter)) leaf_name_data.push_back(node_config.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "police")
+    {
+        if(police == nullptr)
+        {
+            police = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>();
+        }
+        return police;
+    }
+
+    if(child_yang_name == "shape")
+    {
+        if(shape == nullptr)
+        {
+            shape = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>();
+        }
+        return shape;
+    }
+
+    if(child_yang_name == "wfq")
+    {
+        if(wfq == nullptr)
+        {
+            wfq = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>();
+        }
+        return wfq;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(police != nullptr)
+    {
+        children["police"] = police;
+    }
+
+    if(shape != nullptr)
+    {
+        children["shape"] = shape;
+    }
+
+    if(wfq != nullptr)
+    {
+        children["wfq"] = wfq;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-config")
+    {
+        node_config = value;
+        node_config.value_namespace = name_space;
+        node_config.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-config")
+    {
+        node_config.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "shape" || name == "wfq" || name == "node-config")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Police()
+    :
+    color_aware{YType::boolean, "color-aware"},
+    policer_type{YType::enumeration, "policer-type"}
+    	,
+    cbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
+	,cir(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>())
+{
+    cbs->parent = this;
+    cir->parent = this;
+
+    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::~Police()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_data() const
+{
+    return color_aware.is_set
+	|| policer_type.is_set
+	|| (cbs !=  nullptr && cbs->has_data())
+	|| (cir !=  nullptr && cir->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color_aware.yfilter)
+	|| ydk::is_set(policer_type.yfilter)
+	|| (cbs !=  nullptr && cbs->has_operation())
+	|| (cir !=  nullptr && cir->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color_aware.is_set || is_set(color_aware.yfilter)) leaf_name_data.push_back(color_aware.get_name_leafdata());
+    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cbs")
+    {
+        if(cbs == nullptr)
+        {
+            cbs = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>();
+        }
+        return cbs;
+    }
+
+    if(child_yang_name == "cir")
+    {
+        if(cir == nullptr)
+        {
+            cir = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>();
+        }
+        return cir;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
+    {
+        children["cbs"] = cbs;
+    }
+
+    if(cir != nullptr)
+    {
+        children["cir"] = cir;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color-aware")
+    {
+        color_aware = value;
+        color_aware.value_namespace = name_space;
+        color_aware.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type = value;
+        policer_type.value_namespace = name_space;
+        policer_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color-aware")
+    {
+        color_aware.yfilter = yfilter;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cbs" || name == "cir" || name == "color-aware" || name == "policer-type")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::Cbs()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::~Cbs()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cbs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::Cir()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::~Cir()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cir";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
+    :
+    pbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
+	,pir(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>())
+{
+    pbs->parent = this;
+    pir->parent = this;
+
+    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::~Shape()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_data() const
+{
+    return (pbs !=  nullptr && pbs->has_data())
+	|| (pir !=  nullptr && pir->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pbs !=  nullptr && pbs->has_operation())
+	|| (pir !=  nullptr && pir->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pbs")
+    {
+        if(pbs == nullptr)
+        {
+            pbs = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>();
+        }
+        return pbs;
+    }
+
+    if(child_yang_name == "pir")
+    {
+        if(pir == nullptr)
+        {
+            pir = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>();
+        }
+        return pir;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbs != nullptr)
+    {
+        children["pbs"] = pbs;
+    }
+
+    if(pir != nullptr)
+    {
+        children["pir"] = pir;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbs" || name == "pir")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::Pbs()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::~Pbs()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pbs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::Pir()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::~Pir()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pir";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
+    :
+    excess_ratio{YType::uint16, "excess-ratio"}
+    	,
+    bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>())
+	,sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
+{
+    bandwidth->parent = this;
+    sum_of_bandwidth->parent = this;
+
+    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::~Wfq()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_data() const
+{
+    return excess_ratio.is_set
+	|| (bandwidth !=  nullptr && bandwidth->has_data())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wfq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    if(child_yang_name == "sum-of-bandwidth")
+    {
+        if(sum_of_bandwidth == nullptr)
+        {
+            sum_of_bandwidth = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>();
+        }
+        return sum_of_bandwidth;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    if(sum_of_bandwidth != nullptr)
+    {
+        children["sum-of-bandwidth"] = sum_of_bandwidth;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::Bandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::~Bandwidth()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::SumOfBandwidth()
+    :
+    unit{YType::enumeration, "unit"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::~SumOfBandwidth()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_data() const
+{
+    return unit.is_set
+	|| value_.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sum-of-bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unit")
+    {
+        unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
+    :
+    stats_id{YType::uint32, "stats-id"}
+    	,
+    police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
+	,queue(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>())
+{
+    police->parent = this;
+    queue->parent = this;
+
+    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::~Result()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_data() const
+{
+    return stats_id.is_set
+	|| (police !=  nullptr && police->has_data())
+	|| (queue !=  nullptr && queue->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(stats_id.yfilter)
+	|| (police !=  nullptr && police->has_operation())
+	|| (queue !=  nullptr && queue->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "result";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (stats_id.is_set || is_set(stats_id.yfilter)) leaf_name_data.push_back(stats_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "police")
+    {
+        if(police == nullptr)
+        {
+            police = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>();
+        }
+        return police;
+    }
+
+    if(child_yang_name == "queue")
+    {
+        if(queue == nullptr)
+        {
+            queue = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>();
+        }
+        return queue;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(police != nullptr)
+    {
+        children["police"] = police;
+    }
+
+    if(queue != nullptr)
+    {
+        children["queue"] = queue;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "stats-id")
+    {
+        stats_id = value;
+        stats_id.value_namespace = name_space;
+        stats_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "stats-id")
+    {
+        stats_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "queue" || name == "stats-id")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::Police()
+    :
+    conform{YType::uint32, "conform"},
+    exceed{YType::uint32, "exceed"},
+    token_bucket_id{YType::uint32, "token-bucket-id"},
+    violate{YType::uint32, "violate"}
+{
+
+    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::~Police()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_data() const
+{
+    return conform.is_set
+	|| exceed.is_set
+	|| token_bucket_id.is_set
+	|| violate.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(conform.yfilter)
+	|| ydk::is_set(exceed.yfilter)
+	|| ydk::is_set(token_bucket_id.yfilter)
+	|| ydk::is_set(violate.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (conform.is_set || is_set(conform.yfilter)) leaf_name_data.push_back(conform.get_name_leafdata());
+    if (exceed.is_set || is_set(exceed.yfilter)) leaf_name_data.push_back(exceed.get_name_leafdata());
+    if (token_bucket_id.is_set || is_set(token_bucket_id.yfilter)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
+    if (violate.is_set || is_set(violate.yfilter)) leaf_name_data.push_back(violate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "conform")
+    {
+        conform = value;
+        conform.value_namespace = name_space;
+        conform.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exceed")
+    {
+        exceed = value;
+        exceed.value_namespace = name_space;
+        exceed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "token-bucket-id")
+    {
+        token_bucket_id = value;
+        token_bucket_id.value_namespace = name_space;
+        token_bucket_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violate")
+    {
+        violate = value;
+        violate.value_namespace = name_space;
+        violate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conform")
+    {
+        conform.yfilter = yfilter;
+    }
+    if(value_path == "exceed")
+    {
+        exceed.yfilter = yfilter;
+    }
+    if(value_path == "token-bucket-id")
+    {
+        token_bucket_id.yfilter = yfilter;
+    }
+    if(value_path == "violate")
+    {
+        violate.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conform" || name == "exceed" || name == "token-bucket-id" || name == "violate")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::Queue()
+    :
+    commit_tx{YType::uint32, "commit-tx"},
+    drop{YType::uint32, "drop"},
+    excess_tx{YType::uint32, "excess-tx"},
+    queue_id{YType::uint32, "queue-id"}
+{
+
+    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::~Queue()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_data() const
+{
+    return commit_tx.is_set
+	|| drop.is_set
+	|| excess_tx.is_set
+	|| queue_id.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(commit_tx.yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(excess_tx.yfilter)
+	|| ydk::is_set(queue_id.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "queue";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (commit_tx.is_set || is_set(commit_tx.yfilter)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (excess_tx.is_set || is_set(excess_tx.yfilter)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "commit-tx")
+    {
+        commit_tx = value;
+        commit_tx.value_namespace = name_space;
+        commit_tx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop")
+    {
+        drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "excess-tx")
+    {
+        excess_tx = value;
+        excess_tx.value_namespace = name_space;
+        excess_tx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-id")
+    {
+        queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commit-tx")
+    {
+        commit_tx.yfilter = yfilter;
+    }
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "excess-tx")
+    {
+        excess_tx.yfilter = yfilter;
+    }
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commit-tx" || name == "drop" || name == "excess-tx" || name == "queue-id")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::BundleOutput()
+    :
+    details(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details>())
+{
+    details->parent = this;
+
+    yang_name = "bundle-output"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::~BundleOutput()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::has_data() const
+{
+    return (details !=  nullptr && details->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::has_operation() const
+{
+    return is_set(yfilter)
+	|| (details !=  nullptr && details->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bundle-output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "details")
+    {
+        if(details == nullptr)
+        {
+            details = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details>();
+        }
+        return details;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(details != nullptr)
+    {
+        children["details"] = details;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Details()
+    :
+    header(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header>())
+	,interface_parameters(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters>())
+	,skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass>())
+{
+    header->parent = this;
+    interface_parameters->parent = this;
+    skywarp_qos_policy_class->parent = this;
+
+    yang_name = "details"; yang_parent_name = "bundle-output"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::~Details()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::has_data() const
+{
+    return (header !=  nullptr && header->has_data())
+	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
+	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::has_operation() const
+{
+    return is_set(yfilter)
+	|| (header !=  nullptr && header->has_operation())
+	|| (interface_parameters !=  nullptr && interface_parameters->has_operation())
+	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "header")
+    {
+        if(header == nullptr)
+        {
+            header = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header>();
+        }
+        return header;
+    }
+
+    if(child_yang_name == "interface-parameters")
+    {
+        if(interface_parameters == nullptr)
+        {
+            interface_parameters = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters>();
+        }
+        return interface_parameters;
+    }
+
+    if(child_yang_name == "skywarp-qos-policy-class")
+    {
+        if(skywarp_qos_policy_class == nullptr)
+        {
+            skywarp_qos_policy_class = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass>();
+        }
+        return skywarp_qos_policy_class;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(header != nullptr)
+    {
+        children["header"] = header;
+    }
+
+    if(interface_parameters != nullptr)
+    {
+        children["interface-parameters"] = interface_parameters;
+    }
+
+    if(skywarp_qos_policy_class != nullptr)
+    {
+        children["skywarp-qos-policy-class"] = skywarp_qos_policy_class;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header" || name == "interface-parameters" || name == "skywarp-qos-policy-class")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::Header()
+    :
+    classes{YType::uint16, "classes"},
+    direction{YType::str, "direction"},
+    interface_name{YType::str, "interface-name"},
+    policy_name{YType::str, "policy-name"}
+{
+
+    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::~Header()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::has_data() const
+{
+    return classes.is_set
+	|| direction.is_set
+	|| interface_name.is_set
+	|| policy_name.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(classes.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "header";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "classes")
+    {
+        classes = value;
+        classes.value_namespace = name_space;
+        classes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "classes")
+    {
+        classes.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes" || name == "direction" || name == "interface-name" || name == "policy-name")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::InterfaceParameters()
+    :
+    bundle_id{YType::uint16, "bundle-id"},
+    hierarchical_depth{YType::uint8, "hierarchical-depth"},
+    interface_handle{YType::str, "interface-handle"},
+    interface_rate{YType::uint32, "interface-rate"},
+    interface_type{YType::str, "interface-type"},
+    policy_map_id{YType::uint16, "policy-map-id"},
+    policy_name{YType::str, "policy-name"},
+    port{YType::uint32, "port"},
+    port_shaper_rate{YType::uint32, "port-shaper-rate"},
+    qos_interface_handle{YType::uint64, "qos-interface-handle"},
+    uidb_index{YType::uint16, "uidb-index"},
+    under_line_interface_handle{YType::str, "under-line-interface-handle"}
+{
+
+    yang_name = "interface-parameters"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::~InterfaceParameters()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::has_data() const
+{
+    return bundle_id.is_set
+	|| hierarchical_depth.is_set
+	|| interface_handle.is_set
+	|| interface_rate.is_set
+	|| interface_type.is_set
+	|| policy_map_id.is_set
+	|| policy_name.is_set
+	|| port.is_set
+	|| port_shaper_rate.is_set
+	|| qos_interface_handle.is_set
+	|| uidb_index.is_set
+	|| under_line_interface_handle.is_set;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_id.yfilter)
+	|| ydk::is_set(hierarchical_depth.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(interface_rate.yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(policy_map_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(port_shaper_rate.yfilter)
+	|| ydk::is_set(qos_interface_handle.yfilter)
+	|| ydk::is_set(uidb_index.yfilter)
+	|| ydk::is_set(under_line_interface_handle.yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-parameters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bundle_id.is_set || is_set(bundle_id.yfilter)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
+    if (hierarchical_depth.is_set || is_set(hierarchical_depth.yfilter)) leaf_name_data.push_back(hierarchical_depth.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_rate.is_set || is_set(interface_rate.yfilter)) leaf_name_data.push_back(interface_rate.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (policy_map_id.is_set || is_set(policy_map_id.yfilter)) leaf_name_data.push_back(policy_map_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port_shaper_rate.is_set || is_set(port_shaper_rate.yfilter)) leaf_name_data.push_back(port_shaper_rate.get_name_leafdata());
+    if (qos_interface_handle.is_set || is_set(qos_interface_handle.yfilter)) leaf_name_data.push_back(qos_interface_handle.get_name_leafdata());
+    if (uidb_index.is_set || is_set(uidb_index.yfilter)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
+    if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.yfilter)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bundle-id")
+    {
+        bundle_id = value;
+        bundle_id.value_namespace = name_space;
+        bundle_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hierarchical-depth")
+    {
+        hierarchical_depth = value;
+        hierarchical_depth.value_namespace = name_space;
+        hierarchical_depth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-rate")
+    {
+        interface_rate = value;
+        interface_rate.value_namespace = name_space;
+        interface_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-map-id")
+    {
+        policy_map_id = value;
+        policy_map_id.value_namespace = name_space;
+        policy_map_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-shaper-rate")
+    {
+        port_shaper_rate = value;
+        port_shaper_rate.value_namespace = name_space;
+        port_shaper_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "qos-interface-handle")
+    {
+        qos_interface_handle = value;
+        qos_interface_handle.value_namespace = name_space;
+        qos_interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uidb-index")
+    {
+        uidb_index = value;
+        uidb_index.value_namespace = name_space;
+        uidb_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "under-line-interface-handle")
+    {
+        under_line_interface_handle = value;
+        under_line_interface_handle.value_namespace = name_space;
+        under_line_interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-id")
+    {
+        bundle_id.yfilter = yfilter;
+    }
+    if(value_path == "hierarchical-depth")
+    {
+        hierarchical_depth.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-rate")
+    {
+        interface_rate.yfilter = yfilter;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "policy-map-id")
+    {
+        policy_map_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "port-shaper-rate")
+    {
+        port_shaper_rate.yfilter = yfilter;
+    }
+    if(value_path == "qos-interface-handle")
+    {
+        qos_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "uidb-index")
+    {
+        uidb_index.yfilter = yfilter;
+    }
+    if(value_path == "under-line-interface-handle")
+    {
+        under_line_interface_handle.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-id" || name == "hierarchical-depth" || name == "interface-handle" || name == "interface-rate" || name == "interface-type" || name == "policy-map-id" || name == "policy-name" || name == "port" || name == "port-shaper-rate" || name == "qos-interface-handle" || name == "uidb-index" || name == "under-line-interface-handle")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
+{
+
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::has_data() const
+{
+    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
+    {
+        if(qos_show_ea_pclass_st[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::has_operation() const
+{
+    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
+    {
+        if(qos_show_ea_pclass_st[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "skywarp-qos-policy-class";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "qos-show-ea-pclass-st")
+    {
+        for(auto const & c : qos_show_ea_pclass_st)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
+        c->parent = this;
+        qos_show_ea_pclass_st.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : qos_show_ea_pclass_st)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "qos-show-ea-pclass-st")
+        return true;
+    return false;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::QosShowEaPclassSt()
+    :
+    class_level{YType::uint8, "class-level"},
+    class_name{YType::str, "class-name"},
+    index_{YType::uint16, "index"},
+    node_flags{YType::str, "node-flags"},
+    policy_name{YType::str, "policy-name"},
+    stats_flags{YType::str, "stats-flags"}
+    	,
+    config(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config>())
+	,result(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
+{
+    config->parent = this;
+    result->parent = this;
+
+    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::~QosShowEaPclassSt()
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_data() const
+{
+    return class_level.is_set
+	|| class_name.is_set
+	|| index_.is_set
+	|| node_flags.is_set
+	|| policy_name.is_set
+	|| stats_flags.is_set
+	|| (config !=  nullptr && config->has_data())
+	|| (result !=  nullptr && result->has_data());
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(class_level.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(node_flags.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(stats_flags.yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (result !=  nullptr && result->has_operation());
+}
+
+std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qos-show-ea-pclass-st";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (node_flags.is_set || is_set(node_flags.yfilter)) leaf_name_data.push_back(node_flags.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (stats_flags.is_set || is_set(stats_flags.yfilter)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "result")
+    {
+        if(result == nullptr)
+        {
+            result = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>();
+        }
+        return result;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(result != nullptr)
+    {
+        children["result"] = result;
+    }
+
+    return children;
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "class-level")
+    {
+        class_level = value;
+        class_level.value_namespace = name_space;
+        class_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-name")
+    {
+        class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-flags")
+    {
+        node_flags = value;
+        node_flags.value_namespace = name_space;
+        node_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stats-flags")
+    {
+        stats_flags = value;
+        stats_flags.value_namespace = name_space;
+        stats_flags.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-level")
+    {
+        class_level.yfilter = yfilter;
+    }
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "node-flags")
+    {
+        node_flags.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "stats-flags")
+    {
+        stats_flags.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "result" || name == "class-level" || name == "class-name" || name == "index" || name == "node-flags" || name == "policy-name" || name == "stats-flags")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf ActionOpcode::precedence {0, "precedence"};
+const Enum::YLeaf ActionOpcode::dscp {1, "dscp"};
+const Enum::YLeaf ActionOpcode::discard_class {2, "discard-class"};
+const Enum::YLeaf ActionOpcode::qos_group {3, "qos-group"};
+const Enum::YLeaf ActionOpcode::cos_inner {4, "cos-inner"};
+const Enum::YLeaf ActionOpcode::cos {5, "cos"};
+const Enum::YLeaf ActionOpcode::exp_top {6, "exp-top"};
+const Enum::YLeaf ActionOpcode::exp_imp {7, "exp-imp"};
+const Enum::YLeaf ActionOpcode::tunnel_precedence {8, "tunnel-precedence"};
+const Enum::YLeaf ActionOpcode::tunnel_dscp {9, "tunnel-dscp"};
+const Enum::YLeaf ActionOpcode::itag_dei {10, "itag-dei"};
+const Enum::YLeaf ActionOpcode::itag_cos {11, "itag-cos"};
+const Enum::YLeaf ActionOpcode::cos_imposition {12, "cos-imposition"};
+const Enum::YLeaf ActionOpcode::dei_imposition {13, "dei-imposition"};
+const Enum::YLeaf ActionOpcode::dei {14, "dei"};
+const Enum::YLeaf ActionOpcode::no_marking {15, "no-marking"};
+
 const Enum::YLeaf Wred::wred_cos_cmd {0, "wred-cos-cmd"};
 const Enum::YLeaf Wred::wred_dscp_cmd {1, "wred-dscp-cmd"};
 const Enum::YLeaf Wred::wred_precedence_cmd {2, "wred-precedence-cmd"};
@@ -18000,6 +15975,31 @@ const Enum::YLeaf Wred::red_with_default_min_max {6, "red-with-default-min-max"}
 const Enum::YLeaf Wred::wred_dei_cmd {7, "wred-dei-cmd"};
 const Enum::YLeaf Wred::wred_ecn_cmd {8, "wred-ecn-cmd"};
 const Enum::YLeaf Wred::wred_invalid_cmd {9, "wred-invalid-cmd"};
+
+const Enum::YLeaf TbAlgorithm::inactive {0, "inactive"};
+const Enum::YLeaf TbAlgorithm::single {1, "single"};
+const Enum::YLeaf TbAlgorithm::single_rate_tcm {2, "single-rate-tcm"};
+const Enum::YLeaf TbAlgorithm::two_rate_tcm {3, "two-rate-tcm"};
+const Enum::YLeaf TbAlgorithm::mef_tcm {4, "mef-tcm"};
+const Enum::YLeaf TbAlgorithm::dummy {5, "dummy"};
+
+const Enum::YLeaf QosUnit::invalid {0, "invalid"};
+const Enum::YLeaf QosUnit::bytes {1, "bytes"};
+const Enum::YLeaf QosUnit::kilobytes {2, "kilobytes"};
+const Enum::YLeaf QosUnit::megabytes {3, "megabytes"};
+const Enum::YLeaf QosUnit::gigabytes {4, "gigabytes"};
+const Enum::YLeaf QosUnit::bps {5, "bps"};
+const Enum::YLeaf QosUnit::kbps {6, "kbps"};
+const Enum::YLeaf QosUnit::mbps {7, "mbps"};
+const Enum::YLeaf QosUnit::gbps {8, "gbps"};
+const Enum::YLeaf QosUnit::cells_per_second {9, "cells-per-second"};
+const Enum::YLeaf QosUnit::packets_per_second {10, "packets-per-second"};
+const Enum::YLeaf QosUnit::microsecond {11, "microsecond"};
+const Enum::YLeaf QosUnit::millisecond {12, "millisecond"};
+const Enum::YLeaf QosUnit::packets {13, "packets"};
+const Enum::YLeaf QosUnit::cells {14, "cells"};
+const Enum::YLeaf QosUnit::percentage {15, "percentage"};
+const Enum::YLeaf QosUnit::ratio {16, "ratio"};
 
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
@@ -18026,60 +16026,18 @@ const Enum::YLeaf PolicyParamUnit::policy_param_unit_mhz {21, "policy-param-unit
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_max {23, "policy-param-unit-max"};
 
-const Enum::YLeaf CacState::unknown {0, "unknown"};
-const Enum::YLeaf CacState::admit {1, "admit"};
-const Enum::YLeaf CacState::redirect {2, "redirect"};
-const Enum::YLeaf CacState::ubrl {3, "ubrl"};
-
-const Enum::YLeaf TbAlgorithm::inactive {0, "inactive"};
-const Enum::YLeaf TbAlgorithm::single {1, "single"};
-const Enum::YLeaf TbAlgorithm::single_rate_tcm {2, "single-rate-tcm"};
-const Enum::YLeaf TbAlgorithm::two_rate_tcm {3, "two-rate-tcm"};
-const Enum::YLeaf TbAlgorithm::mef_tcm {4, "mef-tcm"};
-const Enum::YLeaf TbAlgorithm::dummy {5, "dummy"};
-
 const Enum::YLeaf Action::police_transmit {0, "police-transmit"};
 const Enum::YLeaf Action::police_set_transmit {1, "police-set-transmit"};
 const Enum::YLeaf Action::police_drop {2, "police-drop"};
 const Enum::YLeaf Action::police_unknown {3, "police-unknown"};
 
+const Enum::YLeaf CacState::unknown {0, "unknown"};
+const Enum::YLeaf CacState::admit {1, "admit"};
+const Enum::YLeaf CacState::redirect {2, "redirect"};
+const Enum::YLeaf CacState::ubrl {3, "ubrl"};
+
 const Enum::YLeaf PolicyState::active {0, "active"};
 const Enum::YLeaf PolicyState::suspended {1, "suspended"};
-
-const Enum::YLeaf QosUnit::invalid {0, "invalid"};
-const Enum::YLeaf QosUnit::bytes {1, "bytes"};
-const Enum::YLeaf QosUnit::kilobytes {2, "kilobytes"};
-const Enum::YLeaf QosUnit::megabytes {3, "megabytes"};
-const Enum::YLeaf QosUnit::gigabytes {4, "gigabytes"};
-const Enum::YLeaf QosUnit::bps {5, "bps"};
-const Enum::YLeaf QosUnit::kbps {6, "kbps"};
-const Enum::YLeaf QosUnit::mbps {7, "mbps"};
-const Enum::YLeaf QosUnit::gbps {8, "gbps"};
-const Enum::YLeaf QosUnit::cells_per_second {9, "cells-per-second"};
-const Enum::YLeaf QosUnit::packets_per_second {10, "packets-per-second"};
-const Enum::YLeaf QosUnit::microsecond {11, "microsecond"};
-const Enum::YLeaf QosUnit::millisecond {12, "millisecond"};
-const Enum::YLeaf QosUnit::packets {13, "packets"};
-const Enum::YLeaf QosUnit::cells {14, "cells"};
-const Enum::YLeaf QosUnit::percentage {15, "percentage"};
-const Enum::YLeaf QosUnit::ratio {16, "ratio"};
-
-const Enum::YLeaf ActionOpcode::precedence {0, "precedence"};
-const Enum::YLeaf ActionOpcode::dscp {1, "dscp"};
-const Enum::YLeaf ActionOpcode::discard_class {2, "discard-class"};
-const Enum::YLeaf ActionOpcode::qos_group {3, "qos-group"};
-const Enum::YLeaf ActionOpcode::cos_inner {4, "cos-inner"};
-const Enum::YLeaf ActionOpcode::cos {5, "cos"};
-const Enum::YLeaf ActionOpcode::exp_top {6, "exp-top"};
-const Enum::YLeaf ActionOpcode::exp_imp {7, "exp-imp"};
-const Enum::YLeaf ActionOpcode::tunnel_precedence {8, "tunnel-precedence"};
-const Enum::YLeaf ActionOpcode::tunnel_dscp {9, "tunnel-dscp"};
-const Enum::YLeaf ActionOpcode::itag_dei {10, "itag-dei"};
-const Enum::YLeaf ActionOpcode::itag_cos {11, "itag-cos"};
-const Enum::YLeaf ActionOpcode::cos_imposition {12, "cos-imposition"};
-const Enum::YLeaf ActionOpcode::dei_imposition {13, "dei-imposition"};
-const Enum::YLeaf ActionOpcode::dei {14, "dei"};
-const Enum::YLeaf ActionOpcode::no_marking {15, "no-marking"};
 
 
 }

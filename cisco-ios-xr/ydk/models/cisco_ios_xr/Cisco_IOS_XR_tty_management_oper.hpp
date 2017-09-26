@@ -19,16 +19,7 @@ class HostAfIdBase : public virtual ydk::Identity
 
 }; // HostAfIdBase
 
-class Ipv6 : public Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk::Identity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-
-}; // Ipv6
-
-class Ipv4 : public Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk::Identity
+class Ipv4 : public cisco_ios_xr::Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk::Identity
 {
     public:
         Ipv4();
@@ -36,6 +27,15 @@ class Ipv4 : public Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk:
 
 
 }; // Ipv4
+
+class Ipv6 : public cisco_ios_xr::Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk::Identity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+
+}; // Ipv6
 
 class TransportService : public ydk::Enum
 {

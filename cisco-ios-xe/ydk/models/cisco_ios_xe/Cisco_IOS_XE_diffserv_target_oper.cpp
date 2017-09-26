@@ -11,18 +11,10 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_diffserv_target_oper {
 
-Direction::Direction()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:direction")
-{
-}
-
-Direction::~Direction()
-{
-}
-
 DiffservInterfacesState::DiffservInterfacesState()
 {
-    yang_name = "diffserv-interfaces-state"; yang_parent_name = "Cisco-IOS-XE-diffserv-target-oper";
+
+    yang_name = "diffserv-interfaces-state"; yang_parent_name = "Cisco-IOS-XE-diffserv-target-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 DiffservInterfacesState::~DiffservInterfacesState()
@@ -53,26 +45,15 @@ std::string DiffservInterfacesState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-diffserv-target-oper:diffserv-interfaces-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -152,7 +133,8 @@ DiffservInterfacesState::DiffservInterface::DiffservInterface()
     :
     name{YType::str, "name"}
 {
-    yang_name = "diffserv-interface"; yang_parent_name = "diffserv-interfaces-state";
+
+    yang_name = "diffserv-interface"; yang_parent_name = "diffserv-interfaces-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 DiffservInterfacesState::DiffservInterface::~DiffservInterface()
@@ -180,34 +162,27 @@ bool DiffservInterfacesState::DiffservInterface::has_operation() const
 	|| ydk::is_set(name.yfilter);
 }
 
+std::string DiffservInterfacesState::DiffservInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-diffserv-target-oper:diffserv-interfaces-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string DiffservInterfacesState::DiffservInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffserv-interface" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-diffserv-target-oper:diffserv-interfaces-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -273,7 +248,8 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetE
     direction{YType::identityref, "direction"},
     policy_name{YType::str, "policy-name"}
 {
-    yang_name = "diffserv-target-entry"; yang_parent_name = "diffserv-interface";
+
+    yang_name = "diffserv-target-entry"; yang_parent_name = "diffserv-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::~DiffservTargetEntry()
@@ -307,31 +283,17 @@ std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get
 {
     std::ostringstream path_buffer;
     path_buffer << "diffserv-target-entry" <<"[direction='" <<direction <<"']" <<"[policy-name='" <<policy_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DiffservTargetEntry' in Cisco_IOS_XE_diffserv_target_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -411,10 +373,9 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 	,queuing_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
 {
     classifier_entry_statistics->parent = this;
-
     queuing_statistics->parent = this;
 
-    yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry";
+    yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::~DiffservTargetClassifierStatistics()
@@ -452,31 +413,17 @@ std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::Dif
 {
     std::ostringstream path_buffer;
     path_buffer << "diffserv-target-classifier-statistics" <<"[classifier-entry-name='" <<classifier_entry_name <<"']" <<"[parent-path='" <<parent_path <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DiffservTargetClassifierStatistics' in Cisco_IOS_XE_diffserv_target_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classifier_entry_name.is_set || is_set(classifier_entry_name.yfilter)) leaf_name_data.push_back(classifier_entry_name.get_name_leafdata());
     if (parent_path.is_set || is_set(parent_path.yfilter)) leaf_name_data.push_back(parent_path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -581,7 +528,8 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     classified_pkts{YType::uint64, "classified-pkts"},
     classified_rate{YType::uint64, "classified-rate"}
 {
-    yang_name = "classifier-entry-statistics"; yang_parent_name = "diffserv-target-classifier-statistics";
+
+    yang_name = "classifier-entry-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::~ClassifierEntryStatistics()
@@ -607,32 +555,18 @@ std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::Dif
 {
     std::ostringstream path_buffer;
     path_buffer << "classifier-entry-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClassifierEntryStatistics' in Cisco_IOS_XE_diffserv_target_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classified_bytes.is_set || is_set(classified_bytes.yfilter)) leaf_name_data.push_back(classified_bytes.get_name_leafdata());
     if (classified_pkts.is_set || is_set(classified_pkts.yfilter)) leaf_name_data.push_back(classified_pkts.get_name_leafdata());
     if (classified_rate.is_set || is_set(classified_rate.yfilter)) leaf_name_data.push_back(classified_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -700,7 +634,8 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     meter_succeed_bytes{YType::uint64, "meter-succeed-bytes"},
     meter_succeed_pkts{YType::uint64, "meter-succeed-pkts"}
 {
-    yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics";
+
+    yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::~MeterStatistics()
@@ -730,23 +665,11 @@ std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::Dif
 {
     std::ostringstream path_buffer;
     path_buffer << "meter-statistics" <<"[meter-id='" <<meter_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MeterStatistics' in Cisco_IOS_XE_diffserv_target_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (meter_id.is_set || is_set(meter_id.yfilter)) leaf_name_data.push_back(meter_id.get_name_leafdata());
@@ -755,9 +678,7 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
     if (meter_succeed_bytes.is_set || is_set(meter_succeed_bytes.yfilter)) leaf_name_data.push_back(meter_succeed_bytes.get_name_leafdata());
     if (meter_succeed_pkts.is_set || is_set(meter_succeed_pkts.yfilter)) leaf_name_data.push_back(meter_succeed_pkts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -850,7 +771,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 {
     wred_stats->parent = this;
 
-    yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics";
+    yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::~QueuingStatistics()
@@ -884,23 +805,11 @@ std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::Dif
 {
     std::ostringstream path_buffer;
     path_buffer << "queuing-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'QueuingStatistics' in Cisco_IOS_XE_diffserv_target_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
@@ -910,9 +819,7 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
     if (queue_size_bytes.is_set || is_set(queue_size_bytes.yfilter)) leaf_name_data.push_back(queue_size_bytes.get_name_leafdata());
     if (queue_size_pkts.is_set || is_set(queue_size_pkts.yfilter)) leaf_name_data.push_back(queue_size_pkts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1021,7 +928,8 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     early_drop_bytes{YType::uint64, "early-drop-bytes"},
     early_drop_pkts{YType::uint64, "early-drop-pkts"}
 {
-    yang_name = "wred-stats"; yang_parent_name = "queuing-statistics";
+
+    yang_name = "wred-stats"; yang_parent_name = "queuing-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::~WredStats()
@@ -1045,31 +953,17 @@ std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::Dif
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'WredStats' in Cisco_IOS_XE_diffserv_target_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (early_drop_bytes.is_set || is_set(early_drop_bytes.yfilter)) leaf_name_data.push_back(early_drop_bytes.get_name_leafdata());
     if (early_drop_pkts.is_set || is_set(early_drop_pkts.yfilter)) leaf_name_data.push_back(early_drop_pkts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1119,9 +1013,20 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
     return false;
 }
 
+Direction::Direction()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:direction")
+{
+
+}
+
+Direction::~Direction()
+{
+}
+
 Inbound::Inbound()
      : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:inbound")
 {
+
 }
 
 Inbound::~Inbound()
@@ -1131,6 +1036,7 @@ Inbound::~Inbound()
 Outbound::Outbound()
      : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:outbound")
 {
+
 }
 
 Outbound::~Outbound()

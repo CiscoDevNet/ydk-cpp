@@ -11,18 +11,10 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_diffserv_classifier {
 
-FilterType::FilterType()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:filter-type")
-{
-}
-
-FilterType::~FilterType()
-{
-}
-
 ClassifierEntryFilterOperationType::ClassifierEntryFilterOperationType()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:classifier-entry-filter-operation-type")
 {
+
 }
 
 ClassifierEntryFilterOperationType::~ClassifierEntryFilterOperationType()
@@ -31,7 +23,8 @@ ClassifierEntryFilterOperationType::~ClassifierEntryFilterOperationType()
 
 Classifiers::Classifiers()
 {
-    yang_name = "classifiers"; yang_parent_name = "ietf-diffserv-classifier";
+
+    yang_name = "classifiers"; yang_parent_name = "ietf-diffserv-classifier"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Classifiers::~Classifiers()
@@ -62,26 +55,15 @@ std::string Classifiers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-diffserv-classifier:classifiers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Classifiers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Classifiers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -163,7 +145,8 @@ Classifiers::ClassifierEntry::ClassifierEntry()
     classifier_entry_descr{YType::str, "classifier-entry-descr"},
     classifier_entry_filter_operation{YType::identityref, "classifier-entry-filter-operation"}
 {
-    yang_name = "classifier-entry"; yang_parent_name = "classifiers";
+
+    yang_name = "classifier-entry"; yang_parent_name = "classifiers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Classifiers::ClassifierEntry::~ClassifierEntry()
@@ -195,36 +178,29 @@ bool Classifiers::ClassifierEntry::has_operation() const
 	|| ydk::is_set(classifier_entry_filter_operation.yfilter);
 }
 
+std::string Classifiers::ClassifierEntry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-diffserv-classifier:classifiers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Classifiers::ClassifierEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "classifier-entry" <<"[classifier-entry-name='" <<classifier_entry_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Classifiers::ClassifierEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-diffserv-classifier:classifiers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (classifier_entry_name.is_set || is_set(classifier_entry_name.yfilter)) leaf_name_data.push_back(classifier_entry_name.get_name_leafdata());
     if (classifier_entry_descr.is_set || is_set(classifier_entry_descr.yfilter)) leaf_name_data.push_back(classifier_entry_descr.get_name_leafdata());
     if (classifier_entry_filter_operation.is_set || is_set(classifier_entry_filter_operation.yfilter)) leaf_name_data.push_back(classifier_entry_filter_operation.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -310,7 +286,8 @@ Classifiers::ClassifierEntry::FilterEntry::FilterEntry()
     filter_type{YType::identityref, "filter-type"},
     filter_logical_not{YType::boolean, "filter-logical-not"}
 {
-    yang_name = "filter-entry"; yang_parent_name = "classifier-entry";
+
+    yang_name = "filter-entry"; yang_parent_name = "classifier-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Classifiers::ClassifierEntry::FilterEntry::~FilterEntry()
@@ -394,31 +371,17 @@ std::string Classifiers::ClassifierEntry::FilterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "filter-entry" <<"[filter-type='" <<filter_type <<"']" <<"[filter-logical-not='" <<filter_logical_not <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FilterEntry' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (filter_type.is_set || is_set(filter_type.yfilter)) leaf_name_data.push_back(filter_type.get_name_leafdata());
     if (filter_logical_not.is_set || is_set(filter_logical_not.yfilter)) leaf_name_data.push_back(filter_logical_not.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -594,203 +557,12 @@ bool Classifiers::ClassifierEntry::FilterEntry::has_leaf_or_child_of_name(const 
     return false;
 }
 
-Classifiers::ClassifierEntry::FilterEntry::DscpCfg::DscpCfg()
-    :
-    dscp_min{YType::uint8, "dscp-min"},
-    dscp_max{YType::uint8, "dscp-max"}
-{
-    yang_name = "dscp-cfg"; yang_parent_name = "filter-entry";
-}
-
-Classifiers::ClassifierEntry::FilterEntry::DscpCfg::~DscpCfg()
-{
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_data() const
-{
-    return dscp_min.is_set
-	|| dscp_max.is_set;
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dscp_min.yfilter)
-	|| ydk::is_set(dscp_max.yfilter);
-}
-
-std::string Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dscp-cfg" <<"[dscp-min='" <<dscp_min <<"']" <<"[dscp-max='" <<dscp_max <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DscpCfg' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dscp_min.is_set || is_set(dscp_min.yfilter)) leaf_name_data.push_back(dscp_min.get_name_leafdata());
-    if (dscp_max.is_set || is_set(dscp_max.yfilter)) leaf_name_data.push_back(dscp_max.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::DscpCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dscp-min")
-    {
-        dscp_min = value;
-        dscp_min.value_namespace = name_space;
-        dscp_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dscp-max")
-    {
-        dscp_max = value;
-        dscp_max.value_namespace = name_space;
-        dscp_max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::DscpCfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dscp-min")
-    {
-        dscp_min.yfilter = yfilter;
-    }
-    if(value_path == "dscp-max")
-    {
-        dscp_max.yfilter = yfilter;
-    }
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dscp-min" || name == "dscp-max")
-        return true;
-    return false;
-}
-
-Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::SourceIpAddressCfg()
-    :
-    source_ip_addr{YType::str, "source-ip-addr"}
-{
-    yang_name = "source-ip-address-cfg"; yang_parent_name = "filter-entry";
-}
-
-Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::~SourceIpAddressCfg()
-{
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_data() const
-{
-    return source_ip_addr.is_set;
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source_ip_addr.yfilter);
-}
-
-std::string Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "source-ip-address-cfg" <<"[source-ip-addr='" <<source_ip_addr <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SourceIpAddressCfg' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source_ip_addr.is_set || is_set(source_ip_addr.yfilter)) leaf_name_data.push_back(source_ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source-ip-addr")
-    {
-        source_ip_addr = value;
-        source_ip_addr.value_namespace = name_space;
-        source_ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source-ip-addr")
-    {
-        source_ip_addr.yfilter = yfilter;
-    }
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "source-ip-addr")
-        return true;
-    return false;
-}
-
 Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::DestinationIpAddressCfg()
     :
     destination_ip_addr{YType::str, "destination-ip-addr"}
 {
-    yang_name = "destination-ip-address-cfg"; yang_parent_name = "filter-entry";
+
+    yang_name = "destination-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::~DestinationIpAddressCfg()
@@ -812,30 +584,16 @@ std::string Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::
 {
     std::ostringstream path_buffer;
     path_buffer << "destination-ip-address-cfg" <<"[destination-ip-addr='" <<destination_ip_addr <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DestinationIpAddressCfg' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination_ip_addr.is_set || is_set(destination_ip_addr.yfilter)) leaf_name_data.push_back(destination_ip_addr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -875,115 +633,13 @@ bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_lea
     return false;
 }
 
-Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::SourcePortCfg()
-    :
-    source_port_min{YType::uint16, "source-port-min"},
-    source_port_max{YType::uint16, "source-port-max"}
-{
-    yang_name = "source-port-cfg"; yang_parent_name = "filter-entry";
-}
-
-Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::~SourcePortCfg()
-{
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_data() const
-{
-    return source_port_min.is_set
-	|| source_port_max.is_set;
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source_port_min.yfilter)
-	|| ydk::is_set(source_port_max.yfilter);
-}
-
-std::string Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "source-port-cfg" <<"[source-port-min='" <<source_port_min <<"']" <<"[source-port-max='" <<source_port_max <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SourcePortCfg' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source_port_min.is_set || is_set(source_port_min.yfilter)) leaf_name_data.push_back(source_port_min.get_name_leafdata());
-    if (source_port_max.is_set || is_set(source_port_max.yfilter)) leaf_name_data.push_back(source_port_max.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source-port-min")
-    {
-        source_port_min = value;
-        source_port_min.value_namespace = name_space;
-        source_port_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-port-max")
-    {
-        source_port_max = value;
-        source_port_max.value_namespace = name_space;
-        source_port_max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source-port-min")
-    {
-        source_port_min.yfilter = yfilter;
-    }
-    if(value_path == "source-port-max")
-    {
-        source_port_max.yfilter = yfilter;
-    }
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "source-port-min" || name == "source-port-max")
-        return true;
-    return false;
-}
-
 Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::DestinationPortCfg()
     :
     destination_port_min{YType::uint16, "destination-port-min"},
     destination_port_max{YType::uint16, "destination-port-max"}
 {
-    yang_name = "destination-port-cfg"; yang_parent_name = "filter-entry";
+
+    yang_name = "destination-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::~DestinationPortCfg()
@@ -1007,31 +663,17 @@ std::string Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "destination-port-cfg" <<"[destination-port-min='" <<destination_port_min <<"']" <<"[destination-port-max='" <<destination_port_max <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DestinationPortCfg' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination_port_min.is_set || is_set(destination_port_min.yfilter)) leaf_name_data.push_back(destination_port_min.get_name_leafdata());
     if (destination_port_max.is_set || is_set(destination_port_max.yfilter)) leaf_name_data.push_back(destination_port_max.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1081,12 +723,103 @@ bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_leaf_or_
     return false;
 }
 
+Classifiers::ClassifierEntry::FilterEntry::DscpCfg::DscpCfg()
+    :
+    dscp_min{YType::uint8, "dscp-min"},
+    dscp_max{YType::uint8, "dscp-max"}
+{
+
+    yang_name = "dscp-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::DscpCfg::~DscpCfg()
+{
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_data() const
+{
+    return dscp_min.is_set
+	|| dscp_max.is_set;
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dscp_min.yfilter)
+	|| ydk::is_set(dscp_max.yfilter);
+}
+
+std::string Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dscp-cfg" <<"[dscp-min='" <<dscp_min <<"']" <<"[dscp-max='" <<dscp_max <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dscp_min.is_set || is_set(dscp_min.yfilter)) leaf_name_data.push_back(dscp_min.get_name_leafdata());
+    if (dscp_max.is_set || is_set(dscp_max.yfilter)) leaf_name_data.push_back(dscp_max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::DscpCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dscp-min")
+    {
+        dscp_min = value;
+        dscp_min.value_namespace = name_space;
+        dscp_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dscp-max")
+    {
+        dscp_max = value;
+        dscp_max.value_namespace = name_space;
+        dscp_max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::DscpCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp-min")
+    {
+        dscp_min.yfilter = yfilter;
+    }
+    if(value_path == "dscp-max")
+    {
+        dscp_max.yfilter = yfilter;
+    }
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp-min" || name == "dscp-max")
+        return true;
+    return false;
+}
+
 Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::ProtocolCfg()
     :
     protocol_min{YType::uint8, "protocol-min"},
     protocol_max{YType::uint8, "protocol-max"}
 {
-    yang_name = "protocol-cfg"; yang_parent_name = "filter-entry";
+
+    yang_name = "protocol-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::~ProtocolCfg()
@@ -1110,31 +843,17 @@ std::string Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-cfg" <<"[protocol-min='" <<protocol_min <<"']" <<"[protocol-max='" <<protocol_max <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtocolCfg' in ietf_diffserv_classifier cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (protocol_min.is_set || is_set(protocol_min.yfilter)) leaf_name_data.push_back(protocol_min.get_name_leafdata());
     if (protocol_max.is_set || is_set(protocol_max.yfilter)) leaf_name_data.push_back(protocol_max.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1184,54 +903,216 @@ bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_leaf_or_child_o
     return false;
 }
 
-DestinationPort::DestinationPort()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-port")
+Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::SourceIpAddressCfg()
+    :
+    source_ip_addr{YType::str, "source-ip-addr"}
+{
+
+    yang_name = "source-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::~SourceIpAddressCfg()
 {
 }
 
-DestinationPort::~DestinationPort()
+bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_data() const
+{
+    return source_ip_addr.is_set;
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_ip_addr.yfilter);
+}
+
+std::string Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-ip-address-cfg" <<"[source-ip-addr='" <<source_ip_addr <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_ip_addr.is_set || is_set(source_ip_addr.yfilter)) leaf_name_data.push_back(source_ip_addr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-ip-addr")
+    {
+        source_ip_addr = value;
+        source_ip_addr.value_namespace = name_space;
+        source_ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-ip-addr")
+    {
+        source_ip_addr.yfilter = yfilter;
+    }
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-ip-addr")
+        return true;
+    return false;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::SourcePortCfg()
+    :
+    source_port_min{YType::uint16, "source-port-min"},
+    source_port_max{YType::uint16, "source-port-max"}
+{
+
+    yang_name = "source-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::~SourcePortCfg()
+{
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_data() const
+{
+    return source_port_min.is_set
+	|| source_port_max.is_set;
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_port_min.yfilter)
+	|| ydk::is_set(source_port_max.yfilter);
+}
+
+std::string Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-port-cfg" <<"[source-port-min='" <<source_port_min <<"']" <<"[source-port-max='" <<source_port_max <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_port_min.is_set || is_set(source_port_min.yfilter)) leaf_name_data.push_back(source_port_min.get_name_leafdata());
+    if (source_port_max.is_set || is_set(source_port_max.yfilter)) leaf_name_data.push_back(source_port_max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-port-min")
+    {
+        source_port_min = value;
+        source_port_min.value_namespace = name_space;
+        source_port_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-port-max")
+    {
+        source_port_max = value;
+        source_port_max.value_namespace = name_space;
+        source_port_max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-port-min")
+    {
+        source_port_min.yfilter = yfilter;
+    }
+    if(value_path == "source-port-max")
+    {
+        source_port_max.yfilter = yfilter;
+    }
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-port-min" || name == "source-port-max")
+        return true;
+    return false;
+}
+
+FilterType::FilterType()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:filter-type")
+{
+
+}
+
+FilterType::~FilterType()
 {
 }
 
 DestinationIpAddress::DestinationIpAddress()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-ip-address")
 {
+
 }
 
 DestinationIpAddress::~DestinationIpAddress()
 {
 }
 
-SourcePort::SourcePort()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-port")
+DestinationPort::DestinationPort()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-port")
+{
+
+}
+
+DestinationPort::~DestinationPort()
 {
 }
 
-SourcePort::~SourcePort()
+Dscp::Dscp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:dscp")
 {
+
 }
 
-Protocol::Protocol()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:protocol")
-{
-}
-
-Protocol::~Protocol()
-{
-}
-
-SourceIpAddress::SourceIpAddress()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-ip-address")
-{
-}
-
-SourceIpAddress::~SourceIpAddress()
+Dscp::~Dscp()
 {
 }
 
 MatchAllFilter::MatchAllFilter()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-all-filter")
 {
+
 }
 
 MatchAllFilter::~MatchAllFilter()
@@ -1241,18 +1122,40 @@ MatchAllFilter::~MatchAllFilter()
 MatchAnyFilter::MatchAnyFilter()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-any-filter")
 {
+
 }
 
 MatchAnyFilter::~MatchAnyFilter()
 {
 }
 
-Dscp::Dscp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:dscp")
+Protocol::Protocol()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:protocol")
+{
+
+}
+
+Protocol::~Protocol()
 {
 }
 
-Dscp::~Dscp()
+SourceIpAddress::SourceIpAddress()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-ip-address")
+{
+
+}
+
+SourceIpAddress::~SourceIpAddress()
+{
+}
+
+SourcePort::SourcePort()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-port")
+{
+
+}
+
+SourcePort::~SourcePort()
 {
 }
 

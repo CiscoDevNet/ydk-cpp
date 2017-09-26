@@ -17,7 +17,7 @@ LptsIfib::LptsIfib()
 {
     nodes->parent = this;
 
-    yang_name = "lpts-ifib"; yang_parent_name = "Cisco-IOS-XR-lpts-ifib-oper";
+    yang_name = "lpts-ifib"; yang_parent_name = "Cisco-IOS-XR-lpts-ifib-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 LptsIfib::~LptsIfib()
@@ -39,26 +39,15 @@ std::string LptsIfib::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lpts-ifib-oper:lpts-ifib";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LptsIfib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LptsIfib::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool LptsIfib::has_leaf_or_child_of_name(const std::string & name) const
 
 LptsIfib::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "lpts-ifib";
+
+    yang_name = "nodes"; yang_parent_name = "lpts-ifib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 LptsIfib::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool LptsIfib::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string LptsIfib::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-ifib-oper:lpts-ifib/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string LptsIfib::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LptsIfib::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LptsIfib::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-ifib-oper:lpts-ifib/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ LptsIfib::Nodes::Node::Node()
 {
     slice_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 LptsIfib::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool LptsIfib::Nodes::Node::has_operation() const
 	|| (slice_ids !=  nullptr && slice_ids->has_operation());
 }
 
+std::string LptsIfib::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-ifib-oper:lpts-ifib/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string LptsIfib::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LptsIfib::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LptsIfib::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lpts-ifib-oper:lpts-ifib/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool LptsIfib::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) 
 
 LptsIfib::Nodes::Node::SliceIds::SliceIds()
 {
-    yang_name = "slice-ids"; yang_parent_name = "node";
+
+    yang_name = "slice-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LptsIfib::Nodes::Node::SliceIds::~SliceIds()
@@ -375,29 +352,15 @@ std::string LptsIfib::Nodes::Node::SliceIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slice-ids";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LptsIfib::Nodes::Node::SliceIds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LptsIfib::Nodes::Node::SliceIds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SliceIds' in Cisco_IOS_XR_lpts_ifib_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -452,7 +415,8 @@ LptsIfib::Nodes::Node::SliceIds::SliceId::SliceId()
     :
     slice_name{YType::str, "slice-name"}
 {
-    yang_name = "slice-id"; yang_parent_name = "slice-ids";
+
+    yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::~SliceId()
@@ -484,30 +448,16 @@ std::string LptsIfib::Nodes::Node::SliceIds::SliceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slice-id" <<"[slice-name='" <<slice_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LptsIfib::Nodes::Node::SliceIds::SliceId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SliceId' in Cisco_IOS_XR_lpts_ifib_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slice_name.is_set || is_set(slice_name.yfilter)) leaf_name_data.push_back(slice_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -597,7 +547,8 @@ LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::Entry()
     vid{YType::uint32, "vid"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "entry"; yang_parent_name = "slice-id";
+
+    yang_name = "entry"; yang_parent_name = "slice-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::~Entry()
@@ -669,23 +620,11 @@ std::string LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "entry" <<"[entry='" <<entry <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Entry' in Cisco_IOS_XR_lpts_ifib_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
@@ -715,9 +654,7 @@ const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_entity_pat
     if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

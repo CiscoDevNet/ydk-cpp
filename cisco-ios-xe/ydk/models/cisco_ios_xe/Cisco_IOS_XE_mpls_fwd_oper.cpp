@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_mpls_fwd_oper {
 
 MplsForwardingTable::MplsForwardingTable()
 {
-    yang_name = "mpls-forwarding-table"; yang_parent_name = "Cisco-IOS-XE-mpls-fwd-oper";
+
+    yang_name = "mpls-forwarding-table"; yang_parent_name = "Cisco-IOS-XE-mpls-fwd-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MplsForwardingTable::~MplsForwardingTable()
@@ -44,26 +45,15 @@ std::string MplsForwardingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-mpls-fwd-oper:mpls-forwarding-table";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsForwardingTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -143,7 +133,8 @@ MplsForwardingTable::LocalLabelEntry::LocalLabelEntry()
     :
     local_label{YType::uint32, "local-label"}
 {
-    yang_name = "local-label-entry"; yang_parent_name = "mpls-forwarding-table";
+
+    yang_name = "local-label-entry"; yang_parent_name = "mpls-forwarding-table"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsForwardingTable::LocalLabelEntry::~LocalLabelEntry()
@@ -171,34 +162,27 @@ bool MplsForwardingTable::LocalLabelEntry::has_operation() const
 	|| ydk::is_set(local_label.yfilter);
 }
 
+std::string MplsForwardingTable::LocalLabelEntry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-mpls-fwd-oper:mpls-forwarding-table/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsForwardingTable::LocalLabelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-label-entry" <<"[local-label='" <<local_label <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsForwardingTable::LocalLabelEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-mpls-fwd-oper:mpls-forwarding-table/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -270,7 +254,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ForwardingInfo()
 {
     connection_info->parent = this;
 
-    yang_name = "forwarding-info"; yang_parent_name = "local-label-entry";
+    yang_name = "forwarding-info"; yang_parent_name = "local-label-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::~ForwardingInfo()
@@ -300,23 +284,11 @@ std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "forwarding-info" <<"[outgoing-interface='" <<outgoing_interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ForwardingInfo' in Cisco_IOS_XE_mpls_fwd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
@@ -324,9 +296,7 @@ const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_entit
     if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
     if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -424,7 +394,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Connection
 {
     tunnel_tp->parent = this;
 
-    yang_name = "connection-info"; yang_parent_name = "forwarding-info";
+    yang_name = "connection-info"; yang_parent_name = "forwarding-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::~ConnectionInfo()
@@ -460,23 +430,11 @@ std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
 {
     std::ostringstream path_buffer;
     path_buffer << "connection-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ConnectionInfo' in Cisco_IOS_XE_mpls_fwd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
@@ -487,9 +445,7 @@ const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Connectio
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -611,10 +567,9 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
 	,src_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>())
 {
     dst_id->parent = this;
-
     src_id->parent = this;
 
-    yang_name = "tunnel-tp"; yang_parent_name = "connection-info";
+    yang_name = "tunnel-tp"; yang_parent_name = "connection-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::~TunnelTp()
@@ -640,30 +595,16 @@ std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-tp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TunnelTp' in Cisco_IOS_XE_mpls_fwd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (tunnel.is_set || is_set(tunnel.yfilter)) leaf_name_data.push_back(tunnel.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -731,115 +672,13 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Tunne
     return false;
 }
 
-MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::SrcId()
-    :
-    global{YType::uint32, "global"},
-    node{YType::str, "node"}
-{
-    yang_name = "src-id"; yang_parent_name = "tunnel-tp";
-}
-
-MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::~SrcId()
-{
-}
-
-bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_data() const
-{
-    return global.is_set
-	|| node.is_set;
-}
-
-bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(global.yfilter)
-	|| ydk::is_set(node.yfilter);
-}
-
-std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "src-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SrcId' in Cisco_IOS_XE_mpls_fwd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (global.is_set || is_set(global.yfilter)) leaf_name_data.push_back(global.get_name_leafdata());
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "global")
-    {
-        global = value;
-        global.value_namespace = name_space;
-        global.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node")
-    {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "global")
-    {
-        global.yfilter = yfilter;
-    }
-    if(value_path == "node")
-    {
-        node.yfilter = yfilter;
-    }
-}
-
-bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global" || name == "node")
-        return true;
-    return false;
-}
-
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::DstId()
     :
     global{YType::uint32, "global"},
     node{YType::str, "node"}
 {
-    yang_name = "dst-id"; yang_parent_name = "tunnel-tp";
+
+    yang_name = "dst-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::~DstId()
@@ -863,31 +702,17 @@ std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
 {
     std::ostringstream path_buffer;
     path_buffer << "dst-id";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DstId' in Cisco_IOS_XE_mpls_fwd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (global.is_set || is_set(global.yfilter)) leaf_name_data.push_back(global.get_name_leafdata());
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -931,6 +756,96 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Tunne
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "node")
+        return true;
+    return false;
+}
+
+MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::SrcId()
+    :
+    global{YType::uint32, "global"},
+    node{YType::str, "node"}
+{
+
+    yang_name = "src-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::~SrcId()
+{
+}
+
+bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_data() const
+{
+    return global.is_set
+	|| node.is_set;
+}
+
+bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(global.yfilter)
+	|| ydk::is_set(node.yfilter);
+}
+
+std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "src-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global.is_set || is_set(global.yfilter)) leaf_name_data.push_back(global.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "global")
+    {
+        global = value;
+        global.value_namespace = name_space;
+        global.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global")
+    {
+        global.yfilter = yfilter;
+    }
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+}
+
+bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "global" || name == "node")
         return true;

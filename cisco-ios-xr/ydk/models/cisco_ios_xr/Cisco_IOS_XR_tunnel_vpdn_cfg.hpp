@@ -18,7 +18,7 @@ class Vpdn : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -43,16 +43,38 @@ class Vpdn : public ydk::Entity
         class Loggings; //type: Vpdn::Loggings
         class L2Tp; //type: Vpdn::L2Tp
 
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::CallerId> caller_id;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::History> history;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp> l2tp;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Local> local;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Loggings> loggings;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Redundancy> redundancy;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates> templates;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups> vpd_ngroups;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::CallerId> caller_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::History> history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp> l2tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Local> local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Loggings> loggings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Redundancy> redundancy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates> templates;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups> vpd_ngroups;
         
 }; // Vpdn
+
+
+class Vpdn::CallerId : public ydk::Entity
+{
+    public:
+        CallerId();
+        ~CallerId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mask; //type: string
+
+}; // Vpdn::CallerId
 
 
 class Vpdn::History : public ydk::Entity
@@ -63,17 +85,161 @@ class Vpdn::History : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf failure; //type: empty
 
 }; // Vpdn::History
+
+
+class Vpdn::L2Tp : public ydk::Entity
+{
+    public:
+        L2Tp();
+        ~L2Tp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tcp_mss_adjust; //type: uint32
+        ydk::YLeaf reassembly; //type: empty
+        class SessionId; //type: Vpdn::L2Tp::SessionId
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp::SessionId> session_id;
+        
+}; // Vpdn::L2Tp
+
+
+class Vpdn::L2Tp::SessionId : public ydk::Entity
+{
+    public:
+        SessionId();
+        ~SessionId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Space; //type: Vpdn::L2Tp::SessionId::Space
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp::SessionId::Space> space;
+        
+}; // Vpdn::L2Tp::SessionId
+
+
+class Vpdn::L2Tp::SessionId::Space : public ydk::Entity
+{
+    public:
+        Space();
+        ~Space();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf hierarchy; //type: empty
+
+}; // Vpdn::L2Tp::SessionId::Space
+
+
+class Vpdn::Local : public ydk::Entity
+{
+    public:
+        Local();
+        ~Local();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf secret_text; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf cache_disabled; //type: empty
+        ydk::YLeaf port; //type: uint16
+
+}; // Vpdn::Local
+
+
+class Vpdn::Loggings : public ydk::Entity
+{
+    public:
+        Loggings();
+        ~Loggings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Logging; //type: Vpdn::Loggings::Logging
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Loggings::Logging> > logging;
+        
+}; // Vpdn::Loggings
+
+
+class Vpdn::Loggings::Logging : public ydk::Entity
+{
+    public:
+        Logging();
+        ~Logging();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf option; //type: Option
+
+}; // Vpdn::Loggings::Logging
 
 
 class Vpdn::Redundancy : public ydk::Entity
@@ -84,18 +250,19 @@ class Vpdn::Redundancy : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf enable; //type: empty
         class ProcessFailures; //type: Vpdn::Redundancy::ProcessFailures
 
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Redundancy::ProcessFailures> process_failures;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Redundancy::ProcessFailures> process_failures;
         
 }; // Vpdn::Redundancy
 
@@ -108,41 +275,18 @@ class Vpdn::Redundancy::ProcessFailures : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf switchover; //type: empty
 
 }; // Vpdn::Redundancy::ProcessFailures
-
-
-class Vpdn::Local : public ydk::Entity
-{
-    public:
-        Local();
-        ~Local();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf secret_text; //type: string
-        ydk::YLeaf path; //type: string
-        ydk::YLeaf cache_disabled; //type: empty
-        ydk::YLeaf port; //type: uint16
-
-}; // Vpdn::Local
 
 
 class Vpdn::Templates : public ydk::Entity
@@ -153,17 +297,18 @@ class Vpdn::Templates : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Template_; //type: Vpdn::Templates::Template_
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_> > template_;
         
 }; // Vpdn::Templates
 
@@ -176,13 +321,14 @@ class Vpdn::Templates::Template_ : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf template_name; //type: string
         ydk::YLeaf cisco_avp100_format_e_enable; //type: empty
@@ -195,11 +341,11 @@ class Vpdn::Templates::Template_ : public ydk::Entity
         class Ip; //type: Vpdn::Templates::Template_::Ip
         class Ipv4; //type: Vpdn::Templates::Template_::Ipv4
 
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::CallerId> caller_id;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Ip> ip;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Ipv4> ipv4;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Tunnel> tunnel;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Vpn> vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::CallerId> caller_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Ip> ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Tunnel> tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Vpn> vpn;
         
 }; // Vpdn::Templates::Template_
 
@@ -212,7 +358,7 @@ class Vpdn::Templates::Template_::CallerId : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -225,73 +371,6 @@ class Vpdn::Templates::Template_::CallerId : public ydk::Entity
 }; // Vpdn::Templates::Template_::CallerId
 
 
-class Vpdn::Templates::Template_::Vpn : public ydk::Entity
-{
-    public:
-        Vpn();
-        ~Vpn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vrf; //type: string
-        class Id; //type: Vpdn::Templates::Template_::Vpn::Id
-
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Vpn::Id> id;
-        
-}; // Vpdn::Templates::Template_::Vpn
-
-
-class Vpdn::Templates::Template_::Vpn::Id : public ydk::Entity
-{
-    public:
-        Id();
-        ~Id();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf oui; //type: string
-        ydk::YLeaf index_; //type: string
-
-}; // Vpdn::Templates::Template_::Vpn::Id
-
-
-class Vpdn::Templates::Template_::Tunnel : public ydk::Entity
-{
-    public:
-        Tunnel();
-        ~Tunnel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf busy_timeout; //type: uint32
-
-}; // Vpdn::Templates::Template_::Tunnel
-
-
 class Vpdn::Templates::Template_::Ip : public ydk::Entity
 {
     public:
@@ -300,7 +379,7 @@ class Vpdn::Templates::Template_::Ip : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -321,7 +400,7 @@ class Vpdn::Templates::Template_::Ipv4 : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -335,15 +414,15 @@ class Vpdn::Templates::Template_::Ipv4 : public ydk::Entity
 }; // Vpdn::Templates::Template_::Ipv4
 
 
-class Vpdn::CallerId : public ydk::Entity
+class Vpdn::Templates::Template_::Tunnel : public ydk::Entity
 {
     public:
-        CallerId();
-        ~CallerId();
+        Tunnel();
+        ~Tunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -351,9 +430,55 @@ class Vpdn::CallerId : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mask; //type: string
+        ydk::YLeaf busy_timeout; //type: uint32
 
-}; // Vpdn::CallerId
+}; // Vpdn::Templates::Template_::Tunnel
+
+
+class Vpdn::Templates::Template_::Vpn : public ydk::Entity
+{
+    public:
+        Vpn();
+        ~Vpn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf; //type: string
+        class Id; //type: Vpdn::Templates::Template_::Vpn::Id
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Vpn::Id> id;
+        
+}; // Vpdn::Templates::Template_::Vpn
+
+
+class Vpdn::Templates::Template_::Vpn::Id : public ydk::Entity
+{
+    public:
+        Id();
+        ~Id();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf oui; //type: string
+        ydk::YLeaf index_; //type: string
+
+}; // Vpdn::Templates::Template_::Vpn::Id
 
 
 class Vpdn::VpdNgroups : public ydk::Entity
@@ -364,17 +489,18 @@ class Vpdn::VpdNgroups : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class VpdNgroup; //type: Vpdn::VpdNgroups::VpdNgroup
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup> > vpd_ngroup;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup> > vpd_ngroup;
         
 }; // Vpdn::VpdNgroups
 
@@ -387,13 +513,14 @@ class Vpdn::VpdNgroups::VpdNgroup : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf vpd_ngroupname; //type: string
         ydk::YLeaf dsl_line_forwarding; //type: empty
@@ -407,32 +534,10 @@ class Vpdn::VpdNgroups::VpdNgroup : public ydk::Entity
         class VpnId; //type: Vpdn::VpdNgroups::VpdNgroup::VpnId
         class Ip; //type: Vpdn::VpdNgroups::VpdNgroup::Ip
 
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup::Ip> ip;
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup::VpnId> vpn_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup::Ip> ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup::VpnId> vpn_id;
         
 }; // Vpdn::VpdNgroups::VpdNgroup
-
-
-class Vpdn::VpdNgroups::VpdNgroup::VpnId : public ydk::Entity
-{
-    public:
-        VpnId();
-        ~VpnId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vpn_id_oui; //type: string
-        ydk::YLeaf vpn_id_index; //type: string
-
-}; // Vpdn::VpdNgroups::VpdNgroup::VpnId
 
 
 class Vpdn::VpdNgroups::VpdNgroup::Ip : public ydk::Entity
@@ -443,7 +548,7 @@ class Vpdn::VpdNgroups::VpdNgroup::Ip : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -456,15 +561,15 @@ class Vpdn::VpdNgroups::VpdNgroup::Ip : public ydk::Entity
 }; // Vpdn::VpdNgroups::VpdNgroup::Ip
 
 
-class Vpdn::Loggings : public ydk::Entity
+class Vpdn::VpdNgroups::VpdNgroup::VpnId : public ydk::Entity
 {
     public:
-        Loggings();
-        ~Loggings();
+        VpnId();
+        ~VpnId();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -472,101 +577,10 @@ class Vpdn::Loggings : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Logging; //type: Vpdn::Loggings::Logging
+        ydk::YLeaf vpn_id_oui; //type: string
+        ydk::YLeaf vpn_id_index; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Loggings::Logging> > logging;
-        
-}; // Vpdn::Loggings
-
-
-class Vpdn::Loggings::Logging : public ydk::Entity
-{
-    public:
-        Logging();
-        ~Logging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf option; //type: Option
-
-}; // Vpdn::Loggings::Logging
-
-
-class Vpdn::L2Tp : public ydk::Entity
-{
-    public:
-        L2Tp();
-        ~L2Tp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tcp_mss_adjust; //type: uint32
-        ydk::YLeaf reassembly; //type: empty
-        class SessionId; //type: Vpdn::L2Tp::SessionId
-
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp::SessionId> session_id;
-        
-}; // Vpdn::L2Tp
-
-
-class Vpdn::L2Tp::SessionId : public ydk::Entity
-{
-    public:
-        SessionId();
-        ~SessionId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Space; //type: Vpdn::L2Tp::SessionId::Space
-
-        std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp::SessionId::Space> space;
-        
-}; // Vpdn::L2Tp::SessionId
-
-
-class Vpdn::L2Tp::SessionId::Space : public ydk::Entity
-{
-    public:
-        Space();
-        ~Space();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hierarchy; //type: empty
-
-}; // Vpdn::L2Tp::SessionId::Space
+}; // Vpdn::VpdNgroups::VpdNgroup::VpnId
 
 class Option : public ydk::Enum
 {

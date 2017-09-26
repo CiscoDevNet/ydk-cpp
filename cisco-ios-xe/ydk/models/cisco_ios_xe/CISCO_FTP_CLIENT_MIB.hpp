@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_FTP_CLIENT_MIB {
 
-class CiscoFtpClientMib : public ydk::Entity
+class CISCOFTPCLIENTMIB : public ydk::Entity
 {
     public:
-        CiscoFtpClientMib();
-        ~CiscoFtpClientMib();
+        CISCOFTPCLIENTMIB();
+        ~CISCOFTPCLIENTMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,16 +32,16 @@ class CiscoFtpClientMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cfcrequest; //type: CiscoFtpClientMib::Cfcrequest
-        class Cfcrequesttable; //type: CiscoFtpClientMib::Cfcrequesttable
+        class Cfcrequest; //type: CISCOFTPCLIENTMIB::Cfcrequest
+        class Cfcrequesttable; //type: CISCOFTPCLIENTMIB::Cfcrequesttable
 
-        std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequest> cfcrequest;
-        std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequesttable> cfcrequesttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::Cfcrequest> cfcrequest;
+        std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::Cfcrequesttable> cfcrequesttable;
         
-}; // CiscoFtpClientMib
+}; // CISCOFTPCLIENTMIB
 
 
-class CiscoFtpClientMib::Cfcrequest : public ydk::Entity
+class CISCOFTPCLIENTMIB::Cfcrequest : public ydk::Entity
 {
     public:
         Cfcrequest();
@@ -49,23 +49,24 @@ class CiscoFtpClientMib::Cfcrequest : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cfcrequestmaximum; //type: uint32
         ydk::YLeaf cfcrequests; //type: uint32
         ydk::YLeaf cfcrequestshigh; //type: uint32
         ydk::YLeaf cfcrequestsbumped; //type: uint32
 
-}; // CiscoFtpClientMib::Cfcrequest
+}; // CISCOFTPCLIENTMIB::Cfcrequest
 
 
-class CiscoFtpClientMib::Cfcrequesttable : public ydk::Entity
+class CISCOFTPCLIENTMIB::Cfcrequesttable : public ydk::Entity
 {
     public:
         Cfcrequesttable();
@@ -73,22 +74,23 @@ class CiscoFtpClientMib::Cfcrequesttable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cfcrequestentry; //type: CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry
+        class Cfcrequestentry; //type: CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry
 
-        std::vector<std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry> > cfcrequestentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry> > cfcrequestentry;
         
-}; // CiscoFtpClientMib::Cfcrequesttable
+}; // CISCOFTPCLIENTMIB::Cfcrequesttable
 
 
-class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry : public ydk::Entity
+class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry : public ydk::Entity
 {
     public:
         Cfcrequestentry();
@@ -96,13 +98,14 @@ class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cfcrequestindex; //type: uint32
         ydk::YLeaf cfcrequestoperation; //type: Cfcrequestoperation
@@ -115,15 +118,15 @@ class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry : public ydk::Entity
         ydk::YLeaf cfcrequestcompletiontime; //type: uint32
         ydk::YLeaf cfcrequeststop; //type: Cfcrequeststop
         ydk::YLeaf cfcrequestoperationstate; //type: Cfcrequestoperationstate
-        ydk::YLeaf cfcrequestentrystatus; //type: Rowstatus
+        ydk::YLeaf cfcrequestentrystatus; //type: RowStatus
         class Cfcrequestoperation;
         class Cfcrequestresult;
         class Cfcrequeststop;
         class Cfcrequestoperationstate;
 
-}; // CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry
+}; // CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry
 
-class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation : public ydk::Enum
+class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf putBinary;
@@ -131,7 +134,7 @@ class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation :
 
 };
 
-class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult : public ydk::Enum
+class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pending;
@@ -147,7 +150,7 @@ class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult : pu
 
 };
 
-class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop : public ydk::Enum
+class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ready;
@@ -155,7 +158,7 @@ class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop : publ
 
 };
 
-class CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate : public ydk::Enum
+class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf running;

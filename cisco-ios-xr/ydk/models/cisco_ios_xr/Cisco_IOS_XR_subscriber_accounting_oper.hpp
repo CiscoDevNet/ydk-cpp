@@ -18,7 +18,7 @@ class SubscriberAccounting : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class SubscriberAccounting : public ydk::Entity
 
         class Nodes; //type: SubscriberAccounting::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes> nodes;
         
 }; // SubscriberAccounting
 
@@ -46,17 +46,18 @@ class SubscriberAccounting::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: SubscriberAccounting::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node> > node;
         
 }; // SubscriberAccounting::Nodes
 
@@ -69,303 +70,25 @@ class SubscriberAccounting::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_id; //type: string
         class SubscriberAccountingSessionFeatures; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures
         class SubscriberAccountingSummary; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary
         class SubscriberAccountingFlowFeatures; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures> subscriber_accounting_flow_features;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures> subscriber_accounting_session_features;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary> subscriber_accounting_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures> subscriber_accounting_flow_features;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures> subscriber_accounting_session_features;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary> subscriber_accounting_summary;
         
 }; // SubscriberAccounting::Nodes::Node
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures : public ydk::Entity
-{
-    public:
-        SubscriberAccountingSessionFeatures();
-        ~SubscriberAccountingSessionFeatures();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SubscriberAccountingSessionFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature> > subscriber_accounting_session_feature;
-        
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature : public ydk::Entity
-{
-    public:
-        SubscriberAccountingSessionFeature();
-        ~SubscriberAccountingSessionFeature();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sub_label; //type: int32
-        class SessionFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData> session_feature_data;
-        
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData : public ydk::Entity
-{
-    public:
-        SessionFeatureData();
-        ~SessionFeatureData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf unique_subscriber_label; //type: uint32
-        ydk::YLeaf interface_handle; //type: uint32
-        ydk::YLeaf session_disconnected; //type: boolean
-        ydk::YLeaf session_accounting_enabled_flag; //type: boolean
-        ydk::YLeaf session_accounting_method_list; //type: string
-        ydk::YLeaf session_accounting_periodic_interval; //type: uint32
-        ydk::YLeaf session_accounting_aaa_trans_pending; //type: uint32
-        ydk::YLeaf session_accounting_aaa_request_failed; //type: uint32
-        ydk::YLeaf session_accounting_started; //type: boolean
-        ydk::YLeaf session_idle_timeout_enabled_flag; //type: boolean
-        ydk::YLeaf idle_timeout_value; //type: uint32
-        ydk::YLeaf idle_timeout_threshold; //type: uint32
-        ydk::YLeaf idle_timeout_direction; //type: string
-        ydk::YLeaf session_is_idle; //type: boolean
-        ydk::YLeaf session_stats_changed_time; //type: uint32
-        ydk::YLeaf session_total_idle_time; //type: uint32
-        ydk::YLeaf session_to_idle_count; //type: uint32
-        ydk::YLeaf session_to_awake_count; //type: uint32
-        ydk::YLeaf session_idle_to_aaa_trans_pending; //type: uint32
-        ydk::YLeaf session_idle_to_aaa_request_failed; //type: uint32
-        ydk::YLeaf session_timeout_enabled_flag; //type: boolean
-        ydk::YLeaf session_timeout_value; //type: uint32
-        ydk::YLeaf session_timeout_time_remaining; //type: uint32
-        class ServiceAccountingFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature> > service_accounting_feature;
-        
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature : public ydk::Entity
-{
-    public:
-        ServiceAccountingFeature();
-        ~ServiceAccountingFeature();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf service_accounting_enabled_flag; //type: boolean
-        ydk::YLeaf service_accounting_service_id; //type: uint32
-        ydk::YLeaf service_accounting_method_list; //type: string
-        ydk::YLeaf service_accounting_periodic_interval; //type: uint32
-        ydk::YLeaf session_accounting_aaa_trans_pending; //type: uint32
-        ydk::YLeaf session_accounting_aaa_request_failed; //type: uint32
-        ydk::YLeaf session_accounting_started; //type: boolean
-
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary : public ydk::Entity
-{
-    public:
-        SubscriberAccountingSummary();
-        ~SubscriberAccountingSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AaaCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters
-        class IdleTimeoutCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters
-        class SessionTimeoutCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters
-        class SessionFlowCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters> aaa_counters;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters> idle_timeout_counters;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters> session_flow_counters;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters> session_timeout_counters;
-        
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters : public ydk::Entity
-{
-    public:
-        AaaCounters();
-        ~AaaCounters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flow_start; //type: uint32
-        ydk::YLeaf flow_disconnect; //type: uint32
-        ydk::YLeaf session_accounting_start; //type: uint32
-        ydk::YLeaf session_accounting_stop; //type: uint32
-        ydk::YLeaf session_accounting_update; //type: uint32
-        ydk::YLeaf service_accounting_start; //type: uint32
-        ydk::YLeaf service_accounting_stop; //type: uint32
-        ydk::YLeaf service_accounting_update; //type: uint32
-        ydk::YLeaf flow_accounting_start; //type: uint32
-        ydk::YLeaf flow_accounting_stop; //type: uint32
-        ydk::YLeaf flow_accounting_update; //type: uint32
-        ydk::YLeaf accounting_callback; //type: uint32
-        ydk::YLeaf session_acct_trans_pending; //type: uint32
-        ydk::YLeaf session_acct_reqs_failed; //type: uint32
-        ydk::YLeaf session_acct_out_of_sync; //type: uint32
-        ydk::YLeaf session_idle_to_trans_pending; //type: uint32
-        ydk::YLeaf session_idle_to_reqs_failed; //type: uint32
-        ydk::YLeaf session_idle_to_out_of_sync; //type: uint32
-        ydk::YLeaf service_acct_trans_pending; //type: uint32
-        ydk::YLeaf service_acct_reqs_failed; //type: uint32
-        ydk::YLeaf service_acct_out_of_sync; //type: uint32
-        ydk::YLeaf service_idle_to_trans_pending; //type: uint32
-        ydk::YLeaf service_idle_to_reqs_failed; //type: uint32
-        ydk::YLeaf service_idle_to_out_of_sync; //type: uint32
-        ydk::YLeaf prepaid_start; //type: uint32
-        ydk::YLeaf prepaid_stop; //type: uint32
-        ydk::YLeaf prepaid_accounting_start; //type: uint32
-        ydk::YLeaf prepaid_accounting_stop; //type: uint32
-        ydk::YLeaf prepaid_volume_threshold_reached; //type: uint32
-        ydk::YLeaf prepaid_time_threshold_reached; //type: uint32
-        ydk::YLeaf prepaid_quota_depleted; //type: uint32
-        ydk::YLeaf prepaid_reauthorization; //type: uint32
-        ydk::YLeaf idle_timeout; //type: uint32
-        ydk::YLeaf idle_timeout_response_callback; //type: uint32
-        ydk::YLeaf owned_resource_start; //type: uint32
-
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters : public ydk::Entity
-{
-    public:
-        IdleTimeoutCounters();
-        ~IdleTimeoutCounters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf active_session_idle_timers; //type: uint32
-        ydk::YLeaf idle_sessions; //type: uint32
-        ydk::YLeaf transitions_to_idle; //type: uint32
-        ydk::YLeaf transitions_to_awake; //type: uint32
-        ydk::YLeaf active_flow_idle_timers; //type: uint32
-        ydk::YLeaf expired_flow_idle_timers; //type: uint32
-        ydk::YLeaf active_prepaid_idle_timers; //type: uint32
-        ydk::YLeaf expired_prepaid_idle_timers; //type: uint32
-
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters : public ydk::Entity
-{
-    public:
-        SessionTimeoutCounters();
-        ~SessionTimeoutCounters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf active_session_timers; //type: uint32
-        ydk::YLeaf expired_session_timers; //type: uint32
-
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters : public ydk::Entity
-{
-    public:
-        SessionFlowCounters();
-        ~SessionFlowCounters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf active_sessions; //type: uint32
-        ydk::YLeaf disconnected_sessions; //type: uint32
-        ydk::YLeaf active_session_accounting_sessions; //type: uint32
-        ydk::YLeaf active_flows; //type: uint32
-        ydk::YLeaf quota_received; //type: uint32
-
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters
 
 
 class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures : public ydk::Entity
@@ -376,7 +99,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -386,7 +109,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures : publ
 
         class SubscriberAccountingFlowFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature> > subscriber_accounting_flow_feature;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature> > subscriber_accounting_flow_feature;
         
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
 
@@ -399,7 +122,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -410,7 +133,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
         ydk::YLeaf class_label; //type: int32
         class FlowFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData> flow_feature_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData> flow_feature_data;
         
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
 
@@ -423,7 +146,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -479,6 +202,285 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
         ydk::YLeaf prepaid_charging_rule; //type: string
 
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures : public ydk::Entity
+{
+    public:
+        SubscriberAccountingSessionFeatures();
+        ~SubscriberAccountingSessionFeatures();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SubscriberAccountingSessionFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature> > subscriber_accounting_session_feature;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature : public ydk::Entity
+{
+    public:
+        SubscriberAccountingSessionFeature();
+        ~SubscriberAccountingSessionFeature();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sub_label; //type: int32
+        class SessionFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData> session_feature_data;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData : public ydk::Entity
+{
+    public:
+        SessionFeatureData();
+        ~SessionFeatureData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf unique_subscriber_label; //type: uint32
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf session_disconnected; //type: boolean
+        ydk::YLeaf session_accounting_enabled_flag; //type: boolean
+        ydk::YLeaf session_accounting_method_list; //type: string
+        ydk::YLeaf session_accounting_periodic_interval; //type: uint32
+        ydk::YLeaf session_accounting_aaa_trans_pending; //type: uint32
+        ydk::YLeaf session_accounting_aaa_request_failed; //type: uint32
+        ydk::YLeaf session_accounting_started; //type: boolean
+        ydk::YLeaf session_idle_timeout_enabled_flag; //type: boolean
+        ydk::YLeaf idle_timeout_value; //type: uint32
+        ydk::YLeaf idle_timeout_threshold; //type: uint32
+        ydk::YLeaf idle_timeout_direction; //type: string
+        ydk::YLeaf session_is_idle; //type: boolean
+        ydk::YLeaf session_stats_changed_time; //type: uint32
+        ydk::YLeaf session_total_idle_time; //type: uint32
+        ydk::YLeaf session_to_idle_count; //type: uint32
+        ydk::YLeaf session_to_awake_count; //type: uint32
+        ydk::YLeaf session_idle_to_aaa_trans_pending; //type: uint32
+        ydk::YLeaf session_idle_to_aaa_request_failed; //type: uint32
+        ydk::YLeaf session_timeout_enabled_flag; //type: boolean
+        ydk::YLeaf session_timeout_value; //type: uint32
+        ydk::YLeaf session_timeout_time_remaining; //type: uint32
+        class ServiceAccountingFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature> > service_accounting_feature;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature : public ydk::Entity
+{
+    public:
+        ServiceAccountingFeature();
+        ~ServiceAccountingFeature();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf service_accounting_enabled_flag; //type: boolean
+        ydk::YLeaf service_accounting_service_id; //type: uint32
+        ydk::YLeaf service_accounting_method_list; //type: string
+        ydk::YLeaf service_accounting_periodic_interval; //type: uint32
+        ydk::YLeaf session_accounting_aaa_trans_pending; //type: uint32
+        ydk::YLeaf session_accounting_aaa_request_failed; //type: uint32
+        ydk::YLeaf session_accounting_started; //type: boolean
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary : public ydk::Entity
+{
+    public:
+        SubscriberAccountingSummary();
+        ~SubscriberAccountingSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AaaCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters
+        class IdleTimeoutCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters
+        class SessionTimeoutCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters
+        class SessionFlowCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters> aaa_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters> idle_timeout_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters> session_flow_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters> session_timeout_counters;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters : public ydk::Entity
+{
+    public:
+        AaaCounters();
+        ~AaaCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flow_start; //type: uint32
+        ydk::YLeaf flow_disconnect; //type: uint32
+        ydk::YLeaf session_accounting_start; //type: uint32
+        ydk::YLeaf session_accounting_stop; //type: uint32
+        ydk::YLeaf session_accounting_update; //type: uint32
+        ydk::YLeaf service_accounting_start; //type: uint32
+        ydk::YLeaf service_accounting_stop; //type: uint32
+        ydk::YLeaf service_accounting_update; //type: uint32
+        ydk::YLeaf flow_accounting_start; //type: uint32
+        ydk::YLeaf flow_accounting_stop; //type: uint32
+        ydk::YLeaf flow_accounting_update; //type: uint32
+        ydk::YLeaf accounting_callback; //type: uint32
+        ydk::YLeaf session_acct_trans_pending; //type: uint32
+        ydk::YLeaf session_acct_reqs_failed; //type: uint32
+        ydk::YLeaf session_acct_out_of_sync; //type: uint32
+        ydk::YLeaf session_idle_to_trans_pending; //type: uint32
+        ydk::YLeaf session_idle_to_reqs_failed; //type: uint32
+        ydk::YLeaf session_idle_to_out_of_sync; //type: uint32
+        ydk::YLeaf service_acct_trans_pending; //type: uint32
+        ydk::YLeaf service_acct_reqs_failed; //type: uint32
+        ydk::YLeaf service_acct_out_of_sync; //type: uint32
+        ydk::YLeaf service_idle_to_trans_pending; //type: uint32
+        ydk::YLeaf service_idle_to_reqs_failed; //type: uint32
+        ydk::YLeaf service_idle_to_out_of_sync; //type: uint32
+        ydk::YLeaf prepaid_start; //type: uint32
+        ydk::YLeaf prepaid_stop; //type: uint32
+        ydk::YLeaf prepaid_accounting_start; //type: uint32
+        ydk::YLeaf prepaid_accounting_stop; //type: uint32
+        ydk::YLeaf prepaid_volume_threshold_reached; //type: uint32
+        ydk::YLeaf prepaid_time_threshold_reached; //type: uint32
+        ydk::YLeaf prepaid_quota_depleted; //type: uint32
+        ydk::YLeaf prepaid_reauthorization; //type: uint32
+        ydk::YLeaf idle_timeout; //type: uint32
+        ydk::YLeaf idle_timeout_response_callback; //type: uint32
+        ydk::YLeaf owned_resource_start; //type: uint32
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters : public ydk::Entity
+{
+    public:
+        IdleTimeoutCounters();
+        ~IdleTimeoutCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf active_session_idle_timers; //type: uint32
+        ydk::YLeaf idle_sessions; //type: uint32
+        ydk::YLeaf transitions_to_idle; //type: uint32
+        ydk::YLeaf transitions_to_awake; //type: uint32
+        ydk::YLeaf active_flow_idle_timers; //type: uint32
+        ydk::YLeaf expired_flow_idle_timers; //type: uint32
+        ydk::YLeaf active_prepaid_idle_timers; //type: uint32
+        ydk::YLeaf expired_prepaid_idle_timers; //type: uint32
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters : public ydk::Entity
+{
+    public:
+        SessionFlowCounters();
+        ~SessionFlowCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf active_sessions; //type: uint32
+        ydk::YLeaf disconnected_sessions; //type: uint32
+        ydk::YLeaf active_session_accounting_sessions; //type: uint32
+        ydk::YLeaf active_flows; //type: uint32
+        ydk::YLeaf quota_received; //type: uint32
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters : public ydk::Entity
+{
+    public:
+        SessionTimeoutCounters();
+        ~SessionTimeoutCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf active_session_timers; //type: uint32
+        ydk::YLeaf expired_session_timers; //type: uint32
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters
 
 
 }

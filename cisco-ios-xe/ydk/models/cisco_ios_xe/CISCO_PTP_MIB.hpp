@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_PTP_MIB {
 
-class CiscoPtpMib : public ydk::Entity
+class CISCOPTPMIB : public ydk::Entity
 {
     public:
-        CiscoPtpMib();
-        ~CiscoPtpMib();
+        CISCOPTPMIB();
+        ~CISCOPTPMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,42 +32,42 @@ class CiscoPtpMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoptpmibsysteminfo; //type: CiscoPtpMib::Ciscoptpmibsysteminfo
-        class Cptpsystemtable; //type: CiscoPtpMib::Cptpsystemtable
-        class Cptpsystemdomaintable; //type: CiscoPtpMib::Cptpsystemdomaintable
-        class Cptpclocknodetable; //type: CiscoPtpMib::Cptpclocknodetable
-        class Cptpclockcurrentdstable; //type: CiscoPtpMib::Cptpclockcurrentdstable
-        class Cptpclockparentdstable; //type: CiscoPtpMib::Cptpclockparentdstable
-        class Cptpclockdefaultdstable; //type: CiscoPtpMib::Cptpclockdefaultdstable
-        class Cptpclockrunningtable; //type: CiscoPtpMib::Cptpclockrunningtable
-        class Cptpclocktimepropertiesdstable; //type: CiscoPtpMib::Cptpclocktimepropertiesdstable
-        class Cptpclocktransdefaultdstable; //type: CiscoPtpMib::Cptpclocktransdefaultdstable
-        class Cptpclockporttable; //type: CiscoPtpMib::Cptpclockporttable
-        class Cptpclockportdstable; //type: CiscoPtpMib::Cptpclockportdstable
-        class Cptpclockportrunningtable; //type: CiscoPtpMib::Cptpclockportrunningtable
-        class Cptpclockporttransdstable; //type: CiscoPtpMib::Cptpclockporttransdstable
-        class Cptpclockportassociatetable; //type: CiscoPtpMib::Cptpclockportassociatetable
+        class Ciscoptpmibsysteminfo; //type: CISCOPTPMIB::Ciscoptpmibsysteminfo
+        class Cptpsystemtable; //type: CISCOPTPMIB::Cptpsystemtable
+        class Cptpsystemdomaintable; //type: CISCOPTPMIB::Cptpsystemdomaintable
+        class Cptpclocknodetable; //type: CISCOPTPMIB::Cptpclocknodetable
+        class Cptpclockcurrentdstable; //type: CISCOPTPMIB::Cptpclockcurrentdstable
+        class Cptpclockparentdstable; //type: CISCOPTPMIB::Cptpclockparentdstable
+        class Cptpclockdefaultdstable; //type: CISCOPTPMIB::Cptpclockdefaultdstable
+        class Cptpclockrunningtable; //type: CISCOPTPMIB::Cptpclockrunningtable
+        class Cptpclocktimepropertiesdstable; //type: CISCOPTPMIB::Cptpclocktimepropertiesdstable
+        class Cptpclocktransdefaultdstable; //type: CISCOPTPMIB::Cptpclocktransdefaultdstable
+        class Cptpclockporttable; //type: CISCOPTPMIB::Cptpclockporttable
+        class Cptpclockportdstable; //type: CISCOPTPMIB::Cptpclockportdstable
+        class Cptpclockportrunningtable; //type: CISCOPTPMIB::Cptpclockportrunningtable
+        class Cptpclockporttransdstable; //type: CISCOPTPMIB::Cptpclockporttransdstable
+        class Cptpclockportassociatetable; //type: CISCOPTPMIB::Cptpclockportassociatetable
 
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Ciscoptpmibsysteminfo> ciscoptpmibsysteminfo;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockcurrentdstable> cptpclockcurrentdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockdefaultdstable> cptpclockdefaultdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocknodetable> cptpclocknodetable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockparentdstable> cptpclockparentdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportassociatetable> cptpclockportassociatetable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportdstable> cptpclockportdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportrunningtable> cptpclockportrunningtable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttable> cptpclockporttable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttransdstable> cptpclockporttransdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockrunningtable> cptpclockrunningtable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktimepropertiesdstable> cptpclocktimepropertiesdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktransdefaultdstable> cptpclocktransdefaultdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemdomaintable> cptpsystemdomaintable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemtable> cptpsystemtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Ciscoptpmibsysteminfo> ciscoptpmibsysteminfo;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockcurrentdstable> cptpclockcurrentdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockdefaultdstable> cptpclockdefaultdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocknodetable> cptpclocknodetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockparentdstable> cptpclockparentdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportassociatetable> cptpclockportassociatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportdstable> cptpclockportdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportrunningtable> cptpclockportrunningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttable> cptpclockporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttransdstable> cptpclockporttransdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockrunningtable> cptpclockrunningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktimepropertiesdstable> cptpclocktimepropertiesdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktransdefaultdstable> cptpclocktransdefaultdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemdomaintable> cptpsystemdomaintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemtable> cptpsystemtable;
         
-}; // CiscoPtpMib
+}; // CISCOPTPMIB
 
 
-class CiscoPtpMib::Ciscoptpmibsysteminfo : public ydk::Entity
+class CISCOPTPMIB::Ciscoptpmibsysteminfo : public ydk::Entity
 {
     public:
         Ciscoptpmibsysteminfo();
@@ -75,112 +75,128 @@ class CiscoPtpMib::Ciscoptpmibsysteminfo : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cptpsystemprofile; //type: Clockprofiletype
+        ydk::YLeaf cptpsystemprofile; //type: ClockProfileType
 
-}; // CiscoPtpMib::Ciscoptpmibsysteminfo
+}; // CISCOPTPMIB::Ciscoptpmibsysteminfo
 
 
-class CiscoPtpMib::Cptpsystemtable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockcurrentdstable : public ydk::Entity
 {
     public:
-        Cptpsystemtable();
-        ~Cptpsystemtable();
+        Cptpclockcurrentdstable();
+        ~Cptpclockcurrentdstable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpsystementry; //type: CiscoPtpMib::Cptpsystemtable::Cptpsystementry
+        class Cptpclockcurrentdsentry; //type: CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemtable::Cptpsystementry> > cptpsystementry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry> > cptpclockcurrentdsentry;
         
-}; // CiscoPtpMib::Cptpsystemtable
+}; // CISCOPTPMIB::Cptpclockcurrentdstable
 
 
-class CiscoPtpMib::Cptpsystemtable::Cptpsystementry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry : public ydk::Entity
 {
     public:
-        Cptpsystementry();
-        ~Cptpsystementry();
+        Cptpclockcurrentdsentry();
+        ~Cptpclockcurrentdsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cptpdomainindex; //type: uint32
-        ydk::YLeaf cptpinstanceindex; //type: uint32
-        ydk::YLeaf cptpdomainclockportstotal; //type: uint32
-        ydk::YLeaf cptpdomainclockportphysicalinterfacestotal; //type: uint32
+        ydk::YLeaf cptpclockcurrentdsdomainindex; //type: uint32
+        ydk::YLeaf cptpclockcurrentdsclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpclockcurrentdsinstanceindex; //type: uint32
+        ydk::YLeaf cptpclockcurrentdsstepsremoved; //type: uint32
+        ydk::YLeaf cptpclockcurrentdsoffsetfrommaster; //type: binary
+        ydk::YLeaf cptpclockcurrentdsmeanpathdelay; //type: binary
 
-}; // CiscoPtpMib::Cptpsystemtable::Cptpsystementry
+}; // CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
 
 
-class CiscoPtpMib::Cptpsystemdomaintable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockdefaultdstable : public ydk::Entity
 {
     public:
-        Cptpsystemdomaintable();
-        ~Cptpsystemdomaintable();
+        Cptpclockdefaultdstable();
+        ~Cptpclockdefaultdstable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpsystemdomainentry; //type: CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry
+        class Cptpclockdefaultdsentry; //type: CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry> > cptpsystemdomainentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry> > cptpclockdefaultdsentry;
         
-}; // CiscoPtpMib::Cptpsystemdomaintable
+}; // CISCOPTPMIB::Cptpclockdefaultdstable
 
 
-class CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry : public ydk::Entity
 {
     public:
-        Cptpsystemdomainentry();
-        ~Cptpsystemdomainentry();
+        Cptpclockdefaultdsentry();
+        ~Cptpclockdefaultdsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cptpsystemdomainclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpsystemdomaintotals; //type: uint32
+        ydk::YLeaf cptpclockdefaultdsdomainindex; //type: uint32
+        ydk::YLeaf cptpclockdefaultdsclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpclockdefaultdsinstanceindex; //type: uint32
+        ydk::YLeaf cptpclockdefaultdstwostepflag; //type: boolean
+        ydk::YLeaf cptpclockdefaultdsclockidentity; //type: binary
+        ydk::YLeaf cptpclockdefaultdspriority1; //type: int32
+        ydk::YLeaf cptpclockdefaultdspriority2; //type: int32
+        ydk::YLeaf cptpclockdefaultdsslaveonly; //type: boolean
+        ydk::YLeaf cptpclockdefaultdsqualityclass; //type: uint32
+        ydk::YLeaf cptpclockdefaultdsqualityaccuracy; //type: ClockQualityAccuracyType
+        ydk::YLeaf cptpclockdefaultdsqualityoffset; //type: int32
 
-}; // CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry
+}; // CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
 
 
-class CiscoPtpMib::Cptpclocknodetable : public ydk::Entity
+class CISCOPTPMIB::Cptpclocknodetable : public ydk::Entity
 {
     public:
         Cptpclocknodetable();
@@ -188,22 +204,23 @@ class CiscoPtpMib::Cptpclocknodetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclocknodeentry; //type: CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry
+        class Cptpclocknodeentry; //type: CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry> > cptpclocknodeentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry> > cptpclocknodeentry;
         
-}; // CiscoPtpMib::Cptpclocknodetable
+}; // CISCOPTPMIB::Cptpclocknodetable
 
 
-class CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry : public ydk::Entity
 {
     public:
         Cptpclocknodeentry();
@@ -211,16 +228,17 @@ class CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cptpclockdomainindex; //type: uint32
-        ydk::YLeaf cptpclocktypeindex; //type: Clocktype
+        ydk::YLeaf cptpclocktypeindex; //type: ClockType
         ydk::YLeaf cptpclockinstanceindex; //type: uint32
         ydk::YLeaf cptpclockinput1ppsenabled; //type: boolean
         ydk::YLeaf cptpclockinputfrequencyenabled; //type: boolean
@@ -233,59 +251,10 @@ class CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry : public ydk::Entity
         ydk::YLeaf cptpclockoutput1ppsinterface; //type: string
         ydk::YLeaf cptpclocktodinterface; //type: string
 
-}; // CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry
+}; // CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry
 
 
-class CiscoPtpMib::Cptpclockcurrentdstable : public ydk::Entity
-{
-    public:
-        Cptpclockcurrentdstable();
-        ~Cptpclockcurrentdstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cptpclockcurrentdsentry; //type: CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
-
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry> > cptpclockcurrentdsentry;
-        
-}; // CiscoPtpMib::Cptpclockcurrentdstable
-
-
-class CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry : public ydk::Entity
-{
-    public:
-        Cptpclockcurrentdsentry();
-        ~Cptpclockcurrentdsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cptpclockcurrentdsdomainindex; //type: uint32
-        ydk::YLeaf cptpclockcurrentdsclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpclockcurrentdsinstanceindex; //type: uint32
-        ydk::YLeaf cptpclockcurrentdsstepsremoved; //type: uint32
-        ydk::YLeaf cptpclockcurrentdsoffsetfrommaster; //type: binary
-        ydk::YLeaf cptpclockcurrentdsmeanpathdelay; //type: binary
-
-}; // CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
-
-
-class CiscoPtpMib::Cptpclockparentdstable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockparentdstable : public ydk::Entity
 {
     public:
         Cptpclockparentdstable();
@@ -293,22 +262,23 @@ class CiscoPtpMib::Cptpclockparentdstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclockparentdsentry; //type: CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry
+        class Cptpclockparentdsentry; //type: CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry> > cptpclockparentdsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry> > cptpclockparentdsentry;
         
-}; // CiscoPtpMib::Cptpclockparentdstable
+}; // CISCOPTPMIB::Cptpclockparentdstable
 
 
-class CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry : public ydk::Entity
 {
     public:
         Cptpclockparentdsentry();
@@ -316,16 +286,17 @@ class CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry : public ydk::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cptpclockparentdsdomainindex; //type: uint32
-        ydk::YLeaf cptpclockparentdsclocktypeindex; //type: Clocktype
+        ydk::YLeaf cptpclockparentdsclocktypeindex; //type: ClockType
         ydk::YLeaf cptpclockparentdsinstanceindex; //type: uint32
         ydk::YLeaf cptpclockparentdsparentportidentity; //type: binary
         ydk::YLeaf cptpclockparentdsparentstats; //type: boolean
@@ -335,272 +306,69 @@ class CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry : public ydk::
         ydk::YLeaf cptpclockparentdsgmclockpriority1; //type: int32
         ydk::YLeaf cptpclockparentdsgmclockpriority2; //type: int32
         ydk::YLeaf cptpclockparentdsgmclockqualityclass; //type: uint32
-        ydk::YLeaf cptpclockparentdsgmclockqualityaccuracy; //type: Clockqualityaccuracytype
+        ydk::YLeaf cptpclockparentdsgmclockqualityaccuracy; //type: ClockQualityAccuracyType
         ydk::YLeaf cptpclockparentdsgmclockqualityoffset; //type: uint32
 
-}; // CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry
+}; // CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry
 
 
-class CiscoPtpMib::Cptpclockdefaultdstable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockportassociatetable : public ydk::Entity
 {
     public:
-        Cptpclockdefaultdstable();
-        ~Cptpclockdefaultdstable();
+        Cptpclockportassociatetable();
+        ~Cptpclockportassociatetable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclockdefaultdsentry; //type: CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
+        class Cptpclockportassociateentry; //type: CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry> > cptpclockdefaultdsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry> > cptpclockportassociateentry;
         
-}; // CiscoPtpMib::Cptpclockdefaultdstable
+}; // CISCOPTPMIB::Cptpclockportassociatetable
 
 
-class CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry : public ydk::Entity
 {
     public:
-        Cptpclockdefaultdsentry();
-        ~Cptpclockdefaultdsentry();
+        Cptpclockportassociateentry();
+        ~Cptpclockportassociateentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cptpclockdefaultdsdomainindex; //type: uint32
-        ydk::YLeaf cptpclockdefaultdsclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpclockdefaultdsinstanceindex; //type: uint32
-        ydk::YLeaf cptpclockdefaultdstwostepflag; //type: boolean
-        ydk::YLeaf cptpclockdefaultdsclockidentity; //type: binary
-        ydk::YLeaf cptpclockdefaultdspriority1; //type: int32
-        ydk::YLeaf cptpclockdefaultdspriority2; //type: int32
-        ydk::YLeaf cptpclockdefaultdsslaveonly; //type: boolean
-        ydk::YLeaf cptpclockdefaultdsqualityclass; //type: uint32
-        ydk::YLeaf cptpclockdefaultdsqualityaccuracy; //type: Clockqualityaccuracytype
-        ydk::YLeaf cptpclockdefaultdsqualityoffset; //type: int32
+        ydk::YLeaf cptpclockportcurrentdomainindex; //type: uint32
+        ydk::YLeaf cptpclockportcurrentclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpclockportcurrentclockinstanceindex; //type: uint32
+        ydk::YLeaf cptpclockportcurrentportnumberindex; //type: uint32
+        ydk::YLeaf cptpclockportassociateportindex; //type: uint32
+        ydk::YLeaf cptpclockportassociateaddresstype; //type: InetAddressType
+        ydk::YLeaf cptpclockportassociateaddress; //type: binary
+        ydk::YLeaf cptpclockportassociatepacketssent; //type: uint64
+        ydk::YLeaf cptpclockportassociatepacketsreceived; //type: uint64
+        ydk::YLeaf cptpclockportassociateinerrors; //type: uint64
+        ydk::YLeaf cptpclockportassociateouterrors; //type: uint64
 
-}; // CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
-
-
-class CiscoPtpMib::Cptpclockrunningtable : public ydk::Entity
-{
-    public:
-        Cptpclockrunningtable();
-        ~Cptpclockrunningtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cptpclockrunningentry; //type: CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry
-
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry> > cptpclockrunningentry;
-        
-}; // CiscoPtpMib::Cptpclockrunningtable
+}; // CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry
 
 
-class CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry : public ydk::Entity
-{
-    public:
-        Cptpclockrunningentry();
-        ~Cptpclockrunningentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cptpclockrunningdomainindex; //type: uint32
-        ydk::YLeaf cptpclockrunningclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpclockrunninginstanceindex; //type: uint32
-        ydk::YLeaf cptpclockrunningstate; //type: Clockstatetype
-        ydk::YLeaf cptpclockrunningpacketssent; //type: uint64
-        ydk::YLeaf cptpclockrunningpacketsreceived; //type: uint64
-
-}; // CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry
-
-
-class CiscoPtpMib::Cptpclocktimepropertiesdstable : public ydk::Entity
-{
-    public:
-        Cptpclocktimepropertiesdstable();
-        ~Cptpclocktimepropertiesdstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cptpclocktimepropertiesdsentry; //type: CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
-
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry> > cptpclocktimepropertiesdsentry;
-        
-}; // CiscoPtpMib::Cptpclocktimepropertiesdstable
-
-
-class CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry : public ydk::Entity
-{
-    public:
-        Cptpclocktimepropertiesdsentry();
-        ~Cptpclocktimepropertiesdsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cptpclocktimepropertiesdsdomainindex; //type: uint32
-        ydk::YLeaf cptpclocktimepropertiesdsclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpclocktimepropertiesdsinstanceindex; //type: uint32
-        ydk::YLeaf cptpclocktimepropertiesdscurrentutcoffsetvalid; //type: boolean
-        ydk::YLeaf cptpclocktimepropertiesdscurrentutcoffset; //type: int32
-        ydk::YLeaf cptpclocktimepropertiesdsleap59; //type: boolean
-        ydk::YLeaf cptpclocktimepropertiesdsleap61; //type: boolean
-        ydk::YLeaf cptpclocktimepropertiesdstimetraceable; //type: boolean
-        ydk::YLeaf cptpclocktimepropertiesdsfreqtraceable; //type: boolean
-        ydk::YLeaf cptpclocktimepropertiesdsptptimescale; //type: boolean
-        ydk::YLeaf cptpclocktimepropertiesdssource; //type: Clocktimesourcetype
-
-}; // CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
-
-
-class CiscoPtpMib::Cptpclocktransdefaultdstable : public ydk::Entity
-{
-    public:
-        Cptpclocktransdefaultdstable();
-        ~Cptpclocktransdefaultdstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cptpclocktransdefaultdsentry; //type: CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
-
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry> > cptpclocktransdefaultdsentry;
-        
-}; // CiscoPtpMib::Cptpclocktransdefaultdstable
-
-
-class CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry : public ydk::Entity
-{
-    public:
-        Cptpclocktransdefaultdsentry();
-        ~Cptpclocktransdefaultdsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cptpclocktransdefaultdsdomainindex; //type: uint32
-        ydk::YLeaf cptpclocktransdefaultdsinstanceindex; //type: uint32
-        ydk::YLeaf cptpclocktransdefaultdsclockidentity; //type: binary
-        ydk::YLeaf cptpclocktransdefaultdsnumofports; //type: uint32
-        ydk::YLeaf cptpclocktransdefaultdsdelay; //type: Clockmechanismtype
-        ydk::YLeaf cptpclocktransdefaultdsprimarydomain; //type: int32
-
-}; // CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
-
-
-class CiscoPtpMib::Cptpclockporttable : public ydk::Entity
-{
-    public:
-        Cptpclockporttable();
-        ~Cptpclockporttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cptpclockportentry; //type: CiscoPtpMib::Cptpclockporttable::Cptpclockportentry
-
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttable::Cptpclockportentry> > cptpclockportentry;
-        
-}; // CiscoPtpMib::Cptpclockporttable
-
-
-class CiscoPtpMib::Cptpclockporttable::Cptpclockportentry : public ydk::Entity
-{
-    public:
-        Cptpclockportentry();
-        ~Cptpclockportentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cptpclockportdomainindex; //type: uint32
-        ydk::YLeaf cptpclockportclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpclockportclockinstanceindex; //type: uint32
-        ydk::YLeaf cptpclockporttableportnumberindex; //type: uint32
-        ydk::YLeaf cptpclockportname; //type: string
-        ydk::YLeaf cptpclockportrole; //type: Clockroletype
-        ydk::YLeaf cptpclockportsynconestep; //type: boolean
-        ydk::YLeaf cptpclockportcurrentpeeraddresstype; //type: Inetaddresstype
-        ydk::YLeaf cptpclockportcurrentpeeraddress; //type: binary
-        ydk::YLeaf cptpclockportnumofassociatedports; //type: uint32
-
-}; // CiscoPtpMib::Cptpclockporttable::Cptpclockportentry
-
-
-class CiscoPtpMib::Cptpclockportdstable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockportdstable : public ydk::Entity
 {
     public:
         Cptpclockportdstable();
@@ -608,22 +376,23 @@ class CiscoPtpMib::Cptpclockportdstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclockportdsentry; //type: CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry
+        class Cptpclockportdsentry; //type: CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry> > cptpclockportdsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry> > cptpclockportdsentry;
         
-}; // CiscoPtpMib::Cptpclockportdstable
+}; // CISCOPTPMIB::Cptpclockportdstable
 
 
-class CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry : public ydk::Entity
 {
     public:
         Cptpclockportdsentry();
@@ -631,16 +400,17 @@ class CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cptpclockportdsdomainindex; //type: uint32
-        ydk::YLeaf cptpclockportdsclocktypeindex; //type: Clocktype
+        ydk::YLeaf cptpclockportdsclocktypeindex; //type: ClockType
         ydk::YLeaf cptpclockportdsclockinstanceindex; //type: uint32
         ydk::YLeaf cptpclockportdsportnumberindex; //type: uint32
         ydk::YLeaf cptpclockportdsname; //type: string
@@ -650,15 +420,15 @@ class CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry : public ydk::Enti
         ydk::YLeaf cptpclockportdssyncinterval; //type: int32
         ydk::YLeaf cptpclockportdsmindelayreqinterval; //type: int32
         ydk::YLeaf cptpclockportdspeerdelayreqinterval; //type: int32
-        ydk::YLeaf cptpclockportdsdelaymech; //type: Clockmechanismtype
+        ydk::YLeaf cptpclockportdsdelaymech; //type: ClockMechanismType
         ydk::YLeaf cptpclockportdspeermeanpathdelay; //type: binary
         ydk::YLeaf cptpclockportdsgrantduration; //type: uint32
         ydk::YLeaf cptpclockportdsptpversion; //type: int32
 
-}; // CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry
+}; // CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry
 
 
-class CiscoPtpMib::Cptpclockportrunningtable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockportrunningtable : public ydk::Entity
 {
     public:
         Cptpclockportrunningtable();
@@ -666,22 +436,23 @@ class CiscoPtpMib::Cptpclockportrunningtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclockportrunningentry; //type: CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry
+        class Cptpclockportrunningentry; //type: CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry> > cptpclockportrunningentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry> > cptpclockportrunningentry;
         
-}; // CiscoPtpMib::Cptpclockportrunningtable
+}; // CISCOPTPMIB::Cptpclockportrunningtable
 
 
-class CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry : public ydk::Entity
 {
     public:
         Cptpclockportrunningentry();
@@ -689,33 +460,89 @@ class CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cptpclockportrunningdomainindex; //type: uint32
-        ydk::YLeaf cptpclockportrunningclocktypeindex; //type: Clocktype
+        ydk::YLeaf cptpclockportrunningclocktypeindex; //type: ClockType
         ydk::YLeaf cptpclockportrunningclockinstanceindex; //type: uint32
         ydk::YLeaf cptpclockportrunningportnumberindex; //type: uint32
         ydk::YLeaf cptpclockportrunningname; //type: string
-        ydk::YLeaf cptpclockportrunningstate; //type: Clockportstate
-        ydk::YLeaf cptpclockportrunningrole; //type: Clockroletype
+        ydk::YLeaf cptpclockportrunningstate; //type: ClockPortState
+        ydk::YLeaf cptpclockportrunningrole; //type: ClockRoleType
         ydk::YLeaf cptpclockportrunninginterfaceindex; //type: int32
         ydk::YLeaf cptpclockportrunningipversion; //type: int32
         ydk::YLeaf cptpclockportrunningencapsulationtype; //type: int32
-        ydk::YLeaf cptpclockportrunningtxmode; //type: Clocktxmodetype
-        ydk::YLeaf cptpclockportrunningrxmode; //type: Clocktxmodetype
+        ydk::YLeaf cptpclockportrunningtxmode; //type: ClockTxModeType
+        ydk::YLeaf cptpclockportrunningrxmode; //type: ClockTxModeType
         ydk::YLeaf cptpclockportrunningpacketsreceived; //type: uint64
         ydk::YLeaf cptpclockportrunningpacketssent; //type: uint64
 
-}; // CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry
+}; // CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry
 
 
-class CiscoPtpMib::Cptpclockporttransdstable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockporttable : public ydk::Entity
+{
+    public:
+        Cptpclockporttable();
+        ~Cptpclockporttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cptpclockportentry; //type: CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry> > cptpclockportentry;
+        
+}; // CISCOPTPMIB::Cptpclockporttable
+
+
+class CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry : public ydk::Entity
+{
+    public:
+        Cptpclockportentry();
+        ~Cptpclockportentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cptpclockportdomainindex; //type: uint32
+        ydk::YLeaf cptpclockportclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpclockportclockinstanceindex; //type: uint32
+        ydk::YLeaf cptpclockporttableportnumberindex; //type: uint32
+        ydk::YLeaf cptpclockportname; //type: string
+        ydk::YLeaf cptpclockportrole; //type: ClockRoleType
+        ydk::YLeaf cptpclockportsynconestep; //type: boolean
+        ydk::YLeaf cptpclockportcurrentpeeraddresstype; //type: InetAddressType
+        ydk::YLeaf cptpclockportcurrentpeeraddress; //type: binary
+        ydk::YLeaf cptpclockportnumofassociatedports; //type: uint32
+
+}; // CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry
+
+
+class CISCOPTPMIB::Cptpclockporttransdstable : public ydk::Entity
 {
     public:
         Cptpclockporttransdstable();
@@ -723,22 +550,23 @@ class CiscoPtpMib::Cptpclockporttransdstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclockporttransdsentry; //type: CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry
+        class Cptpclockporttransdsentry; //type: CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry> > cptpclockporttransdsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry> > cptpclockporttransdsentry;
         
-}; // CiscoPtpMib::Cptpclockporttransdstable
+}; // CISCOPTPMIB::Cptpclockporttransdstable
 
 
-class CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry : public ydk::Entity
 {
     public:
         Cptpclockporttransdsentry();
@@ -746,13 +574,14 @@ class CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cptpclockporttransdsdomainindex; //type: uint32
         ydk::YLeaf cptpclockporttransdsinstanceindex; //type: uint32
@@ -762,90 +591,288 @@ class CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry : public
         ydk::YLeaf cptpclockporttransdsfaultyflag; //type: boolean
         ydk::YLeaf cptpclockporttransdspeermeanpathdelay; //type: binary
 
-}; // CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry
+}; // CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry
 
 
-class CiscoPtpMib::Cptpclockportassociatetable : public ydk::Entity
+class CISCOPTPMIB::Cptpclockrunningtable : public ydk::Entity
 {
     public:
-        Cptpclockportassociatetable();
-        ~Cptpclockportassociatetable();
+        Cptpclockrunningtable();
+        ~Cptpclockrunningtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cptpclockportassociateentry; //type: CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry
+        class Cptpclockrunningentry; //type: CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry> > cptpclockportassociateentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry> > cptpclockrunningentry;
         
-}; // CiscoPtpMib::Cptpclockportassociatetable
+}; // CISCOPTPMIB::Cptpclockrunningtable
 
 
-class CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry : public ydk::Entity
+class CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry : public ydk::Entity
 {
     public:
-        Cptpclockportassociateentry();
-        ~Cptpclockportassociateentry();
+        Cptpclockrunningentry();
+        ~Cptpclockrunningentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cptpclockportcurrentdomainindex; //type: uint32
-        ydk::YLeaf cptpclockportcurrentclocktypeindex; //type: Clocktype
-        ydk::YLeaf cptpclockportcurrentclockinstanceindex; //type: uint32
-        ydk::YLeaf cptpclockportcurrentportnumberindex; //type: uint32
-        ydk::YLeaf cptpclockportassociateportindex; //type: uint32
-        ydk::YLeaf cptpclockportassociateaddresstype; //type: Inetaddresstype
-        ydk::YLeaf cptpclockportassociateaddress; //type: binary
-        ydk::YLeaf cptpclockportassociatepacketssent; //type: uint64
-        ydk::YLeaf cptpclockportassociatepacketsreceived; //type: uint64
-        ydk::YLeaf cptpclockportassociateinerrors; //type: uint64
-        ydk::YLeaf cptpclockportassociateouterrors; //type: uint64
+        ydk::YLeaf cptpclockrunningdomainindex; //type: uint32
+        ydk::YLeaf cptpclockrunningclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpclockrunninginstanceindex; //type: uint32
+        ydk::YLeaf cptpclockrunningstate; //type: ClockStateType
+        ydk::YLeaf cptpclockrunningpacketssent; //type: uint64
+        ydk::YLeaf cptpclockrunningpacketsreceived; //type: uint64
 
-}; // CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry
+}; // CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry
 
-class Clockmechanismtype : public ydk::Enum
+
+class CISCOPTPMIB::Cptpclocktimepropertiesdstable : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf e2e;
-        static const ydk::Enum::YLeaf p2p;
-        static const ydk::Enum::YLeaf disabled;
+        Cptpclocktimepropertiesdstable();
+        ~Cptpclocktimepropertiesdstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cptpclocktimepropertiesdsentry; //type: CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry> > cptpclocktimepropertiesdsentry;
+        
+}; // CISCOPTPMIB::Cptpclocktimepropertiesdstable
+
+
+class CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry : public ydk::Entity
+{
+    public:
+        Cptpclocktimepropertiesdsentry();
+        ~Cptpclocktimepropertiesdsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cptpclocktimepropertiesdsdomainindex; //type: uint32
+        ydk::YLeaf cptpclocktimepropertiesdsclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpclocktimepropertiesdsinstanceindex; //type: uint32
+        ydk::YLeaf cptpclocktimepropertiesdscurrentutcoffsetvalid; //type: boolean
+        ydk::YLeaf cptpclocktimepropertiesdscurrentutcoffset; //type: int32
+        ydk::YLeaf cptpclocktimepropertiesdsleap59; //type: boolean
+        ydk::YLeaf cptpclocktimepropertiesdsleap61; //type: boolean
+        ydk::YLeaf cptpclocktimepropertiesdstimetraceable; //type: boolean
+        ydk::YLeaf cptpclocktimepropertiesdsfreqtraceable; //type: boolean
+        ydk::YLeaf cptpclocktimepropertiesdsptptimescale; //type: boolean
+        ydk::YLeaf cptpclocktimepropertiesdssource; //type: ClockTimeSourceType
+
+}; // CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
+
+
+class CISCOPTPMIB::Cptpclocktransdefaultdstable : public ydk::Entity
+{
+    public:
+        Cptpclocktransdefaultdstable();
+        ~Cptpclocktransdefaultdstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cptpclocktransdefaultdsentry; //type: CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry> > cptpclocktransdefaultdsentry;
+        
+}; // CISCOPTPMIB::Cptpclocktransdefaultdstable
+
+
+class CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry : public ydk::Entity
+{
+    public:
+        Cptpclocktransdefaultdsentry();
+        ~Cptpclocktransdefaultdsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cptpclocktransdefaultdsdomainindex; //type: uint32
+        ydk::YLeaf cptpclocktransdefaultdsinstanceindex; //type: uint32
+        ydk::YLeaf cptpclocktransdefaultdsclockidentity; //type: binary
+        ydk::YLeaf cptpclocktransdefaultdsnumofports; //type: uint32
+        ydk::YLeaf cptpclocktransdefaultdsdelay; //type: ClockMechanismType
+        ydk::YLeaf cptpclocktransdefaultdsprimarydomain; //type: int32
+
+}; // CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
+
+
+class CISCOPTPMIB::Cptpsystemdomaintable : public ydk::Entity
+{
+    public:
+        Cptpsystemdomaintable();
+        ~Cptpsystemdomaintable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cptpsystemdomainentry; //type: CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry> > cptpsystemdomainentry;
+        
+}; // CISCOPTPMIB::Cptpsystemdomaintable
+
+
+class CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry : public ydk::Entity
+{
+    public:
+        Cptpsystemdomainentry();
+        ~Cptpsystemdomainentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cptpsystemdomainclocktypeindex; //type: ClockType
+        ydk::YLeaf cptpsystemdomaintotals; //type: uint32
+
+}; // CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry
+
+
+class CISCOPTPMIB::Cptpsystemtable : public ydk::Entity
+{
+    public:
+        Cptpsystemtable();
+        ~Cptpsystemtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cptpsystementry; //type: CISCOPTPMIB::Cptpsystemtable::Cptpsystementry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemtable::Cptpsystementry> > cptpsystementry;
+        
+}; // CISCOPTPMIB::Cptpsystemtable
+
+
+class CISCOPTPMIB::Cptpsystemtable::Cptpsystementry : public ydk::Entity
+{
+    public:
+        Cptpsystementry();
+        ~Cptpsystementry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cptpdomainindex; //type: uint32
+        ydk::YLeaf cptpinstanceindex; //type: uint32
+        ydk::YLeaf cptpdomainclockportstotal; //type: uint32
+        ydk::YLeaf cptpdomainclockportphysicalinterfacestotal; //type: uint32
+
+}; // CISCOPTPMIB::Cptpsystemtable::Cptpsystementry
+
+class ClockTimeSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf atomicClock;
+        static const ydk::Enum::YLeaf gps;
+        static const ydk::Enum::YLeaf terrestrialRadio;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf handSet;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf internalOsillator;
 
 };
 
-class Clockroletype : public ydk::Enum
+class ClockStateType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf freerun;
+        static const ydk::Enum::YLeaf holdover;
+        static const ydk::Enum::YLeaf acquiring;
+        static const ydk::Enum::YLeaf frequencyLocked;
+        static const ydk::Enum::YLeaf phaseAligned;
 
 };
 
-class Clocktype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ordinaryClock;
-        static const ydk::Enum::YLeaf boundaryClock;
-        static const ydk::Enum::YLeaf transparentClock;
-        static const ydk::Enum::YLeaf boundaryNode;
-
-};
-
-class Clocktxmodetype : public ydk::Enum
+class ClockTxModeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
@@ -854,7 +881,7 @@ class Clocktxmodetype : public ydk::Enum
 
 };
 
-class Clockportstate : public ydk::Enum
+class ClockPortState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf initializing;
@@ -869,32 +896,33 @@ class Clockportstate : public ydk::Enum
 
 };
 
-class Clockstatetype : public ydk::Enum
+class ClockMechanismType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf freerun;
-        static const ydk::Enum::YLeaf holdover;
-        static const ydk::Enum::YLeaf acquiring;
-        static const ydk::Enum::YLeaf frequencyLocked;
-        static const ydk::Enum::YLeaf phaseAligned;
+        static const ydk::Enum::YLeaf e2e;
+        static const ydk::Enum::YLeaf p2p;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class Clocktimesourcetype : public ydk::Enum
+class ClockProfileType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf atomicClock;
-        static const ydk::Enum::YLeaf gps;
-        static const ydk::Enum::YLeaf terrestrialRadio;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf ntp;
-        static const ydk::Enum::YLeaf handSet;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf internalOsillator;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf telecom;
+        static const ydk::Enum::YLeaf vendorspecific;
 
 };
 
-class Clockqualityaccuracytype : public ydk::Enum
+class ClockRoleType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class ClockQualityAccuracyType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf reserved00;
@@ -921,12 +949,13 @@ class Clockqualityaccuracytype : public ydk::Enum
 
 };
 
-class Clockprofiletype : public ydk::Enum
+class ClockType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf telecom;
-        static const ydk::Enum::YLeaf vendorspecific;
+        static const ydk::Enum::YLeaf ordinaryClock;
+        static const ydk::Enum::YLeaf boundaryClock;
+        static const ydk::Enum::YLeaf transparentClock;
+        static const ydk::Enum::YLeaf boundaryNode;
 
 };
 

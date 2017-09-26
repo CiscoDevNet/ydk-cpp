@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IPSLA_JITTER_MIB {
 
-CiscoIpslaJitterMib::CiscoIpslaJitterMib()
+CISCOIPSLAJITTERMIB::CISCOIPSLAJITTERMIB()
     :
-    cipslaicmpjittertmpltable(std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable>())
-	,cipslaudpjittertmpltable(std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable>())
+    cipslaicmpjittertmpltable(std::make_shared<CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable>())
+	,cipslaudpjittertmpltable(std::make_shared<CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable>())
 {
     cipslaicmpjittertmpltable->parent = this;
-
     cipslaudpjittertmpltable->parent = this;
 
-    yang_name = "CISCO-IPSLA-JITTER-MIB"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB";
+    yang_name = "CISCO-IPSLA-JITTER-MIB"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoIpslaJitterMib::~CiscoIpslaJitterMib()
+CISCOIPSLAJITTERMIB::~CISCOIPSLAJITTERMIB()
 {
 }
 
-bool CiscoIpslaJitterMib::has_data() const
+bool CISCOIPSLAJITTERMIB::has_data() const
 {
     return (cipslaicmpjittertmpltable !=  nullptr && cipslaicmpjittertmpltable->has_data())
 	|| (cipslaudpjittertmpltable !=  nullptr && cipslaudpjittertmpltable->has_data());
 }
 
-bool CiscoIpslaJitterMib::has_operation() const
+bool CISCOIPSLAJITTERMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cipslaicmpjittertmpltable !=  nullptr && cipslaicmpjittertmpltable->has_operation())
 	|| (cipslaudpjittertmpltable !=  nullptr && cipslaudpjittertmpltable->has_operation());
 }
 
-std::string CiscoIpslaJitterMib::get_segment_path() const
+std::string CISCOIPSLAJITTERMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpslaJitterMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpslaJitterMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaIcmpJitterTmplTable")
     {
         if(cipslaicmpjittertmpltable == nullptr)
         {
-            cipslaicmpjittertmpltable = std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable>();
+            cipslaicmpjittertmpltable = std::make_shared<CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable>();
         }
         return cipslaicmpjittertmpltable;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::get_child_by_name(const std::string
     {
         if(cipslaudpjittertmpltable == nullptr)
         {
-            cipslaudpjittertmpltable = std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable>();
+            cipslaudpjittertmpltable = std::make_shared<CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable>();
         }
         return cipslaudpjittertmpltable;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cipslaicmpjittertmpltable != nullptr)
@@ -106,56 +94,450 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::get_children
     return children;
 }
 
-void CiscoIpslaJitterMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAJITTERMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpslaJitterMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAJITTERMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoIpslaJitterMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoIpslaJitterMib>();
+    return std::make_shared<CISCOIPSLAJITTERMIB>();
 }
 
-std::string CiscoIpslaJitterMib::get_bundle_yang_models_location() const
+std::string CISCOIPSLAJITTERMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoIpslaJitterMib::get_bundle_name() const
+std::string CISCOIPSLAJITTERMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoIpslaJitterMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIPSLAJITTERMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoIpslaJitterMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIPSLAJITTERMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoIpslaJitterMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAJITTERMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaIcmpJitterTmplTable" || name == "cipslaUdpJitterTmplTable")
         return true;
     return false;
 }
 
-CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmpltable()
+CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmpltable()
 {
-    yang_name = "cipslaUdpJitterTmplTable"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB";
+
+    yang_name = "cipslaIcmpJitterTmplTable"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpslaJitterMib::Cipslaudpjittertmpltable::~Cipslaudpjittertmpltable()
+CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::~Cipslaicmpjittertmpltable()
 {
 }
 
-bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_data() const
+bool CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::has_data() const
+{
+    for (std::size_t index=0; index<cipslaicmpjittertmplentry.size(); index++)
+    {
+        if(cipslaicmpjittertmplentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::has_operation() const
+{
+    for (std::size_t index=0; index<cipslaicmpjittertmplentry.size(); index++)
+    {
+        if(cipslaicmpjittertmplentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipslaIcmpJitterTmplTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cipslaIcmpJitterTmplEntry")
+    {
+        for(auto const & c : cipslaicmpjittertmplentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry>();
+        c->parent = this;
+        cipslaicmpjittertmplentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cipslaicmpjittertmplentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipslaIcmpJitterTmplEntry")
+        return true;
+    return false;
+}
+
+CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::Cipslaicmpjittertmplentry()
+    :
+    cipslaicmpjittertmplname{YType::str, "cipslaIcmpJitterTmplName"},
+    cipslaicmpjittertmpldescription{YType::str, "cipslaIcmpJitterTmplDescription"},
+    cipslaicmpjittertmpldistbuckets{YType::uint32, "cipslaIcmpJitterTmplDistBuckets"},
+    cipslaicmpjittertmpldistinterval{YType::uint32, "cipslaIcmpJitterTmplDistInterval"},
+    cipslaicmpjittertmplinterval{YType::uint32, "cipslaIcmpJitterTmplInterval"},
+    cipslaicmpjittertmplnumpkts{YType::uint32, "cipslaIcmpJitterTmplNumPkts"},
+    cipslaicmpjittertmplrowstatus{YType::enumeration, "cipslaIcmpJitterTmplRowStatus"},
+    cipslaicmpjittertmplsrcaddr{YType::str, "cipslaIcmpJitterTmplSrcAddr"},
+    cipslaicmpjittertmplsrcaddrtype{YType::enumeration, "cipslaIcmpJitterTmplSrcAddrType"},
+    cipslaicmpjittertmplstatshours{YType::uint32, "cipslaIcmpJitterTmplStatsHours"},
+    cipslaicmpjittertmplstoragetype{YType::enumeration, "cipslaIcmpJitterTmplStorageType"},
+    cipslaicmpjittertmplthreshold{YType::uint32, "cipslaIcmpJitterTmplThreshold"},
+    cipslaicmpjittertmpltimeout{YType::uint32, "cipslaIcmpJitterTmplTimeOut"},
+    cipslaicmpjittertmpltos{YType::uint32, "cipslaIcmpJitterTmplTOS"},
+    cipslaicmpjittertmplverifydata{YType::boolean, "cipslaIcmpJitterTmplVerifyData"},
+    cipslaicmpjittertmplvrfname{YType::str, "cipslaIcmpJitterTmplVrfName"}
+{
+
+    yang_name = "cipslaIcmpJitterTmplEntry"; yang_parent_name = "cipslaIcmpJitterTmplTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::~Cipslaicmpjittertmplentry()
+{
+}
+
+bool CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::has_data() const
+{
+    return cipslaicmpjittertmplname.is_set
+	|| cipslaicmpjittertmpldescription.is_set
+	|| cipslaicmpjittertmpldistbuckets.is_set
+	|| cipslaicmpjittertmpldistinterval.is_set
+	|| cipslaicmpjittertmplinterval.is_set
+	|| cipslaicmpjittertmplnumpkts.is_set
+	|| cipslaicmpjittertmplrowstatus.is_set
+	|| cipslaicmpjittertmplsrcaddr.is_set
+	|| cipslaicmpjittertmplsrcaddrtype.is_set
+	|| cipslaicmpjittertmplstatshours.is_set
+	|| cipslaicmpjittertmplstoragetype.is_set
+	|| cipslaicmpjittertmplthreshold.is_set
+	|| cipslaicmpjittertmpltimeout.is_set
+	|| cipslaicmpjittertmpltos.is_set
+	|| cipslaicmpjittertmplverifydata.is_set
+	|| cipslaicmpjittertmplvrfname.is_set;
+}
+
+bool CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplname.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmpldescription.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmpldistbuckets.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmpldistinterval.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplinterval.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplnumpkts.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplrowstatus.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplsrcaddr.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplsrcaddrtype.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplstatshours.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplstoragetype.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplthreshold.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmpltimeout.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmpltos.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplverifydata.yfilter)
+	|| ydk::is_set(cipslaicmpjittertmplvrfname.yfilter);
+}
+
+std::string CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/cipslaIcmpJitterTmplTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipslaIcmpJitterTmplEntry" <<"[cipslaIcmpJitterTmplName='" <<cipslaicmpjittertmplname <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cipslaicmpjittertmplname.is_set || is_set(cipslaicmpjittertmplname.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplname.get_name_leafdata());
+    if (cipslaicmpjittertmpldescription.is_set || is_set(cipslaicmpjittertmpldescription.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpldescription.get_name_leafdata());
+    if (cipslaicmpjittertmpldistbuckets.is_set || is_set(cipslaicmpjittertmpldistbuckets.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpldistbuckets.get_name_leafdata());
+    if (cipslaicmpjittertmpldistinterval.is_set || is_set(cipslaicmpjittertmpldistinterval.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpldistinterval.get_name_leafdata());
+    if (cipslaicmpjittertmplinterval.is_set || is_set(cipslaicmpjittertmplinterval.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplinterval.get_name_leafdata());
+    if (cipslaicmpjittertmplnumpkts.is_set || is_set(cipslaicmpjittertmplnumpkts.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplnumpkts.get_name_leafdata());
+    if (cipslaicmpjittertmplrowstatus.is_set || is_set(cipslaicmpjittertmplrowstatus.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplrowstatus.get_name_leafdata());
+    if (cipslaicmpjittertmplsrcaddr.is_set || is_set(cipslaicmpjittertmplsrcaddr.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplsrcaddr.get_name_leafdata());
+    if (cipslaicmpjittertmplsrcaddrtype.is_set || is_set(cipslaicmpjittertmplsrcaddrtype.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplsrcaddrtype.get_name_leafdata());
+    if (cipslaicmpjittertmplstatshours.is_set || is_set(cipslaicmpjittertmplstatshours.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplstatshours.get_name_leafdata());
+    if (cipslaicmpjittertmplstoragetype.is_set || is_set(cipslaicmpjittertmplstoragetype.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplstoragetype.get_name_leafdata());
+    if (cipslaicmpjittertmplthreshold.is_set || is_set(cipslaicmpjittertmplthreshold.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplthreshold.get_name_leafdata());
+    if (cipslaicmpjittertmpltimeout.is_set || is_set(cipslaicmpjittertmpltimeout.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpltimeout.get_name_leafdata());
+    if (cipslaicmpjittertmpltos.is_set || is_set(cipslaicmpjittertmpltos.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpltos.get_name_leafdata());
+    if (cipslaicmpjittertmplverifydata.is_set || is_set(cipslaicmpjittertmplverifydata.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplverifydata.get_name_leafdata());
+    if (cipslaicmpjittertmplvrfname.is_set || is_set(cipslaicmpjittertmplvrfname.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplvrfname.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cipslaIcmpJitterTmplName")
+    {
+        cipslaicmpjittertmplname = value;
+        cipslaicmpjittertmplname.value_namespace = name_space;
+        cipslaicmpjittertmplname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplDescription")
+    {
+        cipslaicmpjittertmpldescription = value;
+        cipslaicmpjittertmpldescription.value_namespace = name_space;
+        cipslaicmpjittertmpldescription.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplDistBuckets")
+    {
+        cipslaicmpjittertmpldistbuckets = value;
+        cipslaicmpjittertmpldistbuckets.value_namespace = name_space;
+        cipslaicmpjittertmpldistbuckets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplDistInterval")
+    {
+        cipslaicmpjittertmpldistinterval = value;
+        cipslaicmpjittertmpldistinterval.value_namespace = name_space;
+        cipslaicmpjittertmpldistinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplInterval")
+    {
+        cipslaicmpjittertmplinterval = value;
+        cipslaicmpjittertmplinterval.value_namespace = name_space;
+        cipslaicmpjittertmplinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplNumPkts")
+    {
+        cipslaicmpjittertmplnumpkts = value;
+        cipslaicmpjittertmplnumpkts.value_namespace = name_space;
+        cipslaicmpjittertmplnumpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplRowStatus")
+    {
+        cipslaicmpjittertmplrowstatus = value;
+        cipslaicmpjittertmplrowstatus.value_namespace = name_space;
+        cipslaicmpjittertmplrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplSrcAddr")
+    {
+        cipslaicmpjittertmplsrcaddr = value;
+        cipslaicmpjittertmplsrcaddr.value_namespace = name_space;
+        cipslaicmpjittertmplsrcaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplSrcAddrType")
+    {
+        cipslaicmpjittertmplsrcaddrtype = value;
+        cipslaicmpjittertmplsrcaddrtype.value_namespace = name_space;
+        cipslaicmpjittertmplsrcaddrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplStatsHours")
+    {
+        cipslaicmpjittertmplstatshours = value;
+        cipslaicmpjittertmplstatshours.value_namespace = name_space;
+        cipslaicmpjittertmplstatshours.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplStorageType")
+    {
+        cipslaicmpjittertmplstoragetype = value;
+        cipslaicmpjittertmplstoragetype.value_namespace = name_space;
+        cipslaicmpjittertmplstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplThreshold")
+    {
+        cipslaicmpjittertmplthreshold = value;
+        cipslaicmpjittertmplthreshold.value_namespace = name_space;
+        cipslaicmpjittertmplthreshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplTimeOut")
+    {
+        cipslaicmpjittertmpltimeout = value;
+        cipslaicmpjittertmpltimeout.value_namespace = name_space;
+        cipslaicmpjittertmpltimeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplTOS")
+    {
+        cipslaicmpjittertmpltos = value;
+        cipslaicmpjittertmpltos.value_namespace = name_space;
+        cipslaicmpjittertmpltos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplVerifyData")
+    {
+        cipslaicmpjittertmplverifydata = value;
+        cipslaicmpjittertmplverifydata.value_namespace = name_space;
+        cipslaicmpjittertmplverifydata.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipslaIcmpJitterTmplVrfName")
+    {
+        cipslaicmpjittertmplvrfname = value;
+        cipslaicmpjittertmplvrfname.value_namespace = name_space;
+        cipslaicmpjittertmplvrfname.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cipslaIcmpJitterTmplName")
+    {
+        cipslaicmpjittertmplname.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplDescription")
+    {
+        cipslaicmpjittertmpldescription.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplDistBuckets")
+    {
+        cipslaicmpjittertmpldistbuckets.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplDistInterval")
+    {
+        cipslaicmpjittertmpldistinterval.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplInterval")
+    {
+        cipslaicmpjittertmplinterval.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplNumPkts")
+    {
+        cipslaicmpjittertmplnumpkts.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplRowStatus")
+    {
+        cipslaicmpjittertmplrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplSrcAddr")
+    {
+        cipslaicmpjittertmplsrcaddr.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplSrcAddrType")
+    {
+        cipslaicmpjittertmplsrcaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplStatsHours")
+    {
+        cipslaicmpjittertmplstatshours.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplStorageType")
+    {
+        cipslaicmpjittertmplstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplThreshold")
+    {
+        cipslaicmpjittertmplthreshold.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplTimeOut")
+    {
+        cipslaicmpjittertmpltimeout.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplTOS")
+    {
+        cipslaicmpjittertmpltos.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplVerifyData")
+    {
+        cipslaicmpjittertmplverifydata.yfilter = yfilter;
+    }
+    if(value_path == "cipslaIcmpJitterTmplVrfName")
+    {
+        cipslaicmpjittertmplvrfname.yfilter = yfilter;
+    }
+}
+
+bool CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipslaIcmpJitterTmplName" || name == "cipslaIcmpJitterTmplDescription" || name == "cipslaIcmpJitterTmplDistBuckets" || name == "cipslaIcmpJitterTmplDistInterval" || name == "cipslaIcmpJitterTmplInterval" || name == "cipslaIcmpJitterTmplNumPkts" || name == "cipslaIcmpJitterTmplRowStatus" || name == "cipslaIcmpJitterTmplSrcAddr" || name == "cipslaIcmpJitterTmplSrcAddrType" || name == "cipslaIcmpJitterTmplStatsHours" || name == "cipslaIcmpJitterTmplStorageType" || name == "cipslaIcmpJitterTmplThreshold" || name == "cipslaIcmpJitterTmplTimeOut" || name == "cipslaIcmpJitterTmplTOS" || name == "cipslaIcmpJitterTmplVerifyData" || name == "cipslaIcmpJitterTmplVrfName")
+        return true;
+    return false;
+}
+
+CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmpltable()
+{
+
+    yang_name = "cipslaUdpJitterTmplTable"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::~Cipslaudpjittertmpltable()
+{
+}
+
+bool CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::has_data() const
 {
     for (std::size_t index=0; index<cipslaudpjittertmplentry.size(); index++)
     {
@@ -165,7 +547,7 @@ bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_data() const
     return false;
 }
 
-bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_operation() const
+bool CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::has_operation() const
 {
     for (std::size_t index=0; index<cipslaudpjittertmplentry.size(); index++)
     {
@@ -175,37 +557,30 @@ bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_segment_path() const
+std::string CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipslaUdpJitterTmplTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaUdpJitterTmplEntry")
     {
@@ -217,7 +592,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_child
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry>();
+        auto c = std::make_shared<CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry>();
         c->parent = this;
         cipslaudpjittertmplentry.push_back(c);
         return c;
@@ -226,7 +601,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipslaudpjittertmplentry)
@@ -237,22 +612,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaudpjit
     return children;
 }
 
-void CiscoIpslaJitterMib::Cipslaudpjittertmpltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpslaJitterMib::Cipslaudpjittertmpltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaUdpJitterTmplEntry")
         return true;
     return false;
 }
 
-CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplentry()
+CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplentry()
     :
     cipslaudpjittertmplname{YType::str, "cipslaUdpJitterTmplName"},
     cipslaudpjittertmplcodecinterval{YType::uint32, "cipslaUdpJitterTmplCodecInterval"},
@@ -284,14 +659,15 @@ CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslau
     cipslaudpjittertmplverifydata{YType::boolean, "cipslaUdpJitterTmplVerifyData"},
     cipslaudpjittertmplvrfname{YType::str, "cipslaUdpJitterTmplVrfName"}
 {
-    yang_name = "cipslaUdpJitterTmplEntry"; yang_parent_name = "cipslaUdpJitterTmplTable";
+
+    yang_name = "cipslaUdpJitterTmplEntry"; yang_parent_name = "cipslaUdpJitterTmplTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::~Cipslaudpjittertmplentry()
+CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::~Cipslaudpjittertmplentry()
 {
 }
 
-bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::has_data() const
+bool CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::has_data() const
 {
     return cipslaudpjittertmplname.is_set
 	|| cipslaudpjittertmplcodecinterval.is_set
@@ -324,7 +700,7 @@ bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::ha
 	|| cipslaudpjittertmplvrfname.is_set;
 }
 
-bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::has_operation() const
+bool CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipslaudpjittertmplname.yfilter)
@@ -358,27 +734,22 @@ bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::ha
 	|| ydk::is_set(cipslaudpjittertmplvrfname.yfilter);
 }
 
-std::string CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_segment_path() const
+std::string CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/cipslaUdpJitterTmplTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipslaUdpJitterTmplEntry" <<"[cipslaUdpJitterTmplName='" <<cipslaudpjittertmplname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/cipslaUdpJitterTmplTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipslaudpjittertmplname.is_set || is_set(cipslaudpjittertmplname.yfilter)) leaf_name_data.push_back(cipslaudpjittertmplname.get_name_leafdata());
@@ -411,24 +782,22 @@ const EntityPath CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittert
     if (cipslaudpjittertmplverifydata.is_set || is_set(cipslaudpjittertmplverifydata.yfilter)) leaf_name_data.push_back(cipslaudpjittertmplverifydata.get_name_leafdata());
     if (cipslaudpjittertmplvrfname.is_set || is_set(cipslaudpjittertmplvrfname.yfilter)) leaf_name_data.push_back(cipslaudpjittertmplvrfname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipslaUdpJitterTmplName")
     {
@@ -606,7 +975,7 @@ void CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::se
     }
 }
 
-void CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipslaUdpJitterTmplName")
     {
@@ -726,426 +1095,21 @@ void CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::se
     }
 }
 
-bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaUdpJitterTmplName" || name == "cipslaUdpJitterTmplCodecInterval" || name == "cipslaUdpJitterTmplCodecNumPkts" || name == "cipslaUdpJitterTmplCodecPayload" || name == "cipslaUdpJitterTmplCodecType" || name == "cipslaUdpJitterTmplControlEnable" || name == "cipslaUdpJitterTmplDescription" || name == "cipslaUdpJitterTmplDistBuckets" || name == "cipslaUdpJitterTmplDistInterval" || name == "cipslaUdpJitterTmplIcpifFactor" || name == "cipslaUdpJitterTmplInterval" || name == "cipslaUdpJitterTmplNTPTolAbs" || name == "cipslaUdpJitterTmplNTPTolPct" || name == "cipslaUdpJitterTmplNTPTolType" || name == "cipslaUdpJitterTmplNumPkts" || name == "cipslaUdpJitterTmplPktPriority" || name == "cipslaUdpJitterTmplPrecision" || name == "cipslaUdpJitterTmplReqDataSize" || name == "cipslaUdpJitterTmplRowStatus" || name == "cipslaUdpJitterTmplSrcAddr" || name == "cipslaUdpJitterTmplSrcAddrType" || name == "cipslaUdpJitterTmplSrcPort" || name == "cipslaUdpJitterTmplStatsHours" || name == "cipslaUdpJitterTmplStorageType" || name == "cipslaUdpJitterTmplThreshold" || name == "cipslaUdpJitterTmplTimeOut" || name == "cipslaUdpJitterTmplTOS" || name == "cipslaUdpJitterTmplVerifyData" || name == "cipslaUdpJitterTmplVrfName")
         return true;
     return false;
 }
 
-CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmpltable()
-{
-    yang_name = "cipslaIcmpJitterTmplTable"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB";
-}
+const Enum::YLeaf CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision::milliseconds {1, "milliseconds"};
+const Enum::YLeaf CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision::microseconds {2, "microseconds"};
 
-CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::~Cipslaicmpjittertmpltable()
-{
-}
+const Enum::YLeaf CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplpktpriority::normal {1, "normal"};
+const Enum::YLeaf CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplpktpriority::high {2, "high"};
 
-bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::has_data() const
-{
-    for (std::size_t index=0; index<cipslaicmpjittertmplentry.size(); index++)
-    {
-        if(cipslaicmpjittertmplentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::has_operation() const
-{
-    for (std::size_t index=0; index<cipslaicmpjittertmplentry.size(); index++)
-    {
-        if(cipslaicmpjittertmplentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipslaIcmpJitterTmplTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cipslaIcmpJitterTmplEntry")
-    {
-        for(auto const & c : cipslaicmpjittertmplentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry>();
-        c->parent = this;
-        cipslaicmpjittertmplentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaicmpjittertmplentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipslaIcmpJitterTmplEntry")
-        return true;
-    return false;
-}
-
-CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::Cipslaicmpjittertmplentry()
-    :
-    cipslaicmpjittertmplname{YType::str, "cipslaIcmpJitterTmplName"},
-    cipslaicmpjittertmpldescription{YType::str, "cipslaIcmpJitterTmplDescription"},
-    cipslaicmpjittertmpldistbuckets{YType::uint32, "cipslaIcmpJitterTmplDistBuckets"},
-    cipslaicmpjittertmpldistinterval{YType::uint32, "cipslaIcmpJitterTmplDistInterval"},
-    cipslaicmpjittertmplinterval{YType::uint32, "cipslaIcmpJitterTmplInterval"},
-    cipslaicmpjittertmplnumpkts{YType::uint32, "cipslaIcmpJitterTmplNumPkts"},
-    cipslaicmpjittertmplrowstatus{YType::enumeration, "cipslaIcmpJitterTmplRowStatus"},
-    cipslaicmpjittertmplsrcaddr{YType::str, "cipslaIcmpJitterTmplSrcAddr"},
-    cipslaicmpjittertmplsrcaddrtype{YType::enumeration, "cipslaIcmpJitterTmplSrcAddrType"},
-    cipslaicmpjittertmplstatshours{YType::uint32, "cipslaIcmpJitterTmplStatsHours"},
-    cipslaicmpjittertmplstoragetype{YType::enumeration, "cipslaIcmpJitterTmplStorageType"},
-    cipslaicmpjittertmplthreshold{YType::uint32, "cipslaIcmpJitterTmplThreshold"},
-    cipslaicmpjittertmpltimeout{YType::uint32, "cipslaIcmpJitterTmplTimeOut"},
-    cipslaicmpjittertmpltos{YType::uint32, "cipslaIcmpJitterTmplTOS"},
-    cipslaicmpjittertmplverifydata{YType::boolean, "cipslaIcmpJitterTmplVerifyData"},
-    cipslaicmpjittertmplvrfname{YType::str, "cipslaIcmpJitterTmplVrfName"}
-{
-    yang_name = "cipslaIcmpJitterTmplEntry"; yang_parent_name = "cipslaIcmpJitterTmplTable";
-}
-
-CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::~Cipslaicmpjittertmplentry()
-{
-}
-
-bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::has_data() const
-{
-    return cipslaicmpjittertmplname.is_set
-	|| cipslaicmpjittertmpldescription.is_set
-	|| cipslaicmpjittertmpldistbuckets.is_set
-	|| cipslaicmpjittertmpldistinterval.is_set
-	|| cipslaicmpjittertmplinterval.is_set
-	|| cipslaicmpjittertmplnumpkts.is_set
-	|| cipslaicmpjittertmplrowstatus.is_set
-	|| cipslaicmpjittertmplsrcaddr.is_set
-	|| cipslaicmpjittertmplsrcaddrtype.is_set
-	|| cipslaicmpjittertmplstatshours.is_set
-	|| cipslaicmpjittertmplstoragetype.is_set
-	|| cipslaicmpjittertmplthreshold.is_set
-	|| cipslaicmpjittertmpltimeout.is_set
-	|| cipslaicmpjittertmpltos.is_set
-	|| cipslaicmpjittertmplverifydata.is_set
-	|| cipslaicmpjittertmplvrfname.is_set;
-}
-
-bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplname.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmpldescription.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmpldistbuckets.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmpldistinterval.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplinterval.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplnumpkts.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplrowstatus.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplsrcaddr.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplsrcaddrtype.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplstatshours.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplstoragetype.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplthreshold.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmpltimeout.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmpltos.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplverifydata.yfilter)
-	|| ydk::is_set(cipslaicmpjittertmplvrfname.yfilter);
-}
-
-std::string CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipslaIcmpJitterTmplEntry" <<"[cipslaIcmpJitterTmplName='" <<cipslaicmpjittertmplname <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IPSLA-JITTER-MIB:CISCO-IPSLA-JITTER-MIB/cipslaIcmpJitterTmplTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipslaicmpjittertmplname.is_set || is_set(cipslaicmpjittertmplname.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplname.get_name_leafdata());
-    if (cipslaicmpjittertmpldescription.is_set || is_set(cipslaicmpjittertmpldescription.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpldescription.get_name_leafdata());
-    if (cipslaicmpjittertmpldistbuckets.is_set || is_set(cipslaicmpjittertmpldistbuckets.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpldistbuckets.get_name_leafdata());
-    if (cipslaicmpjittertmpldistinterval.is_set || is_set(cipslaicmpjittertmpldistinterval.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpldistinterval.get_name_leafdata());
-    if (cipslaicmpjittertmplinterval.is_set || is_set(cipslaicmpjittertmplinterval.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplinterval.get_name_leafdata());
-    if (cipslaicmpjittertmplnumpkts.is_set || is_set(cipslaicmpjittertmplnumpkts.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplnumpkts.get_name_leafdata());
-    if (cipslaicmpjittertmplrowstatus.is_set || is_set(cipslaicmpjittertmplrowstatus.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplrowstatus.get_name_leafdata());
-    if (cipslaicmpjittertmplsrcaddr.is_set || is_set(cipslaicmpjittertmplsrcaddr.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplsrcaddr.get_name_leafdata());
-    if (cipslaicmpjittertmplsrcaddrtype.is_set || is_set(cipslaicmpjittertmplsrcaddrtype.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplsrcaddrtype.get_name_leafdata());
-    if (cipslaicmpjittertmplstatshours.is_set || is_set(cipslaicmpjittertmplstatshours.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplstatshours.get_name_leafdata());
-    if (cipslaicmpjittertmplstoragetype.is_set || is_set(cipslaicmpjittertmplstoragetype.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplstoragetype.get_name_leafdata());
-    if (cipslaicmpjittertmplthreshold.is_set || is_set(cipslaicmpjittertmplthreshold.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplthreshold.get_name_leafdata());
-    if (cipslaicmpjittertmpltimeout.is_set || is_set(cipslaicmpjittertmpltimeout.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpltimeout.get_name_leafdata());
-    if (cipslaicmpjittertmpltos.is_set || is_set(cipslaicmpjittertmpltos.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmpltos.get_name_leafdata());
-    if (cipslaicmpjittertmplverifydata.is_set || is_set(cipslaicmpjittertmplverifydata.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplverifydata.get_name_leafdata());
-    if (cipslaicmpjittertmplvrfname.is_set || is_set(cipslaicmpjittertmplvrfname.yfilter)) leaf_name_data.push_back(cipslaicmpjittertmplvrfname.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipslaIcmpJitterTmplName")
-    {
-        cipslaicmpjittertmplname = value;
-        cipslaicmpjittertmplname.value_namespace = name_space;
-        cipslaicmpjittertmplname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplDescription")
-    {
-        cipslaicmpjittertmpldescription = value;
-        cipslaicmpjittertmpldescription.value_namespace = name_space;
-        cipslaicmpjittertmpldescription.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplDistBuckets")
-    {
-        cipslaicmpjittertmpldistbuckets = value;
-        cipslaicmpjittertmpldistbuckets.value_namespace = name_space;
-        cipslaicmpjittertmpldistbuckets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplDistInterval")
-    {
-        cipslaicmpjittertmpldistinterval = value;
-        cipslaicmpjittertmpldistinterval.value_namespace = name_space;
-        cipslaicmpjittertmpldistinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplInterval")
-    {
-        cipslaicmpjittertmplinterval = value;
-        cipslaicmpjittertmplinterval.value_namespace = name_space;
-        cipslaicmpjittertmplinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplNumPkts")
-    {
-        cipslaicmpjittertmplnumpkts = value;
-        cipslaicmpjittertmplnumpkts.value_namespace = name_space;
-        cipslaicmpjittertmplnumpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplRowStatus")
-    {
-        cipslaicmpjittertmplrowstatus = value;
-        cipslaicmpjittertmplrowstatus.value_namespace = name_space;
-        cipslaicmpjittertmplrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplSrcAddr")
-    {
-        cipslaicmpjittertmplsrcaddr = value;
-        cipslaicmpjittertmplsrcaddr.value_namespace = name_space;
-        cipslaicmpjittertmplsrcaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplSrcAddrType")
-    {
-        cipslaicmpjittertmplsrcaddrtype = value;
-        cipslaicmpjittertmplsrcaddrtype.value_namespace = name_space;
-        cipslaicmpjittertmplsrcaddrtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplStatsHours")
-    {
-        cipslaicmpjittertmplstatshours = value;
-        cipslaicmpjittertmplstatshours.value_namespace = name_space;
-        cipslaicmpjittertmplstatshours.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplStorageType")
-    {
-        cipslaicmpjittertmplstoragetype = value;
-        cipslaicmpjittertmplstoragetype.value_namespace = name_space;
-        cipslaicmpjittertmplstoragetype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplThreshold")
-    {
-        cipslaicmpjittertmplthreshold = value;
-        cipslaicmpjittertmplthreshold.value_namespace = name_space;
-        cipslaicmpjittertmplthreshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplTimeOut")
-    {
-        cipslaicmpjittertmpltimeout = value;
-        cipslaicmpjittertmpltimeout.value_namespace = name_space;
-        cipslaicmpjittertmpltimeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplTOS")
-    {
-        cipslaicmpjittertmpltos = value;
-        cipslaicmpjittertmpltos.value_namespace = name_space;
-        cipslaicmpjittertmpltos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplVerifyData")
-    {
-        cipslaicmpjittertmplverifydata = value;
-        cipslaicmpjittertmplverifydata.value_namespace = name_space;
-        cipslaicmpjittertmplverifydata.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipslaIcmpJitterTmplVrfName")
-    {
-        cipslaicmpjittertmplvrfname = value;
-        cipslaicmpjittertmplvrfname.value_namespace = name_space;
-        cipslaicmpjittertmplvrfname.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipslaIcmpJitterTmplName")
-    {
-        cipslaicmpjittertmplname.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplDescription")
-    {
-        cipslaicmpjittertmpldescription.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplDistBuckets")
-    {
-        cipslaicmpjittertmpldistbuckets.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplDistInterval")
-    {
-        cipslaicmpjittertmpldistinterval.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplInterval")
-    {
-        cipslaicmpjittertmplinterval.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplNumPkts")
-    {
-        cipslaicmpjittertmplnumpkts.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplRowStatus")
-    {
-        cipslaicmpjittertmplrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplSrcAddr")
-    {
-        cipslaicmpjittertmplsrcaddr.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplSrcAddrType")
-    {
-        cipslaicmpjittertmplsrcaddrtype.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplStatsHours")
-    {
-        cipslaicmpjittertmplstatshours.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplStorageType")
-    {
-        cipslaicmpjittertmplstoragetype.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplThreshold")
-    {
-        cipslaicmpjittertmplthreshold.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplTimeOut")
-    {
-        cipslaicmpjittertmpltimeout.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplTOS")
-    {
-        cipslaicmpjittertmpltos.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplVerifyData")
-    {
-        cipslaicmpjittertmplverifydata.yfilter = yfilter;
-    }
-    if(value_path == "cipslaIcmpJitterTmplVrfName")
-    {
-        cipslaicmpjittertmplvrfname.yfilter = yfilter;
-    }
-}
-
-bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipslaIcmpJitterTmplName" || name == "cipslaIcmpJitterTmplDescription" || name == "cipslaIcmpJitterTmplDistBuckets" || name == "cipslaIcmpJitterTmplDistInterval" || name == "cipslaIcmpJitterTmplInterval" || name == "cipslaIcmpJitterTmplNumPkts" || name == "cipslaIcmpJitterTmplRowStatus" || name == "cipslaIcmpJitterTmplSrcAddr" || name == "cipslaIcmpJitterTmplSrcAddrType" || name == "cipslaIcmpJitterTmplStatsHours" || name == "cipslaIcmpJitterTmplStorageType" || name == "cipslaIcmpJitterTmplThreshold" || name == "cipslaIcmpJitterTmplTimeOut" || name == "cipslaIcmpJitterTmplTOS" || name == "cipslaIcmpJitterTmplVerifyData" || name == "cipslaIcmpJitterTmplVrfName")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision::milliseconds {1, "milliseconds"};
-const Enum::YLeaf CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision::microseconds {2, "microseconds"};
-
-const Enum::YLeaf CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplpktpriority::normal {1, "normal"};
-const Enum::YLeaf CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplpktpriority::high {2, "high"};
-
-const Enum::YLeaf CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplntptoltype::percent {1, "percent"};
-const Enum::YLeaf CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplntptoltype::absolute {2, "absolute"};
+const Enum::YLeaf CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplntptoltype::percent {1, "percent"};
+const Enum::YLeaf CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplntptoltype::absolute {2, "absolute"};
 
 
 }

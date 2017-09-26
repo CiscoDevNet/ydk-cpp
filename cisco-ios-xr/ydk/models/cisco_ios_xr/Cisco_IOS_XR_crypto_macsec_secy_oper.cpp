@@ -17,7 +17,7 @@ Macsec::Macsec()
 {
     secy->parent = this;
 
-    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-secy-oper";
+    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-secy-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Macsec::~Macsec()
@@ -39,26 +39,15 @@ std::string Macsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,7 @@ Macsec::Secy::Secy()
 {
     interfaces->parent = this;
 
-    yang_name = "secy"; yang_parent_name = "macsec";
+    yang_name = "secy"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Secy::~Secy()
@@ -151,33 +140,26 @@ bool Macsec::Secy::has_operation() const
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
+std::string Macsec::Secy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Secy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "secy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -223,7 +205,8 @@ bool Macsec::Secy::has_leaf_or_child_of_name(const std::string & name) const
 
 Macsec::Secy::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "secy";
+
+    yang_name = "interfaces"; yang_parent_name = "secy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Secy::Interfaces::~Interfaces()
@@ -250,33 +233,26 @@ bool Macsec::Secy::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Macsec::Secy::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec/secy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Secy::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec/secy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -335,7 +311,7 @@ Macsec::Secy::Interfaces::Interface::Interface()
 {
     stats->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Secy::Interfaces::Interface::~Interface()
@@ -355,34 +331,27 @@ bool Macsec::Secy::Interfaces::Interface::has_operation() const
 	|| (stats !=  nullptr && stats->has_operation());
 }
 
+std::string Macsec::Secy::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec/secy/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Secy::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-secy-oper:macsec/secy/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -442,10 +411,9 @@ Macsec::Secy::Interfaces::Interface::Stats::Stats()
 	,tx_sc_stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats>())
 {
     intf_stats->parent = this;
-
     tx_sc_stats->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "interface";
+    yang_name = "stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::~Stats()
@@ -479,29 +447,15 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::Interfaces::Interface::Stats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::Stats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stats' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -595,7 +549,8 @@ Macsec::Secy::Interfaces::Interface::Stats::IntfStats::IntfStats()
     out_pkts_too_long{YType::uint64, "out-pkts-too-long"},
     out_pkts_untagged{YType::uint64, "out-pkts-untagged"}
 {
-    yang_name = "intf-stats"; yang_parent_name = "stats";
+
+    yang_name = "intf-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::IntfStats::~IntfStats()
@@ -639,23 +594,11 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "intf-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IntfStats' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (in_octets_decrypted.is_set || is_set(in_octets_decrypted.yfilter)) leaf_name_data.push_back(in_octets_decrypted.get_name_leafdata());
@@ -671,9 +614,7 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_enti
     if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.yfilter)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
     if (out_pkts_untagged.is_set || is_set(out_pkts_untagged.yfilter)) leaf_name_data.push_back(out_pkts_untagged.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -823,313 +764,6 @@ bool Macsec::Secy::Interfaces::Interface::Stats::IntfStats::has_leaf_or_child_of
     return false;
 }
 
-Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxScStats()
-    :
-    out_octets_encrypted{YType::uint64, "out-octets-encrypted"},
-    out_octets_protected{YType::uint64, "out-octets-protected"},
-    out_pkts_encrypted{YType::uint64, "out-pkts-encrypted"},
-    out_pkts_protected{YType::uint64, "out-pkts-protected"},
-    out_pkts_too_long{YType::uint64, "out-pkts-too-long"},
-    tx_sci{YType::uint64, "tx-sci"}
-{
-    yang_name = "tx-sc-stats"; yang_parent_name = "stats";
-}
-
-Macsec::Secy::Interfaces::Interface::Stats::TxScStats::~TxScStats()
-{
-}
-
-bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_data() const
-{
-    for (std::size_t index=0; index<txsa_stat.size(); index++)
-    {
-        if(txsa_stat[index]->has_data())
-            return true;
-    }
-    return out_octets_encrypted.is_set
-	|| out_octets_protected.is_set
-	|| out_pkts_encrypted.is_set
-	|| out_pkts_protected.is_set
-	|| out_pkts_too_long.is_set
-	|| tx_sci.is_set;
-}
-
-bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_operation() const
-{
-    for (std::size_t index=0; index<txsa_stat.size(); index++)
-    {
-        if(txsa_stat[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(out_octets_encrypted.yfilter)
-	|| ydk::is_set(out_octets_protected.yfilter)
-	|| ydk::is_set(out_pkts_encrypted.yfilter)
-	|| ydk::is_set(out_pkts_protected.yfilter)
-	|| ydk::is_set(out_pkts_too_long.yfilter)
-	|| ydk::is_set(tx_sci.yfilter);
-}
-
-std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-sc-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxScStats' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (out_octets_encrypted.is_set || is_set(out_octets_encrypted.yfilter)) leaf_name_data.push_back(out_octets_encrypted.get_name_leafdata());
-    if (out_octets_protected.is_set || is_set(out_octets_protected.yfilter)) leaf_name_data.push_back(out_octets_protected.get_name_leafdata());
-    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.yfilter)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
-    if (out_pkts_protected.is_set || is_set(out_pkts_protected.yfilter)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
-    if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.yfilter)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
-    if (tx_sci.is_set || is_set(tx_sci.yfilter)) leaf_name_data.push_back(tx_sci.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "txsa-stat")
-    {
-        for(auto const & c : txsa_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
-        c->parent = this;
-        txsa_stat.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : txsa_stat)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "out-octets-encrypted")
-    {
-        out_octets_encrypted = value;
-        out_octets_encrypted.value_namespace = name_space;
-        out_octets_encrypted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-octets-protected")
-    {
-        out_octets_protected = value;
-        out_octets_protected.value_namespace = name_space;
-        out_octets_protected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pkts-encrypted")
-    {
-        out_pkts_encrypted = value;
-        out_pkts_encrypted.value_namespace = name_space;
-        out_pkts_encrypted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pkts-protected")
-    {
-        out_pkts_protected = value;
-        out_pkts_protected.value_namespace = name_space;
-        out_pkts_protected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pkts-too-long")
-    {
-        out_pkts_too_long = value;
-        out_pkts_too_long.value_namespace = name_space;
-        out_pkts_too_long.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-sci")
-    {
-        tx_sci = value;
-        tx_sci.value_namespace = name_space;
-        tx_sci.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "out-octets-encrypted")
-    {
-        out_octets_encrypted.yfilter = yfilter;
-    }
-    if(value_path == "out-octets-protected")
-    {
-        out_octets_protected.yfilter = yfilter;
-    }
-    if(value_path == "out-pkts-encrypted")
-    {
-        out_pkts_encrypted.yfilter = yfilter;
-    }
-    if(value_path == "out-pkts-protected")
-    {
-        out_pkts_protected.yfilter = yfilter;
-    }
-    if(value_path == "out-pkts-too-long")
-    {
-        out_pkts_too_long.yfilter = yfilter;
-    }
-    if(value_path == "tx-sci")
-    {
-        tx_sci.yfilter = yfilter;
-    }
-}
-
-bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "txsa-stat" || name == "out-octets-encrypted" || name == "out-octets-protected" || name == "out-pkts-encrypted" || name == "out-pkts-protected" || name == "out-pkts-too-long" || name == "tx-sci")
-        return true;
-    return false;
-}
-
-Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::TxsaStat()
-    :
-    next_pn{YType::uint64, "next-pn"},
-    out_pkts_encrypted{YType::uint64, "out-pkts-encrypted"},
-    out_pkts_protected{YType::uint64, "out-pkts-protected"}
-{
-    yang_name = "txsa-stat"; yang_parent_name = "tx-sc-stats";
-}
-
-Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::~TxsaStat()
-{
-}
-
-bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_data() const
-{
-    return next_pn.is_set
-	|| out_pkts_encrypted.is_set
-	|| out_pkts_protected.is_set;
-}
-
-bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_pn.yfilter)
-	|| ydk::is_set(out_pkts_encrypted.yfilter)
-	|| ydk::is_set(out_pkts_protected.yfilter);
-}
-
-std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "txsa-stat";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxsaStat' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_pn.is_set || is_set(next_pn.yfilter)) leaf_name_data.push_back(next_pn.get_name_leafdata());
-    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.yfilter)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
-    if (out_pkts_protected.is_set || is_set(out_pkts_protected.yfilter)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-pn")
-    {
-        next_pn = value;
-        next_pn.value_namespace = name_space;
-        next_pn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pkts-encrypted")
-    {
-        out_pkts_encrypted = value;
-        out_pkts_encrypted.value_namespace = name_space;
-        out_pkts_encrypted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pkts-protected")
-    {
-        out_pkts_protected = value;
-        out_pkts_protected.value_namespace = name_space;
-        out_pkts_protected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-pn")
-    {
-        next_pn.yfilter = yfilter;
-    }
-    if(value_path == "out-pkts-encrypted")
-    {
-        out_pkts_encrypted.yfilter = yfilter;
-    }
-    if(value_path == "out-pkts-protected")
-    {
-        out_pkts_protected.yfilter = yfilter;
-    }
-}
-
-bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-pn" || name == "out-pkts-encrypted" || name == "out-pkts-protected")
-        return true;
-    return false;
-}
-
 Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxScStats()
     :
     in_octets_decrypted{YType::uint64, "in-octets-decrypted"},
@@ -1145,7 +779,8 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxScStats()
     in_pkts_unused_sa{YType::uint64, "in-pkts-unused-sa"},
     rx_sci{YType::uint64, "rx-sci"}
 {
-    yang_name = "rx-sc-stats"; yang_parent_name = "stats";
+
+    yang_name = "rx-sc-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::RxScStats::~RxScStats()
@@ -1199,23 +834,11 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-sc-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxScStats' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (in_octets_decrypted.is_set || is_set(in_octets_decrypted.yfilter)) leaf_name_data.push_back(in_octets_decrypted.get_name_leafdata());
@@ -1231,9 +854,7 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_enti
     if (in_pkts_unused_sa.is_set || is_set(in_pkts_unused_sa.yfilter)) leaf_name_data.push_back(in_pkts_unused_sa.get_name_leafdata());
     if (rx_sci.is_set || is_set(rx_sci.yfilter)) leaf_name_data.push_back(rx_sci.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1413,7 +1034,8 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::RxsaStat()
     in_pkts_unused_sa{YType::uint64, "in-pkts-unused-sa"},
     next_pn{YType::uint64, "next-pn"}
 {
-    yang_name = "rxsa-stat"; yang_parent_name = "rx-sc-stats";
+
+    yang_name = "rxsa-stat"; yang_parent_name = "rx-sc-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::~RxsaStat()
@@ -1445,23 +1067,11 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get
 {
     std::ostringstream path_buffer;
     path_buffer << "rxsa-stat";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxsaStat' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (in_pkts_invalid.is_set || is_set(in_pkts_invalid.yfilter)) leaf_name_data.push_back(in_pkts_invalid.get_name_leafdata());
@@ -1471,9 +1081,7 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat
     if (in_pkts_unused_sa.is_set || is_set(in_pkts_unused_sa.yfilter)) leaf_name_data.push_back(in_pkts_unused_sa.get_name_leafdata());
     if (next_pn.is_set || is_set(next_pn.yfilter)) leaf_name_data.push_back(next_pn.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1559,6 +1167,287 @@ void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::set_filter
 bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-invalid" || name == "in-pkts-not-using-sa" || name == "in-pkts-not-valid" || name == "in-pkts-ok" || name == "in-pkts-unused-sa" || name == "next-pn")
+        return true;
+    return false;
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxScStats()
+    :
+    out_octets_encrypted{YType::uint64, "out-octets-encrypted"},
+    out_octets_protected{YType::uint64, "out-octets-protected"},
+    out_pkts_encrypted{YType::uint64, "out-pkts-encrypted"},
+    out_pkts_protected{YType::uint64, "out-pkts-protected"},
+    out_pkts_too_long{YType::uint64, "out-pkts-too-long"},
+    tx_sci{YType::uint64, "tx-sci"}
+{
+
+    yang_name = "tx-sc-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::TxScStats::~TxScStats()
+{
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_data() const
+{
+    for (std::size_t index=0; index<txsa_stat.size(); index++)
+    {
+        if(txsa_stat[index]->has_data())
+            return true;
+    }
+    return out_octets_encrypted.is_set
+	|| out_octets_protected.is_set
+	|| out_pkts_encrypted.is_set
+	|| out_pkts_protected.is_set
+	|| out_pkts_too_long.is_set
+	|| tx_sci.is_set;
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_operation() const
+{
+    for (std::size_t index=0; index<txsa_stat.size(); index++)
+    {
+        if(txsa_stat[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(out_octets_encrypted.yfilter)
+	|| ydk::is_set(out_octets_protected.yfilter)
+	|| ydk::is_set(out_pkts_encrypted.yfilter)
+	|| ydk::is_set(out_pkts_protected.yfilter)
+	|| ydk::is_set(out_pkts_too_long.yfilter)
+	|| ydk::is_set(tx_sci.yfilter);
+}
+
+std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-sc-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (out_octets_encrypted.is_set || is_set(out_octets_encrypted.yfilter)) leaf_name_data.push_back(out_octets_encrypted.get_name_leafdata());
+    if (out_octets_protected.is_set || is_set(out_octets_protected.yfilter)) leaf_name_data.push_back(out_octets_protected.get_name_leafdata());
+    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.yfilter)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
+    if (out_pkts_protected.is_set || is_set(out_pkts_protected.yfilter)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
+    if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.yfilter)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
+    if (tx_sci.is_set || is_set(tx_sci.yfilter)) leaf_name_data.push_back(tx_sci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "txsa-stat")
+    {
+        for(auto const & c : txsa_stat)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
+        c->parent = this;
+        txsa_stat.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : txsa_stat)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "out-octets-encrypted")
+    {
+        out_octets_encrypted = value;
+        out_octets_encrypted.value_namespace = name_space;
+        out_octets_encrypted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-octets-protected")
+    {
+        out_octets_protected = value;
+        out_octets_protected.value_namespace = name_space;
+        out_octets_protected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted = value;
+        out_pkts_encrypted.value_namespace = name_space;
+        out_pkts_encrypted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected = value;
+        out_pkts_protected.value_namespace = name_space;
+        out_pkts_protected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-too-long")
+    {
+        out_pkts_too_long = value;
+        out_pkts_too_long.value_namespace = name_space;
+        out_pkts_too_long.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-sci")
+    {
+        tx_sci = value;
+        tx_sci.value_namespace = name_space;
+        tx_sci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "out-octets-encrypted")
+    {
+        out_octets_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-octets-protected")
+    {
+        out_octets_protected.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-too-long")
+    {
+        out_pkts_too_long.yfilter = yfilter;
+    }
+    if(value_path == "tx-sci")
+    {
+        tx_sci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "txsa-stat" || name == "out-octets-encrypted" || name == "out-octets-protected" || name == "out-pkts-encrypted" || name == "out-pkts-protected" || name == "out-pkts-too-long" || name == "tx-sci")
+        return true;
+    return false;
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::TxsaStat()
+    :
+    next_pn{YType::uint64, "next-pn"},
+    out_pkts_encrypted{YType::uint64, "out-pkts-encrypted"},
+    out_pkts_protected{YType::uint64, "out-pkts-protected"}
+{
+
+    yang_name = "txsa-stat"; yang_parent_name = "tx-sc-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::~TxsaStat()
+{
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_data() const
+{
+    return next_pn.is_set
+	|| out_pkts_encrypted.is_set
+	|| out_pkts_protected.is_set;
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_pn.yfilter)
+	|| ydk::is_set(out_pkts_encrypted.yfilter)
+	|| ydk::is_set(out_pkts_protected.yfilter);
+}
+
+std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "txsa-stat";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_pn.is_set || is_set(next_pn.yfilter)) leaf_name_data.push_back(next_pn.get_name_leafdata());
+    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.yfilter)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
+    if (out_pkts_protected.is_set || is_set(out_pkts_protected.yfilter)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-pn")
+    {
+        next_pn = value;
+        next_pn.value_namespace = name_space;
+        next_pn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted = value;
+        out_pkts_encrypted.value_namespace = name_space;
+        out_pkts_encrypted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected = value;
+        out_pkts_protected.value_namespace = name_space;
+        out_pkts_protected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-pn")
+    {
+        next_pn.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-pn" || name == "out-pkts-encrypted" || name == "out-pkts-protected")
         return true;
     return false;
 }

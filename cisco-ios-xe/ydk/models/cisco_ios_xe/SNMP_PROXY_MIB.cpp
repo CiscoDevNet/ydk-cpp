@@ -11,64 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace SNMP_PROXY_MIB {
 
-SnmpProxyMib::SnmpProxyMib()
+SNMPPROXYMIB::SNMPPROXYMIB()
     :
-    snmpproxytable(std::make_shared<SnmpProxyMib::Snmpproxytable>())
+    snmpproxytable(std::make_shared<SNMPPROXYMIB::Snmpproxytable>())
 {
     snmpproxytable->parent = this;
 
-    yang_name = "SNMP-PROXY-MIB"; yang_parent_name = "SNMP-PROXY-MIB";
+    yang_name = "SNMP-PROXY-MIB"; yang_parent_name = "SNMP-PROXY-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-SnmpProxyMib::~SnmpProxyMib()
+SNMPPROXYMIB::~SNMPPROXYMIB()
 {
 }
 
-bool SnmpProxyMib::has_data() const
+bool SNMPPROXYMIB::has_data() const
 {
     return (snmpproxytable !=  nullptr && snmpproxytable->has_data());
 }
 
-bool SnmpProxyMib::has_operation() const
+bool SNMPPROXYMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (snmpproxytable !=  nullptr && snmpproxytable->has_operation());
 }
 
-std::string SnmpProxyMib::get_segment_path() const
+std::string SNMPPROXYMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-PROXY-MIB:SNMP-PROXY-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SnmpProxyMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPPROXYMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> SnmpProxyMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPPROXYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snmpProxyTable")
     {
         if(snmpproxytable == nullptr)
         {
-            snmpproxytable = std::make_shared<SnmpProxyMib::Snmpproxytable>();
+            snmpproxytable = std::make_shared<SNMPPROXYMIB::Snmpproxytable>();
         }
         return snmpproxytable;
     }
@@ -76,7 +65,7 @@ std::shared_ptr<Entity> SnmpProxyMib::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPPROXYMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(snmpproxytable != nullptr)
@@ -87,56 +76,57 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::get_children() cons
     return children;
 }
 
-void SnmpProxyMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPPROXYMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SnmpProxyMib::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPPROXYMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SnmpProxyMib::clone_ptr() const
+std::shared_ptr<Entity> SNMPPROXYMIB::clone_ptr() const
 {
-    return std::make_shared<SnmpProxyMib>();
+    return std::make_shared<SNMPPROXYMIB>();
 }
 
-std::string SnmpProxyMib::get_bundle_yang_models_location() const
+std::string SNMPPROXYMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string SnmpProxyMib::get_bundle_name() const
+std::string SNMPPROXYMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function SnmpProxyMib::get_augment_capabilities_function() const
+augment_capabilities_function SNMPPROXYMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> SnmpProxyMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> SNMPPROXYMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool SnmpProxyMib::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPPROXYMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpProxyTable")
         return true;
     return false;
 }
 
-SnmpProxyMib::Snmpproxytable::Snmpproxytable()
+SNMPPROXYMIB::Snmpproxytable::Snmpproxytable()
 {
-    yang_name = "snmpProxyTable"; yang_parent_name = "SNMP-PROXY-MIB";
+
+    yang_name = "snmpProxyTable"; yang_parent_name = "SNMP-PROXY-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-SnmpProxyMib::Snmpproxytable::~Snmpproxytable()
+SNMPPROXYMIB::Snmpproxytable::~Snmpproxytable()
 {
 }
 
-bool SnmpProxyMib::Snmpproxytable::has_data() const
+bool SNMPPROXYMIB::Snmpproxytable::has_data() const
 {
     for (std::size_t index=0; index<snmpproxyentry.size(); index++)
     {
@@ -146,7 +136,7 @@ bool SnmpProxyMib::Snmpproxytable::has_data() const
     return false;
 }
 
-bool SnmpProxyMib::Snmpproxytable::has_operation() const
+bool SNMPPROXYMIB::Snmpproxytable::has_operation() const
 {
     for (std::size_t index=0; index<snmpproxyentry.size(); index++)
     {
@@ -156,37 +146,30 @@ bool SnmpProxyMib::Snmpproxytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string SnmpProxyMib::Snmpproxytable::get_segment_path() const
+std::string SNMPPROXYMIB::Snmpproxytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMP-PROXY-MIB:SNMP-PROXY-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPPROXYMIB::Snmpproxytable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpProxyTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SnmpProxyMib::Snmpproxytable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPPROXYMIB::Snmpproxytable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMP-PROXY-MIB:SNMP-PROXY-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPPROXYMIB::Snmpproxytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snmpProxyEntry")
     {
@@ -198,7 +181,7 @@ std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::get_child_by_name(const st
                 return c;
             }
         }
-        auto c = std::make_shared<SnmpProxyMib::Snmpproxytable::Snmpproxyentry>();
+        auto c = std::make_shared<SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry>();
         c->parent = this;
         snmpproxyentry.push_back(c);
         return c;
@@ -207,7 +190,7 @@ std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::Snmpproxytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPPROXYMIB::Snmpproxytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : snmpproxyentry)
@@ -218,22 +201,22 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::Snmpproxytable::get
     return children;
 }
 
-void SnmpProxyMib::Snmpproxytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPPROXYMIB::Snmpproxytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SnmpProxyMib::Snmpproxytable::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPPROXYMIB::Snmpproxytable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool SnmpProxyMib::Snmpproxytable::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPPROXYMIB::Snmpproxytable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpProxyEntry")
         return true;
     return false;
 }
 
-SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxyentry()
+SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxyentry()
     :
     snmpproxyname{YType::str, "snmpProxyName"},
     snmpproxycontextengineid{YType::str, "snmpProxyContextEngineID"},
@@ -245,14 +228,15 @@ SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxyentry()
     snmpproxytargetparamsin{YType::str, "snmpProxyTargetParamsIn"},
     snmpproxytype{YType::enumeration, "snmpProxyType"}
 {
-    yang_name = "snmpProxyEntry"; yang_parent_name = "snmpProxyTable";
+
+    yang_name = "snmpProxyEntry"; yang_parent_name = "snmpProxyTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-SnmpProxyMib::Snmpproxytable::Snmpproxyentry::~Snmpproxyentry()
+SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::~Snmpproxyentry()
 {
 }
 
-bool SnmpProxyMib::Snmpproxytable::Snmpproxyentry::has_data() const
+bool SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::has_data() const
 {
     return snmpproxyname.is_set
 	|| snmpproxycontextengineid.is_set
@@ -265,7 +249,7 @@ bool SnmpProxyMib::Snmpproxytable::Snmpproxyentry::has_data() const
 	|| snmpproxytype.is_set;
 }
 
-bool SnmpProxyMib::Snmpproxytable::Snmpproxyentry::has_operation() const
+bool SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmpproxyname.yfilter)
@@ -279,27 +263,22 @@ bool SnmpProxyMib::Snmpproxytable::Snmpproxyentry::has_operation() const
 	|| ydk::is_set(snmpproxytype.yfilter);
 }
 
-std::string SnmpProxyMib::Snmpproxytable::Snmpproxyentry::get_segment_path() const
+std::string SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMP-PROXY-MIB:SNMP-PROXY-MIB/snmpProxyTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpProxyEntry" <<"[snmpProxyName='" <<snmpproxyname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SnmpProxyMib::Snmpproxytable::Snmpproxyentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMP-PROXY-MIB:SNMP-PROXY-MIB/snmpProxyTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (snmpproxyname.is_set || is_set(snmpproxyname.yfilter)) leaf_name_data.push_back(snmpproxyname.get_name_leafdata());
@@ -312,24 +291,22 @@ const EntityPath SnmpProxyMib::Snmpproxytable::Snmpproxyentry::get_entity_path(E
     if (snmpproxytargetparamsin.is_set || is_set(snmpproxytargetparamsin.yfilter)) leaf_name_data.push_back(snmpproxytargetparamsin.get_name_leafdata());
     if (snmpproxytype.is_set || is_set(snmpproxytype.yfilter)) leaf_name_data.push_back(snmpproxytype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::Snmpproxyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::Snmpproxytable::Snmpproxyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SnmpProxyMib::Snmpproxytable::Snmpproxyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpProxyName")
     {
@@ -387,7 +364,7 @@ void SnmpProxyMib::Snmpproxytable::Snmpproxyentry::set_value(const std::string &
     }
 }
 
-void SnmpProxyMib::Snmpproxytable::Snmpproxyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpProxyName")
     {
@@ -427,17 +404,17 @@ void SnmpProxyMib::Snmpproxytable::Snmpproxyentry::set_filter(const std::string 
     }
 }
 
-bool SnmpProxyMib::Snmpproxytable::Snmpproxyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpProxyName" || name == "snmpProxyContextEngineID" || name == "snmpProxyContextName" || name == "snmpProxyMultipleTargetOut" || name == "snmpProxyRowStatus" || name == "snmpProxySingleTargetOut" || name == "snmpProxyStorageType" || name == "snmpProxyTargetParamsIn" || name == "snmpProxyType")
         return true;
     return false;
 }
 
-const Enum::YLeaf SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxytype::read {1, "read"};
-const Enum::YLeaf SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxytype::write {2, "write"};
-const Enum::YLeaf SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxytype::trap {3, "trap"};
-const Enum::YLeaf SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxytype::inform {4, "inform"};
+const Enum::YLeaf SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxytype::read {1, "read"};
+const Enum::YLeaf SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxytype::write {2, "write"};
+const Enum::YLeaf SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxytype::trap {3, "trap"};
+const Enum::YLeaf SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxytype::inform {4, "inform"};
 
 
 }

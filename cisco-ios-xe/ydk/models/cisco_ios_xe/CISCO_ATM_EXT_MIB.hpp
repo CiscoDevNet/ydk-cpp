@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_ATM_EXT_MIB {
 
-class Oamccvcstate : public ydk::Enum
+class OamCCVcState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf verified;
@@ -19,7 +19,7 @@ class Oamccvcstate : public ydk::Enum
 
 };
 
-class Oamccstatus : public ydk::Enum
+class OamCCStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ready;

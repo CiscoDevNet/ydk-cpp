@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace ATM_FORUM_TC_MIB {
 
-class Atmservicecategory : public ydk::Enum
+class AtmServiceCategory : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -22,7 +22,7 @@ class Atmservicecategory : public ydk::Enum
 
 };
 
-class Truthvalue : public ydk::Enum
+class TruthValue : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf true_;

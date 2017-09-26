@@ -11,21 +11,21 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace SNMPv2_TC {
 
-const Enum::YLeaf Truthvalue::true_ {1, "true"};
-const Enum::YLeaf Truthvalue::false_ {2, "false"};
+const Enum::YLeaf RowStatus::active {1, "active"};
+const Enum::YLeaf RowStatus::notInService {2, "notInService"};
+const Enum::YLeaf RowStatus::notReady {3, "notReady"};
+const Enum::YLeaf RowStatus::createAndGo {4, "createAndGo"};
+const Enum::YLeaf RowStatus::createAndWait {5, "createAndWait"};
+const Enum::YLeaf RowStatus::destroy {6, "destroy"};
 
-const Enum::YLeaf Storagetype::other {1, "other"};
-const Enum::YLeaf Storagetype::volatile_ {2, "volatile"};
-const Enum::YLeaf Storagetype::nonVolatile {3, "nonVolatile"};
-const Enum::YLeaf Storagetype::permanent {4, "permanent"};
-const Enum::YLeaf Storagetype::readOnly {5, "readOnly"};
+const Enum::YLeaf TruthValue::true_ {1, "true"};
+const Enum::YLeaf TruthValue::false_ {2, "false"};
 
-const Enum::YLeaf Rowstatus::active {1, "active"};
-const Enum::YLeaf Rowstatus::notInService {2, "notInService"};
-const Enum::YLeaf Rowstatus::notReady {3, "notReady"};
-const Enum::YLeaf Rowstatus::createAndGo {4, "createAndGo"};
-const Enum::YLeaf Rowstatus::createAndWait {5, "createAndWait"};
-const Enum::YLeaf Rowstatus::destroy {6, "destroy"};
+const Enum::YLeaf StorageType::other {1, "other"};
+const Enum::YLeaf StorageType::volatile_ {2, "volatile"};
+const Enum::YLeaf StorageType::nonVolatile {3, "nonVolatile"};
+const Enum::YLeaf StorageType::permanent {4, "permanent"};
+const Enum::YLeaf StorageType::readOnly {5, "readOnly"};
 
 
 }

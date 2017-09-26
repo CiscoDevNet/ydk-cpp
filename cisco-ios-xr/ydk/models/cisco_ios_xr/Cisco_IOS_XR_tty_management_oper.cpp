@@ -14,27 +14,30 @@ namespace Cisco_IOS_XR_tty_management_oper {
 HostAfIdBase::HostAfIdBase()
      : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:Host-af-id-base")
 {
+
 }
 
 HostAfIdBase::~HostAfIdBase()
 {
 }
 
-Ipv6::Ipv6()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:ipv6")
-{
-}
-
-Ipv6::~Ipv6()
-{
-}
-
 Ipv4::Ipv4()
      : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:ipv4")
 {
+
 }
 
 Ipv4::~Ipv4()
+{
+}
+
+Ipv6::Ipv6()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:ipv6")
+{
+
+}
+
+Ipv6::~Ipv6()
 {
 }
 

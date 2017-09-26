@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_lib_keychain_macsec_cfg {
 
 MacSecKeychains::MacSecKeychains()
 {
-    yang_name = "mac-sec-keychains"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-macsec-cfg";
+
+    yang_name = "mac-sec-keychains"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-macsec-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MacSecKeychains::~MacSecKeychains()
@@ -44,26 +45,15 @@ std::string MacSecKeychains::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-macsec-cfg:mac-sec-keychains";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacSecKeychains::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacSecKeychains::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -147,7 +137,7 @@ MacSecKeychains::MacSecKeychain::MacSecKeychain()
 {
     keies->parent = this;
 
-    yang_name = "mac-sec-keychain"; yang_parent_name = "mac-sec-keychains";
+    yang_name = "mac-sec-keychain"; yang_parent_name = "mac-sec-keychains"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MacSecKeychains::MacSecKeychain::~MacSecKeychain()
@@ -167,34 +157,27 @@ bool MacSecKeychains::MacSecKeychain::has_operation() const
 	|| (keies !=  nullptr && keies->has_operation());
 }
 
+std::string MacSecKeychains::MacSecKeychain::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-macsec-cfg:mac-sec-keychains/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MacSecKeychains::MacSecKeychain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-sec-keychain" <<"[chain-name='" <<chain_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacSecKeychains::MacSecKeychain::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacSecKeychains::MacSecKeychain::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-macsec-cfg:mac-sec-keychains/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (chain_name.is_set || is_set(chain_name.yfilter)) leaf_name_data.push_back(chain_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -250,7 +233,8 @@ bool MacSecKeychains::MacSecKeychain::has_leaf_or_child_of_name(const std::strin
 
 MacSecKeychains::MacSecKeychain::Keies::Keies()
 {
-    yang_name = "keies"; yang_parent_name = "mac-sec-keychain";
+
+    yang_name = "keies"; yang_parent_name = "mac-sec-keychain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MacSecKeychains::MacSecKeychain::Keies::~Keies()
@@ -281,29 +265,15 @@ std::string MacSecKeychains::MacSecKeychain::Keies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacSecKeychains::MacSecKeychain::Keies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacSecKeychains::MacSecKeychain::Keies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Keies' in Cisco_IOS_XR_lib_keychain_macsec_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -363,7 +333,7 @@ MacSecKeychains::MacSecKeychain::Keies::Key::Key()
 {
     lifetime->parent = this;
 
-    yang_name = "key"; yang_parent_name = "keies";
+    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MacSecKeychains::MacSecKeychain::Keies::Key::~Key()
@@ -389,30 +359,16 @@ std::string MacSecKeychains::MacSecKeychain::Keies::Key::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "key" <<"[key-id='" <<key_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacSecKeychains::MacSecKeychain::Keies::Key::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Key' in Cisco_IOS_XR_lib_keychain_macsec_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (key_id.is_set || is_set(key_id.yfilter)) leaf_name_data.push_back(key_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -480,6 +436,110 @@ bool MacSecKeychains::MacSecKeychain::Keies::Key::has_leaf_or_child_of_name(cons
     return false;
 }
 
+MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::KeyString()
+    :
+    cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"},
+    encryption_type{YType::enumeration, "encryption-type"},
+    string{YType::str, "string"}
+{
+
+    yang_name = "key-string"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::~KeyString()
+{
+}
+
+bool MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::has_data() const
+{
+    return cryptographic_algorithm.is_set
+	|| encryption_type.is_set
+	|| string.is_set;
+}
+
+bool MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cryptographic_algorithm.yfilter)
+	|| ydk::is_set(encryption_type.yfilter)
+	|| ydk::is_set(string.yfilter);
+}
+
+std::string MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "key-string";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cryptographic_algorithm.is_set || is_set(cryptographic_algorithm.yfilter)) leaf_name_data.push_back(cryptographic_algorithm.get_name_leafdata());
+    if (encryption_type.is_set || is_set(encryption_type.yfilter)) leaf_name_data.push_back(encryption_type.get_name_leafdata());
+    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cryptographic-algorithm")
+    {
+        cryptographic_algorithm = value;
+        cryptographic_algorithm.value_namespace = name_space;
+        cryptographic_algorithm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encryption-type")
+    {
+        encryption_type = value;
+        encryption_type.value_namespace = name_space;
+        encryption_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "string")
+    {
+        string = value;
+        string.value_namespace = name_space;
+        string.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cryptographic-algorithm")
+    {
+        cryptographic_algorithm.yfilter = yfilter;
+    }
+    if(value_path == "encryption-type")
+    {
+        encryption_type.yfilter = yfilter;
+    }
+    if(value_path == "string")
+    {
+        string.yfilter = yfilter;
+    }
+}
+
+bool MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cryptographic-algorithm" || name == "encryption-type" || name == "string")
+        return true;
+    return false;
+}
+
 MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::Lifetime()
     :
     end_date{YType::uint32, "end-date"},
@@ -497,7 +557,8 @@ MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::Lifetime()
     start_seconds{YType::uint32, "start-seconds"},
     start_year{YType::uint32, "start-year"}
 {
-    yang_name = "lifetime"; yang_parent_name = "key";
+
+    yang_name = "lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::~Lifetime()
@@ -545,23 +606,11 @@ std::string MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "lifetime";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lifetime' in Cisco_IOS_XR_lib_keychain_macsec_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end_date.is_set || is_set(end_date.yfilter)) leaf_name_data.push_back(end_date.get_name_leafdata());
@@ -579,9 +628,7 @@ const EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::get_enti
     if (start_seconds.is_set || is_set(start_seconds.yfilter)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
     if (start_year.is_set || is_set(start_year.yfilter)) leaf_name_data.push_back(start_year.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -751,123 +798,6 @@ bool MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::has_leaf_or_child_of
     return false;
 }
 
-MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::KeyString()
-    :
-    cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"},
-    encryption_type{YType::int32, "encryption-type"},
-    string{YType::str, "string"}
-{
-    yang_name = "key-string"; yang_parent_name = "key";
-}
-
-MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::~KeyString()
-{
-}
-
-bool MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::has_data() const
-{
-    return cryptographic_algorithm.is_set
-	|| encryption_type.is_set
-	|| string.is_set;
-}
-
-bool MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cryptographic_algorithm.yfilter)
-	|| ydk::is_set(encryption_type.yfilter)
-	|| ydk::is_set(string.yfilter);
-}
-
-std::string MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key-string";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'KeyString' in Cisco_IOS_XR_lib_keychain_macsec_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cryptographic_algorithm.is_set || is_set(cryptographic_algorithm.yfilter)) leaf_name_data.push_back(cryptographic_algorithm.get_name_leafdata());
-    if (encryption_type.is_set || is_set(encryption_type.yfilter)) leaf_name_data.push_back(encryption_type.get_name_leafdata());
-    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cryptographic-algorithm")
-    {
-        cryptographic_algorithm = value;
-        cryptographic_algorithm.value_namespace = name_space;
-        cryptographic_algorithm.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "encryption-type")
-    {
-        encryption_type = value;
-        encryption_type.value_namespace = name_space;
-        encryption_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "string")
-    {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cryptographic-algorithm")
-    {
-        cryptographic_algorithm.yfilter = yfilter;
-    }
-    if(value_path == "encryption-type")
-    {
-        encryption_type.yfilter = yfilter;
-    }
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
-}
-
-bool MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cryptographic-algorithm" || name == "encryption-type" || name == "string")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf MacSecKeyChainMonth::jan {0, "jan"};
 const Enum::YLeaf MacSecKeyChainMonth::feb {1, "feb"};
 const Enum::YLeaf MacSecKeyChainMonth::mar {2, "mar"};
@@ -880,6 +810,9 @@ const Enum::YLeaf MacSecKeyChainMonth::sep {8, "sep"};
 const Enum::YLeaf MacSecKeyChainMonth::oct {9, "oct"};
 const Enum::YLeaf MacSecKeyChainMonth::nov {10, "nov"};
 const Enum::YLeaf MacSecKeyChainMonth::dec {11, "dec"};
+
+const Enum::YLeaf MacSecEncryption::type7 {0, "type7"};
+const Enum::YLeaf MacSecEncryption::type6 {2, "type6"};
 
 const Enum::YLeaf MacSecCryptoAlg::aes_128_cmac {7, "aes-128-cmac"};
 const Enum::YLeaf MacSecCryptoAlg::aes_256_cmac {8, "aes-256-cmac"};
