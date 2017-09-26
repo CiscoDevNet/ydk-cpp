@@ -674,6 +674,15 @@ class CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoent
 
 }; // CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry
 
+class TunnelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l2f;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf pptp;
+
+};
+
 class EndpointClass : public ydk::Enum
 {
     public:
@@ -683,15 +692,6 @@ class EndpointClass : public ydk::Enum
         static const ydk::Enum::YLeaf macAddress;
         static const ydk::Enum::YLeaf magicNumber;
         static const ydk::Enum::YLeaf phone;
-
-};
-
-class TunnelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l2f;
-        static const ydk::Enum::YLeaf l2tp;
-        static const ydk::Enum::YLeaf pptp;
 
 };
 

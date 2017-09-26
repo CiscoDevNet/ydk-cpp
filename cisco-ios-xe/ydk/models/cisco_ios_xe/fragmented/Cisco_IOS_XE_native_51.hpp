@@ -628,9 +628,9 @@ class Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Ad :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -681,9 +681,9 @@ class Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Q : 
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -3551,7 +3551,7 @@ class Native::Interface::PortChannel::Switchport::Access::Vlan : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
         class Vlan_;
 

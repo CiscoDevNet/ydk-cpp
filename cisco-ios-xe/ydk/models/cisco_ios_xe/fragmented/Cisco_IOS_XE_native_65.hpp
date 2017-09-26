@@ -1123,7 +1123,7 @@ class Native::Interface::Tunnel::Tunnel_ : public ydk::Entity
 
         ydk::YLeaf checksum; //type: empty
         ydk::YLeaf source; //type: string
-        ydk::YLeaf destination; //type: one of string, union
+        ydk::YLeaf destination; //type: one of union, string
         ydk::YLeaf entropy; //type: empty
         ydk::YLeaf key; //type: uint64
         ydk::YLeaf raw_packet_interface; //type: string
@@ -3207,8 +3207,8 @@ class Native::Interface::Vasileft::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -3371,8 +3371,8 @@ class Native::Interface::Vasileft::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

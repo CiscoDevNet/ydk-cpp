@@ -1833,10 +1833,6 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         class RcvQueue; //type: Native::Interface::VirtualPortGroup::RcvQueue
         class Peer; //type: Native::Interface::VirtualPortGroup::Peer
         class PmPath; //type: Native::Interface::VirtualPortGroup::PmPath
-        class Snmp; //type: Native::Interface::VirtualPortGroup::Snmp
-        class ServicePolicy; //type: Native::Interface::VirtualPortGroup::ServicePolicy
-        class Mab; //type: Native::Interface::VirtualPortGroup::Mab
-        class Cts; //type: Native::Interface::VirtualPortGroup::Cts
         class CarrierDelay; //type: Native::Interface::VirtualPortGroup::CarrierDelay
         class ChannelGroup; //type: Native::Interface::VirtualPortGroup::ChannelGroup
         class Ethernet; //type: Native::Interface::VirtualPortGroup::Ethernet
@@ -1846,6 +1842,10 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         class Plim; //type: Native::Interface::VirtualPortGroup::Plim
         class Pppoe; //type: Native::Interface::VirtualPortGroup::Pppoe
         class Service; //type: Native::Interface::VirtualPortGroup::Service
+        class Snmp; //type: Native::Interface::VirtualPortGroup::Snmp
+        class Cts; //type: Native::Interface::VirtualPortGroup::Cts
+        class ServicePolicy; //type: Native::Interface::VirtualPortGroup::ServicePolicy
+        class Mab; //type: Native::Interface::VirtualPortGroup::Mab
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::AccessSession> access_session;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Arp> arp;
@@ -2015,8 +2015,8 @@ class Native::Interface::VirtualPortGroup::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2179,8 +2179,8 @@ class Native::Interface::VirtualPortGroup::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

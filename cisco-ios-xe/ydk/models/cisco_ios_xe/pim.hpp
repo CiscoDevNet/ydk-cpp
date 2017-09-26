@@ -96,14 +96,21 @@ class RouteProtocolType : public ydk::Enum
 
 };
 
-class PimMode : public ydk::Enum
+class MrouteProtocolType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf sparse;
-        static const ydk::Enum::YLeaf dense;
-        static const ydk::Enum::YLeaf sparse_dense;
-        static const ydk::Enum::YLeaf dm_proxy;
-        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf mospf;
+        static const ydk::Enum::YLeaf pimSparseDense;
+        static const ydk::Enum::YLeaf cbt;
+        static const ydk::Enum::YLeaf pimSparseMode;
+        static const ydk::Enum::YLeaf pimDenseMode;
+        static const ydk::Enum::YLeaf igmpOnly;
+        static const ydk::Enum::YLeaf bgmp;
+        static const ydk::Enum::YLeaf msdp;
 
 };
 
@@ -123,21 +130,14 @@ class Origin : public ydk::Enum
 
 };
 
-class MrouteProtocolType : public ydk::Enum
+class PimMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf netmgmt;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf mospf;
-        static const ydk::Enum::YLeaf pimSparseDense;
-        static const ydk::Enum::YLeaf cbt;
-        static const ydk::Enum::YLeaf pimSparseMode;
-        static const ydk::Enum::YLeaf pimDenseMode;
-        static const ydk::Enum::YLeaf igmpOnly;
-        static const ydk::Enum::YLeaf bgmp;
-        static const ydk::Enum::YLeaf msdp;
+        static const ydk::Enum::YLeaf sparse;
+        static const ydk::Enum::YLeaf dense;
+        static const ydk::Enum::YLeaf sparse_dense;
+        static const ydk::Enum::YLeaf dm_proxy;
+        static const ydk::Enum::YLeaf none;
 
 };
 

@@ -69,13 +69,13 @@ const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
 const Enum::YLeaf MacAgingType::inactivity {0, "inactivity"};
 const Enum::YLeaf MacAgingType::absolute {1, "absolute"};
 
-const Enum::YLeaf MacSecureAction::none {0, "none"};
-const Enum::YLeaf MacSecureAction::restrict {1, "restrict"};
-const Enum::YLeaf MacSecureAction::shutdown {2, "shutdown"};
-
 const Enum::YLeaf EthTrafficClass::broadcast {0, "broadcast"};
 const Enum::YLeaf EthTrafficClass::multicast {1, "multicast"};
 const Enum::YLeaf EthTrafficClass::unknown_unicast {2, "unknown-unicast"};
+
+const Enum::YLeaf MacSecureAction::none {0, "none"};
+const Enum::YLeaf MacSecureAction::restrict {1, "restrict"};
+const Enum::YLeaf MacSecureAction::shutdown {2, "shutdown"};
 
 
 }

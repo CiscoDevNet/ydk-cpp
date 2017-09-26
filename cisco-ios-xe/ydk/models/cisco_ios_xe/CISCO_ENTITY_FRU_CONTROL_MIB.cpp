@@ -4200,6 +4200,52 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutput
     return false;
 }
 
+const Enum::YLeaf FRUCoolingUnit::cfm {1, "cfm"};
+const Enum::YLeaf FRUCoolingUnit::watts {2, "watts"};
+
+const Enum::YLeaf PowerOperType::offEnvOther {1, "offEnvOther"};
+const Enum::YLeaf PowerOperType::on {2, "on"};
+const Enum::YLeaf PowerOperType::offAdmin {3, "offAdmin"};
+const Enum::YLeaf PowerOperType::offDenied {4, "offDenied"};
+const Enum::YLeaf PowerOperType::offEnvPower {5, "offEnvPower"};
+const Enum::YLeaf PowerOperType::offEnvTemp {6, "offEnvTemp"};
+const Enum::YLeaf PowerOperType::offEnvFan {7, "offEnvFan"};
+const Enum::YLeaf PowerOperType::failed {8, "failed"};
+const Enum::YLeaf PowerOperType::onButFanFail {9, "onButFanFail"};
+const Enum::YLeaf PowerOperType::offCooling {10, "offCooling"};
+const Enum::YLeaf PowerOperType::offConnectorRating {11, "offConnectorRating"};
+const Enum::YLeaf PowerOperType::onButInlinePowerFail {12, "onButInlinePowerFail"};
+
+const Enum::YLeaf PowerAdminType::on {1, "on"};
+const Enum::YLeaf PowerAdminType::off {2, "off"};
+const Enum::YLeaf PowerAdminType::inlineAuto {3, "inlineAuto"};
+const Enum::YLeaf PowerAdminType::inlineOn {4, "inlineOn"};
+const Enum::YLeaf PowerAdminType::powerCycle {5, "powerCycle"};
+
+const Enum::YLeaf ModuleResetReasonType::unknown {1, "unknown"};
+const Enum::YLeaf ModuleResetReasonType::powerUp {2, "powerUp"};
+const Enum::YLeaf ModuleResetReasonType::parityError {3, "parityError"};
+const Enum::YLeaf ModuleResetReasonType::clearConfigReset {4, "clearConfigReset"};
+const Enum::YLeaf ModuleResetReasonType::manualReset {5, "manualReset"};
+const Enum::YLeaf ModuleResetReasonType::watchDogTimeoutReset {6, "watchDogTimeoutReset"};
+const Enum::YLeaf ModuleResetReasonType::resourceOverflowReset {7, "resourceOverflowReset"};
+const Enum::YLeaf ModuleResetReasonType::missingTaskReset {8, "missingTaskReset"};
+const Enum::YLeaf ModuleResetReasonType::lowVoltageReset {9, "lowVoltageReset"};
+const Enum::YLeaf ModuleResetReasonType::controllerReset {10, "controllerReset"};
+const Enum::YLeaf ModuleResetReasonType::systemReset {11, "systemReset"};
+const Enum::YLeaf ModuleResetReasonType::switchoverReset {12, "switchoverReset"};
+const Enum::YLeaf ModuleResetReasonType::upgradeReset {13, "upgradeReset"};
+const Enum::YLeaf ModuleResetReasonType::downgradeReset {14, "downgradeReset"};
+const Enum::YLeaf ModuleResetReasonType::cacheErrorReset {15, "cacheErrorReset"};
+const Enum::YLeaf ModuleResetReasonType::deviceDriverReset {16, "deviceDriverReset"};
+const Enum::YLeaf ModuleResetReasonType::softwareExceptionReset {17, "softwareExceptionReset"};
+const Enum::YLeaf ModuleResetReasonType::restoreConfigReset {18, "restoreConfigReset"};
+const Enum::YLeaf ModuleResetReasonType::abortRevReset {19, "abortRevReset"};
+const Enum::YLeaf ModuleResetReasonType::burnBootReset {20, "burnBootReset"};
+const Enum::YLeaf ModuleResetReasonType::standbyCdHealthierReset {21, "standbyCdHealthierReset"};
+const Enum::YLeaf ModuleResetReasonType::nonNativeConfigClearReset {22, "nonNativeConfigClearReset"};
+const Enum::YLeaf ModuleResetReasonType::memoryProtectionErrorReset {23, "memoryProtectionErrorReset"};
+
 const Enum::YLeaf ModuleOperType::unknown {1, "unknown"};
 const Enum::YLeaf ModuleOperType::ok {2, "ok"};
 const Enum::YLeaf ModuleOperType::disabled {3, "disabled"};
@@ -4236,56 +4282,10 @@ const Enum::YLeaf PowerRedundancyType::psRedundant {5, "psRedundant"};
 const Enum::YLeaf PowerRedundancyType::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
 const Enum::YLeaf PowerRedundancyType::psRedundantSingleInput {7, "psRedundantSingleInput"};
 
-const Enum::YLeaf ModuleResetReasonType::unknown {1, "unknown"};
-const Enum::YLeaf ModuleResetReasonType::powerUp {2, "powerUp"};
-const Enum::YLeaf ModuleResetReasonType::parityError {3, "parityError"};
-const Enum::YLeaf ModuleResetReasonType::clearConfigReset {4, "clearConfigReset"};
-const Enum::YLeaf ModuleResetReasonType::manualReset {5, "manualReset"};
-const Enum::YLeaf ModuleResetReasonType::watchDogTimeoutReset {6, "watchDogTimeoutReset"};
-const Enum::YLeaf ModuleResetReasonType::resourceOverflowReset {7, "resourceOverflowReset"};
-const Enum::YLeaf ModuleResetReasonType::missingTaskReset {8, "missingTaskReset"};
-const Enum::YLeaf ModuleResetReasonType::lowVoltageReset {9, "lowVoltageReset"};
-const Enum::YLeaf ModuleResetReasonType::controllerReset {10, "controllerReset"};
-const Enum::YLeaf ModuleResetReasonType::systemReset {11, "systemReset"};
-const Enum::YLeaf ModuleResetReasonType::switchoverReset {12, "switchoverReset"};
-const Enum::YLeaf ModuleResetReasonType::upgradeReset {13, "upgradeReset"};
-const Enum::YLeaf ModuleResetReasonType::downgradeReset {14, "downgradeReset"};
-const Enum::YLeaf ModuleResetReasonType::cacheErrorReset {15, "cacheErrorReset"};
-const Enum::YLeaf ModuleResetReasonType::deviceDriverReset {16, "deviceDriverReset"};
-const Enum::YLeaf ModuleResetReasonType::softwareExceptionReset {17, "softwareExceptionReset"};
-const Enum::YLeaf ModuleResetReasonType::restoreConfigReset {18, "restoreConfigReset"};
-const Enum::YLeaf ModuleResetReasonType::abortRevReset {19, "abortRevReset"};
-const Enum::YLeaf ModuleResetReasonType::burnBootReset {20, "burnBootReset"};
-const Enum::YLeaf ModuleResetReasonType::standbyCdHealthierReset {21, "standbyCdHealthierReset"};
-const Enum::YLeaf ModuleResetReasonType::nonNativeConfigClearReset {22, "nonNativeConfigClearReset"};
-const Enum::YLeaf ModuleResetReasonType::memoryProtectionErrorReset {23, "memoryProtectionErrorReset"};
-
-const Enum::YLeaf FRUCoolingUnit::cfm {1, "cfm"};
-const Enum::YLeaf FRUCoolingUnit::watts {2, "watts"};
-
 const Enum::YLeaf ModuleAdminType::enabled {1, "enabled"};
 const Enum::YLeaf ModuleAdminType::disabled {2, "disabled"};
 const Enum::YLeaf ModuleAdminType::reset {3, "reset"};
 const Enum::YLeaf ModuleAdminType::outOfServiceAdmin {4, "outOfServiceAdmin"};
-
-const Enum::YLeaf PowerAdminType::on {1, "on"};
-const Enum::YLeaf PowerAdminType::off {2, "off"};
-const Enum::YLeaf PowerAdminType::inlineAuto {3, "inlineAuto"};
-const Enum::YLeaf PowerAdminType::inlineOn {4, "inlineOn"};
-const Enum::YLeaf PowerAdminType::powerCycle {5, "powerCycle"};
-
-const Enum::YLeaf PowerOperType::offEnvOther {1, "offEnvOther"};
-const Enum::YLeaf PowerOperType::on {2, "on"};
-const Enum::YLeaf PowerOperType::offAdmin {3, "offAdmin"};
-const Enum::YLeaf PowerOperType::offDenied {4, "offDenied"};
-const Enum::YLeaf PowerOperType::offEnvPower {5, "offEnvPower"};
-const Enum::YLeaf PowerOperType::offEnvTemp {6, "offEnvTemp"};
-const Enum::YLeaf PowerOperType::offEnvFan {7, "offEnvFan"};
-const Enum::YLeaf PowerOperType::failed {8, "failed"};
-const Enum::YLeaf PowerOperType::onButFanFail {9, "onButFanFail"};
-const Enum::YLeaf PowerOperType::offCooling {10, "offCooling"};
-const Enum::YLeaf PowerOperType::offConnectorRating {11, "offConnectorRating"};
-const Enum::YLeaf PowerOperType::onButInlinePowerFail {12, "onButInlinePowerFail"};
 
 const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::unknown {1, "unknown"};
 const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::up {2, "up"};

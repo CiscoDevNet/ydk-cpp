@@ -2024,12 +2024,12 @@ class Native::Interface::Loopback : public ydk::Entity
         class PmPath; //type: Native::Interface::Loopback::PmPath
         class Snmp; //type: Native::Interface::Loopback::Snmp
         class Crypto; //type: Native::Interface::Loopback::Crypto
-        class ServicePolicy; //type: Native::Interface::Loopback::ServicePolicy
-        class Lisp; //type: Native::Interface::Loopback::Lisp
-        class Udld; //type: Native::Interface::Loopback::Udld
         class Cts; //type: Native::Interface::Loopback::Cts
         class Performance; //type: Native::Interface::Loopback::Performance
+        class ServicePolicy; //type: Native::Interface::Loopback::ServicePolicy
+        class Lisp; //type: Native::Interface::Loopback::Lisp
         class Ospfv3; //type: Native::Interface::Loopback::Ospfv3
+        class Udld; //type: Native::Interface::Loopback::Udld
         class ZoneMember; //type: Native::Interface::Loopback::ZoneMember
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Loopback::AccessSession> access_session;
@@ -2195,8 +2195,8 @@ class Native::Interface::Loopback::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2359,8 +2359,8 @@ class Native::Interface::Loopback::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -3282,14 +3282,14 @@ class Native::Interface::Loopback::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::Loopback::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::Loopback::Ip::SummaryAddress
         class Verify; //type: Native::Interface::Loopback::Ip::Verify
-        class Rsvp; //type: Native::Interface::Loopback::Ip::Rsvp
-        class Lisp; //type: Native::Interface::Loopback::Ip::Lisp
-        class Igmp; //type: Native::Interface::Loopback::Ip::Igmp
-        class Ospf; //type: Native::Interface::Loopback::Ip::Ospf
-        class Wccp; //type: Native::Interface::Loopback::Ip::Wccp
-        class Nbar; //type: Native::Interface::Loopback::Ip::Nbar
         class Flow; //type: Native::Interface::Loopback::Ip::Flow
+        class Igmp; //type: Native::Interface::Loopback::Ip::Igmp
+        class Lisp; //type: Native::Interface::Loopback::Ip::Lisp
         class Nat; //type: Native::Interface::Loopback::Ip::Nat
+        class Nbar; //type: Native::Interface::Loopback::Ip::Nbar
+        class Ospf; //type: Native::Interface::Loopback::Ip::Ospf
+        class Rsvp; //type: Native::Interface::Loopback::Ip::Rsvp
+        class Wccp; //type: Native::Interface::Loopback::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Loopback::Ip::AccessGroup> access_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Loopback::Ip::Address> address;

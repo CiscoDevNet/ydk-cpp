@@ -1232,17 +1232,6 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class RcvQueue; //type: Native::Interface::FastEthernet::RcvQueue
         class Peer; //type: Native::Interface::FastEthernet::Peer
         class PmPath; //type: Native::Interface::FastEthernet::PmPath
-        class Snmp; //type: Native::Interface::FastEthernet::Snmp
-        class Crypto; //type: Native::Interface::FastEthernet::Crypto
-        class ServicePolicy; //type: Native::Interface::FastEthernet::ServicePolicy
-        class Dot1X; //type: Native::Interface::FastEthernet::Dot1X
-        class Lldp; //type: Native::Interface::FastEthernet::Lldp
-        class Lisp; //type: Native::Interface::FastEthernet::Lisp
-        class Cdp; //type: Native::Interface::FastEthernet::Cdp
-        class Udld; //type: Native::Interface::FastEthernet::Udld
-        class Authentication; //type: Native::Interface::FastEthernet::Authentication
-        class Mab; //type: Native::Interface::FastEthernet::Mab
-        class Cts; //type: Native::Interface::FastEthernet::Cts
         class CarrierDelay; //type: Native::Interface::FastEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::FastEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::FastEthernet::Ethernet
@@ -1253,7 +1242,21 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class Pppoe; //type: Native::Interface::FastEthernet::Pppoe
         class Service; //type: Native::Interface::FastEthernet::Service
         class Xconnect; //type: Native::Interface::FastEthernet::Xconnect
+        class Cdp; //type: Native::Interface::FastEthernet::Cdp
+        class Snmp; //type: Native::Interface::FastEthernet::Snmp
+        class Crypto; //type: Native::Interface::FastEthernet::Crypto
+        class Cts; //type: Native::Interface::FastEthernet::Cts
+        class Dot1X; //type: Native::Interface::FastEthernet::Dot1X
         class Performance; //type: Native::Interface::FastEthernet::Performance
+        class ServicePolicy; //type: Native::Interface::FastEthernet::ServicePolicy
+        class Lisp; //type: Native::Interface::FastEthernet::Lisp
+        class Lldp; //type: Native::Interface::FastEthernet::Lldp
+        class Mka; //type: Native::Interface::FastEthernet::Mka
+        class Ospfv3; //type: Native::Interface::FastEthernet::Ospfv3
+        class Power; //type: Native::Interface::FastEthernet::Power
+        class Authentication; //type: Native::Interface::FastEthernet::Authentication
+        class Mab; //type: Native::Interface::FastEthernet::Mab
+        class SpanningTree; //type: Native::Interface::FastEthernet::SpanningTree
         class Auto_; //type: Native::Interface::FastEthernet::Auto_
         class Datalink; //type: Native::Interface::FastEthernet::Datalink
         class Energywise; //type: Native::Interface::FastEthernet::Energywise
@@ -1267,11 +1270,8 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::FastEthernet::SrrQueue
         class Macsec; //type: Native::Interface::FastEthernet::Macsec
         class DeviceTracking; //type: Native::Interface::FastEthernet::DeviceTracking
-        class Power; //type: Native::Interface::FastEthernet::Power
-        class Ospfv3; //type: Native::Interface::FastEthernet::Ospfv3
-        class Mka; //type: Native::Interface::FastEthernet::Mka
+        class Udld; //type: Native::Interface::FastEthernet::Udld
         class ZoneMember; //type: Native::Interface::FastEthernet::ZoneMember
-        class SpanningTree; //type: Native::Interface::FastEthernet::SpanningTree
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::AccessSession> access_session;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Arp> arp;
@@ -2133,8 +2133,8 @@ class Native::Interface::FastEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2297,8 +2297,8 @@ class Native::Interface::FastEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

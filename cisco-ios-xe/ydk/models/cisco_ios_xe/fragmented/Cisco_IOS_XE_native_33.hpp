@@ -489,7 +489,7 @@ class Native::Interface::FortyGigabitEthernet::Switchport::Access::Vlan : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -1172,7 +1172,7 @@ class Native::Interface::FortyGigabitEthernet::Switchport::Voice::Vlan : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of string, uint16, enumeration
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -1400,17 +1400,6 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class RcvQueue; //type: Native::Interface::GigabitEthernet::RcvQueue
         class Peer; //type: Native::Interface::GigabitEthernet::Peer
         class PmPath; //type: Native::Interface::GigabitEthernet::PmPath
-        class Snmp; //type: Native::Interface::GigabitEthernet::Snmp
-        class Crypto; //type: Native::Interface::GigabitEthernet::Crypto
-        class ServicePolicy; //type: Native::Interface::GigabitEthernet::ServicePolicy
-        class Dot1X; //type: Native::Interface::GigabitEthernet::Dot1X
-        class Lldp; //type: Native::Interface::GigabitEthernet::Lldp
-        class Lisp; //type: Native::Interface::GigabitEthernet::Lisp
-        class Cdp; //type: Native::Interface::GigabitEthernet::Cdp
-        class Udld; //type: Native::Interface::GigabitEthernet::Udld
-        class Authentication; //type: Native::Interface::GigabitEthernet::Authentication
-        class Mab; //type: Native::Interface::GigabitEthernet::Mab
-        class Cts; //type: Native::Interface::GigabitEthernet::Cts
         class CarrierDelay; //type: Native::Interface::GigabitEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::GigabitEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::GigabitEthernet::Ethernet
@@ -1421,7 +1410,21 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class Pppoe; //type: Native::Interface::GigabitEthernet::Pppoe
         class Service; //type: Native::Interface::GigabitEthernet::Service
         class Xconnect; //type: Native::Interface::GigabitEthernet::Xconnect
+        class Cdp; //type: Native::Interface::GigabitEthernet::Cdp
+        class Snmp; //type: Native::Interface::GigabitEthernet::Snmp
+        class Crypto; //type: Native::Interface::GigabitEthernet::Crypto
+        class Cts; //type: Native::Interface::GigabitEthernet::Cts
+        class Dot1X; //type: Native::Interface::GigabitEthernet::Dot1X
         class Performance; //type: Native::Interface::GigabitEthernet::Performance
+        class ServicePolicy; //type: Native::Interface::GigabitEthernet::ServicePolicy
+        class Lisp; //type: Native::Interface::GigabitEthernet::Lisp
+        class Lldp; //type: Native::Interface::GigabitEthernet::Lldp
+        class Mka; //type: Native::Interface::GigabitEthernet::Mka
+        class Ospfv3; //type: Native::Interface::GigabitEthernet::Ospfv3
+        class Power; //type: Native::Interface::GigabitEthernet::Power
+        class Authentication; //type: Native::Interface::GigabitEthernet::Authentication
+        class Mab; //type: Native::Interface::GigabitEthernet::Mab
+        class SpanningTree; //type: Native::Interface::GigabitEthernet::SpanningTree
         class Auto_; //type: Native::Interface::GigabitEthernet::Auto_
         class Datalink; //type: Native::Interface::GigabitEthernet::Datalink
         class Energywise; //type: Native::Interface::GigabitEthernet::Energywise
@@ -1435,11 +1438,8 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::GigabitEthernet::SrrQueue
         class Macsec; //type: Native::Interface::GigabitEthernet::Macsec
         class DeviceTracking; //type: Native::Interface::GigabitEthernet::DeviceTracking
-        class Power; //type: Native::Interface::GigabitEthernet::Power
-        class Ospfv3; //type: Native::Interface::GigabitEthernet::Ospfv3
-        class Mka; //type: Native::Interface::GigabitEthernet::Mka
+        class Udld; //type: Native::Interface::GigabitEthernet::Udld
         class ZoneMember; //type: Native::Interface::GigabitEthernet::ZoneMember
-        class SpanningTree; //type: Native::Interface::GigabitEthernet::SpanningTree
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::AccessSession> access_session;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Arp> arp;
@@ -2303,8 +2303,8 @@ class Native::Interface::GigabitEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2467,8 +2467,8 @@ class Native::Interface::GigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

@@ -2713,7 +2713,7 @@ class Native::ObjectGroup::Network::ObjModeConfigNetworkGroup : public ydk::Enti
 
         ydk::YLeaf description; //type: string
         ydk::YLeaf group_object; //type: string
-        ydk::YLeaf host; //type: one of string, union
+        ydk::YLeaf host; //type: one of union, string
         class NetworkAddress; //type: Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress
         class Range; //type: Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range
 
@@ -2962,9 +2962,9 @@ class Native::ObjectGroup::Service::Tcp::TcpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tcp_port; //type: one of uint16, enumeration
+        ydk::YLeaf tcp_port; //type: one of enumeration, uint16
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_tcp_port; //type: one of uint16, enumeration
+        ydk::YLeaf max_tcp_port; //type: one of enumeration, uint16
         class Operator_;
 
 }; // Native::ObjectGroup::Service::Tcp::TcpPortList
@@ -3009,9 +3009,9 @@ class Native::ObjectGroup::Service::TcpUdp::UdpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf udp_port; //type: one of enumeration, uint16
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf max_udp_port; //type: one of enumeration, uint16
         class Operator_;
 
 }; // Native::ObjectGroup::Service::TcpUdp::UdpPortList
@@ -3056,9 +3056,9 @@ class Native::ObjectGroup::Service::Udp::UdpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf udp_port; //type: one of enumeration, uint16
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf max_udp_port; //type: one of enumeration, uint16
         class Operator_;
 
 }; // Native::ObjectGroup::Service::Udp::UdpPortList
@@ -3081,7 +3081,7 @@ class Native::Otv : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf site_identifier; //type: one of uint32, string
+        ydk::YLeaf site_identifier; //type: one of string, uint32
         class Fragmentation; //type: Native::Otv::Fragmentation
         class Isis; //type: Native::Otv::Isis
         class Site; //type: Native::Otv::Site

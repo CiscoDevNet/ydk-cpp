@@ -556,6 +556,22 @@ class IpSlaStats::SlaOperEntry::Stats::VoiceScore : public ydk::Entity
 
 }; // IpSlaStats::SlaOperEntry::Stats::VoiceScore
 
+class TtlType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ttl_finite;
+        static const ydk::Enum::YLeaf ttl_forever;
+
+};
+
+class AccuracyType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf accuracy_milliseconds;
+        static const ydk::Enum::YLeaf accuracy_microseconds;
+
+};
+
 class SlaOperType : public ydk::Enum
 {
     public:
@@ -583,14 +599,6 @@ class RttType : public ydk::Enum
 
 };
 
-class TtlType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ttl_finite;
-        static const ydk::Enum::YLeaf ttl_forever;
-
-};
-
 class SlaReturnCode : public ydk::Enum
 {
     public:
@@ -603,14 +611,6 @@ class SlaReturnCode : public ydk::Enum
         static const ydk::Enum::YLeaf ret_code_internal_error;
         static const ydk::Enum::YLeaf ret_code_operation_failure;
         static const ydk::Enum::YLeaf ret_code_could_not_find;
-
-};
-
-class AccuracyType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf accuracy_milliseconds;
-        static const ydk::Enum::YLeaf accuracy_microseconds;
 
 };
 

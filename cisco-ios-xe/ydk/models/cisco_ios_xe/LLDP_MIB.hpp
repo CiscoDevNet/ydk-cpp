@@ -610,15 +610,6 @@ class LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry : public ydk::Entity
 
 }; // LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry
 
-class LldpManAddrIfSubtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ifIndex;
-        static const ydk::Enum::YLeaf systemPortNumber;
-
-};
-
 class LldpChassisIdSubtype : public ydk::Enum
 {
     public:
@@ -629,6 +620,15 @@ class LldpChassisIdSubtype : public ydk::Enum
         static const ydk::Enum::YLeaf networkAddress;
         static const ydk::Enum::YLeaf interfaceName;
         static const ydk::Enum::YLeaf local;
+
+};
+
+class LldpManAddrIfSubtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ifIndex;
+        static const ydk::Enum::YLeaf systemPortNumber;
 
 };
 

@@ -2560,16 +2560,16 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has
     return false;
 }
 
-const Enum::YLeaf CCallControlJitterDelayMode::adaptive {1, "adaptive"};
-const Enum::YLeaf CCallControlJitterDelayMode::fixed {2, "fixed"};
+const Enum::YLeaf CGwServiceState::inService {1, "inService"};
+const Enum::YLeaf CGwServiceState::forcedOutOfService {2, "forcedOutOfService"};
+const Enum::YLeaf CGwServiceState::gracefulOutOfService {3, "gracefulOutOfService"};
 
 const Enum::YLeaf CGwAdminState::inService {1, "inService"};
 const Enum::YLeaf CGwAdminState::forcedOutOfService {2, "forcedOutOfService"};
 const Enum::YLeaf CGwAdminState::gracefulOutOfService {3, "gracefulOutOfService"};
 
-const Enum::YLeaf CGwServiceState::inService {1, "inService"};
-const Enum::YLeaf CGwServiceState::forcedOutOfService {2, "forcedOutOfService"};
-const Enum::YLeaf CGwServiceState::gracefulOutOfService {3, "gracefulOutOfService"};
+const Enum::YLeaf CCallControlJitterDelayMode::adaptive {1, "adaptive"};
+const Enum::YLeaf CCallControlJitterDelayMode::fixed {2, "fixed"};
 
 const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::disabled {1, "disabled"};
 const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::enabled {2, "enabled"};

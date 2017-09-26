@@ -1223,14 +1223,6 @@ class CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry : public yd
 
 }; // CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry
 
-class CiiMetricType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf external;
-
-};
-
 class CiiSupportedProtocol : public ydk::Enum
 {
     public:
@@ -1250,15 +1242,6 @@ class CiiLevelState : public ydk::Enum
 
 };
 
-class CiiISLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf area;
-        static const ydk::Enum::YLeaf domain;
-
-};
-
 class CiiAdminState : public ydk::Enum
 {
     public:
@@ -1273,6 +1256,23 @@ class CiiMetricStyle : public ydk::Enum
         static const ydk::Enum::YLeaf narrow;
         static const ydk::Enum::YLeaf wide;
         static const ydk::Enum::YLeaf both;
+
+};
+
+class CiiMetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class CiiISLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf area;
+        static const ydk::Enum::YLeaf domain;
 
 };
 

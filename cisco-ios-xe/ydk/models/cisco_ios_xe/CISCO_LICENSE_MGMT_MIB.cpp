@@ -2760,12 +2760,14 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoent
     return false;
 }
 
-const Enum::YLeaf ClmgmtLicenseActionState::none {1, "none"};
-const Enum::YLeaf ClmgmtLicenseActionState::pending {2, "pending"};
-const Enum::YLeaf ClmgmtLicenseActionState::inProgress {3, "inProgress"};
-const Enum::YLeaf ClmgmtLicenseActionState::successful {4, "successful"};
-const Enum::YLeaf ClmgmtLicenseActionState::partiallySuccessful {5, "partiallySuccessful"};
-const Enum::YLeaf ClmgmtLicenseActionState::failed {6, "failed"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::none {1, "none"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::local {2, "local"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::tftp {3, "tftp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::ftp {4, "ftp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::rcp {5, "rcp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::http {6, "http"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::scp {7, "scp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::sftp {8, "sftp"};
 
 const Enum::YLeaf ClmgmtLicenseActionFailCause::none {1, "none"};
 const Enum::YLeaf ClmgmtLicenseActionFailCause::generalFailure {2, "generalFailure"};
@@ -2790,14 +2792,12 @@ const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidLicenseBackupFile {20, "i
 const Enum::YLeaf ClmgmtLicenseActionFailCause::licenseClearInProgress {21, "licenseClearInProgress"};
 const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidLicenseEULAFile {22, "invalidLicenseEULAFile"};
 
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::none {1, "none"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::local {2, "local"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::tftp {3, "tftp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::ftp {4, "ftp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::rcp {5, "rcp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::http {6, "http"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::scp {7, "scp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::sftp {8, "sftp"};
+const Enum::YLeaf ClmgmtLicenseActionState::none {1, "none"};
+const Enum::YLeaf ClmgmtLicenseActionState::pending {2, "pending"};
+const Enum::YLeaf ClmgmtLicenseActionState::inProgress {3, "inProgress"};
+const Enum::YLeaf ClmgmtLicenseActionState::successful {4, "successful"};
+const Enum::YLeaf ClmgmtLicenseActionState::partiallySuccessful {5, "partiallySuccessful"};
+const Enum::YLeaf ClmgmtLicenseActionState::failed {6, "failed"};
 
 const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommand::noOp {1, "noOp"};
 const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommand::getDeviceCredentials {2, "getDeviceCredentials"};

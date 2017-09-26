@@ -2210,6 +2210,20 @@ bool CISCOIPSECMIB::Cipstrapcntlgroup::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
+const Enum::YLeaf CryptomapType::cryptomapTypeNONE {0, "cryptomapTypeNONE"};
+const Enum::YLeaf CryptomapType::cryptomapTypeMANUAL {1, "cryptomapTypeMANUAL"};
+const Enum::YLeaf CryptomapType::cryptomapTypeISAKMP {2, "cryptomapTypeISAKMP"};
+const Enum::YLeaf CryptomapType::cryptomapTypeCET {3, "cryptomapTypeCET"};
+const Enum::YLeaf CryptomapType::cryptomapTypeDYNAMIC {4, "cryptomapTypeDYNAMIC"};
+const Enum::YLeaf CryptomapType::cryptomapTypeDYNAMICDISCOVERY {5, "cryptomapTypeDYNAMICDISCOVERY"};
+
+const Enum::YLeaf IkeHashAlgo::none {1, "none"};
+const Enum::YLeaf IkeHashAlgo::md5 {2, "md5"};
+const Enum::YLeaf IkeHashAlgo::sha {3, "sha"};
+
+const Enum::YLeaf TrapStatus::enabled {1, "enabled"};
+const Enum::YLeaf TrapStatus::disabled {2, "disabled"};
+
 const Enum::YLeaf IkeAuthMethod::none {1, "none"};
 const Enum::YLeaf IkeAuthMethod::preSharedKey {2, "preSharedKey"};
 const Enum::YLeaf IkeAuthMethod::rsaSig {3, "rsaSig"};
@@ -2220,31 +2234,17 @@ const Enum::YLeaf DiffHellmanGrp::none {1, "none"};
 const Enum::YLeaf DiffHellmanGrp::dhGroup1 {2, "dhGroup1"};
 const Enum::YLeaf DiffHellmanGrp::dhGroup2 {3, "dhGroup2"};
 
-const Enum::YLeaf IkeHashAlgo::none {1, "none"};
-const Enum::YLeaf IkeHashAlgo::md5 {2, "md5"};
-const Enum::YLeaf IkeHashAlgo::sha {3, "sha"};
+const Enum::YLeaf CryptomapSetBindStatus::unknown {0, "unknown"};
+const Enum::YLeaf CryptomapSetBindStatus::attached {1, "attached"};
+const Enum::YLeaf CryptomapSetBindStatus::detached {2, "detached"};
 
 const Enum::YLeaf EncryptAlgo::none {1, "none"};
 const Enum::YLeaf EncryptAlgo::des {2, "des"};
 const Enum::YLeaf EncryptAlgo::des3 {3, "des3"};
 
-const Enum::YLeaf CryptomapSetBindStatus::unknown {0, "unknown"};
-const Enum::YLeaf CryptomapSetBindStatus::attached {1, "attached"};
-const Enum::YLeaf CryptomapSetBindStatus::detached {2, "detached"};
-
-const Enum::YLeaf CryptomapType::cryptomapTypeNONE {0, "cryptomapTypeNONE"};
-const Enum::YLeaf CryptomapType::cryptomapTypeMANUAL {1, "cryptomapTypeMANUAL"};
-const Enum::YLeaf CryptomapType::cryptomapTypeISAKMP {2, "cryptomapTypeISAKMP"};
-const Enum::YLeaf CryptomapType::cryptomapTypeCET {3, "cryptomapTypeCET"};
-const Enum::YLeaf CryptomapType::cryptomapTypeDYNAMIC {4, "cryptomapTypeDYNAMIC"};
-const Enum::YLeaf CryptomapType::cryptomapTypeDYNAMICDISCOVERY {5, "cryptomapTypeDYNAMICDISCOVERY"};
-
 const Enum::YLeaf IkeIdentityType::isakmpIdTypeUNKNOWN {0, "isakmpIdTypeUNKNOWN"};
 const Enum::YLeaf IkeIdentityType::isakmpIdTypeADDRESS {1, "isakmpIdTypeADDRESS"};
 const Enum::YLeaf IkeIdentityType::isakmpIdTypeHOSTNAME {2, "isakmpIdTypeHOSTNAME"};
-
-const Enum::YLeaf TrapStatus::enabled {1, "enabled"};
-const Enum::YLeaf TrapStatus::disabled {2, "disabled"};
 
 
 }

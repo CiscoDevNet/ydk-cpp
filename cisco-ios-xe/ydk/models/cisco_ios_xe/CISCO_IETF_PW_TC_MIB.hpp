@@ -10,19 +10,6 @@
 namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_TC_MIB {
 
-class CpwOperStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf testing;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf dormant;
-        static const ydk::Enum::YLeaf notPresent;
-        static const ydk::Enum::YLeaf lowerLayerDown;
-
-};
-
 class CpwVcType : public ydk::Enum
 {
     public:
@@ -46,6 +33,19 @@ class CpwVcType : public ydk::Enum
         static const ydk::Enum::YLeaf basicTdmIp;
         static const ydk::Enum::YLeaf tdmCasCesPsn;
         static const ydk::Enum::YLeaf tdmCasTdmIp;
+
+};
+
+class CpwOperStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf testing;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf dormant;
+        static const ydk::Enum::YLeaf notPresent;
+        static const ydk::Enum::YLeaf lowerLayerDown;
 
 };
 

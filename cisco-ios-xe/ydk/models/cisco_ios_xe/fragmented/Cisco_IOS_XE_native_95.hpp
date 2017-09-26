@@ -217,7 +217,7 @@ class Native::RouteMap::RouteMapSeq::Match::SourceProtocol : public ydk::Entity
         ydk::YLeaf mobile; //type: empty
         ydk::YLeaf rip; //type: empty
         ydk::YLeaf static_; //type: empty
-        ydk::YLeafList bgp; //type: list of  one of uint32, string
+        ydk::YLeafList bgp; //type: list of  one of string, uint32
         ydk::YLeafList eigrp; //type: list of  string
         ydk::YLeafList ospf; //type: list of  string
         ydk::YLeafList ospfv3; //type: list of  string
@@ -2734,14 +2734,14 @@ class Native::Router : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        class Bgp; //type: Native::Router::Bgp
         class Isis; //type: Native::Router::Isis
         class IsisContainer; //type: Native::Router::IsisContainer
+        class Eigrp; //type: Native::Router::Eigrp
         class Lisp; //type: Native::Router::Lisp
         class LispList; //type: Native::Router::LispList
-        class Eigrp; //type: Native::Router::Eigrp
         class Ospf; //type: Native::Router::Ospf
         class Ospfv3; //type: Native::Router::Ospfv3
-        class Bgp; //type: Native::Router::Bgp
         class Rip; //type: Native::Router::Rip
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp> > bgp;
@@ -2774,7 +2774,7 @@ class Native::Router::Bgp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf default_metric; //type: uint32
         ydk::YLeaf synchronization; //type: empty
         ydk::YLeaf auto_summary; //type: boolean
@@ -2971,7 +2971,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Bgp_ : public ydk::Entity
         ydk::YLeaf always_compare_med; //type: empty
         ydk::YLeaf aggregate_timer; //type: uint8
         ydk::YLeaf advertise_best_external; //type: empty
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf deterministic_med; //type: empty
         ydk::YLeaf dmzlink_bw; //type: empty
         ydk::YLeaf enforce_first_as; //type: empty

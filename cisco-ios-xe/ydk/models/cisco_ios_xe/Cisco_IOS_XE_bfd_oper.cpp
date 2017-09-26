@@ -1571,6 +1571,12 @@ bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_leaf_or_chi
     return false;
 }
 
+const Enum::YLeaf BfdRemoteStateType::up {0, "up"};
+const Enum::YLeaf BfdRemoteStateType::down {1, "down"};
+const Enum::YLeaf BfdRemoteStateType::init {2, "init"};
+const Enum::YLeaf BfdRemoteStateType::admindown {3, "admindown"};
+const Enum::YLeaf BfdRemoteStateType::invalid {4, "invalid"};
+
 const Enum::YLeaf BfdStateType::admindown {0, "admindown"};
 const Enum::YLeaf BfdStateType::down {1, "down"};
 const Enum::YLeaf BfdStateType::fail {2, "fail"};
@@ -1588,12 +1594,6 @@ const Enum::YLeaf BfdOperSessionType::ipv6_multihop {5, "ipv6-multihop"};
 const Enum::YLeaf BfdLspType::working {0, "working"};
 const Enum::YLeaf BfdLspType::protect {1, "protect"};
 const Enum::YLeaf BfdLspType::unknown {2, "unknown"};
-
-const Enum::YLeaf BfdRemoteStateType::up {0, "up"};
-const Enum::YLeaf BfdRemoteStateType::down {1, "down"};
-const Enum::YLeaf BfdRemoteStateType::init {2, "init"};
-const Enum::YLeaf BfdRemoteStateType::admindown {3, "admindown"};
-const Enum::YLeaf BfdRemoteStateType::invalid {4, "invalid"};
 
 
 }

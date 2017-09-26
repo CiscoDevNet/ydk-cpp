@@ -400,7 +400,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Redistribute::Bgp_ : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
 
@@ -1063,7 +1063,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_ : public ydk::Entit
         ydk::YLeaf always_compare_med; //type: empty
         ydk::YLeaf aggregate_timer; //type: uint8
         ydk::YLeaf advertise_best_external; //type: empty
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf deterministic_med; //type: empty
         ydk::YLeaf dmzlink_bw; //type: empty
         ydk::YLeaf enforce_first_as; //type: empty
@@ -2458,11 +2458,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Neighbor : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         ydk::YLeaf activate; //type: empty
         ydk::YLeaf allow_policy; //type: empty
         ydk::YLeaf advertisement_interval; //type: uint16
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf description; //type: string
         ydk::YLeaf disable_connected_check; //type: empty
         ydk::YLeaf dmzlink_bw; //type: empty
@@ -2470,7 +2470,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Neighbor : public ydk::E
         ydk::YLeaf next_hop_unchanged; //type: empty
         ydk::YLeaf remove_private_as; //type: empty
         ydk::YLeaf route_reflector_client; //type: empty
-        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
+        ydk::YLeaf route_reflector_cluster_id; //type: one of string, uint32
         ydk::YLeaf soo; //type: string
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf soft_reconfiguration; //type: SoftReconfiguration
@@ -3445,7 +3445,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Neighbor::LocalAs : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty

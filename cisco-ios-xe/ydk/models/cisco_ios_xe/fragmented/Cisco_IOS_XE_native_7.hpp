@@ -1257,11 +1257,11 @@ class Native::Clock_::SummerTime : public ydk::Entity
         ydk::YLeaf date_end_time; //type: string
         ydk::YLeaf offset; //type: uint16
         ydk::YLeaf recurring; //type: empty
-        ydk::YLeaf recurring_start; //type: one of uint8, enumeration
+        ydk::YLeaf recurring_start; //type: one of enumeration, uint8
         ydk::YLeaf recurring_start_day; //type: WeekdayType
         ydk::YLeaf recurring_start_month; //type: MonthType
         ydk::YLeaf recurring_start_time; //type: string
-        ydk::YLeaf recurring_end; //type: one of uint8, enumeration
+        ydk::YLeaf recurring_end; //type: one of enumeration, uint8
         ydk::YLeaf recurring_end_day; //type: WeekdayType
         ydk::YLeaf recurring_end_month; //type: MonthType
         ydk::YLeaf recurring_end_time; //type: string

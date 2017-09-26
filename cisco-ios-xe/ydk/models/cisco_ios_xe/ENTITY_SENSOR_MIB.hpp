@@ -92,6 +92,24 @@ class ENTITYSENSORMIB::Entphysensortable::Entphysensorentry : public ydk::Entity
 
 }; // ENTITYSENSORMIB::Entphysensortable::Entphysensorentry
 
+class EntitySensorDataType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf voltsAC;
+        static const ydk::Enum::YLeaf voltsDC;
+        static const ydk::Enum::YLeaf amperes;
+        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf hertz;
+        static const ydk::Enum::YLeaf celsius;
+        static const ydk::Enum::YLeaf percentRH;
+        static const ydk::Enum::YLeaf rpm;
+        static const ydk::Enum::YLeaf cmm;
+        static const ydk::Enum::YLeaf truthvalue;
+
+};
+
 class EntitySensorStatus : public ydk::Enum
 {
     public:
@@ -121,24 +139,6 @@ class EntitySensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf peta;
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
-
-};
-
-class EntitySensorDataType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf voltsAC;
-        static const ydk::Enum::YLeaf voltsDC;
-        static const ydk::Enum::YLeaf amperes;
-        static const ydk::Enum::YLeaf watts;
-        static const ydk::Enum::YLeaf hertz;
-        static const ydk::Enum::YLeaf celsius;
-        static const ydk::Enum::YLeaf percentRH;
-        static const ydk::Enum::YLeaf rpm;
-        static const ydk::Enum::YLeaf cmm;
-        static const ydk::Enum::YLeaf truthvalue;
 
 };
 

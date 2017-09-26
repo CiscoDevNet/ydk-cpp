@@ -1061,7 +1061,7 @@ class Native::Line::LineList::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -2115,7 +2115,7 @@ class Native::Line::Vty::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -2911,9 +2911,9 @@ class Native::Logging : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm; //type: one of uint8, enumeration
+        ydk::YLeaf alarm; //type: one of enumeration, uint8
         ydk::YLeaf facility; //type: Facility
-        ydk::YLeaf hostip; //type: one of string, union
+        ydk::YLeaf hostip; //type: one of union, string
         ydk::YLeaf snmp_authfail; //type: empty
         ydk::YLeaf buginf; //type: empty
         ydk::YLeaf userinfo; //type: empty
@@ -2977,7 +2977,7 @@ class Native::Logging::Buffered : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
         ydk::YLeaf xxml; //type: uint32
         class Discriminator; //type: Native::Logging::Buffered::Discriminator
         class Size; //type: Native::Logging::Buffered::Size
@@ -3007,7 +3007,7 @@ class Native::Logging::Buffered::Discriminator : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf size_value; //type: uint32
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Buffered::Discriminator
 
@@ -3030,7 +3030,7 @@ class Native::Logging::Buffered::Size : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size_value; //type: uint32
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Buffered::Size
 
@@ -3054,8 +3054,8 @@ class Native::Logging::Console : public ydk::Entity
 
         ydk::YLeaf filtered; //type: empty
         ydk::YLeaf guaranteed; //type: empty
-        ydk::YLeaf xxml; //type: one of uint16, enumeration
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf xxml; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of enumeration, uint16
         class Discriminator; //type: Native::Logging::Console::Discriminator
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Console::Discriminator> > discriminator;
@@ -3081,7 +3081,7 @@ class Native::Logging::Console::Discriminator : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Console::Discriminator
 
@@ -3245,7 +3245,7 @@ class Native::Logging::File : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf max_size; //type: uint32
         ydk::YLeaf min_size; //type: uint32
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::File
 
@@ -3268,7 +3268,7 @@ class Native::Logging::History : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size; //type: uint16
-        ydk::YLeaf severity_level; //type: one of uint8, enumeration
+        ydk::YLeaf severity_level; //type: one of enumeration, uint8
         class SeverityLevel;
 
 }; // Native::Logging::History
@@ -3323,7 +3323,7 @@ class Native::Logging::Host::Ipv4HostList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
 
 }; // Native::Logging::Host::Ipv4HostList
 
@@ -3345,7 +3345,7 @@ class Native::Logging::Host::Ipv4HostTransportList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
         ydk::YLeaf discriminator; //type: string
         class Transport; //type: Native::Logging::Host::Ipv4HostTransportList::Transport
 
@@ -3438,7 +3438,7 @@ class Native::Logging::Host::Ipv4HostVrfList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf discriminator; //type: string
 
@@ -3462,7 +3462,7 @@ class Native::Logging::Host::Ipv4HostVrfTransportList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf discriminator; //type: string
         class Transport; //type: Native::Logging::Host::Ipv4HostVrfTransportList::Transport

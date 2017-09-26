@@ -10,13 +10,139 @@
 namespace cisco_ios_xe {
 namespace CISCO_RTTMON_TC_MIB {
 
-class RttMonCodecType : public ydk::Enum
+class RttMonLSPPingReplyMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replyIpv4Udp;
+        static const ydk::Enum::YLeaf replyIpv4UdpRA;
+
+};
+
+class RttMonReactVar : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rtt;
+        static const ydk::Enum::YLeaf jitterSDAvg;
+        static const ydk::Enum::YLeaf jitterDSAvg;
+        static const ydk::Enum::YLeaf packetLossSD;
+        static const ydk::Enum::YLeaf packetLossDS;
+        static const ydk::Enum::YLeaf mos;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf connectionLoss;
+        static const ydk::Enum::YLeaf verifyError;
+        static const ydk::Enum::YLeaf jitterAvg;
+        static const ydk::Enum::YLeaf icpif;
+        static const ydk::Enum::YLeaf packetMIA;
+        static const ydk::Enum::YLeaf packetLateArrival;
+        static const ydk::Enum::YLeaf packetOutOfSequence;
+        static const ydk::Enum::YLeaf maxOfPositiveSD;
+        static const ydk::Enum::YLeaf maxOfNegativeSD;
+        static const ydk::Enum::YLeaf maxOfPositiveDS;
+        static const ydk::Enum::YLeaf maxOfNegativeDS;
+        static const ydk::Enum::YLeaf iaJitterDS;
+        static const ydk::Enum::YLeaf frameLossDS;
+        static const ydk::Enum::YLeaf mosLQDS;
+        static const ydk::Enum::YLeaf mosCQDS;
+        static const ydk::Enum::YLeaf rFactorDS;
+        static const ydk::Enum::YLeaf successivePacketLoss;
+        static const ydk::Enum::YLeaf maxOfLatencyDS;
+        static const ydk::Enum::YLeaf maxOfLatencySD;
+        static const ydk::Enum::YLeaf latencyDSAvg;
+        static const ydk::Enum::YLeaf latencySDAvg;
+        static const ydk::Enum::YLeaf packetLoss;
+        static const ydk::Enum::YLeaf iaJitterSD;
+        static const ydk::Enum::YLeaf mosCQSD;
+        static const ydk::Enum::YLeaf rFactorSD;
+
+};
+
+class RttMplsVpnMonLpdGrpStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf partial;
+        static const ydk::Enum::YLeaf down;
+
+};
+
+class RttResponseSense : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf disconnected;
+        static const ydk::Enum::YLeaf overThreshold;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf busy;
+        static const ydk::Enum::YLeaf notConnected;
+        static const ydk::Enum::YLeaf dropped;
+        static const ydk::Enum::YLeaf sequenceError;
+        static const ydk::Enum::YLeaf verifyError;
+        static const ydk::Enum::YLeaf applicationSpecific;
+        static const ydk::Enum::YLeaf dnsServerTimeout;
+        static const ydk::Enum::YLeaf tcpConnectTimeout;
+        static const ydk::Enum::YLeaf httpTransactionTimeout;
+        static const ydk::Enum::YLeaf dnsQueryError;
+        static const ydk::Enum::YLeaf httpError;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf mplsLspEchoTxError;
+        static const ydk::Enum::YLeaf mplsLspUnreachable;
+        static const ydk::Enum::YLeaf mplsLspMalformedReq;
+        static const ydk::Enum::YLeaf mplsLspReachButNotFEC;
+        static const ydk::Enum::YLeaf enableOk;
+        static const ydk::Enum::YLeaf enableNoConnect;
+        static const ydk::Enum::YLeaf enableVersionFail;
+        static const ydk::Enum::YLeaf enableInternalError;
+        static const ydk::Enum::YLeaf enableAbort;
+        static const ydk::Enum::YLeaf enableFail;
+        static const ydk::Enum::YLeaf enableAuthFail;
+        static const ydk::Enum::YLeaf enableFormatError;
+        static const ydk::Enum::YLeaf enablePortInUse;
+        static const ydk::Enum::YLeaf statsRetrieveOk;
+        static const ydk::Enum::YLeaf statsRetrieveNoConnect;
+        static const ydk::Enum::YLeaf statsRetrieveVersionFail;
+        static const ydk::Enum::YLeaf statsRetrieveInternalError;
+        static const ydk::Enum::YLeaf statsRetrieveAbort;
+        static const ydk::Enum::YLeaf statsRetrieveFail;
+        static const ydk::Enum::YLeaf statsRetrieveAuthFail;
+        static const ydk::Enum::YLeaf statsRetrieveFormatError;
+        static const ydk::Enum::YLeaf statsRetrievePortInUse;
+
+};
+
+class RttMplsVpnMonLpdFailureSense : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf noPath;
+        static const ydk::Enum::YLeaf allPathsBroken;
+        static const ydk::Enum::YLeaf allPathsUnexplorable;
+        static const ydk::Enum::YLeaf allPathsBrokenOrUnexplorable;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf error;
+
+};
+
+class RttReset : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ready;
+        static const ydk::Enum::YLeaf reset;
+
+};
+
+class RttMonOperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
-        static const ydk::Enum::YLeaf g711ulaw;
-        static const ydk::Enum::YLeaf g711alaw;
-        static const ydk::Enum::YLeaf g729a;
+        static const ydk::Enum::YLeaf httpGet;
+        static const ydk::Enum::YLeaf httpRaw;
+        static const ydk::Enum::YLeaf ftpGet;
+        static const ydk::Enum::YLeaf ftpPassive;
+        static const ydk::Enum::YLeaf ftpActive;
+        static const ydk::Enum::YLeaf voipDTAlertRinging;
+        static const ydk::Enum::YLeaf voipDTConnectOK;
 
 };
 
@@ -70,70 +196,6 @@ class RttMonProtocol : public ydk::Enum
 
 };
 
-class RttResponseSense : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf disconnected;
-        static const ydk::Enum::YLeaf overThreshold;
-        static const ydk::Enum::YLeaf timeout;
-        static const ydk::Enum::YLeaf busy;
-        static const ydk::Enum::YLeaf notConnected;
-        static const ydk::Enum::YLeaf dropped;
-        static const ydk::Enum::YLeaf sequenceError;
-        static const ydk::Enum::YLeaf verifyError;
-        static const ydk::Enum::YLeaf applicationSpecific;
-        static const ydk::Enum::YLeaf dnsServerTimeout;
-        static const ydk::Enum::YLeaf tcpConnectTimeout;
-        static const ydk::Enum::YLeaf httpTransactionTimeout;
-        static const ydk::Enum::YLeaf dnsQueryError;
-        static const ydk::Enum::YLeaf httpError;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf mplsLspEchoTxError;
-        static const ydk::Enum::YLeaf mplsLspUnreachable;
-        static const ydk::Enum::YLeaf mplsLspMalformedReq;
-        static const ydk::Enum::YLeaf mplsLspReachButNotFEC;
-        static const ydk::Enum::YLeaf enableOk;
-        static const ydk::Enum::YLeaf enableNoConnect;
-        static const ydk::Enum::YLeaf enableVersionFail;
-        static const ydk::Enum::YLeaf enableInternalError;
-        static const ydk::Enum::YLeaf enableAbort;
-        static const ydk::Enum::YLeaf enableFail;
-        static const ydk::Enum::YLeaf enableAuthFail;
-        static const ydk::Enum::YLeaf enableFormatError;
-        static const ydk::Enum::YLeaf enablePortInUse;
-        static const ydk::Enum::YLeaf statsRetrieveOk;
-        static const ydk::Enum::YLeaf statsRetrieveNoConnect;
-        static const ydk::Enum::YLeaf statsRetrieveVersionFail;
-        static const ydk::Enum::YLeaf statsRetrieveInternalError;
-        static const ydk::Enum::YLeaf statsRetrieveAbort;
-        static const ydk::Enum::YLeaf statsRetrieveFail;
-        static const ydk::Enum::YLeaf statsRetrieveAuthFail;
-        static const ydk::Enum::YLeaf statsRetrieveFormatError;
-        static const ydk::Enum::YLeaf statsRetrievePortInUse;
-
-};
-
-class RttMplsVpnMonRttType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf jitter;
-        static const ydk::Enum::YLeaf echo;
-        static const ydk::Enum::YLeaf pathEcho;
-
-};
-
-class RttMplsVpnMonLpdGrpStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf partial;
-        static const ydk::Enum::YLeaf down;
-
-};
-
 class RttMonRttType : public ydk::Enum
 {
     public:
@@ -166,84 +228,22 @@ class RttMonRttType : public ydk::Enum
 
 };
 
-class RttReset : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ready;
-        static const ydk::Enum::YLeaf reset;
-
-};
-
-class RttMplsVpnMonLpdFailureSense : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf noPath;
-        static const ydk::Enum::YLeaf allPathsBroken;
-        static const ydk::Enum::YLeaf allPathsUnexplorable;
-        static const ydk::Enum::YLeaf allPathsBrokenOrUnexplorable;
-        static const ydk::Enum::YLeaf timeout;
-        static const ydk::Enum::YLeaf error;
-
-};
-
-class RttMonReactVar : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rtt;
-        static const ydk::Enum::YLeaf jitterSDAvg;
-        static const ydk::Enum::YLeaf jitterDSAvg;
-        static const ydk::Enum::YLeaf packetLossSD;
-        static const ydk::Enum::YLeaf packetLossDS;
-        static const ydk::Enum::YLeaf mos;
-        static const ydk::Enum::YLeaf timeout;
-        static const ydk::Enum::YLeaf connectionLoss;
-        static const ydk::Enum::YLeaf verifyError;
-        static const ydk::Enum::YLeaf jitterAvg;
-        static const ydk::Enum::YLeaf icpif;
-        static const ydk::Enum::YLeaf packetMIA;
-        static const ydk::Enum::YLeaf packetLateArrival;
-        static const ydk::Enum::YLeaf packetOutOfSequence;
-        static const ydk::Enum::YLeaf maxOfPositiveSD;
-        static const ydk::Enum::YLeaf maxOfNegativeSD;
-        static const ydk::Enum::YLeaf maxOfPositiveDS;
-        static const ydk::Enum::YLeaf maxOfNegativeDS;
-        static const ydk::Enum::YLeaf iaJitterDS;
-        static const ydk::Enum::YLeaf frameLossDS;
-        static const ydk::Enum::YLeaf mosLQDS;
-        static const ydk::Enum::YLeaf mosCQDS;
-        static const ydk::Enum::YLeaf rFactorDS;
-        static const ydk::Enum::YLeaf successivePacketLoss;
-        static const ydk::Enum::YLeaf maxOfLatencyDS;
-        static const ydk::Enum::YLeaf maxOfLatencySD;
-        static const ydk::Enum::YLeaf latencyDSAvg;
-        static const ydk::Enum::YLeaf latencySDAvg;
-        static const ydk::Enum::YLeaf packetLoss;
-        static const ydk::Enum::YLeaf iaJitterSD;
-        static const ydk::Enum::YLeaf mosCQSD;
-        static const ydk::Enum::YLeaf rFactorSD;
-
-};
-
-class RttMonOperation : public ydk::Enum
+class RttMonCodecType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
-        static const ydk::Enum::YLeaf httpGet;
-        static const ydk::Enum::YLeaf httpRaw;
-        static const ydk::Enum::YLeaf ftpGet;
-        static const ydk::Enum::YLeaf ftpPassive;
-        static const ydk::Enum::YLeaf ftpActive;
-        static const ydk::Enum::YLeaf voipDTAlertRinging;
-        static const ydk::Enum::YLeaf voipDTConnectOK;
+        static const ydk::Enum::YLeaf g711ulaw;
+        static const ydk::Enum::YLeaf g711alaw;
+        static const ydk::Enum::YLeaf g729a;
 
 };
 
-class RttMonLSPPingReplyMode : public ydk::Enum
+class RttMplsVpnMonRttType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf replyIpv4Udp;
-        static const ydk::Enum::YLeaf replyIpv4UdpRA;
+        static const ydk::Enum::YLeaf jitter;
+        static const ydk::Enum::YLeaf echo;
+        static const ydk::Enum::YLeaf pathEcho;
 
 };
 

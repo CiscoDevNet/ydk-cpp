@@ -1500,7 +1500,7 @@ class Native::Router::Eigrp::Redistribute::Bgp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf rdr_as; //type: one of uint32, string
+        ydk::YLeaf rdr_as; //type: one of string, uint32
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf rd_lesser_1_period_0_xx_period_yy_greater_; //type: empty
         class Metric; //type: Native::Router::Eigrp::Redistribute::Bgp::Metric
@@ -2452,7 +2452,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Distance::IpList::Wil
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf w_bits; //type: string
-        ydk::YLeaf access_list; //type: one of uint8, uint16
+        ydk::YLeaf access_list; //type: one of uint16, uint8
 
 }; // Native::Router::Isis::AddressFamily::Ipv4::Topology::Distance::IpList::WildcardBits
 
@@ -2710,7 +2710,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Bgp : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
@@ -3603,7 +3603,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Vrf::Gl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bp_as_num; //type: one of uint32, string
+        ydk::YLeaf bp_as_num; //type: one of string, uint32
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType

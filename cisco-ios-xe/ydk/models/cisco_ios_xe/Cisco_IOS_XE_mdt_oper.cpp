@@ -1053,23 +1053,23 @@ bool MdtOperData::MdtSubscriptions::MdtReceivers::has_leaf_or_child_of_name(cons
     return false;
 }
 
-const Enum::YLeaf MdtSubType::sub_type_dynamic {1, "sub-type-dynamic"};
-const Enum::YLeaf MdtSubType::sub_type_static {2, "sub-type-static"};
-
 const Enum::YLeaf MdtReceiverState::rcvr_state_invalid {1, "rcvr-state-invalid"};
 const Enum::YLeaf MdtReceiverState::rcvr_state_disconnected {2, "rcvr-state-disconnected"};
 const Enum::YLeaf MdtReceiverState::rcvr_state_connecting {3, "rcvr-state-connecting"};
 const Enum::YLeaf MdtReceiverState::rcvr_state_connected {4, "rcvr-state-connected"};
+
+const Enum::YLeaf MdtSubState::sub_state_valid {0, "sub-state-valid"};
+const Enum::YLeaf MdtSubState::sub_state_suspended {1, "sub-state-suspended"};
+const Enum::YLeaf MdtSubState::sub_state_terminated {2, "sub-state-terminated"};
+const Enum::YLeaf MdtSubState::sub_state_invalid {3, "sub-state-invalid"};
 
 const Enum::YLeaf MdtConState::con_state_active {0, "con-state-active"};
 const Enum::YLeaf MdtConState::con_state_connecting {1, "con-state-connecting"};
 const Enum::YLeaf MdtConState::con_state_pending {2, "con-state-pending"};
 const Enum::YLeaf MdtConState::con_state_disconnecting {3, "con-state-disconnecting"};
 
-const Enum::YLeaf MdtSubState::sub_state_valid {0, "sub-state-valid"};
-const Enum::YLeaf MdtSubState::sub_state_suspended {1, "sub-state-suspended"};
-const Enum::YLeaf MdtSubState::sub_state_terminated {2, "sub-state-terminated"};
-const Enum::YLeaf MdtSubState::sub_state_invalid {3, "sub-state-invalid"};
+const Enum::YLeaf MdtSubType::sub_type_dynamic {1, "sub-type-dynamic"};
+const Enum::YLeaf MdtSubType::sub_type_static {2, "sub-type-static"};
 
 
 }

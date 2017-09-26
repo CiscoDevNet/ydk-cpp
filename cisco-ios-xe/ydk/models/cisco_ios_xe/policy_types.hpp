@@ -453,6 +453,17 @@ class Service : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Iden
 
 }; // Service
 
+class RateUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pps;
+        static const ydk::Enum::YLeaf cps;
+        static const ydk::Enum::YLeaf bps;
+        static const ydk::Enum::YLeaf perc;
+        static const ydk::Enum::YLeaf ratio;
+
+};
+
 class Metric : public ydk::Enum
 {
     public:
@@ -464,17 +475,6 @@ class Metric : public ydk::Enum
         static const ydk::Enum::YLeaf kilo;
         static const ydk::Enum::YLeaf milli;
         static const ydk::Enum::YLeaf nano;
-
-};
-
-class RateUnit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pps;
-        static const ydk::Enum::YLeaf cps;
-        static const ydk::Enum::YLeaf bps;
-        static const ydk::Enum::YLeaf perc;
-        static const ydk::Enum::YLeaf ratio;
 
 };
 

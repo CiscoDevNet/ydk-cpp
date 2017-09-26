@@ -523,15 +523,17 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoen
 
 }; // CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry
 
-class ClmgmtLicenseActionState : public ydk::Enum
+class ClmgmtLicenseTransferProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf pending;
-        static const ydk::Enum::YLeaf inProgress;
-        static const ydk::Enum::YLeaf successful;
-        static const ydk::Enum::YLeaf partiallySuccessful;
-        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf tftp;
+        static const ydk::Enum::YLeaf ftp;
+        static const ydk::Enum::YLeaf rcp;
+        static const ydk::Enum::YLeaf http;
+        static const ydk::Enum::YLeaf scp;
+        static const ydk::Enum::YLeaf sftp;
 
 };
 
@@ -563,17 +565,15 @@ class ClmgmtLicenseActionFailCause : public ydk::Enum
 
 };
 
-class ClmgmtLicenseTransferProtocol : public ydk::Enum
+class ClmgmtLicenseActionState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf tftp;
-        static const ydk::Enum::YLeaf ftp;
-        static const ydk::Enum::YLeaf rcp;
-        static const ydk::Enum::YLeaf http;
-        static const ydk::Enum::YLeaf scp;
-        static const ydk::Enum::YLeaf sftp;
+        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf inProgress;
+        static const ydk::Enum::YLeaf successful;
+        static const ydk::Enum::YLeaf partiallySuccessful;
+        static const ydk::Enum::YLeaf failed;
 
 };
 

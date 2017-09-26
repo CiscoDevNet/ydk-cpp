@@ -10,14 +10,6 @@
 namespace cisco_ios_xe {
 namespace MPLS_TC_STD_MIB {
 
-class MplsRetentionMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf conservative;
-        static const ydk::Enum::YLeaf liberal;
-
-};
-
 class MplsOwner : public ydk::Enum
 {
     public:
@@ -31,15 +23,6 @@ class MplsOwner : public ydk::Enum
 
 };
 
-class MplsLdpLabelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf generic;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf frameRelay;
-
-};
-
 class MplsLspType : public ydk::Enum
 {
     public:
@@ -47,14 +30,6 @@ class MplsLspType : public ydk::Enum
         static const ydk::Enum::YLeaf terminatingLsp;
         static const ydk::Enum::YLeaf originatingLsp;
         static const ydk::Enum::YLeaf crossConnectingLsp;
-
-};
-
-class MplsLabelDistributionMethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstreamOnDemand;
-        static const ydk::Enum::YLeaf downstreamUnsolicited;
 
 };
 
@@ -67,6 +42,31 @@ class TeHopAddressType : public ydk::Enum
         static const ydk::Enum::YLeaf asnumber;
         static const ydk::Enum::YLeaf unnum;
         static const ydk::Enum::YLeaf lspid;
+
+};
+
+class MplsRetentionMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf conservative;
+        static const ydk::Enum::YLeaf liberal;
+
+};
+
+class MplsLabelDistributionMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstreamOnDemand;
+        static const ydk::Enum::YLeaf downstreamUnsolicited;
+
+};
+
+class MplsLdpLabelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf generic;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf frameRelay;
 
 };
 

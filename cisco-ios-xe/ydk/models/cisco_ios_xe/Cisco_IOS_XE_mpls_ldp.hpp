@@ -1110,7 +1110,7 @@ class MplsLdp::MplsLdpConfig::Passwords::Password : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf nbr_vrf; //type: string
-        ydk::YLeaf nbr_id; //type: one of string, union
+        ydk::YLeaf nbr_id; //type: one of union, string
         ydk::YLeaf password_num; //type: uint32
         ydk::YLeaf pass_required; //type: boolean
         ydk::YLeaf clear_pass; //type: string
@@ -4214,6 +4214,50 @@ class RoutePathLblOwnerStatic : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::Rout
 
 }; // RoutePathLblOwnerStatic
 
+class IccpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nonexistent;
+        static const ydk::Enum::YLeaf initialized;
+        static const ydk::Enum::YLeaf capsent;
+        static const ydk::Enum::YLeaf caprec;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf operational;
+
+};
+
+class LocalLabelState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf local_label_state_none;
+        static const ydk::Enum::YLeaf local_label_state_assigned;
+        static const ydk::Enum::YLeaf local_label_state_withdrawn;
+
+};
+
+class SessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nonexistent;
+        static const ydk::Enum::YLeaf initialized;
+        static const ydk::Enum::YLeaf openrec;
+        static const ydk::Enum::YLeaf opensent;
+        static const ydk::Enum::YLeaf operational;
+
+};
+
+class AdjState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nonex;
+        static const ydk::Enum::YLeaf unsol_op_pdg;
+        static const ydk::Enum::YLeaf deferred;
+        static const ydk::Enum::YLeaf estab;
+        static const ydk::Enum::YLeaf lib_exp_wait;
+        static const ydk::Enum::YLeaf destroyed;
+
+};
+
 class AdvLabelType : public ydk::Enum
 {
     public:
@@ -4233,14 +4277,12 @@ class NbrBgpAdvtState : public ydk::Enum
 
 };
 
-class SessionState : public ydk::Enum
+class AfId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nonexistent;
-        static const ydk::Enum::YLeaf initialized;
-        static const ydk::Enum::YLeaf openrec;
-        static const ydk::Enum::YLeaf opensent;
-        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf ldp_af_id_none;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
 
 };
 
@@ -4251,25 +4293,6 @@ class DhcState : public ydk::Enum
         static const ydk::Enum::YLeaf dhc_active;
         static const ydk::Enum::YLeaf dhc_passive;
         static const ydk::Enum::YLeaf dhc_active_passive;
-
-};
-
-class IgpSyncState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isync_ready;
-        static const ydk::Enum::YLeaf isync_not_ready;
-        static const ydk::Enum::YLeaf isync_deferred;
-
-};
-
-class Af : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ldp_af_none;
-        static const ydk::Enum::YLeaf ldp_af_ipv4;
-        static const ydk::Enum::YLeaf ldp_af_ipv6;
-        static const ydk::Enum::YLeaf ldp_af_ipv4_ipv6;
 
 };
 
@@ -4284,45 +4307,22 @@ class LoopDetectionType : public ydk::Enum
 
 };
 
-class IccpState : public ydk::Enum
+class Af : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nonexistent;
-        static const ydk::Enum::YLeaf initialized;
-        static const ydk::Enum::YLeaf capsent;
-        static const ydk::Enum::YLeaf caprec;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf ldp_af_none;
+        static const ydk::Enum::YLeaf ldp_af_ipv4;
+        static const ydk::Enum::YLeaf ldp_af_ipv6;
+        static const ydk::Enum::YLeaf ldp_af_ipv4_ipv6;
 
 };
 
-class AdjState : public ydk::Enum
+class IgpSyncState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nonex;
-        static const ydk::Enum::YLeaf unsol_op_pdg;
-        static const ydk::Enum::YLeaf deferred;
-        static const ydk::Enum::YLeaf estab;
-        static const ydk::Enum::YLeaf lib_exp_wait;
-        static const ydk::Enum::YLeaf destroyed;
-
-};
-
-class LocalLabelState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local_label_state_none;
-        static const ydk::Enum::YLeaf local_label_state_assigned;
-        static const ydk::Enum::YLeaf local_label_state_withdrawn;
-
-};
-
-class AfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ldp_af_id_none;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
+        static const ydk::Enum::YLeaf isync_ready;
+        static const ydk::Enum::YLeaf isync_not_ready;
+        static const ydk::Enum::YLeaf isync_deferred;
 
 };
 

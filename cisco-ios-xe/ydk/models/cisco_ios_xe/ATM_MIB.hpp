@@ -105,10 +105,6 @@ class ATMMIB::Aal5Vcctable::Aal5Vccentry : public ydk::Entity
         ydk::YLeaf aal5vcccrcerrors; //type: uint32
         ydk::YLeaf aal5vccsartimeouts; //type: uint32
         ydk::YLeaf aal5vccoversizedsdus; //type: uint32
-        ydk::YLeaf caal5vccextcompenabled; //type: boolean
-        ydk::YLeaf caal5vccextvoice; //type: boolean
-        ydk::YLeaf caal5vccextinf5oamcells; //type: uint32
-        ydk::YLeaf caal5vccextoutf5oamcells; //type: uint32
         ydk::YLeaf caal5vccinpkts; //type: uint32
         ydk::YLeaf caal5vccoutpkts; //type: uint32
         ydk::YLeaf caal5vccinoctets; //type: uint32
@@ -121,6 +117,10 @@ class ATMMIB::Aal5Vcctable::Aal5Vccentry : public ydk::Entity
         ydk::YLeaf caal5vcchcoutpkts; //type: uint64
         ydk::YLeaf caal5vcchcinoctets; //type: uint64
         ydk::YLeaf caal5vcchcoutoctets; //type: uint64
+        ydk::YLeaf caal5vccextcompenabled; //type: boolean
+        ydk::YLeaf caal5vccextvoice; //type: boolean
+        ydk::YLeaf caal5vccextinf5oamcells; //type: uint32
+        ydk::YLeaf caal5vccextoutf5oamcells; //type: uint32
 
 }; // ATMMIB::Aal5Vcctable::Aal5Vccentry
 
@@ -188,9 +188,6 @@ class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry : public ydk::Entity
         ydk::YLeaf atmintfpvcfailurestrapenable; //type: boolean
         ydk::YLeaf atmintfpvcnotificationinterval; //type: int32
         ydk::YLeaf atmpreviouslyfailedpvclinterval; //type: int32
-        ydk::YLeaf atmintfcurrentlydowntouppvcls; //type: uint32
-        ydk::YLeaf atmintfoamfailedpvcls; //type: uint32
-        ydk::YLeaf atmintfcurrentlyoamfailingpvcls; //type: uint32
         ydk::YLeaf catmintfcurrentlydowntouppvcls; //type: uint32
         ydk::YLeaf catmintfoamfailedpvcls; //type: uint32
         ydk::YLeaf catmintfcurrentoamfailingpvcls; //type: uint32
@@ -214,6 +211,9 @@ class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry : public ydk::Entity
         ydk::YLeaf catmintfanyoamrcovedpvcls; //type: uint32
         ydk::YLeaf catmintfcuranyoamrcovingpvcls; //type: uint32
         ydk::YLeaf catmintftypeofoamrecover; //type: CatmOAMRecoveryType
+        ydk::YLeaf atmintfcurrentlydowntouppvcls; //type: uint32
+        ydk::YLeaf atmintfoamfailedpvcls; //type: uint32
+        ydk::YLeaf atmintfcurrentlyoamfailingpvcls; //type: uint32
         class Atminterfaceaddresstype;
 
 }; // ATMMIB::Atminterfaceconftable::Atminterfaceconfentry

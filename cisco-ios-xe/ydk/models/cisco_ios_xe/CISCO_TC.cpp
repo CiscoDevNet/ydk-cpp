@@ -16,6 +16,23 @@ const Enum::YLeaf CiscoRowOperStatus::activeDependencies {2, "activeDependencies
 const Enum::YLeaf CiscoRowOperStatus::inactiveDependency {3, "inactiveDependency"};
 const Enum::YLeaf CiscoRowOperStatus::missingDependency {4, "missingDependency"};
 
+const Enum::YLeaf CiscoAlarmSeverity::cleared {1, "cleared"};
+const Enum::YLeaf CiscoAlarmSeverity::indeterminate {2, "indeterminate"};
+const Enum::YLeaf CiscoAlarmSeverity::critical {3, "critical"};
+const Enum::YLeaf CiscoAlarmSeverity::major {4, "major"};
+const Enum::YLeaf CiscoAlarmSeverity::minor {5, "minor"};
+const Enum::YLeaf CiscoAlarmSeverity::warning {6, "warning"};
+const Enum::YLeaf CiscoAlarmSeverity::info {7, "info"};
+
+const Enum::YLeaf CiscoPortListRange::oneto2k {1, "oneto2k"};
+const Enum::YLeaf CiscoPortListRange::twoKto4K {2, "twoKto4K"};
+const Enum::YLeaf CiscoPortListRange::fourKto6K {3, "fourKto6K"};
+const Enum::YLeaf CiscoPortListRange::sixKto8K {4, "sixKto8K"};
+const Enum::YLeaf CiscoPortListRange::eightKto10K {5, "eightKto10K"};
+const Enum::YLeaf CiscoPortListRange::tenKto12K {6, "tenKto12K"};
+const Enum::YLeaf CiscoPortListRange::twelveKto14K {7, "twelveKto14K"};
+const Enum::YLeaf CiscoPortListRange::fourteenKto16K {8, "fourteenKto16K"};
+
 const Enum::YLeaf IfOperStatusReason::other {1, "other"};
 const Enum::YLeaf IfOperStatusReason::none {2, "none"};
 const Enum::YLeaf IfOperStatusReason::hwFailure {3, "hwFailure"};
@@ -285,14 +302,6 @@ const Enum::YLeaf IfOperStatusReason::ethIntfNotLicensed {266, "ethIntfNotLicens
 const Enum::YLeaf IfOperStatusReason::domainIdsInvalid {267, "domainIdsInvalid"};
 const Enum::YLeaf IfOperStatusReason::fabricNameInvalid {268, "fabricNameInvalid"};
 
-const Enum::YLeaf CiscoAlarmSeverity::cleared {1, "cleared"};
-const Enum::YLeaf CiscoAlarmSeverity::indeterminate {2, "indeterminate"};
-const Enum::YLeaf CiscoAlarmSeverity::critical {3, "critical"};
-const Enum::YLeaf CiscoAlarmSeverity::major {4, "major"};
-const Enum::YLeaf CiscoAlarmSeverity::minor {5, "minor"};
-const Enum::YLeaf CiscoAlarmSeverity::warning {6, "warning"};
-const Enum::YLeaf CiscoAlarmSeverity::info {7, "info"};
-
 const Enum::YLeaf CiscoNetworkProtocol::ip {1, "ip"};
 const Enum::YLeaf CiscoNetworkProtocol::decnet {2, "decnet"};
 const Enum::YLeaf CiscoNetworkProtocol::pup {3, "pup"};
@@ -319,15 +328,6 @@ const Enum::YLeaf CiscoNetworkProtocol::bpxIgx {23, "bpxIgx"};
 const Enum::YLeaf CiscoNetworkProtocol::clnsPfx {24, "clnsPfx"};
 const Enum::YLeaf CiscoNetworkProtocol::http {25, "http"};
 const Enum::YLeaf CiscoNetworkProtocol::unknown {65535, "unknown"};
-
-const Enum::YLeaf CiscoPortListRange::oneto2k {1, "oneto2k"};
-const Enum::YLeaf CiscoPortListRange::twoKto4K {2, "twoKto4K"};
-const Enum::YLeaf CiscoPortListRange::fourKto6K {3, "fourKto6K"};
-const Enum::YLeaf CiscoPortListRange::sixKto8K {4, "sixKto8K"};
-const Enum::YLeaf CiscoPortListRange::eightKto10K {5, "eightKto10K"};
-const Enum::YLeaf CiscoPortListRange::tenKto12K {6, "tenKto12K"};
-const Enum::YLeaf CiscoPortListRange::twelveKto14K {7, "twelveKto14K"};
-const Enum::YLeaf CiscoPortListRange::fourteenKto16K {8, "fourteenKto16K"};
 
 const Enum::YLeaf CiscoLocationClass::chassis {1, "chassis"};
 const Enum::YLeaf CiscoLocationClass::shelf {2, "shelf"};

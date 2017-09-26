@@ -290,26 +290,13 @@ class CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry : public yd
 
 }; // CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry
 
-class RFAction : public ydk::Enum
+class RFIssuState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf noAction;
-        static const ydk::Enum::YLeaf reloadPeer;
-        static const ydk::Enum::YLeaf reloadShelf;
-        static const ydk::Enum::YLeaf switchActivity;
-        static const ydk::Enum::YLeaf forceSwitchActivity;
-
-};
-
-class RFIssuStateRev1 : public ydk::Enum
-{
-    public:
+        static const ydk::Enum::YLeaf unset;
         static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf systemReset;
         static const ydk::Enum::YLeaf loadVersion;
-        static const ydk::Enum::YLeaf loadVersionSwitchover;
         static const ydk::Enum::YLeaf runVersion;
-        static const ydk::Enum::YLeaf runVersionSwitchover;
         static const ydk::Enum::YLeaf commitVersion;
 
 };
@@ -349,13 +336,16 @@ class RFState : public ydk::Enum
 
 };
 
-class RFClientStatus : public ydk::Enum
+class RFIssuStateRev1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf noStatus;
-        static const ydk::Enum::YLeaf clientNotRedundant;
-        static const ydk::Enum::YLeaf clientRedundancyInProgress;
-        static const ydk::Enum::YLeaf clientRedundant;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf systemReset;
+        static const ydk::Enum::YLeaf loadVersion;
+        static const ydk::Enum::YLeaf loadVersionSwitchover;
+        static const ydk::Enum::YLeaf runVersion;
+        static const ydk::Enum::YLeaf runVersionSwitchover;
+        static const ydk::Enum::YLeaf commitVersion;
 
 };
 
@@ -373,14 +363,24 @@ class RFMode : public ydk::Enum
 
 };
 
-class RFIssuState : public ydk::Enum
+class RFClientStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unset;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf loadVersion;
-        static const ydk::Enum::YLeaf runVersion;
-        static const ydk::Enum::YLeaf commitVersion;
+        static const ydk::Enum::YLeaf noStatus;
+        static const ydk::Enum::YLeaf clientNotRedundant;
+        static const ydk::Enum::YLeaf clientRedundancyInProgress;
+        static const ydk::Enum::YLeaf clientRedundant;
+
+};
+
+class RFAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf noAction;
+        static const ydk::Enum::YLeaf reloadPeer;
+        static const ydk::Enum::YLeaf reloadShelf;
+        static const ydk::Enum::YLeaf switchActivity;
+        static const ydk::Enum::YLeaf forceSwitchActivity;
 
 };
 

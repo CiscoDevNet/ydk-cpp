@@ -697,7 +697,7 @@ class Native::Interface::TenGigabitEthernet::Ip::Ospf::MultiArea : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
 
 }; // Native::Interface::TenGigabitEthernet::Ip::Ospf::MultiArea
@@ -741,7 +741,7 @@ class Native::Interface::TenGigabitEthernet::Ip::Ospf::ProcessId : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf secondaries; //type: empty
         ydk::YLeaf none; //type: empty
 
@@ -2091,10 +2091,10 @@ class Native::Interface::TenGigabitEthernet::Ipv6 : public ydk::Entity
         class Tcp; //type: Native::Interface::TenGigabitEthernet::Ipv6::Tcp
         class TrafficFilter; //type: Native::Interface::TenGigabitEthernet::Ipv6::TrafficFilter
         class Crypto; //type: Native::Interface::TenGigabitEthernet::Ipv6::Crypto
-        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf
+        class Flow; //type: Native::Interface::TenGigabitEthernet::Ipv6::Flow
         class NoPim; //type: Native::Interface::TenGigabitEthernet::Ipv6::NoPim
         class Pim; //type: Native::Interface::TenGigabitEthernet::Ipv6::Pim
-        class Flow; //type: Native::Interface::TenGigabitEthernet::Ipv6::Flow
+        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf
         class Rip; //type: Native::Interface::TenGigabitEthernet::Ipv6::Rip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Address> address;
@@ -3272,7 +3272,7 @@ class Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Process : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf instance; //type: uint8
 
 }; // Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Process
@@ -3454,7 +3454,7 @@ class Native::Interface::TenGigabitEthernet::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16

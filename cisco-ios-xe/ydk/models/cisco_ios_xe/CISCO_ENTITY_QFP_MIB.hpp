@@ -328,6 +328,13 @@ class CISCOENTITYQFPMIB::Ciscoentityqfpnotif : public ydk::Entity
 
 }; // CISCOENTITYQFPMIB::Ciscoentityqfpnotif
 
+class CiscoQfpMemoryResource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dram;
+
+};
+
 class CiscoQfpTimeInterval : public ydk::Enum
 {
     public:
@@ -335,13 +342,6 @@ class CiscoQfpTimeInterval : public ydk::Enum
         static const ydk::Enum::YLeaf oneMinute;
         static const ydk::Enum::YLeaf fiveMinutes;
         static const ydk::Enum::YLeaf sixtyMinutes;
-
-};
-
-class CiscoQfpMemoryResource : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dram;
 
 };
 

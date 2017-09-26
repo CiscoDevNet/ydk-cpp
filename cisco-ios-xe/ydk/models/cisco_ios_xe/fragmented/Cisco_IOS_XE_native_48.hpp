@@ -243,8 +243,8 @@ class Native::Interface::PortChannel::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -407,8 +407,8 @@ class Native::Interface::PortChannel::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -2380,14 +2380,14 @@ class Native::Interface::PortChannel::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::PortChannel::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::PortChannel::Ip::SummaryAddress
         class Verify; //type: Native::Interface::PortChannel::Ip::Verify
-        class Rsvp; //type: Native::Interface::PortChannel::Ip::Rsvp
-        class Lisp; //type: Native::Interface::PortChannel::Ip::Lisp
-        class Igmp; //type: Native::Interface::PortChannel::Ip::Igmp
-        class Ospf; //type: Native::Interface::PortChannel::Ip::Ospf
-        class Wccp; //type: Native::Interface::PortChannel::Ip::Wccp
-        class Nbar; //type: Native::Interface::PortChannel::Ip::Nbar
         class Flow; //type: Native::Interface::PortChannel::Ip::Flow
+        class Igmp; //type: Native::Interface::PortChannel::Ip::Igmp
+        class Lisp; //type: Native::Interface::PortChannel::Ip::Lisp
         class Nat; //type: Native::Interface::PortChannel::Ip::Nat
+        class Nbar; //type: Native::Interface::PortChannel::Ip::Nbar
+        class Ospf; //type: Native::Interface::PortChannel::Ip::Ospf
+        class Rsvp; //type: Native::Interface::PortChannel::Ip::Rsvp
+        class Wccp; //type: Native::Interface::PortChannel::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::AccessGroup> access_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Address> address;

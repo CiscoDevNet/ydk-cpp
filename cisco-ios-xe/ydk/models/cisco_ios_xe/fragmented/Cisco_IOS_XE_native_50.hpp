@@ -1334,7 +1334,7 @@ class Native::Interface::PortChannel::Ospfv3::MultiArea : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
 
 }; // Native::Interface::PortChannel::Ospfv3::MultiArea
@@ -1879,7 +1879,7 @@ class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Area : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf instance; //type: uint8
 
 }; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Area
@@ -2285,7 +2285,7 @@ class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MultiArea : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
         ydk::YLeaf disable; //type: empty
 
@@ -2501,7 +2501,7 @@ class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Area : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf instance; //type: uint8
 
 }; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Area
@@ -2907,7 +2907,7 @@ class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MultiArea : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
         ydk::YLeaf disable; //type: empty
 
@@ -3159,7 +3159,7 @@ class Native::Interface::PortChannel::Ospfv3::ProcessId::MultiArea : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
         ydk::YLeaf disable; //type: empty
 

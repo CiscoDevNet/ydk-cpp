@@ -40,6 +40,14 @@ class ClassNameType : public ydk::Enum
 
 };
 
+class PolicePacketsBytesType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf packets;
+        static const ydk::Enum::YLeaf bytes;
+
+};
+
 class PrecedenceType2 : public ydk::Enum
 {
     public:
@@ -52,14 +60,6 @@ class PolicePpsBpsType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf pps;
         static const ydk::Enum::YLeaf bps;
-
-};
-
-class PolicePacketsBytesType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf packets;
-        static const ydk::Enum::YLeaf bytes;
 
 };
 

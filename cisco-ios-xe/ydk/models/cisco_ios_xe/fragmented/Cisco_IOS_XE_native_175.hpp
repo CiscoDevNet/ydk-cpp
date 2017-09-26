@@ -1301,7 +1301,7 @@ class Native::Router::Rip::Distance::DistanceList : public ydk::Entity
         ydk::YLeaf number; //type: uint8
         ydk::YLeaf ip; //type: string
         ydk::YLeaf mask; //type: string
-        ydk::YLeaf access_list; //type: one of string, union
+        ydk::YLeaf access_list; //type: one of union, string
 
 }; // Native::Router::Rip::Distance::DistanceList
 
@@ -1354,7 +1354,7 @@ class Native::Router::Rip::DistributeList::Accesslist : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf in_out; //type: AccessListInOutType
-        ydk::YLeaf id; //type: one of string, union
+        ydk::YLeaf id; //type: one of union, string
 
 }; // Native::Router::Rip::DistributeList::Accesslist
 
@@ -1381,7 +1381,7 @@ class Native::Router::Rip::DistributeList::AccesslistIfname : public ydk::Entity
         ydk::YLeaf interface_routing_id; //type: uint8
         ydk::YLeaf isis_tag; //type: string
         ydk::YLeaf vrf; //type: string
-        ydk::YLeaf id; //type: one of string, union
+        ydk::YLeaf id; //type: one of union, string
 
 }; // Native::Router::Rip::DistributeList::AccesslistIfname
 
@@ -1503,7 +1503,7 @@ class Native::Router::Rip::OffsetList : public ydk::Entity
 
         ydk::YLeaf in_out; //type: OffsetListInOutType
         ydk::YLeaf offset; //type: uint8
-        ydk::YLeaf id; //type: one of string, union
+        ydk::YLeaf id; //type: one of union, string
 
 }; // Native::Router::Rip::OffsetList
 
@@ -1592,7 +1592,7 @@ class Native::Router::Rip::Redistribute::Bgp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RipMetricRouteMap; //type: Native::Router::Rip::Redistribute::Bgp::RipMetricRouteMap
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Redistribute::Bgp::RipMetricRouteMap> rip_metric_route_map;

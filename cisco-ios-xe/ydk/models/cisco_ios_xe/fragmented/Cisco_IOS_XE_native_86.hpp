@@ -2777,7 +2777,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf echo; //type: one of string, union
+        ydk::YLeaf echo; //type: one of union, string
         class Jitter; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter
         class TcpConn; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn
         class UdpEcho; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho
@@ -2830,7 +2830,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostn
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: uint16
 
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname
@@ -2877,7 +2877,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHost
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: uint16
 
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname
@@ -2924,7 +2924,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHost
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: uint16
 
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname

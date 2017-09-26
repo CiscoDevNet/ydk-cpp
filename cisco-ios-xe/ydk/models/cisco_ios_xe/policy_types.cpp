@@ -501,6 +501,12 @@ Service::~Service()
 {
 }
 
+const Enum::YLeaf RateUnit::pps {0, "pps"};
+const Enum::YLeaf RateUnit::cps {1, "cps"};
+const Enum::YLeaf RateUnit::bps {2, "bps"};
+const Enum::YLeaf RateUnit::perc {3, "perc"};
+const Enum::YLeaf RateUnit::ratio {4, "ratio"};
+
 const Enum::YLeaf Metric::none {0, "none"};
 const Enum::YLeaf Metric::peta {1, "peta"};
 const Enum::YLeaf Metric::tera {2, "tera"};
@@ -509,12 +515,6 @@ const Enum::YLeaf Metric::mega {4, "mega"};
 const Enum::YLeaf Metric::kilo {5, "kilo"};
 const Enum::YLeaf Metric::milli {6, "milli"};
 const Enum::YLeaf Metric::nano {7, "nano"};
-
-const Enum::YLeaf RateUnit::pps {0, "pps"};
-const Enum::YLeaf RateUnit::cps {1, "cps"};
-const Enum::YLeaf RateUnit::bps {2, "bps"};
-const Enum::YLeaf RateUnit::perc {3, "perc"};
-const Enum::YLeaf RateUnit::ratio {4, "ratio"};
 
 const Enum::YLeaf Direction::inbound {0, "inbound"};
 const Enum::YLeaf Direction::outbound {1, "outbound"};

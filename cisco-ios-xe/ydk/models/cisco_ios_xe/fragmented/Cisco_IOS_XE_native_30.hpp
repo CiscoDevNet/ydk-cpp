@@ -2786,7 +2786,7 @@ class Native::Interface::FastEthernet::Switchport::Access::Vlan : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -3490,7 +3490,7 @@ class Native::Interface::FastEthernet::Switchport::Voice::Vlan : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of string, uint16, enumeration
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 

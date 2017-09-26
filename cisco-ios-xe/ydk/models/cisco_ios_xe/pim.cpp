@@ -99,23 +99,6 @@ const Enum::YLeaf RouteProtocolType::idpr {15, "idpr"};
 const Enum::YLeaf RouteProtocolType::ciscoEigrp {16, "ciscoEigrp"};
 const Enum::YLeaf RouteProtocolType::dvmrp {17, "dvmrp"};
 
-const Enum::YLeaf PimMode::sparse {1, "sparse"};
-const Enum::YLeaf PimMode::dense {2, "dense"};
-const Enum::YLeaf PimMode::sparse_dense {3, "sparse-dense"};
-const Enum::YLeaf PimMode::dm_proxy {4, "dm-proxy"};
-const Enum::YLeaf PimMode::none {5, "none"};
-
-const Enum::YLeaf Origin::other_origin {1, "other-origin"};
-const Enum::YLeaf Origin::pim_request {2, "pim-request"};
-const Enum::YLeaf Origin::ssm_request {3, "ssm-request"};
-const Enum::YLeaf Origin::fixed {4, "fixed"};
-const Enum::YLeaf Origin::embedded {5, "embedded"};
-const Enum::YLeaf Origin::static_ {6, "static"};
-const Enum::YLeaf Origin::config_ssm {7, "config-ssm"};
-const Enum::YLeaf Origin::auto_rp {8, "auto-rp"};
-const Enum::YLeaf Origin::bsr {9, "bsr"};
-const Enum::YLeaf Origin::msdp {10, "msdp"};
-
 const Enum::YLeaf MrouteProtocolType::other {1, "other"};
 const Enum::YLeaf MrouteProtocolType::local {2, "local"};
 const Enum::YLeaf MrouteProtocolType::netmgmt {3, "netmgmt"};
@@ -128,6 +111,23 @@ const Enum::YLeaf MrouteProtocolType::pimDenseMode {9, "pimDenseMode"};
 const Enum::YLeaf MrouteProtocolType::igmpOnly {10, "igmpOnly"};
 const Enum::YLeaf MrouteProtocolType::bgmp {11, "bgmp"};
 const Enum::YLeaf MrouteProtocolType::msdp {12, "msdp"};
+
+const Enum::YLeaf Origin::other_origin {1, "other-origin"};
+const Enum::YLeaf Origin::pim_request {2, "pim-request"};
+const Enum::YLeaf Origin::ssm_request {3, "ssm-request"};
+const Enum::YLeaf Origin::fixed {4, "fixed"};
+const Enum::YLeaf Origin::embedded {5, "embedded"};
+const Enum::YLeaf Origin::static_ {6, "static"};
+const Enum::YLeaf Origin::config_ssm {7, "config-ssm"};
+const Enum::YLeaf Origin::auto_rp {8, "auto-rp"};
+const Enum::YLeaf Origin::bsr {9, "bsr"};
+const Enum::YLeaf Origin::msdp {10, "msdp"};
+
+const Enum::YLeaf PimMode::sparse {1, "sparse"};
+const Enum::YLeaf PimMode::dense {2, "dense"};
+const Enum::YLeaf PimMode::sparse_dense {3, "sparse-dense"};
+const Enum::YLeaf PimMode::dm_proxy {4, "dm-proxy"};
+const Enum::YLeaf PimMode::none {5, "none"};
 
 
 }

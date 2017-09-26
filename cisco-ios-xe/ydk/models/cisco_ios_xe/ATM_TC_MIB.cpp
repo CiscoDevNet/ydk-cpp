@@ -164,16 +164,9 @@ Atmnotrafficdescriptor::~Atmnotrafficdescriptor()
 const Enum::YLeaf AtmVorXAdminStatus::up {1, "up"};
 const Enum::YLeaf AtmVorXAdminStatus::down {2, "down"};
 
-const Enum::YLeaf AtmVorXOperStatus::up {1, "up"};
-const Enum::YLeaf AtmVorXOperStatus::down {2, "down"};
-const Enum::YLeaf AtmVorXOperStatus::unknown {3, "unknown"};
-
-const Enum::YLeaf AtmServiceCategory::other {1, "other"};
-const Enum::YLeaf AtmServiceCategory::cbr {2, "cbr"};
-const Enum::YLeaf AtmServiceCategory::rtVbr {3, "rtVbr"};
-const Enum::YLeaf AtmServiceCategory::nrtVbr {4, "nrtVbr"};
-const Enum::YLeaf AtmServiceCategory::abr {5, "abr"};
-const Enum::YLeaf AtmServiceCategory::ubr {6, "ubr"};
+const Enum::YLeaf AtmConnCastType::p2p {1, "p2p"};
+const Enum::YLeaf AtmConnCastType::p2mpRoot {2, "p2mpRoot"};
+const Enum::YLeaf AtmConnCastType::p2mpLeaf {3, "p2mpLeaf"};
 
 const Enum::YLeaf AtmConnKind::pvc {1, "pvc"};
 const Enum::YLeaf AtmConnKind::svcIncoming {2, "svcIncoming"};
@@ -181,9 +174,9 @@ const Enum::YLeaf AtmConnKind::svcOutgoing {3, "svcOutgoing"};
 const Enum::YLeaf AtmConnKind::spvcInitiator {4, "spvcInitiator"};
 const Enum::YLeaf AtmConnKind::spvcTarget {5, "spvcTarget"};
 
-const Enum::YLeaf AtmConnCastType::p2p {1, "p2p"};
-const Enum::YLeaf AtmConnCastType::p2mpRoot {2, "p2mpRoot"};
-const Enum::YLeaf AtmConnCastType::p2mpLeaf {3, "p2mpLeaf"};
+const Enum::YLeaf AtmVorXOperStatus::up {1, "up"};
+const Enum::YLeaf AtmVorXOperStatus::down {2, "down"};
+const Enum::YLeaf AtmVorXOperStatus::unknown {3, "unknown"};
 
 const Enum::YLeaf AtmInterfaceType::other {1, "other"};
 const Enum::YLeaf AtmInterfaceType::autoConfig {2, "autoConfig"};
@@ -198,6 +191,13 @@ const Enum::YLeaf AtmInterfaceType::atmfPnni1Dot0 {10, "atmfPnni1Dot0"};
 const Enum::YLeaf AtmInterfaceType::atmfBici2Dot0 {11, "atmfBici2Dot0"};
 const Enum::YLeaf AtmInterfaceType::atmfUniPvcOnly {12, "atmfUniPvcOnly"};
 const Enum::YLeaf AtmInterfaceType::atmfNniPvcOnly {13, "atmfNniPvcOnly"};
+
+const Enum::YLeaf AtmServiceCategory::other {1, "other"};
+const Enum::YLeaf AtmServiceCategory::cbr {2, "cbr"};
+const Enum::YLeaf AtmServiceCategory::rtVbr {3, "rtVbr"};
+const Enum::YLeaf AtmServiceCategory::nrtVbr {4, "nrtVbr"};
+const Enum::YLeaf AtmServiceCategory::abr {5, "abr"};
+const Enum::YLeaf AtmServiceCategory::ubr {6, "ubr"};
 
 
 }

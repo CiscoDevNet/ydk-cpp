@@ -59,7 +59,7 @@ class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaCost : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf maximum_cost; //type: uint32
 
 }; // Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaCost
@@ -81,7 +81,7 @@ class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaTunnel : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf tunnel; //type: Tunnel
         class Tunnel;
 
@@ -452,8 +452,8 @@ class Native::Router::Ospf::Limit::Retransmissions : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf non_dc; //type: one of uint32, enumeration
-        ydk::YLeaf dc; //type: one of uint32, enumeration
+        ydk::YLeaf non_dc; //type: one of enumeration, uint32
+        ydk::YLeaf dc; //type: one of enumeration, uint32
 
 }; // Native::Router::Ospf::Limit::Retransmissions
 
@@ -755,7 +755,7 @@ class Native::Router::Ospf::Mpls::Ldp::Autoconfig : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
 
 }; // Native::Router::Ospf::Mpls::Ldp::Autoconfig
 
@@ -828,7 +828,7 @@ class Native::Router::Ospf::Mpls::TrafficEng::Area : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
 
 }; // Native::Router::Ospf::Mpls::TrafficEng::Area
 
@@ -893,7 +893,7 @@ class Native::Router::Ospf::Mpls::TrafficEng::MeshGroup : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint32
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf interface; //type: string
 
 }; // Native::Router::Ospf::Mpls::TrafficEng::MeshGroup
@@ -1128,7 +1128,7 @@ class Native::Router::Ospf::Network : public ydk::Entity
 
         ydk::YLeaf ip; //type: string
         ydk::YLeaf mask; //type: string
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
 
 }; // Native::Router::Ospf::Network
 
@@ -1353,7 +1353,7 @@ class Native::Router::Ospf::QueueDepth::Hello : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospf::QueueDepth::Hello
@@ -1375,7 +1375,7 @@ class Native::Router::Ospf::QueueDepth::Update : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospf::QueueDepth::Update
@@ -1499,7 +1499,7 @@ class Native::Router::Ospf::Redistribute::Bgp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Bgp::RedistOptions> redist_options;
@@ -1600,7 +1600,7 @@ class Native::Router::Ospf::Redistribute::Eigrp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Eigrp::RedistOptions> redist_options;
@@ -2534,7 +2534,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Bgp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Bgp::RedistOptions> redist_options;
@@ -2635,7 +2635,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp::RedistOptions> redist_options;
@@ -3499,7 +3499,7 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Bgp : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Bgp::RedistOptions> redist_options;
@@ -3600,7 +3600,7 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Eigrp : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Eigrp::RedistOptions> redist_options;

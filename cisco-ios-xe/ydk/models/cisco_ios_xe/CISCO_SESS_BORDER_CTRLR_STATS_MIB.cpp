@@ -2536,9 +2536,6 @@ bool CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchi
     return false;
 }
 
-const Enum::YLeaf CiscoSbcRadiusClientType::authentication {1, "authentication"};
-const Enum::YLeaf CiscoSbcRadiusClientType::accounting {2, "accounting"};
-
 const Enum::YLeaf CiscoSbcSIPMethod::unknown {1, "unknown"};
 const Enum::YLeaf CiscoSbcSIPMethod::ack {2, "ack"};
 const Enum::YLeaf CiscoSbcSIPMethod::bye {3, "bye"};
@@ -2553,6 +2550,9 @@ const Enum::YLeaf CiscoSbcSIPMethod::refer {11, "refer"};
 const Enum::YLeaf CiscoSbcSIPMethod::register_ {12, "register"};
 const Enum::YLeaf CiscoSbcSIPMethod::subscribe {13, "subscribe"};
 const Enum::YLeaf CiscoSbcSIPMethod::update {14, "update"};
+
+const Enum::YLeaf CiscoSbcRadiusClientType::authentication {1, "authentication"};
+const Enum::YLeaf CiscoSbcRadiusClientType::accounting {2, "accounting"};
 
 
 }

@@ -82,14 +82,14 @@ class Native::Interface::Tunnel::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::Tunnel::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::Tunnel::Ip::SummaryAddress
         class Verify; //type: Native::Interface::Tunnel::Ip::Verify
-        class Rsvp; //type: Native::Interface::Tunnel::Ip::Rsvp
-        class Lisp; //type: Native::Interface::Tunnel::Ip::Lisp
-        class Nhrp; //type: Native::Interface::Tunnel::Ip::Nhrp
-        class Igmp; //type: Native::Interface::Tunnel::Ip::Igmp
-        class Ospf; //type: Native::Interface::Tunnel::Ip::Ospf
-        class Wccp; //type: Native::Interface::Tunnel::Ip::Wccp
-        class Nbar; //type: Native::Interface::Tunnel::Ip::Nbar
         class Flow; //type: Native::Interface::Tunnel::Ip::Flow
+        class Igmp; //type: Native::Interface::Tunnel::Ip::Igmp
+        class Lisp; //type: Native::Interface::Tunnel::Ip::Lisp
+        class Nbar; //type: Native::Interface::Tunnel::Ip::Nbar
+        class Nhrp; //type: Native::Interface::Tunnel::Ip::Nhrp
+        class Ospf; //type: Native::Interface::Tunnel::Ip::Ospf
+        class Rsvp; //type: Native::Interface::Tunnel::Ip::Rsvp
+        class Wccp; //type: Native::Interface::Tunnel::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ip::AccessGroup> access_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ip::Address> address;
@@ -3285,7 +3285,7 @@ class Native::Interface::Tunnel::Ip::Ospf::MultiArea : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
 
 }; // Native::Interface::Tunnel::Ip::Ospf::MultiArea
@@ -3329,7 +3329,7 @@ class Native::Interface::Tunnel::Ip::Ospf::ProcessId : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf secondaries; //type: empty
         ydk::YLeaf none; //type: empty
 

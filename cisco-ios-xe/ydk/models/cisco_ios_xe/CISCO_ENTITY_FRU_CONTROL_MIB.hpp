@@ -922,6 +922,72 @@ class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutpu
 
 }; // CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
 
+class FRUCoolingUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cfm;
+        static const ydk::Enum::YLeaf watts;
+
+};
+
+class PowerOperType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf offEnvOther;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf offAdmin;
+        static const ydk::Enum::YLeaf offDenied;
+        static const ydk::Enum::YLeaf offEnvPower;
+        static const ydk::Enum::YLeaf offEnvTemp;
+        static const ydk::Enum::YLeaf offEnvFan;
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf onButFanFail;
+        static const ydk::Enum::YLeaf offCooling;
+        static const ydk::Enum::YLeaf offConnectorRating;
+        static const ydk::Enum::YLeaf onButInlinePowerFail;
+
+};
+
+class PowerAdminType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf inlineAuto;
+        static const ydk::Enum::YLeaf inlineOn;
+        static const ydk::Enum::YLeaf powerCycle;
+
+};
+
+class ModuleResetReasonType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf powerUp;
+        static const ydk::Enum::YLeaf parityError;
+        static const ydk::Enum::YLeaf clearConfigReset;
+        static const ydk::Enum::YLeaf manualReset;
+        static const ydk::Enum::YLeaf watchDogTimeoutReset;
+        static const ydk::Enum::YLeaf resourceOverflowReset;
+        static const ydk::Enum::YLeaf missingTaskReset;
+        static const ydk::Enum::YLeaf lowVoltageReset;
+        static const ydk::Enum::YLeaf controllerReset;
+        static const ydk::Enum::YLeaf systemReset;
+        static const ydk::Enum::YLeaf switchoverReset;
+        static const ydk::Enum::YLeaf upgradeReset;
+        static const ydk::Enum::YLeaf downgradeReset;
+        static const ydk::Enum::YLeaf cacheErrorReset;
+        static const ydk::Enum::YLeaf deviceDriverReset;
+        static const ydk::Enum::YLeaf softwareExceptionReset;
+        static const ydk::Enum::YLeaf restoreConfigReset;
+        static const ydk::Enum::YLeaf abortRevReset;
+        static const ydk::Enum::YLeaf burnBootReset;
+        static const ydk::Enum::YLeaf standbyCdHealthierReset;
+        static const ydk::Enum::YLeaf nonNativeConfigClearReset;
+        static const ydk::Enum::YLeaf memoryProtectionErrorReset;
+
+};
+
 class ModuleOperType : public ydk::Enum
 {
     public:
@@ -968,43 +1034,6 @@ class PowerRedundancyType : public ydk::Enum
 
 };
 
-class ModuleResetReasonType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf powerUp;
-        static const ydk::Enum::YLeaf parityError;
-        static const ydk::Enum::YLeaf clearConfigReset;
-        static const ydk::Enum::YLeaf manualReset;
-        static const ydk::Enum::YLeaf watchDogTimeoutReset;
-        static const ydk::Enum::YLeaf resourceOverflowReset;
-        static const ydk::Enum::YLeaf missingTaskReset;
-        static const ydk::Enum::YLeaf lowVoltageReset;
-        static const ydk::Enum::YLeaf controllerReset;
-        static const ydk::Enum::YLeaf systemReset;
-        static const ydk::Enum::YLeaf switchoverReset;
-        static const ydk::Enum::YLeaf upgradeReset;
-        static const ydk::Enum::YLeaf downgradeReset;
-        static const ydk::Enum::YLeaf cacheErrorReset;
-        static const ydk::Enum::YLeaf deviceDriverReset;
-        static const ydk::Enum::YLeaf softwareExceptionReset;
-        static const ydk::Enum::YLeaf restoreConfigReset;
-        static const ydk::Enum::YLeaf abortRevReset;
-        static const ydk::Enum::YLeaf burnBootReset;
-        static const ydk::Enum::YLeaf standbyCdHealthierReset;
-        static const ydk::Enum::YLeaf nonNativeConfigClearReset;
-        static const ydk::Enum::YLeaf memoryProtectionErrorReset;
-
-};
-
-class FRUCoolingUnit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cfm;
-        static const ydk::Enum::YLeaf watts;
-
-};
-
 class ModuleAdminType : public ydk::Enum
 {
     public:
@@ -1012,35 +1041,6 @@ class ModuleAdminType : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf reset;
         static const ydk::Enum::YLeaf outOfServiceAdmin;
-
-};
-
-class PowerAdminType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf inlineAuto;
-        static const ydk::Enum::YLeaf inlineOn;
-        static const ydk::Enum::YLeaf powerCycle;
-
-};
-
-class PowerOperType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf offEnvOther;
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf offAdmin;
-        static const ydk::Enum::YLeaf offDenied;
-        static const ydk::Enum::YLeaf offEnvPower;
-        static const ydk::Enum::YLeaf offEnvTemp;
-        static const ydk::Enum::YLeaf offEnvFan;
-        static const ydk::Enum::YLeaf failed;
-        static const ydk::Enum::YLeaf onButFanFail;
-        static const ydk::Enum::YLeaf offCooling;
-        static const ydk::Enum::YLeaf offConnectorRating;
-        static const ydk::Enum::YLeaf onButInlinePowerFail;
 
 };
 

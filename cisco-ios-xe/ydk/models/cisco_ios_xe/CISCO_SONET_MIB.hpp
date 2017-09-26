@@ -705,16 +705,6 @@ class CISCOSONETMIB::Csstracetable::Csstraceentry : public ydk::Entity
 
 }; // CISCOSONETMIB::Csstracetable::Csstraceentry
 
-class CsApsLineFailureCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf csApsChannelMismatch;
-        static const ydk::Enum::YLeaf csApsProtectionByteFail;
-        static const ydk::Enum::YLeaf csApsFEProtectionFailure;
-        static const ydk::Enum::YLeaf csApsModeMismatch;
-
-};
-
 class CsApsLineSwitchReason : public ydk::Enum
 {
     public:
@@ -728,6 +718,16 @@ class CsApsLineSwitchReason : public ydk::Enum
         static const ydk::Enum::YLeaf csApsForceSwitch;
         static const ydk::Enum::YLeaf csApsLockOut;
         static const ydk::Enum::YLeaf csApsNoSwitch;
+
+};
+
+class CsApsLineFailureCode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf csApsChannelMismatch;
+        static const ydk::Enum::YLeaf csApsProtectionByteFail;
+        static const ydk::Enum::YLeaf csApsFEProtectionFailure;
+        static const ydk::Enum::YLeaf csApsModeMismatch;
 
 };
 

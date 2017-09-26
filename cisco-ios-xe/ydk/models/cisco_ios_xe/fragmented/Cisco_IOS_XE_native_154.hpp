@@ -584,7 +584,7 @@ class Native::Router::LispList::Default_::InstanceContainer::InstanceList::Servi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class LispIpRouteImport; //type: Native::Router::LispList::Default_::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Default_::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
@@ -1059,7 +1059,7 @@ class Native::Router::LispList::Default_::InstanceContainer::InstanceList::Servi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class MapCacheContainer; //type: Native::Router::LispList::Default_::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Default_::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node
@@ -2220,7 +2220,7 @@ class Native::Router::LispList::Default_::Ipv4::RouteImport::Database::Bgp : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class LispIpRouteImport; //type: Native::Router::LispList::Default_::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Default_::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
@@ -2649,7 +2649,7 @@ class Native::Router::LispList::Default_::Ipv4::RouteImport::MapCache::Bgp : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class MapCacheContainer; //type: Native::Router::LispList::Default_::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Default_::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node

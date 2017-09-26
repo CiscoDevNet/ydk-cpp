@@ -19585,6 +19585,30 @@ RoutePathLblOwnerStatic::~RoutePathLblOwnerStatic()
 {
 }
 
+const Enum::YLeaf IccpState::nonexistent {1, "nonexistent"};
+const Enum::YLeaf IccpState::initialized {2, "initialized"};
+const Enum::YLeaf IccpState::capsent {3, "capsent"};
+const Enum::YLeaf IccpState::caprec {4, "caprec"};
+const Enum::YLeaf IccpState::connecting {5, "connecting"};
+const Enum::YLeaf IccpState::operational {6, "operational"};
+
+const Enum::YLeaf LocalLabelState::local_label_state_none {1, "local-label-state-none"};
+const Enum::YLeaf LocalLabelState::local_label_state_assigned {2, "local-label-state-assigned"};
+const Enum::YLeaf LocalLabelState::local_label_state_withdrawn {3, "local-label-state-withdrawn"};
+
+const Enum::YLeaf SessionState::nonexistent {1, "nonexistent"};
+const Enum::YLeaf SessionState::initialized {2, "initialized"};
+const Enum::YLeaf SessionState::openrec {3, "openrec"};
+const Enum::YLeaf SessionState::opensent {4, "opensent"};
+const Enum::YLeaf SessionState::operational {5, "operational"};
+
+const Enum::YLeaf AdjState::nonex {0, "nonex"};
+const Enum::YLeaf AdjState::unsol_op_pdg {1, "unsol-op-pdg"};
+const Enum::YLeaf AdjState::deferred {2, "deferred"};
+const Enum::YLeaf AdjState::estab {3, "estab"};
+const Enum::YLeaf AdjState::lib_exp_wait {4, "lib-exp-wait"};
+const Enum::YLeaf AdjState::destroyed {5, "destroyed"};
+
 const Enum::YLeaf AdvLabelType::use_lable {1, "use-lable"};
 const Enum::YLeaf AdvLabelType::use_explicit {2, "use-explicit"};
 const Enum::YLeaf AdvLabelType::use_implicit {3, "use-implicit"};
@@ -19594,25 +19618,14 @@ const Enum::YLeaf NbrBgpAdvtState::not_applicable {0, "not-applicable"};
 const Enum::YLeaf NbrBgpAdvtState::permit {1, "permit"};
 const Enum::YLeaf NbrBgpAdvtState::deny {2, "deny"};
 
-const Enum::YLeaf SessionState::nonexistent {1, "nonexistent"};
-const Enum::YLeaf SessionState::initialized {2, "initialized"};
-const Enum::YLeaf SessionState::openrec {3, "openrec"};
-const Enum::YLeaf SessionState::opensent {4, "opensent"};
-const Enum::YLeaf SessionState::operational {5, "operational"};
+const Enum::YLeaf AfId::ldp_af_id_none {0, "ldp-af-id-none"};
+const Enum::YLeaf AfId::ldp_af_id_ipv4 {1, "ldp-af-id-ipv4"};
+const Enum::YLeaf AfId::ldp_af_id_ipv6 {2, "ldp-af-id-ipv6"};
 
 const Enum::YLeaf DhcState::none {0, "none"};
 const Enum::YLeaf DhcState::dhc_active {1, "dhc-active"};
 const Enum::YLeaf DhcState::dhc_passive {2, "dhc-passive"};
 const Enum::YLeaf DhcState::dhc_active_passive {3, "dhc-active-passive"};
-
-const Enum::YLeaf IgpSyncState::isync_ready {0, "isync-ready"};
-const Enum::YLeaf IgpSyncState::isync_not_ready {1, "isync-not-ready"};
-const Enum::YLeaf IgpSyncState::isync_deferred {2, "isync-deferred"};
-
-const Enum::YLeaf Af::ldp_af_none {0, "ldp-af-none"};
-const Enum::YLeaf Af::ldp_af_ipv4 {1, "ldp-af-ipv4"};
-const Enum::YLeaf Af::ldp_af_ipv6 {2, "ldp-af-ipv6"};
-const Enum::YLeaf Af::ldp_af_ipv4_ipv6 {3, "ldp-af-ipv4-ipv6"};
 
 const Enum::YLeaf LoopDetectionType::none {1, "none"};
 const Enum::YLeaf LoopDetectionType::other {2, "other"};
@@ -19620,27 +19633,14 @@ const Enum::YLeaf LoopDetectionType::hop_count {3, "hop-count"};
 const Enum::YLeaf LoopDetectionType::path_vector {4, "path-vector"};
 const Enum::YLeaf LoopDetectionType::hop_count_and_path_vector {5, "hop-count-and-path-vector"};
 
-const Enum::YLeaf IccpState::nonexistent {1, "nonexistent"};
-const Enum::YLeaf IccpState::initialized {2, "initialized"};
-const Enum::YLeaf IccpState::capsent {3, "capsent"};
-const Enum::YLeaf IccpState::caprec {4, "caprec"};
-const Enum::YLeaf IccpState::connecting {5, "connecting"};
-const Enum::YLeaf IccpState::operational {6, "operational"};
+const Enum::YLeaf Af::ldp_af_none {0, "ldp-af-none"};
+const Enum::YLeaf Af::ldp_af_ipv4 {1, "ldp-af-ipv4"};
+const Enum::YLeaf Af::ldp_af_ipv6 {2, "ldp-af-ipv6"};
+const Enum::YLeaf Af::ldp_af_ipv4_ipv6 {3, "ldp-af-ipv4-ipv6"};
 
-const Enum::YLeaf AdjState::nonex {0, "nonex"};
-const Enum::YLeaf AdjState::unsol_op_pdg {1, "unsol-op-pdg"};
-const Enum::YLeaf AdjState::deferred {2, "deferred"};
-const Enum::YLeaf AdjState::estab {3, "estab"};
-const Enum::YLeaf AdjState::lib_exp_wait {4, "lib-exp-wait"};
-const Enum::YLeaf AdjState::destroyed {5, "destroyed"};
-
-const Enum::YLeaf LocalLabelState::local_label_state_none {1, "local-label-state-none"};
-const Enum::YLeaf LocalLabelState::local_label_state_assigned {2, "local-label-state-assigned"};
-const Enum::YLeaf LocalLabelState::local_label_state_withdrawn {3, "local-label-state-withdrawn"};
-
-const Enum::YLeaf AfId::ldp_af_id_none {0, "ldp-af-id-none"};
-const Enum::YLeaf AfId::ldp_af_id_ipv4 {1, "ldp-af-id-ipv4"};
-const Enum::YLeaf AfId::ldp_af_id_ipv6 {2, "ldp-af-id-ipv6"};
+const Enum::YLeaf IgpSyncState::isync_ready {0, "isync-ready"};
+const Enum::YLeaf IgpSyncState::isync_not_ready {1, "isync-not-ready"};
+const Enum::YLeaf IgpSyncState::isync_deferred {2, "isync-deferred"};
 
 const Enum::YLeaf MplsLdp::MplsLdpConfig::GlobalCfg::AdminStatus::enable {1, "enable"};
 const Enum::YLeaf MplsLdp::MplsLdpConfig::GlobalCfg::AdminStatus::disable {2, "disable"};

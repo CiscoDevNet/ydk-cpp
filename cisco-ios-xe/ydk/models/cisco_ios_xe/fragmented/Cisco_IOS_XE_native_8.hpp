@@ -514,7 +514,7 @@ class Native::Crypto::DynamicMap::Default_::Set::PeerContainer : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf peer; //type: one of string, union
+        ydk::YLeaf peer; //type: one of union, string
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Crypto::DynamicMap::Default_::Set::PeerContainer
@@ -980,7 +980,7 @@ class Native::Crypto::DynamicMap::Set::PeerContainer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf peer; //type: one of string, union
+        ydk::YLeaf peer; //type: one of union, string
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Crypto::DynamicMap::Set::PeerContainer

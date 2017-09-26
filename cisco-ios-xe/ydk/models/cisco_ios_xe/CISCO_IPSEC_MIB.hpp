@@ -441,6 +441,35 @@ class CISCOIPSECMIB::Cipstrapcntlgroup : public ydk::Entity
 
 }; // CISCOIPSECMIB::Cipstrapcntlgroup
 
+class CryptomapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cryptomapTypeNONE;
+        static const ydk::Enum::YLeaf cryptomapTypeMANUAL;
+        static const ydk::Enum::YLeaf cryptomapTypeISAKMP;
+        static const ydk::Enum::YLeaf cryptomapTypeCET;
+        static const ydk::Enum::YLeaf cryptomapTypeDYNAMIC;
+        static const ydk::Enum::YLeaf cryptomapTypeDYNAMICDISCOVERY;
+
+};
+
+class IkeHashAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha;
+
+};
+
+class TrapStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
 class IkeAuthMethod : public ydk::Enum
 {
     public:
@@ -461,12 +490,12 @@ class DiffHellmanGrp : public ydk::Enum
 
 };
 
-class IkeHashAlgo : public ydk::Enum
+class CryptomapSetBindStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf detached;
 
 };
 
@@ -479,41 +508,12 @@ class EncryptAlgo : public ydk::Enum
 
 };
 
-class CryptomapSetBindStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf attached;
-        static const ydk::Enum::YLeaf detached;
-
-};
-
-class CryptomapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cryptomapTypeNONE;
-        static const ydk::Enum::YLeaf cryptomapTypeMANUAL;
-        static const ydk::Enum::YLeaf cryptomapTypeISAKMP;
-        static const ydk::Enum::YLeaf cryptomapTypeCET;
-        static const ydk::Enum::YLeaf cryptomapTypeDYNAMIC;
-        static const ydk::Enum::YLeaf cryptomapTypeDYNAMICDISCOVERY;
-
-};
-
 class IkeIdentityType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
         static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
         static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
-
-};
-
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
 
 };
 

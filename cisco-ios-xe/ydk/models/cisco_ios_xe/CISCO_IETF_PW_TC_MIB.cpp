@@ -11,14 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_TC_MIB {
 
-const Enum::YLeaf CpwOperStatus::up {1, "up"};
-const Enum::YLeaf CpwOperStatus::down {2, "down"};
-const Enum::YLeaf CpwOperStatus::testing {3, "testing"};
-const Enum::YLeaf CpwOperStatus::unknown {4, "unknown"};
-const Enum::YLeaf CpwOperStatus::dormant {5, "dormant"};
-const Enum::YLeaf CpwOperStatus::notPresent {6, "notPresent"};
-const Enum::YLeaf CpwOperStatus::lowerLayerDown {7, "lowerLayerDown"};
-
 const Enum::YLeaf CpwVcType::other {0, "other"};
 const Enum::YLeaf CpwVcType::frameRelay {1, "frameRelay"};
 const Enum::YLeaf CpwVcType::atmAal5Vcc {2, "atmAal5Vcc"};
@@ -39,6 +31,14 @@ const Enum::YLeaf CpwVcType::basicCesPsn {16, "basicCesPsn"};
 const Enum::YLeaf CpwVcType::basicTdmIp {17, "basicTdmIp"};
 const Enum::YLeaf CpwVcType::tdmCasCesPsn {18, "tdmCasCesPsn"};
 const Enum::YLeaf CpwVcType::tdmCasTdmIp {19, "tdmCasTdmIp"};
+
+const Enum::YLeaf CpwOperStatus::up {1, "up"};
+const Enum::YLeaf CpwOperStatus::down {2, "down"};
+const Enum::YLeaf CpwOperStatus::testing {3, "testing"};
+const Enum::YLeaf CpwOperStatus::unknown {4, "unknown"};
+const Enum::YLeaf CpwOperStatus::dormant {5, "dormant"};
+const Enum::YLeaf CpwOperStatus::notPresent {6, "notPresent"};
+const Enum::YLeaf CpwOperStatus::lowerLayerDown {7, "lowerLayerDown"};
 
 
 }

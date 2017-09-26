@@ -831,9 +831,9 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -884,9 +884,9 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q : publ
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -3078,14 +3078,6 @@ class Native::Interface::PortChannel : public ydk::Entity
         class RcvQueue; //type: Native::Interface::PortChannel::RcvQueue
         class Peer; //type: Native::Interface::PortChannel::Peer
         class PmPath; //type: Native::Interface::PortChannel::PmPath
-        class Snmp; //type: Native::Interface::PortChannel::Snmp
-        class Crypto; //type: Native::Interface::PortChannel::Crypto
-        class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
-        class Dot1X; //type: Native::Interface::PortChannel::Dot1X
-        class Lisp; //type: Native::Interface::PortChannel::Lisp
-        class Authentication; //type: Native::Interface::PortChannel::Authentication
-        class Mab; //type: Native::Interface::PortChannel::Mab
-        class Cts; //type: Native::Interface::PortChannel::Cts
         class CarrierDelay; //type: Native::Interface::PortChannel::CarrierDelay
         class ChannelGroup; //type: Native::Interface::PortChannel::ChannelGroup
         class Ethernet; //type: Native::Interface::PortChannel::Ethernet
@@ -3096,6 +3088,16 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Pppoe; //type: Native::Interface::PortChannel::Pppoe
         class Service; //type: Native::Interface::PortChannel::Service
         class Xconnect; //type: Native::Interface::PortChannel::Xconnect
+        class Snmp; //type: Native::Interface::PortChannel::Snmp
+        class Crypto; //type: Native::Interface::PortChannel::Crypto
+        class Cts; //type: Native::Interface::PortChannel::Cts
+        class Dot1X; //type: Native::Interface::PortChannel::Dot1X
+        class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
+        class Lisp; //type: Native::Interface::PortChannel::Lisp
+        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
+        class Authentication; //type: Native::Interface::PortChannel::Authentication
+        class Mab; //type: Native::Interface::PortChannel::Mab
+        class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
         class Auto_; //type: Native::Interface::PortChannel::Auto_
         class Datalink; //type: Native::Interface::PortChannel::Datalink
         class Energywise; //type: Native::Interface::PortChannel::Energywise
@@ -3108,8 +3110,6 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Switch_; //type: Native::Interface::PortChannel::Switch_
         class SrrQueue; //type: Native::Interface::PortChannel::SrrQueue
         class Macsec; //type: Native::Interface::PortChannel::Macsec
-        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
-        class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::AccessSession> access_session;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Arp> arp;

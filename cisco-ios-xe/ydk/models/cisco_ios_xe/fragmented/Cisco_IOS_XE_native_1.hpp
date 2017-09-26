@@ -13,367 +13,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Ap::Dot11::24ghz::Rate::RATE48M : public ydk::Entity
-{
-    public:
-        RATE48M();
-        ~RATE48M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE48M
-
-
-class Native::Ap::Dot11::24ghz::Rate::RATE54M : public ydk::Entity
-{
-    public:
-        RATE54M();
-        ~RATE54M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE54M
-
-
-class Native::Ap::Dot11::24ghz::Rate::RATE55M : public ydk::Entity
-{
-    public:
-        RATE55M();
-        ~RATE55M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE55M
-
-
-class Native::Ap::Dot11::24ghz::Rate::RATE6M : public ydk::Entity
-{
-    public:
-        RATE6M();
-        ~RATE6M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE6M
-
-
-class Native::Ap::Dot11::24ghz::Rate::RATE9M : public ydk::Entity
-{
-    public:
-        RATE9M();
-        ~RATE9M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE9M
-
-
-class Native::Ap::Dot11::49ghz : public ydk::Entity
-{
-    public:
-        49ghz();
-        ~49ghz();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Rrm; //type: Native::Ap::Dot11::49ghz::Rrm
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::49ghz::Rrm> rrm;
-        
-}; // Native::Ap::Dot11::49ghz
-
-
-class Native::Ap::Dot11::49ghz::Rrm : public ydk::Entity
-{
-    public:
-        Rrm();
-        ~Rrm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Profile; //type: Native::Ap::Dot11::49ghz::Rrm::Profile
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::49ghz::Rrm::Profile> profile;
-        
-}; // Native::Ap::Dot11::49ghz::Rrm
-
-
-class Native::Ap::Dot11::49ghz::Rrm::Profile : public ydk::Entity
-{
-    public:
-        Profile();
-        ~Profile();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf foreign; //type: uint8
-
-}; // Native::Ap::Dot11::49ghz::Rrm::Profile
-
-
-class Native::Ap::Dot11::5ghz : public ydk::Entity
-{
-    public:
-        5ghz();
-        ~5ghz();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Rate; //type: Native::Ap::Dot11::5ghz::Rate
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate> rate;
-        
-}; // Native::Ap::Dot11::5ghz
-
-
-class Native::Ap::Dot11::5ghz::Rate : public ydk::Entity
-{
-    public:
-        Rate();
-        ~Rate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RATE11M; //type: Native::Ap::Dot11::5ghz::Rate::RATE11M
-        class RATE12M; //type: Native::Ap::Dot11::5ghz::Rate::RATE12M
-        class RATE18M; //type: Native::Ap::Dot11::5ghz::Rate::RATE18M
-        class RATE1M; //type: Native::Ap::Dot11::5ghz::Rate::RATE1M
-        class RATE24M; //type: Native::Ap::Dot11::5ghz::Rate::RATE24M
-        class RATE2M; //type: Native::Ap::Dot11::5ghz::Rate::RATE2M
-        class RATE36M; //type: Native::Ap::Dot11::5ghz::Rate::RATE36M
-        class RATE48M; //type: Native::Ap::Dot11::5ghz::Rate::RATE48M
-        class RATE54M; //type: Native::Ap::Dot11::5ghz::Rate::RATE54M
-        class RATE55M; //type: Native::Ap::Dot11::5ghz::Rate::RATE55M
-        class RATE6M; //type: Native::Ap::Dot11::5ghz::Rate::RATE6M
-        class RATE9M; //type: Native::Ap::Dot11::5ghz::Rate::RATE9M
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE11M> rate_11m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE12M> rate_12m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE18M> rate_18m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE1M> rate_1m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE24M> rate_24m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE2M> rate_2m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE36M> rate_36m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE48M> rate_48m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE54M> rate_54m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE55M> rate_5_5m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE6M> rate_6m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz::Rate::RATE9M> rate_9m;
-        
-}; // Native::Ap::Dot11::5ghz::Rate
-
-
-class Native::Ap::Dot11::5ghz::Rate::RATE11M : public ydk::Entity
-{
-    public:
-        RATE11M();
-        ~RATE11M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::5ghz::Rate::RATE11M
-
-
-class Native::Ap::Dot11::5ghz::Rate::RATE12M : public ydk::Entity
-{
-    public:
-        RATE12M();
-        ~RATE12M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::5ghz::Rate::RATE12M
-
-
-class Native::Ap::Dot11::5ghz::Rate::RATE18M : public ydk::Entity
-{
-    public:
-        RATE18M();
-        ~RATE18M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::5ghz::Rate::RATE18M
-
-
-class Native::Ap::Dot11::5ghz::Rate::RATE1M : public ydk::Entity
-{
-    public:
-        RATE1M();
-        ~RATE1M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::5ghz::Rate::RATE1M
-
-
-class Native::Ap::Dot11::5ghz::Rate::RATE24M : public ydk::Entity
-{
-    public:
-        RATE24M();
-        ~RATE24M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::5ghz::Rate::RATE24M
-
-
-class Native::Ap::Dot11::5ghz::Rate::RATE2M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE2M : public ydk::Entity
 {
     public:
         RATE2M();
@@ -392,10 +32,10 @@ class Native::Ap::Dot11::5ghz::Rate::RATE2M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE2M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE2M
 
 
-class Native::Ap::Dot11::5ghz::Rate::RATE36M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE36M : public ydk::Entity
 {
     public:
         RATE36M();
@@ -414,10 +54,10 @@ class Native::Ap::Dot11::5ghz::Rate::RATE36M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE36M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE36M
 
 
-class Native::Ap::Dot11::5ghz::Rate::RATE48M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE48M : public ydk::Entity
 {
     public:
         RATE48M();
@@ -436,10 +76,10 @@ class Native::Ap::Dot11::5ghz::Rate::RATE48M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE48M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE48M
 
 
-class Native::Ap::Dot11::5ghz::Rate::RATE54M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE54M : public ydk::Entity
 {
     public:
         RATE54M();
@@ -458,10 +98,10 @@ class Native::Ap::Dot11::5ghz::Rate::RATE54M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE54M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE54M
 
 
-class Native::Ap::Dot11::5ghz::Rate::RATE55M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE55M : public ydk::Entity
 {
     public:
         RATE55M();
@@ -480,10 +120,10 @@ class Native::Ap::Dot11::5ghz::Rate::RATE55M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE55M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE55M
 
 
-class Native::Ap::Dot11::5ghz::Rate::RATE6M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE6M : public ydk::Entity
 {
     public:
         RATE6M();
@@ -502,10 +142,10 @@ class Native::Ap::Dot11::5ghz::Rate::RATE6M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE6M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE6M
 
 
-class Native::Ap::Dot11::5ghz::Rate::RATE9M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE9M : public ydk::Entity
 {
     public:
         RATE9M();
@@ -524,14 +164,14 @@ class Native::Ap::Dot11::5ghz::Rate::RATE9M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::5ghz::Rate::RATE9M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE9M
 
 
-class Native::Ap::Dot11::AirtimeFairness : public ydk::Entity
+class Native::Ap::Dot11::Y_49ghz : public ydk::Entity
 {
     public:
-        AirtimeFairness();
-        ~AirtimeFairness();
+        Y_49ghz();
+        ~Y_49ghz();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -544,18 +184,18 @@ class Native::Ap::Dot11::AirtimeFairness : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class PolicyName; //type: Native::Ap::Dot11::AirtimeFairness::PolicyName
+        class Rrm; //type: Native::Ap::Dot11::Y_49ghz::Rrm
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::AirtimeFairness::PolicyName> > policy_name;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_49ghz::Rrm> rrm;
         
-}; // Native::Ap::Dot11::AirtimeFairness
+}; // Native::Ap::Dot11::Y_49ghz
 
 
-class Native::Ap::Dot11::AirtimeFairness::PolicyName : public ydk::Entity
+class Native::Ap::Dot11::Y_49ghz::Rrm : public ydk::Entity
 {
     public:
-        PolicyName();
-        ~PolicyName();
+        Rrm();
+        ~Rrm();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -568,10 +208,367 @@ class Native::Ap::Dot11::AirtimeFairness::PolicyName : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf policy_name; //type: string
-        ydk::YLeaf policy_id; //type: uint16
+        class Profile; //type: Native::Ap::Dot11::Y_49ghz::Rrm::Profile
 
-}; // Native::Ap::Dot11::AirtimeFairness::PolicyName
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_49ghz::Rrm::Profile> profile;
+        
+}; // Native::Ap::Dot11::Y_49ghz::Rrm
+
+
+class Native::Ap::Dot11::Y_49ghz::Rrm::Profile : public ydk::Entity
+{
+    public:
+        Profile();
+        ~Profile();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf foreign; //type: uint8
+
+}; // Native::Ap::Dot11::Y_49ghz::Rrm::Profile
+
+
+class Native::Ap::Dot11::Y_5ghz : public ydk::Entity
+{
+    public:
+        Y_5ghz();
+        ~Y_5ghz();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rate; //type: Native::Ap::Dot11::Y_5ghz::Rate
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate> rate;
+        
+}; // Native::Ap::Dot11::Y_5ghz
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate : public ydk::Entity
+{
+    public:
+        Rate();
+        ~Rate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RATE11M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE11M
+        class RATE12M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE12M
+        class RATE18M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE18M
+        class RATE1M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE1M
+        class RATE24M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE24M
+        class RATE2M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE2M
+        class RATE36M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE36M
+        class RATE48M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE48M
+        class RATE54M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE54M
+        class RATE55M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE55M
+        class RATE6M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE6M
+        class RATE9M; //type: Native::Ap::Dot11::Y_5ghz::Rate::RATE9M
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE11M> rate_11m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE12M> rate_12m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE18M> rate_18m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE1M> rate_1m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE24M> rate_24m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE2M> rate_2m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE36M> rate_36m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE48M> rate_48m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE54M> rate_54m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE55M> rate_5_5m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE6M> rate_6m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz::Rate::RATE9M> rate_9m;
+        
+}; // Native::Ap::Dot11::Y_5ghz::Rate
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE11M : public ydk::Entity
+{
+    public:
+        RATE11M();
+        ~RATE11M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE11M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE12M : public ydk::Entity
+{
+    public:
+        RATE12M();
+        ~RATE12M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE12M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE18M : public ydk::Entity
+{
+    public:
+        RATE18M();
+        ~RATE18M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE18M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE1M : public ydk::Entity
+{
+    public:
+        RATE1M();
+        ~RATE1M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE1M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE24M : public ydk::Entity
+{
+    public:
+        RATE24M();
+        ~RATE24M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE24M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE2M : public ydk::Entity
+{
+    public:
+        RATE2M();
+        ~RATE2M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE2M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE36M : public ydk::Entity
+{
+    public:
+        RATE36M();
+        ~RATE36M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE36M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE48M : public ydk::Entity
+{
+    public:
+        RATE48M();
+        ~RATE48M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE48M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE54M : public ydk::Entity
+{
+    public:
+        RATE54M();
+        ~RATE54M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE54M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE55M : public ydk::Entity
+{
+    public:
+        RATE55M();
+        ~RATE55M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE55M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE6M : public ydk::Entity
+{
+    public:
+        RATE6M();
+        ~RATE6M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE6M
+
+
+class Native::Ap::Dot11::Y_5ghz::Rate::RATE9M : public ydk::Entity
+{
+    public:
+        RATE9M();
+        ~RATE9M();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf supported; //type: empty
+
+}; // Native::Ap::Dot11::Y_5ghz::Rate::RATE9M
 
 
 class Native::Ap::Group : public ydk::Entity
@@ -673,20 +670,20 @@ class Native::Ap::Group::Config::AirtimeFairness::Dot11 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class 24GHz; //type: Native::Ap::Group::Config::AirtimeFairness::Dot11::24GHz
-        class 5GHz; //type: Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz
+        class Y_24GHz; //type: Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_24GHz
+        class Y_5GHz; //type: Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::AirtimeFairness::Dot11::24GHz> y_24ghz;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz> y_5ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_24GHz> y_24ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz> y_5ghz;
         
 }; // Native::Ap::Group::Config::AirtimeFairness::Dot11
 
 
-class Native::Ap::Group::Config::AirtimeFairness::Dot11::24GHz : public ydk::Entity
+class Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_24GHz : public ydk::Entity
 {
     public:
-        24GHz();
-        ~24GHz();
+        Y_24GHz();
+        ~Y_24GHz();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -702,14 +699,14 @@ class Native::Ap::Group::Config::AirtimeFairness::Dot11::24GHz : public ydk::Ent
         ydk::YLeaf optimization; //type: empty
         class Mode;
 
-}; // Native::Ap::Group::Config::AirtimeFairness::Dot11::24GHz
+}; // Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_24GHz
 
 
-class Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz : public ydk::Entity
+class Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz : public ydk::Entity
 {
     public:
-        5GHz();
-        ~5GHz();
+        Y_5GHz();
+        ~Y_5GHz();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -722,14 +719,14 @@ class Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf optimization; //type: empty
-        class Mode; //type: Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz::Mode
+        class Mode; //type: Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz::Mode> mode;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz::Mode> mode;
         
-}; // Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz
+}; // Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz
 
 
-class Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz::Mode : public ydk::Entity
+class Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -748,7 +745,7 @@ class Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz::Mode : public ydk
         ydk::YLeaf enforce_policy; //type: empty
         ydk::YLeaf monitor; //type: empty
 
-}; // Native::Ap::Group::Config::AirtimeFairness::Dot11::5GHz::Mode
+}; // Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_5GHz::Mode
 
 
 class Native::Ap::Group::Config::Hyperlocation : public ydk::Entity
@@ -953,20 +950,20 @@ class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11 : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class 24GHz; //type: Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::24GHz
-        class 5GHz; //type: Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::5GHz
+        class Y_24GHz; //type: Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_24GHz
+        class Y_5GHz; //type: Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_5GHz
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::24GHz> y_24ghz;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::5GHz> y_5ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_24GHz> y_24ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_5GHz> y_5ghz;
         
 }; // Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11
 
 
-class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::24GHz : public ydk::Entity
+class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_24GHz : public ydk::Entity
 {
     public:
-        24GHz();
-        ~24GHz();
+        Y_24GHz();
+        ~Y_24GHz();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -980,14 +977,14 @@ class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::24GHz : public yd
 
         ydk::YLeaf policy; //type: string
 
-}; // Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::24GHz
+}; // Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_24GHz
 
 
-class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::5GHz : public ydk::Entity
+class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_5GHz : public ydk::Entity
 {
     public:
-        5GHz();
-        ~5GHz();
+        Y_5GHz();
+        ~Y_5GHz();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1001,7 +998,7 @@ class Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::5GHz : public ydk
 
         ydk::YLeaf policy; //type: string
 
-}; // Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::5GHz
+}; // Native::Ap::Group::Config::Wlan::AirtimeFairness::Dot11::Y_5GHz
 
 
 class Native::Archive : public ydk::Entity
@@ -3570,7 +3567,7 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::M
 
 }; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
 
-class Native::Ap::Group::Config::AirtimeFairness::Dot11::24GHz::Mode : public ydk::Enum
+class Native::Ap::Group::Config::AirtimeFairness::Dot11::Y_24GHz::Mode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enforce_policy;

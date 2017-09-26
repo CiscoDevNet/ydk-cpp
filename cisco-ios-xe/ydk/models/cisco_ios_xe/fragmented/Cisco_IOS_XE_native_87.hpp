@@ -1376,7 +1376,7 @@ class Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf dscp; //type: empty
 
 }; // Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname
@@ -1421,7 +1421,7 @@ class Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: empty
 
 }; // Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname
@@ -1466,7 +1466,7 @@ class Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: empty
 
 }; // Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname
@@ -1511,7 +1511,7 @@ class Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: empty
 
 }; // Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname
@@ -1871,7 +1871,7 @@ class Native::Platform::ExternalAlarm : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf line; //type: uint32
-        ydk::YLeaf alarm; //type: one of uint16, enumeration
+        ydk::YLeaf alarm; //type: one of enumeration, uint16
 
 }; // Native::Platform::ExternalAlarm
 
@@ -3552,10 +3552,10 @@ class Native::Policy::ClassMap::Match : public ydk::Entity
         ydk::YLeafList class_map; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
-        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
+        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
         ydk::YLeafList fr_dlci; //type: list of  uint16
         ydk::YLeafList input_interface; //type: list of  string
-        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
+        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
         ydk::YLeafList qos_group; //type: list of  uint16
         class CurrentMethodPriority; //type: Native::Policy::ClassMap::Match::CurrentMethodPriority
         class Application; //type: Native::Policy::ClassMap::Match::Application

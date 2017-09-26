@@ -424,14 +424,6 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrch
 
 }; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry
 
-class CiscoSbcRadiusClientType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf authentication;
-        static const ydk::Enum::YLeaf accounting;
-
-};
-
 class CiscoSbcSIPMethod : public ydk::Enum
 {
     public:
@@ -449,6 +441,14 @@ class CiscoSbcSIPMethod : public ydk::Enum
         static const ydk::Enum::YLeaf register_;
         static const ydk::Enum::YLeaf subscribe;
         static const ydk::Enum::YLeaf update;
+
+};
+
+class CiscoSbcRadiusClientType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf authentication;
+        static const ydk::Enum::YLeaf accounting;
 
 };
 

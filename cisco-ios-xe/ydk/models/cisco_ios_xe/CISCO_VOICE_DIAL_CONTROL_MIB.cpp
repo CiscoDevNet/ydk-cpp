@@ -7522,6 +7522,15 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::has_leaf_
     return false;
 }
 
+const Enum::YLeaf CvIlbcFrameMode::frameMode20 {20, "frameMode20"};
+const Enum::YLeaf CvIlbcFrameMode::frameMode30 {30, "frameMode30"};
+
+const Enum::YLeaf CvCallVolumeStatsIntvlType::secondStats {1, "secondStats"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::minuteStats {2, "minuteStats"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::hourStats {3, "hourStats"};
+
+const Enum::YLeaf CvAmrNbRtpEncap::rfc3267 {1, "rfc3267"};
+
 const Enum::YLeaf CvCallConnectionType::h323 {1, "h323"};
 const Enum::YLeaf CvCallConnectionType::sip {2, "sip"};
 const Enum::YLeaf CvCallConnectionType::mgcp {3, "mgcp"};
@@ -7541,15 +7550,6 @@ const Enum::YLeaf CvCallVolumeWMIntvlType::secondStats {1, "secondStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::minuteStats {2, "minuteStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::hourStats {3, "hourStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::fromReloadStats {4, "fromReloadStats"};
-
-const Enum::YLeaf CvIlbcFrameMode::frameMode20 {20, "frameMode20"};
-const Enum::YLeaf CvIlbcFrameMode::frameMode30 {30, "frameMode30"};
-
-const Enum::YLeaf CvCallVolumeStatsIntvlType::secondStats {1, "secondStats"};
-const Enum::YLeaf CvCallVolumeStatsIntvlType::minuteStats {2, "minuteStats"};
-const Enum::YLeaf CvCallVolumeStatsIntvlType::hourStats {3, "hourStats"};
-
-const Enum::YLeaf CvAmrNbRtpEncap::rfc3267 {1, "rfc3267"};
 
 const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::voice {1, "voice"};
 const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::voip {2, "voip"};

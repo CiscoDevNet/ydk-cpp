@@ -19,6 +19,19 @@ class CFWUrlServerStatus : public ydk::Enum
 
 };
 
+class CFWNetworkProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf tcp;
+
+};
+
 class CFWApplicationProtocol : public ydk::Enum
 {
     public:
@@ -195,6 +208,15 @@ class CFWApplicationProtocol : public ydk::Enum
 
 };
 
+class CFWUrlfVendorId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf websense;
+        static const ydk::Enum::YLeaf n2h2;
+
+};
+
 class CFWPolicyTargetType : public ydk::Enum
 {
     public:
@@ -206,28 +228,6 @@ class CFWPolicyTargetType : public ydk::Enum
         static const ydk::Enum::YLeaf user;
         static const ydk::Enum::YLeaf usergroup;
         static const ydk::Enum::YLeaf context;
-
-};
-
-class CFWNetworkProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf tcp;
-
-};
-
-class CFWUrlfVendorId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf websense;
-        static const ydk::Enum::YLeaf n2h2;
 
 };
 

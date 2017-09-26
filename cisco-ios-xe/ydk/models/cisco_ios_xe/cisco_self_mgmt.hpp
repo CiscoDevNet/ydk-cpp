@@ -32,8 +32,8 @@ class NetconfYang : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class CiscoOdm; //type: NetconfYang::CiscoOdm
         class CiscoIa; //type: NetconfYang::CiscoIa
+        class CiscoOdm; //type: NetconfYang::CiscoOdm
 
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa> cisco_ia;
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoOdm> cisco_odm;

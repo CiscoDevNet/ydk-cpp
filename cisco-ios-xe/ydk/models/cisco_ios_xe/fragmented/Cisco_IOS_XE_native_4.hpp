@@ -1160,7 +1160,7 @@ class Native::BridgeDomain::BrdId::Member::MemberInterface : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_id; //type: one of uint32, string
+        ydk::YLeaf interface_id; //type: one of string, uint32
         ydk::YLeaf service_instance; //type: uint32
         class SplitHorizon; //type: Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon
 
@@ -1856,7 +1856,7 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface : publi
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_id; //type: one of uint32, string
+        ydk::YLeaf interface_id; //type: one of string, uint32
         ydk::YLeaf service_instance; //type: uint32
         class SplitHorizon; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon
 

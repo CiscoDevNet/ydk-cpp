@@ -1350,7 +1350,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Bgp : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf rdr_as; //type: one of uint32, string
+        ydk::YLeaf rdr_as; //type: one of string, uint32
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf rd_lesser_1_period_0_xx_period_yy_greater_; //type: empty
         class Metric; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Bgp::Metric
@@ -3322,7 +3322,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Bgp : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf rdr_as; //type: one of uint32, string
+        ydk::YLeaf rdr_as; //type: one of string, uint32
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf rd_lesser_1_period_0_xx_period_yy_greater_; //type: empty
         class Metric; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Bgp::Metric

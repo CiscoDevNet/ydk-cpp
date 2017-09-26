@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_97.hpp"
-#include "Cisco_IOS_XE_native_99.hpp"
 #include "Cisco_IOS_XE_native_98.hpp"
+#include "Cisco_IOS_XE_native_99.hpp"
 
 using namespace ydk;
 

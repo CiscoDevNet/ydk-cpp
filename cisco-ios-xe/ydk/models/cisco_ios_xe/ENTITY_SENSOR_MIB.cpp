@@ -411,6 +411,19 @@ bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_leaf_or_child_of
     return false;
 }
 
+const Enum::YLeaf EntitySensorDataType::other {1, "other"};
+const Enum::YLeaf EntitySensorDataType::unknown {2, "unknown"};
+const Enum::YLeaf EntitySensorDataType::voltsAC {3, "voltsAC"};
+const Enum::YLeaf EntitySensorDataType::voltsDC {4, "voltsDC"};
+const Enum::YLeaf EntitySensorDataType::amperes {5, "amperes"};
+const Enum::YLeaf EntitySensorDataType::watts {6, "watts"};
+const Enum::YLeaf EntitySensorDataType::hertz {7, "hertz"};
+const Enum::YLeaf EntitySensorDataType::celsius {8, "celsius"};
+const Enum::YLeaf EntitySensorDataType::percentRH {9, "percentRH"};
+const Enum::YLeaf EntitySensorDataType::rpm {10, "rpm"};
+const Enum::YLeaf EntitySensorDataType::cmm {11, "cmm"};
+const Enum::YLeaf EntitySensorDataType::truthvalue {12, "truthvalue"};
+
 const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
 const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
 const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
@@ -432,19 +445,6 @@ const Enum::YLeaf EntitySensorDataScale::exa {14, "exa"};
 const Enum::YLeaf EntitySensorDataScale::peta {15, "peta"};
 const Enum::YLeaf EntitySensorDataScale::zetta {16, "zetta"};
 const Enum::YLeaf EntitySensorDataScale::yotta {17, "yotta"};
-
-const Enum::YLeaf EntitySensorDataType::other {1, "other"};
-const Enum::YLeaf EntitySensorDataType::unknown {2, "unknown"};
-const Enum::YLeaf EntitySensorDataType::voltsAC {3, "voltsAC"};
-const Enum::YLeaf EntitySensorDataType::voltsDC {4, "voltsDC"};
-const Enum::YLeaf EntitySensorDataType::amperes {5, "amperes"};
-const Enum::YLeaf EntitySensorDataType::watts {6, "watts"};
-const Enum::YLeaf EntitySensorDataType::hertz {7, "hertz"};
-const Enum::YLeaf EntitySensorDataType::celsius {8, "celsius"};
-const Enum::YLeaf EntitySensorDataType::percentRH {9, "percentRH"};
-const Enum::YLeaf EntitySensorDataType::rpm {10, "rpm"};
-const Enum::YLeaf EntitySensorDataType::cmm {11, "cmm"};
-const Enum::YLeaf EntitySensorDataType::truthvalue {12, "truthvalue"};
 
 
 }

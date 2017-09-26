@@ -614,7 +614,7 @@ class Native::Router::Lisp::Default_::Ipv6::RouteImport::Database::Bgp : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class LispIpRouteImport; //type: Native::Router::Lisp::Default_::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Default_::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
@@ -1056,7 +1056,7 @@ class Native::Router::Lisp::Default_::Ipv6::RouteImport::MapCache::Bgp : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class MapCacheContainer; //type: Native::Router::Lisp::Default_::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Default_::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node

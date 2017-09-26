@@ -1051,26 +1051,26 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::SparePair::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf CdpAdvVersion::cdp_advertised_none {0, "cdp-advertised-none"};
-const Enum::YLeaf CdpAdvVersion::cdp_advertised_v1 {1, "cdp-advertised-v1"};
-const Enum::YLeaf CdpAdvVersion::cdp_advertised_v2 {2, "cdp-advertised-v2"};
+const Enum::YLeaf CdpEnableDisable::cdp_disable {0, "cdp-disable"};
+const Enum::YLeaf CdpEnableDisable::cdp_enable {1, "cdp-enable"};
+
+const Enum::YLeaf CdpYesNo::cdp_no {0, "cdp-no"};
+const Enum::YLeaf CdpYesNo::cdp_yes {1, "cdp-yes"};
 
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_off {0, "cdp-uni-mode-off"};
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_send_only {1, "cdp-uni-mode-send-only"};
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_recv_only {2, "cdp-uni-mode-recv-only"};
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_unknown {3, "cdp-uni-mode-unknown"};
 
+const Enum::YLeaf CdpAdvVersion::cdp_advertised_none {0, "cdp-advertised-none"};
+const Enum::YLeaf CdpAdvVersion::cdp_advertised_v1 {1, "cdp-advertised-v1"};
+const Enum::YLeaf CdpAdvVersion::cdp_advertised_v2 {2, "cdp-advertised-v2"};
+
 const Enum::YLeaf CdpDuplex::cdp_duplex_unknown {0, "cdp-duplex-unknown"};
 const Enum::YLeaf CdpDuplex::cdp_half_duplex {1, "cdp-half-duplex"};
 const Enum::YLeaf CdpDuplex::cdp_full_duplex {2, "cdp-full-duplex"};
 const Enum::YLeaf CdpDuplex::cdp_half_duplex_mismatch {3, "cdp-half-duplex-mismatch"};
 const Enum::YLeaf CdpDuplex::cdp_full_duplex_mismatch {4, "cdp-full-duplex-mismatch"};
-
-const Enum::YLeaf CdpEnableDisable::cdp_disable {0, "cdp-disable"};
-const Enum::YLeaf CdpEnableDisable::cdp_enable {1, "cdp-enable"};
-
-const Enum::YLeaf CdpYesNo::cdp_no {0, "cdp-no"};
-const Enum::YLeaf CdpYesNo::cdp_yes {1, "cdp-yes"};
 
 
 }

@@ -185,36 +185,6 @@ class CdpNeighbourDetails::CdpNeighbourDetail::SparePair : public ydk::Entity
 
 }; // CdpNeighbourDetails::CdpNeighbourDetail::SparePair
 
-class CdpAdvVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_advertised_none;
-        static const ydk::Enum::YLeaf cdp_advertised_v1;
-        static const ydk::Enum::YLeaf cdp_advertised_v2;
-
-};
-
-class CdpUnidirectionalMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_uni_mode_off;
-        static const ydk::Enum::YLeaf cdp_uni_mode_send_only;
-        static const ydk::Enum::YLeaf cdp_uni_mode_recv_only;
-        static const ydk::Enum::YLeaf cdp_uni_mode_unknown;
-
-};
-
-class CdpDuplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_duplex_unknown;
-        static const ydk::Enum::YLeaf cdp_half_duplex;
-        static const ydk::Enum::YLeaf cdp_full_duplex;
-        static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
-        static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
-
-};
-
 class CdpEnableDisable : public ydk::Enum
 {
     public:
@@ -228,6 +198,36 @@ class CdpYesNo : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf cdp_no;
         static const ydk::Enum::YLeaf cdp_yes;
+
+};
+
+class CdpUnidirectionalMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_uni_mode_off;
+        static const ydk::Enum::YLeaf cdp_uni_mode_send_only;
+        static const ydk::Enum::YLeaf cdp_uni_mode_recv_only;
+        static const ydk::Enum::YLeaf cdp_uni_mode_unknown;
+
+};
+
+class CdpAdvVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_advertised_none;
+        static const ydk::Enum::YLeaf cdp_advertised_v1;
+        static const ydk::Enum::YLeaf cdp_advertised_v2;
+
+};
+
+class CdpDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_duplex_unknown;
+        static const ydk::Enum::YLeaf cdp_half_duplex;
+        static const ydk::Enum::YLeaf cdp_full_duplex;
+        static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
+        static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
 
 };
 

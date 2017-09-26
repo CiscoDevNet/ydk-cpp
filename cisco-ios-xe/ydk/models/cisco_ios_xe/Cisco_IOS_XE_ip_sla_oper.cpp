@@ -2745,6 +2745,12 @@ bool IpSlaStats::SlaOperEntry::Stats::VoiceScore::has_leaf_or_child_of_name(cons
     return false;
 }
 
+const Enum::YLeaf TtlType::ttl_finite {0, "ttl-finite"};
+const Enum::YLeaf TtlType::ttl_forever {1, "ttl-forever"};
+
+const Enum::YLeaf AccuracyType::accuracy_milliseconds {0, "accuracy-milliseconds"};
+const Enum::YLeaf AccuracyType::accuracy_microseconds {1, "accuracy-microseconds"};
+
 const Enum::YLeaf SlaOperType::oper_type_unknown {0, "oper-type-unknown"};
 const Enum::YLeaf SlaOperType::oper_type_udp_echo {1, "oper-type-udp-echo"};
 const Enum::YLeaf SlaOperType::oper_type_udp_jitter {2, "oper-type-udp-jitter"};
@@ -2762,9 +2768,6 @@ const Enum::YLeaf RttType::rtt_known {0, "rtt-known"};
 const Enum::YLeaf RttType::rtt_unknown {1, "rtt-unknown"};
 const Enum::YLeaf RttType::rtt_could_not_find {2, "rtt-could-not-find"};
 
-const Enum::YLeaf TtlType::ttl_finite {0, "ttl-finite"};
-const Enum::YLeaf TtlType::ttl_forever {1, "ttl-forever"};
-
 const Enum::YLeaf SlaReturnCode::ret_code_unknown {0, "ret-code-unknown"};
 const Enum::YLeaf SlaReturnCode::ret_code_ok {1, "ret-code-ok"};
 const Enum::YLeaf SlaReturnCode::ret_code_disconnected {2, "ret-code-disconnected"};
@@ -2774,9 +2777,6 @@ const Enum::YLeaf SlaReturnCode::ret_code_no_connection {5, "ret-code-no-connect
 const Enum::YLeaf SlaReturnCode::ret_code_internal_error {6, "ret-code-internal-error"};
 const Enum::YLeaf SlaReturnCode::ret_code_operation_failure {7, "ret-code-operation-failure"};
 const Enum::YLeaf SlaReturnCode::ret_code_could_not_find {8, "ret-code-could-not-find"};
-
-const Enum::YLeaf AccuracyType::accuracy_milliseconds {0, "accuracy-milliseconds"};
-const Enum::YLeaf AccuracyType::accuracy_microseconds {1, "accuracy-microseconds"};
 
 
 }

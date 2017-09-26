@@ -1306,6 +1306,30 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry : public 
 
 }; // CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry
 
+class CvIlbcFrameMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf frameMode20;
+        static const ydk::Enum::YLeaf frameMode30;
+
+};
+
+class CvCallVolumeStatsIntvlType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf secondStats;
+        static const ydk::Enum::YLeaf minuteStats;
+        static const ydk::Enum::YLeaf hourStats;
+
+};
+
+class CvAmrNbRtpEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rfc3267;
+
+};
+
 class CvCallConnectionType : public ydk::Enum
 {
     public:
@@ -1338,30 +1362,6 @@ class CvCallVolumeWMIntvlType : public ydk::Enum
         static const ydk::Enum::YLeaf minuteStats;
         static const ydk::Enum::YLeaf hourStats;
         static const ydk::Enum::YLeaf fromReloadStats;
-
-};
-
-class CvIlbcFrameMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf frameMode20;
-        static const ydk::Enum::YLeaf frameMode30;
-
-};
-
-class CvCallVolumeStatsIntvlType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf secondStats;
-        static const ydk::Enum::YLeaf minuteStats;
-        static const ydk::Enum::YLeaf hourStats;
-
-};
-
-class CvAmrNbRtpEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rfc3267;
 
 };
 

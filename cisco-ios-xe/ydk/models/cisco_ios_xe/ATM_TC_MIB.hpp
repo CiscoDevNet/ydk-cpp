@@ -155,24 +155,12 @@ class AtmVorXAdminStatus : public ydk::Enum
 
 };
 
-class AtmVorXOperStatus : public ydk::Enum
+class AtmConnCastType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class AtmServiceCategory : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf rtVbr;
-        static const ydk::Enum::YLeaf nrtVbr;
-        static const ydk::Enum::YLeaf abr;
-        static const ydk::Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf p2p;
+        static const ydk::Enum::YLeaf p2mpRoot;
+        static const ydk::Enum::YLeaf p2mpLeaf;
 
 };
 
@@ -187,12 +175,12 @@ class AtmConnKind : public ydk::Enum
 
 };
 
-class AtmConnCastType : public ydk::Enum
+class AtmVorXOperStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf p2p;
-        static const ydk::Enum::YLeaf p2mpRoot;
-        static const ydk::Enum::YLeaf p2mpLeaf;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -212,6 +200,18 @@ class AtmInterfaceType : public ydk::Enum
         static const ydk::Enum::YLeaf atmfBici2Dot0;
         static const ydk::Enum::YLeaf atmfUniPvcOnly;
         static const ydk::Enum::YLeaf atmfNniPvcOnly;
+
+};
+
+class AtmServiceCategory : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf rtVbr;
+        static const ydk::Enum::YLeaf nrtVbr;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf ubr;
 
 };
 

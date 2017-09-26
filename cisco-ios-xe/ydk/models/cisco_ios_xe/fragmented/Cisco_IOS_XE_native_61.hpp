@@ -1327,7 +1327,7 @@ class Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -2031,7 +2031,7 @@ class Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of string, uint16, enumeration
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -2350,17 +2350,17 @@ class Native::Interface::Tunnel : public ydk::Entity
         class Peer; //type: Native::Interface::Tunnel::Peer
         class PmPath; //type: Native::Interface::Tunnel::PmPath
         class Qos; //type: Native::Interface::Tunnel::Qos
+        class Cdp; //type: Native::Interface::Tunnel::Cdp
         class Snmp; //type: Native::Interface::Tunnel::Snmp
         class Nhrp; //type: Native::Interface::Tunnel::Nhrp
         class Tunnel_; //type: Native::Interface::Tunnel::Tunnel_
         class Crypto; //type: Native::Interface::Tunnel::Crypto
-        class ServicePolicy; //type: Native::Interface::Tunnel::ServicePolicy
-        class Lisp; //type: Native::Interface::Tunnel::Lisp
-        class Cdp; //type: Native::Interface::Tunnel::Cdp
-        class Udld; //type: Native::Interface::Tunnel::Udld
         class Cts; //type: Native::Interface::Tunnel::Cts
         class Performance; //type: Native::Interface::Tunnel::Performance
+        class ServicePolicy; //type: Native::Interface::Tunnel::ServicePolicy
+        class Lisp; //type: Native::Interface::Tunnel::Lisp
         class Ospfv3; //type: Native::Interface::Tunnel::Ospfv3
+        class Udld; //type: Native::Interface::Tunnel::Udld
         class ZoneMember; //type: Native::Interface::Tunnel::ZoneMember
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::AccessSession> access_session;
@@ -2530,8 +2530,8 @@ class Native::Interface::Tunnel::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2694,8 +2694,8 @@ class Native::Interface::Tunnel::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

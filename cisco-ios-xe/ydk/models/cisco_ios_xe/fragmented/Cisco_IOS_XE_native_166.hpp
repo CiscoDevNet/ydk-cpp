@@ -2186,7 +2186,7 @@ class Native::Router::Ospf::Area : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf default_cost; //type: uint32
         class Authentication; //type: Native::Router::Ospf::Area::Authentication
         class Capability; //type: Native::Router::Ospf::Area::Capability
@@ -3352,7 +3352,7 @@ class Native::Router::Ospf::Distance::OspfDistance : public ydk::Entity
         ydk::YLeaf distance; //type: uint32
         ydk::YLeaf ip; //type: string
         ydk::YLeaf wildcard; //type: string
-        ydk::YLeaf acl_name; //type: one of string, union
+        ydk::YLeaf acl_name; //type: one of union, string
 
 }; // Native::Router::Ospf::Distance::OspfDistance
 
@@ -3669,7 +3669,7 @@ class Native::Router::Ospf::FastReroute::PerPrefix::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf prefix_priority; //type: PrefixPriority
         class PrefixPriority;
 

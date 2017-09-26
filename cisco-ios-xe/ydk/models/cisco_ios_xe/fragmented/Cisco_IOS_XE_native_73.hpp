@@ -1279,9 +1279,9 @@ class Native::Interface::Vlan : public ydk::Entity
         class CiscoIOSXEInterfacesPeer; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesPeer
         class CiscoIOSXEInterfacesPmPath; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath
         class Crypto; //type: Native::Interface::Vlan::Crypto
+        class Cts; //type: Native::Interface::Vlan::Cts
         class ServicePolicy; //type: Native::Interface::Vlan::ServicePolicy
         class Lisp; //type: Native::Interface::Vlan::Lisp
-        class Cts; //type: Native::Interface::Vlan::Cts
         class PrivateVlan; //type: Native::Interface::Vlan::PrivateVlan
         class Vrrp; //type: Native::Interface::Vlan::Vrrp
         class ServiceRouting; //type: Native::Interface::Vlan::ServiceRouting
@@ -1592,8 +1592,8 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesBackup::Delay : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -1756,8 +1756,8 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesBackup::Load : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -1807,8 +1807,8 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Delay : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -1971,8 +1971,8 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Load : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

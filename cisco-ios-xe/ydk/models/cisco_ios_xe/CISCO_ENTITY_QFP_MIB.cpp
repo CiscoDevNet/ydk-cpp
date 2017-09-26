@@ -1692,12 +1692,12 @@ bool CISCOENTITYQFPMIB::Ciscoentityqfpnotif::has_leaf_or_child_of_name(const std
     return false;
 }
 
+const Enum::YLeaf CiscoQfpMemoryResource::dram {1, "dram"};
+
 const Enum::YLeaf CiscoQfpTimeInterval::fiveSeconds {1, "fiveSeconds"};
 const Enum::YLeaf CiscoQfpTimeInterval::oneMinute {2, "oneMinute"};
 const Enum::YLeaf CiscoQfpTimeInterval::fiveMinutes {3, "fiveMinutes"};
 const Enum::YLeaf CiscoQfpTimeInterval::sixtyMinutes {4, "sixtyMinutes"};
-
-const Enum::YLeaf CiscoQfpMemoryResource::dram {1, "dram"};
 
 const Enum::YLeaf CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection::none {1, "none"};
 const Enum::YLeaf CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection::ingress {2, "ingress"};

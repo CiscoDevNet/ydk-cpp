@@ -3234,17 +3234,6 @@ class Native::Interface::TenGigabitEthernet : public ydk::Entity
         class RcvQueue; //type: Native::Interface::TenGigabitEthernet::RcvQueue
         class Peer; //type: Native::Interface::TenGigabitEthernet::Peer
         class PmPath; //type: Native::Interface::TenGigabitEthernet::PmPath
-        class Snmp; //type: Native::Interface::TenGigabitEthernet::Snmp
-        class Crypto; //type: Native::Interface::TenGigabitEthernet::Crypto
-        class ServicePolicy; //type: Native::Interface::TenGigabitEthernet::ServicePolicy
-        class Dot1X; //type: Native::Interface::TenGigabitEthernet::Dot1X
-        class Lldp; //type: Native::Interface::TenGigabitEthernet::Lldp
-        class Lisp; //type: Native::Interface::TenGigabitEthernet::Lisp
-        class Cdp; //type: Native::Interface::TenGigabitEthernet::Cdp
-        class Udld; //type: Native::Interface::TenGigabitEthernet::Udld
-        class Authentication; //type: Native::Interface::TenGigabitEthernet::Authentication
-        class Mab; //type: Native::Interface::TenGigabitEthernet::Mab
-        class Cts; //type: Native::Interface::TenGigabitEthernet::Cts
         class CarrierDelay; //type: Native::Interface::TenGigabitEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::TenGigabitEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::TenGigabitEthernet::Ethernet
@@ -3255,7 +3244,21 @@ class Native::Interface::TenGigabitEthernet : public ydk::Entity
         class Pppoe; //type: Native::Interface::TenGigabitEthernet::Pppoe
         class Service; //type: Native::Interface::TenGigabitEthernet::Service
         class Xconnect; //type: Native::Interface::TenGigabitEthernet::Xconnect
+        class Cdp; //type: Native::Interface::TenGigabitEthernet::Cdp
+        class Snmp; //type: Native::Interface::TenGigabitEthernet::Snmp
+        class Crypto; //type: Native::Interface::TenGigabitEthernet::Crypto
+        class Cts; //type: Native::Interface::TenGigabitEthernet::Cts
+        class Dot1X; //type: Native::Interface::TenGigabitEthernet::Dot1X
         class Performance; //type: Native::Interface::TenGigabitEthernet::Performance
+        class ServicePolicy; //type: Native::Interface::TenGigabitEthernet::ServicePolicy
+        class Lisp; //type: Native::Interface::TenGigabitEthernet::Lisp
+        class Lldp; //type: Native::Interface::TenGigabitEthernet::Lldp
+        class Mka; //type: Native::Interface::TenGigabitEthernet::Mka
+        class Ospfv3; //type: Native::Interface::TenGigabitEthernet::Ospfv3
+        class Power; //type: Native::Interface::TenGigabitEthernet::Power
+        class Authentication; //type: Native::Interface::TenGigabitEthernet::Authentication
+        class Mab; //type: Native::Interface::TenGigabitEthernet::Mab
+        class SpanningTree; //type: Native::Interface::TenGigabitEthernet::SpanningTree
         class Auto_; //type: Native::Interface::TenGigabitEthernet::Auto_
         class Datalink; //type: Native::Interface::TenGigabitEthernet::Datalink
         class Energywise; //type: Native::Interface::TenGigabitEthernet::Energywise
@@ -3269,11 +3272,8 @@ class Native::Interface::TenGigabitEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::TenGigabitEthernet::SrrQueue
         class Macsec; //type: Native::Interface::TenGigabitEthernet::Macsec
         class DeviceTracking; //type: Native::Interface::TenGigabitEthernet::DeviceTracking
-        class Power; //type: Native::Interface::TenGigabitEthernet::Power
-        class Ospfv3; //type: Native::Interface::TenGigabitEthernet::Ospfv3
-        class Mka; //type: Native::Interface::TenGigabitEthernet::Mka
+        class Udld; //type: Native::Interface::TenGigabitEthernet::Udld
         class ZoneMember; //type: Native::Interface::TenGigabitEthernet::ZoneMember
-        class SpanningTree; //type: Native::Interface::TenGigabitEthernet::SpanningTree
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::AccessSession> access_session;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Arp> arp;

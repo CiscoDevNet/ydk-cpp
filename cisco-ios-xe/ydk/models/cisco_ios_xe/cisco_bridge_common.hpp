@@ -73,21 +73,21 @@ class MacAgingType : public ydk::Enum
 
 };
 
-class MacSecureAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf restrict;
-        static const ydk::Enum::YLeaf shutdown;
-
-};
-
 class EthTrafficClass : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf broadcast;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf unknown_unicast;
+
+};
+
+class MacSecureAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf restrict;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 

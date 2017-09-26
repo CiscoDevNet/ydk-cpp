@@ -4790,6 +4790,12 @@ bool CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry::has_leaf_
     return false;
 }
 
+const Enum::YLeaf ThresholdSetRange::zeroT {0, "zeroT"};
+const Enum::YLeaf ThresholdSetRange::oneT {1, "oneT"};
+const Enum::YLeaf ThresholdSetRange::twoT {2, "twoT"};
+const Enum::YLeaf ThresholdSetRange::fourT {4, "fourT"};
+const Enum::YLeaf ThresholdSetRange::eightT {8, "eightT"};
+
 const Enum::YLeaf QueueRange::oneQ {1, "oneQ"};
 const Enum::YLeaf QueueRange::twoQ {2, "twoQ"};
 const Enum::YLeaf QueueRange::threeQ {3, "threeQ"};
@@ -4798,12 +4804,6 @@ const Enum::YLeaf QueueRange::eightQ {8, "eightQ"};
 const Enum::YLeaf QueueRange::sixteenQ {16, "sixteenQ"};
 const Enum::YLeaf QueueRange::thirtyTwoQ {32, "thirtyTwoQ"};
 const Enum::YLeaf QueueRange::sixtyFourQ {64, "sixtyFourQ"};
-
-const Enum::YLeaf ThresholdSetRange::zeroT {0, "zeroT"};
-const Enum::YLeaf ThresholdSetRange::oneT {1, "oneT"};
-const Enum::YLeaf ThresholdSetRange::twoT {2, "twoT"};
-const Enum::YLeaf ThresholdSetRange::fourT {4, "fourT"};
-const Enum::YLeaf ThresholdSetRange::eightT {8, "eightT"};
 
 const Enum::YLeaf QosInterfaceQueueType::oneQ1t {1, "oneQ1t"};
 const Enum::YLeaf QosInterfaceQueueType::oneQ2t {2, "oneQ2t"};

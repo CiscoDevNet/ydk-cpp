@@ -6225,6 +6225,18 @@ bool IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_leaf_or_child_
     return false;
 }
 
+const Enum::YLeaf IpAddressOriginTC::other {1, "other"};
+const Enum::YLeaf IpAddressOriginTC::manual {2, "manual"};
+const Enum::YLeaf IpAddressOriginTC::dhcp {4, "dhcp"};
+const Enum::YLeaf IpAddressOriginTC::linklayer {5, "linklayer"};
+const Enum::YLeaf IpAddressOriginTC::random {6, "random"};
+
+const Enum::YLeaf IpAddressPrefixOriginTC::other {1, "other"};
+const Enum::YLeaf IpAddressPrefixOriginTC::manual {2, "manual"};
+const Enum::YLeaf IpAddressPrefixOriginTC::wellknown {3, "wellknown"};
+const Enum::YLeaf IpAddressPrefixOriginTC::dhcp {4, "dhcp"};
+const Enum::YLeaf IpAddressPrefixOriginTC::routeradv {5, "routeradv"};
+
 const Enum::YLeaf IpAddressStatusTC::preferred {1, "preferred"};
 const Enum::YLeaf IpAddressStatusTC::deprecated {2, "deprecated"};
 const Enum::YLeaf IpAddressStatusTC::invalid {3, "invalid"};
@@ -6233,18 +6245,6 @@ const Enum::YLeaf IpAddressStatusTC::unknown {5, "unknown"};
 const Enum::YLeaf IpAddressStatusTC::tentative {6, "tentative"};
 const Enum::YLeaf IpAddressStatusTC::duplicate {7, "duplicate"};
 const Enum::YLeaf IpAddressStatusTC::optimistic {8, "optimistic"};
-
-const Enum::YLeaf IpAddressPrefixOriginTC::other {1, "other"};
-const Enum::YLeaf IpAddressPrefixOriginTC::manual {2, "manual"};
-const Enum::YLeaf IpAddressPrefixOriginTC::wellknown {3, "wellknown"};
-const Enum::YLeaf IpAddressPrefixOriginTC::dhcp {4, "dhcp"};
-const Enum::YLeaf IpAddressPrefixOriginTC::routeradv {5, "routeradv"};
-
-const Enum::YLeaf IpAddressOriginTC::other {1, "other"};
-const Enum::YLeaf IpAddressOriginTC::manual {2, "manual"};
-const Enum::YLeaf IpAddressOriginTC::dhcp {4, "dhcp"};
-const Enum::YLeaf IpAddressOriginTC::linklayer {5, "linklayer"};
-const Enum::YLeaf IpAddressOriginTC::random {6, "random"};
 
 const Enum::YLeaf IPMIB::Ip::Ipforwarding::forwarding {1, "forwarding"};
 const Enum::YLeaf IPMIB::Ip::Ipforwarding::notForwarding {2, "notForwarding"};

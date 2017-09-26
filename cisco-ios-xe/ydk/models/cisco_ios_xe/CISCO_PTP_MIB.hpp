@@ -847,12 +847,78 @@ class CISCOPTPMIB::Cptpsystemtable::Cptpsystementry : public ydk::Entity
 
 }; // CISCOPTPMIB::Cptpsystemtable::Cptpsystementry
 
+class ClockTimeSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf atomicClock;
+        static const ydk::Enum::YLeaf gps;
+        static const ydk::Enum::YLeaf terrestrialRadio;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf handSet;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf internalOsillator;
+
+};
+
+class ClockStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf freerun;
+        static const ydk::Enum::YLeaf holdover;
+        static const ydk::Enum::YLeaf acquiring;
+        static const ydk::Enum::YLeaf frequencyLocked;
+        static const ydk::Enum::YLeaf phaseAligned;
+
+};
+
 class ClockTxModeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf multicastmix;
+
+};
+
+class ClockPortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf faulty;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf listening;
+        static const ydk::Enum::YLeaf preMaster;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf uncalibrated;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class ClockMechanismType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf e2e;
+        static const ydk::Enum::YLeaf p2p;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
+class ClockProfileType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf telecom;
+        static const ydk::Enum::YLeaf vendorspecific;
+
+};
+
+class ClockRoleType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
@@ -880,72 +946,6 @@ class ClockQualityAccuracyType : public ydk::Enum
         static const ydk::Enum::YLeaf secondGreater10;
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf reserved255;
-
-};
-
-class ClockStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf freerun;
-        static const ydk::Enum::YLeaf holdover;
-        static const ydk::Enum::YLeaf acquiring;
-        static const ydk::Enum::YLeaf frequencyLocked;
-        static const ydk::Enum::YLeaf phaseAligned;
-
-};
-
-class ClockTimeSourceType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf atomicClock;
-        static const ydk::Enum::YLeaf gps;
-        static const ydk::Enum::YLeaf terrestrialRadio;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf ntp;
-        static const ydk::Enum::YLeaf handSet;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf internalOsillator;
-
-};
-
-class ClockMechanismType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf e2e;
-        static const ydk::Enum::YLeaf p2p;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
-class ClockPortState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf faulty;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf listening;
-        static const ydk::Enum::YLeaf preMaster;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf passive;
-        static const ydk::Enum::YLeaf uncalibrated;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class ClockRoleType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class ClockProfileType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf telecom;
-        static const ydk::Enum::YLeaf vendorspecific;
 
 };
 

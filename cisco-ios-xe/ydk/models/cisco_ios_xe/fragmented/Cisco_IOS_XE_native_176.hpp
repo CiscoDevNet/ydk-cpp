@@ -2610,7 +2610,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm_type; //type: one of uint8, enumeration
+        ydk::YLeaf alarm_type; //type: one of enumeration, uint8
         class AlarmType;
 
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Alarms

@@ -10,11 +10,16 @@
 namespace cisco_ios_xe {
 namespace CISCO_CBP_TARGET_TC_MIB {
 
-class CcbptPolicySourceType : public ydk::Enum
+class CcbptTargetType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ciscoCbQos;
-        static const ydk::Enum::YLeaf ciscoCbpBase;
+        static const ydk::Enum::YLeaf genIf;
+        static const ydk::Enum::YLeaf atmPvc;
+        static const ydk::Enum::YLeaf frDlci;
+        static const ydk::Enum::YLeaf entity_;
+        static const ydk::Enum::YLeaf fwZone;
+        static const ydk::Enum::YLeaf fwZonePair;
+        static const ydk::Enum::YLeaf aaaSession;
 
 };
 
@@ -28,16 +33,11 @@ class CcbptTargetDirection : public ydk::Enum
 
 };
 
-class CcbptTargetType : public ydk::Enum
+class CcbptPolicySourceType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf genIf;
-        static const ydk::Enum::YLeaf atmPvc;
-        static const ydk::Enum::YLeaf frDlci;
-        static const ydk::Enum::YLeaf entity_;
-        static const ydk::Enum::YLeaf fwZone;
-        static const ydk::Enum::YLeaf fwZonePair;
-        static const ydk::Enum::YLeaf aaaSession;
+        static const ydk::Enum::YLeaf ciscoCbQos;
+        static const ydk::Enum::YLeaf ciscoCbpBase;
 
 };
 

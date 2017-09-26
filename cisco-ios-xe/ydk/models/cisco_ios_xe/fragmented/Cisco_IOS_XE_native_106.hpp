@@ -702,7 +702,7 @@ class Native::Router::Bgp::Neighbor::LocalAs : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty
@@ -1574,7 +1574,7 @@ class Native::Router::Bgp::Redistribute::Bgp_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
 
@@ -2286,7 +2286,7 @@ class Native::Router::Bgp::Scope::Global::AddressFamily::NoVrf::Ipv4::Bgp_ : pub
         ydk::YLeaf always_compare_med; //type: empty
         ydk::YLeaf aggregate_timer; //type: uint8
         ydk::YLeaf advertise_best_external; //type: empty
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf deterministic_med; //type: empty
         ydk::YLeaf dmzlink_bw; //type: empty
         ydk::YLeaf enforce_first_as; //type: empty

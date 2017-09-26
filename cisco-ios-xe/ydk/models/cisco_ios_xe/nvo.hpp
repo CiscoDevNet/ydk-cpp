@@ -89,8 +89,8 @@ class NvoInstances::NvoInstance::VirtualNetwork : public ydk::Entity
         ydk::YLeaf end_host_discovery; //type: EndHostDiscovery
         //type: string (refers to ietf::ietf_routing::Routing::RoutingInstance::name)
         ydk::YLeaf routing_instance;
-        class Multicast; //type: NvoInstances::NvoInstance::VirtualNetwork::Multicast
         class Peers; //type: NvoInstances::NvoInstance::VirtualNetwork::Peers
+        class Multicast; //type: NvoInstances::NvoInstance::VirtualNetwork::Multicast
 
         std::shared_ptr<cisco_ios_xe::nvo::NvoInstances::NvoInstance::VirtualNetwork::Multicast> multicast;
         std::vector<std::shared_ptr<cisco_ios_xe::nvo::NvoInstances::NvoInstance::VirtualNetwork::Peers> > peers;

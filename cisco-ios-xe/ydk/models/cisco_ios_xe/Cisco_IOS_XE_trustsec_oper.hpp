@@ -203,6 +203,17 @@ class TrustsecState::CtsSxpConnections::CtsSxpConnection : public ydk::Entity
 
 }; // TrustsecState::CtsSxpConnections::CtsSxpConnection
 
+class SxpConState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_off;
+        static const ydk::Enum::YLeaf state_pending_on;
+        static const ydk::Enum::YLeaf state_on;
+        static const ydk::Enum::YLeaf state_delete_hold_down;
+        static const ydk::Enum::YLeaf state_not_applicable;
+
+};
+
 class CtsOdmBindingSource : public ydk::Enum
 {
     public:
@@ -225,17 +236,6 @@ class SxpConMode : public ydk::Enum
         static const ydk::Enum::YLeaf con_mode_speaker;
         static const ydk::Enum::YLeaf con_mode_listener;
         static const ydk::Enum::YLeaf con_mode_both;
-
-};
-
-class SxpConState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_off;
-        static const ydk::Enum::YLeaf state_pending_on;
-        static const ydk::Enum::YLeaf state_on;
-        static const ydk::Enum::YLeaf state_delete_hold_down;
-        static const ydk::Enum::YLeaf state_not_applicable;
 
 };
 

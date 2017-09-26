@@ -364,6 +364,17 @@ class CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry : public ydk
 
 }; // CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry
 
+class CiscoNetsyncSSMCap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncSSMCapNone;
+        static const ydk::Enum::YLeaf netsyncSSMCapTxRx;
+        static const ydk::Enum::YLeaf netsyncSSMCapTx;
+        static const ydk::Enum::YLeaf netsyncSSMCapRx;
+        static const ydk::Enum::YLeaf netsyncSSMCapInvalid;
+
+};
+
 class CiscoNetsyncIfType : public ydk::Enum
 {
     public:
@@ -379,23 +390,13 @@ class CiscoNetsyncIfType : public ydk::Enum
 
 };
 
-class CiscoNetsyncQLMode : public ydk::Enum
+class CiscoNetsyncClockMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf netsyncQLModeUnknown;
-        static const ydk::Enum::YLeaf netsyncQLModeQlDisabled;
-        static const ydk::Enum::YLeaf netsyncQLModeQlEnabled;
-
-};
-
-class CiscoNetsyncSSMCap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncSSMCapNone;
-        static const ydk::Enum::YLeaf netsyncSSMCapTxRx;
-        static const ydk::Enum::YLeaf netsyncSSMCapTx;
-        static const ydk::Enum::YLeaf netsyncSSMCapRx;
-        static const ydk::Enum::YLeaf netsyncSSMCapInvalid;
+        static const ydk::Enum::YLeaf netsyncClockModeUnknown;
+        static const ydk::Enum::YLeaf netsyncClockModeFreerun;
+        static const ydk::Enum::YLeaf netsyncClockModeHoldover;
+        static const ydk::Enum::YLeaf netsyncClockModeLocked;
 
 };
 
@@ -407,28 +408,6 @@ class CiscoNetsyncESMCCap : public ydk::Enum
         static const ydk::Enum::YLeaf netsyncESMCCapTx;
         static const ydk::Enum::YLeaf netsyncESMCCapRx;
         static const ydk::Enum::YLeaf netsyncESMCCapInvalid;
-
-};
-
-class CiscoNetsyncNetworkOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
-        static const ydk::Enum::YLeaf netsyncNetworkOption1;
-        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
-        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
-        static const ydk::Enum::YLeaf netsyncNetworkOption3;
-        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
-
-};
-
-class CiscoNetsyncClockMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncClockModeUnknown;
-        static const ydk::Enum::YLeaf netsyncClockModeFreerun;
-        static const ydk::Enum::YLeaf netsyncClockModeHoldover;
-        static const ydk::Enum::YLeaf netsyncClockModeLocked;
 
 };
 
@@ -481,6 +460,27 @@ class CiscoNetsyncEECOption : public ydk::Enum
         static const ydk::Enum::YLeaf netsyncEECOption1;
         static const ydk::Enum::YLeaf netsyncEECOption2;
         static const ydk::Enum::YLeaf netsyncEECOptionInvalid;
+
+};
+
+class CiscoNetsyncNetworkOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncNetworkOption1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
+        static const ydk::Enum::YLeaf netsyncNetworkOption3;
+        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
+
+};
+
+class CiscoNetsyncQLMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncQLModeUnknown;
+        static const ydk::Enum::YLeaf netsyncQLModeQlDisabled;
+        static const ydk::Enum::YLeaf netsyncQLModeQlEnabled;
 
 };
 

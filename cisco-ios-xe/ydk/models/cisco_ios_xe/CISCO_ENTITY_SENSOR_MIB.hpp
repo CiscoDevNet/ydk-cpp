@@ -171,6 +171,38 @@ class CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry : public yd
 
 }; // CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry
 
+class SensorThresholdRelation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessThan;
+        static const ydk::Enum::YLeaf lessOrEqual;
+        static const ydk::Enum::YLeaf greaterThan;
+        static const ydk::Enum::YLeaf greaterOrEqual;
+        static const ydk::Enum::YLeaf equalTo;
+        static const ydk::Enum::YLeaf notEqualTo;
+
+};
+
+class SensorDataType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf voltsAC;
+        static const ydk::Enum::YLeaf voltsDC;
+        static const ydk::Enum::YLeaf amperes;
+        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf hertz;
+        static const ydk::Enum::YLeaf celsius;
+        static const ydk::Enum::YLeaf percentRH;
+        static const ydk::Enum::YLeaf rpm;
+        static const ydk::Enum::YLeaf cmm;
+        static const ydk::Enum::YLeaf truthvalue;
+        static const ydk::Enum::YLeaf specialEnum;
+        static const ydk::Enum::YLeaf dBm;
+
+};
+
 class SensorDataScale : public ydk::Enum
 {
     public:
@@ -194,15 +226,12 @@ class SensorDataScale : public ydk::Enum
 
 };
 
-class SensorThresholdRelation : public ydk::Enum
+class SensorStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf lessThan;
-        static const ydk::Enum::YLeaf lessOrEqual;
-        static const ydk::Enum::YLeaf greaterThan;
-        static const ydk::Enum::YLeaf greaterOrEqual;
-        static const ydk::Enum::YLeaf equalTo;
-        static const ydk::Enum::YLeaf notEqualTo;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf nonoperational;
 
 };
 
@@ -213,35 +242,6 @@ class SensorThresholdSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf major;
         static const ydk::Enum::YLeaf critical;
-
-};
-
-class SensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf nonoperational;
-
-};
-
-class SensorDataType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf voltsAC;
-        static const ydk::Enum::YLeaf voltsDC;
-        static const ydk::Enum::YLeaf amperes;
-        static const ydk::Enum::YLeaf watts;
-        static const ydk::Enum::YLeaf hertz;
-        static const ydk::Enum::YLeaf celsius;
-        static const ydk::Enum::YLeaf percentRH;
-        static const ydk::Enum::YLeaf rpm;
-        static const ydk::Enum::YLeaf cmm;
-        static const ydk::Enum::YLeaf truthvalue;
-        static const ydk::Enum::YLeaf specialEnum;
-        static const ydk::Enum::YLeaf dBm;
 
 };
 

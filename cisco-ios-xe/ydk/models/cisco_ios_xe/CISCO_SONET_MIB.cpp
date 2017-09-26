@@ -3391,11 +3391,6 @@ bool CISCOSONETMIB::Csstracetable::Csstraceentry::has_leaf_or_child_of_name(cons
     return false;
 }
 
-const Enum::YLeaf CsApsLineFailureCode::csApsChannelMismatch {1, "csApsChannelMismatch"};
-const Enum::YLeaf CsApsLineFailureCode::csApsProtectionByteFail {2, "csApsProtectionByteFail"};
-const Enum::YLeaf CsApsLineFailureCode::csApsFEProtectionFailure {3, "csApsFEProtectionFailure"};
-const Enum::YLeaf CsApsLineFailureCode::csApsModeMismatch {4, "csApsModeMismatch"};
-
 const Enum::YLeaf CsApsLineSwitchReason::csApsOther {1, "csApsOther"};
 const Enum::YLeaf CsApsLineSwitchReason::csApsRevertive {2, "csApsRevertive"};
 const Enum::YLeaf CsApsLineSwitchReason::csApsManual {3, "csApsManual"};
@@ -3406,6 +3401,11 @@ const Enum::YLeaf CsApsLineSwitchReason::csApsSignalFailureHigh {7, "csApsSignal
 const Enum::YLeaf CsApsLineSwitchReason::csApsForceSwitch {8, "csApsForceSwitch"};
 const Enum::YLeaf CsApsLineSwitchReason::csApsLockOut {9, "csApsLockOut"};
 const Enum::YLeaf CsApsLineSwitchReason::csApsNoSwitch {10, "csApsNoSwitch"};
+
+const Enum::YLeaf CsApsLineFailureCode::csApsChannelMismatch {1, "csApsChannelMismatch"};
+const Enum::YLeaf CsApsLineFailureCode::csApsProtectionByteFail {2, "csApsProtectionByteFail"};
+const Enum::YLeaf CsApsLineFailureCode::csApsFEProtectionFailure {3, "csApsFEProtectionFailure"};
+const Enum::YLeaf CsApsLineFailureCode::csApsModeMismatch {4, "csApsModeMismatch"};
 
 const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsenable::csApsDisabled {1, "csApsDisabled"};
 const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsenable::csApsEnabled {2, "csApsEnabled"};

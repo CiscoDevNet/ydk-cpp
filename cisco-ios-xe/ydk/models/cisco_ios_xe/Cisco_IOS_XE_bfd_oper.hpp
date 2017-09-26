@@ -338,6 +338,17 @@ class BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath : public ydk::E
 
 }; // BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath
 
+class BfdRemoteStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf admindown;
+        static const ydk::Enum::YLeaf invalid;
+
+};
+
 class BfdStateType : public ydk::Enum
 {
     public:
@@ -368,17 +379,6 @@ class BfdLspType : public ydk::Enum
         static const ydk::Enum::YLeaf working;
         static const ydk::Enum::YLeaf protect;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class BfdRemoteStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf admindown;
-        static const ydk::Enum::YLeaf invalid;
 
 };
 

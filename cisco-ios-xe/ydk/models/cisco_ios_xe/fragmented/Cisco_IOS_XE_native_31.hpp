@@ -243,8 +243,6 @@ class Native::Interface::FortyGigabitEthernet : public ydk::Entity
         class RcvQueue; //type: Native::Interface::FortyGigabitEthernet::RcvQueue
         class Peer; //type: Native::Interface::FortyGigabitEthernet::Peer
         class PmPath; //type: Native::Interface::FortyGigabitEthernet::PmPath
-        class Lldp; //type: Native::Interface::FortyGigabitEthernet::Lldp
-        class Cts; //type: Native::Interface::FortyGigabitEthernet::Cts
         class CarrierDelay; //type: Native::Interface::FortyGigabitEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::FortyGigabitEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::FortyGigabitEthernet::Ethernet
@@ -254,6 +252,8 @@ class Native::Interface::FortyGigabitEthernet : public ydk::Entity
         class Plim; //type: Native::Interface::FortyGigabitEthernet::Plim
         class Pppoe; //type: Native::Interface::FortyGigabitEthernet::Pppoe
         class Service; //type: Native::Interface::FortyGigabitEthernet::Service
+        class Cts; //type: Native::Interface::FortyGigabitEthernet::Cts
+        class Lldp; //type: Native::Interface::FortyGigabitEthernet::Lldp
         class Auto_; //type: Native::Interface::FortyGigabitEthernet::Auto_
         class Datalink; //type: Native::Interface::FortyGigabitEthernet::Datalink
         class Energywise; //type: Native::Interface::FortyGigabitEthernet::Energywise
@@ -588,8 +588,8 @@ class Native::Interface::FortyGigabitEthernet::Backup::Delay : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -752,8 +752,8 @@ class Native::Interface::FortyGigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

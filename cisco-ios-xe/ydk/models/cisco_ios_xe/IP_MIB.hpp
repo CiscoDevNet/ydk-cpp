@@ -1005,17 +1005,14 @@ class IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry : public ydk::Enti
 
 }; // IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry
 
-class IpAddressStatusTC : public ydk::Enum
+class IpAddressOriginTC : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf preferred;
-        static const ydk::Enum::YLeaf deprecated;
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf inaccessible;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf tentative;
-        static const ydk::Enum::YLeaf duplicate;
-        static const ydk::Enum::YLeaf optimistic;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf linklayer;
+        static const ydk::Enum::YLeaf random;
 
 };
 
@@ -1030,14 +1027,17 @@ class IpAddressPrefixOriginTC : public ydk::Enum
 
 };
 
-class IpAddressOriginTC : public ydk::Enum
+class IpAddressStatusTC : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf manual;
-        static const ydk::Enum::YLeaf dhcp;
-        static const ydk::Enum::YLeaf linklayer;
-        static const ydk::Enum::YLeaf random;
+        static const ydk::Enum::YLeaf preferred;
+        static const ydk::Enum::YLeaf deprecated;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf inaccessible;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf tentative;
+        static const ydk::Enum::YLeaf duplicate;
+        static const ydk::Enum::YLeaf optimistic;
 
 };
 

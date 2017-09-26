@@ -60,7 +60,7 @@ class Native::Ip::Sla::Entry::Http::Get : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf url; //type: string
-        ydk::YLeaf source_ip; //type: one of string, union
+        ydk::YLeaf source_ip; //type: one of union, string
         ydk::YLeaf source_port; //type: uint16
         ydk::YLeaf name_server; //type: one of string, union
 
@@ -84,7 +84,7 @@ class Native::Ip::Sla::Entry::Http::Raw : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf url; //type: string
-        ydk::YLeaf source_ip; //type: one of string, union
+        ydk::YLeaf source_ip; //type: one of union, string
         ydk::YLeaf source_port; //type: uint16
         ydk::YLeaf name_server; //type: one of string, union
 
@@ -285,9 +285,9 @@ class Native::Ip::Sla::Entry::UdpEcho : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dest_addr; //type: one of string, union
+        ydk::YLeaf dest_addr; //type: one of union, string
         ydk::YLeaf dest_port; //type: uint16
-        ydk::YLeaf source_ip; //type: one of string, union
+        ydk::YLeaf source_ip; //type: one of union, string
         ydk::YLeaf source_port; //type: uint16
 
 }; // Native::Ip::Sla::Entry::UdpEcho
@@ -309,9 +309,9 @@ class Native::Ip::Sla::Entry::UdpJitter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dest_addr; //type: one of string, union
+        ydk::YLeaf dest_addr; //type: one of union, string
         ydk::YLeaf portno; //type: uint16
-        ydk::YLeaf source_ip; //type: one of string, union
+        ydk::YLeaf source_ip; //type: one of union, string
         ydk::YLeaf num_packets; //type: uint16
         ydk::YLeaf interval; //type: uint16
         ydk::YLeaf owner; //type: string
@@ -467,7 +467,7 @@ class Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf life; //type: one of uint32, enumeration
+        ydk::YLeaf life; //type: one of enumeration, uint32
         class Frequency; //type: Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::Frequency
         class StartTime; //type: Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::StartTime
 
@@ -853,7 +853,7 @@ class Native::Ip::Sla::Schedule : public ydk::Entity
 
         ydk::YLeaf entry_number; //type: uint32
         ydk::YLeaf ageout; //type: uint32
-        ydk::YLeaf life; //type: one of uint32, enumeration
+        ydk::YLeaf life; //type: one of enumeration, uint32
         ydk::YLeaf recurring; //type: empty
         class StartTime; //type: Native::Ip::Sla::Schedule::StartTime
 
@@ -2684,39 +2684,39 @@ class Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
-        ydk::YLeaf source_host; //type: one of string, union
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
+        ydk::YLeaf source_host; //type: one of union, string
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
         ydk::YLeaf source_prefix; //type: string
         ydk::YLeaf any; //type: empty
-        ydk::YLeaf src_eq; //type: one of uint16, enumeration
-        ydk::YLeaf src_gt; //type: one of uint16, enumeration
-        ydk::YLeaf src_lt; //type: one of uint16, enumeration
-        ydk::YLeaf src_neq; //type: one of uint16, enumeration
-        ydk::YLeaf src_range1; //type: one of uint16, enumeration
-        ydk::YLeaf src_range2; //type: one of uint16, enumeration
-        ydk::YLeaf destination_host; //type: one of string, union
+        ydk::YLeaf src_eq; //type: one of enumeration, uint16
+        ydk::YLeaf src_gt; //type: one of enumeration, uint16
+        ydk::YLeaf src_lt; //type: one of enumeration, uint16
+        ydk::YLeaf src_neq; //type: one of enumeration, uint16
+        ydk::YLeaf src_range1; //type: one of enumeration, uint16
+        ydk::YLeaf src_range2; //type: one of enumeration, uint16
+        ydk::YLeaf destination_host; //type: one of union, string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_wildcard_bits; //type: string
         ydk::YLeaf destination_prefix; //type: string
         ydk::YLeaf destination_any; //type: empty
-        ydk::YLeaf dst_eq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_gt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_lt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_neq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range1; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range2; //type: one of uint16, enumeration
+        ydk::YLeaf dst_eq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_gt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_lt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_neq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range1; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range2; //type: one of enumeration, uint16
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -2802,39 +2802,39 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
-        ydk::YLeaf source_host; //type: one of string, union
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
+        ydk::YLeaf source_host; //type: one of union, string
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
         ydk::YLeaf source_prefix; //type: string
         ydk::YLeaf any; //type: empty
-        ydk::YLeaf src_eq; //type: one of uint16, enumeration
-        ydk::YLeaf src_gt; //type: one of uint16, enumeration
-        ydk::YLeaf src_lt; //type: one of uint16, enumeration
-        ydk::YLeaf src_neq; //type: one of uint16, enumeration
-        ydk::YLeaf src_range1; //type: one of uint16, enumeration
-        ydk::YLeaf src_range2; //type: one of uint16, enumeration
-        ydk::YLeaf destination_host; //type: one of string, union
+        ydk::YLeaf src_eq; //type: one of enumeration, uint16
+        ydk::YLeaf src_gt; //type: one of enumeration, uint16
+        ydk::YLeaf src_lt; //type: one of enumeration, uint16
+        ydk::YLeaf src_neq; //type: one of enumeration, uint16
+        ydk::YLeaf src_range1; //type: one of enumeration, uint16
+        ydk::YLeaf src_range2; //type: one of enumeration, uint16
+        ydk::YLeaf destination_host; //type: one of union, string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_wildcard_bits; //type: string
         ydk::YLeaf destination_prefix; //type: string
         ydk::YLeaf destination_any; //type: empty
-        ydk::YLeaf dst_eq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_gt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_lt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_neq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range1; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range2; //type: one of uint16, enumeration
+        ydk::YLeaf dst_eq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_gt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_lt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_neq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range1; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range2; //type: one of enumeration, uint16
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -2925,39 +2925,39 @@ class Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
-        ydk::YLeaf source_host; //type: one of string, union
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
+        ydk::YLeaf source_host; //type: one of union, string
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
         ydk::YLeaf source_prefix; //type: string
         ydk::YLeaf any; //type: empty
-        ydk::YLeaf src_eq; //type: one of uint16, enumeration
-        ydk::YLeaf src_gt; //type: one of uint16, enumeration
-        ydk::YLeaf src_lt; //type: one of uint16, enumeration
-        ydk::YLeaf src_neq; //type: one of uint16, enumeration
-        ydk::YLeaf src_range1; //type: one of uint16, enumeration
-        ydk::YLeaf src_range2; //type: one of uint16, enumeration
-        ydk::YLeaf destination_host; //type: one of string, union
+        ydk::YLeaf src_eq; //type: one of enumeration, uint16
+        ydk::YLeaf src_gt; //type: one of enumeration, uint16
+        ydk::YLeaf src_lt; //type: one of enumeration, uint16
+        ydk::YLeaf src_neq; //type: one of enumeration, uint16
+        ydk::YLeaf src_range1; //type: one of enumeration, uint16
+        ydk::YLeaf src_range2; //type: one of enumeration, uint16
+        ydk::YLeaf destination_host; //type: one of union, string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_wildcard_bits; //type: string
         ydk::YLeaf destination_prefix; //type: string
         ydk::YLeaf destination_any; //type: empty
-        ydk::YLeaf dst_eq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_gt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_lt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_neq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range1; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range2; //type: one of uint16, enumeration
+        ydk::YLeaf dst_eq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_gt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_lt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_neq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range1; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range2; //type: one of enumeration, uint16
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -3043,39 +3043,39 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
-        ydk::YLeaf source_host; //type: one of string, union
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
+        ydk::YLeaf source_host; //type: one of union, string
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
         ydk::YLeaf source_prefix; //type: string
         ydk::YLeaf any; //type: empty
-        ydk::YLeaf src_eq; //type: one of uint16, enumeration
-        ydk::YLeaf src_gt; //type: one of uint16, enumeration
-        ydk::YLeaf src_lt; //type: one of uint16, enumeration
-        ydk::YLeaf src_neq; //type: one of uint16, enumeration
-        ydk::YLeaf src_range1; //type: one of uint16, enumeration
-        ydk::YLeaf src_range2; //type: one of uint16, enumeration
-        ydk::YLeaf destination_host; //type: one of string, union
+        ydk::YLeaf src_eq; //type: one of enumeration, uint16
+        ydk::YLeaf src_gt; //type: one of enumeration, uint16
+        ydk::YLeaf src_lt; //type: one of enumeration, uint16
+        ydk::YLeaf src_neq; //type: one of enumeration, uint16
+        ydk::YLeaf src_range1; //type: one of enumeration, uint16
+        ydk::YLeaf src_range2; //type: one of enumeration, uint16
+        ydk::YLeaf destination_host; //type: one of union, string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_wildcard_bits; //type: string
         ydk::YLeaf destination_prefix; //type: string
         ydk::YLeaf destination_any; //type: empty
-        ydk::YLeaf dst_eq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_gt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_lt; //type: one of uint16, enumeration
-        ydk::YLeaf dst_neq; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range1; //type: one of uint16, enumeration
-        ydk::YLeaf dst_range2; //type: one of uint16, enumeration
+        ydk::YLeaf dst_eq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_gt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_lt; //type: one of enumeration, uint16
+        ydk::YLeaf dst_neq; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range1; //type: one of enumeration, uint16
+        ydk::YLeaf dst_range2; //type: one of enumeration, uint16
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -3749,8 +3749,8 @@ class Native::Ipv6::Dhcp::Pool::Address::Prefix::Lifetime : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf valid_lifetime; //type: one of uint32, enumeration
-        ydk::YLeaf preferred_lifetime; //type: one of uint32, enumeration
+        ydk::YLeaf valid_lifetime; //type: one of enumeration, uint32
+        ydk::YLeaf preferred_lifetime; //type: one of enumeration, uint32
         class ValidLifetime;
         class PreferredLifetime;
 

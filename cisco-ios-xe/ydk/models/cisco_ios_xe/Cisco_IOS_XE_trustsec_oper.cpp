@@ -1037,6 +1037,12 @@ bool TrustsecState::CtsSxpConnections::CtsSxpConnection::has_leaf_or_child_of_na
     return false;
 }
 
+const Enum::YLeaf SxpConState::state_off {0, "state-off"};
+const Enum::YLeaf SxpConState::state_pending_on {1, "state-pending-on"};
+const Enum::YLeaf SxpConState::state_on {2, "state-on"};
+const Enum::YLeaf SxpConState::state_delete_hold_down {3, "state-delete-hold-down"};
+const Enum::YLeaf SxpConState::state_not_applicable {4, "state-not-applicable"};
+
 const Enum::YLeaf CtsOdmBindingSource::default_ {0, "default"};
 const Enum::YLeaf CtsOdmBindingSource::from_vlan {1, "from-vlan"};
 const Enum::YLeaf CtsOdmBindingSource::from_cli {2, "from-cli"};
@@ -1051,12 +1057,6 @@ const Enum::YLeaf SxpConMode::con_mode_invalid {0, "con-mode-invalid"};
 const Enum::YLeaf SxpConMode::con_mode_speaker {1, "con-mode-speaker"};
 const Enum::YLeaf SxpConMode::con_mode_listener {2, "con-mode-listener"};
 const Enum::YLeaf SxpConMode::con_mode_both {3, "con-mode-both"};
-
-const Enum::YLeaf SxpConState::state_off {0, "state-off"};
-const Enum::YLeaf SxpConState::state_pending_on {1, "state-pending-on"};
-const Enum::YLeaf SxpConState::state_on {2, "state-on"};
-const Enum::YLeaf SxpConState::state_delete_hold_down {3, "state-delete-hold-down"};
-const Enum::YLeaf SxpConState::state_not_applicable {4, "state-not-applicable"};
 
 
 }

@@ -5,31 +5,31 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_0.hpp"
-#include "Cisco_IOS_XE_native_81.hpp"
-#include "Cisco_IOS_XE_native_176.hpp"
-#include "Cisco_IOS_XE_native_85.hpp"
-#include "Cisco_IOS_XE_native_82.hpp"
-#include "Cisco_IOS_XE_native_175.hpp"
-#include "Cisco_IOS_XE_native_178.hpp"
-#include "Cisco_IOS_XE_native_86.hpp"
-#include "Cisco_IOS_XE_native_79.hpp"
-#include "Cisco_IOS_XE_native_13.hpp"
-#include "Cisco_IOS_XE_native_76.hpp"
 #include "Cisco_IOS_XE_native_3.hpp"
-#include "Cisco_IOS_XE_native_12.hpp"
-#include "Cisco_IOS_XE_native_93.hpp"
-#include "Cisco_IOS_XE_native_14.hpp"
-#include "Cisco_IOS_XE_native_87.hpp"
-#include "Cisco_IOS_XE_native_83.hpp"
-#include "Cisco_IOS_XE_native_4.hpp"
 #include "Cisco_IOS_XE_native_95.hpp"
-#include "Cisco_IOS_XE_native_94.hpp"
-#include "Cisco_IOS_XE_native_19.hpp"
-#include "Cisco_IOS_XE_native_177.hpp"
-#include "Cisco_IOS_XE_native_1.hpp"
+#include "Cisco_IOS_XE_native_13.hpp"
+#include "Cisco_IOS_XE_native_79.hpp"
+#include "Cisco_IOS_XE_native_176.hpp"
+#include "Cisco_IOS_XE_native_83.hpp"
+#include "Cisco_IOS_XE_native_81.hpp"
 #include "Cisco_IOS_XE_native_7.hpp"
+#include "Cisco_IOS_XE_native_175.hpp"
+#include "Cisco_IOS_XE_native_1.hpp"
+#include "Cisco_IOS_XE_native_4.hpp"
+#include "Cisco_IOS_XE_native_19.hpp"
+#include "Cisco_IOS_XE_native_85.hpp"
+#include "Cisco_IOS_XE_native_93.hpp"
+#include "Cisco_IOS_XE_native_177.hpp"
+#include "Cisco_IOS_XE_native_12.hpp"
+#include "Cisco_IOS_XE_native_86.hpp"
+#include "Cisco_IOS_XE_native_94.hpp"
+#include "Cisco_IOS_XE_native_14.hpp"
+#include "Cisco_IOS_XE_native_76.hpp"
+#include "Cisco_IOS_XE_native_178.hpp"
+#include "Cisco_IOS_XE_native_87.hpp"
 #include "Cisco_IOS_XE_native_5.hpp"
 #include "Cisco_IOS_XE_native_179.hpp"
+#include "Cisco_IOS_XE_native_82.hpp"
 
 using namespace ydk;
 
@@ -19045,9 +19045,9 @@ bool Native::Ap::has_leaf_or_child_of_name(const std::string & name) const
 Native::Ap::Dot11::Dot11()
     :
     airtime_fairness(std::make_shared<Native::Ap::Dot11::AirtimeFairness>())
-	,y_24ghz(std::make_shared<Native::Ap::Dot11::24ghz>())
-	,y_49ghz(std::make_shared<Native::Ap::Dot11::49ghz>())
-	,y_5ghz(std::make_shared<Native::Ap::Dot11::5ghz>())
+	,y_24ghz(std::make_shared<Native::Ap::Dot11::Y_24ghz>())
+	,y_49ghz(std::make_shared<Native::Ap::Dot11::Y_49ghz>())
+	,y_5ghz(std::make_shared<Native::Ap::Dot11::Y_5ghz>())
 {
     airtime_fairness->parent = this;
     y_24ghz->parent = this;
@@ -19116,7 +19116,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::get_child_by_name(const std::string &
     {
         if(y_24ghz == nullptr)
         {
-            y_24ghz = std::make_shared<Native::Ap::Dot11::24ghz>();
+            y_24ghz = std::make_shared<Native::Ap::Dot11::Y_24ghz>();
         }
         return y_24ghz;
     }
@@ -19125,7 +19125,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::get_child_by_name(const std::string &
     {
         if(y_49ghz == nullptr)
         {
-            y_49ghz = std::make_shared<Native::Ap::Dot11::49ghz>();
+            y_49ghz = std::make_shared<Native::Ap::Dot11::Y_49ghz>();
         }
         return y_49ghz;
     }
@@ -19134,7 +19134,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::get_child_by_name(const std::string &
     {
         if(y_5ghz == nullptr)
         {
-            y_5ghz = std::make_shared<Native::Ap::Dot11::5ghz>();
+            y_5ghz = std::make_shared<Native::Ap::Dot11::Y_5ghz>();
         }
         return y_5ghz;
     }
@@ -19183,45 +19183,51 @@ bool Native::Ap::Dot11::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-Native::Ap::Dot11::24ghz::24ghz()
-    :
-    rate(std::make_shared<Native::Ap::Dot11::24ghz::Rate>())
+Native::Ap::Dot11::AirtimeFairness::AirtimeFairness()
 {
-    rate->parent = this;
 
-    yang_name = "_24ghz"; yang_parent_name = "dot11"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "airtime-fairness"; yang_parent_name = "dot11"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::~24ghz()
+Native::Ap::Dot11::AirtimeFairness::~AirtimeFairness()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::has_data() const
+bool Native::Ap::Dot11::AirtimeFairness::has_data() const
 {
-    return (rate !=  nullptr && rate->has_data());
+    for (std::size_t index=0; index<policy_name.size(); index++)
+    {
+        if(policy_name[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Native::Ap::Dot11::24ghz::has_operation() const
+bool Native::Ap::Dot11::AirtimeFairness::has_operation() const
 {
-    return is_set(yfilter)
-	|| (rate !=  nullptr && rate->has_operation());
+    for (std::size_t index=0; index<policy_name.size(); index++)
+    {
+        if(policy_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string Native::Ap::Dot11::24ghz::get_absolute_path() const
+std::string Native::Ap::Dot11::AirtimeFairness::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::get_segment_path() const
+std::string Native::Ap::Dot11::AirtimeFairness::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "_24ghz";
+    path_buffer << "airtime-fairness";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::AirtimeFairness::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19230,13 +19236,204 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::AirtimeFairness::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy-name")
+    {
+        for(auto const & c : policy_name)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Native::Ap::Dot11::AirtimeFairness::PolicyName>();
+        c->parent = this;
+        policy_name.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::AirtimeFairness::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : policy_name)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Native::Ap::Dot11::AirtimeFairness::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Ap::Dot11::AirtimeFairness::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Ap::Dot11::AirtimeFairness::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-name")
+        return true;
+    return false;
+}
+
+Native::Ap::Dot11::AirtimeFairness::PolicyName::PolicyName()
+    :
+    policy_name{YType::str, "policy-name"},
+    policy_id{YType::uint16, "policy-id"}
+{
+
+    yang_name = "policy-name"; yang_parent_name = "airtime-fairness"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Native::Ap::Dot11::AirtimeFairness::PolicyName::~PolicyName()
+{
+}
+
+bool Native::Ap::Dot11::AirtimeFairness::PolicyName::has_data() const
+{
+    return policy_name.is_set
+	|| policy_id.is_set;
+}
+
+bool Native::Ap::Dot11::AirtimeFairness::PolicyName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(policy_id.yfilter);
+}
+
+std::string Native::Ap::Dot11::AirtimeFairness::PolicyName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/airtime-fairness/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Ap::Dot11::AirtimeFairness::PolicyName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-name" <<"[policy-name='" <<policy_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::AirtimeFairness::PolicyName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (policy_id.is_set || is_set(policy_id.yfilter)) leaf_name_data.push_back(policy_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Ap::Dot11::AirtimeFairness::PolicyName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::AirtimeFairness::PolicyName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Native::Ap::Dot11::AirtimeFairness::PolicyName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-id")
+    {
+        policy_id = value;
+        policy_id.value_namespace = name_space;
+        policy_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Ap::Dot11::AirtimeFairness::PolicyName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "policy-id")
+    {
+        policy_id.yfilter = yfilter;
+    }
+}
+
+bool Native::Ap::Dot11::AirtimeFairness::PolicyName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-name" || name == "policy-id")
+        return true;
+    return false;
+}
+
+Native::Ap::Dot11::Y_24ghz::Y_24ghz()
+    :
+    rate(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate>())
+{
+    rate->parent = this;
+
+    yang_name = "_24ghz"; yang_parent_name = "dot11"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Native::Ap::Dot11::Y_24ghz::~Y_24ghz()
+{
+}
+
+bool Native::Ap::Dot11::Y_24ghz::has_data() const
+{
+    return (rate !=  nullptr && rate->has_data());
+}
+
+bool Native::Ap::Dot11::Y_24ghz::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rate !=  nullptr && rate->has_operation());
+}
+
+std::string Native::Ap::Dot11::Y_24ghz::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Ap::Dot11::Y_24ghz::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "_24ghz";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate")
     {
         if(rate == nullptr)
         {
-            rate = std::make_shared<Native::Ap::Dot11::24ghz::Rate>();
+            rate = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate>();
         }
         return rate;
     }
@@ -19244,7 +19441,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(rate != nullptr)
@@ -19255,35 +19452,35 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::get_chi
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Ap::Dot11::24ghz::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Ap::Dot11::24ghz::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rate")
         return true;
     return false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::Rate()
+Native::Ap::Dot11::Y_24ghz::Rate::Rate()
     :
-    rate_11m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE11M>())
-	,rate_12m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE12M>())
-	,rate_18m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE18M>())
-	,rate_1m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE1M>())
-	,rate_24m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE24M>())
-	,rate_2m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE2M>())
-	,rate_36m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE36M>())
-	,rate_48m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE48M>())
-	,rate_54m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE54M>())
-	,rate_5_5m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE55M>())
-	,rate_6m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE6M>())
-	,rate_9m(std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE9M>())
+    rate_11m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE11M>())
+	,rate_12m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE12M>())
+	,rate_18m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE18M>())
+	,rate_1m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE1M>())
+	,rate_24m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE24M>())
+	,rate_2m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE2M>())
+	,rate_36m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE36M>())
+	,rate_48m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE48M>())
+	,rate_54m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE54M>())
+	,rate_5_5m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE55M>())
+	,rate_6m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE6M>())
+	,rate_9m(std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE9M>())
 {
     rate_11m->parent = this;
     rate_12m->parent = this;
@@ -19301,11 +19498,11 @@ Native::Ap::Dot11::24ghz::Rate::Rate()
     yang_name = "rate"; yang_parent_name = "_24ghz"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::~Rate()
+Native::Ap::Dot11::Y_24ghz::Rate::~Rate()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::has_data() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::has_data() const
 {
     return (rate_11m !=  nullptr && rate_11m->has_data())
 	|| (rate_12m !=  nullptr && rate_12m->has_data())
@@ -19321,7 +19518,7 @@ bool Native::Ap::Dot11::24ghz::Rate::has_data() const
 	|| (rate_9m !=  nullptr && rate_9m->has_data());
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::has_operation() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::has_operation() const
 {
     return is_set(yfilter)
 	|| (rate_11m !=  nullptr && rate_11m->has_operation())
@@ -19338,21 +19535,21 @@ bool Native::Ap::Dot11::24ghz::Rate::has_operation() const
 	|| (rate_9m !=  nullptr && rate_9m->has_operation());
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::get_absolute_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::get_segment_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::Rate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19361,13 +19558,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::g
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RATE_11M")
     {
         if(rate_11m == nullptr)
         {
-            rate_11m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE11M>();
+            rate_11m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE11M>();
         }
         return rate_11m;
     }
@@ -19376,7 +19573,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_12m == nullptr)
         {
-            rate_12m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE12M>();
+            rate_12m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE12M>();
         }
         return rate_12m;
     }
@@ -19385,7 +19582,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_18m == nullptr)
         {
-            rate_18m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE18M>();
+            rate_18m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE18M>();
         }
         return rate_18m;
     }
@@ -19394,7 +19591,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_1m == nullptr)
         {
-            rate_1m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE1M>();
+            rate_1m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE1M>();
         }
         return rate_1m;
     }
@@ -19403,7 +19600,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_24m == nullptr)
         {
-            rate_24m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE24M>();
+            rate_24m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE24M>();
         }
         return rate_24m;
     }
@@ -19412,7 +19609,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_2m == nullptr)
         {
-            rate_2m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE2M>();
+            rate_2m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE2M>();
         }
         return rate_2m;
     }
@@ -19421,7 +19618,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_36m == nullptr)
         {
-            rate_36m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE36M>();
+            rate_36m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE36M>();
         }
         return rate_36m;
     }
@@ -19430,7 +19627,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_48m == nullptr)
         {
-            rate_48m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE48M>();
+            rate_48m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE48M>();
         }
         return rate_48m;
     }
@@ -19439,7 +19636,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_54m == nullptr)
         {
-            rate_54m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE54M>();
+            rate_54m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE54M>();
         }
         return rate_54m;
     }
@@ -19448,7 +19645,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_5_5m == nullptr)
         {
-            rate_5_5m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE55M>();
+            rate_5_5m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE55M>();
         }
         return rate_5_5m;
     }
@@ -19457,7 +19654,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_6m == nullptr)
         {
-            rate_6m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE6M>();
+            rate_6m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE6M>();
         }
         return rate_6m;
     }
@@ -19466,7 +19663,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     {
         if(rate_9m == nullptr)
         {
-            rate_9m = std::make_shared<Native::Ap::Dot11::24ghz::Rate::RATE9M>();
+            rate_9m = std::make_shared<Native::Ap::Dot11::Y_24ghz::Rate::RATE9M>();
         }
         return rate_9m;
     }
@@ -19474,7 +19671,7 @@ std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(rate_11m != nullptr)
@@ -19540,22 +19737,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::g
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Ap::Dot11::24ghz::Rate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::Rate::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::Rate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "RATE_11M" || name == "RATE_12M" || name == "RATE_18M" || name == "RATE_1M" || name == "RATE_24M" || name == "RATE_2M" || name == "RATE_36M" || name == "RATE_48M" || name == "RATE_54M" || name == "RATE_5_5M" || name == "RATE_6M" || name == "RATE_9M")
         return true;
     return false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE11M::RATE11M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::RATE11M()
     :
     supported{YType::empty, "supported"}
 {
@@ -19563,36 +19760,36 @@ Native::Ap::Dot11::24ghz::Rate::RATE11M::RATE11M()
     yang_name = "RATE_11M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE11M::~RATE11M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::~RATE11M()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE11M::has_data() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::has_data() const
 {
     return supported.is_set;
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE11M::has_operation() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(supported.yfilter);
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE11M::get_absolute_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE11M::get_segment_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RATE_11M";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE11M::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19602,18 +19799,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::R
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE11M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE11M::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE11M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "supported")
     {
@@ -19623,7 +19820,7 @@ void Native::Ap::Dot11::24ghz::Rate::RATE11M::set_value(const std::string & valu
     }
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE11M::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "supported")
     {
@@ -19631,14 +19828,14 @@ void Native::Ap::Dot11::24ghz::Rate::RATE11M::set_filter(const std::string & val
     }
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE11M::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE11M::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "supported")
         return true;
     return false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE12M::RATE12M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::RATE12M()
     :
     supported{YType::empty, "supported"}
 {
@@ -19646,36 +19843,36 @@ Native::Ap::Dot11::24ghz::Rate::RATE12M::RATE12M()
     yang_name = "RATE_12M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE12M::~RATE12M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::~RATE12M()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE12M::has_data() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::has_data() const
 {
     return supported.is_set;
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE12M::has_operation() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(supported.yfilter);
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE12M::get_absolute_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE12M::get_segment_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RATE_12M";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE12M::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19685,18 +19882,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::R
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE12M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE12M::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE12M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "supported")
     {
@@ -19706,7 +19903,7 @@ void Native::Ap::Dot11::24ghz::Rate::RATE12M::set_value(const std::string & valu
     }
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE12M::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "supported")
     {
@@ -19714,14 +19911,14 @@ void Native::Ap::Dot11::24ghz::Rate::RATE12M::set_filter(const std::string & val
     }
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE12M::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE12M::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "supported")
         return true;
     return false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE18M::RATE18M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::RATE18M()
     :
     supported{YType::empty, "supported"}
 {
@@ -19729,36 +19926,36 @@ Native::Ap::Dot11::24ghz::Rate::RATE18M::RATE18M()
     yang_name = "RATE_18M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE18M::~RATE18M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::~RATE18M()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE18M::has_data() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::has_data() const
 {
     return supported.is_set;
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE18M::has_operation() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(supported.yfilter);
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE18M::get_absolute_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE18M::get_segment_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RATE_18M";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE18M::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19768,18 +19965,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::R
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE18M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE18M::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE18M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "supported")
     {
@@ -19789,7 +19986,7 @@ void Native::Ap::Dot11::24ghz::Rate::RATE18M::set_value(const std::string & valu
     }
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE18M::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "supported")
     {
@@ -19797,14 +19994,14 @@ void Native::Ap::Dot11::24ghz::Rate::RATE18M::set_filter(const std::string & val
     }
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE18M::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE18M::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "supported")
         return true;
     return false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE1M::RATE1M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::RATE1M()
     :
     supported{YType::empty, "supported"}
 {
@@ -19812,36 +20009,36 @@ Native::Ap::Dot11::24ghz::Rate::RATE1M::RATE1M()
     yang_name = "RATE_1M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE1M::~RATE1M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::~RATE1M()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE1M::has_data() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::has_data() const
 {
     return supported.is_set;
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE1M::has_operation() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(supported.yfilter);
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE1M::get_absolute_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE1M::get_segment_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RATE_1M";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE1M::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19851,18 +20048,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::R
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE1M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE1M::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE1M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "supported")
     {
@@ -19872,7 +20069,7 @@ void Native::Ap::Dot11::24ghz::Rate::RATE1M::set_value(const std::string & value
     }
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE1M::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "supported")
     {
@@ -19880,14 +20077,14 @@ void Native::Ap::Dot11::24ghz::Rate::RATE1M::set_filter(const std::string & valu
     }
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE1M::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE1M::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "supported")
         return true;
     return false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE24M::RATE24M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::RATE24M()
     :
     supported{YType::empty, "supported"}
 {
@@ -19895,36 +20092,36 @@ Native::Ap::Dot11::24ghz::Rate::RATE24M::RATE24M()
     yang_name = "RATE_24M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Ap::Dot11::24ghz::Rate::RATE24M::~RATE24M()
+Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::~RATE24M()
 {
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE24M::has_data() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::has_data() const
 {
     return supported.is_set;
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE24M::has_operation() const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(supported.yfilter);
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE24M::get_absolute_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Ap::Dot11::24ghz::Rate::RATE24M::get_segment_path() const
+std::string Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RATE_24M";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE24M::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19934,18 +20131,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::R
 
 }
 
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE24M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE24M::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE24M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "supported")
     {
@@ -19955,7 +20152,7 @@ void Native::Ap::Dot11::24ghz::Rate::RATE24M::set_value(const std::string & valu
     }
 }
 
-void Native::Ap::Dot11::24ghz::Rate::RATE24M::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "supported")
     {
@@ -19963,173 +20160,7 @@ void Native::Ap::Dot11::24ghz::Rate::RATE24M::set_filter(const std::string & val
     }
 }
 
-bool Native::Ap::Dot11::24ghz::Rate::RATE24M::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "supported")
-        return true;
-    return false;
-}
-
-Native::Ap::Dot11::24ghz::Rate::RATE2M::RATE2M()
-    :
-    supported{YType::empty, "supported"}
-{
-
-    yang_name = "RATE_2M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Ap::Dot11::24ghz::Rate::RATE2M::~RATE2M()
-{
-}
-
-bool Native::Ap::Dot11::24ghz::Rate::RATE2M::has_data() const
-{
-    return supported.is_set;
-}
-
-bool Native::Ap::Dot11::24ghz::Rate::RATE2M::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(supported.yfilter);
-}
-
-std::string Native::Ap::Dot11::24ghz::Rate::RATE2M::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Ap::Dot11::24ghz::Rate::RATE2M::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RATE_2M";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE2M::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (supported.is_set || is_set(supported.yfilter)) leaf_name_data.push_back(supported.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE2M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE2M::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Native::Ap::Dot11::24ghz::Rate::RATE2M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "supported")
-    {
-        supported = value;
-        supported.value_namespace = name_space;
-        supported.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Ap::Dot11::24ghz::Rate::RATE2M::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "supported")
-    {
-        supported.yfilter = yfilter;
-    }
-}
-
-bool Native::Ap::Dot11::24ghz::Rate::RATE2M::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "supported")
-        return true;
-    return false;
-}
-
-Native::Ap::Dot11::24ghz::Rate::RATE36M::RATE36M()
-    :
-    supported{YType::empty, "supported"}
-{
-
-    yang_name = "RATE_36M"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Ap::Dot11::24ghz::Rate::RATE36M::~RATE36M()
-{
-}
-
-bool Native::Ap::Dot11::24ghz::Rate::RATE36M::has_data() const
-{
-    return supported.is_set;
-}
-
-bool Native::Ap::Dot11::24ghz::Rate::RATE36M::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(supported.yfilter);
-}
-
-std::string Native::Ap::Dot11::24ghz::Rate::RATE36M::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-ap:ap/dot11/_24ghz/rate/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Ap::Dot11::24ghz::Rate::RATE36M::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RATE_36M";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Ap::Dot11::24ghz::Rate::RATE36M::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (supported.is_set || is_set(supported.yfilter)) leaf_name_data.push_back(supported.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Ap::Dot11::24ghz::Rate::RATE36M::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Ap::Dot11::24ghz::Rate::RATE36M::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Native::Ap::Dot11::24ghz::Rate::RATE36M::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "supported")
-    {
-        supported = value;
-        supported.value_namespace = name_space;
-        supported.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Ap::Dot11::24ghz::Rate::RATE36M::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "supported")
-    {
-        supported.yfilter = yfilter;
-    }
-}
-
-bool Native::Ap::Dot11::24ghz::Rate::RATE36M::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ap::Dot11::Y_24ghz::Rate::RATE24M::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "supported")
         return true;

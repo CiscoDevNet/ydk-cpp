@@ -1163,6 +1163,73 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry : public yd
 
 }; // CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry
 
+class KeyType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ike;
+        static const ydk::Enum::YLeaf manual;
+
+};
+
+class IkeHashAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha;
+
+};
+
+class AuthAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf hmacMd5;
+        static const ydk::Enum::YLeaf hmacSha;
+
+};
+
+class IkeNegoMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf main;
+        static const ydk::Enum::YLeaf aggressive;
+
+};
+
+class IkePeerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipAddrPeer;
+        static const ydk::Enum::YLeaf namePeer;
+
+};
+
+class TunnelStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf destroy;
+
+};
+
+class EndPtType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf singleIpAddr;
+        static const ydk::Enum::YLeaf ipAddrRange;
+        static const ydk::Enum::YLeaf ipSubnet;
+
+};
+
+class TrapStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
 class EncapMode : public ydk::Enum
 {
     public:
@@ -1182,6 +1249,14 @@ class IkeAuthMethod : public ydk::Enum
 
 };
 
+class CompAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldf;
+
+};
+
 class DiffHellmanGrp : public ydk::Enum
 {
     public:
@@ -1191,87 +1266,12 @@ class DiffHellmanGrp : public ydk::Enum
 
 };
 
-class IkeHashAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha;
-
-};
-
-class TunnelStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf destroy;
-
-};
-
-class CompAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldf;
-
-};
-
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
 class EncryptAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf des;
         static const ydk::Enum::YLeaf des3;
-
-};
-
-class KeyType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ike;
-        static const ydk::Enum::YLeaf manual;
-
-};
-
-class IkePeerType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipAddrPeer;
-        static const ydk::Enum::YLeaf namePeer;
-
-};
-
-class AuthAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf hmacMd5;
-        static const ydk::Enum::YLeaf hmacSha;
-
-};
-
-class EndPtType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf singleIpAddr;
-        static const ydk::Enum::YLeaf ipAddrRange;
-        static const ydk::Enum::YLeaf ipSubnet;
-
-};
-
-class IkeNegoMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf main;
-        static const ydk::Enum::YLeaf aggressive;
 
 };
 

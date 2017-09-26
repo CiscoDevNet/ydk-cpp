@@ -10,6 +10,25 @@
 namespace cisco_ios_xe {
 namespace IEEE8021_TC_MIB {
 
+class IEEE8021PriorityCodePoint : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf codePoint8p0d;
+        static const ydk::Enum::YLeaf codePoint7p1d;
+        static const ydk::Enum::YLeaf codePoint6p2d;
+        static const ydk::Enum::YLeaf codePoint5p3d;
+
+};
+
+class IEEE8021PortAcceptableFrameTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admitAll;
+        static const ydk::Enum::YLeaf admitUntaggedAndPriority;
+        static const ydk::Enum::YLeaf admitTagged;
+
+};
+
 class IEEE8021ServiceSelectorType : public ydk::Enum
 {
     public:
@@ -29,25 +48,6 @@ class IEEE8021BridgePortType : public ydk::Enum
         static const ydk::Enum::YLeaf customerBackbonePort;
         static const ydk::Enum::YLeaf virtualInstancePort;
         static const ydk::Enum::YLeaf dBridgePort;
-
-};
-
-class IEEE8021PriorityCodePoint : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf codePoint8p0d;
-        static const ydk::Enum::YLeaf codePoint7p1d;
-        static const ydk::Enum::YLeaf codePoint6p2d;
-        static const ydk::Enum::YLeaf codePoint5p3d;
-
-};
-
-class IEEE8021PortAcceptableFrameTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admitAll;
-        static const ydk::Enum::YLeaf admitUntaggedAndPriority;
-        static const ydk::Enum::YLeaf admitTagged;
 
 };
 

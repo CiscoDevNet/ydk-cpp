@@ -1749,7 +1749,7 @@ class Native::L3Vpn::Encapsulation::Ip::Mpls : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mtu; //type: one of uint32, enumeration
+        ydk::YLeaf mtu; //type: one of enumeration, uint32
         class Mtu;
 
 }; // Native::L3Vpn::Encapsulation::Ip::Mpls
@@ -2650,7 +2650,7 @@ class Native::Line::Aux::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -3704,7 +3704,7 @@ class Native::Line::Console::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 

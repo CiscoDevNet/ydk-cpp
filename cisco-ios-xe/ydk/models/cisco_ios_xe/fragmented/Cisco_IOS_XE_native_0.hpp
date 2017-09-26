@@ -164,22 +164,25 @@ class Native : public ydk::Entity
         class Process; //type: Native::Process
         class Exception; //type: Native::Exception
         class Iox; //type: Native::Iox
-        class Vpdn; //type: Native::Vpdn
-        class Voice; //type: Native::Voice
-        class VoiceCard; //type: Native::VoiceCard
-        class Lldp; //type: Native::Lldp
-        class Diagnostic; //type: Native::Diagnostic
-        class DeviceSensor; //type: Native::DeviceSensor
-        class Card; //type: Native::Card
         class Ap; //type: Native::Ap
-        class Cef; //type: Native::Cef
-        class PmAgent; //type: Native::PmAgent
-        class AccessSession; //type: Native::AccessSession
-        class Authentication; //type: Native::Authentication
-        class Coap; //type: Native::Coap
+        class Arp; //type: Native::Arp
         class Esmc; //type: Native::Esmc
         class BbaGroup; //type: Native::BbaGroup
-        class Arp; //type: Native::Arp
+        class Card; //type: Native::Card
+        class Cef; //type: Native::Cef
+        class Coap; //type: Native::Coap
+        class DeviceSensor; //type: Native::DeviceSensor
+        class Diagnostic; //type: Native::Diagnostic
+        class Lldp; //type: Native::Lldp
+        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
+        class Nat66; //type: Native::Nat66
+        class PmAgent; //type: Native::PmAgent
+        class Power; //type: Native::Power
+        class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class AccessSession; //type: Native::AccessSession
+        class Authentication; //type: Native::Authentication
+        class ServiceList; //type: Native::ServiceList
+        class ServiceRouting; //type: Native::ServiceRouting
         class NetworkPolicy; //type: Native::NetworkPolicy
         class Energywise; //type: Native::Energywise
         class CiscoIOSXESwitchTemplate; //type: Native::CiscoIOSXESwitchTemplate
@@ -191,15 +194,12 @@ class Native : public ydk::Entity
         class L2ProtocolTunnel; //type: Native::L2ProtocolTunnel
         class Rep; //type: Native::Rep
         class HwSwitch; //type: Native::HwSwitch
-        class Power; //type: Native::Power
-        class Vstack; //type: Native::Vstack
-        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
         class Utd; //type: Native::Utd
         class UtdEngine; //type: Native::UtdEngine
-        class ServiceRouting; //type: Native::ServiceRouting
-        class ServiceList; //type: Native::ServiceList
-        class Nat66; //type: Native::Nat66
-        class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class Voice; //type: Native::Voice
+        class VoiceCard; //type: Native::VoiceCard
+        class Vpdn; //type: Native::Vpdn
+        class Vstack; //type: Native::Vstack
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa> aaa;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessList> access_list;
@@ -2859,7 +2859,7 @@ class Native::Aaa::Group::Server::Radius::Server_::Direct : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf auth_port; //type: uint16
         ydk::YLeaf acct_port; //type: uint16
 
@@ -3163,7 +3163,7 @@ class Native::Aaa::Group::Server::Tacacsplus::ServerPrivate : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf timeout; //type: uint16
         class Key; //type: Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key
 
@@ -3920,24 +3920,24 @@ class Native::Ap::Dot11 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class 24ghz; //type: Native::Ap::Dot11::24ghz
-        class 49ghz; //type: Native::Ap::Dot11::49ghz
-        class 5ghz; //type: Native::Ap::Dot11::5ghz
+        class Y_24ghz; //type: Native::Ap::Dot11::Y_24ghz
+        class Y_49ghz; //type: Native::Ap::Dot11::Y_49ghz
+        class Y_5ghz; //type: Native::Ap::Dot11::Y_5ghz
         class AirtimeFairness; //type: Native::Ap::Dot11::AirtimeFairness
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::AirtimeFairness> airtime_fairness;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz> y_24ghz;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::49ghz> y_49ghz;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::5ghz> y_5ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz> y_24ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_49ghz> y_49ghz;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_5ghz> y_5ghz;
         
 }; // Native::Ap::Dot11
 
 
-class Native::Ap::Dot11::24ghz : public ydk::Entity
+class Native::Ap::Dot11::AirtimeFairness : public ydk::Entity
 {
     public:
-        24ghz();
-        ~24ghz();
+        AirtimeFairness();
+        ~AirtimeFairness();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3950,14 +3950,61 @@ class Native::Ap::Dot11::24ghz : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rate; //type: Native::Ap::Dot11::24ghz::Rate
+        class PolicyName; //type: Native::Ap::Dot11::AirtimeFairness::PolicyName
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate> rate;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::AirtimeFairness::PolicyName> > policy_name;
         
-}; // Native::Ap::Dot11::24ghz
+}; // Native::Ap::Dot11::AirtimeFairness
 
 
-class Native::Ap::Dot11::24ghz::Rate : public ydk::Entity
+class Native::Ap::Dot11::AirtimeFairness::PolicyName : public ydk::Entity
+{
+    public:
+        PolicyName();
+        ~PolicyName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf policy_id; //type: uint16
+
+}; // Native::Ap::Dot11::AirtimeFairness::PolicyName
+
+
+class Native::Ap::Dot11::Y_24ghz : public ydk::Entity
+{
+    public:
+        Y_24ghz();
+        ~Y_24ghz();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rate; //type: Native::Ap::Dot11::Y_24ghz::Rate
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate> rate;
+        
+}; // Native::Ap::Dot11::Y_24ghz
+
+
+class Native::Ap::Dot11::Y_24ghz::Rate : public ydk::Entity
 {
     public:
         Rate();
@@ -3974,36 +4021,36 @@ class Native::Ap::Dot11::24ghz::Rate : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RATE11M; //type: Native::Ap::Dot11::24ghz::Rate::RATE11M
-        class RATE12M; //type: Native::Ap::Dot11::24ghz::Rate::RATE12M
-        class RATE18M; //type: Native::Ap::Dot11::24ghz::Rate::RATE18M
-        class RATE1M; //type: Native::Ap::Dot11::24ghz::Rate::RATE1M
-        class RATE24M; //type: Native::Ap::Dot11::24ghz::Rate::RATE24M
-        class RATE2M; //type: Native::Ap::Dot11::24ghz::Rate::RATE2M
-        class RATE36M; //type: Native::Ap::Dot11::24ghz::Rate::RATE36M
-        class RATE48M; //type: Native::Ap::Dot11::24ghz::Rate::RATE48M
-        class RATE54M; //type: Native::Ap::Dot11::24ghz::Rate::RATE54M
-        class RATE55M; //type: Native::Ap::Dot11::24ghz::Rate::RATE55M
-        class RATE6M; //type: Native::Ap::Dot11::24ghz::Rate::RATE6M
-        class RATE9M; //type: Native::Ap::Dot11::24ghz::Rate::RATE9M
+        class RATE11M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE11M
+        class RATE12M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE12M
+        class RATE18M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE18M
+        class RATE1M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE1M
+        class RATE24M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE24M
+        class RATE2M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE2M
+        class RATE36M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE36M
+        class RATE48M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE48M
+        class RATE54M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE54M
+        class RATE55M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE55M
+        class RATE6M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE6M
+        class RATE9M; //type: Native::Ap::Dot11::Y_24ghz::Rate::RATE9M
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE11M> rate_11m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE12M> rate_12m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE18M> rate_18m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE1M> rate_1m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE24M> rate_24m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE2M> rate_2m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE36M> rate_36m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE48M> rate_48m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE54M> rate_54m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE55M> rate_5_5m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE6M> rate_6m;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::24ghz::Rate::RATE9M> rate_9m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE11M> rate_11m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE12M> rate_12m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE18M> rate_18m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE1M> rate_1m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE24M> rate_24m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE2M> rate_2m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE36M> rate_36m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE48M> rate_48m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE54M> rate_54m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE55M> rate_5_5m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE6M> rate_6m;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ap::Dot11::Y_24ghz::Rate::RATE9M> rate_9m;
         
-}; // Native::Ap::Dot11::24ghz::Rate
+}; // Native::Ap::Dot11::Y_24ghz::Rate
 
 
-class Native::Ap::Dot11::24ghz::Rate::RATE11M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE11M : public ydk::Entity
 {
     public:
         RATE11M();
@@ -4022,10 +4069,10 @@ class Native::Ap::Dot11::24ghz::Rate::RATE11M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::24ghz::Rate::RATE11M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE11M
 
 
-class Native::Ap::Dot11::24ghz::Rate::RATE12M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE12M : public ydk::Entity
 {
     public:
         RATE12M();
@@ -4044,10 +4091,10 @@ class Native::Ap::Dot11::24ghz::Rate::RATE12M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::24ghz::Rate::RATE12M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE12M
 
 
-class Native::Ap::Dot11::24ghz::Rate::RATE18M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE18M : public ydk::Entity
 {
     public:
         RATE18M();
@@ -4066,10 +4113,10 @@ class Native::Ap::Dot11::24ghz::Rate::RATE18M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::24ghz::Rate::RATE18M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE18M
 
 
-class Native::Ap::Dot11::24ghz::Rate::RATE1M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE1M : public ydk::Entity
 {
     public:
         RATE1M();
@@ -4088,10 +4135,10 @@ class Native::Ap::Dot11::24ghz::Rate::RATE1M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::24ghz::Rate::RATE1M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE1M
 
 
-class Native::Ap::Dot11::24ghz::Rate::RATE24M : public ydk::Entity
+class Native::Ap::Dot11::Y_24ghz::Rate::RATE24M : public ydk::Entity
 {
     public:
         RATE24M();
@@ -4110,51 +4157,7 @@ class Native::Ap::Dot11::24ghz::Rate::RATE24M : public ydk::Entity
 
         ydk::YLeaf supported; //type: empty
 
-}; // Native::Ap::Dot11::24ghz::Rate::RATE24M
-
-
-class Native::Ap::Dot11::24ghz::Rate::RATE2M : public ydk::Entity
-{
-    public:
-        RATE2M();
-        ~RATE2M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE2M
-
-
-class Native::Ap::Dot11::24ghz::Rate::RATE36M : public ydk::Entity
-{
-    public:
-        RATE36M();
-        ~RATE36M();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf supported; //type: empty
-
-}; // Native::Ap::Dot11::24ghz::Rate::RATE36M
+}; // Native::Ap::Dot11::Y_24ghz::Rate::RATE24M
 
 class LoggingLevelType : public ydk::Enum
 {

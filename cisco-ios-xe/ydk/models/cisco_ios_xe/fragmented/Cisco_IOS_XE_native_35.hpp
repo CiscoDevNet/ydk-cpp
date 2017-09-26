@@ -226,10 +226,10 @@ class Native::Interface::GigabitEthernet::Ipv6 : public ydk::Entity
         class Tcp; //type: Native::Interface::GigabitEthernet::Ipv6::Tcp
         class TrafficFilter; //type: Native::Interface::GigabitEthernet::Ipv6::TrafficFilter
         class Crypto; //type: Native::Interface::GigabitEthernet::Ipv6::Crypto
-        class Ospf; //type: Native::Interface::GigabitEthernet::Ipv6::Ospf
+        class Flow; //type: Native::Interface::GigabitEthernet::Ipv6::Flow
         class NoPim; //type: Native::Interface::GigabitEthernet::Ipv6::NoPim
         class Pim; //type: Native::Interface::GigabitEthernet::Ipv6::Pim
-        class Flow; //type: Native::Interface::GigabitEthernet::Ipv6::Flow
+        class Ospf; //type: Native::Interface::GigabitEthernet::Ipv6::Ospf
         class Rip; //type: Native::Interface::GigabitEthernet::Ipv6::Rip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ipv6::Address> address;
@@ -1407,7 +1407,7 @@ class Native::Interface::GigabitEthernet::Ipv6::Ospf::Process : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf instance; //type: uint8
 
 }; // Native::Interface::GigabitEthernet::Ipv6::Ospf::Process
@@ -1589,7 +1589,7 @@ class Native::Interface::GigabitEthernet::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -1962,7 +1962,7 @@ class Native::Interface::GigabitEthernet::Isis::HelloInterval : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class HelloIntervalList; //type: Native::Interface::GigabitEthernet::Isis::HelloInterval::HelloIntervalList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Isis::HelloInterval::HelloIntervalList> > hello_interval_list;
@@ -1988,7 +1988,7 @@ class Native::Interface::GigabitEthernet::Isis::HelloInterval::HelloIntervalList
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class Levels;
         class Value_;
 
@@ -2082,7 +2082,7 @@ class Native::Interface::GigabitEthernet::Isis::Ipv6::Metric : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::GigabitEthernet::Isis::Ipv6::Metric::MetricList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Isis::Ipv6::Metric::MetricList> > metric_list;
@@ -2108,7 +2108,7 @@ class Native::Interface::GigabitEthernet::Isis::Ipv6::Metric::MetricList : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 
@@ -2131,7 +2131,7 @@ class Native::Interface::GigabitEthernet::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::GigabitEthernet::Isis::Metric::MetricList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Isis::Metric::MetricList> > metric_list;
@@ -2157,7 +2157,7 @@ class Native::Interface::GigabitEthernet::Isis::Metric::MetricList : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 

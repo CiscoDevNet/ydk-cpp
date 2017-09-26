@@ -170,7 +170,7 @@ class Native::Logging::Monitor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
         class Discriminator; //type: Native::Logging::Monitor::Discriminator
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Monitor::Discriminator> > discriminator;
@@ -196,7 +196,7 @@ class Native::Logging::Monitor::Discriminator : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Monitor::Discriminator
 
@@ -389,7 +389,7 @@ class Native::Logging::RateLimit::All::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::All::Ranges::Except
 
@@ -485,7 +485,7 @@ class Native::Logging::RateLimit::Console::All::Ranges::Except : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::Console::All::Ranges::Except
 
@@ -531,7 +531,7 @@ class Native::Logging::RateLimit::Console::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::Console::Ranges::Except
 
@@ -577,7 +577,7 @@ class Native::Logging::RateLimit::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::Ranges::Except
 
@@ -674,7 +674,7 @@ class Native::Logging::Trap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf trap_default; //type: empty
-        ydk::YLeaf severity; //type: one of uint8, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint8
         class Severity;
 
 }; // Native::Logging::Trap

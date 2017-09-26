@@ -436,7 +436,7 @@ class Native::Domain::Vrf::Master::Class_::Match::Dscp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint8, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint8
         ydk::YLeaf policy; //type: Policy
         class Policy;
 
@@ -2463,7 +2463,7 @@ class Native::Event::Manager::Applet::Action::Syslog : public ydk::Entity
 
         ydk::YLeaf facility; //type: string
         ydk::YLeaf msg; //type: string
-        ydk::YLeaf priority; //type: one of uint16, enumeration
+        ydk::YLeaf priority; //type: one of enumeration, uint16
 
 }; // Native::Event::Manager::Applet::Action::Syslog
 

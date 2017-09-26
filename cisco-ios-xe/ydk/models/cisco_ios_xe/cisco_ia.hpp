@@ -407,17 +407,6 @@ class SyslogSeverity : public ydk::Enum
 
 };
 
-class CiaLogLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf debug;
-
-};
-
 class OnepLogLevel : public ydk::Enum
 {
     public:
@@ -428,6 +417,17 @@ class OnepLogLevel : public ydk::Enum
         static const ydk::Enum::YLeaf information;
         static const ydk::Enum::YLeaf debug;
         static const ydk::Enum::YLeaf trace;
+
+};
+
+class CiaLogLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf debug;
 
 };
 

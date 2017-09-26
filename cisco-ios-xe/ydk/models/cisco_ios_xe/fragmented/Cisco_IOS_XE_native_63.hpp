@@ -1050,10 +1050,10 @@ class Native::Interface::Tunnel::Ipv6 : public ydk::Entity
         class Tcp; //type: Native::Interface::Tunnel::Ipv6::Tcp
         class TrafficFilter; //type: Native::Interface::Tunnel::Ipv6::TrafficFilter
         class Crypto; //type: Native::Interface::Tunnel::Ipv6::Crypto
-        class Ospf; //type: Native::Interface::Tunnel::Ipv6::Ospf
+        class Flow; //type: Native::Interface::Tunnel::Ipv6::Flow
         class NoPim; //type: Native::Interface::Tunnel::Ipv6::NoPim
         class Pim; //type: Native::Interface::Tunnel::Ipv6::Pim
-        class Flow; //type: Native::Interface::Tunnel::Ipv6::Flow
+        class Ospf; //type: Native::Interface::Tunnel::Ipv6::Ospf
         class Rip; //type: Native::Interface::Tunnel::Ipv6::Rip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ipv6::Address> address;
@@ -2231,7 +2231,7 @@ class Native::Interface::Tunnel::Ipv6::Ospf::Process : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf instance; //type: uint8
 
 }; // Native::Interface::Tunnel::Ipv6::Ospf::Process
@@ -2413,7 +2413,7 @@ class Native::Interface::Tunnel::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -2786,7 +2786,7 @@ class Native::Interface::Tunnel::Isis::HelloInterval : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class HelloIntervalList; //type: Native::Interface::Tunnel::Isis::HelloInterval::HelloIntervalList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::HelloInterval::HelloIntervalList> > hello_interval_list;
@@ -2812,7 +2812,7 @@ class Native::Interface::Tunnel::Isis::HelloInterval::HelloIntervalList : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class Levels;
         class Value_;
 
@@ -2906,7 +2906,7 @@ class Native::Interface::Tunnel::Isis::Ipv6::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::Tunnel::Isis::Ipv6::Metric::MetricList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Ipv6::Metric::MetricList> > metric_list;
@@ -2932,7 +2932,7 @@ class Native::Interface::Tunnel::Isis::Ipv6::Metric::MetricList : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 
@@ -2955,7 +2955,7 @@ class Native::Interface::Tunnel::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::Tunnel::Isis::Metric::MetricList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Metric::MetricList> > metric_list;
@@ -2981,7 +2981,7 @@ class Native::Interface::Tunnel::Isis::Metric::MetricList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 

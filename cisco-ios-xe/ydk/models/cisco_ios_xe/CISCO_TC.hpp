@@ -20,6 +20,33 @@ class CiscoRowOperStatus : public ydk::Enum
 
 };
 
+class CiscoAlarmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cleared;
+        static const ydk::Enum::YLeaf indeterminate;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf info;
+
+};
+
+class CiscoPortListRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf oneto2k;
+        static const ydk::Enum::YLeaf twoKto4K;
+        static const ydk::Enum::YLeaf fourKto6K;
+        static const ydk::Enum::YLeaf sixKto8K;
+        static const ydk::Enum::YLeaf eightKto10K;
+        static const ydk::Enum::YLeaf tenKto12K;
+        static const ydk::Enum::YLeaf twelveKto14K;
+        static const ydk::Enum::YLeaf fourteenKto16K;
+
+};
+
 class IfOperStatusReason : public ydk::Enum
 {
     public:
@@ -294,19 +321,6 @@ class IfOperStatusReason : public ydk::Enum
 
 };
 
-class CiscoAlarmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cleared;
-        static const ydk::Enum::YLeaf indeterminate;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf major;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf info;
-
-};
-
 class CiscoNetworkProtocol : public ydk::Enum
 {
     public:
@@ -336,20 +350,6 @@ class CiscoNetworkProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf clnsPfx;
         static const ydk::Enum::YLeaf http;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class CiscoPortListRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf oneto2k;
-        static const ydk::Enum::YLeaf twoKto4K;
-        static const ydk::Enum::YLeaf fourKto6K;
-        static const ydk::Enum::YLeaf sixKto8K;
-        static const ydk::Enum::YLeaf eightKto10K;
-        static const ydk::Enum::YLeaf tenKto12K;
-        static const ydk::Enum::YLeaf twelveKto14K;
-        static const ydk::Enum::YLeaf fourteenKto16K;
 
 };
 

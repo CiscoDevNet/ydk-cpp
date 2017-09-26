@@ -1872,14 +1872,6 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         class RcvQueue; //type: Native::Interface::VirtualTemplate::RcvQueue
         class Peer; //type: Native::Interface::VirtualTemplate::Peer
         class PmPath; //type: Native::Interface::VirtualTemplate::PmPath
-        class Snmp; //type: Native::Interface::VirtualTemplate::Snmp
-        class Nhrp; //type: Native::Interface::VirtualTemplate::Nhrp
-        class Tunnel; //type: Native::Interface::VirtualTemplate::Tunnel
-        class Crypto; //type: Native::Interface::VirtualTemplate::Crypto
-        class ServicePolicy; //type: Native::Interface::VirtualTemplate::ServicePolicy
-        class Cdp; //type: Native::Interface::VirtualTemplate::Cdp
-        class Mab; //type: Native::Interface::VirtualTemplate::Mab
-        class Cts; //type: Native::Interface::VirtualTemplate::Cts
         class CarrierDelay; //type: Native::Interface::VirtualTemplate::CarrierDelay
         class ChannelGroup; //type: Native::Interface::VirtualTemplate::ChannelGroup
         class Ethernet; //type: Native::Interface::VirtualTemplate::Ethernet
@@ -1889,7 +1881,15 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         class Plim; //type: Native::Interface::VirtualTemplate::Plim
         class Pppoe; //type: Native::Interface::VirtualTemplate::Pppoe
         class Service; //type: Native::Interface::VirtualTemplate::Service
+        class Cdp; //type: Native::Interface::VirtualTemplate::Cdp
+        class Snmp; //type: Native::Interface::VirtualTemplate::Snmp
+        class Nhrp; //type: Native::Interface::VirtualTemplate::Nhrp
+        class Tunnel; //type: Native::Interface::VirtualTemplate::Tunnel
+        class Crypto; //type: Native::Interface::VirtualTemplate::Crypto
+        class Cts; //type: Native::Interface::VirtualTemplate::Cts
+        class ServicePolicy; //type: Native::Interface::VirtualTemplate::ServicePolicy
         class Ppp; //type: Native::Interface::VirtualTemplate::Ppp
+        class Mab; //type: Native::Interface::VirtualTemplate::Mab
         class ZoneMember; //type: Native::Interface::VirtualTemplate::ZoneMember
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::AccessSession> access_session;
@@ -2067,8 +2067,8 @@ class Native::Interface::VirtualTemplate::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2231,8 +2231,8 @@ class Native::Interface::VirtualTemplate::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

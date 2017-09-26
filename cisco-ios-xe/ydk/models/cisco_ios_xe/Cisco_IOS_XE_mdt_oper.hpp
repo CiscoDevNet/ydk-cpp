@@ -200,14 +200,6 @@ class MdtOperData::MdtSubscriptions::MdtReceivers : public ydk::Entity
 
 }; // MdtOperData::MdtSubscriptions::MdtReceivers
 
-class MdtSubType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sub_type_dynamic;
-        static const ydk::Enum::YLeaf sub_type_static;
-
-};
-
 class MdtReceiverState : public ydk::Enum
 {
     public:
@@ -215,6 +207,16 @@ class MdtReceiverState : public ydk::Enum
         static const ydk::Enum::YLeaf rcvr_state_disconnected;
         static const ydk::Enum::YLeaf rcvr_state_connecting;
         static const ydk::Enum::YLeaf rcvr_state_connected;
+
+};
+
+class MdtSubState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sub_state_valid;
+        static const ydk::Enum::YLeaf sub_state_suspended;
+        static const ydk::Enum::YLeaf sub_state_terminated;
+        static const ydk::Enum::YLeaf sub_state_invalid;
 
 };
 
@@ -228,13 +230,11 @@ class MdtConState : public ydk::Enum
 
 };
 
-class MdtSubState : public ydk::Enum
+class MdtSubType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf sub_state_valid;
-        static const ydk::Enum::YLeaf sub_state_suspended;
-        static const ydk::Enum::YLeaf sub_state_terminated;
-        static const ydk::Enum::YLeaf sub_state_invalid;
+        static const ydk::Enum::YLeaf sub_type_dynamic;
+        static const ydk::Enum::YLeaf sub_type_static;
 
 };
 

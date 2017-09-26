@@ -576,9 +576,9 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -629,9 +629,9 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of string, enumeration, uint16
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -3031,7 +3031,7 @@ class Native::Interface::VirtualTemplate::Tunnel : public ydk::Entity
 
         ydk::YLeaf checksum; //type: empty
         ydk::YLeaf source; //type: string
-        ydk::YLeaf destination; //type: one of string, union
+        ydk::YLeaf destination; //type: one of union, string
         ydk::YLeaf entropy; //type: empty
         ydk::YLeaf key; //type: uint64
         ydk::YLeaf raw_packet_interface; //type: string

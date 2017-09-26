@@ -1156,7 +1156,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Area : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf default_cost; //type: uint32
         class Authentication; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Area::Authentication
         class Capability; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Area::Capability
@@ -2367,7 +2367,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Distance::OspfDistan
         ydk::YLeaf distance; //type: uint32
         ydk::YLeaf ip; //type: string
         ydk::YLeaf wildcard; //type: string
-        ydk::YLeaf acl_name; //type: one of string, union
+        ydk::YLeaf acl_name; //type: one of union, string
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Distance::OspfDistance
 
@@ -2784,7 +2784,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Hello : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Hello
@@ -2806,7 +2806,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Update :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Update
@@ -2930,7 +2930,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Bgp : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Bgp::RedistOptions> redist_options;
@@ -3031,7 +3031,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Eigrp 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Eigrp::RedistOptions> redist_options;

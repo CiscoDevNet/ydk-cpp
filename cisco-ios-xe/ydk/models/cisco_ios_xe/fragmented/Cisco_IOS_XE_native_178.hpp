@@ -151,7 +151,7 @@ class Native::TableMap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf default_; //type: one of uint8, enumeration
+        ydk::YLeaf default_; //type: one of enumeration, uint8
         class Map; //type: Native::TableMap::Map
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::Map> > map;
@@ -346,7 +346,7 @@ class Native::TacacsServer::Host : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf key; //type: one of string, enumeration
         ydk::YLeaf encryption_key; //type: string

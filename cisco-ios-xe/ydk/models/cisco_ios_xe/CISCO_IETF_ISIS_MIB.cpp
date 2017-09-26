@@ -6392,9 +6392,6 @@ bool CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::has_leaf_or
     return false;
 }
 
-const Enum::YLeaf CiiMetricType::internal {1, "internal"};
-const Enum::YLeaf CiiMetricType::external {2, "external"};
-
 const Enum::YLeaf CiiSupportedProtocol::iso8473 {129, "iso8473"};
 const Enum::YLeaf CiiSupportedProtocol::ipV6 {142, "ipV6"};
 const Enum::YLeaf CiiSupportedProtocol::ip {204, "ip"};
@@ -6404,16 +6401,19 @@ const Enum::YLeaf CiiLevelState::on {2, "on"};
 const Enum::YLeaf CiiLevelState::waiting {3, "waiting"};
 const Enum::YLeaf CiiLevelState::overloaded {4, "overloaded"};
 
-const Enum::YLeaf CiiISLevel::none {0, "none"};
-const Enum::YLeaf CiiISLevel::area {1, "area"};
-const Enum::YLeaf CiiISLevel::domain {2, "domain"};
-
 const Enum::YLeaf CiiAdminState::on {1, "on"};
 const Enum::YLeaf CiiAdminState::off {2, "off"};
 
 const Enum::YLeaf CiiMetricStyle::narrow {1, "narrow"};
 const Enum::YLeaf CiiMetricStyle::wide {2, "wide"};
 const Enum::YLeaf CiiMetricStyle::both {3, "both"};
+
+const Enum::YLeaf CiiMetricType::internal {1, "internal"};
+const Enum::YLeaf CiiMetricType::external {2, "external"};
+
+const Enum::YLeaf CiiISLevel::none {0, "none"};
+const Enum::YLeaf CiiISLevel::area {1, "area"};
+const Enum::YLeaf CiiISLevel::domain {2, "domain"};
 
 const Enum::YLeaf CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelindex::level1IS {1, "level1IS"};
 const Enum::YLeaf CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelindex::level2IS {2, "level2IS"};

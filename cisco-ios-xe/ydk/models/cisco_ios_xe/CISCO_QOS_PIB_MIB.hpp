@@ -981,6 +981,17 @@ class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry : public 
 
 }; // CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
 
+class ThresholdSetRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf zeroT;
+        static const ydk::Enum::YLeaf oneT;
+        static const ydk::Enum::YLeaf twoT;
+        static const ydk::Enum::YLeaf fourT;
+        static const ydk::Enum::YLeaf eightT;
+
+};
+
 class QueueRange : public ydk::Enum
 {
     public:
@@ -992,17 +1003,6 @@ class QueueRange : public ydk::Enum
         static const ydk::Enum::YLeaf sixteenQ;
         static const ydk::Enum::YLeaf thirtyTwoQ;
         static const ydk::Enum::YLeaf sixtyFourQ;
-
-};
-
-class ThresholdSetRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf zeroT;
-        static const ydk::Enum::YLeaf oneT;
-        static const ydk::Enum::YLeaf twoT;
-        static const ydk::Enum::YLeaf fourT;
-        static const ydk::Enum::YLeaf eightT;
 
 };
 

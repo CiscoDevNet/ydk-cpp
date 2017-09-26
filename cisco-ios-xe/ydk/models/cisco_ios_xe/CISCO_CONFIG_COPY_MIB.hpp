@@ -153,18 +153,6 @@ class CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry : public ydk::Entity
 
 }; // CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry
 
-class ConfigFileType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf networkFile;
-        static const ydk::Enum::YLeaf iosFile;
-        static const ydk::Enum::YLeaf startupConfig;
-        static const ydk::Enum::YLeaf runningConfig;
-        static const ydk::Enum::YLeaf terminal;
-        static const ydk::Enum::YLeaf fabricStartupConfig;
-
-};
-
 class ConfigCopyState : public ydk::Enum
 {
     public:
@@ -172,17 +160,6 @@ class ConfigCopyState : public ydk::Enum
         static const ydk::Enum::YLeaf running;
         static const ydk::Enum::YLeaf successful;
         static const ydk::Enum::YLeaf failed;
-
-};
-
-class ConfigCopyProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tftp;
-        static const ydk::Enum::YLeaf ftp;
-        static const ydk::Enum::YLeaf rcp;
-        static const ydk::Enum::YLeaf scp;
-        static const ydk::Enum::YLeaf sftp;
 
 };
 
@@ -198,6 +175,29 @@ class ConfigCopyFailCause : public ydk::Enum
         static const ydk::Enum::YLeaf someConfigApplyFailed;
         static const ydk::Enum::YLeaf systemNotReady;
         static const ydk::Enum::YLeaf requestAborted;
+
+};
+
+class ConfigFileType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf networkFile;
+        static const ydk::Enum::YLeaf iosFile;
+        static const ydk::Enum::YLeaf startupConfig;
+        static const ydk::Enum::YLeaf runningConfig;
+        static const ydk::Enum::YLeaf terminal;
+        static const ydk::Enum::YLeaf fabricStartupConfig;
+
+};
+
+class ConfigCopyProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tftp;
+        static const ydk::Enum::YLeaf ftp;
+        static const ydk::Enum::YLeaf rcp;
+        static const ydk::Enum::YLeaf scp;
+        static const ydk::Enum::YLeaf sftp;
 
 };
 

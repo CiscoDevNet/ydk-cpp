@@ -1450,7 +1450,7 @@ class Native::SnmpServer::Host : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ip_address; //type: one of string, union
+        ydk::YLeaf ip_address; //type: one of union, string
         ydk::YLeaf community_string; //type: string
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf informs; //type: empty
@@ -3313,6 +3313,7 @@ class Native::System : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        class Mode; //type: Native::System::Mode
         class Debug; //type: Native::System::Debug
         class Disable; //type: Native::System::Disable
         class Environment; //type: Native::System::Environment
@@ -3320,7 +3321,6 @@ class Native::System : public ydk::Entity
         class Ignore; //type: Native::System::Ignore
         class ModeButton; //type: Native::System::ModeButton
         class Mtu; //type: Native::System::Mtu
-        class Mode; //type: Native::System::Mode
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Debug> debug;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Disable> disable;

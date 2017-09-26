@@ -452,8 +452,8 @@ class Native::Interface::TenGigabitEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -616,8 +616,8 @@ class Native::Interface::TenGigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -2732,14 +2732,14 @@ class Native::Interface::TenGigabitEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::TenGigabitEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::TenGigabitEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::TenGigabitEthernet::Ip::Verify
-        class Rsvp; //type: Native::Interface::TenGigabitEthernet::Ip::Rsvp
-        class Lisp; //type: Native::Interface::TenGigabitEthernet::Ip::Lisp
-        class Igmp; //type: Native::Interface::TenGigabitEthernet::Ip::Igmp
-        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ip::Ospf
-        class Wccp; //type: Native::Interface::TenGigabitEthernet::Ip::Wccp
-        class Nbar; //type: Native::Interface::TenGigabitEthernet::Ip::Nbar
         class Flow; //type: Native::Interface::TenGigabitEthernet::Ip::Flow
+        class Igmp; //type: Native::Interface::TenGigabitEthernet::Ip::Igmp
+        class Lisp; //type: Native::Interface::TenGigabitEthernet::Ip::Lisp
         class Nat; //type: Native::Interface::TenGigabitEthernet::Ip::Nat
+        class Nbar; //type: Native::Interface::TenGigabitEthernet::Ip::Nbar
+        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ip::Ospf
+        class Rsvp; //type: Native::Interface::TenGigabitEthernet::Ip::Rsvp
+        class Wccp; //type: Native::Interface::TenGigabitEthernet::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::AccessGroup> access_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Address> address;

@@ -859,14 +859,14 @@ class Native::Interface::GigabitEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::GigabitEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::GigabitEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::GigabitEthernet::Ip::Verify
-        class Rsvp; //type: Native::Interface::GigabitEthernet::Ip::Rsvp
-        class Lisp; //type: Native::Interface::GigabitEthernet::Ip::Lisp
-        class Igmp; //type: Native::Interface::GigabitEthernet::Ip::Igmp
-        class Ospf; //type: Native::Interface::GigabitEthernet::Ip::Ospf
-        class Wccp; //type: Native::Interface::GigabitEthernet::Ip::Wccp
-        class Nbar; //type: Native::Interface::GigabitEthernet::Ip::Nbar
         class Flow; //type: Native::Interface::GigabitEthernet::Ip::Flow
+        class Igmp; //type: Native::Interface::GigabitEthernet::Ip::Igmp
+        class Lisp; //type: Native::Interface::GigabitEthernet::Ip::Lisp
         class Nat; //type: Native::Interface::GigabitEthernet::Ip::Nat
+        class Nbar; //type: Native::Interface::GigabitEthernet::Ip::Nbar
+        class Ospf; //type: Native::Interface::GigabitEthernet::Ip::Ospf
+        class Rsvp; //type: Native::Interface::GigabitEthernet::Ip::Rsvp
+        class Wccp; //type: Native::Interface::GigabitEthernet::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ip::AccessGroup> access_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ip::Address> address;
@@ -2429,7 +2429,7 @@ class Native::Interface::GigabitEthernet::Ip::Ospf::MultiArea : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
 
 }; // Native::Interface::GigabitEthernet::Ip::Ospf::MultiArea
@@ -2473,7 +2473,7 @@ class Native::Interface::GigabitEthernet::Ip::Ospf::ProcessId : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf secondaries; //type: empty
         ydk::YLeaf none; //type: empty
 
