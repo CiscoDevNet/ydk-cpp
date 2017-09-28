@@ -37,9 +37,8 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         OUTPUT_VARIABLE LSB_RELEASE_ID_SHORT
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-
-    set (CMAKE_C_COMPILER "/usr/bin/clang")
-    set (CMAKE_CXX_COMPILER "/usr/bin/clang++")
+    message("C Compiler: ${CMAKE_C_COMPILER_ID}")
+    message("CXX Compiler: ${CMAKE_CXX_COMPILER_ID}")
 
     # Linux Debian
     if (${LSB_RELEASE_ID_SHORT} MATCHES "Ubuntu")
